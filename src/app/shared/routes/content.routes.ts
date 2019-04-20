@@ -8,5 +8,9 @@ export const content: Routes = [
   {
     path: 'pages',
     loadChildren: './pages/page/page.module#PageModule'
+  },
+  {
+    path: 'user',
+    loadChildren: './user/user.module#UserModule'
   }
 ];

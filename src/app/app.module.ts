@@ -4,31 +4,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { FullWidthComponent } from './layouts/full-width/full-width.component';
 import { ContentComponent } from './layouts/content/content.component';
-import { CompactSidebarComponent } from './layouts/compact-sidebar/compact-sidebar.component';
-import { CompactSidebarIconsComponent } from './layouts/compact-sidebar-icons/compact-sidebar-icons.component';
 import * as $ from 'jquery';
+import { ConfigService, ConfigModule } from './services/config.service';
+import { JwtInterceptor } from './helpers/jws.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FullWidthComponent,
-    ContentComponent,
-    CompactSidebarComponent,
-    CompactSidebarIconsComponent
+    ContentComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpModule,
   ],
-  providers: [],
+  providers: [
+    ConfigService,
+    ConfigModule.init(),
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

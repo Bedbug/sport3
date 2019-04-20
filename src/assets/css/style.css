@@ -74,6 +74,8 @@
 /**=====================
      01. General CSS Start
 ==========================**/
+html{
+}
 body {
   background-color: rgba(246, 246, 246, 0.6);
   font-size: 14px;
@@ -2966,6 +2968,7 @@ li:hover > a {
   display: inline-flex;
   height: 100%;
   padding: 12px;
+  margin-left:25px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -20697,9 +20700,11 @@ body[main-theme-layout="main-theme-layout-3"] .my-gallery.gallery-with-descripti
 body[main-theme-layout="main-theme-layout-4"] {
   color: rgba(255, 255, 255, 0.7);
   background-color: #303841;
-  background-image: url("../images/background.png");
+  background: url("../images/background.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-position-x: center;
 }
 body[main-theme-layout="main-theme-layout-4"] .flot-chart-container .legend .table tbody {
   background-color: #36404a;
