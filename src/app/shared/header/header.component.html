@@ -3,8 +3,8 @@
     <div class="main-header-left">
         <div class="logo-wrapper">
             <a [routerLink]="'/landing'">
-                <img src="assets/images/logo-light.png" class="image-dark" alt=""/>
-                <img src="assets/images/logo-light.png" class="image-light" alt=""/>
+                <img src="assets/images/logo-light.png" class="image-dark" alt="" />
+                <img src="assets/images/logo-light.png" class="image-light" alt="" />
             </a>
         </div>
     </div>
@@ -18,25 +18,59 @@
             </div>
         </div> -->
         <div class="nav-right col">
-            <ul class="nav-menus">
+            <!-- LOGIN HEADER -->
+            <ul class="nav-menus" *ngIf="!isLoggedIn">
+                 <li>
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-inline search-form">
+                            <div class="form-group">
+                                <label class="sr-only">Username</label>
+                                <input type="text" formControlName="username" class="form-control-plaintext"
+                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" required>
+                                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                    <div *ngIf="f.username.errors.required">Username is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only">Password</label>
+                                <input type="password" formControlName="password" class="form-control-plaintext"
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-md-3">
+                                        <button  [disabled]="loading" type="submit" class="btn btn-warning">LOGIN</button>
+                                        <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                    </div>
+                                </div>
+                        </form>
+    
+                    </li>
+            </ul>
+<!-- HEADER LOGGED IN -->
+            <ul class="nav-menus"  *ngIf="isLoggedIn">
                 <li>
                     <form class="form-inline search-form">
                         <div class="form-group">
                             <label class="sr-only">Email</label>
-                            <input type="search" class="form-control-plaintext" placeholder="Search.." >
+                            <input type="search" class="form-control-plaintext" placeholder="Search..">
                             <span class="d-sm-none mobile-search">
                             </span>
                         </div>
                     </form>
                 </li>
+               
                 <li>
                     <a href="javascript:void(0)" toggleFullscreen class="text-dark">
-                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/browser.png" alt="header-browser">
+                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/browser.png"
+                            alt="header-browser">
                     </a>
                 </li>
                 <li class="onhover-dropdown">
                     <a href="javascript:void(0)" class="txt-dark">
-                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/translate.png" alt="header-translate">
+                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/translate.png"
+                            alt="header-translate">
                     </a>
                     <ul class="language-dropdown onhover-show-div p-20">
                         <li>
@@ -63,14 +97,18 @@
                 </li>
                 <li class="onhover-dropdown">
                     <a href="javascript:void(0)" class="txt-dark">
-                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/notification.png" alt="header-notification">
+                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/notification.png"
+                            alt="header-notification">
                         <span class="badge badge-pill badge-primary notification">3</span>
                     </a>
                     <ul class="notification-dropdown onhover-show-div">
-                        <li>Notification <span class="badge badge-pill badge-secondary text-white text-uppercase pull-right">3 New</span></li>
+                        <li>Notification <span
+                                class="badge badge-pill badge-secondary text-white text-uppercase pull-right">3
+                                New</span></li>
                         <li>
                             <div class="media">
-                                <i class="align-self-center notification-icon icofont icofont-shopping-cart bg-primary"></i>
+                                <i
+                                    class="align-self-center notification-icon icofont icofont-shopping-cart bg-primary"></i>
                                 <div class="media-body">
                                     <h6 class="mt-0">Your order ready for Ship..!</h6>
                                     <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -80,7 +118,8 @@
                         </li>
                         <li>
                             <div class="media">
-                                <i class="align-self-center notification-icon icofont icofont-download-alt bg-success"></i>
+                                <i
+                                    class="align-self-center notification-icon icofont icofont-download-alt bg-success"></i>
                                 <div class="media-body">
                                     <h6 class="mt-0 txt-success">Download Complete</h6>
                                     <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer elit.</p>
@@ -98,13 +137,14 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="text-center">You have Check <a href="javascript:void(0)">all</a> notification  </li>
+                        <li class="text-center">You have Check <a href="javascript:void(0)">all</a> notification </li>
                     </ul>
 
                 </li>
                 <li class="onhover-dropdown">
                     <div class="media  align-items-center">
-                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/user.png" alt="header-user"/>
+                        <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/user.png"
+                            alt="header-user" />
                         <div class="media-body">
                             <h6 class="m-0 txt-dark f-16">
                                 My Account
@@ -153,4 +193,3 @@
     </div>
 </div>
 <!--Page Header Ends-->
-

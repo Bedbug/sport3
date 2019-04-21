@@ -20839,7 +20839,7 @@ body[main-theme-layout="main-theme-layout-4"] .page-wrapper .page-main-header .m
             filter: brightness(1) invert(100%);
   }
   body[main-theme-layout="main-theme-layout-4"] .page-wrapper .page-main-header .nav-right > ul .search-form .form-control-plaintext {
-    background-color: #303841;
+    background-color: #303841 !important;
     -webkit-filter: brightness(1) invert(9%) !important;
             filter: brightness(1) invert(9%) !important;
     border: 1px solid #4b5469;

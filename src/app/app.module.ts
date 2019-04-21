@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { ContentComponent } from './layouts/content/content.component';
 import * as $ from 'jquery';
@@ -14,6 +13,7 @@ import { JwtInterceptor } from './helpers/jws.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +27,8 @@ import { HttpModule } from '@angular/http';
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [
     ConfigService,

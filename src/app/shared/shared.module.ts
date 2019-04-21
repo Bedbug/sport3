@@ -6,10 +6,12 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './menu/sidebar/sidebar.component';
 import { ChatSidebarComponent } from './chat-sidebar/chat-sidebar.component';
 import { ToggleFullscreenDirective } from "./directives/fullscreen.directive";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent,  ChatSidebarComponent, ToggleFullscreenDirective],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,FormsModule,    //added here too
+    ReactiveFormsModule],
   exports: [HeaderComponent, FooterComponent, SidebarComponent, ChatSidebarComponent, ToggleFullscreenDirective]
 })
 export class SharedModule { }
