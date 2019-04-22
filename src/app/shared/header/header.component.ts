@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     private authenticationService: AuthenticationService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      // this.router.navigate(['/' + this.authenticationService.currentUserValue.role.toLowerCase() + '/dashboard']);
+      this.router.navigate(['/user/contests']);
       this.isLoggedIn = true;
     } else {
       this.isLoggedIn = false;
@@ -63,10 +63,10 @@ export class HeaderComponent implements OnInit {
           console.log(data);
           this.isLoggedIn = this.authenticationService.currentUserValue != undefined;
           this.loading = false;
-          // if (!this.returnUrl)
-          //   this.router.navigate(['/' + this.authenticationService.currentUserValue.role.toLowerCase() + '/dashboard']);
-          // else
-          //   this.router.navigate([this.returnUrl]);
+          if (!this.returnUrl)
+            this.router.navigate(['/user/contests']);
+          else
+            this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
