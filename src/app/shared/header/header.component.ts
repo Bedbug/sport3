@@ -62,6 +62,7 @@ export class HeaderComponent implements OnInit {
         data => {
           console.log(data);
           this.isLoggedIn = this.authenticationService.currentUserValue != undefined;
+          this.loading = false;
           // if (!this.returnUrl)
           //   this.router.navigate(['/' + this.authenticationService.currentUserValue.role.toLowerCase() + '/dashboard']);
           // else
@@ -72,5 +73,10 @@ export class HeaderComponent implements OnInit {
           this.loading = false;
         });
   }
+
+  logout() {
+    this.authenticationService.logout();
+    this.isLoggedIn = false;
+}
 
 }

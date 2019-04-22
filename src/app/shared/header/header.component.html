@@ -21,11 +21,11 @@
             <!-- LOGIN HEADER -->
             <ul class="nav-menus" *ngIf="!isLoggedIn">
                  <li>
-                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-inline search-form">
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-inline sportimo-form">
                             <div class="form-group">
                                 <label class="sr-only">Username</label>
                                 <input type="text" formControlName="username" class="form-control-plaintext"
-                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" required>
+                                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" required>
                                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                     <div *ngIf="f.username.errors.required">Username is required</div>
                                 </div>
@@ -33,14 +33,14 @@
                             <div class="form-group">
                                 <label class="sr-only">Password</label>
                                 <input type="password" formControlName="password" class="form-control-plaintext"
-                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" required>
+                                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" required>
                                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                     <div *ngIf="f.password.errors.required">Password is required</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                     <div class="col-md-3">
-                                        <button  [disabled]="loading" type="submit" class="btn btn-warning">LOGIN</button>
+                                        <button  [disabled]="loading" type="submit" class="btn btn-sportimo">LOGIN</button>
                                         <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                                     </div>
                                 </div>
@@ -178,7 +178,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">
+                            <a href="javascript:void(0)" (click)="logout()">
                                 <i class="icon-power-off"></i>
                                 Logout
                             </a>
