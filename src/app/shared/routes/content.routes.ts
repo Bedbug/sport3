@@ -1,4 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
+import { UserComponent } from 'src/app/user/user.component';
 
 export const content: Routes = [
   {
@@ -11,6 +12,7 @@ export const content: Routes = [
   },
   {
     path: 'user',
+    component: UserComponent,
     loadChildren: './user/user.module#UserModule'
   }
 ];

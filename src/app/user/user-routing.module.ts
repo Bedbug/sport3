@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './starter/user.component';
+import { StarterComponent } from './starter/starter.component';
 import { ContestsComponent } from './contests/contests.component';
 
 
@@ -9,13 +9,21 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'stater-kit',
-        component: UserComponent
+        path: 'contests',
+        component: ContestsComponent
       },
       {
-        path: 'contests/:contestID',
-        component: ContestsComponent
-      }
+        path: 'winners',
+        component: StarterComponent
+      },
+      {
+        path: 'achievements',
+        component: StarterComponent
+      },
+      {
+        path: 'standings',
+        component: StarterComponent
+      },
     ]
   }
 ];
