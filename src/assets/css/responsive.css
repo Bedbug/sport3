@@ -1273,7 +1273,7 @@
     top: 60px;
     height: calc(100vh - 60px); }
     .page-wrapper .page-body-wrapper .page-sidebar ~ .page-body {
-      margin-left: 0px;
+      margin-right: 0px;
       padding-top: 0 !important; }
   .page-wrapper .page-body-wrapper .page-sidebar-open {
     width: 250px; }

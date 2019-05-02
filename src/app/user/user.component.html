@@ -41,13 +41,19 @@
     <a class="nav-item nav-link disabled" href="#">Disabled</a>
   </nav> -->
 <div class="navbar app-navbar">
-  <div class="container">
-    <a routerLink="/user/contests" routerLinkActive="active" href="#"><i class="fa fa-fw fa-home"></i> Contests</a>
-    <a routerLink="/user/winners" routerLinkActive="active" href="#" ><i class="fa fa-fw fa-search"></i> Winners</a>
-    <a routerLink="/user/achievements" routerLinkActive="active" href="#" ><i class="fa fa-fw fa-envelope"></i> Achievements</a>
-    <a routerLink="/user/standings" routerLinkActive="active" href="#" ><i class="fa fa-fw fa-user"></i> Standings</a>
+  <div class="container" style="justify-content: space-evenly">
+    <a routerLink="/user/contests" routerLinkActive="active" href="#" class="row"><div class="icn-contests"></div> Contests</a>
+    <a routerLink="/user/winners" routerLinkActive="active" href="#" class="row"><div class="icn-winners"></div> Winners</a>
+    <a routerLink="/user/achievements" routerLinkActive="active" href="#" class="row"><div class="icn-achievements"></div> Achievements</a>
+    <a routerLink="/user/standings" routerLinkActive="active" href="#" class="row"><div class="icn-standings"></div> Standings</a>
   </div>
 </div>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+<nav class="navbar fixed-bottom mobile-app-navbar">
+  <a routerLink="/user/contests" routerLinkActive="active" href="#"><div class="icn-contests"></div>Contests</a>
+  <a routerLink="/user/winners" routerLinkActive="active" href="#"><div class="icn-winners"></div>Winners</a>
+  <a routerLink="/user/achievements" routerLinkActive="active" href="#"><div class="icn-achievements"></div>Achievements</a>
+  <a routerLink="/user/standings" routerLinkActive="active" href="#"><div class="icn-standings"></div>Standings</a>
+</nav>
