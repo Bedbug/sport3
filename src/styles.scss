@@ -117,12 +117,14 @@ body .page-wrapper .page-main-header {
   justify-content: flex-end;
   height: 70px;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 10px;
   width: 25%;
+  border-bottom: 3px solid transparent;
 }
 .mobile-app-navbar [class^="icn-"] {
   width: 60px;
   height: 25px;
+  margin-bottom: 3px;
 }
 
 .app-navbar [class^="icn-"] {
@@ -138,8 +140,22 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.active .icn-contests {
+  background: url("~src/assets/images/sportimo/icon-contests.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 .icn-winners {
   background: url("~src/assets/images/sportimo/icon-winners.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-winners {
+  background: url("~src/assets/images/sportimo/icon-winners.active.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
@@ -152,8 +168,22 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.active .icn-achievements {
+  background: url("~src/assets/images/sportimo/icon-achievements.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 .icn-standings {
   background: url("~src/assets/images/sportimo/icon-standings.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-standings {
+  background: url("~src/assets/images/sportimo/icon-standings.active.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;

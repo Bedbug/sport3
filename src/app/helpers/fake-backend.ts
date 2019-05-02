@@ -21,7 +21,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 id: "5be2f82c135a3e1e2d4a6380",
                 client: "5be2bfc7135a3e1e2d4a637f",
                 promoImage: "https://s3-eu-west-1.amazonaws.com/sportimo-media/tournaments/tournament_test_screen.png",
-                promoDetailImage: "https://www.beachsoccer.com/system/photos/1585/medium/burjalarab4web.jpg?1446463801",
+                promoDetailImage: "./assets/images/contest-bg.png",
                 titleText: {
                     en: "MENA Clasicos"
                 },
@@ -40,7 +40,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 id: "5be2f82c135a3e1e2d4a6380",
                 client: "5be2bfc7135a3e1e2d4a637f",
                 promoImage: "https://s3-eu-west-1.amazonaws.com/sportimo-media/tournaments/tournament_test_screen.png",
-                promoDetailImage: "https://www.beachsoccer.com/system/photos/1585/medium/burjalarab4web.jpg?1446463801",
+                promoDetailImage: "./assets/images/contest-bg2.png",
                 titleText: {
                     en: "MENA Clasicos"
                 },
