@@ -3,18 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { StarterComponent } from './starter/starter.component';
-import { ContestsComponent } from './contests/contests.component';
+import { HomeComponent } from './home/home.component';
+import { ContestsListComponent } from '../shared/contests-list/contests-list.component';
 
 
 
 @NgModule({
   declarations: [
     StarterComponent,
-    ContestsComponent
+    HomeComponent,
+    ContestsListComponent 
 ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
   ]
 })
 export class UserModule { }

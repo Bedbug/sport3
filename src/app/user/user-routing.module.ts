@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StarterComponent } from './starter/starter.component';
-import { ContestsComponent } from './contests/contests.component';
+import { HomeComponent } from './home/home.component';
 
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'contests',
-        component: ContestsComponent
+        component: HomeComponent
       },
       {
         path: 'winners',

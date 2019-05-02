@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShiftBeltService } from './shiftbelt.service';
+import { SportimoApiService } from './sportimoapi.service';
 
-describe('APIService', () => {
+describe('SportimoapiService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ShiftBeltService = TestBed.get(ShiftBeltService);
+    const service: SportimoApiService = TestBed.get(SportimoApiService);
     expect(service).toBeTruthy();
   });
 });

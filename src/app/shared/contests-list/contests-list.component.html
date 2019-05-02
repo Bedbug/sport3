@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-7 col-md-12" *ngFor="let contest of contests; let i = index">
+      <div class="card">
+        <div class="card-header contest-header">
+          <div class="row">
+            <span class="contest-name col">{{contest.titleText["en"]}}</span>
+            <span class="contest-duration col text-right"><strong>Ends:</strong> {{contest.endToDate | date }}</span>
+          </div>
+        </div>
+        <div class="card-body text-center img" [ngStyle]="{background: 'url(' + contest.promoDetailImage + ')'}">
+          <img class="img-fluid h-200" src="./assets/images/puzzle-512.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

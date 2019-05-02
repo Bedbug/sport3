@@ -3,6 +3,6 @@
   "CLIENT_ID": "mbc123",
   "API_ENDPOINTS": {
     "USER": "api/v1/user",
-    "SHIFT": "api/v1/shift"
+    "CONTESTS": "api/v1/contests"
   }
 }

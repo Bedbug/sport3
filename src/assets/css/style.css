@@ -3826,7 +3826,7 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 
 .page-wrapper .page-body-wrapper .page-body {
   min-height: calc(100vh - 80px);
-  margin-top: 110px;
+  margin-top: 100px;
   padding: 0 20px;
   position: relative;
   /* background-color: #f6f7fb; */
