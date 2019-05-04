@@ -8,8 +8,16 @@
             <span class="contest-duration col text-right"><strong>Ends:</strong> {{contest.endToDate | date }}</span>
           </div>
         </div>
-        <div class="card-body text-center img h-200" [ngStyle]="{background: 'url(' + contest.promoDetailImage + ')', 'background-size': 'cover'}">
-          <!-- <img class="img-fluid h-200" src="./assets/images/puzzle-512.png" alt=""> -->
+        <div class="card-body" [ngStyle]="{background: 'url(' + contest.promoDetailImage + ')', 'background-size': 'cover'}">
+          <div class="row">
+          <div class="col-7 contest-image">
+            <img src="./assets/images/prize-promoImage.png" alt="">
+          </div>
+          <div class="col-5 contest-details text-center">
+            <p class="contest-details-text">{{contest.smallInfoText["en"]}}</p>
+            <p>70 <i class="coin"></i> to Join</p>
+          </div>
+        </div>
         </div>
       </div>
     </div>

@@ -17,6 +17,19 @@ $theme-background-image: url("~src/assets/images/background.png");
   height: 200px;
 }
 
+.coin{
+  display: inline-block;
+  background-image: url('./assets/images/sportimo/coin.png');
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 15px;
+  height: 15px;
+  position: relative;
+    top: 3px;
+    left: -2px;
+}
+
 body {
   // color: rgba(255, 255, 255, 0.7);
   background-color: #303841;
@@ -41,7 +54,7 @@ body {
 
 body .page-wrapper .page-main-header {
   background: $theme-header-color;
-  box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 0.7);
+  box-shadow: none; //0px 0px 1px 1px rgba(255, 255, 255, 0.7);
 }
 
 .sportimo-form input {
@@ -106,6 +119,8 @@ body .page-wrapper .page-main-header {
   color: white;
   text-decoration: none;
   font-size: 15px;
+  animation-name: flipInX;
+  animation-duration: 0.5s;
 }
 
 /* Navbar links on mouse-over */
@@ -220,6 +235,9 @@ body .page-wrapper .page-main-header {
   .card-header {
     padding: 10px !important;
   }
+  .matches-list{
+    display:none;
+  }
 }
 @include media-breakpoint-up(md) {
   .mobile-app-navbar {
@@ -254,6 +272,10 @@ body .page-wrapper .page-main-header {
   border-radius: 0;
 }
 
+/**=====================
+     02. Contests
+==========================**/
+
 .contest-header {
   font-size: 15px;
   line-height: 15px;
@@ -268,8 +290,40 @@ body .page-wrapper .page-main-header {
   font-weight: bold;
 }
 
+// .contest-image{
+//   // height: 150px;
+// }
+
+.contest-image img{
+  max-width: 100%;
+  margin: auto;
+  display: block;
+}
+
+.contest-details{
+  // height: 150px;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.contest-details p{
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.contest-details p:first-child{
+  margin-top: 10px;
+}
+
+.contest-details p:last-child{
+  position: absolute;
+    width: 100%;
+    bottom: 5px;
+    text-align: center;
+    margin-left: -15px;
+}
 /**=====================
-     02. GrandPrize
+     03. GrandPrize
 ==========================**/
 .grand-prize .card-body {
   padding: 0 !important;

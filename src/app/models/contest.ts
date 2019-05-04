@@ -4,6 +4,7 @@ export class Contest {
     promoImage: string;
     promoDetailImage: string;
     titleText: object;
+    smallInfoText: object;
     infoText: object;
     startFromDate: Date;
     endToDate: Date;
