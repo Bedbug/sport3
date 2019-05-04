@@ -6,6 +6,7 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Role } from '../models/role';
 import { Contest } from '../models/contest';
+import { GrandPrize } from '../models/grand-prize';
 
 
 @Injectable()
@@ -58,6 +59,17 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         ]
 
+        const grandPrize: GrandPrize = {
+            id: "1",
+            promoImage: "./assets/images/grandprize.png",
+            titleText: {
+                "en": "Season 2019 - 2020"
+            },
+            infoText: { "en": "Play matches this season and increase your chances to win the Grand Prize!" },
+            endToDate: new Date("2019-06-28T23:59:59.000Z"),
+            created: new Date()
+        }
+
         const authHeader = request.headers.get('Authorization');
         const isLoggedIn = authHeader && authHeader.startsWith('Bearer fake-jwt-token');
         const roleString = isLoggedIn && authHeader.split('.')[1];
@@ -106,6 +118,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.match(/contests/i) && request.method === 'GET') {
                 // if (role !== Role.Admin) return unauthorised();
                 return ok(Contests);
+            }
+
+            if (request.url.match(/grandprize/i) && request.method === 'GET') {
+                // if (role !== Role.Admin) return unauthorised();
+                return ok(grandPrize);
             }
 
             // pass through any requests not handled above

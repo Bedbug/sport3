@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { StarterComponent } from './starter/starter.component';
 import { HomeComponent } from './home/home.component';
-import { ContestsListComponent } from '../shared/contests-list/contests-list.component';
+import { ContestsListComponent } from './contests-list/contests-list.component';
+import { GrandPrizeComponent } from './grand-prize/grand-prize.component';
 
 
 
@@ -12,7 +13,8 @@ import { ContestsListComponent } from '../shared/contests-list/contests-list.com
   declarations: [
     StarterComponent,
     HomeComponent,
-    ContestsListComponent 
+    ContestsListComponent,
+    GrandPrizeComponent
 ],
   imports: [
     CommonModule,

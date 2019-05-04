@@ -3,6 +3,7 @@
   "CLIENT_ID": "mbc123",
   "API_ENDPOINTS": {
     "USER": "api/v1/user",
-    "CONTESTS": "api/v1/contests"
+    "CONTESTS": "api/v1/contests",
+    "GRAND_PRIZE": "api/v1/grandprize"
   }
 }

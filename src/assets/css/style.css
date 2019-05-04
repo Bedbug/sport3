@@ -2965,30 +2965,30 @@ table thead .border-bottom-warning th, table tbody .border-bottom-warning th, ta
   -webkit-transform-origin: center center;
   transform-origin: center center;
   margin: 0 3px;
-  width: 1px;
+  width: 5px;
   height: 25px;
 }
 
 .loader .line:nth-child(1) {
-  background: #00c292;
+  background: #fff;
 }
 
 .loader .line:nth-child(2) {
   -webkit-animation-delay: 180ms;
   animation-delay: 180ms;
-  background: #ab8ce4;
+  background: #fff;
 }
 
 .loader .line:nth-child(3) {
   -webkit-animation-delay: 360ms;
   animation-delay: 360ms;
-  background: #FF5370;
+  background: #fff;
 }
 
 .loader .line:nth-child(4) {
   -webkit-animation-delay: 540ms;
   animation-delay: 540ms;
-  background: #4099ff;
+  background: #fff;
 }
 
 @-webkit-keyframes expand {
