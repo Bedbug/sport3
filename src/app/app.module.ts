@@ -15,12 +15,16 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
+import { ContestPagesComponent } from './contest-pages/contest-pages.component';
+import { ContestInfoHeaderComponent } from './contest-pages/contest-info-header/contest-info-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContentComponent,
-    UserComponent
+    UserComponent,
+    ContestPagesComponent,
+    ContestInfoHeaderComponent
   ],
   imports: [
     BrowserModule,

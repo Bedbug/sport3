@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     private authenticationService: AuthenticationService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
-      this.router.navigate(['/user/contests']);
+      // this.router.navigate(['/user/contests']);
       this.isLoggedIn = true;
     } else {
       this.isLoggedIn = false;
