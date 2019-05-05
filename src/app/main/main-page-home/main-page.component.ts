@@ -4,10 +4,10 @@ import{ConfigService } from '../../services/config.service'
 
 @Component({
   selector: 'app-page',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './main-page-home.component.html',
+  styleUrls: ['./main-page-home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class MainPageHomeComponent implements OnInit {
 
   contestID: string;
   

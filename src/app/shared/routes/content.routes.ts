@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from 'src/app/user/user.component';
+import { MainComponent } from 'src/app/main/main.component';
 import { ContestPagesComponent } from 'src/app/contest-pages/contest-pages.component';
 
 export const content: Routes = [
@@ -12,9 +12,9 @@ export const content: Routes = [
     loadChildren: './pages/page/page.module#PageModule'
   },
   {
-    path: 'user',
-    component: UserComponent,
-    loadChildren: './user/user.module#UserModule'
+    path: 'main',
+    component: MainComponent,
+    loadChildren: './main/main.module#MainModule'
   },{
     path:'contest',
     component: ContestPagesComponent,
