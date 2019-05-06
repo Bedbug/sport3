@@ -275,7 +275,9 @@ body .page-wrapper .page-main-header {
 /**=====================
      02. Contests
 ==========================**/
-
+.contest-list-item{
+  cursor: pointer;
+}
 .contest-info-container{
   display: table;
   width: 100%;

@@ -16,7 +16,7 @@ export const content: Routes = [
     component: MainComponent,
     loadChildren: './main/main.module#MainModule'
   },{
-    path:'contest',
+    path:'contest/:id',
     component: ContestPagesComponent,
     loadChildren: './contest-pages/contest-pages.module#ContestPagesModule'
   }

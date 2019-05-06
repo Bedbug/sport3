@@ -23,13 +23,16 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 client: "5be2bfc7135a3e1e2d4a637f",
                 promoImage: "https://s3-eu-west-1.amazonaws.com/sportimo-media/tournaments/tournament_test_screen.png",
                 promoDetailImage: "./assets/images/contest-bg2.png",
+                matches: 3,
+                participations: 15000,
+                winners: 3,
                 titleText: {
                     en: "MENA Clasicos"
                 },
                 infoText: {
                     "en": "50 Gold coins enter you into the MENA Clasicos tournament.\n Watch all games, play your cards right and win great prizes!\nBrought to you by MBC."
                 },
-                smallInfoText:{
+                smallInfoText: {
                     "en": "Play Europe Elite League and MENA Elite League matches and win"
                 },
                 startFromDate: new Date("2018-08-10T00:00:00.000Z"),

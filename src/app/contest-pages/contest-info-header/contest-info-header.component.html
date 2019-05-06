@@ -18,10 +18,10 @@
         <div class="contest-info-cell font-weight-bold">Duration</div>
       </div>
       <div class="contest-info-row">
-        <div class="contest-info-cell">15</div>
-        <div class="contest-info-cell">15,348</div>
-        <div class="contest-info-cell">3</div>
-        <div class="contest-info-cell">01/05/19-15/05/19</div>
+        <div class="contest-info-cell">{{contestDetails?.matches}}</div>
+        <div class="contest-info-cell">{{contestDetails?.participations}}</div>
+        <div class="contest-info-cell">{{contestDetails?.winners}}</div>
+        <div class="contest-info-cell">{{getDuration()}}</div>
       </div>
     </div>
   </div>

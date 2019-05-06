@@ -3,6 +3,9 @@ export class Contest {
     client: string;
     promoImage: string;
     promoDetailImage: string;
+    matches: number;
+    participations: number;
+    winners: number;
     titleText: object;
     smallInfoText: object;
     infoText: object;

@@ -4,6 +4,7 @@ import { ContestPageInfoComponent} from './contest-page-info/contest-page-info.c
 import { ContestPageMatchesComponent } from './contest-page-matches/contest-page-matches.component';
 import { ContestPageLeadersComponent } from './contest-page-leaders/contest-page-leaders.component';
 import { ContestPagePrizesComponent } from './contest-page-prizes/contest-page-prizes.component';
+import { ContestPagesComponent } from './contest-pages.component';
 
 const routes: Routes = [
   {
@@ -24,12 +25,12 @@ const routes: Routes = [
       {
         path: 'prizes',
         component: ContestPagePrizesComponent
-      },
-      {
-        path: '*',
-        component: ContestPageInfoComponent
       }
     ]
+  },
+  {
+    path: '*',
+    redirectTo: 'main/contests'
   }
 ];
 

@@ -4,17 +4,18 @@
   <router-outlet></router-outlet>
 </div>
 <!-- Contest Navbar -->
+CONTESTID: {{contestId}}
 <nav class="navbar fixed-bottom mobile-app-navbar">
-  <a routerLink="/contest/info" routerLinkActive="active" href="#">
+  <a [routerLink]="['/contest',contestId,'info']" routerLinkActive="active" href="#">
     <div class="icn-contests"></div>Info
   </a>
-  <a routerLink="/contest/matches" routerLinkActive="active" href="#">
+  <a [routerLink]="['/contest',contestId,'matches']" routerLinkActive="active" href="#">
     <div class="icn-winners"></div>Matches
   </a>
-  <a routerLink="/contest/leaders" routerLinkActive="active" href="#">
+  <a [routerLink]="['/contest',contestId,'leaders']" routerLinkActive="active" href="#">
     <div class="icn-achievements"></div>Leaders
   </a>
-  <a routerLink="/contest/prizes" routerLinkActive="active" href="#">
+  <a [routerLink]="['/contest',contestId,'prizes']" routerLinkActive="active" href="#">
     <div class="icn-standings"></div>Prizes
   </a>
 </nav>
