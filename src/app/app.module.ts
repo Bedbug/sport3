@@ -28,7 +28,6 @@ import { SubscribeNoticeComponent } from './subscribe-notice/subscribe-notice.co
     ContestPagesComponent,
     ContestInfoHeaderComponent,
     SubscribeNoticeComponent
-
   ],
   imports: [
     BrowserModule,

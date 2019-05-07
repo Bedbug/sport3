@@ -27,10 +27,6 @@ const routes: Routes = [
         component: ContestPagePrizesComponent
       }
     ]
-  },
-  {
-    path: '*',
-    redirectTo: 'main/contests'
   }
 ];
 

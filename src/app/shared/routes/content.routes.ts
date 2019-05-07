@@ -19,5 +19,9 @@ export const content: Routes = [
     path:'contest/:id',
     component: ContestPagesComponent,
     loadChildren: './contest-pages/contest-pages.module#ContestPagesModule'
+  },
+  {
+    path:'**',
+    redirectTo:'main/contests'
   }
 ];

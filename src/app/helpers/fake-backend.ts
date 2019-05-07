@@ -61,7 +61,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             userId: "1",
             ends: new Date("2019-06-28T23:59:59.000Z"),
             status: "active"
-
         }
 
         const authHeader = request.headers.get('Authorization');

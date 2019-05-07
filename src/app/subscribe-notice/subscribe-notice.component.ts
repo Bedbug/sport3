@@ -21,13 +21,13 @@ export class SubscribeNoticeComponent implements OnInit {
     this.checkState();
   }
 
+  
   checkState() {
     
     this.authenticationService.currentUser.subscribe(user=>{
       this.isLoggedIn = user!=null;
-    })
-
-    if (this.isLoggedIn) {
+      
+      if(this.isLoggedIn)
       this.subscriptionService.getSubscriptionDataForUser(this.authenticationService.currentUserValue.id)
         .subscribe(
           data => {         
@@ -37,7 +37,11 @@ export class SubscribeNoticeComponent implements OnInit {
 
           }
         );
-    }
+    })
+
+    
+      
+    
   }
 
 

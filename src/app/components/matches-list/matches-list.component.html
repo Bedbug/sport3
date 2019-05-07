@@ -1,0 +1,46 @@
+<div class="matches-list-container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
+          aria-selected="true"><div>All</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="live-tab" data-toggle="tab" href="#live" role="tab" aria-controls="live"
+          aria-selected="false"><div>Live</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab" aria-controls="upcoming"
+          aria-selected="false"><div>Upcoming</div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="past-tab" data-toggle="tab" href="#past" role="tab" aria-controls="past"
+          aria-selected="false"><div>Past</div></a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+        <div class="container">
+            <ul>
+                <li class="match-item" *ngFor="let match of matches">
+                <div class="match-item-main">
+                  <div class="kit text-center"><img src="./assets/images/team1.png" alt=""></div>
+                  <div class="team-name text-left">Real Madrid</div>
+                  <div class="match-score text-center">3 - 1</div>
+                  <div class="team-name  text-right">Juventus</div>
+                  <div class="kit text-center"><img src="./assets/images/team2.png" alt=""></div>
+                </div>  
+                <div class="match-item-footer">
+                  <div class="info text-left">Real Madrid: 3-1</div>
+                  <div class="time text-right">12/06/20, 19:30</div>
+                  <div *ngIf="match.live" class="live text-center"> • LIVE</div>
+                </div>
+                </li>
+              </ul>
+        </div>
+        
+      </div>
+      <div class="tab-pane fade" id="live" role="tabpanel" aria-labelledby="live-tab">hello2</div>
+      <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">hello3</div>
+      <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">hello4</div>
+    </div>
+  </div>

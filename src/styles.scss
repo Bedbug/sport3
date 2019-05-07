@@ -1,11 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // @import './styles/css/bootstrap.min.css';
 @import "~bootstrap/scss/bootstrap-grid.scss";
-
-$theme-color: #ffc531;
-$theme-header-color: #ffca00; // rgba(0, 0, 0, 0.7);
-$theme-navbar-color: rgba(34, 52, 77, 0.7);
-$theme-background-image: url("~src/assets/images/background.png");
+@import "./variables.scss";
 
 /*-----------------------------------------------------------------------------------
 
@@ -20,7 +16,7 @@ $theme-background-image: url("~src/assets/images/background.png");
 * a {
   color: $theme-color;
   text-decoration: underline;
-  font-weight: 700;
+  // font-weight: 700;
 }
 
 .coin{
@@ -99,7 +95,7 @@ body .page-wrapper .page-main-header {
 
 .mobile-app-navbar {
   background: $theme-navbar-color;
-  height: 70px;
+  height: 51px;
   padding: 0;
   justify-content: space-around;
   animation-name: flipInX;
@@ -123,15 +119,15 @@ body .page-wrapper .page-main-header {
   
 }
 
-.mobile-app-navbar a {
-  float: left;
-  text-align: center;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
+// .mobile-app-navbar a {
+//   float: left;
+//   text-align: center;
+//   padding: 12px;
+//   color: white;
+//   text-decoration: none;
+//   font-size: 15px;
   
-}
+// }
 
 /* Navbar links on mouse-over */
 
@@ -144,10 +140,15 @@ body .page-wrapper .page-main-header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 70px;
+  height: 51px;
   flex-direction: column;
   font-size: 10px;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
   width: 25%;
+  padding: 0;
   border-bottom: 3px solid transparent;
 }
 .mobile-app-navbar [class^="icn-"] {
@@ -220,10 +221,15 @@ body .page-wrapper .page-main-header {
 
 /* Current/active navbar link */
 
-.app-navbar a.active,
+.app-navbar a.active{
+  border-bottom: solid 5px $theme-color;
+  color: $theme-color !important;
+  animation-name: flipInX;
+  animation-duration: 0.5s;
+}
 .mobile-app-navbar a.active {
   /* background-color: #4CAF50; */
-  border-bottom: solid 5px $theme-color;
+  border-bottom: solid 3px $theme-color;
   color: $theme-color !important;
   animation-name: flipInX;
   animation-duration: 0.5s;

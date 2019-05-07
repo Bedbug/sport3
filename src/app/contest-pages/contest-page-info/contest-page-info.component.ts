@@ -24,7 +24,6 @@ export class ContestPageInfoComponent implements OnInit {
       this.SportimoApi.getContestQuickDetails(params.get("id"))
       .subscribe(result => {
         this.contestDetails = result
-        console.log(this.contestDetails);
       });
     })
   }
