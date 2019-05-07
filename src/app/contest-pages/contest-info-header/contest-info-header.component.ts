@@ -16,11 +16,6 @@ export class ContestInfoHeaderComponent implements OnInit {
   contestDetails: Contest;
 
   ngOnInit() {
-    // this.route.paramMap.pipe(
-    //   switchMap((params: ParamMap) =>
-    //     this.service.getHero(params.get('id')))
-    // );
-
     this.route.paramMap.subscribe(params => {      
       this.SportimoApi.getContestQuickDetails(params.get("id"))
       .subscribe(result => {

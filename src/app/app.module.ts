@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainComponent } from './main/main.component';
 import { ContestPagesComponent } from './contest-pages/contest-pages.component';
 import { ContestInfoHeaderComponent } from './contest-pages/contest-info-header/contest-info-header.component';
+import { SubscribeNoticeComponent } from './subscribe-notice/subscribe-notice.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ContestInfoHeaderComponent } from './contest-pages/contest-info-header/
     ContentComponent,
     MainComponent,
     ContestPagesComponent,
-    ContestInfoHeaderComponent
+    ContestInfoHeaderComponent,
+    SubscribeNoticeComponent
 
   ],
   imports: [

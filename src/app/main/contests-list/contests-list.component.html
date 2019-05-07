@@ -1,7 +1,7 @@
 
   <div class="row">
     <div class="col-sm-12 p-0 contest-list-item" *ngFor="let contest of contests; let i = index">
-      <div class="card" tabindex="0" (keydown)="OnKeyDown($event)" (keyup)="OnKeyUp($event)"  (click)="ContestClicked(contest.id)">
+      <div class="card contest-item-container"  tab-index="0" (click)="ContestClicked(contest.id)">
         <div class="card-header contest-header">
           <div class="row">
             <span class="contest-name col">{{contest.titleText["en"]}}</span>
@@ -11,7 +11,7 @@
         <div class="card-body" [ngStyle]="{background: 'url(' + contest.promoDetailImage + ')', 'background-size': 'cover'}">
           <div class="row">
           <div class="col-7 contest-image">
-            <img src="./assets/images/prize-promoImage.png" alt="">
+            <img src="{{contest.promoImage}}" alt="">
           </div>
           <div class="col-5 contest-details text-center">
             <p class="contest-details-text">{{contest.smallInfoText["en"]}}</p>

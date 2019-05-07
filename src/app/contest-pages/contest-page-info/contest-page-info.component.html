@@ -1,3 +1,14 @@
-<p>
-  contest-page-info works!
-</p>
+<div class="card">
+  <div class="card-body" style="background-repeat: no-repeat;
+  background-size: 101%;
+  background-position: center;" [ngStyle]="{'background-image': 'url(' + contestDetails?.promoDetailImage + ')'}">
+
+    <div class="contest-image">
+      <img src="{{contestDetails?.promoImage}}" style="max-height: 200px" alt="">
+    </div>
+
+  </div>
+  <div class="card-body text-white" style="font-family:Helvetica;">
+    <div [innerHTML] = "contestDetails?.infoText.en"></div>
+  </div>
+</div>

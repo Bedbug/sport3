@@ -1,0 +1,36 @@
+.subscribe-notice-container{
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    font-size: 0.7rem;
+    height:70px;
+    background: #0E1D2D;
+    width: 100%;
+}
+
+.subscribe-notice-container.enabled{
+    display: block;
+    animation:fadeInUp;
+    animation-duration: 0.5s;
+}
+
+.subscribe-notice-container .row{
+    height:70px;
+    align-items: center;
+}
+
+.subscribe-notice-container .col-5{
+text-align: center;
+}
+
+.subscribe-notice-container .col-7 li:first-child{
+    margin-bottom: 4px;
+}
+
+    .subscribe-notice-container .col-7 li:last-child{
+        color: gray;
+        }
+
+// .subscribe-notice-container .col{
+//     font-size: 0.8rem;
+// }

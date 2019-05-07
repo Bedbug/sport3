@@ -7,21 +7,22 @@ import { User } from '../models/user';
 import { Role } from '../models/role';
 import { Contest } from '../models/contest';
 import { GrandPrize } from '../models/grand-prize';
+import { Subscription } from '../models/subscription';
 
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const users: User[] = [
-            { id: 1, username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
-            { id: 2, username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
+            { id: "1", username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
+            { id: "2", username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
         ];
 
         const Contests: Contest[] = [
             {
                 id: "5be2f82c135a3e1e2d4a6380",
                 client: "5be2bfc7135a3e1e2d4a637f",
-                promoImage: "https://s3-eu-west-1.amazonaws.com/sportimo-media/tournaments/tournament_test_screen.png",
+                promoImage: "./assets/images/prize-promoImage.png",
                 promoDetailImage: "./assets/images/contest-bg2.png",
                 matches: 3,
                 participations: 15000,
@@ -30,7 +31,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     en: "MENA Clasicos"
                 },
                 infoText: {
-                    "en": "50 Gold coins enter you into the MENA Clasicos tournament.\n Watch all games, play your cards right and win great prizes!\nBrought to you by MBC."
+                    "en": "<h4>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h4><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa <strong>strong</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede <a class='external ext' href='#'>link</a> mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p><h4>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h4><blockquote>Lorem ipsum dolor sit amet, consectetuer                     adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa <strong>strong</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequatmassa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In <em>em</em> enim justo, rhoncus ut, imperdiet a, venenatis vitae,                     justo. Nullam <a class='external ext' href='#'>link</a>dictum felis eu pede mollis pretium.</blockquote><h2>Aenean commodo ligula eget dolor aenean massa</h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.                     Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p><h2>Aenean commodo ligula eget dolor aenean massa</h2><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p><ul>  <li>Lorem ipsum dolor sit amet consectetuer.</li>  <li>Aenean commodo ligula eget dolor.</li>  <li>Aenean massa cum sociis natoque penatibus.</li></ul><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>"                    
                 },
                 smallInfoText: {
                     "en": "Play Europe Elite League and MENA Elite League matches and win"
@@ -43,7 +44,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 leaderboardDefinition: "5c04f54a135a3e1e2d4a6384",
                 created: new Date("2018-11-07T14:30:00.000Z")
             }
-
         ]
 
         const grandPrize: GrandPrize = {
@@ -55,6 +55,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             infoText: { "en": "Play matches this season and increase your chances to win the Grand Prize!" },
             endToDate: new Date("2019-06-28T23:59:59.000Z"),
             created: new Date()
+        }
+
+        const subscription: Subscription = {
+            userId: "1",
+            ends: new Date("2019-06-28T23:59:59.000Z"),
+            status: "active"
+
         }
 
         const authHeader = request.headers.get('Authorization');
@@ -85,7 +92,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
                 // get id from request url
                 let urlParts = request.url.split('/');
-                let id = parseInt(urlParts[urlParts.length - 1]);
+                let id = urlParts[urlParts.length - 1];
 
                 // only allow normal users access to their own record
                 const currentUser = users.find(x => x.role === role);
@@ -110,6 +117,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             if (request.url.match(/grandprize/i) && request.method === 'GET') {
                 // if (role !== Role.Admin) return unauthorised();
                 return ok(grandPrize);
+            }
+
+            console.log(request.url);
+            
+            if (request.url.match(/subscription/i) && request.method === 'POST') {
+                // if (role !== Role.Admin) return unauthorised();
+                return ok(subscription);
             }
 
             // pass through any requests not handled above

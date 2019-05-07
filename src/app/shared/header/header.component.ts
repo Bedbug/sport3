@@ -60,11 +60,10 @@ export class HeaderComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           this.isLoggedIn = this.authenticationService.currentUserValue != undefined;
           this.loading = false;
           if (!this.returnUrl)
-            this.router.navigate(['/user/contests']);
+            this.router.navigate(['/main/contests']);
           else
             this.router.navigate([this.returnUrl]);
         },

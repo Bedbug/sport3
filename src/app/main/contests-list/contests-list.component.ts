@@ -23,16 +23,20 @@ export class ContestsListComponent implements OnInit {
     })
   }
 
-  ContestClicked(contestId){
-    // this.router.navigate(['/contest',contestId,'info']);
+  ContestClicked(contestId){    
+    this.router.navigate(['/contest',contestId,'info']);
   }
 
-  OnKeyUp(event:any){
-    console.log(event);
-  }
+  // OnKeyUp(event:any){
+  //   event.preventDefault();
 
-  OnKeyDown(event:any){
-    console.log(event);
-  }
+  //   console.log("pressup");
+  // }
+
+  // OnKeyDown(event:any){
+  //   event.preventDefault();
+
+  //   console.log("tap");
+  // }
 
 }

@@ -1,10 +1,7 @@
 <app-contest-info-header></app-contest-info-header>
 <!-- Router Page Placement -->
-<div class="container">
   <router-outlet></router-outlet>
-</div>
 <!-- Contest Navbar -->
-CONTESTID: {{contestId}}
 <nav class="navbar fixed-bottom mobile-app-navbar">
   <a [routerLink]="['/contest',contestId,'info']" routerLinkActive="active" href="#">
     <div class="icn-contests"></div>Info

@@ -1,0 +1,16 @@
+{{isLoggedIn}} | {{isSubscribed}}
+<div class="subscribe-notice-container" [class.enabled]="!isLoggedIn || !isSubscribed" >
+  <div class="col-12">
+    <div class="row">
+      <div class="col-5">
+        <button class="btn btn-sportimo">Subscribe</button>
+      </div>
+      <div class="col-7 text-white">
+        <ul>
+          <li *ngIf="!isLoggedIn"><strong>Alerady a member? </strong> <a href="#">Log in here</a></li>
+          <li>By clicking "Subscribe", you agree to the <a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
