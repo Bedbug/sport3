@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScehduledMatch } from 'src/app/models/scheduled-match';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-contest-page-matches',
@@ -9,9 +10,9 @@ import { ScehduledMatch } from 'src/app/models/scheduled-match';
 export class ContestPageMatchesComponent implements OnInit {
 
   loadedMatches: ScehduledMatch[] = [
-    {id:"1",title:"Match 1", live: true},
-    {id:"2",title:"Match 2", live: false},
-    {id:"3",title:"Match 3", live: false}
+    {id:"1",title:"Match 1", home_score:3, away_score: 1, live: true,  start: moment().toDate()},
+    {id:"2",title:"Match 2", home_score:0, away_score: 0, live: false, start: moment().add(1,'days').toDate()},
+    {id:"3",title:"Match 3", home_score:0, away_score: 0, live: false, start: moment().add(-1,'days').add(2 ,'hours').toDate()}
   ]
   constructor() { }
 

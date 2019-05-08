@@ -9,11 +9,19 @@ import { ScehduledMatch } from 'src/app/models/scheduled-match';
 export class MatchesListComponent implements OnInit {
 
   @Input() matches: ScehduledMatch[];
-
+  today = new Date();
+  
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  get liveMatches(){
+    return this.matches.filter(x => x.live);
+  }
+
+  get upcomingMatches(){
+    return this.matches.filter(x=>x.start > this.today);
+  }
 }
