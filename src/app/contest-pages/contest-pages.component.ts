@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { slideInAnimation } from '../animations/route-animations';
 
 @Component({
   selector: 'app-contest-pages',
   templateUrl: './contest-pages.component.html',
-  styleUrls: ['./contest-pages.component.scss']
+  styleUrls: ['./contest-pages.component.scss'],
+  animations: [ slideInAnimation ]
 })
 export class ContestPagesComponent implements OnInit {
 

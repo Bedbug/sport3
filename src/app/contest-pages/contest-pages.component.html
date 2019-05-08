@@ -1,6 +1,9 @@
 <app-contest-info-header></app-contest-info-header>
 <!-- Router Page Placement -->
-  <router-outlet></router-outlet>
+<div [@routeAnimations]="o && o.activatedRouteData 
+      && o.activatedRouteData['animation']">
+    <router-outlet #o="outlet"></router-outlet>
+</div>
 <!-- Contest Navbar -->
 <nav class="navbar fixed-bottom mobile-app-navbar">
   <a [routerLink]="['/contest',contestId,'info']" routerLinkActive="active" href="#">

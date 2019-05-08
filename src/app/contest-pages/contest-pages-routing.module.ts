@@ -12,15 +12,18 @@ const routes: Routes = [
     children: [
       {
         path: 'info',
-        component: ContestPageInfoComponent
+        component: ContestPageInfoComponent,
+        data: {animation: 'Home'}
       },
       {
         path: 'matches',
         component: ContestPageMatchesComponent
+        ,data: {animation: 'About'}
       },
       {
         path: 'leaders',
         component: ContestPageLeadersComponent
+        ,data: {animation: 'Contact'}
       },
       {
         path: 'prizes',

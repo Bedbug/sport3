@@ -6,6 +6,7 @@ import { ContestPageLeadersComponent } from './contest-page-leaders/contest-page
 import { ContestPageMatchesComponent } from './contest-page-matches/contest-page-matches.component';
 import { ContestPagePrizesComponent } from './contest-page-prizes/contest-page-prizes.component';
 import { MatchesListComponent } from '../components/matches-list/matches-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
