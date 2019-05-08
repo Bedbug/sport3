@@ -254,6 +254,15 @@ body .page-wrapper .page-main-header {
   .matches-list{
     display:none;
   }
+  
+  .main-header-left{
+    margin-left: 10px !important;
+  }
+  
+  .main-header-left img{
+    height:35px !important;
+  }
+  
 }
 @include media-breakpoint-up(md) {
   .mobile-app-navbar {
