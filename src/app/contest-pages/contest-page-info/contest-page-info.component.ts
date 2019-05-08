@@ -31,18 +31,14 @@ export class ContestPageInfoComponent implements OnInit {
 
   constructor(private route:ActivatedRoute, private SportimoApi:SportimoApiService) { }
 
-  data = {en: `<b>This text is bold</b> and this one is <i>italics</i>`};
-
   contestDetails: Contest;
 
   ngOnInit() {
-
-    
-
     this.route.paramMap.subscribe(params => {      
       this.SportimoApi.getContestQuickDetails(params.get("id"))
       .subscribe(result => {
-        this.contestDetails = result
+        this.contestDetails = result;
+        console.log("CALL AGAIN FROM INFO");
       });
     })
   }

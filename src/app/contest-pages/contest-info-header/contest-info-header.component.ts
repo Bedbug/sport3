@@ -19,7 +19,8 @@ export class ContestInfoHeaderComponent implements OnInit {
     this.route.paramMap.subscribe(params => {      
       this.SportimoApi.getContestQuickDetails(params.get("id"))
       .subscribe(result => {
-        this.contestDetails = result
+        this.contestDetails = result;
+        console.log("CALL AGAIN FROM HEADER");
       });
     })
   }

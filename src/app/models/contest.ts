@@ -1,5 +1,5 @@
 export class Contest {
-    id: string;
+    _id: string;
     client: string;
     promoImage: string;
     promoDetailImage: string;

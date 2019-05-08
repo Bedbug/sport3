@@ -13,14 +13,14 @@ import { Subscription } from '../models/subscription';
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const users: User[] = [
-            { id: "1", username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
-            { id: "2", username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
-        ];
+        // const users: User[] = [
+        //     { _id: "1", username: 'admin', password: 'admin', firstName: 'Admin', lastName: 'User', role: Role.Admin },
+        //     { _id: "2", username: 'user', password: 'user', firstName: 'Normal', lastName: 'User', role: Role.User }
+        // ];
 
         const Contests: Contest[] = [
             {
-                id: "5be2f82c135a3e1e2d4a6380",
+                _id: "5be2f82c135a3e1e2d4a6380",
                 client: "5be2bfc7135a3e1e2d4a637f",
                 promoImage: "./assets/images/prize-promoImage.png",
                 promoDetailImage: "./assets/images/contest-bg2.png",
@@ -72,40 +72,40 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         return of(null).pipe(mergeMap(() => {
 
             // authenticate - public
-            if (request.url.endsWith('/users/authenticate') && request.method === 'POST') {
-                const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
-                if (!user) return error('Username or password is incorrect');
-                return ok({
-                    id: user.id,
-                    username: user.username,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    role: user.role,
-                    token: `fake-jwt-token.${user.role}`
-                });
-            }
+            // if (request.url.endsWith('/users/authenticate') && request.method === 'POST') {
+            //     const user = users.find(x => x.username === request.body.username && x.password === request.body.password);
+            //     if (!user) return error('Username or password is incorrect');
+            //     return ok({
+            //         _id: user._id,
+            //         username: user.username,
+            //         firstName: user.firstName,
+            //         lastName: user.lastName,
+            //         role: user.role,
+            //         token: `fake-jwt-token.${user.role}`
+            //     });
+            // }
 
-            // get user by id - admin or user (user can only access their own record)
-            if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
-                if (!isLoggedIn) return unauthorised();
+            // // get user by id - admin or user (user can only access their own record)
+            // if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
+            //     if (!isLoggedIn) return unauthorised();
 
-                // get id from request url
-                let urlParts = request.url.split('/');
-                let id = urlParts[urlParts.length - 1];
+            //     // get id from request url
+            //     let urlParts = request.url.split('/');
+            //     let id = urlParts[urlParts.length - 1];
 
-                // only allow normal users access to their own record
-                const currentUser = users.find(x => x.role === role);
-                if (id !== currentUser.id && role !== Role.Admin) return unauthorised();
+            //     // only allow normal users access to their own record
+            //     const currentUser = users.find(x => x.role === role);
+            //     if (id !== currentUser.id && role !== Role.Admin) return unauthorised();
 
-                const user = users.find(x => x.id === id);
-                return ok(user);
-            }
+            //     const user = users.find(x => x.id === id);
+            //     return ok(user);
+            // }
 
-            // get all users (admin only)
-            if (request.url.endsWith('/users') && request.method === 'GET') {
-                if (role !== Role.Admin) return unauthorised();
-                return ok(users);
-            }
+            // // get all users (admin only)
+            // if (request.url.endsWith('/users') && request.method === 'GET') {
+            //     if (role !== Role.Admin) return unauthorised();
+            //     return ok(users);
+            // }
 
             // get all contests (admin only)
             if (request.url.match(/contests/i) && request.method === 'GET') {
@@ -118,7 +118,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(grandPrize);
             }
 
-            console.log(request.url);
+            // console.log(request.url);
             
             if (request.url.match(/subscription/i) && request.method === 'POST') {
                 // if (role !== Role.Admin) return unauthorised();

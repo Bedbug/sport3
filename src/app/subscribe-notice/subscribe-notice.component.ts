@@ -28,7 +28,7 @@ export class SubscribeNoticeComponent implements OnInit {
       this.isLoggedIn = user!=null;
       
       if(this.isLoggedIn)
-      this.subscriptionService.getSubscriptionDataForUser(this.authenticationService.currentUserValue.id)
+      this.subscriptionService.getSubscriptionDataForUser(this.authenticationService.currentUserValue._id)
         .subscribe(
           data => {         
               this.isSubscribed = (data && data.status == "active");

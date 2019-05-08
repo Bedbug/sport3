@@ -1,11 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { SportimoApiService } from 'src/app/services/sportimoapi.service';
 import { GrandPrize } from 'src/app/models/grand-prize';
+import { trigger, transition, query, style, stagger, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'app-grand-prize',
   templateUrl: './grand-prize.component.html',
-  styleUrls: ['./grand-prize.component.scss']
+  styleUrls: ['./grand-prize.component.scss'],
+  animations: [
+    trigger(
+      'fadein', [
+        state('true', style({ opacity: 1 })),
+        state('false', style({ opacity: 0 })),
+        transition('false <=> true', animate(500))
+      ]),
+      ]
 })
 export class GrandPrizeComponent implements OnInit {
 

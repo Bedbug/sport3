@@ -1,9 +1,18 @@
 export class User {
-    id: string;
+    _id: string;
     username: string;
     password: string;
     firstName: string;
     lastName: string;
     role: string;
-    token?: string;
+    name: String;
+    email: string;
+    token: string;
+    country: string;
+    birth: string;
+    gender: string;
+    msisdn: string;
+    pincode: string;
+    picture: string;
+    subscription: string;
 }
