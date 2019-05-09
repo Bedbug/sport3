@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ScehduledMatch } from 'src/app/models/scheduled-match';
+import { ContestMatch } from 'src/app/models/contest-match';
 import * as moment from 'moment';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-contest-page-matches',
@@ -11,21 +13,27 @@ import { take } from 'rxjs/operators';
 })
 export class ContestPageMatchesComponent implements OnInit {
 
-  loadedMatches: ScehduledMatch[] = [
-    {id:"1",title:"Match 1", home_score:3, away_score: 1, live: true,  start: moment().toDate()},
-    {id:"2",title:"Match 2", home_score:0, away_score: 0, live: false, start: moment().add(1,'days').toDate()},
-    {id:"3",title:"Match 3", home_score:0, away_score: 0, live: false, start: moment().add(-1,'days').add(2 ,'hours').toDate()}
+  contestId: string;
+
+  presentMatches: ContestMatch[] = [
+    // {id:"1",title:"Match 1", home_score:3, away_score: 1, live: true,  start: moment().toDate()},
+    // {id:"2",title:"Match 2", home_score:0, away_score: 0, live: false, start: moment().add(1,'days').toDate()},
+    // {id:"3",title:"Match 3", home_score:0, away_score: 0, live: false, start: moment().add(-1,'days').add(2 ,'hours').toDate()}
   ]
-  
-  constructor() { }
+
+  pastMatches: ContestMatch[] = [
+    // { id: "1", title: "Match 1", home_score: 3, away_score: 1, live: true, start: moment().toDate() },
+    // { id: "2", title: "Match 2", home_score: 0, away_score: 0, live: false, start: moment().add(1, 'days').toDate() },
+    // { id: "3", title: "Match 3", home_score: 0, away_score: 0, live: false, start: moment().add(-1, 'days').add(2, 'hours').toDate() }
+  ]
+
+  constructor(private route: ActivatedRoute, private SportimoApi: SportimoApiService) { }
 
   ngOnInit() {
-  
-            timer(5000, 5000).pipe(
-             take(2)).subscribe(x=>{
-              this.loadedMatches[0].away_score++; 
-              })
-  
+    this.route.paramMap.subscribe(params => {
+      this.contestId = params.get("id");
+      this.SportimoApi.getPresentMatches(this.contestId).subscribe(matches => this.presentMatches = matches);
+      this.SportimoApi.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
+    });
   }
-
 }

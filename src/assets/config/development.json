@@ -4,7 +4,6 @@
   "API_ENDPOINTS": {
     "ROOT":"https://clientserver-3.herokuapp.com/v1",
     "AUTHENTICATE":"users/authenticate",
-    "GRAND_PRIZE": "api/v1/grandprize",
     "SUBSCRIPTION": "api/gugroup/subscription"
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ScehduledMatch } from 'src/app/models/scheduled-match';
+import { ContestMatch } from 'src/app/models/contest-match';
 
 @Component({
   selector: 'app-matches-list',
@@ -8,8 +8,9 @@ import { ScehduledMatch } from 'src/app/models/scheduled-match';
 })
 export class MatchesListComponent implements OnInit {
 
-  @Input() matches: ScehduledMatch[];
-  today = new Date();
+  @Input() present: ContestMatch[];
+  @Input() past: ContestMatch[];
+  
   
 
   constructor() { }
@@ -18,10 +19,15 @@ export class MatchesListComponent implements OnInit {
   }
 
   get liveMatches(){
-    return this.matches.filter(x => x.live);
+    return this.present.filter(x => x.match.state > 0 && !x.match.completed);
   }
 
   get upcomingMatches(){
-    return this.matches.filter(x=>x.start > this.today);
+    const today = new Date();
+    return this.present.filter(x=>x.match.start > today);
+  }
+
+  get pastMatches(){
+    return this.past;
   }
 }

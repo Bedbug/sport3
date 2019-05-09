@@ -19,7 +19,6 @@ import { ContestPagesComponent } from './contest-pages/contest-pages.component';
 import { ContestInfoHeaderComponent } from './contest-pages/contest-info-header/contest-info-header.component';
 import { SubscribeNoticeComponent } from './subscribe-notice/subscribe-notice.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
