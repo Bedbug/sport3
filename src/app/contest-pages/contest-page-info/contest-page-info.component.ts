@@ -10,7 +10,7 @@ import { trigger, style, transition, animate, query, stagger } from '@angular/an
   styleUrls: ['./contest-page-info.component.scss'],
   animations: [
     trigger(
-      'enterAnimation', [
+      'staggerAnimation', [
         transition('void => *', [
           query('.card-body', style({opacity: 0})),
           query('.card-body', stagger('200ms', [

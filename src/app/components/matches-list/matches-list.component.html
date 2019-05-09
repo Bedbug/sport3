@@ -33,12 +33,12 @@
             <div class="match-item-main">
               <div class="kit text-center"><img src="./assets/images/team1.png" alt=""></div>
               <div class="team-name text-left">Real Madrid</div>
-              <div class="match-score text-center">3 - 1</div>
+              <div class="match-score text-center">{{match.home_score}} - {{match.away_score}}</div>
               <div class="team-name  text-right">Juventus</div>
               <div class="kit text-center"><img src="./assets/images/team2.png" alt=""></div>
             </div>
             <div class="match-item-footer">
-              <div class="info text-left">Real Madrid: 3-1</div>
+              <div class="info text-left">Real Madrid: {{match.home_score}} - {{match.away_score}}</div>
               <div class="time text-right">{{match.start | date:'dd/MM/yy, hh:mm'}}</div>
               <div *ngIf="match.live" class="live text-center"> • LIVE</div>
             </div>
@@ -54,12 +54,12 @@
                 <div class="match-item-main">
                   <div class="kit text-center"><img src="./assets/images/team1.png" alt=""></div>
                   <div class="team-name text-left">Real Madrid</div>
-                  <div class="match-score text-center">3 - 1</div>
+                  <div class="match-score text-center">{{match.home_score}} - {{match.away_score}}</div>
                   <div class="team-name  text-right">Juventus</div>
                   <div class="kit text-center"><img src="./assets/images/team2.png" alt=""></div>
                 </div>
                 <div class="match-item-footer">
-                  <div class="info text-left">Real Madrid: 3-1</div>
+                  <div class="info text-left">Real Madrid: {{match.home_score}} - {{match.away_score}}</div>
                   <div class="time text-right">{{match.start | date:'dd/MM/yy, hh:mm'}}</div>
                   <div *ngIf="match.live" class="live text-center"> • LIVE</div>
                 </div>
@@ -74,12 +74,12 @@
                 <div class="match-item-main">
                   <div class="kit text-center"><img src="./assets/images/team1.png" alt=""></div>
                   <div class="team-name text-left">Real Madrid</div>
-                  <div class="match-score text-center">3 - 1</div>
+                  <div class="match-score text-center">{{match.home_score}} - {{match.away_score}}</div>
                   <div class="team-name  text-right">Juventus</div>
                   <div class="kit text-center"><img src="./assets/images/team2.png" alt=""></div>
                 </div>
                 <div class="match-item-footer">
-                  <div class="info text-left">Real Madrid: 3-1</div>
+                  <div class="info text-left">Real Madrid: {{match.home_score}} - {{match.away_score}}</div>
                   <div class="time text-right">{{match.start | date:'dd/MM/yy, hh:mm'}}</div>
                   <div *ngIf="match.live" class="live text-center"> • LIVE</div>
                 </div>
