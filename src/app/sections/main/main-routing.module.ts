@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainPageHomeComponent } from './main-page-home/main-page.component';
+import { MainPageHomeComponent } from './main-page-home/main-page-home.component';
 import { MainPageWinnersComponent } from './main-page-winners/main-page-winners.component';
 import { MainPageAchievementsComponent } from './main-page-achievements/main-page-achievements.component';
 import { MainPageStandingsComponent } from './main-page-standings/main-page-standings.component';

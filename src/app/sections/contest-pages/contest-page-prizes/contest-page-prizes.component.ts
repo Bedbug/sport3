@@ -10,6 +10,7 @@ export class ContestPagePrizesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

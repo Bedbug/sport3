@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Match } from 'src/app/models/match';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
-import { map } from 'rxjs/operators';
 import { ContestMatch } from 'src/app/models/contest-match';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-matches-list-item',
@@ -14,17 +12,16 @@ export class MatchesListItemComponent implements OnInit {
   @Input() contestMatch: ContestMatch;
   @Input() isClickable: boolean;
 
-  constructor(private sportimoApi: SportimoApiService) { }
+
+
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
   gotoMatch() {
     if (this.isClickable)
-      this.sportimoApi.getMatchDataForUser(this.contestMatch.tournament, this.contestMatch._id).
-        subscribe(result => console.log(result));
-
-
+    this.router.navigate(['/contest',this.contestMatch.tournament,'match',this.contestMatch._id,'info']);   
   }
 
 }

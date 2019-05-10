@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row icons">
+    <div class="col">
+      <div class="icn-stats"></div>
+    </div>
+    <div class="col">
+      <div class="icn-shot"></div>
+    </div>
+    <div class="col">
+      <div class="icn-corner"></div>
+    </div>
+    <div class="col">
+      <div class="icn-offside"></div>
+    </div>
+    <div class="col">
+      <div class="icn-foul"></div>
+    </div>
+    <div class="col">
+      <div class="icn-yellow"></div>
+    </div>
+    <div class="col">
+      <div class="icn-red"></div>
+    </div>
+  </div>
+  <div class="row home-team">
+    <div class="col">
+        <img class="img-fluid" src="{{homeKit}}" alt=""> 
+    </div>
+    <div class="col">
+      {{getStat('home_team','Shot_on_Goal')}}
+    </div>
+    <div class="col">
+        {{getStat('home_team','Corner')}}
+    </div>
+    <div class="col">
+        {{getStat('home_team','Offside')}}
+    </div>
+    <div class="col">
+        {{getStat('home_team','Foul')}}
+    </div>
+    <div class="col">
+        {{getStat('home_team','Yellow')}}
+    </div>
+    <div class="col">
+        {{getStat('home_team','Red')}}
+    </div>
+  </div>
+  <div class="row away-team">
+    <div class="col">
+        <img class="img-fluid" src="{{awayKit}}" alt=""> 
+    </div>
+    <div class="col">
+        {{getStat('away_team','Shot_on_Goal')}}
+      </div>
+      <div class="col">
+          {{getStat('away_team','Corner')}}
+      </div>
+      <div class="col">
+          {{getStat('away_team','Offside')}}
+      </div>
+      <div class="col">
+          {{getStat('away_team','Foul')}}
+      </div>
+      <div class="col">
+          {{getStat('away_team','Yellow')}}
+      </div>
+      <div class="col">
+          {{getStat('away_team','Red')}}
+      </div>
+  </div>
+</div>

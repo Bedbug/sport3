@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { slideInAnimation } from '../animations/route-animations';
+import { slideInAnimation } from 'src/app/animations/route-animations';
 
 @Component({
   selector: 'app-contest-pages',

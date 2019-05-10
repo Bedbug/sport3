@@ -1,0 +1,30 @@
+.match-header{
+    height:41px;
+    background: rgba(0,0,0,0.58);
+    color:white;
+    font-weight: bold; 
+}
+
+.match-header .row{
+    height:41px;
+    align-items: center;
+}
+
+.team-name{
+    font-size: 12px;
+    line-height: 15px;
+    padding: 0;
+}
+
+.team-name img{
+    height: 24px;
+}
+
+.score{
+    height: 20px;
+    font-size: 20px;
+}
+
+.time{
+    font-size: 9px;
+}

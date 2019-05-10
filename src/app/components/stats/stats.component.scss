@@ -1,0 +1,40 @@
+.container{
+    margin-top: 15px;
+}
+
+.icons [class^="icn-"] {
+  height: 20px;
+  margin-top: 3px;
+}
+
+.row .col {
+  text-align: center;
+  color: #ffffff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.icons{
+    background-color: rgba(0,0,0,0.36);
+    height: 30px;
+}
+
+.icons .col{
+    height: 30px;
+}
+
+.home-team, .away-team{
+    background-color: rgba(0,0,0,0.22);
+    height:24px;
+}
+.home-team{
+    border-bottom: 1px solid #979797;
+}
+
+.home-team .col, .away-team .col{
+    line-height: 20px;
+}
+
+.home-team img, .away-team img{
+    height: 18px;
+}

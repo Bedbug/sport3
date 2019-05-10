@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from 'src/app/main/main.component';
-import { ContestPagesComponent } from 'src/app/contest-pages/contest-pages.component';
+import { MainComponent } from 'src/app/sections/main/main.component';
+import { ContestPagesComponent } from 'src/app/sections/contest-pages/contest-pages.component';
+import { MatchPagesComponent } from 'src/app/sections/match-pages/match-pages.component';
 
 export const content: Routes = [
   {
@@ -14,11 +15,16 @@ export const content: Routes = [
   {
     path: 'main',
     component: MainComponent,
-    loadChildren: './main/main.module#MainModule'
+    loadChildren:  'src/app/sections/main/main.module#MainModule'
   },{
     path:'contest/:id',
     component: ContestPagesComponent,
-    loadChildren: './contest-pages/contest-pages.module#ContestPagesModule'
+    loadChildren: 'src/app/sections/contest-pages/contest-pages.module#ContestPagesModule'
+  },
+  {
+    path:'contest/:contestId/match/:contestMatchId',
+    component: MatchPagesComponent,
+    loadChildren: 'src/app/sections/match-pages/match-pages.module#MatchPagesModule'
   },
   {
     path:'**',

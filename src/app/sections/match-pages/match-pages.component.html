@@ -1,0 +1,30 @@
+<!-- <app-contest-info-header></app-contest-info-header> -->
+<!-- Router Page Placement -->
+<div class="match-header container">
+  <div class="row">
+      <div class="col-5 p-r-0 text-right team-name">{{liveMatch?.matchData.home_team.name['en']}} <img class="img-fluid" src="{{liveMatch?.matchData.home_team.logo}}"
+        alt=""></div>
+      <div class="col row text-center">
+        <div class="col-12 p-0 score">{{liveMatch?.matchData.home_score}} - {{liveMatch?.matchData.away_score}}</div>
+        <div class="time col-12 p-0">{{liveMatch?.matchData.time}}'</div>
+      </div>
+      <div class="col-5 p-l-0 text-left team-name"><img class="img-fluid" src="{{liveMatch?.matchData.away_team.logo}}"
+        alt=""> {{liveMatch?.matchData.away_team.name['en']}}</div>
+  </div>
+</div>
+<div [@routeAnimations]="o && o.activatedRouteData 
+      && o.activatedRouteData['animation']">
+  <router-outlet #o="outlet"></router-outlet>
+</div>
+<!-- Contest Navbar -->
+<nav class="navbar fixed-bottom mobile-app-navbar">
+  <a [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
+    <div class="icn-match-info"></div>Info
+  </a>
+  <a [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']" routerLinkActive="active" href="#">
+    <div class="icn-cards"></div>Cards
+  </a>
+  <a [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">
+    <div class="icn-leaders"></div>Leaders
+  </a>
+</nav>

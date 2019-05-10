@@ -14,10 +14,12 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MainComponent } from './main/main.component';
-import { ContestPagesComponent } from './contest-pages/contest-pages.component';
-import { ContestInfoHeaderComponent } from './contest-pages/contest-info-header/contest-info-header.component';
 import { SubscribeNoticeComponent } from './subscribe-notice/subscribe-notice.component';
+import { MainComponent } from './sections/main/main.component';
+import { ContestPagesComponent } from './sections/contest-pages/contest-pages.component';
+import { ContestInfoHeaderComponent } from './sections/contest-pages/contest-info-header/contest-info-header.component';
+import { MatchPagesComponent } from './sections/match-pages/match-pages.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { SubscribeNoticeComponent } from './subscribe-notice/subscribe-notice.co
     MainComponent,
     ContestPagesComponent,
     ContestInfoHeaderComponent,
-    SubscribeNoticeComponent
+    SubscribeNoticeComponent,
+    MatchPagesComponent
   ],
   imports: [
     BrowserModule,
