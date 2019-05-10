@@ -209,15 +209,43 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-.icn-match-info {
-  background: url("~src/assets/images/sportimo/icon-match-info.svg") no-repeat center center;
+.icn-info {
+  background: url("~src/assets/images/sportimo/icon-info.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
 }
 
-.active .icn-match-info {
-  background: url("~src/assets/images/sportimo/icon-match-info.active.svg") no-repeat center center;
+.active .icn-info {
+  background: url("~src/assets/images/sportimo/icon-info.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-prize {
+  background: url("~src/assets/images/sportimo/icon-prize.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-prize {
+  background: url("~src/assets/images/sportimo/icon-prize.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-match {
+  background: url("~src/assets/images/sportimo/icon-match.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-match {
+  background: url("~src/assets/images/sportimo/icon-match.active.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
