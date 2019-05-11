@@ -1,0 +1,56 @@
+.timeline {
+  margin-top: 10px;
+}
+
+.timeline .card-body {
+  background-color: rgba(0, 0, 0, 0.22);
+  background-image: none;
+}
+
+.event {
+  color: #fff;
+  height: 59px;
+  background: rgba(0, 0, 0, 0.36);
+  margin-bottom: 10px;
+}
+
+.event .row{
+    height: 59px;
+    align-items: center;
+}
+
+.time{
+    width: 35px;
+    text-align: left;
+    font-size: 18px;
+}
+
+.icon{
+    width: 40px;
+    text-align: right;
+
+}
+
+.icon div{
+    width: 45px;
+    height: 25px;
+}
+
+.team-logo{
+    width:25px;
+}
+
+.type{
+    height: 20px;
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.player{
+    font-size: 14px;
+}
+
+.team-logo img{
+    max-height: 27px;
+}

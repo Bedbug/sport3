@@ -5,6 +5,7 @@ import { MatchPageInfoComponent } from './match-page-info/match-page-info.compon
 import { MatchPageCardsComponent } from './match-page-cards/match-page-cards.component';
 import { MatchPageLeadersComponent } from './match-page-leaders/match-page-leaders.component';
 import { StatsComponent } from 'src/app/components/stats/stats.component';
+import {NgArrayPipesModule} from 'ngx-pipes';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { StatsComponent } from 'src/app/components/stats/stats.component';
   ],
   imports: [
     CommonModule,
-    MatchPagesRoutingModule
+    MatchPagesRoutingModule,
+    NgArrayPipesModule
   ]
 })
 export class MatchPagesModule { }

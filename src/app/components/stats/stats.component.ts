@@ -30,7 +30,10 @@ export class StatsComponent implements OnInit {
       return 0;
 
     let teamObject = this.liveMatch.matchData.stats.find(x => x.name == team);
-    return teamObject[stat] | 0;
+    if (teamObject)
+      return teamObject[stat] | 0;
+    else
+      return 0;
   }
 
 }
