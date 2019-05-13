@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { SportimoApiService } from 'src/app/services/sportimoapi.service';
 import { Contest } from 'src/app/models/contest';
@@ -11,22 +11,25 @@ import { Contest } from 'src/app/models/contest';
 })
 export class ContestInfoHeaderComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private SportimoApi:SportimoApiService) { }
+  constructor(private router: Router, private route:ActivatedRoute, private SportimoApi:SportimoApiService) { }
 
   contestDetails: Contest;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {      
-      this.SportimoApi.getContestQuickDetails(params.get("id"))
+      this.SportimoApi.getContestQuickDetails(params.get("contestId"))
       .subscribe(result => {
         this.contestDetails = result;
-        console.log("CALL AGAIN FROM HEADER");
       });
     })
   }
 
   getDuration(){
     return 0;
+  }
+
+  gotoContest(){
+    this.router.navigate(['/contest',this.contestDetails._id,'info']);
   }
 
 }

@@ -1393,15 +1393,15 @@ a:hover {
   color: #fff;
 }
 
-.bg-success {
+/* .bg-success {
   background-color: #00c292 !important;
   color: #fff;
-}
+} */
 
-.bg-danger {
+/* .bg-danger {
   background-color: #FF5370 !important;
   color: #fff;
-}
+} */
 
 .bg-info {
   background-color: #4099ff !important;
@@ -3825,9 +3825,9 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 }
 
 .page-wrapper .page-body-wrapper .page-body {
-  min-height: calc(100vh - 140px);
-  margin-top: 100px;
-  padding: 0 20px;
+  min-height: calc(100vh - 94px);
+  margin-top: 50px;
+  padding: 0 0;
   position: relative;
   /* background-color: #f6f7fb; */
 }

@@ -31,7 +31,7 @@ export class ContestPageMatchesComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.contestId = params.get("id");
+      this.contestId = params.get("contestId");
       this.SportimoApi.getPresentMatches(this.contestId).subscribe(matches => this.presentMatches = matches);
       this.SportimoApi.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
     });

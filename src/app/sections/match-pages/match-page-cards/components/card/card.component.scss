@@ -1,0 +1,149 @@
+@import 'src/variables.scss';
+
+.gamecard{
+    height: 80px;
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 3px solid #000000;
+}
+
+.details{
+    height: 77px;
+    width: 100%;
+
+background-image: linear-gradient(-180deg, #414549 0%, #404448 97%);
+margin-right: 2px;
+}
+
+.points{
+    width: 76px;
+    height: 37px;
+    background-color: $card-lost-color;
+    margin-bottom: 2px;
+    font-size: 17;
+    line-height: 37px;
+    text-align: center;
+    color: #ffffff;
+}
+.powers{
+    display: flex;
+    align-items: center;
+}
+.double-points, .double-time{
+    width: 37px;
+    height: 38px;
+    background-color: #65676a;
+    opacity: 0.28;
+}
+
+.double-points.active, .double-time.active{
+    opacity: 1;
+}
+
+.double-points{
+    margin-right: 2px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 37px;
+    text-align: center;
+}
+.progress{
+    border-radius: 0;
+    height:3px;
+    background-color: #969696 !important;
+    margin-left: 67px !important;
+    position: relative;
+    bottom: 3px;
+}
+.progress-bar{
+    background-color: #969696 !important;
+    // margin-left: 67px !important;
+}
+.bg-card-timer{
+    background-color: #ee0000 !important;
+}
+
+
+.details{
+    height: 77px;
+    display: flex;
+    align-items: center;
+
+}
+.details p{
+margin-bottom: 0;
+line-height: 1.6;
+}
+
+.event-name{
+    font-family: Roboto-Bold;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+.event-team{
+    font-family: Roboto-Regular;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+.event-time{
+    font-family: Roboto-Regular;
+    font-size: 11px;
+    color: #FFFFFF;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    height: 67px;
+    text-align: center;
+    width: 67px;
+    float:left;
+}
+
+.card-icon{
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+.double-time-icon{
+    display: flex;
+    align-items: center;
+    height: 37px;
+    width: 37px;
+}
+.power-icon{
+    width: 20px;
+    height: 20px;
+    margin: 0 auto 3px auto;;
+}
+
+
+.won .gamecard{
+    border-left: 3px solid $card-side-won;
+}
+
+.won .points{
+    background-color: $card-won-color;
+}
+
+.active .gamecard{
+    border-left: 3px solid $card-side-active;
+}
+
+.active .points{
+    background-color: $card-active-color;
+}
+
+.lost .gamecard{
+    border-left: 0px solid $card-side-lost;
+}
+
+.lost .points{
+    background-color: $card-lost-color;
+}
+
+.lost .progress{
+    display: none;
+}

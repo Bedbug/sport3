@@ -16,7 +16,7 @@ export class ContestPagesComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.contestId = params.get("id")
+      this.contestId = params.get("contestId")
     })
   }
 

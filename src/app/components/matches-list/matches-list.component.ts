@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-matches-list',
@@ -23,8 +24,11 @@ export class MatchesListComponent implements OnInit {
   }
 
   get upcomingMatches(){
-    const today = new Date();
-    return this.present.filter(x=>x.match.start > today);
+    const today = moment().utc().toDate();
+    
+    return this.present.filter(x=>{
+      return moment(x.match.start).utc().toDate() > today;
+    });
   }
 
   get pastMatches(){

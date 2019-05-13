@@ -35,7 +35,7 @@ export class ContestPageInfoComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {      
-      this.SportimoApi.getContestQuickDetails(params.get("id"))
+      this.SportimoApi.getContestQuickDetails(params.get("contestId"))
       .subscribe(result => {
         this.contestDetails = result;
       });

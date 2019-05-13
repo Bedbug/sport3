@@ -1,4 +1,19 @@
-$theme-color: #ffc531;
-$theme-header-color: #ffca00; // rgba(0, 0, 0, 0.7);
+$theme-color: #ffc300;
+$theme-header-color: #ffc300; // rgba(0, 0, 0, 0.7);
 $theme-navbar-color: rgba(34, 52, 77, 0.7);
 $theme-background-image: url("~src/assets/images/sportimo/background2.png");
+
+//  CARDS
+$card-side-lost: transparent;
+$card-side-won: #009bff;
+$card-side-active: #00d600;
+$card-lost-color:#666a6d;
+$card-won-color:#005a93;
+$card-active-color:#007600;
+
+// CONDITIONALS
+
+/** ************************************************************************
+ ** Should we diplay a contest header in match pages
+ ** ************************************************************************/
+$showContestInfoOnMatches: true;

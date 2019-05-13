@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -7,9 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchPageCardsComponent implements OnInit {
 
+  // @ViewChild('stickyMenu') menuElement: ElementRef;
+
+  // sticky: boolean = false;
+  // menuPosition: any;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  // ngAfterViewInit() {
+  //   this.menuPosition = this.menuElement.nativeElement.offsetTop
+  // }
+
+
+  // @HostListener('window:scroll', ['$event'])
+  // handleScroll(){
+    
+  //     const windowScroll = window.pageYOffset;
+
+  //     console.log(windowScroll,this.menuPosition);
+
+  //     if(windowScroll >= 105){
+  //         this.sticky = true;
+  //     } else {
+  //         this.sticky = false;
+  //     }
+  // }
+  
 }

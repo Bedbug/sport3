@@ -1,3 +1,32 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "src/variables.scss";
+
+// App Conditions
+@if $showContestInfoOnMatches == true{
+  app-contest-info-header{
+    display: block;
+  }
+}@else{
+  app-contest-info-header{
+    display: none;
+  }
+}
+
+.page-wrapper{
+  min-height: calc(100vh - 94px);
+  background-color: rgba(0,0,0,0.5);
+}
+
+@include media-breakpoint-down(sm) {
+  .page-wrapper{
+    @if $showContestInfoOnMatches == true{
+      min-height: calc(100vh - 181px);
+    }@else{
+      min-height: calc(100vh - 94px);
+    }    
+  }
+}
+
 .match-header {
   height: 41px;
   background: rgba(0, 0, 0, 0.58);

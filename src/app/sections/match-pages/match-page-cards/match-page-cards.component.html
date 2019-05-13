@@ -1,3 +1,96 @@
-<p>
-  match-page-cards works!
-</p>
+<div class="card">
+  <div class="card-body user-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <div class="info">
+            <div class="cards active">
+              <div class="icn-cards pull-left" style="height: 24px;width: 30px;"></div> 5
+            </div>
+            <div class="powers">
+              <div class="icn-power pull-left" style="height: 24px;width: 30px;"></div> 2
+            </div>
+            <div class="points"><strong>18062</strong> pts</div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <button class="btn btn-sportimo" style="width: 100%">
+            Play
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Card Tabs -->
+<div class="cards-list-container">
+  <div #stickyMenu [class.sticky]="sticky">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
+          aria-selected="true">
+          <div>All</div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="won-tab" data-toggle="tab" href="#won" role="tab" aria-controls="won"
+          aria-selected="false">
+          <div>Won</div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending"
+          aria-selected="false">
+          <div>Pending</div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="lost-tab" data-toggle="tab" href="#lost" role="tab" aria-controls="lost"
+          aria-selected="false">
+          <div>Lost</div>
+        </a>
+      </li>
+    </ul>
+  </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+          <ul class="card-scroll-list">
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+            <app-card></app-card>
+          </ul>
+      </div>
+      <div class="tab-pane fade" id="won" role="tabpanel" aria-labelledby="won-tab">
+        <div class="container">
+          <ul>
+            <!-- <app-cards-list-item *ngFor="let contestMatch of liveMatches" [contestMatch]='contestMatch'
+              isClickable=true></app-cards-list-item> -->
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+        <div class="container">
+          <ul>
+            <!-- <app-cards-list-item *ngFor="let contestMatch of upcomingMatches" [contestMatch]='contestMatch'
+              isClickable=true></app-cards-list-item> -->
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="lost" role="tabpanel" aria-labelledby="lost-tab">
+        <div class="container">
+          <ul>
+            <!-- <app-cards-list-item *ngFor="let contestMatch of pastMatches" [contestMatch]='contestMatch'
+              isClickable=true></app-cards-list-item> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

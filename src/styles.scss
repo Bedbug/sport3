@@ -56,6 +56,9 @@ body {
 
 .btn-sportimo {
   background: $theme-color;
+  padding: 5px;
+  font-family: Roboto;
+  font-weight: 600;
 }
 
 body .page-wrapper .page-main-header {
@@ -181,6 +184,13 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.icn-power {
+  background: url("~src/assets/images/sportimo/icon-power.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 .icn-cards {
   background: url("~src/assets/images/sportimo/icon-cards.svg") no-repeat center center;
   display: block;
@@ -197,6 +207,13 @@ body .page-wrapper .page-main-header {
 
 .icn-leaders {
   background: url("~src/assets/images/sportimo/icon-leaders.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-stopwatch {
+  background: url("~src/assets/images/sportimo/icon-stopwatch.png") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
@@ -403,11 +420,11 @@ body .page-wrapper .page-main-header {
 }
 
 .card-body {
-  background: -moz-linear-gradient(left, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
-  background: -webkit-linear-gradient(left, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
-  background: -o-linear-gradient(left, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
-  background: -ms-linear-gradient(left, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
-  background: linear-gradient(to right, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
+  background: -moz-linear-gradient(bottom, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
+  background: -webkit-linear-gradient(bottom, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
+  background: -o-linear-gradient(bottom, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
+  background: -ms-linear-gradient(bottom, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
+  background: linear-gradient(to bottom, rgba(63, 72, 86, 0.81) 0%, rgba(40, 49, 61, 0.81) 100%);
 }
 
 .card-header {
@@ -425,29 +442,6 @@ body .page-wrapper .page-main-header {
 ==========================**/
 .contest-list-item{
   cursor: pointer;
-}
-.contest-info-container{
-  display: table;
-  width: 100%;
-}
-
-.sportimo-divider{
-  height: 2px;
-  background-color: $theme-color;
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.contest-info-row{
-  display: table-row;
-}
-.contest-info-cell{
-  display: table-cell;
-  font-family: Helvetica;
-  color: #ffffff;
-  padding: 0 5px 0 0;
-  font-size: 0.8rem;
 }
 
 .contest-item-container:hover{
