@@ -12,21 +12,25 @@
   }
 }
 
-.page-wrapper{
-  min-height: calc(100vh - 94px);
-  background-color: rgba(0,0,0,0.5);
-}
+// .page-wrapper{
+//   min-height: calc(100vh - 94px);
+//   background-color: rgba(0,0,0,0.5);
+// }
 
-@include media-breakpoint-down(sm) {
-  .page-wrapper{
-    @if $showContestInfoOnMatches == true{
-      min-height: calc(100vh - 181px);
-    }@else{
-      min-height: calc(100vh - 94px);
-    }    
-  }
-}
+// @include media-breakpoint-down(sm) {
+//   .page-wrapper{
+//     @if $showContestInfoOnMatches == true{
+//       min-height: calc(100vh - 169px);
+//     }@else{
+//       min-height: calc(100vh - 94px);
+//     }    
+//   }
+// }
 
+.match-header-wrapper{
+  height: 41px;
+  overflow: hidden;
+}
 .match-header {
   height: 41px;
   background: rgba(0, 0, 0, 0.58);
@@ -50,7 +54,7 @@
 }
 
 .score {
-  height: 20px;
+  height: auto;
   font-size: 20px;
 }
 

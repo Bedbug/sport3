@@ -40,5 +40,6 @@ export class PlayCard{
     isDoubleTimeActivating:boolean;
     Icon:string;
 	options:any;
+	specials: any;
 	newCard:boolean;
 }

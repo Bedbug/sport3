@@ -27,8 +27,8 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-      <div class="container">
-        <ul>
+      <div class="container">{{present.length}}
+        <ul [@listAnimation]="present.length">
           <app-matches-list-item *ngFor="let contestMatch of present" [contestMatch]='contestMatch' isClickable=true>
           </app-matches-list-item>
         </ul>
@@ -36,7 +36,7 @@
     </div>
     <div class="tab-pane fade" id="live" role="tabpanel" aria-labelledby="live-tab">
       <div class="container">
-        <ul>
+        <ul [@listAnimation]="liveMatches.length">
           <app-matches-list-item *ngFor="let contestMatch of liveMatches" [contestMatch]='contestMatch'
             isClickable=true></app-matches-list-item>
         </ul>
@@ -44,8 +44,8 @@
     </div>
     <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
       <div class="container">
-        <ul>
-          <app-matches-list-item *ngFor="let contestMatch of upcomingMatches" [contestMatch]='contestMatch'
+        <ul >
+          <app-matches-list-item [@listAnimation]="upcomingMatches.length" *ngFor="let contestMatch of upcomingMatches" [contestMatch]='contestMatch'
             isClickable=true></app-matches-list-item>
         </ul>
       </div>

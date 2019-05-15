@@ -2,22 +2,26 @@
   <app-stats></app-stats>
   <div class="card timeline">
     <div class="card-body">
+        <div *ngIf="liveMatch.matchData.state == 1" class="text-white text-center">
+            The match hasn't started yet.
+          </div>
       <ul>
         <li *ngFor="let section of liveMatch?.matchData.timeline | reverse">
           <!-- <span *ngIf="section.text"> {{section.text['en']}}</span> -->
           <ul>
             <li class="event col" *ngFor="let event of section.events | reverse">
+              
               <div class="container">
                 <div class="row">
-                  <div class="time" *ngIf="shouldShow(event.type,1)">
-                    {{shouldShow(event.type,event.time+"'")}}
+                  <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
+                    {{Utils.shouldShow(event.type,event.time+"'")}}
                   </div>
                   <div class="icon">
-                    <div [ngClass]= "getIconByType(event.type)"></div>
+                    <div [ngClass]= "Utils.getIconByType(event.type)"></div>
                   </div>
                   <div class="col">
-                    <p class="type">{{getTextByType(event.type)}}</p>
-                    <p class="player">{{shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}</p>
+                    <p class="type">{{Utils.getTextByType(event.type)}}</p>
+                    <p class="player">{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}</p>
                   </div>
                   <div class="team-logo">
                       <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt=""> 

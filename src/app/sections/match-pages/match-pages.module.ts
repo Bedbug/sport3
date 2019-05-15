@@ -8,6 +8,7 @@ import { StatsComponent } from 'src/app/components/stats/stats.component';
 import { NgArrayPipesModule } from 'ngx-pipes';
 import { CardComponent } from './match-page-cards/components/card/card.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PlaycardComponent } from './match-page-cards/components/playcard/playcard.component';
 
 
 
@@ -17,7 +18,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatchPageCardsComponent,
     MatchPageLeadersComponent,
     StatsComponent,
-    CardComponent
+    CardComponent,
+    PlaycardComponent
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,13 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
-@include media-breakpoint-down(sm) {
-  page-wrapper{
-    min-height: calc(100vh - 94px);
-  }
-}
+// @include media-breakpoint-down(sm) {
+//   page-wrapper{
+//     min-height: calc(100vh - 94px);
+//   }
+// }
 
-.page-wrapper{
-  min-height: calc(100vh - 94px);
-  background-color: rgba(0,0,0,0.5);
-}
+// .page-wrapper{
+//   min-height: calc(100vh - 94px);
+//   background-color: rgba(0,0,0,0.5);
+// }
+

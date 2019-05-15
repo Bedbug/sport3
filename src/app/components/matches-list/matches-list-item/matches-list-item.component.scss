@@ -20,6 +20,7 @@
     font-size: 26px;
     font-weight: 700;
     font-family: inherit;
+    max-width: 70px;
   }
   
   .match-item-footer {
@@ -54,6 +55,14 @@
       font-weight: 700;
   }
   
+  .kit{
+    max-width: 60px;
+  }
   .kit img {
     height: 32px;
+  }
+
+  .team-name{
+    font-size:12px;
+    line-height: 13px;
   }

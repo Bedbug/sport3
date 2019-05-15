@@ -45,7 +45,7 @@ import { MatchPagesComponent } from './sections/match-pages/match-pages.componen
     ConfigService,
     ConfigModule.init(),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     fakeBackendProvider
   ],
   bootstrap: [AppComponent]

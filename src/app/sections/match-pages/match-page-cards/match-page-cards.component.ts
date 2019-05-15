@@ -1,4 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { PlayCard } from 'src/app/models/playcard';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -7,16 +11,36 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 })
 export class MatchPageCardsComponent implements OnInit {
 
+  contestMatchId: string;
+  contestId: string;
+  // User is playing a card
+  isPlayingCard: boolean = false;
+  isLoadingCards: boolean = false;
+  availableCards: PlayCard[] = [];
+  
   // @ViewChild('stickyMenu') menuElement: ElementRef;
 
   // sticky: boolean = false;
   // menuPosition: any;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private sportimoAPI: SportimoApiService) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.contestMatchId = params.get("contestMatchId");
+      this.contestId = params.get("contestId");
+    })
   }
 
+  playCard() {
+    this.isPlayingCard = true;
+    this.isLoadingCards = true;
+    this.sportimoAPI.getAvailableCards(this.contestId, this.contestMatchId).subscribe(availableCards => {
+      this.availableCards = availableCards;
+      console.log(this.availableCards);
+      this.isLoadingCards = false;
+    })
+  }
   // ngAfterViewInit() {
   //   this.menuPosition = this.menuElement.nativeElement.offsetTop
   // }
@@ -24,7 +48,7 @@ export class MatchPageCardsComponent implements OnInit {
 
   // @HostListener('window:scroll', ['$event'])
   // handleScroll(){
-    
+
   //     const windowScroll = window.pageYOffset;
 
   //     console.log(windowScroll,this.menuPosition);
@@ -35,5 +59,5 @@ export class MatchPageCardsComponent implements OnInit {
   //         this.sticky = false;
   //     }
   // }
-  
+
 }

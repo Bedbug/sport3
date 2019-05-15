@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { SportimoApiService } from 'src/app/services/sportimoapi.service';
 import { Contest } from 'src/app/models/contest';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-contest-info-header',
@@ -10,18 +11,27 @@ import { Contest } from 'src/app/models/contest';
   styleUrls: ['./contest-info-header.component.scss']
 })
 export class ContestInfoHeaderComponent implements OnInit {
+  isLoggedIn: boolean;
 
-  constructor(private router: Router, private route:ActivatedRoute, private SportimoApi:SportimoApiService) { }
+  constructor(
+    private authenticationService: AuthenticationService,private router: Router, 
+    private route:ActivatedRoute, 
+    private SportimoApi:SportimoApiService
+    ) { }
 
   contestDetails: Contest;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {      
-      this.SportimoApi.getContestQuickDetails(params.get("contestId"))
+      this.SportimoApi.getContestDetails(params.get("contestId"))
       .subscribe(result => {
         this.contestDetails = result;
       });
     })
+
+    this.authenticationService.currentUser.subscribe(user=>{
+      this.isLoggedIn = user!=null;
+    });
   }
 
   getDuration(){

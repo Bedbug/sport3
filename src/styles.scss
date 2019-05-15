@@ -2,12 +2,24 @@
 // @import './styles/css/bootstrap.min.css';
 @import "~bootstrap/scss/bootstrap-grid.scss";
 @import "./variables.scss";
+@import "./inputrange.scss";
 
 /*-----------------------------------------------------------------------------------
 
     Sportimo Styles
 
 ----------------------------------------------------------------------------------- */
+.page-background-black{
+  display: block; /* Hidden by default */
+  position: absolute; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+}
 
 .h-200 {
   height: 200px;
@@ -19,21 +31,21 @@
   // font-weight: 700;
 }
 
-.isClickable{
- cursor: pointer; 
+.isClickable {
+  cursor: pointer;
 }
 
-.coin{
+.coin {
   display: inline-block;
-  background-image: url('./assets/images/sportimo/coin.png');
+  background-image: url("./assets/images/sportimo/coin.png");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
   width: 15px;
   height: 15px;
   position: relative;
-    top: 3px;
-    // left: -2px;
+  top: 3px;
+  // left: -2px;
 }
 
 body {
@@ -123,7 +135,6 @@ body .page-wrapper .page-main-header {
   color: white;
   text-decoration: none;
   font-size: 15px;
-  
 }
 
 // .mobile-app-navbar a {
@@ -133,7 +144,7 @@ body .page-wrapper .page-main-header {
 //   color: white;
 //   text-decoration: none;
 //   font-size: 15px;
-  
+
 // }
 
 /* Navbar links on mouse-over */
@@ -361,7 +372,7 @@ body .page-wrapper .page-main-header {
 
 /* Current/active navbar link */
 
-.app-navbar a.active{
+.app-navbar a.active {
   border-bottom: solid 5px $theme-color;
   color: $theme-color !important;
   animation-name: flipInX;
@@ -391,18 +402,17 @@ body .page-wrapper .page-main-header {
   .card-header {
     padding: 10px !important;
   }
-  .matches-list{
-    display:none;
+  .matches-list {
+    display: none;
   }
-  
-  .main-header-left{
+
+  .main-header-left {
     margin-left: 10px !important;
   }
-  
-  .main-header-left img{
-    height:35px !important;
+
+  .main-header-left img {
+    height: 35px !important;
   }
-  
 }
 @include media-breakpoint-up(md) {
   .mobile-app-navbar {
@@ -440,11 +450,11 @@ body .page-wrapper .page-main-header {
 /**=====================
      02. Contests
 ==========================**/
-.contest-list-item{
+.contest-list-item {
   cursor: pointer;
 }
 
-.contest-item-container:hover{
+.contest-item-container:hover {
   border: 5px solid transparent;
 }
 
@@ -466,33 +476,33 @@ body .page-wrapper .page-main-header {
 //   // height: 150px;
 // }
 
-.contest-image img{
+.contest-image img {
   max-width: 100%;
   margin: auto;
   display: block;
 }
 
-.contest-details{
+.contest-details {
   // height: 150px;
   font-size: 12px;
   color: #ffffff;
 }
 
-.contest-details p{
+.contest-details p {
   font-size: 12px;
   line-height: 14px;
 }
 
-.contest-details p:first-child{
+.contest-details p:first-child {
   margin-top: 10px;
 }
 
-.contest-details p:last-child{
+.contest-details p:last-child {
   position: absolute;
-    width: 100%;
-    bottom: 5px;
-    text-align: center;
-    margin-left: -15px;
+  width: 100%;
+  bottom: 5px;
+  text-align: center;
+  margin-left: -15px;
 }
 /**=====================
      03. GrandPrize
@@ -521,7 +531,7 @@ body .page-wrapper .page-main-header {
   flex: 1 1 100%;
 }
 
-.prize-header h4{
+.prize-header h4 {
   color: $theme-color;
   margin-bottom: 0;
 }
@@ -541,7 +551,7 @@ body .page-wrapper .page-main-header {
   margin: auto;
   position: absolute;
   bottom: 15px;
-  left:10%;
+  left: 10%;
 }
 .counter-header {
   background: rgba(0, 0, 0, 0.23);
@@ -568,4 +578,31 @@ body .page-wrapper .page-main-header {
   .prize-header {
     flex: 1;
   }
+}
+
+.active .fadeInLoader{
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+}
+
+.active .button-loader {
+  display: block;
+  
+}
+
+.active .button-label {
+  display: none;
+}
+
+.button-loader {
+  display: none;
+  height: 20px;
+  width: 20px;
+  // display: none;
+  // position: absolute;
+  right: 30px;
+  margin: 0 auto;
+  float: none;
+  border-color: #000000;
+
 }

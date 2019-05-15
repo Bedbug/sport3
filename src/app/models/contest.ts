@@ -15,6 +15,7 @@ export class Contest {
     subscriptionPrice: number;
     discountText: string;
     leaderboardDefinition: string;
+    isSubscribed?: boolean;
     created: Date;
 
 }
