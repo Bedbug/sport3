@@ -9,21 +9,22 @@ import { trigger, transition, stagger, animate, style, query } from '@angular/an
   templateUrl: './matches-list.component.html',
   styleUrls: ['./matches-list.component.scss'],
   animations:[
-    trigger('listAnimation', [
-      transition('* => *', [ // each time the binding value changes
-        query('.match-item:leave', [
-          stagger(500, [
-            animate('0.5s 1s', style({ opacity: 0 }))
-          ])
-        ],{ optional: true }),
-        query('.match-item:enter', [
-          style({ opacity: 0 }),
-          stagger(500, [
-            animate('0.5s 1s', style({ opacity: 0 }))
-          ])
-        ],{ optional: true })
-      ])
-    ])
+    trigger(
+      'staggerAnimation', [
+        transition('* => *', [
+          query(':enter', style({opacity: 0}),{optional:true}),
+          query(
+            ':enter',
+             stagger(
+               '200ms', [
+              animate('300ms', style({opacity: 1}))
+          ]),{optional:true}),
+          query(':leave', stagger('200ms', [
+              animate('300ms', style({opacity: 0}))
+          ]),{optional:true})
+      ]),
+      ]
+    )
   ]
 })
 export class MatchesListComponent implements OnInit {
