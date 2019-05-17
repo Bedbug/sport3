@@ -14,15 +14,17 @@ export class SportimoUtils{
         'corner': "icn-corner",
         'foul': "icn-foul",
         'red': "icn-red",
-        'yellow': "icn-yellow"
+        'yellow': "icn-yellow",
+        'goal':'icn-goal',
+        'penalty':'icn-penalty'
       }
 
        getFromEventType(type:string){
 
       }
 
-      getIconBySprite(sprtie:string){
-        return this.sprite_mappings[sprtie];
+      getIconBySprite(sprite:string){
+        return this.sprite_mappings[sprite];
       }
 
       getTextByType(type: string) {

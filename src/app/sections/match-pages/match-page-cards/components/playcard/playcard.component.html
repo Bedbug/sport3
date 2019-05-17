@@ -1,59 +1,82 @@
 <div (click)="playCardModal = true" class="playcard">
   <div class="icon">
-    <div [ngClass]= "Utils.getIconBySprite(data.image.sprite)"></div>
+    <div [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
   </div>
-  <div class="name">
+  <div class="card-name">
     {{data.title['en']}}
+  </div>
+  <div style="width:100%; text-align: right; padding-right: 15px;">
+    <span class="label label-default" style="background-color: white;
+      color: #42454a;
+      padding: 3px 5px;">{{data.cardType=="Overall"?"90'":"LIVE"}}</span>
   </div>
 </div>
 
-<div *ngIf="playCardModal" >
-  <div class="modal-playcard" (click)="playCardModal=false"></div>
+<div *ngIf="playCardModal">
+  <div class="modal-playcard" (click)="closeModal()"></div>
   <div class="modal-playcard-center">
+   
     <div class="bottom-drawer" [class.active]="optionSelected">
       <div class="top-buttons">
         <p class="title">Activate powerups:</p>
         <div class="power-container">
-          <div class="col-6 powerup isClickable" (click)="data.isDoublePoints=!data.isDoublePoints" [class.active-power]="data.isDoublePoints">
+          <div class="col-6 powerup isClickable" (click)="!isSubmitingCard && cardSelections.isDoublePoints=!cardSelections.isDoublePoints"
+            [class.active-power]="cardSelections.isDoublePoints">
             <span>Double Points</span>
             <div class="power-button double-points">
               <span style="margin:auto">x2</span>
             </div>
-            <span>Get 280 pts</span>
+            <span>Get {{optionSelected?.startPoints*2}} pts</span>
           </div>
-          <div class="col-6 powerup isClickable" (click)="data.isDoubleTime=!data.isDoubleTime" [class.active-power]="data.isDoubleTime">
+
+          <div *ngIf="data?.duration> 0" class="col-6 powerup isClickable"
+            (click)="!isSubmitingCard && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
+            [class.active-power]="cardSelections.isDoubleTime">
             <span>Double Time</span>
-            <div class="power-button double-time" >
+            <div class="power-button double-time">
               <div class="double-time-icon">
                 <div class="power-icon icn-stopwatch"></div>
               </div>
             </div>
-            <span>Increase time range to 10'</span>
+            <span>Increase time range to {{((data?.duration/1000)/60) * 2}}'</span>
           </div>
         </div>
       </div>
       <div class="bottom-buttons">
         <ul class="options" *ngIf="!optionSelected" [@fadein]>
-          <li (click)="optionSelected = !optionSelected" *ngFor="let option of data.options">
+          <li (click)="optionSelect(option.optionId)" *ngFor="let option of data.options">
             <p><strong>{{getFormatedOption(option.text['en'])}}</strong></p>
             <p><strong>{{option.startPoints}}</strong> pts</p>
-          </li>          
+          </li>
         </ul>
         <ul class="finalize" *ngIf="optionSelected" [@fadein]>
-            <li>
-              <button class="btn btn-sportimo">Play</button>
-            </li>
-            <li>
-                <button (click)="cancelAll()" class="btn btn-default">Cancel</button>
-            </li>
-          </ul>
+          <li>
+            <button [disabled]="isSubmitingCard" (click)="submitCard()" class="btn btn-sportimo">
+              <div class="loader-label" [class.btn-active]="isSubmitingCard">
+                <span class="button-label">Play</span>
+                <div class="fadeInLoader">
+                  <span class="rotate dotted button-loader"></span>
+                </div>
+              </div>
+            </button>
+            <!-- <button class="btn btn-sportimo loader-label" [class.active]="isLoadingCards">
+                <span class="button-label">Play</span>
+                <div class="fadeInLoader">
+                  <span class="rotate dotted button-loader"></span>
+                </div></button> -->
+          </li>
+          <li>
+            <button [disabled]="isSubmitingCard" (click)="cancelAll()" class="btn btn-default">Cancel</button>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="top-drawer" [class.active]="optionSelected">
+        <div class="modal-close" (click)="closeModal()">X</div>
       <div class="playcard-event">
         <div class="playcard-header">
           <div class="event-icon">
-            <div class="icon" [ngClass]= "Utils.getIconBySprite(data.image.sprite)"></div>
+            <div class="icon" [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
           </div>
           <div class="name"> {{data.title['en']}}</div>
         </div>
@@ -66,13 +89,17 @@
         </div>
         <div *ngIf="optionSelected" [@fadein]>
           <div>By:</div>
-          <div class="team-name">Real Madrid</div>
-          <div><span class="points">140</span> <span class="pts"> pts</span></div>
+          <div class="team-name">{{getFormatedOption(optionSelected.text['en'])}}</div>
+          <div [class.active-points]="cardSelections?.isDoublePoints">
+            <span
+              class="points">{{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>
+            <span class="pts"> pts</span>
+          </div>
         </div>
         <div *ngIf="!optionSelected" [@fadein] class="time-slider">
-          <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)" [attr.min]="getMinimumTime()"
-            [attr.max]="90" [attr.value]=1>
-            <span class="slider-guide">Drag slider to set the time that the card will be activated.</span>
+          <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
+            [attr.min]="getMinimumTime()" [attr.max]="90" [attr.value]=1>
+          <span class="slider-guide">Drag slider to set the time that the card will be activated.</span>
         </div>
       </div>
     </div>

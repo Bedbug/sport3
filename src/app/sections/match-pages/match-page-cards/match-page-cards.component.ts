@@ -3,6 +3,7 @@ import { SportimoApiService } from 'src/app/services/sportimoapi.service';
 import { PlayCard } from 'src/app/models/playcard';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { LiveMatch } from 'src/app/models/live-match';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -17,6 +18,7 @@ export class MatchPageCardsComponent implements OnInit {
   isPlayingCard: boolean = false;
   isLoadingCards: boolean = false;
   availableCards: PlayCard[] = [];
+  liveMatch: LiveMatch;
   
   // @ViewChild('stickyMenu') menuElement: ElementRef;
 
@@ -30,6 +32,8 @@ export class MatchPageCardsComponent implements OnInit {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
     })
+
+    this.sportimoAPI.getCurrentLiveMatchData().subscribe(x=>this.liveMatch = x)
   }
 
   playCard() {
@@ -37,7 +41,6 @@ export class MatchPageCardsComponent implements OnInit {
     this.isLoadingCards = true;
     this.sportimoAPI.getAvailableCards(this.contestId, this.contestMatchId).subscribe(availableCards => {
       this.availableCards = availableCards;
-      console.log(this.availableCards);
       this.isLoadingCards = false;
     })
   }

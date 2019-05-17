@@ -28,10 +28,15 @@ export class PlaycardComponent implements OnInit {
 
   @Input() data: PlayCard;
   Utils: SportimoUtils = new SportimoUtils();
-
-  playcardModal: boolean = false;
+  playCardModal: boolean = false;
   selectedTime: number = 1;
-  optionSelected: boolean = false;
+  cardSelections: any = {};
+  isSubmitingCard: boolean = false;
+
+  closeModal() {
+    if (this.isSubmitingCard) return;
+    this.playCardModal = false;
+  }
 
   valueChanged(e) {
     this.selectedTime = e;
@@ -55,19 +60,38 @@ export class PlaycardComponent implements OnInit {
   }
 
   cancelAll() {
-    this.data.isDoublePoints = false;
-    this.data.isDoubleTime = false;
-    this.optionSelected = false;
+    this.cardSelections.isDoublePoints = false;
+    this.cardSelections.isDoubleTime = false;
+    this.cardSelections.optionId = null;
+    this.isSubmitingCard = false;
   }
+
+  optionSelect(option: string) {
+    this.cardSelections.optionId = option;
+    this.cardSelections.gamecardDefinitionId = this.data._id;
+  }
+
+  get optionSelected() {
+    return this.data.options.find(x => x.optionId == this.cardSelections.optionId)
+  }
+
+  submitCard() {
+    this.isSubmitingCard = true;
+    this.cardSelections.minute = this.selectedTime;
+    this.sportimoAPI.submitUserCard(this.cardSelections)
+      .subscribe(playedCard => {
+        console.log(playedCard);
+        this.isSubmitingCard = false;
+        this.closeModal();
+      }
+        , error => console.log('Could not load todos.'))
+  }
+
   constructor(private sportimoAPI: SportimoApiService) {
-    
+
   }
 
   ngOnInit() {
-    // if (this.data.isDoublePoints == undefined)
-    //   this.data.isDoublePoints = false;
-    // if (this.data.isDoubleTime == undefined)
-    //   this.data.isDoubleTime = false;
   }
 
 }

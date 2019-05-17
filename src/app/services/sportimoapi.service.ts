@@ -10,6 +10,7 @@ import { Match } from '../models/match';
 import { LiveMatch } from '../models/live-match';
 import { AuthenticationService } from './authentication.service';
 import { PlayCard } from '../models/playcard';
+import { PlaycardComponent } from '../sections/match-pages/match-page-cards/components/playcard/playcard.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,9 @@ export class SportimoApiService {
 
   private cachedContests: BehaviorSubject<Contest[]>;
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
+
+  private currentMatchId;
+  private currentContestId;
 
   constructor(private http: HttpClient, private Config: ConfigService, private authenticationService: AuthenticationService) {
     this.cachedContests = new BehaviorSubject<Contest[]>(null);
@@ -55,15 +59,15 @@ export class SportimoApiService {
     }
   }
 
-  getContestDetails(contestId: string){
-    if(!this.authenticationService.currentUserValue){
+  getContestDetails(contestId: string) {
+    if (!this.authenticationService.currentUserValue) {
       return this.getContestQuickDetails(contestId);
-    }else{
+    } else {
       return this.http.get<Contest>(
         `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournaments/${contestId}/user/${this.authenticationService.currentUserValue._id}`)
-      .pipe(map(contest => {
-        return contest;
-      }));
+        .pipe(map(contest => {
+          return contest;
+        }));
     }
   }
 
@@ -85,6 +89,8 @@ export class SportimoApiService {
   }
 
   getMatchDataForUser(contestId: string, contestMatchId: string) {
+    this.currentContestId = contestId;
+    this.currentMatchId = contestMatchId;
     return this.http.get<LiveMatch>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${contestMatchId}/user`)
       .pipe(map(match => {
         this.currentLiveMatch.next(match);
@@ -100,54 +106,40 @@ export class SportimoApiService {
     //   return this.getMatchDataForUser(contestId, contestMatchId);
   }
 
-  getAvailableCards(contestId:string, contestMatchId:string){
+  getAvailableCards(contestId: string, contestMatchId: string) {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${contestMatchId}/gamecards`)
       .pipe(map(availableCards => {
         return availableCards.data;
       }));
   }
 
-  // Hashtable table = new Hashtable();
-  // table.Add("matchid", matchCtrl.match_id);
-  // table.Add("userid", Main.AppUser._id);
-  // table.Add("gamecardDefinitionId", centerCardInfo._id);
-  // table.Add("creationTime", DateTime.UtcNow.ToString(("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'")));
-  // table.Add("segment", matchCtrl.liveMatch.matchData.state);
+  submitUserCard(cardSelections: any) {
+    cardSelections.matchid = this.currentLiveMatch.value._id;
+    cardSelections.contestId = this.currentContestId;
+    cardSelections.segment = this.currentLiveMatch.value.matchData.state;
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecards`, cardSelections)
+    .pipe(map(response=>{        
+        this.currentLiveMatch.getValue().playedCards.push(response.userGamecard);
+        this.currentLiveMatch.next(this.currentLiveMatch.value);
+        return response.userGamecard;
+      }))
+  }
+  /*
+    body:{"doublePoints", true} || {"doubleTime", true}
+  */
+  playSpecial(gamecardId:string, body:any){
+    const endpoint = `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecard/${gamecardId}`;
+    return this.http.put<any>(endpoint, body)
+            .pipe(map(response => {
+              if(!response.error){
+                // Assign new data from the response to the LiveMatch Observable in order to let all listeners receive the new info
+                Object.assign(this.currentLiveMatch.value.playedCards[
+                  this.currentLiveMatch.value.playedCards.findIndex(el => el.id === response.userGamecard._id)], response.userGamecard)
+                  this.currentLiveMatch.next(this.currentLiveMatch.value);
+              }
 
-  // if (centerCardInfo.cardType == "PresetInstant")
-  //     table.Add("minute", presetValue);
-  // else
-  //     table.Add("minute", (matchCtrl.minutes + 1));
-
-  // if (opt.name.Contains("1"))
-  // {
-  //     table.Add("optionId", 1);
-  //     option_selected = 1;
-  // }
-  // else if (opt.name.Contains("2"))
-  // {
-  //     table.Add("optionId", 2);
-  //     option_selected = 2;
-  // }
-  // else if (opt.name.Contains("3"))
-  // {
-  //     table.Add("optionId", 3);
-  //     option_selected = 3;
-  // }
-  // else
-  // {
-  //     table.Add("optionId", 4);
-  //     option_selected = 4;
-  // }
-  // Debug.Log(JsonMapper.ToJson(table));
-
-
-  // if (Main.Settings.V3)
-  // {
-  //     Debug.Log(JsonMapper.ToJson(table));
-  //     string endpoint = string.Format("data/client/{0}/tournament/{1}/match/{2}/gamecards", Main.CLIENT_ID, TournamentDetailsController.currentTournament._id, matchCtrl.match_id);
-  //     string formatedEndpoint = Main.Settings.apis["rootv3"] + endpoint;
-  //     API.PostOne(formatedEndpoint, table, OnPlayCardPost);
-  // }
+              return response;
+            }))
+  }
 
 }

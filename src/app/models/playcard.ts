@@ -1,6 +1,7 @@
 export class PlayCard{
     
 	_id:string;
+	id:string;
 	gamecardTemplateId:string;
 	gamecardDefenitionId:string;
 	primaryStatistic:string;

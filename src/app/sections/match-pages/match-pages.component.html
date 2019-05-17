@@ -3,7 +3,7 @@
   <!-- Router Page Placement -->
   <div class="page-wrapper">
     <div class="match-header-wrapper">
-      <div class="match-header container" *ngIf="liveMatch" [@enterAnimation]>
+      <div class="match-header" *ngIf="liveMatch" [@enterAnimation]>
         <div class="row">
           <div class="col-5 p-r-0 text-right team-name">
             <div class="row p-r-15">
@@ -18,7 +18,7 @@
           <div class="col row text-center">
             <div class="col-12 p-0 score">{{liveMatch?.matchData.home_score}} - {{liveMatch?.matchData.away_score}}
             </div>
-            <div *ngIf="liveMatch.matchData.state>1" class="time col-12 p-0">{{liveMatch?.matchData.time}}'</div>
+            <div *ngIf="liveMatch.matchData.state>0" class="time col-12 p-0">{{liveMatch?.matchData.time}}'</div>
           </div>
           <div class="col-5 p-l-0 text-left team-name">
             <div class="row p-l-15" style="margin-right: 0">

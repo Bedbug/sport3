@@ -2,12 +2,12 @@
 @import "src/variables.scss";
 
 // App Conditions
-@if $showContestInfoOnMatches == true{
-  app-contest-info-header{
+@if $showContestInfoOnMatches == true {
+  app-contest-info-header {
     display: block;
   }
-}@else{
-  app-contest-info-header{
+} @else {
+  app-contest-info-header {
     display: none;
   }
 }
@@ -23,11 +23,11 @@
 //       min-height: calc(100vh - 169px);
 //     }@else{
 //       min-height: calc(100vh - 94px);
-//     }    
+//     }
 //   }
 // }
 
-.match-header-wrapper{
+.match-header-wrapper {
   height: 41px;
   overflow: hidden;
 }
@@ -60,6 +60,8 @@
 
 .time {
   font-size: 9px;
+  position: relative;
+  top: -7px;
 }
 
 .mobile-app-navbar a {

@@ -98,6 +98,11 @@ body .page-wrapper .page-main-header {
   z-index: 2;
 }
 
+.nav{
+    text-align: center;
+    border-bottom: none;
+}
+
 .app-navbar {
   background: $theme-navbar-color;
   overflow: auto;
@@ -370,6 +375,26 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.icn-goal {
+  background: url("~src/assets/images/sportimo/icon-goal.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+.icn-penalty {
+  background: url("~src/assets/images/sportimo/icon-penalty.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-substitution {
+  background: url("~src/assets/images/sportimo/icon-substitution.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 /* Current/active navbar link */
 
 .app-navbar a.active {
@@ -580,17 +605,17 @@ body .page-wrapper .page-main-header {
   }
 }
 
-.active .fadeInLoader{
+.btn-active .fadeInLoader{
   animation-name: fadeIn;
   animation-duration: 0.5s;
 }
 
-.active .button-loader {
+.btn-active .button-loader {
   display: block;
   
 }
 
-.active .button-label {
+.btn-active .button-label {
   display: none;
 }
 

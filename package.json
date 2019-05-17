@@ -61,6 +61,7 @@
     "ngx-perfect-scrollbar": "^7.1.0",
     "ngx-pipes": "^2.4.7",
     "ngx-rangeslider-component": "^1.0.6",
+    "ngx-socket-io": "^2.1.1",
     "ngx-toastr": "^9.1.2",
     "node-sass": "^4.11.0",
     "rxjs": "~6.3.3",

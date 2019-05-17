@@ -10,12 +10,12 @@
             <div class="powers">
               <div class="icn-power pull-left" style="height: 24px;width: 30px;"></div> 2
             </div>
-            <div class="points"><strong>18062</strong> pts</div>
+            <div class="points"><strong>{{liveMatch?.userScore}}</strong> pts</div>
           </div>
         </div>
         <div class="col-4 text-center">
           <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard" (click)="playCard()" class="btn btn-sportimo" style="width: 100%">
-            <div class="loader-label" [class.active]="isLoadingCards">
+            <div class="loader-label" [class.btn-active]="isLoadingCards">
               <span class="button-label">Play</span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
@@ -70,16 +70,9 @@
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
       <ul class="card-scroll-list">
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
-        <app-card></app-card>
+        <li *ngFor="let playedCard of liveMatch?.playedCards">
+            <app-card [cardData]="playedCard" ></app-card>
+        </li>
       </ul>
     </div>
     <div class="tab-pane fade" id="won" role="tabpanel" aria-labelledby="won-tab">

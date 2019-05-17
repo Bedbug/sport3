@@ -56,7 +56,7 @@ margin-right: 2px;
     background-color: #969696 !important;
     margin-left: 67px !important;
     position: relative;
-    bottom: 3px;
+    bottom: 6px;
 }
 .progress-bar{
     background-color: #969696 !important;
@@ -120,7 +120,7 @@ line-height: 1.6;
 }
 
 
-.won .gamecard{
+.won .details{
     border-left: 3px solid $card-side-won;
 }
 
@@ -128,15 +128,15 @@ line-height: 1.6;
     background-color: $card-won-color;
 }
 
-.active .gamecard{
+.playing .details{
     border-left: 3px solid $card-side-active;
 }
 
-.active .points{
+.playing .points{
     background-color: $card-active-color;
 }
 
-.lost .gamecard{
+.lost .details{
     border-left: 0px solid $card-side-lost;
 }
 
