@@ -26,22 +26,22 @@
     <div class="col">
         <img class="img-fluid" src="{{homeKit}}" alt=""> 
     </div>
-    <div class="col">
+    <div [@valueChange]="getStat('home_team','Shot_on_Goal')" class="col">
       {{getStat('home_team','Shot_on_Goal')}}
     </div>
-    <div class="col">
-        {{getStat('home_team','Corner')}}
+    <div [@valueChange]="getStat('home_team','Corner')" class="col">
+       {{getStat('home_team','Corner')}}
     </div>
-    <div class="col">
+    <div [@valueChange]="getStat('home_team','Offside')" class="col">
         {{getStat('home_team','Offside')}}
     </div>
-    <div class="col">
+    <div [@valueChange]="getStat('home_team','Foul')" class="col">
         {{getStat('home_team','Foul')}}
     </div>
-    <div class="col">
+    <div [@valueChange]="getStat('home_team','Yellow')" class="col">
         {{getStat('home_team','Yellow')}}
     </div>
-    <div class="col">
+    <div [@valueChange]="getStat('home_team','Red')" class="col">
         {{getStat('home_team','Red')}}
     </div>
   </div>
@@ -49,22 +49,22 @@
     <div class="col">
         <img class="img-fluid" src="{{awayKit}}" alt=""> 
     </div>
-    <div class="col">
+    <div [@valueChange]="getStat('away_team','Shot_on_Goal')" class="col">
         {{getStat('away_team','Shot_on_Goal')}}
       </div>
-      <div class="col">
+      <div [@valueChange]="getStat('away_team','Corner')" class="col">
           {{getStat('away_team','Corner')}}
       </div>
-      <div class="col">
+      <div [@valueChange]="getStat('away_team','Offside')" class="col">
           {{getStat('away_team','Offside')}}
       </div>
-      <div class="col">
+      <div [@valueChange]="getStat('away_team','Foul')" class="col">
           {{getStat('away_team','Foul')}}
       </div>
-      <div class="col">
+      <div [@valueChange]="getStat('away_team','Yellow')" class="col">
           {{getStat('away_team','Yellow')}}
       </div>
-      <div class="col">
+      <div [@valueChange]="getStat('away_team','Red')" class="col">
           {{getStat('away_team','Red')}}
       </div>
   </div>

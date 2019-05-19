@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="col row text-center">
-            <div class="col-12 p-0 score">{{liveMatch?.matchData.home_score}} - {{liveMatch?.matchData.away_score}}
+            <div class="col-12 p-0 score">{{homeScore}} - {{awayScore}}
             </div>
             <div *ngIf="liveMatch.matchData.state>0" class="time col-12 p-0">{{liveMatch?.matchData.time}}'</div>
           </div>

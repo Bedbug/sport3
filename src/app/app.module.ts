@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,10 @@ import { MainComponent } from './sections/main/main.component';
 import { ContestPagesComponent } from './sections/contest-pages/contest-pages.component';
 import { ContestInfoHeaderComponent } from './sections/contest-pages/contest-info-header/contest-info-header.component';
 import { MatchPagesComponent } from './sections/match-pages/match-pages.component';
+// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+ 
+// const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+
 
 
 @NgModule({
@@ -39,7 +43,8 @@ import { MatchPagesComponent } from './sections/match-pages/match-pages.componen
     HttpClientModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    // SocketIoModule.forRoot(config)
   ],
   providers: [
     ConfigService,

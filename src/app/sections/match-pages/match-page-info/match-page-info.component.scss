@@ -5,6 +5,8 @@
 .timeline .card-body {
   background-color: rgba(0, 0, 0, 0.22);
   background-image: none;
+//   display: flex;
+//     flex-direction: column;
 }
 
 .event {
@@ -13,6 +15,11 @@
   background: rgba(0, 0, 0, 0.36);
   margin-bottom: 10px;
 }
+
+// .section{
+//     display: flex;
+//     flex-direction: column;
+// }
 
 .event .row{
     height: 59px;

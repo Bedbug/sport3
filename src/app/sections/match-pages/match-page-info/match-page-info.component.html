@@ -6,11 +6,11 @@
             The match hasn't started yet.
           </div>
       <ul>
-        <li *ngFor="let section of liveMatch?.matchData.timeline | reverse">
+        <li >
+          <!-- *ngFor="let section of liveMatch?.matchData.timeline | reverser" -->
           <!-- <span *ngIf="section.text"> {{section.text['en']}}</span> -->
-          <ul>
-            <li class="event col" *ngFor="let event of section.events | reverse">
-              
+          <ul class="section">
+            <li class="event col" @items *ngFor="let event of timelineEvents">              
               <div class="container">
                 <div class="row">
                   <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
@@ -21,7 +21,7 @@
                   </div>
                   <div class="col">
                     <p class="type">{{Utils.getTextByType(event.type)}}</p>
-                    <p class="player">{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}</p>
+                    <p *ngIf="event.players" class="player">{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}</p>
                   </div>
                   <div class="team-logo">
                       <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt=""> 

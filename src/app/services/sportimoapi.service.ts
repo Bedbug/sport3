@@ -2,15 +2,35 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { Contest } from '../models/contest';
-import { Observable, empty, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, timer } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { GrandPrize } from '../models/grand-prize';
 import { ContestMatch } from '../models/contest-match';
-import { Match } from '../models/match';
 import { LiveMatch } from '../models/live-match';
 import { AuthenticationService } from './authentication.service';
-import { PlayCard } from '../models/playcard';
-import { PlaycardComponent } from '../sections/match-pages/match-page-cards/components/playcard/playcard.component';
+// import { Socket } from 'ngx-socket-io';
+import * as io from 'socket.io-client';
+
+import demo from 'src/assets/json/demo.json';
+
+
+// @Injectable()
+// export class developmentSocket extends Socket {
+
+//     constructor() {
+//         super({ url: 'wss://sportimo-sockets-dev.herokuapp.com/', options: {} });
+//     }
+
+// }
+
+// @Injectable()
+// export class productionSocket extends Socket {
+
+//     constructor() {
+//         super({ url: 'wss://sportimo-sockets-prod.herokuapp.com/', options: {} });
+//     }
+
+// }
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +43,15 @@ export class SportimoApiService {
   private currentMatchId;
   private currentContestId;
 
-  constructor(private http: HttpClient, private Config: ConfigService, private authenticationService: AuthenticationService) {
+  private socket;
+
+  constructor(
+    private http: HttpClient,
+    private Config: ConfigService,
+    private authenticationService: AuthenticationService,
+    // private devSocket: developmentSocket,
+    // private socket: Socket
+  ) {
     this.cachedContests = new BehaviorSubject<Contest[]>(null);
     this.currentLiveMatch = new BehaviorSubject<LiveMatch>(null);
   }
@@ -118,7 +146,7 @@ export class SportimoApiService {
     cardSelections.contestId = this.currentContestId;
     cardSelections.segment = this.currentLiveMatch.value.matchData.state;
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecards`, cardSelections)
-    .pipe(map(response=>{        
+      .pipe(map(response => {
         this.currentLiveMatch.getValue().playedCards.push(response.userGamecard);
         this.currentLiveMatch.next(this.currentLiveMatch.value);
         return response.userGamecard;
@@ -127,19 +155,110 @@ export class SportimoApiService {
   /*
     body:{"doublePoints", true} || {"doubleTime", true}
   */
-  playSpecial(gamecardId:string, body:any){
+  playSpecial(gamecardId: string, body: any) {
     const endpoint = `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecard/${gamecardId}`;
     return this.http.put<any>(endpoint, body)
-            .pipe(map(response => {
-              if(!response.error){
-                // Assign new data from the response to the LiveMatch Observable in order to let all listeners receive the new info
-                Object.assign(this.currentLiveMatch.value.playedCards[
-                  this.currentLiveMatch.value.playedCards.findIndex(el => el.id === response.userGamecard._id)], response.userGamecard)
-                  this.currentLiveMatch.next(this.currentLiveMatch.value);
-              }
+      .pipe(map(response => {
+        if (!response.error) {
+          // Assign new data from the response to the LiveMatch Observable in order to let all listeners receive the new info
+          Object.assign(this.currentLiveMatch.value.playedCards[
+            this.currentLiveMatch.value.playedCards.findIndex(el => el.id === response.userGamecard._id)], response.userGamecard)
+          this.currentLiveMatch.next(this.currentLiveMatch.value);
+        }
 
-              return response;
-            }))
+        return response;
+      }))
   }
 
+  /*-----------------------------------------------------------------------------------
+   SOCKETS
+ ----------------------------------------------------------------------------------- */
+  getStream() {
+
+    // console.log(demo.length);
+
+    let observable = new Observable(observer => {
+      this.socket = io('http://localhost:3031');
+      this.socket.on('message', (data) => {
+        observer.next(data);
+        this.parseSocket(data);
+      });
+
+      this.socket.on('welcome', (data) => {
+        console.log(data);
+        this.registerUserToStream();
+      })
+
+      this.socket.on('registered', (data) => {
+        console.log(data);
+        this.subscribeToMatchStream();
+      });
+
+      return () => {
+        this.socket.disconnect();
+      };
+    })
+
+
+    return observable;
+  }
+
+  parseSocket(data: any) {
+    if (!data) return;
+    if (data.type == "Event_added") {
+      this.addTimelineEvent(data);
+    } else if (data.type == "Event_updated") {
+      this.updateTimelineEvent(data);
+    } else if (data.type == "Stats_changed") {
+      this.parseStatsEvent(data);
+    }
+  }
+  updateTimelineEvent(data: any) {
+    for (let section of this.currentLiveMatch.getValue().matchData.timeline){
+      for (let event of section.events){        
+        if(event._id == data.data._id){
+          Object.assign(event,data.data);
+        }
+      }
+    }
+    this.currentLiveMatch.next(this.currentLiveMatch.value);
+  }
+  addTimelineEvent(data: any) {
+    if (this.currentLiveMatch.getValue().matchData.timeline.length == 0)
+      this.currentLiveMatch.getValue().matchData.timeline.push({ events: [] });
+    // console.log(this.currentLiveMatch.getValue().matchData.timeline);
+    this.currentLiveMatch.getValue().matchData.timeline[this.currentLiveMatch.getValue().matchData.timeline.length - 1].events.push(data.data);
+    
+    // if(data.type == "Goal"){
+    //   this.currentLiveMatch.getValue().matchData.stats.find()
+    // }
+
+    this.currentLiveMatch.next(this.currentLiveMatch.value);
+  }
+  parseStatsEvent(data: any) {
+    // console.log(data.data);
+    this.currentLiveMatch.getValue().matchData.stats = data.data;
+    this.currentLiveMatch.next(this.currentLiveMatch.value);
+  }
+
+  playDemo() {
+    // console.log(" --------- Initiating Demo");
+    let index = 0;
+    return timer(5000, 500).pipe(
+      take(demo.length)).subscribe(x => {
+        this.parseSocket(demo[x]);
+      })
+  }
+
+  registerUserToStream() {
+    this.socket.emit('register', {
+      uid: this.authenticationService.currentUserValue._id,
+      uname: this.authenticationService.currentUserValue.name,
+      admin: false
+    })
+  }
+
+  subscribeToMatchStream() {
+    this.socket.emit('subscribe', { room: this.currentMatchId });
+  }
 }

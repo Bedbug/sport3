@@ -1,11 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LiveMatch } from 'src/app/models/live-match';
 import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.scss']
+  styleUrls: ['./stats.component.scss'],
+  animations:[
+    trigger('valueChange',[
+      transition('* => *', [
+        style({ transform: 'scale(1)', color: 'white'}),  // initial
+        animate('200ms ease-out',  keyframes([
+          style({ transform: 'scale(1.4)',color: 'yellow' , offset:0.7}),  // final
+          style({ transform: 'scale(1)', color:'white', offset:1})  // final
+        ])
+      )
+    ])
+  ])]
 })
 export class StatsComponent implements OnInit {
 
@@ -17,7 +29,9 @@ export class StatsComponent implements OnInit {
 
   ngOnInit() {
     this.sportimoApi.getCurrentLiveMatchData().subscribe(match => {
+     
       if (match) {
+        
         this.liveMatch = match;
         this.homeKit = match.matchData.home_team.logo;
         this.awayKit = match.matchData.away_team.logo;
