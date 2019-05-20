@@ -4,6 +4,7 @@ import { PlayCard } from 'src/app/models/playcard';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { LiveMatch } from 'src/app/models/live-match';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -43,6 +44,24 @@ export class MatchPageCardsComponent implements OnInit {
       this.availableCards = availableCards;
       this.isLoadingCards = false;
     })
+  }
+
+  get wonCards(){
+    if(this.liveMatch && this.liveMatch.playedCards)
+    return this.liveMatch.playedCards.filter(x=>x.status == 3);
+    return [];
+  }
+
+  get lostCards(){
+    if(this.liveMatch && this.liveMatch.playedCards)
+    return this.liveMatch.playedCards.filter(x=>x.status == 2);
+    return [];
+  }
+
+  get pendingCards(){
+    if(this.liveMatch && this.liveMatch.playedCards)
+    return this.liveMatch.playedCards.filter(x=>x.status == 0 || x.status == 1);
+    return [];
   }
   // ngAfterViewInit() {
   //   this.menuPosition = this.menuElement.nativeElement.offsetTop

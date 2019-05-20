@@ -76,28 +76,25 @@
       </ul>
     </div>
     <div class="tab-pane fade" id="won" role="tabpanel" aria-labelledby="won-tab">
-      <div class="container">
-        <ul>
-          <!-- <app-cards-list-item *ngFor="let contestMatch of liveMatches" [contestMatch]='contestMatch'
-              isClickable=true></app-cards-list-item> -->
-        </ul>
-      </div>
+      <ul class="card-scroll-list">
+        <li *ngFor="let playedCard of wonCards">
+            <app-card [cardData]="playedCard" ></app-card>
+        </li>
+      </ul>
     </div>
     <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-      <div class="container">
-        <ul>
-          <!-- <app-cards-list-item *ngFor="let contestMatch of upcomingMatches" [contestMatch]='contestMatch'
-              isClickable=true></app-cards-list-item> -->
-        </ul>
-      </div>
+      <ul class="card-scroll-list">
+        <li *ngFor="let playedCard of pendingCards">
+            <app-card [cardData]="playedCard" ></app-card>
+        </li>
+      </ul>
     </div>
     <div class="tab-pane fade" id="lost" role="tabpanel" aria-labelledby="lost-tab">
-      <div class="container">
-        <ul>
-          <!-- <app-cards-list-item *ngFor="let contestMatch of pastMatches" [contestMatch]='contestMatch'
-              isClickable=true></app-cards-list-item> -->
-        </ul>
-      </div>
+      <ul class="card-scroll-list">
+        <li *ngFor="let playedCard of lostCards">
+            <app-card [cardData]="playedCard" ></app-card>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

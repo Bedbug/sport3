@@ -126,12 +126,16 @@ export class SportimoApiService {
       }));
   }
 
-  getCurrentLiveMatchData() {
-    return this.currentLiveMatch;
+  get currentMatch() {
+    return this.currentLiveMatch.getValue();
     // if (this.currentLiveMatch.value)
     //   return this.currentLiveMatch.value;
     // else
     //   return this.getMatchDataForUser(contestId, contestMatchId);
+  }
+
+  getCurrentLiveMatchData(){
+    return this.currentLiveMatch;
   }
 
   getAvailableCards(contestId: string, contestMatchId: string) {
@@ -178,7 +182,7 @@ export class SportimoApiService {
     // console.log(demo.length);
 
     let observable = new Observable(observer => {
-      this.socket = io('http://localhost:3031');
+      this.socket = io(this.Config.getApi('SOCKET'));
       this.socket.on('message', (data) => {
         observer.next(data);
         this.parseSocket(data);
@@ -211,7 +215,43 @@ export class SportimoApiService {
       this.updateTimelineEvent(data);
     } else if (data.type == "Stats_changed") {
       this.parseStatsEvent(data);
+    }else if(data.type == "Advance_Segment"){
+      this.advanceTimelineSegment(data);
+    }else if(data.type == "Match_Reload"){
+      this.reloadMatch(data);
+    }else if(data.type == "Card_resumed" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated"){
+      this.updateCardStatus(data);
+    }else if(data.type == "Match_full_time"){
+      this.finalizeMatch(data);
     }
+  }
+
+  finalizeMatch(data: any) {
+    console.log("[SPORTIMO SERVICE]: Current match finalized");
+    
+  }
+  updateCardStatus(data: any) {
+    throw new Error("Method not implemented.");
+  }
+  reloadMatch(data: any) {
+    console.log("[SPORTIMO SERVICE]: Reloading match");
+    this.http.get<LiveMatch>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/user`)
+      .pipe(map(match => {
+        this.currentLiveMatch.next(match);
+        return match;
+      }));
+  }
+  advanceTimelineSegment(data: any) {
+    if(data.data.segment.timmed)
+    console.log("[SPORTIMO SERVICE][TIMER]: We START counting match time");
+    // this.currentMatchTimer.subscribe();
+    else
+    console.log("[SPORTIMO SERVICE][TIMER]: We END counting match time");
+    // this.currentMatchTimer.unsubscibe();
+
+    this.currentMatch.matchData.state++;
+    this.currentLiveMatch.next(this.currentMatch);
+    console.log("[SPORTIMO SERVICE]: Addvanced Match state to: "+this.currentMatch.matchData.state);
   }
   updateTimelineEvent(data: any) {
     for (let section of this.currentLiveMatch.getValue().matchData.timeline){

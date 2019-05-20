@@ -1,4 +1,4 @@
-<div (click)="playCardModal = true" class="playcard">
+<div (click)="openPlayModal()" class="playcard">
   <div class="icon">
     <div [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
   </div>
@@ -80,8 +80,8 @@
           </div>
           <div class="name"> {{data.title['en']}}</div>
         </div>
-        <div class="info">{{data.text['en']}}, starting from:</div>
-        <div class="time">
+        <div class="info">{{data.text['en']}}<span *ngIf="data.cardType!='Overall'">, starting from:</span></div>
+        <div class="time" *ngIf="data.cardType!='Overall'">
           <div class="event-time-icon">
             <div class="icon icn-stopwatch"></div>
           </div>
@@ -96,9 +96,9 @@
             <span class="pts"> pts</span>
           </div>
         </div>
-        <div *ngIf="!optionSelected" [@fadein] class="time-slider">
+        <div *ngIf="!optionSelected && data.cardType!='Overall'" [@fadein] class="time-slider">
           <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
-            [attr.min]="getMinimumTime()" [attr.max]="90" [attr.value]=1>
+            [attr.min]="minTimeValue" [attr.max]="90" [attr.value]="minTimeValue">
           <span class="slider-guide">Drag slider to set the time that the card will be activated.</span>
         </div>
       </div>

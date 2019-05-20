@@ -1,5 +1,6 @@
+<!-- <div *ngIf="cardData.status == 0 && cardData.cardType!='Overall'" class="activation-info">Card will be activated at 67'</div> -->
 <div style="max-height: 79px" [class.lost]="cardData.status == 3" [class.playing]="cardData.status == 1 || cardData.status == 0" [class.won]="cardData.status == 2">
-  <div class="gamecard">
+  <div class="gamecard" [class.not-active]="cardData.status == 0 && cardData.cardType!='Overall'">
     <div class="details">
       <div class="icon">
         <div class="card-icon" [ngClass]="sportUtils.getIconBySprite(cardData.image.sprite)"></div>

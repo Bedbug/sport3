@@ -4,6 +4,7 @@
   "API_ENDPOINTS": {
     "ROOT":"https://clientserver-3.herokuapp.com/v1",
     "AUTHENTICATE":"users/authenticate",
-    "SUBSCRIPTION": "api/gugroup/subscription"
+    "SUBSCRIPTION": "api/gugroup/subscription",
+    "SOCKET":"http://localhost:3031"
   }
 }

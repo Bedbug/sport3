@@ -28,7 +28,7 @@ export class CardComponent implements OnInit {
   constructor(private sportimoAPI: SportimoApiService) { }
 
   ngOnInit() {
-    console.log(this.cardData);
+    // console.log(this.cardData);
   }
 
   playSpecial(specialName: string) {

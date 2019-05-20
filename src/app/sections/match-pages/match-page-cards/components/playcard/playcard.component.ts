@@ -32,6 +32,13 @@ export class PlaycardComponent implements OnInit {
   selectedTime: number = 1;
   cardSelections: any = {};
   isSubmitingCard: boolean = false;
+  minTimeValue: number = 1; 
+
+
+  openPlayModal(){
+    this.selectedTime = this.getMinimumTime();
+    this.playCardModal = true;
+  }
 
   closeModal() {
     if (this.isSubmitingCard) return;
@@ -43,19 +50,21 @@ export class PlaycardComponent implements OnInit {
   }
 
   get SelectedTime() {
-    if (this.selectedTime == 1)
+    if (this.selectedTime == this.minTimeValue && this.sportimoAPI.currentMatch.matchData.state > 0 )
       return "Now";
     else
       return this.selectedTime + "'";
   }
 
   getMinimumTime() {
-    return 1;
+    this.minTimeValue = this.sportimoAPI.currentMatch.matchData.time;
+    if(this.minTimeValue == null || this.minTimeValue ==0) this.minTimeValue = 1;
+    return this.minTimeValue;
   }
 
   getFormatedOption(optionText: string) {
-    const home_team = this.sportimoAPI.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
-    const away_team = this.sportimoAPI.getCurrentLiveMatchData().value.matchData.away_team.name['en'];
+    const home_team = this.sportimoAPI.currentMatch.matchData.home_team.name['en'];
+    const away_team = this.sportimoAPI.currentMatch.matchData.away_team.name['en'];
     return optionText.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
   }
 
@@ -92,6 +101,9 @@ export class PlaycardComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    this.selectedTime = this.getMinimumTime();
   }
+
 
 }
