@@ -3,7 +3,7 @@ import { ContestMatch } from 'src/app/models/contest-match';
 import * as moment from 'moment';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,13 +27,13 @@ export class ContestPageMatchesComponent implements OnInit {
     // { id: "3", title: "Match 3", home_score: 0, away_score: 0, live: false, start: moment().add(-1, 'days').add(2, 'hours').toDate() }
   ]
 
-  constructor(private route: ActivatedRoute, private SportimoApi: SportimoApiService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.contestId = params.get("contestId");
-      this.SportimoApi.getPresentMatches(this.contestId).subscribe(matches => this.presentMatches = matches);
-      this.SportimoApi.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
+      this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => this.presentMatches = matches);
+      this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
     });
   }
 }

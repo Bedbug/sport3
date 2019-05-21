@@ -2,29 +2,59 @@
   <app-stats></app-stats>
   <div class="card timeline">
     <div class="card-body">
-        <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
-            The match hasn't started yet.
-          </div>
+      <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
+        The match hasn't started yet.
+      </div>
       <ul>
-        <li >
+        <li>
           <!-- *ngFor="let section of liveMatch?.matchData.timeline | reverser" -->
           <!-- <span *ngIf="section.text"> {{section.text['en']}}</span> -->
           <ul class="section">
-            <li class="event col" @items *ngFor="let event of timelineEvents">              
-              <div class="container">
+
+            <!-- ALL CARDS -->
+            <li class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
+              [class.substitution]="event.type=='Substitution'">
+              <div *ngIf="event.type!='Substitution'" class="container">
                 <div class="row">
                   <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
                     {{Utils.shouldShow(event.type,event.time+"'")}}
                   </div>
                   <div class="icon">
-                    <div [ngClass]= "Utils.getIconByType(event.type)"></div>
+                    <div [ngClass]="Utils.getIconByType(event.type)"></div>
                   </div>
                   <div class="col">
                     <p class="type">{{Utils.getTextByType(event.type)}}</p>
-                    <p *ngIf="event.players" class="player">{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}</p>
+                    <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
+                      <div>{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}
+                      </div>
+                    </div>
                   </div>
                   <div class="team-logo">
-                      <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt=""> 
+                    <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUBTITUTION CARD -->
+              <div *ngIf="event.type=='Substitution'" class="container">
+                <div class="row">
+                  <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
+                    {{Utils.shouldShow(event.type,event.time+"'")}}
+                  </div>
+                  <div class="icon">
+                    <div [ngClass]="Utils.getIconByType(event.type)"></div>
+                  </div>
+                  <div class="col">
+                    <p class="type">{{Utils.getTextByType(event.type)}}</p>
+                    <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
+                      <div class="sub-icon icn-arrow-out"></div>{{event.players[0].name['en']}}
+                    </div>
+                    <div *ngIf="event.players && event.players.length>1" [@fadein] class="player">
+                      <div class="sub-icon icn-arrow-in"></div>{{event.players[1].name['en']}}
+                    </div>
+                  </div>
+                  <div class="team-logo">
+                    <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
                   </div>
                 </div>
               </div>

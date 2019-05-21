@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SportimoApiService } from './sportimoapi.service';
+import { SportimoService } from './sportimo.service';
 
-describe('SportimoapiService', () => {
+describe('SportimoService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SportimoApiService = TestBed.get(SportimoApiService);
+    const service: SportimoService = TestBed.get(SportimoService);
     expect(service).toBeTruthy();
   });
 });

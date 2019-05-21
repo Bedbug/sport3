@@ -16,14 +16,28 @@
   margin-bottom: 10px;
 }
 
+.event.substitution{
+    height: 100px;
+}
 // .section{
 //     display: flex;
 //     flex-direction: column;
 // }
 
+.sub-icon{
+    width: 10px;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+}
+
 .event .row{
     height: 59px;
     align-items: center;
+}
+
+.event.substitution .row{
+    height:100px;
 }
 
 .time{
@@ -49,13 +63,15 @@
 
 .type{
     height: 20px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     font-size: 16px;
     font-weight: bold;
 }
 
 .player{
     font-size: 14px;
+    // animation-name: slideInRight;
+    // animation-duration: 0.3s;
 }
 
 .team-logo img{

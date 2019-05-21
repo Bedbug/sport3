@@ -3,7 +3,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { PlayCard } from 'src/app/models/playcard';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { utils } from 'protractor';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 @Component({
   selector: 'app-playcard',
@@ -50,21 +50,21 @@ export class PlaycardComponent implements OnInit {
   }
 
   get SelectedTime() {
-    if (this.selectedTime == this.minTimeValue && this.sportimoAPI.currentMatch.matchData.state > 0 )
+    if (this.selectedTime == this.minTimeValue && this.sportimoService.currentMatch.matchData.state > 0 )
       return "Now";
     else
       return this.selectedTime + "'";
   }
 
   getMinimumTime() {
-    this.minTimeValue = this.sportimoAPI.currentMatch.matchData.time;
+    this.minTimeValue = this.sportimoService.currentMatch.matchData.time;
     if(this.minTimeValue == null || this.minTimeValue ==0) this.minTimeValue = 1;
     return this.minTimeValue;
   }
 
   getFormatedOption(optionText: string) {
-    const home_team = this.sportimoAPI.currentMatch.matchData.home_team.name['en'];
-    const away_team = this.sportimoAPI.currentMatch.matchData.away_team.name['en'];
+    const home_team = this.sportimoService.currentMatch.matchData.home_team.name['en'];
+    const away_team = this.sportimoService.currentMatch.matchData.away_team.name['en'];
     return optionText.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
   }
 
@@ -87,7 +87,7 @@ export class PlaycardComponent implements OnInit {
   submitCard() {
     this.isSubmitingCard = true;
     this.cardSelections.minute = this.selectedTime;
-    this.sportimoAPI.submitUserCard(this.cardSelections)
+    this.sportimoService.submitUserCard(this.cardSelections)
       .subscribe(playedCard => {
         console.log(playedCard);
         this.isSubmitingCard = false;
@@ -96,7 +96,7 @@ export class PlaycardComponent implements OnInit {
         , error => console.log('Could not load todos.'))
   }
 
-  constructor(private sportimoAPI: SportimoApiService) {
+  constructor(private sportimoService: SportimoService) {
 
   }
 

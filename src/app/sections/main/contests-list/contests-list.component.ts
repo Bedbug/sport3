@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Contest } from 'src/app/models/contest';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Router } from '@angular/router';
 import { trigger, state, style, transition, animate, query, stagger } from '@angular/animations';
@@ -32,10 +32,10 @@ export class ContestsListComponent implements OnInit {
 
   contests: Contest[];
 
-  constructor(private SportimoApi: SportimoApiService, private router: Router) { }
+  constructor(private sportimoService: SportimoService, private router: Router) { }
 
   ngOnInit() {
-    this.SportimoApi.getContests()
+    this.sportimoService.getContests()
     .subscribe(data=>{
       this.contests = data;
     })

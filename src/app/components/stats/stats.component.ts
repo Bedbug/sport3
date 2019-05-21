@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LiveMatch } from 'src/app/models/live-match';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
@@ -25,10 +25,10 @@ export class StatsComponent implements OnInit {
   awayKit: string;
   liveMatch: LiveMatch;
 
-  constructor(private sportimoApi: SportimoApiService) { }
+  constructor(private sportimoService: SportimoService) { }
 
   ngOnInit() {
-    this.sportimoApi.getCurrentLiveMatchData().subscribe(match => {
+    this.sportimoService.getCurrentLiveMatchData().subscribe(match => {
      
       if (match) {
         

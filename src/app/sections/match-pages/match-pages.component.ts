@@ -3,7 +3,7 @@ import { slideInAnimation } from 'src/app/animations/route-animations';
 import { ActivatedRoute } from '@angular/router';
 import { LiveMatch } from 'src/app/models/live-match';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 @Component({
   selector: 'app-match-pages',
@@ -31,7 +31,7 @@ export class MatchPagesComponent implements OnInit {
   stream: any;
   demoplay: any;
 
-  constructor(private route: ActivatedRoute, private sportimoApi: SportimoApiService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -39,17 +39,17 @@ export class MatchPagesComponent implements OnInit {
       this.contestId = params.get("contestId");
 
       // Retrieve the Live Match data from the service
-      this.sportimoApi.getMatchDataForUser(this.contestId, this.contestMatchId).
+      this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
         subscribe(result => {
           this.liveMatch = result;
           // console.log(this.liveMatch);
         });
 
-      // this.stream = this.sportimoApi.getStream().subscribe(x=>{
+      // this.stream = this.sportimoService.getStream().subscribe(x=>{
       //   console.log(x);
       // });
 
-      this.demoplay = this.sportimoApi.playDemo();
+      this.demoplay = this.sportimoService.playDemo();
     })
   }
 
@@ -84,6 +84,9 @@ export class MatchPagesComponent implements OnInit {
       this.stream.unsubscribe();
     if (this.demoplay)
       this.demoplay.unsubscribe();
+
+      // Clears current Match Data in order for the new view to be clean if necessary
+      this.sportimoService.clearMatch();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { PlayCard } from 'src/app/models/playcard';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -26,7 +26,7 @@ export class MatchPageCardsComponent implements OnInit {
   // sticky: boolean = false;
   // menuPosition: any;
 
-  constructor(private route: ActivatedRoute, private sportimoAPI: SportimoApiService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -34,13 +34,13 @@ export class MatchPageCardsComponent implements OnInit {
       this.contestId = params.get("contestId");
     })
 
-    this.sportimoAPI.getCurrentLiveMatchData().subscribe(x=>this.liveMatch = x)
+    this.sportimoService.getCurrentLiveMatchData().subscribe(x=>this.liveMatch = x)
   }
 
   playCard() {
     this.isPlayingCard = true;
     this.isLoadingCards = true;
-    this.sportimoAPI.getAvailableCards(this.contestId, this.contestMatchId).subscribe(availableCards => {
+    this.sportimoService.getAvailableCards(this.contestId, this.contestMatchId).subscribe(availableCards => {
       this.availableCards = availableCards;
       this.isLoadingCards = false;
     })

@@ -35,7 +35,8 @@ import demo from 'src/assets/json/demo.json';
 @Injectable({
   providedIn: 'root'
 })
-export class SportimoApiService {
+export class SportimoService {
+  
 
   private cachedContests: BehaviorSubject<Contest[]>;
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
@@ -242,7 +243,8 @@ export class SportimoApiService {
       }));
   }
   advanceTimelineSegment(data: any) {
-    if(data.data.segment.timmed)
+    console.log(data.data.segment);
+    if(data.data.segment.timed)
     console.log("[SPORTIMO SERVICE][TIMER]: We START counting match time");
     // this.currentMatchTimer.subscribe();
     else
@@ -250,6 +252,7 @@ export class SportimoApiService {
     // this.currentMatchTimer.unsubscibe();
 
     this.currentMatch.matchData.state++;
+    this.currentMatch.matchData.timeline.push(data.data.segment);
     this.currentLiveMatch.next(this.currentMatch);
     console.log("[SPORTIMO SERVICE]: Addvanced Match state to: "+this.currentMatch.matchData.state);
   }
@@ -276,18 +279,38 @@ export class SportimoApiService {
     this.currentLiveMatch.next(this.currentLiveMatch.value);
   }
   parseStatsEvent(data: any) {
-    // console.log(data.data);
-    this.currentLiveMatch.getValue().matchData.stats = data.data;
-    this.currentLiveMatch.next(this.currentLiveMatch.value);
+
+    // This should change to a room <> current_match_id check
+    let matchstats = data.data.find(x=>{
+      return x.id == data.room;
+    });
+    
+    if(matchstats.Minute){
+     this.currentMatch.matchData.time = matchstats.Minute;
+    }
+    this.currentMatch.matchData.stats = data.data;
+    this.currentLiveMatch.next(this.currentMatch);
   }
 
   playDemo() {
     // console.log(" --------- Initiating Demo");
     let index = 0;
-    return timer(5000, 500).pipe(
+    
+    return timer(7000, 500).pipe(
       take(demo.length)).subscribe(x => {
         this.parseSocket(demo[x]);
       })
+
+      // return timer(5000, 1500).pipe(
+      //   take(1)).subscribe(x => {
+      //     // if(demo[x].type == "Event_added")
+      //     // console.log(index,demo[x].type);
+      //     // index++;
+      //     // let demoEvent = demo.data.find(x=>x.type =='Substitution');
+      //     // console.log(demoEvent);
+      //     this.parseSocket(demo[133]);
+      //     // this.parseSocket(demo[x]);
+      //   })
   }
 
   registerUserToStream() {
@@ -300,5 +323,9 @@ export class SportimoApiService {
 
   subscribeToMatchStream() {
     this.socket.emit('subscribe', { room: this.currentMatchId });
+  }
+
+  clearMatch() {
+    this.currentLiveMatch.next(null);
   }
 }

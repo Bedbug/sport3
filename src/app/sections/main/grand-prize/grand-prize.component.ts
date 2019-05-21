@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { GrandPrize } from 'src/app/models/grand-prize';
 import { trigger, transition, query, style, stagger, animate, state } from '@angular/animations';
 
@@ -27,10 +27,10 @@ export class GrandPrizeComponent implements OnInit {
     expired: false
   }
 
-  constructor(private SportimoApi: SportimoApiService) { }
+  constructor(private sportimoService: SportimoService) { }
 
   ngOnInit() {
-    this.SportimoApi.getGrandPrize()
+    this.sportimoService.getGrandPrize()
       .subscribe(data => {
         this.prize = data;
         this.startCountdownTimer();

@@ -2,15 +2,15 @@ export class SportimoUtils {
   events_mapping = {
     "Goal": { text: "Goal", icon: "icn-goal", show: true },
     "Shot_on_Goal": { text: "Shot on Target", icon: "icn-shot", show: true },
-    "First_Half_Starts": { text: "First Half Starts" },
     "Offside": { text: "Offside", icon: "icn-offside", show: true },
     "Corner": { text: "Corner", icon: "icn-corner", show: true },
     "Yellow": { text: "Yellow", icon: "icn-yellow", show: true },
     "Foul": { text: "Foul", icon: "icn-foul", show: true },
-    "Substitution": { text: "Substitution", icon: "icn-foul", show: true },
-    "First_Half_Ends": { text: "First Half Ends" },
-    "Second_Half_Ends": { text: "Second Half Ends" },
-    "Second_Half_Starts": { text: "Second Half Starts" },
+    "Substitution": { text: "Substitution", icon: "icn-substitution", show: true },
+    "First_Half_Starts": { text: "First Half Starts", icon: "icn-stopwatch" },
+    "First_Half_Ends": { text: "First Half Ends", icon: "icn-stopwatch"},
+    "Second_Half_Starts": { text: "Second Half Starts", icon: "icn-stopwatch"},
+    "Second_Half_Ends": { text: "Second Half Ends", icon: "icn-stopwatch"},
   }
 
   sprite_mappings = {
@@ -22,7 +22,13 @@ export class SportimoUtils {
     'yellow': "icn-yellow",
     'goal': 'icn-goal',
     'penalty': 'icn-penalty',
-    'substitution': 'icn-penalty'
+    'substitution': 'icn-substitution',
+    'most-yellow': 'icn-yellows',
+    'result': 'icn-result',
+    'nr-offsides': 'icn-offsides',
+    'nr-corners': 'icn-corners',
+    'firstgoal':'icn-defence',
+    'most-shots-target':'icn-shots',
   }
 
   getFromEventType(type: string) {

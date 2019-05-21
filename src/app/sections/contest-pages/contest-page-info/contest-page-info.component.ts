@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contest } from 'src/app/models/contest';
 import { ActivatedRoute } from '@angular/router';
-import { SportimoApiService } from 'src/app/services/sportimoapi.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { trigger, style, transition, animate, query, stagger } from '@angular/animations';
 
 @Component({
@@ -29,13 +29,13 @@ import { trigger, style, transition, animate, query, stagger } from '@angular/an
 })
 export class ContestPageInfoComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private SportimoApi:SportimoApiService) { }
+  constructor(private route:ActivatedRoute, private sportimoService:SportimoService) { }
 
   contestDetails: Contest;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {      
-      this.SportimoApi.getContestQuickDetails(params.get("contestId"))
+      this.sportimoService.getContestQuickDetails(params.get("contestId"))
       .subscribe(result => {
         this.contestDetails = result;
       });
