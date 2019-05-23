@@ -90,9 +90,9 @@ export class ContestPageLeadersComponent implements OnInit {
     { user: false },
   ];
   constructor() { }
-
+  userRank: Number;
   ngOnInit() {
-    
+    this.userRank = this.cellArray.findIndex(x=>x.user) + 1;
   }
 
   ngAfterViewInit(){
