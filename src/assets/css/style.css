@@ -1347,7 +1347,7 @@ a:hover {
 
 /*======= Badge-color css starts  ======= */
 
-.badge-primary {
+/* .badge-primary {
   background-color: #ab8ce4;
 }
 
@@ -1377,7 +1377,7 @@ a:hover {
 
 .badge-warning {
   background-color: #f3d800;
-}
+} */
 
 /*======= Badge-color css end  ======= */
 
@@ -3126,7 +3126,7 @@ table thead .border-bottom-warning th, table tbody .border-bottom-warning th, ta
 ==========================**/
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:hover>a, .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li.active>a, body[main-theme-layout="main-theme-layout-1"] .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:hover>a, body[main-theme-layout="main-theme-layout-3"] .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:hover>a, body[main-theme-layout="main-theme-layout-4"] .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li:hover>a {
-  color: #000;
+  color: #ffffff;
   border-left-color: #2a3142;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -3251,7 +3251,7 @@ table thead .border-bottom-warning th, table tbody .border-bottom-warning th, ta
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 15px;
 }
 
 .page-main-header .main-header-right .switch-state {
@@ -3278,6 +3278,8 @@ table thead .border-bottom-warning th, table tbody .border-bottom-warning th, ta
 
 .page-main-header .main-header-right .nav-right {
   text-align: right;
+  display:flex;
+  align-items: center;
 }
 
 .page-main-header .main-header-right .nav-right ul li i {
@@ -3659,7 +3661,7 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu {
   list-style: none;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);
   list-style-type: none;
   white-space: nowrap;
@@ -3688,24 +3690,24 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li>a {
   display: block;
-  color: #2a3142;
+  color: #ffffff;
   font-size: 14px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li>a.active {
-  color: #ab8ce4;
+  color: #ffc300;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-.page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li>a:hover {
-  color: #ab8ce4;
+/* .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li>a:hover {
+  color: #ffffff;
   padding-left: 5px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-}
+} */
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu>li>a i {
   margin-right: 7px;
@@ -3777,6 +3779,7 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu li.active>.sidebar-submenu>li>a {
   width: 100%;
+  padding-left: 54px;
 }
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu li>a>.fa-angle-down {
@@ -3815,9 +3818,9 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
   padding-top: 7px;
   display: block;
   font-size: 14px;
-  color: #333333;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  color: #ffffff;
+  /* -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; */
   text-transform: capitalize;
 }
 
@@ -3834,7 +3837,7 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 }
 
 .page-wrapper .page-body-wrapper .page-sidebar .sidebar-menu .sidebar-submenu>li>a:hover {
-  color: #ab8ce4;
+  color: #ffffff;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   padding-left: 5px;

@@ -1,4 +1,5 @@
 <!--Page Header Start-->
+<app-login></app-login>
 <div class="page-main-header">
     <div class="main-header-left">
         <div class="logo-wrapper">
@@ -19,7 +20,7 @@
         </div> -->
         <div class="nav-right col">
             <!-- LOGIN HEADER -->
-            <ul class="nav-menus" *ngIf="!isLoggedIn">
+            <!-- <ul class="nav-menus" *ngIf="!isLoggedIn">
                  <li>
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-inline sportimo-form">
                             <div class="form-group">
@@ -47,10 +48,10 @@
                         </form>
     
                     </li>
-            </ul>
+            </ul> -->
 <!-- HEADER LOGGED IN -->
-            <ul class="nav-menus"  *ngIf="isLoggedIn">
-                <!-- <li>
+            <!-- <ul class="nav-menus"  *ngIf="isLoggedIn">
+                 <li>
                     <form class="form-inline search-form">
                         <div class="form-group">
                             <label class="sr-only">Email</label>
@@ -59,7 +60,7 @@
                             </span>
                         </div>
                     </form>
-                </li> -->
+                </li>
                
                 <li>
                     <a href="javascript:void(0)" toggleFullscreen class="text-dark">
@@ -95,7 +96,7 @@
                         </li>
                     </ul>
                 </li>
-                <!-- <li class="onhover-dropdown">
+                 <li class="onhover-dropdown">
                     <a href="javascript:void(0)" class="txt-dark">
                         <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/notification.png"
                             alt="header-notification">
@@ -140,7 +141,7 @@
                         <li class="text-center">You have Check <a href="javascript:void(0)">all</a> notification </li>
                     </ul>
 
-                </li> -->
+                </li>
                 <li class="onhover-dropdown">
                     <div class="media  align-items-center">
                         <img class="align-self-center pull-right mr-2" src="assets/images/dashboard/user.png"
@@ -185,7 +186,8 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul> -->
+            <div *ngIf="currentUser" class="user-wallet">{{currentUser.wallet}} <i class="coin"></i></div>
             <div class="d-lg-none mobile-toggle">
                 <i class="icon-menu"></i>
             </div>

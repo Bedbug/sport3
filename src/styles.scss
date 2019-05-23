@@ -21,6 +21,23 @@
   background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 }
 
+.sidebar-background {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1031; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.3); /* Black w/ opacity */
+}
+
+.hidden{
+  display:none !important;
+}
+
 .h-200 {
   height: 200px;
 }
@@ -46,6 +63,12 @@
   position: relative;
   top: 3px;
   // left: -2px;
+}
+
+.user-wallet{
+  margin-right: 15px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 body {
@@ -90,10 +113,11 @@ body {
 body .page-wrapper .page-main-header {
   background: $theme-header-color;
   box-shadow: none; //0px 0px 1px 1px rgba(255, 255, 255, 0.7);
+  z-index: 1033;
 }
 
 .sportimo-form input {
-  /* border: 1px solid #ddd; */
+  text-align: center;
   border-radius: 0px;
   padding: 5px 10px;
   opacity: 0.65;
@@ -464,6 +488,27 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.icn-user {
+  background: url("~src/assets/images/sportimo/icon-user.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-gear {
+  background: url("~src/assets/images/sportimo/icon-gear.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-logo {
+  background: url("~src/assets/images/sportimo/icon-logo.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 /* Current/active navbar link */
 
 .app-navbar a.active {
@@ -699,4 +744,71 @@ body .page-wrapper .page-main-header {
   float: none;
   border-color: #000000;
 
+}
+
+/**=====================
+     04. Side Bar
+==========================**/
+.page-wrapper .page-body-wrapper .page-sidebar {
+  background: #212a34;
+  box-shadow: -6px 0px 5px -3px rgba(0, 0, 0, 0.75);
+}
+
+.menu-icon{
+  width: 25px;
+  height: 16px;
+  float: left;
+  margin-top: 0 !important;
+  margin-right: 15px !important;
+}
+
+.sidebar-header{
+  background-color: #3b4655;
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#404b58+1,36414f+9,374250+100 */
+background: #404b58; /* Old browsers */
+background: -moz-linear-gradient(top,  #404b58 1%, #36414f 9%, #374250 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #404b58 1%,#36414f 9%,#374250 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #404b58 1%,#36414f 9%,#374250 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404b58', endColorstr='#374250',GradientType=0 ); /* IE6-9 */
+border-bottom: #1f252e 1px solid;
+  padding: 0 20px;
+}
+
+/**=====================
+     05. Modals
+==========================**/
+.modal-appear .modal-card{
+  animation-name: modalSlideInUp;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
+
+@-webkit-keyframes modalSlideInUp {
+  from {
+    -webkit-transform: translate3d(-50%, 50%, 0);
+    transform: translate3d(-50%, 50%, 0);
+    opacity: 0;
+    visibility: visible;
+  }
+
+  to {
+    opacity:1;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+@keyframes modalSlideInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, 50%, 0);
+    transform: translate3d(-50%, 50%, 0);
+    visibility: visible;
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+  }
 }

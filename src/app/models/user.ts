@@ -15,4 +15,5 @@ export class User {
     pincode: string;
     picture: string;
     subscription: string;
+    wallet: Number;
 }

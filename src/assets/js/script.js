@@ -4,12 +4,12 @@
      Mobile Menu & Search
   ----------------------------------------*/
 $(document).ready(function(){
-    $(".mobile-toggle").click(function(){
-        $(".nav-menus").toggleClass("open");
-    });
-    $(".mobile-search").click(function(){
-        $(".form-control-plaintext").toggleClass("open");
-    });
+    // $(".mobile-toggle").click(function(){
+    //     $(".nav-menus").toggleClass("open");
+    // });
+    // $(".mobile-search").click(function(){
+    //     $(".form-control-plaintext").toggleClass("open");
+    // });
 });
 
 /*----------------------------------------
@@ -25,6 +25,19 @@ $(document).ready(function(){
         $(".page-sidebar").addClass("page-sidebar-open");
       }
     });
+
+    $(".mobile-toggle").click(function(){
+      $('.sidebar-background').toggleClass('hidden');
+      $(".page-sidebar").addClass("page-sidebar-open");
+      $(".page-body-wrapper").toggleClass("sidebar-close");
+    });
+
+    $(".sidebar-background").click(function(){
+      $('.sidebar-background').toggleClass('hidden');
+      $(".page-sidebar").addClass("page-sidebar-open");
+      $(".page-body-wrapper").toggleClass("sidebar-close");
+    });
+  
 });
 
 

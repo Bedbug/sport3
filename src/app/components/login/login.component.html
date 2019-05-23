@@ -1,0 +1,48 @@
+<div class="modal-background hidden" id="app-login-modal">
+  <div class="modal-card">
+    <div class="modal-card-header">
+      <div class="modal-title">LOGIN</div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="login-form-body">
+        <div class="login-form-info">Please enter you Username and Password</div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="sportimo-form">
+          <div class="login-form-content">
+            <div class="form-group text-center">
+              <label class="">Username/Email</label>
+              <input type="text" formControlName="username" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" required>
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="">Password/Email</label>
+              <input type="password" formControlName="password" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" required>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="login-form-buttons">
+            <div class="form-group">
+              <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button" >
+                <div class="loader-label" [class.btn-active]="isSubmitting">
+                  <span class="button-label">Play</span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

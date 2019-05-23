@@ -1,3 +1,34 @@
-<p>
-  contest-page-leaders works!
-</p>
+<div class="leaders-table">
+  <div class="leaders-header">
+    <div class="leaders-cell p-l-20 text-left" style="width: 100px">Rank</div>
+    <div class="leaders-cell">Player</div>
+    <div class="leaders-cell text-right p-r-20">Points</div>
+  </div>
+</div>
+<div class="leaders-scrollable-group" (scroll)="checkScroll()">
+  <div class="leaders-table">
+    <div class="leaders-row" [class.leaders-user]="i.user" *ngFor="let i of cellArray">
+      <div class="leaders-cell p-l-20 text-left cell-border" style="width: 100px">237</div>
+      <div class="leaders-cell cell-border">
+        <div class="leaders-player-cell">
+          <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
+          <div>George Best</div>
+        </div>
+      </div>
+      <div class="leaders-cell  text-right p-r-20 cell-border">5482</div>
+    </div>
+  </div>
+</div>
+<div class="leaders-table-user">
+    <div class="leaders-row leaders-user">
+      <div class="leaders-cell p-l-20 text-left cell-border" style="width: 100px">237</div>
+      <div class="leaders-cell cell-border">
+        <div class="leaders-player-cell">
+          <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
+          <div>George Best</div>
+        </div>
+      </div>
+      <div class="leaders-cell  text-right p-r-20 cell-border">5482</div>
+    </div>
+  </div>
+

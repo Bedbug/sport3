@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { first } from 'rxjs/operators';
+import { User } from 'src/app/models/user';
 
 declare var $: any;
 
@@ -19,6 +20,9 @@ export class HeaderComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  showLoginForm = false;
+  currentUser: User;
+
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -42,6 +46,10 @@ export class HeaderComponent implements OnInit {
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
+
+    this.authenticationService.currentUser.subscribe(x=>{
+      this.currentUser = x;
+    })
   }
 
   // convenience getter for easy access to form fields

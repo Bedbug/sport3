@@ -17,7 +17,7 @@ $(document).ready(function(){
              title: 'TEST TITLE',
              description: 'TEST DESCRIPTION',
          },
-         path: './assets/json/data.json'
+         path: './assets/json/loader.json'
      };
      // lottie.setQuality('low');
      anim = lottie.loadAnimation(animData);
