@@ -593,9 +593,9 @@ body .page-wrapper .page-main-header {
   cursor: pointer;
 }
 
-.contest-item-container:hover {
-  border: 5px solid transparent;
-}
+// .contest-item-container:hover {
+//   border: 5px solid transparent;
+// }
 
 .contest-header {
   font-size: 15px;
@@ -628,12 +628,15 @@ body .page-wrapper .page-main-header {
 }
 
 .contest-details p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 14px;
 }
 
 .contest-details p:first-child {
   margin-top: 10px;
+  height: 125px;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .contest-details p:last-child {
