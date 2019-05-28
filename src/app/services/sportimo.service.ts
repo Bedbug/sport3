@@ -37,7 +37,6 @@ import demo from 'src/assets/json/demo.json';
 })
 export class SportimoService {
   
-
   private cachedContests: BehaviorSubject<Contest[]>;
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
 
@@ -328,4 +327,22 @@ export class SportimoService {
   clearMatch() {
     this.currentLiveMatch.next(null);
   }
+
+
+
+/*-----------------------------------------------------------------------------------
+   Standings / Teams / Players
+ ----------------------------------------------------------------------------------- */
+  getStandings(leagueId: string) {
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/standings/${leagueId}`);  
+    // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/standings/${leagueId}`);     
+      
+  }
+  getPlayer(playerId: string) {
+    throw new Error("Method not implemented.");
+  }
+  getTeam(teamId: string) {
+    throw new Error("Method not implemented.");
+  }
+
 }

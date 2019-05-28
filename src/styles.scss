@@ -587,6 +587,29 @@ body .page-wrapper .page-main-header {
 }
 
 /**=====================
+     02. Main
+==========================**/
+
+.main-pages-header{
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid $theme-color;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 50px;
+}
+
+.main-pages-scrollarea{
+  height: calc(100vh - 144px);
+  overflow: scroll;
+  margin: 0 0;
+  padding-top: 15px;
+}
+
+
+/**=====================
      02. Contests
 ==========================**/
 .contest-list-item {

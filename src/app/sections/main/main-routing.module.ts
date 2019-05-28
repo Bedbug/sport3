@@ -26,6 +26,10 @@ const routes: Routes = [
         path: 'standings',
         component: MainPageStandingsComponent
       },
+      // {
+      //   path: 'standings/league/:leageid',
+      //   component: MainPageStandingsComponent
+      // },
       {
         path: '*',
         component: MainPageHomeComponent

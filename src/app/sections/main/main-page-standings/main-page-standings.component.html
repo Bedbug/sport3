@@ -1,3 +1,44 @@
-<p>
-  main-page-standings works!
-</p>
+<div class="background"></div>
+<div class="row" style="position: relative">
+  <div *ngIf="currentView == 0" class="main-pages-header">Standings</div>
+  <div *ngIf="currentView == 1" class="main-pages-header">{{currentStandings?.name['en']}}</div>
+  <!-- Leagues -->
+  <div class="main-pages-scrollarea container" *ngIf="currentView == 0">
+    <div class="league-item isClickable" *ngFor="let league of leagues" (click)="showStantings(league.id)">
+      <div class="img"><img src="{{league?.img}}" alt=""></div>
+      <div class="info">
+        <div class="title">{{league?.title['en']}}</div>
+        <div class="text">{{league?.text['en']}}</div>
+      </div>
+    </div>
+  </div>
+  <!-- Standings -->
+  <div *ngIf="currentView == 1" style="width:100%">
+    <div class="standings-table">
+      <div class="standings-header">
+        <div class="cell-50 header-rank">#</div>
+        <div class="cell header-name">Team</div>
+        <div class="cell-50 header-p">P</div>
+        <div class="cell-50 header-w">W</div>
+        <div class="cell-50 header-d">D</div>
+        <div class="cell-50 header-l">L</div>
+        <div class="cell-50 header-gd">GD</div>
+        <div class="cell-50 header-pts">Pts</div>
+      </div>
+    </div>
+    <div class="standings-scrollarea">
+      <div class="standings-table">
+        <div class="standings-row isClickable" *ngFor="let team of currentStandings?.teams; let i = index">
+          <div class="cell-50 standings-rank">{{i+1}}</div>
+          <div class="cell standings-name">{{team.teamName['en']}}</div>
+          <div class="cell-50 standings-p">{{team.gamesPlayed}}</div>
+          <div class="cell-50 standings-w">{{team.wins}}</div>
+          <div class="cell-50 standings-d">{{team.ties}}</div>
+          <div class="cell-50 standings-l">{{team.losses}}</div>
+          <div class="cell-50 standings-gd">{{team.goalsFor-team.goalsAgainst}}</div>
+          <div class="cell-50 standings-pts">{{team.points}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
