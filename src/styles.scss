@@ -237,7 +237,7 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-.icn-contests {
+.icn-contests, .icn-contest {
   background: url("~src/assets/images/sportimo/icon-contests.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
@@ -508,6 +508,14 @@ body .page-wrapper .page-main-header {
   text-indent: -9999px;
   background-size: contain;
 }
+
+.icn-cross {
+  background: url("~src/assets/images/sportimo/icon-cross.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 
 /* Current/active navbar link */
 

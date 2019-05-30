@@ -339,10 +339,14 @@ export class SportimoService {
       
   }
   getPlayer(playerId: string) {
-    throw new Error("Method not implemented.");
+    // return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/players/${playerId}`);  
+    return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/players/${playerId}`);  
   }
   getTeam(teamId: string) {
-    throw new Error("Method not implemented.");
+    console.log("Team",teamId);
+    // return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/full`);    
+    return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/${teamId}/full`);    
+    // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/588a8d890bb50f00feda8dc0/full`);    
   }
 
 }

@@ -1,3 +1,5 @@
+@import 'src/variables.scss';
+
 .background{
     display: block;
     position: absolute;
@@ -8,6 +10,11 @@
     overflow: auto;
     background-color: black;
     background-color: rgba(0, 0, 0, 0.4);
+}
+
+.main-pages-header{
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .league-item {
@@ -65,6 +72,10 @@
     display: table-row;
     height: 36px;
     color: #ffffff;
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 16px;
+
 }
 .cell-50{
     display: table-cell;
@@ -84,3 +95,139 @@
 .standings-header .header-name{
     min-width: 50%;
 }
+
+.standings-pts{
+    color: $theme-color;
+}
+
+.nav {
+    display: flex;
+    align-items: stretch;
+    background: rgba(0, 0, 0, 0.58);
+    height: 30px;
+    justify-content: space-evenly;
+  }
+  
+  .nav-item {
+    flex-grow: 1;
+    margin: auto;
+  }
+  
+  .nav .nav-link {
+    padding: 0;
+    height: 30px;
+    line-height: 29px;
+    border: 0;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .nav .nav-link.active {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    color: $theme-color;
+    border-radius: 0;
+    border-bottom: solid 2px #ffc531;
+  }
+  
+  .nav .nav-link.active div {
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+  }
+  
+  .player-card{
+    margin-bottom: 10px;
+}
+
+.player-card-header{
+    display:flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    height: 30px;
+    background-image: linear-gradient(-180deg, #3F4856 0%, #28313D 100%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    // border-bottom: 2px inset rgba(0,0,0,0.4);
+    border-bottom: 1px solid #000000;
+}
+.player-card-header img{
+    width:30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.player-card-body{
+    border-top: 1px inset rgba(255,255,255,0.1);
+    background-color:RGBA(22, 31, 43, 0.8);
+    height: 50px;
+    padding: 5px 15px;
+}
+
+.player-data-header{
+    color: $theme-color;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.player-data{
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.stat-card{
+    border-top: 1px inset rgba(255,255,255,0.1);
+    border-bottom: 1px solid #000000;
+    background-color:RGBA(22, 31, 43, 0.8);    
+    padding: 15px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.stat-number{
+    color: #ffffff;
+    text-align: center;
+}
+
+.stat-text{
+    color: $theme-color;
+    text-align: center;
+}
+
+.stat-subcard{
+    border-top: 1px inset rgba(255,255,255,0.1);
+    border-bottom: 1px solid #000000;
+    background-color:RGBA(22, 31, 43, 0.9); 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.stat-icon{
+    flex-grow: 1;
+    flex-basis: 33%;
+}
+
+.stat-text-1{
+    flex-grow: 1;
+    flex-basis: 33%;
+}
+
+.stat-text-2{
+    flex-grow:2;
+    flex-basis: 77%;
+}
+
+
+.team-stat{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+

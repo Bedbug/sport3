@@ -16,8 +16,6 @@ export class SubscribeNoticeComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, private subscriptionService: SubscriptionService) { }
 
   ngOnInit() {
-    console.log("Check State");
-    
     this.checkState();
   }
 

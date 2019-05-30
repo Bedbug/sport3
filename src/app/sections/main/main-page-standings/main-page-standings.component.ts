@@ -36,7 +36,8 @@ export class MainPageStandingsComponent implements OnInit {
   ]
 
   currentStandings: any;
-
+  currentPlayer:any;
+  currentTeam:any;
   currentView = this.StandingsViews['Leagues'];
 
   constructor(private sportimoService: SportimoService, private route: ActivatedRoute, private router: Router) { }
@@ -44,14 +45,15 @@ export class MainPageStandingsComponent implements OnInit {
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
 
-      this.currentStandings = null
+      this.currentStandings = null;
+      this.currentTeam = null;
+      this.currentPlayer = null;
 
       let leagueId = params.get("leagueId") || null;
       if (leagueId) {
         console.log(leagueId);
         this.currentView = this.StandingsViews['Standings'];
         this.sportimoService.getStandings(leagueId).subscribe(x => {
-          console.log(x);
           this.currentStandings = x;
         }
         );
@@ -59,25 +61,23 @@ export class MainPageStandingsComponent implements OnInit {
       }
 
       let teamId = params.get("teamId") || null;
-      if (teamId) {
-        console.log(teamId);
+      
+      if (teamId) {        
         this.currentView = this.StandingsViews['Team'];
-        // this.sportimoService.getTeam(teamId).pipe(map(x => {
-        //   console.log(x);
-        //   this.currentStandings = x;
-        // }
-        // ));
+        this.sportimoService.getTeam(teamId).subscribe(x => {
+          this.currentTeam = x;
+        }
+        );
         return;
       }
 
       let playerId = params.get("playerId") || null;
-      if (teamId) {
+      if (playerId) {
         this.currentView = this.StandingsViews['Player'];
-        // this.sportimoService.getPlayer(playerId).pipe(map(x => {
-        //   console.log(x);
-        //   this.currentStandings = x;
-        // }
-        // ));
+        this.sportimoService.getPlayer(playerId).subscribe(x => {
+          this.currentPlayer = x.player;
+        }
+        );
         return;
       }
 
@@ -99,4 +99,22 @@ export class MainPageStandingsComponent implements OnInit {
     this.router.navigate([], { queryParams: { playerId: playerId } });
   }
 
+  get getGK(){
+    if(this.currentTeam)
+    return this.currentTeam.players.filter(x=>x.position =="Goalkeeper");
+    return [];
+  }
+  get getDEF(){
+    if(this.currentTeam)
+    return this.currentTeam.players.filter(x=>x.position =="Defender");
+    return [];
+  }get getMED(){
+    if(this.currentTeam)
+    return this.currentTeam.players.filter(x=>x.position =="Midfielder");
+    return [];
+  }get getFW(){
+    if(this.currentTeam)
+    return this.currentTeam.players.filter(x=>x.position =="Forward" || x.position =="Attacker");
+    return [];
+  }
 }

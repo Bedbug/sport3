@@ -16,11 +16,10 @@ export class ConfigService {
             this._env = 'development';
             if (environment.production)
                 this._env = 'production';
-            console.log(this._env)
+
             this._http.get('assets/config/' + this._env + '.json')               
                 .subscribe((data) => {
                     this._config = data.json();
-                    console.log(this._config["API_ENDPOINTS"]);
                     resolve(true);
                 },
                 (error: any) => {
