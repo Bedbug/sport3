@@ -1,6 +1,19 @@
-<div class="row">
+<div class="background"></div>
+<div class="row" style="position: relative">
   <div class="main-pages-header">Achievements</div>
   <div class="main-pages-scrollarea container">
-   
+
+    <div class="achievement-item isClickable" *ngFor="let achievement of achievements">
+      <div class="img"><img src="{{achievement?.icon}}" alt=""></div>
+      <div class="info">
+        <div class="title">{{achievement?.title['en']}}</div>
+        <div class="text">{{achievement?.text['en']}}</div>
+      </div>
+      <div class="progress-text">{{achievement?.has+"/"+achievement?.total}}</div>
+      <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar" [style.width]="(getPercent(achievement)) + '%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+
   </div>
 </div>

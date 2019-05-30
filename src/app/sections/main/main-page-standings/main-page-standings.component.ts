@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 
@@ -36,13 +37,21 @@ export class MainPageStandingsComponent implements OnInit {
   ]
 
   currentStandings: any;
-  currentPlayer:any;
-  currentTeam:any;
+  currentPlayer: any;
+  currentTeam: any;
   currentView = this.StandingsViews['Leagues'];
+  isFavoriteTeam: boolean = false;
+  isLoggedIn: boolean = false;
+  isLoading: boolean;
 
-  constructor(private sportimoService: SportimoService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private sportimoService: SportimoService, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+
+    this.authenticationService.currentUser.subscribe(user => {
+      this.isLoggedIn = user != null;
+    });
+
     this.route.queryParamMap.subscribe(params => {
 
       this.currentStandings = null;
@@ -61,11 +70,17 @@ export class MainPageStandingsComponent implements OnInit {
       }
 
       let teamId = params.get("teamId") || null;
-      
-      if (teamId) {        
+
+      if (teamId) {
         this.currentView = this.StandingsViews['Team'];
         this.sportimoService.getTeam(teamId).subscribe(x => {
           this.currentTeam = x;
+          // Check for favorite team
+          this.isFavoriteTeam = false;
+          this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
+            if (team._id == x._id)
+              this.isFavoriteTeam = true;
+          });
         }
         );
         return;
@@ -91,30 +106,43 @@ export class MainPageStandingsComponent implements OnInit {
     this.router.navigate([], { queryParams: { leagueId: leagueId } });
   }
 
-  showTeam(teamId: string){
+  showTeam(teamId: string) {
     this.router.navigate([], { queryParams: { teamId: teamId } });
   }
 
-  showPlayer(playerId: string){
+  showPlayer(playerId: string) {
     this.router.navigate([], { queryParams: { playerId: playerId } });
   }
 
-  get getGK(){
-    if(this.currentTeam)
-    return this.currentTeam.players.filter(x=>x.position =="Goalkeeper");
+  get getGK() {
+    if (this.currentTeam)
+      return this.currentTeam.players.filter(x => x.position == "Goalkeeper");
     return [];
   }
-  get getDEF(){
-    if(this.currentTeam)
-    return this.currentTeam.players.filter(x=>x.position =="Defender");
+  get getDEF() {
+    if (this.currentTeam)
+      return this.currentTeam.players.filter(x => x.position == "Defender");
     return [];
-  }get getMED(){
-    if(this.currentTeam)
-    return this.currentTeam.players.filter(x=>x.position =="Midfielder");
+  } get getMED() {
+    if (this.currentTeam)
+      return this.currentTeam.players.filter(x => x.position == "Midfielder");
     return [];
-  }get getFW(){
-    if(this.currentTeam)
-    return this.currentTeam.players.filter(x=>x.position =="Forward" || x.position =="Attacker");
+  } get getFW() {
+    if (this.currentTeam)
+      return this.currentTeam.players.filter(x => x.position == "Forward" || x.position == "Attacker");
     return [];
+  }
+
+  toggleFavorite() {
+    this.isLoading = true;
+    this.authenticationService.updateFavorites(this.currentTeam, this.isFavoriteTeam).subscribe(response => {
+      this.isLoading = false;
+      this.isFavoriteTeam = false;
+      this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
+        if (team._id == this.currentTeam._id)
+          this.isFavoriteTeam = true;
+      });
+    })
+
   }
 }

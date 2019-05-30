@@ -4,7 +4,19 @@
   <div *ngIf="currentView == 1" class="main-pages-header">{{currentStandings?.name['en']}}</div>
   <div *ngIf="currentView == 2" class="main-pages-header" style="display: flex">
     <div class="col-6">{{currentTeam?.name['en']}}</div>
-    <div class="favorite col-6"><button class="btn btn-sportimo" style="width: 100%">Add to favorites</button></div>
+    <div class="favorite col-6">
+      <!-- <button class="btn btn-sportimo" style="width: 100%">Add to favorites</button> -->
+      
+      <button *ngIf="isLoggedIn && currentTeam" [disabled]="isLoading" (click)="toggleFavorite()" class="btn btn-sportimo" style="width: 100%">
+          <div class="loader-label" [class.btn-active]="isLoading">
+            <span *ngIf="isFavoriteTeam" class="button-label">Remove from favorites</span>
+            <span *ngIf="!isFavoriteTeam" class="button-label">Add to favorites</span>
+            <div class="fadeInLoader">
+              <span class="rotate dotted button-loader"></span>
+            </div>
+          </div>
+        </button>
+    </div>
   </div>
   <div *ngIf="currentView == 3" class="main-pages-header" style="width:100%">{{currentPlayer?.name['en']}}</div>
   <!-- Leagues -->

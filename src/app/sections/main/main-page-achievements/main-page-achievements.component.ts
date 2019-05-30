@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SportimoService } from 'src/app/services/sportimo.service';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-main-page-achievements',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageAchievementsComponent implements OnInit {
 
-  constructor() { }
+  achievements:any[];
 
+  constructor(private sportimoService:SportimoService) { }
+  
   ngOnInit() {
+    this.sportimoService.getAchievements().subscribe(x=>{      
+      this.achievements = x.user.achievements;
+      console.log(this.achievements);
+    });
+  }
+
+  getPercent(achievement:any){
+    return (achievement.has / achievement.total) * 100;
   }
 
 }

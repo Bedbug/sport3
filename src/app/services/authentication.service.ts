@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { User } from '../models/user';
 import { ConfigService } from './config.service';
+import { Team } from '../models/team';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -39,4 +40,27 @@ export class AuthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }
+
+    updateFavorites(team: Team, remove:boolean) {
+        
+        let newTeamFavorites:any[] = this.currentUserSubject.value.favoriteteams;
+        console.log(newTeamFavorites,remove);
+        if(remove){
+            newTeamFavorites = newTeamFavorites.filter(favteam=> favteam._id != team._id);
+        }else{
+            newTeamFavorites.push(team);
+        }
+        
+        this.currentUserSubject.value.favoriteteams = newTeamFavorites;
+        this.currentUserSubject.next(this.currentUserSubject.value);
+
+        let mappedTeams = newTeamFavorites.map(x=>x._id);
+        let putData = {"favoriteteams": mappedTeams};
+    
+        return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
+            .pipe(map(response => {
+                console.log(response);
+               return response;             
+            }));
+      }
 }

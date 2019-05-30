@@ -36,10 +36,11 @@ import demo from 'src/assets/json/demo.json';
   providedIn: 'root'
 })
 export class SportimoService {
+ 
   
-  private cachedContests: BehaviorSubject<Contest[]>;
+  
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
-
+  private cachedContests: BehaviorSubject<Contest[]>;
   private currentMatchId;
   private currentContestId;
 
@@ -349,4 +350,11 @@ export class SportimoService {
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/588a8d890bb50f00feda8dc0/full`);    
   }
 
+/*-----------------------------------------------------------------------------------
+   Achievements
+ ----------------------------------------------------------------------------------- */
+ getAchievements() {
+  return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/stats`);
+  // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/users/${this.authenticationService.currentUserValue._id}/stats`);
+}
 }
