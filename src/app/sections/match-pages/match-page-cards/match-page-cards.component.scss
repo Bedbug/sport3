@@ -96,6 +96,7 @@
 .card-scroll-list{
   overflow-y: scroll;
   height: calc(100vh - 239px);
+  -webkit-overflow-scrolling: touch;
 }
 
 @if $showContestInfoOnMatches == true{

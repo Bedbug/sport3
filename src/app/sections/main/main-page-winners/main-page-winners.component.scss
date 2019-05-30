@@ -5,7 +5,7 @@
     height: calc(100vh - 144px);
     // background-color: #3F4856;
     overflow: scroll;
-
+    -webkit-overflow-scrolling: touch;
 }
 
 .winner-card{

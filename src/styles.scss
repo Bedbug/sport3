@@ -612,6 +612,7 @@ body .page-wrapper .page-main-header {
 .main-pages-scrollarea{
   height: calc(100vh - 144px);
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   margin: 0 0;
   padding-top: 15px;
 }
