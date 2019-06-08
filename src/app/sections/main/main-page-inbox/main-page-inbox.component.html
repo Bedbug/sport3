@@ -1,3 +1,16 @@
-<p>
-  main-page-inbox works!
-</p>
+<div class="background"></div>
+<div class="row" style="position: relative">
+  <div class="main-pages-header" translate>Messages</div>
+  <div class="main-pages-scrollarea container">
+    <div class="messsage-card" [class.unread]="!message.read"  *ngFor="let message of messages">
+      <div class="message-card-side">
+        <div class="icn-mail"></div>
+        <div class="dot">•</div>
+      </div>
+      <div class="message-card-main">
+        <div class="title">{{message.title[translate.currentLang]}}</div>
+        <div class="date">{{message.created | date:"dd/MM/yyy hh:mm"}}</div>
+        <div class="text" [innerHTML] ="message.msg[translate.currentLang]"></div>
+      </div>
+    </div>
+  </div>

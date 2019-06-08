@@ -431,4 +431,11 @@ export class SportimoService {
   getFavoriteTeamData(teamId: string) {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/favorite`);
   }
+
+  /*-----------------------------------------------------------------------------------
+     Inbox
+   ----------------------------------------------------------------------------------- */
+  getMessages(){
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/messages`);
+  }
 }
