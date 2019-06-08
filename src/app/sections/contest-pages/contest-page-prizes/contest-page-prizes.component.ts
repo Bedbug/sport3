@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { Contest } from 'src/app/models/contest';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contest-page-prizes',
@@ -10,47 +11,57 @@ import { Contest } from 'src/app/models/contest';
 })
 export class ContestPagePrizesComponent implements OnInit {
 
-  selectedPrize:any = null;
+  selectedPrize: any = null;
 
-  prizes:any[]=[
+  prizes: any[] = [
     {
-      rank:"1st Prize",
-      image:"https://via.placeholder.com/640x450",
-      title:"Your favorite Team Jerseys",
-      text:"Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."
+      position: { from: 1 },
+      prize: {
+        picture: "https://via.placeholder.com/640x450",
+        name:{en: "Your favorite Team Jerseys"},
+        text:{en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."}
+      }
     },
     {
-      rank:"2nd Prize",
-      image:"https://via.placeholder.com/640x450",
-      title:"4G Mobile Data",
-      text:"Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."
+      position: { from: 2 },
+      prize: {
+        picture: "https://via.placeholder.com/640x450",
+        name:{en: "4G Mobile Data"},
+        text:{en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."}
+      }
     },
     {
-      rank:"3d Prize",
-      image:"https://via.placeholder.com/640x450",
-      title:"100 signed autographs",
-      text:"Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."
-    } 
+      position: { from: 3 },
+      prize: {
+        picture: "https://via.placeholder.com/640x450",
+        name:{en: "100 signed autographs"},
+        text:{en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."}
+      }
+    }
   ]
-  
-  constructor(private route:ActivatedRoute, private sportimoService:SportimoService) { }
+
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private translate:TranslateService) { }
 
   contestDetails: Contest;
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {      
+    this.route.paramMap.subscribe(params => {
       this.sportimoService.getContestQuickDetails(params.get("contestId"))
-      .subscribe(result => {
-        this.contestDetails = result;
-      });
+        .subscribe(result => {
+          this.contestDetails = result;
+          this.sportimoService.getContestPrizes(this.contestDetails._id).subscribe(prizes => {
+            this.prizes = prizes;
+          }
+          );
+        });
     })
   }
 
-  selectPrize(prize:any){
+  selectPrize(prize: any) {
     this.selectedPrize = prize;
   }
 
-  cancel(){
+  cancel() {
     this.selectedPrize = null;
   }
 }

@@ -1,0 +1,400 @@
+<div class="background"></div>
+<div class="row" style="position: relative">
+  <div *ngIf="currentView == 0" translate class="main-pages-header">My Teams</div>
+  <div *ngIf="currentView == 1" class="main-pages-header" style="display: flex">
+    <div class="col-6">{{currentTeam?.name[translate.currentLang]}}</div>
+    <div class="favorite col-6">
+      <!-- <button class="btn btn-sportimo" style="width: 100%">Add to favorites</button> -->
+
+      <button *ngIf="isLoggedIn && currentTeam" [disabled]="isLoading" (click)="toggleFavorite()"
+        class="btn btn-sportimo" style="width: 100%">
+        <div class="loader-label" [class.btn-active]="isLoading">
+          <span *ngIf="isFavoriteTeam" translate class="button-label">Remove from favorites</span>
+          <span *ngIf="!isFavoriteTeam" translate class="button-label">Add to favorites</span>
+          <div class="fadeInLoader">
+            <span class="rotate dotted button-loader"></span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Teams -->
+  <div class="main-pages-scrollarea container" *ngIf="currentView == 0">
+    <div class="winner-card isClickable" *ngFor="let team of favoriteTeams" (click)="viewTeam(team._id)">
+      <div class="winner-card-header col-12">
+        <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
+        <div>{{team.name[translate.currentLang]}}</div>
+      </div>
+      <!-- <div class="winner-card-body">
+        <div class="winner-prize">PS4 Pro</div>
+        <div class="row">
+          <div class="col-8 prize-info">1st Prize, UEFA Champions LEgaue</div>
+          <div class="col-4 prize-date text-right">28/06/2018</div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <!-- Team -->
+  <div *ngIf="currentView == 1" style="width:100%">
+    <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-bottom: 0">
+      <li class="nav-item">
+        <a class="nav-link active" id="players-tab" data-toggle="tab" href="#players" role="tab" aria-controls="players"
+          aria-selected="true">
+          <div>Players</div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="stats-tab" data-toggle="tab" href="#stats" role="tab" aria-controls="stats"
+          aria-selected="false">
+          <div>Stats</div>
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="players" role="tabpanel" aria-labelledby="players-tab">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
+              aria-selected="true">
+              <div>All</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="gk-tab" data-toggle="tab" href="#gk" role="tab" aria-controls="gk"
+              aria-selected="false">
+              <div>GK</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="def-tab" data-toggle="tab" href="#def" role="tab" aria-controls="def"
+              aria-selected="false">
+              <div>DEF</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="med-tab" data-toggle="tab" href="#med" role="tab" aria-controls="med"
+              aria-selected="false">
+              <div>MED</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="fw-tab" data-toggle="tab" href="#fw" role="tab" aria-controls="fw"
+              aria-selected="false">
+              <div>FW</div>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+            <div class="container">
+              <div *ngFor="let player of currentTeam?.players">
+                <div class="player-card" (click)="showPlayer(player._id)">
+                  <div class="player-card-header col-12">
+                    <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                    <div>{{player.name[translate.currentLang]}}</div>
+                    <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
+                  </div>
+                  <div class="player-card-body">
+                    <div class="player-data-header row">
+                      <div class="col-4">Height</div>
+                      <div class="col-4">Weight</div>
+                      <div class="col-4">Born</div>
+                    </div>
+                    <div class="row player-data">
+                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
+                      <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                      <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="gk" role="tabpanel" aria-labelledby="gk-tab">
+            <div class="container">
+              <div *ngFor="let player of getGK">
+                <div class="player-card" (click)="showPlayer(player._id)">
+                  <div class="player-card-header col-12">
+                    <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                    <div>{{player.name[translate.currentLang]}}</div>
+                    <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
+                  </div>
+                  <div class="player-card-body">
+                    <div class="player-data-header row">
+                      <div class="col-4">Height</div>
+                      <div class="col-4">Weight</div>
+                      <div class="col-4">Born</div>
+                    </div>
+                    <div class="row player-data">
+                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
+                      <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                      <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="def" role="tabpanel" aria-labelledby="def-tab">
+            <div class="container">
+              <div *ngFor="let player of getDEF">
+                <div class="player-card" (click)="showPlayer(player._id)">
+                  <div class="player-card-header col-12">
+                    <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                    <div>{{player.name[translate.currentLang]}}</div>
+                    <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
+                  </div>
+                  <div class="player-card-body">
+                    <div class="player-data-header row">
+                      <div class="col-4">Height</div>
+                      <div class="col-4">Weight</div>
+                      <div class="col-4">Born</div>
+                    </div>
+                    <div class="row player-data">
+                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
+                      <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                      <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="med" role="tabpanel" aria-labelledby="med-tab">
+            <div class="container">
+              <div *ngFor="let player of getMED">
+                <div class="player-card" (click)="showPlayer(player._id)">
+                  <div class="player-card-header col-12">
+                    <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                    <div>{{player.name[translate.currentLang]}}</div>
+                    <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
+                  </div>
+                  <div class="player-card-body">
+                    <div class="player-data-header row">
+                      <div class="col-4">Height</div>
+                      <div class="col-4">Weight</div>
+                      <div class="col-4">Born</div>
+                    </div>
+                    <div class="row player-data">
+                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
+                      <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                      <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="fw" role="tabpanel" aria-labelledby="fw-tab">
+            <div class="container">
+              <div *ngFor="let player of getFW">
+                <div class="player-card" (click)="showPlayer(player._id)">
+                  <div class="player-card-header col-12">
+                    <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                    <div>{{player.name[translate.currentLang]}}</div>
+                    <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
+                  </div>
+                  <div class="player-card-body">
+                    <div class="player-data-header row">
+                      <div class="col-4">Height</div>
+                      <div class="col-4">Weight</div>
+                      <div class="col-4">Born</div>
+                    </div>
+                    <div class="row player-data">
+                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
+                      <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                      <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="stats" role="tabpanel" aria-labelledby="stats-tab">
+        <div class="container p-t-15">
+          <div class="stat-card" style="margin-bottom: 5px;">
+            <div class="team-stat">
+              <div class="icn-contest" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Games played</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-goal" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Total goals</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card" style="margin-bottom: 5px;">
+            <div class="team-stat">
+              <div class="icn-shot" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Shots on Target</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-cross" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Crosses</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card" style="margin-bottom: 5px;">
+            <div class="team-stat">
+              <div class="icn-corner" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Corners</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-offside" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Offsides</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-penalty" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Penalties</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card" style="margin-bottom: 5px;">
+            <div class="team-stat">
+              <div class="icn-foul" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Fouls</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-yellow" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Yellow cards</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-red" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Red cards</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Player -->
+  <div *ngIf="currentView == 3" style="width:100%">
+    <div class="player-card" style="margin-bottom: 0">
+      <div class="player-card-header col-12">
+        <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+        <div>{{currentPlayer?.name[translate.currentLang]}}</div>
+        <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{currentPlayer?.position}}</div>
+      </div>
+      <div class="player-card-body">
+        <div class="player-data-header row">
+          <div class="col-4">Height</div>
+          <div class="col-4">Weight</div>
+          <div class="col-4">Born</div>
+        </div>
+        <div class="row player-data">
+          <div class="col-4">{{currentPlayer?.personalData.weight?.kilograms}}</div>
+          <div class="col-4">{{currentPlayer?.personalData.height?.centimeters}}</div>
+          <div class="col-4">{{currentPlayer?.personalData.birth?.birthDate.full}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="player-card-header col-12 text-center">
+      <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+      <div>Career Statistics</div>
+    </div>
+    <!-- Games -->
+    <div class="stat-card">
+      <div class="icn-contests stat-icon" style="height: 40px"></div>
+      <div class="stat-text-1">
+        <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.gamesPlayed}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Matches played</div>
+      </div>
+      <div class="stat-text-1">
+        <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.gamesStarted}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Starting lineup</div>
+      </div>
+    </div>
+    <div class="stat-subcard" style="margin-bottom: 5px;">
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.touchesPasses}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Passes</div>
+      </div>
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.assistsTotal}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Assists</div>
+      </div>
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.touchesInterceptions}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Interceptions</div>
+      </div>
+    </div>
+    <!-- Goals -->
+    <div class="stat-card">
+      <div class="stat-icon icn-goal" style="height: 60px"></div>
+      <div class="stat-text-2">
+        <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.goalsTotal}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Total goals</div>
+      </div>
+    </div>
+    <div class="stat-subcard" style="margin-bottom: 5px;">
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsKicked}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Kicked</div>
+      </div>
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsHeaded}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Headers</div>
+      </div>
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsGameWinning}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Winning</div>
+      </div>
+    </div>
+    <!-- Fouls -->
+    <div class="stat-card">
+      <div class="icn-foul stat-icon" style="height: 60px"></div>
+      <div class="stat-text-1">
+        <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.foulsSuffered}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Fouls suffered</div>
+      </div>
+      <div class="stat-text-1">
+        <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.foulsCommitted}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Fouls commited</div>
+      </div>
+    </div>
+    <div class="stat-subcard" style="margin-bottom: 5px;">
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.yellowCards}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Yellow cards</div>
+      </div>
+      <div>
+        <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.redCards}}</div>
+        <div translate class="stat-text" style="font-size: 12px">Red Cards</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,22 +14,26 @@
             <!-- <div *ngIf="!menuItem.authenticate || isLoggedIn"> -->
         <!-- Sub -->
         <a href="javascript:void(0)" class="sidebar-header" *ngIf="menuItem.type === 'sub'">
-            <i [class]="menuItem.icon"></i><span>{{menuItem.title}} <span class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
+            <i [class]="menuItem.icon"></i>
+            <span>
+                <span [translate]="menuItem.title"></span>
+                <span class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span>
+            </span>
             <i class="fa fa-angle-right pull-right" *ngIf="menuItem.children"></i>
         </a>
         <!-- Link -->
         <a [routerLink]="!menuItem.type ? null : [menuItem.path]" routerLinkActive="active-option" class="sidebar-header" *ngIf="menuItem.type === 'link'">
-            <i [class]="menuItem.icon"></i><span>{{menuItem.title}} <span style="margin-left:10px" class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
+            <i [class]="menuItem.icon"></i><span><span [translate]="menuItem.title"></span> <span style="margin-left:10px" class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
             <i class="fa fa-angle-right pull-right" *ngIf="menuItem.children"></i>
         </a>
         <!-- External Link -->
         <a href="{{ !menuItem.type ? null : menuItem.path }}" class="sidebar-header" *ngIf="menuItem.type === 'extLink'">
-            <i [class]="menuItem.icon"></i><span>{{menuItem.title}} <span class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
+            <i [class]="menuItem.icon"></i><span><span [translate]="menuItem.title"></span> <span class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
             <i class="fa fa-angle-right pull-right" *ngIf="menuItem.children"></i>
         </a>
         <!-- External Tab Link -->
         <a href="{{ !menuItem.type ? null : menuItem.path }}" target="_blank" class="sidebar-header" *ngIf="menuItem.type === 'extTabLink'">
-            <i [class]="menuItem.icon"></i><span>{{menuItem.title}} <span class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
+            <i [class]="menuItem.icon"></i><span><span [translate]="menuItem.title"></span> <span class="badge badge-{{menuItem.badgeType}} ml-3" *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
             <i class="fa fa-angle-right pull-right" *ngIf="menuItem.children"></i>
         </a>
         <!-- 2nd Level Menu -->
@@ -37,22 +41,23 @@
             <li *ngFor="let childrenItem of menuItem.children">
                 <!-- Sub -->
                 <a href="javascript:void(0)" *ngIf="childrenItem.type === 'sub'">
-                  {{childrenItem.title}} <span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                        <span [translate]="childrenItem.title"></span>
+                  <span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
                   <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
                 <!-- Link -->
                 <a [routerLink]="!childrenItem.type ? null : [childrenItem.path]" *ngIf="childrenItem.type === 'link'" routerLinkActive="active-option" [routerLinkActiveOptions]="{exact: true}">
-                  {{childrenItem.title}} <span style="margin-left:10px;border-radius: 10px;background-color: #ff0000" class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                        <span [translate]="childrenItem.title"></span><span style="margin-left:10px;border-radius: 10px;background-color: #ff0000" class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
                   <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
                 <!-- External Link -->
                 <a href="{{ !childrenItem.type ? null : childrenItem.path }}" *ngIf="childrenItem.type === 'extLink'" routerLinkActive="active-option" [routerLinkActiveOptions]="{exact: true}">
-                  {{childrenItem.title}} <span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                        <span [translate]="childrenItem.title"></span><span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
                   <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
                 <!-- External Tab Link -->
                 <a href="{{ !childrenItem.type ? null : childrenItem.path }}" target="_blank" *ngIf="childrenItem.type === 'extTabLink'">
-                  {{childrenItem.title}} <span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                        <span [translate]="childrenItem.title"></span><span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
                   <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
                 <!-- 3rd Level Menu -->
@@ -80,7 +85,8 @@
          <!-- Authenticate -->
          <a href="javascript:void(0)" class="sidebar-header" (click)="toggleUserStatus()"> 
                 <i class="menu-icon icon-power-off text-center"></i>
-                {{isLoggedIn?'Logout':'Login'}}
+                <span *ngIf="isLoggedIn" translate>Logout</span>
+                <span *ngIf="!isLoggedIn" translate>Login</span>        
           </a>
     </li>
 </ul> 

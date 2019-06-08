@@ -72,18 +72,27 @@
 }
 .progress {
   border-radius: 0;
-  height: 3px;
+  height: 2px;
   background-color: #969696 !important;
-  margin-left: 67px !important;
+  @if $cardTimersHaveLeftMargin == true {
+    margin-left: 67px !important;
+  }
   position: relative;
-  bottom: 6px;
+  bottom: 3px;
 }
 .progress-bar {
   background-color: #969696 !important;
   // margin-left: 67px !important;
 }
-.bg-card-timer {
+.bg-card-timer-red {
   background-color: #ee0000 !important;
+}
+.bg-card-timer-green {
+  background-color: #00ee00 !important;
+}
+
+.bg-card-activation-timer {
+  background-color: $theme-color !important;
 }
 
 .not-active .details,

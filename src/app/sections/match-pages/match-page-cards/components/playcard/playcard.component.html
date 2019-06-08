@@ -3,7 +3,7 @@
     <div [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
   </div>
   <div class="card-name">
-    {{data.title['en']}}
+    {{data.title[translate.currentLang]}}
   </div>
   <div style="width:100%; text-align: right; padding-right: 15px;">
     <span class="label label-default" style="background-color: white;
@@ -45,7 +45,7 @@
       <div class="bottom-buttons">
         <ul class="options" *ngIf="!optionSelected" [@fadein]>
           <li (click)="optionSelect(option.optionId)" *ngFor="let option of data.options">
-            <p><strong>{{getFormatedOption(option.text['en'])}}</strong></p>
+            <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
             <p><strong>{{option.startPoints}}</strong> pts</p>
           </li>
         </ul>
@@ -78,9 +78,9 @@
           <div class="event-icon">
             <div class="icon" [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
           </div>
-          <div class="name"> {{data.title['en']}}</div>
+          <div class="name"> {{data.title[translate.currentLang]}}</div>
         </div>
-        <div class="info">{{data.text['en']}}<span *ngIf="data.cardType!='Overall'">, starting from:</span></div>
+        <div class="info">{{data.text[translate.currentLang]}}<span *ngIf="data.cardType!='Overall'">, starting from:</span></div>
         <div class="time" *ngIf="data.cardType!='Overall'">
           <div class="event-time-icon">
             <div class="icon icn-stopwatch"></div>
@@ -89,7 +89,7 @@
         </div>
         <div *ngIf="optionSelected" [@fadein]>
           <div>By:</div>
-          <div class="team-name">{{getFormatedOption(optionSelected.text['en'])}}</div>
+          <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
           <div [class.active-points]="cardSelections?.isDoublePoints">
             <span
               class="points">{{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>

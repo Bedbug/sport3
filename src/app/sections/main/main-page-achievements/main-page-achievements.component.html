@@ -6,8 +6,8 @@
     <div class="achievement-item isClickable" *ngFor="let achievement of achievements">
       <div class="img"><img src="{{achievement?.icon}}" alt=""></div>
       <div class="info">
-        <div class="title">{{achievement?.title['en']}}</div>
-        <div class="text">{{achievement?.text['en']}}</div>
+        <div class="title">{{achievement?.title[translate.currentLang]}}</div>
+        <div class="text">{{achievement?.text[translate.currentLang]}}</div>
       </div>
       <div class="progress-text">{{achievement?.has+"/"+achievement?.total}}</div>
       <div class="progress">

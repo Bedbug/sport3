@@ -7,6 +7,7 @@ import { ContestPageMatchesComponent } from './contest-page-matches/contest-page
 import { ContestPagePrizesComponent } from './contest-page-prizes/contest-page-prizes.component';
 import { MatchesListComponent } from 'src/app/components/matches-list/matches-list.component';
 import { MatchesListItemComponent } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,12 @@ import { MatchesListItemComponent } from 'src/app/components/matches-list/matche
     ContestPageMatchesComponent,
     ContestPagePrizesComponent,
     MatchesListComponent,
-    MatchesListItemComponent
+    MatchesListItemComponent,
   ],
   imports: [
     CommonModule,
-    ContestPagesRoutingModule
+    ContestPagesRoutingModule,
+    TranslateModule.forChild()
   ]
 })
 export class ContestPagesModule { }

@@ -3,6 +3,8 @@ import { MENUITEMS, Menu } from './sidebar-items';
 import { Router, ActivatedRoute } from "@angular/router";
 import $ from 'jquery';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TranslateService } from '@ngx-translate/core';
+import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,7 +18,8 @@ export class SidebarComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private translate:TranslateService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);
@@ -24,6 +27,24 @@ export class SidebarComponent implements OnInit {
     } else {
       this.isLoggedIn = false;
     }
+
+        // Localization Markers
+        _('My Account');
+        _('Profile');
+        _('Balance');
+        _('Messages');
+        _('Achievements');
+        _('My Teams');
+        _('Top Picks');
+        _('Contests');
+        _('Winners');
+        _('Standings');
+        _('Settings');
+        _('About Sportimo');
+        _('How to Play');
+        _('Support');
+        _('Terms & Conditions');
+        _('Privacy Policy'); 
   }
 
   ngOnInit() {

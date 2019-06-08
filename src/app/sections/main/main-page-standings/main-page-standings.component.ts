@@ -3,6 +3,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { map } from 'rxjs/operators';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -44,7 +45,13 @@ export class MainPageStandingsComponent implements OnInit {
   isLoggedIn: boolean = false;
   isLoading: boolean;
 
-  constructor(private sportimoService: SportimoService, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
+  constructor(
+    private sportimoService: SportimoService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService,
+    private translate: TranslateService
+  ) { }
 
   ngOnInit() {
 
@@ -77,10 +84,11 @@ export class MainPageStandingsComponent implements OnInit {
           this.currentTeam = x;
           // Check for favorite team
           this.isFavoriteTeam = false;
-          this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
-            if (team._id == x._id)
-              this.isFavoriteTeam = true;
-          });
+          if (this.authenticationService.currentUserValue)
+            this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
+              if (team._id == x._id)
+                this.isFavoriteTeam = true;
+            });
         }
         );
         return;

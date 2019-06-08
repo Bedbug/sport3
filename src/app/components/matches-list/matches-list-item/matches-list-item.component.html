@@ -1,14 +1,14 @@
 <div class="match-item" >
   <div class="match-item-main" [ngClass]="{'isClickable': isClickable}" (click)="gotoMatch()">
     <div class="kit text-center"><img src="{{contestMatch.match.home_team.logo}}" alt=""></div>
-    <div class="team-name text-left">{{contestMatch.match.home_team.name['en']}} </div>
+    <div class="team-name text-left">{{contestMatch.match.home_team.name[translate.currentLang]}} </div>
     <div class="match-score text-center">{{contestMatch.match.home_score}} - {{contestMatch.match.away_score}}</div>
-    <div class="team-name  text-right">{{contestMatch.match.away_team.name['en']}}</div>
+    <div class="team-name  text-right">{{contestMatch.match.away_team.name[translate.currentLang]}}</div>
     <div class="kit text-center"><img src="{{contestMatch.match.away_team.logo}}" alt=""></div>
   </div>
   <div class="match-item-footer">
     <div class="info text-left">{{contestMatch.match.home_team.abbr}} - {{contestMatch.match.away_team.abbr}}: {{contestMatch.match.home_score}} - {{contestMatch.match.away_score}}</div>
     <div class="time text-right">{{contestMatch.match.start | date:'dd/MM/yy, hh:mm'}}</div>
-    <div *ngIf="contestMatch.match.state>0 && !contestMatch.match.completed" class="live text-center"> • LIVE</div>
+    <div *ngIf="contestMatch.match.state>0 && !contestMatch.match.completed" class="live text-center"> • <span translate>LIVE</span></div>
   </div>
 </div>

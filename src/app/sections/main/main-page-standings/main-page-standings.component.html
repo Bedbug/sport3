@@ -1,9 +1,9 @@
 <div class="background"></div>
 <div class="row" style="position: relative">
   <div *ngIf="currentView == 0" class="main-pages-header">Standings</div>
-  <div *ngIf="currentView == 1" class="main-pages-header">{{currentStandings?.name['en']}}</div>
+  <div *ngIf="currentView == 1" class="main-pages-header">{{currentStandings?.name[translate.currentLang]}}</div>
   <div *ngIf="currentView == 2" class="main-pages-header" style="display: flex">
-    <div class="col-6">{{currentTeam?.name['en']}}</div>
+    <div class="col-6">{{currentTeam?.name[translate.currentLang]}}</div>
     <div class="favorite col-6">
       <!-- <button class="btn btn-sportimo" style="width: 100%">Add to favorites</button> -->
       
@@ -18,14 +18,14 @@
         </button>
     </div>
   </div>
-  <div *ngIf="currentView == 3" class="main-pages-header" style="width:100%">{{currentPlayer?.name['en']}}</div>
+  <div *ngIf="currentView == 3" class="main-pages-header" style="width:100%">{{currentPlayer?.name[translate.currentLang]}}</div>
   <!-- Leagues -->
   <div class="main-pages-scrollarea container" *ngIf="currentView == 0">
     <div class="league-item isClickable" *ngFor="let league of leagues" (click)="showStantings(league.id)">
       <div class="img"><img src="{{league?.img}}" alt=""></div>
       <div class="info">
-        <div class="title">{{league?.title['en']}}</div>
-        <div class="text">{{league?.text['en']}}</div>
+        <div class="title">{{league?.title[translate.currentLang]}}</div>
+        <div class="text">{{league?.text[translate.currentLang]}}</div>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
         <div class="standings-row isClickable" *ngFor="let team of currentStandings?.teams; let i = index"
           (click)="showTeam(team.teamId)">
           <div class="cell-50 standings-rank">{{i+1}}</div>
-          <div class="cell standings-name">{{team.teamName['en']}}</div>
+          <div class="cell standings-name">{{team.teamName[translate.currentLang]}}</div>
           <div class="cell-50 standings-p">{{team.gamesPlayed}}</div>
           <div class="cell-50 standings-w">{{team.wins}}</div>
           <div class="cell-50 standings-d">{{team.ties}}</div>
@@ -116,7 +116,7 @@
                 <div class="player-card" (click)="showPlayer(player._id)">
                   <div class="player-card-header col-12">
                     <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-                    <div>{{player.name['en']}}</div>
+                    <div>{{player.name[translate.currentLang]}}</div>
                     <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
                   </div>
                   <div class="player-card-body">
@@ -141,7 +141,7 @@
                 <div class="player-card" (click)="showPlayer(player._id)">
                   <div class="player-card-header col-12">
                     <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-                    <div>{{player.name['en']}}</div>
+                    <div>{{player.name[translate.currentLang]}}</div>
                     <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
                   </div>
                   <div class="player-card-body">
@@ -166,7 +166,7 @@
                 <div class="player-card" (click)="showPlayer(player._id)">
                   <div class="player-card-header col-12">
                     <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-                    <div>{{player.name['en']}}</div>
+                    <div>{{player.name[translate.currentLang]}}</div>
                     <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
                   </div>
                   <div class="player-card-body">
@@ -191,7 +191,7 @@
                 <div class="player-card" (click)="showPlayer(player._id)">
                   <div class="player-card-header col-12">
                     <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-                    <div>{{player.name['en']}}</div>
+                    <div>{{player.name[translate.currentLang]}}</div>
                     <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
                   </div>
                   <div class="player-card-body">
@@ -216,7 +216,7 @@
                 <div class="player-card" (click)="showPlayer(player._id)">
                   <div class="player-card-header col-12">
                     <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-                    <div>{{player.name['en']}}</div>
+                    <div>{{player.name[translate.currentLang]}}</div>
                     <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{player.position}}</div>
                   </div>
                   <div class="player-card-body">
@@ -330,7 +330,7 @@
     <div class="player-card" style="margin-bottom: 0">
       <div class="player-card-header col-12">
         <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-        <div>{{currentPlayer?.name['en']}}</div>
+        <div>{{currentPlayer?.name[translate.currentLang]}}</div>
         <div style='margin-left:5px; font-weight: 100; font-size:11px'> - {{currentPlayer?.position}}</div>
       </div>
       <div class="player-card-body">
@@ -355,25 +355,25 @@
       <div class="icn-contests stat-icon" style="height: 40px"></div>
       <div class="stat-text-1">
         <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.gamesPlayed}}</div>
-        <div class="stat-text" style="font-size: 12px">Matches played</div>
+        <div translate class="stat-text" style="font-size: 12px">Matches played</div>
       </div>
       <div class="stat-text-1">
         <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.gamesStarted}}</div>
-        <div class="stat-text" style="font-size: 12px">Starting lineup</div>
+        <div translate class="stat-text" style="font-size: 12px">Starting lineup</div>
       </div>
     </div>
     <div class="stat-subcard" style="margin-bottom: 5px;">
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.touchesPasses}}</div>
-        <div class="stat-text" style="font-size: 12px">Passes</div>
+        <div translate class="stat-text" style="font-size: 12px">Passes</div>
       </div>
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.assistsTotal}}</div>
-        <div class="stat-text" style="font-size: 12px">Assists</div>
+        <div translate class="stat-text" style="font-size: 12px">Assists</div>
       </div>
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.touchesInterceptions}}</div>
-        <div class="stat-text" style="font-size: 12px">Interceptions</div>
+        <div translate class="stat-text" style="font-size: 12px">Interceptions</div>
       </div>
     </div>
     <!-- Goals -->
@@ -381,21 +381,21 @@
       <div class="stat-icon icn-goal" style="height: 60px"></div>
       <div class="stat-text-2">
         <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.goalsTotal}}</div>
-        <div class="stat-text" style="font-size: 12px">Total goals</div>
+        <div translate class="stat-text" style="font-size: 12px">Total goals</div>
       </div>
     </div>
     <div class="stat-subcard" style="margin-bottom: 5px;">
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsKicked}}</div>
-        <div class="stat-text" style="font-size: 12px">Kicked</div>
+        <div translate class="stat-text" style="font-size: 12px">Kicked</div>
       </div>
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsHeaded}}</div>
-        <div class="stat-text" style="font-size: 12px">Headers</div>
+        <div translate class="stat-text" style="font-size: 12px">Headers</div>
       </div>
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsGameWinning}}</div>
-        <div class="stat-text" style="font-size: 12px">Winning</div>
+        <div translate class="stat-text" style="font-size: 12px">Winning</div>
       </div>
     </div>
     <!-- Fouls -->
@@ -403,21 +403,21 @@
       <div class="icn-foul stat-icon" style="height: 60px"></div>
       <div class="stat-text-1">
         <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.foulsSuffered}}</div>
-        <div class="stat-text" style="font-size: 12px">Fouls suffered</div>
+        <div translate class="stat-text" style="font-size: 12px">Fouls suffered</div>
       </div>
       <div class="stat-text-1">
         <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.foulsCommitted}}</div>
-        <div class="stat-text" style="font-size: 12px">Fouls commited</div>
+        <div translate class="stat-text" style="font-size: 12px">Fouls commited</div>
       </div>
     </div>
     <div class="stat-subcard" style="margin-bottom: 5px;">
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.yellowCards}}</div>
-        <div class="stat-text" style="font-size: 12px">Yellow cards</div>
+        <div translate class="stat-text" style="font-size: 12px">Yellow cards</div>
       </div>
       <div>
         <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.redCards}}</div>
-        <div class="stat-text" style="font-size: 12px">Red Cards</div>
+        <div translate class="stat-text" style="font-size: 12px">Red Cards</div>
       </div>
     </div>
   </div>

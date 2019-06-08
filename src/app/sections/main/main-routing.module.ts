@@ -4,7 +4,9 @@ import { MainPageHomeComponent } from './main-page-home/main-page-home.component
 import { MainPageWinnersComponent } from './main-page-winners/main-page-winners.component';
 import { MainPageAchievementsComponent } from './main-page-achievements/main-page-achievements.component';
 import { MainPageStandingsComponent } from './main-page-standings/main-page-standings.component';
-
+import { MainPageMyteamsComponent } from './main-page-myteams/main-page-myteams.component';
+import { MainPageProfileComponent } from './main-page-profile/main-page-profile.component';
+import { MainPageInboxComponent } from './main-page-inbox/main-page-inbox.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,18 @@ const routes: Routes = [
       {
         path: 'standings',
         component: MainPageStandingsComponent
+      },
+      {
+        path: 'myteams',
+        component: MainPageMyteamsComponent
+      },
+      {
+        path: 'profile',
+        component: MainPageProfileComponent
+      },
+      {
+        path: 'inbox',
+        component: MainPageInboxComponent
       },
       // {
       //   path: 'standings/league/:leageid',

@@ -2,9 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { PlayCard } from 'src/app/models/playcard';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { LiveMatch } from 'src/app/models/live-match';
-import { timingSafeEqual } from 'crypto';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -26,7 +25,10 @@ export class MatchPageCardsComponent implements OnInit {
   // sticky: boolean = false;
   // menuPosition: any;
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private translate: TranslateService) {
+
+   console.log(translate.currentLang)
+   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -48,13 +50,13 @@ export class MatchPageCardsComponent implements OnInit {
 
   get wonCards(){
     if(this.liveMatch && this.liveMatch.playedCards)
-    return this.liveMatch.playedCards.filter(x=>x.status == 3);
+    return this.liveMatch.playedCards.filter(x=>x.status == 2 && x.pointsAwarded);
     return [];
   }
 
   get lostCards(){
     if(this.liveMatch && this.liveMatch.playedCards)
-    return this.liveMatch.playedCards.filter(x=>x.status == 2);
+    return this.liveMatch.playedCards.filter(x=>x.status == 2 && !x.pointsAwarded);
     return [];
   }
 

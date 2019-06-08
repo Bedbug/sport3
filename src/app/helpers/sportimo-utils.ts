@@ -11,6 +11,10 @@ export class SportimoUtils {
     "First_Half_Ends": { text: "First Half Ends", icon: "icn-stopwatch"},
     "Second_Half_Starts": { text: "Second Half Starts", icon: "icn-stopwatch"},
     "Second_Half_Ends": { text: "Second Half Ends", icon: "icn-stopwatch"},
+    "Overtime_First_Half_Starts": { text: "Overtime First Half", icon: "icn-stopwatch"},
+    "Overtime_First_Half_Ends": { text: "Overtime First Half Ends", icon: "icn-stopwatch"},
+    "Overtime_Second_Half_Starts": { text: "Overtime Second Half", icon: "icn-stopwatch"},
+    "Overtime_Second_Half_Ends": { text: "Overtime Second Half Ends", icon: "icn-stopwatch"},
   }
 
   sprite_mappings = {

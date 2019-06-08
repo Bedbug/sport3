@@ -44,7 +44,7 @@ export class AuthenticationService {
     updateFavorites(team: Team, remove:boolean) {
         
         let newTeamFavorites:any[] = this.currentUserSubject.value.favoriteteams;
-        console.log(newTeamFavorites,remove);
+       
         if(remove){
             newTeamFavorites = newTeamFavorites.filter(favteam=> favteam._id != team._id);
         }else{
@@ -58,8 +58,7 @@ export class AuthenticationService {
         let putData = {"favoriteteams": mappedTeams};
     
         return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
-            .pipe(map(response => {
-                console.log(response);
+            .pipe(map(response => {       
                return response;             
             }));
       }

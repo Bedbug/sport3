@@ -6,25 +6,25 @@ import { MatchPagesComponent } from 'src/app/sections/match-pages/match-pages.co
 export const content: Routes = [
   {
     path: 'base',
-    loadChildren: './components/base/base.module#BaseModule'
+    loadChildren: () => import('src/app/components/base/base.module').then(m => m.BaseModule)
   },
   {
     path: 'pages',
-    loadChildren: './pages/page/page.module#PageModule'
+    loadChildren: () => import('src/app/pages/page/page.module').then(m => m.PageModule)
   },
   {
     path: 'main',
     component: MainComponent,
-    loadChildren:  'src/app/sections/main/main.module#MainModule'
+    loadChildren:  () => import('src/app/sections/main/main.module').then(m => m.MainModule)
   },{
     path:'contest/:contestId',
     component: ContestPagesComponent,
-    loadChildren: 'src/app/sections/contest-pages/contest-pages.module#ContestPagesModule'
+    loadChildren: () => import('src/app/sections/contest-pages/contest-pages.module').then(m => m.ContestPagesModule)
   },
   {
     path:'contest/:contestId/match/:contestMatchId',
     component: MatchPagesComponent,
-    loadChildren: 'src/app/sections/match-pages/match-pages.module#MatchPagesModule'
+    loadChildren: () => import('src/app/sections/match-pages/match-pages.module').then(m => m.MatchPagesModule)
   },
   {
     path:'**',

@@ -8,8 +8,10 @@ import { GrandPrizeComponent } from './grand-prize/grand-prize.component';
 import { MainPageAchievementsComponent } from './main-page-achievements/main-page-achievements.component';
 import { MainPageStandingsComponent } from './main-page-standings/main-page-standings.component';
 import { MainPageWinnersComponent } from './main-page-winners/main-page-winners.component';
-
-
+import { TranslateModule } from '@ngx-translate/core';
+import { MainPageMyteamsComponent } from './main-page-myteams/main-page-myteams.component';
+import { MainPageProfileComponent } from './main-page-profile/main-page-profile.component';
+import { MainPageInboxComponent } from './main-page-inbox/main-page-inbox.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,15 @@ import { MainPageWinnersComponent } from './main-page-winners/main-page-winners.
     MainPageStandingsComponent,
     MainPageWinnersComponent,
     ContestsListComponent,
-    GrandPrizeComponent
+    GrandPrizeComponent,
+    MainPageMyteamsComponent,
+    MainPageProfileComponent,
+    MainPageInboxComponent
 ],
   imports: [
     CommonModule,
     MainRoutingModule,
+    TranslateModule.forChild()
   ]
 })
 export class MainModule { }

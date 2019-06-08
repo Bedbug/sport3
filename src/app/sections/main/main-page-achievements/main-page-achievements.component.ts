@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { userInfo } from 'os';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-main-page-achievements',
@@ -11,7 +12,7 @@ export class MainPageAchievementsComponent implements OnInit {
 
   achievements:any[];
 
-  constructor(private sportimoService:SportimoService) { }
+  constructor(private sportimoService:SportimoService, private translate:TranslateService) { }
   
   ngOnInit() {
     this.sportimoService.getAchievements().subscribe(x=>{      

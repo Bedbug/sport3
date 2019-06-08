@@ -8,7 +8,7 @@
       <ul>
         <li>
           <!-- *ngFor="let section of liveMatch?.matchData.timeline | reverser" -->
-          <!-- <span *ngIf="section.text"> {{section.text['en']}}</span> -->
+          <!-- <span *ngIf="section.text"> {{section.text[translate.currentLang]}}</span> -->
           <ul class="section">
 
             <!-- ALL CARDS -->
@@ -25,7 +25,7 @@
                   <div class="col">
                     <p class="type">{{Utils.getTextByType(event.type)}}</p>
                     <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                      <div>{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name['en']:'')}}
+                      <div>{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]:'')}}
                       </div>
                     </div>
                   </div>
@@ -47,10 +47,10 @@
                   <div class="col">
                     <p class="type">{{Utils.getTextByType(event.type)}}</p>
                     <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                      <div class="sub-icon icn-arrow-out"></div>{{event.players[0].name['en']}}
+                      <div class="sub-icon icn-arrow-out"></div>{{event.players[0].name[translate.currentLang]}}
                     </div>
                     <div *ngIf="event.players && event.players.length>1" [@fadein] class="player">
-                      <div class="sub-icon icn-arrow-in"></div>{{event.players[1].name['en']}}
+                      <div class="sub-icon icn-arrow-in"></div>{{event.players[1].name[translate.currentLang]}}
                     </div>
                   </div>
                   <div class="team-logo">

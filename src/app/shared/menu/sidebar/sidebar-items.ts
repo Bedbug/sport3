@@ -17,11 +17,11 @@ export const MENUITEMS: Menu[] = [
   // }, 
   {
     title: 'My Account', icon: 'menu-icon icn-user', type: 'sub', authenticate:true ,  children: [
-        { path: '/base/accordion', title: 'Profile', type: 'link' },
+        { path: '/main/profile', title: 'Profile', type: 'link' },
         { path: '/base/alert', title: 'Balance', type: 'link' },
-        { path: '/base/dropdown', title: 'Messages', type: 'link', badgeType:'danger', badgeValue: "11 new" },
-        { path: '/base/grid', title: 'Achievements', type: 'link' },
-        { path: '/base/helper-class', title: 'My Teams', type: 'link' },
+        { path: '/main/inbox', title: 'Messages', type: 'link', badgeType:'danger', badgeValue: "11 new" },
+        { path: '/main/achievements', title: 'Achievements', type: 'link' },
+        { path: '/main/myteams', title: 'My Teams', type: 'link' },
         { path: '', title: '', type: 'authentication' }      
     ]
   },

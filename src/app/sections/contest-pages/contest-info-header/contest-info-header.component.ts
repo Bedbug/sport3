@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { Contest } from 'src/app/models/contest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contest-info-header',
@@ -15,7 +16,8 @@ export class ContestInfoHeaderComponent implements OnInit {
   constructor(
     private authenticationService: AuthenticationService,private router: Router, 
     private route:ActivatedRoute, 
-    private sportimoService: SportimoService
+    private sportimoService: SportimoService,
+    private translate:TranslateService
     ) { }
 
   contestDetails: Contest;

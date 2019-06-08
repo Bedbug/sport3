@@ -9,11 +9,12 @@ import { ToggleFullscreenDirective } from "./directives/fullscreen.directive";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent} from '../components/login/login.component'
 import { from } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent,  ChatSidebarComponent, ToggleFullscreenDirective,LoginComponent],
   imports: [CommonModule, RouterModule,FormsModule,    //added here too
-    ReactiveFormsModule],
+    ReactiveFormsModule,TranslateModule],
   exports: [HeaderComponent, FooterComponent, SidebarComponent, ChatSidebarComponent, ToggleFullscreenDirective,LoginComponent]
 })
 export class SharedModule { }

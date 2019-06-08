@@ -4,16 +4,16 @@
             <div class="card grand-prize">
                 <div class="card-body">
                     <div *ngIf="prize" class="prize-wrapper" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}">
-                      <div class="prize-header"><h4>Grand prize</h4>
-                        <span>{{prize.titleText["en"]}}</span>
+                      <div class="prize-header"><h4 translate>Grand prize</h4>
+                        <span>{{prize.titleText[translate.currentLang]}}</span>
                       </div>
                       <div  class="prize-image h-200">
                         <div class="counter-container">
                           <div class="counter-header col-sm-12">
                             <div class="row">
-                            <div class="col p-0">Days</div>
-                            <div class="col p-0">Hours</div>
-                            <div class="col p-0">Minutes</div>
+                            <div class="col p-0" translate>Days</div>
+                            <div class="col p-0" translate>Hours</div>
+                            <div class="col p-0" translate>Minutes</div>
                           </div>
                           </div>
                           <div class="counter-body col-sm-12">
@@ -25,7 +25,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="prize-details">{{prize.infoText["en"]}}</div>
+                      <div class="prize-details">{{prize.infoText[translate.currentLang]}}</div>
                     <!-- <img class="img-fluid pull-left h-200" src="{{prize?.promoImage}}" alt=""> -->
                 </div>
               </div>
@@ -33,39 +33,3 @@
         </div>
     </div>
 </div>
-
-
-<!-- <div class="container-fluid p-0">
-    <div class="row starter-main">
-        <div class="col-sm-12 p-0">
-            <div class="card grand-prize">
-                <div class="card-body">
-                    <div *ngIf="prize" class="prize-wrapper">
-                      <div class="prize-header"><h4>Grand prize</h4>
-                        <span>{{prize.titleText["en"]}}</span>
-                      </div>
-                      <div  class="prize-image h-200" [ngStyle]="{background: 'url(' + prize.promoImage + ')', 'background-position':'center','background-size': 'cover'}">
-                        <div class="counter-container">
-                          <div class="counter-header col-sm-12">
-                            <div class="row">
-                            <div class="col p-0">Days</div>
-                            <div class="col p-0">Hours</div>
-                            <div class="col p-0">Seconds</div>
-                          </div>
-                          </div>
-                          <div class="counter-body col-sm-12">
-                            <div class="row">
-                            <div class="col p-0">28</div>
-                            <div class="col p-0">13</div>
-                            <div class="col p-0">42</div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="prize-details">{{prize.infoText["en"]}}</div>                  
-                </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</div> -->

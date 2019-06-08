@@ -2,21 +2,21 @@
   <div class="card-body">
     <div class="row">
       <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
-          {{contestDetails?.titleText["en"]}} 
+          {{contestDetails?.titleText[translate.currentLang]}} 
         <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
       </div>
       <div class="col" style="min-height:33px; line-height: 33px">
         <button *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">Join {{contestDetails?.subscriptionPrice}} <i class="coin"></i></button>
-        <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span>Your chances: </span> {{contestDetails?.participations || 0}}</div>
+        <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span translate >Your chances: </span> {{contestDetails?.participations || 0}}</div>
       </div>
     </div>
     <div class="sportimo-divider"></div>
     <div class="contest-info-container">
       <div class="contest-info-row">
-        <div class="contest-info-cell font-weight-bold">Matches</div>
-        <div class="contest-info-cell font-weight-bold">Participations</div>
-        <div class="contest-info-cell font-weight-bold">Winners</div>
-        <div class="contest-info-cell font-weight-bold">Duration</div>
+        <div translate class="contest-info-cell font-weight-bold">Matches</div>
+        <div translate class="contest-info-cell font-weight-bold">Participations</div>
+        <div translate class="contest-info-cell font-weight-bold">Winners</div>
+        <div translate class="contest-info-cell font-weight-bold">Duration</div>
       </div>
       <div class="contest-info-row">
         <div class="contest-info-cell">{{contestDetails?.matches}}</div>

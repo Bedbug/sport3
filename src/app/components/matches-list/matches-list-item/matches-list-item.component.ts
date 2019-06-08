@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-matches-list-item',
@@ -14,7 +15,7 @@ export class MatchesListItemComponent implements OnInit {
 
 
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private translate: TranslateService) { }
 
   ngOnInit() {
   }

@@ -4,6 +4,7 @@ import { PlayCard } from 'src/app/models/playcard';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { utils } from 'protractor';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-playcard',
@@ -63,8 +64,8 @@ export class PlaycardComponent implements OnInit {
   }
 
   getFormatedOption(optionText: string) {
-    const home_team = this.sportimoService.currentMatch.matchData.home_team.name['en'];
-    const away_team = this.sportimoService.currentMatch.matchData.away_team.name['en'];
+    const home_team = this.sportimoService.currentMatch.matchData.home_team.name[this.translate.currentLang];
+    const away_team = this.sportimoService.currentMatch.matchData.away_team.name[this.translate.currentLang];
     return optionText.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
   }
 
@@ -96,7 +97,7 @@ export class PlaycardComponent implements OnInit {
         , error => console.log('Could not load todos.'))
   }
 
-  constructor(private sportimoService: SportimoService) {
+  constructor(private sportimoService: SportimoService, private translate: TranslateService) {
 
   }
 

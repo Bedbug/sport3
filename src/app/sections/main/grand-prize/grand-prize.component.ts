@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { GrandPrize } from 'src/app/models/grand-prize';
 import { trigger, transition, query, style, stagger, animate, state } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-grand-prize',
@@ -27,7 +28,7 @@ export class GrandPrizeComponent implements OnInit {
     expired: false
   }
 
-  constructor(private sportimoService: SportimoService) { }
+  constructor(private sportimoService: SportimoService, private translate:TranslateService) { }
 
   ngOnInit() {
     this.sportimoService.getGrandPrize()

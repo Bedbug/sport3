@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { slideInAnimation } from 'src/app/animations/route-animations';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, UrlSegment, RouterStateSnapshot, Router } from '@angular/router';
 import { LiveMatch } from 'src/app/models/live-match';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { ToastrService } from 'ngx-toastr';
+import { NotyfToastError } from 'src/app/components/custom-toast/notyf.error';
+import { NotyfToastSuccess } from 'src/app/components/custom-toast/notyf.toast';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-match-pages',
@@ -31,7 +35,7 @@ export class MatchPagesComponent implements OnInit {
   stream: any;
   demoplay: any;
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private toastr: ToastrService, private state: Router, private translate: TranslateService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -42,14 +46,28 @@ export class MatchPagesComponent implements OnInit {
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
         subscribe(result => {
           this.liveMatch = result;
-          // console.log(this.liveMatch);
+
+          // Initiating Socket Connection and subscription to stream
+          this.stream = this.sportimoService.getStream().subscribe(data => {
+            let event: any = data;
+
+            // Check if current route view is info. No need to show Toast if it is
+            const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
+
+            if (!isInfo) {
+              if (event.type == "Event_added") {
+                this.openNotyf("", event.data.type, false);
+              }
+              if (event.type == "Advance_Segment") {
+                this.openNotyf("", event.data.text[this.translate.currentLang], false);
+              }
+            }
+          });
         });
 
-      // this.stream = this.sportimoService.getStream().subscribe(x=>{
-      //   console.log(x);
-      // });
 
-      this.demoplay = this.sportimoService.playDemo();
+
+      // this.demoplay = this.sportimoService.playDemo();
     })
   }
 
@@ -57,26 +75,26 @@ export class MatchPagesComponent implements OnInit {
     if (!LiveMatch)
       return 0;
 
-      if(this.liveMatch.matchData.stats){
-        var homeStats = this.liveMatch.matchData.stats.find(x=>x.name =="home_team");
-        if(homeStats && homeStats["Goal"])
-          return homeStats["Goal"];
-      }
+    if (this.liveMatch.matchData.stats) {
+      var homeStats = this.liveMatch.matchData.stats.find(x => x.name == "home_team");
+      if (homeStats && homeStats["Goal"])
+        return homeStats["Goal"];
+    }
 
-      return this.liveMatch.matchData["home_score"];
+    return this.liveMatch.matchData["home_score"];
   }
 
   get awayScore() {
     if (!LiveMatch)
       return 0;
 
-      if(this.liveMatch.matchData.stats){
-        var awayStats = this.liveMatch.matchData.stats.find(x=>x.name =="away_team");
-        if(awayStats && awayStats["Goal"])
-          return awayStats["Goal"];
-      }
+    if (this.liveMatch.matchData.stats) {
+      var awayStats = this.liveMatch.matchData.stats.find(x => x.name == "away_team");
+      if (awayStats && awayStats["Goal"])
+        return awayStats["Goal"];
+    }
 
-      return this.liveMatch.matchData["away_score"];
+    return this.liveMatch.matchData["away_score"];
   }
 
   ngOnDestroy() {
@@ -85,8 +103,21 @@ export class MatchPagesComponent implements OnInit {
     if (this.demoplay)
       this.demoplay.unsubscribe();
 
-      // Clears current Match Data in order for the new view to be clean if necessary
-      this.sportimoService.clearMatch();
+    // Clears current Match Data in order for the new view to be clean if necessary
+    this.sportimoService.clearMatch();
+  }
+
+  openNotyf(title: string, message: string, error: boolean) {
+    let options = this.toastr.toastrConfig;
+    // options.timeOut = 0;
+    if (error)
+      options.toastComponent = NotyfToastError;
+    else
+      options.toastComponent = NotyfToastSuccess;
+    options.toastClass = 'notyf confirm';
+    // opt.positionClass = 'notyf__wrapper';
+    // this.options.newestOnTop = false;
+    this.toastr.show(title, message, options);
   }
 
 }

@@ -16,7 +16,7 @@
         <div class="col-4 text-center">
           <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard" (click)="playCard()" class="btn btn-sportimo" style="width: 100%">
             <div class="loader-label" [class.btn-active]="isLoadingCards">
-              <span class="button-label">Play</span>
+              <div translate class="button-label">Play</div>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
@@ -25,7 +25,7 @@
 
           <button *ngIf="isPlayingCard && !isLoadingCards" (click)="isPlayingCard = false" class="btn btn-sportimo" style="width: 100%">
               <div class="loader-label">
-                <span class="button-label">Exit</span>
+                <span  class="button-label">{{translate.currentLang}}</span>
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>
@@ -44,25 +44,25 @@
       <li class="nav-item">
         <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
           aria-selected="true">
-          <div>All</div>
+          <div translate>All</div>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="won-tab" data-toggle="tab" href="#won" role="tab" aria-controls="won"
           aria-selected="false">
-          <div>Won</div>
+          <div translate>Won</div>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending"
           aria-selected="false">
-          <div>Pending</div>
+          <div translate>Pending</div>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" id="lost-tab" data-toggle="tab" href="#lost" role="tab" aria-controls="lost"
           aria-selected="false">
-          <div>Lost</div>
+          <div translate>Lost</div>
         </a>
       </li>
     </ul>
@@ -105,19 +105,19 @@
           <li class="nav-item">
             <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
               aria-selected="true">
-              <div>All</div>
+              <div translate>All</div>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="live-tab" data-toggle="tab" href="#live" role="tab" aria-controls="live"
               aria-selected="false">
-              <div>Live</div>
+              <div translate>Live</div>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="ninenty-tab" data-toggle="tab" href="#ninenty" role="tab" aria-controls="ninenty"
               aria-selected="false">
-              <div>90'</div>
+              <div translate>90'</div>
             </a>
           </li>
         </ul>
