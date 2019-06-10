@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    private translate:TranslateService) {
+    public translate:TranslateService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);

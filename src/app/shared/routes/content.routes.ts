@@ -4,14 +4,10 @@ import { ContestPagesComponent } from 'src/app/sections/contest-pages/contest-pa
 import { MatchPagesComponent } from 'src/app/sections/match-pages/match-pages.component';
 
 export const content: Routes = [
-  {
-    path: 'base',
-    loadChildren: () => import('src/app/components/base/base.module').then(m => m.BaseModule)
-  },
-  {
-    path: 'pages',
-    loadChildren: () => import('src/app/pages/page/page.module').then(m => m.PageModule)
-  },
+  // {
+  //   path: 'pages',
+  //   loadChildren: () => import('src/app/pages/page/page.module').then(m => m.PageModule)
+  // },
   {
     path: 'main',
     component: MainComponent,

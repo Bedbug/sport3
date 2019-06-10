@@ -1,63 +1,208 @@
-@import 'src/variables.scss';
+@import "src/variables.scss";
 
-.background{
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: black;
-    background-color: rgba(0, 0, 0, 0.4);
+.background {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.winners-scrollarea{
-    height: calc(100vh - 144px);
-    // background-color: #3F4856;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
+.winners-scrollarea {
+  height: calc(100vh - 144px);
+  // background-color: #3F4856;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
-.winner-card{
-    margin-bottom: 15px;
+.winner-card {
+  margin-bottom: 15px;
 }
 
-.winner-card-header{
+.winner-card-header {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  // height: 44px;
+  background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  // border-bottom: 2px inset rgba(0,0,0,0.4);
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+}
+
+.winner-card-header img {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+}
+
+.winner-card-body {
+  border-top: 1px inset rgba(255, 255, 255, 0.1);
+  background-color: RGBA(22, 31, 43, 0.8);
+  height: 64px;
+  padding: 13px;
+}
+
+.winner-prize {
+  color: $theme-color;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.prize-info,
+.prize-date {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.match-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid #000000;
+  padding: 10px;
+}
+
+.match-info-header {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.match-info-date {
+  text-align: center;
+}
+
+.team-side {
+  width: 30%;
+  text-align: center;
+}
+
+// .team-side img{
+//     margin: auto;
+// }
+
+.kit {
+  max-width: 60px;
+  margin: auto;
+}
+
+.vs {
+  font-size: 36px;
+}
+
+.team-name,
+.date {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.inset-circle {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 1px 1px 0 inset #000000;
+  margin: 10px 0;
+}
+
+.circle-badge {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px auto;
+    text-align: center;
+    line-height: 30px;
+}
+
+.circle-badge.won{
+    background: #00B15C;
+}
+.circle-badge.lost{
+    background: #E20000;
+}
+.circle-badge.tie{
+    background: #2C91E9;
+}
+
+.stat{
+    width: 25%;
+    height: auto;
+    background-color: $theme-color;
+    box-shadow: black 1px 0px 1px 0px inset;
+    text-align: center;
+}
+
+.top-player {
+    display: flex;
+}
+
+.player-card{
+    // margin-bottom: 10px;
+    width: 85%;
+}
+
+.player-card-header{
     display:flex;
     flex-wrap: nowrap;
     align-items: center;
-    height: 44px;
+    justify-content: flex-start;
+    // height: 30px;
     background-image: linear-gradient(-180deg, #3F4856 0%, #28313D 100%);
     color: #ffffff;
     font-size: 14px;
     font-weight: 700;
     // border-bottom: 2px inset rgba(0,0,0,0.4);
     border-bottom: 1px solid #000000;
+    padding: 15px;
 }
-
-.winner-card-header img{
+.player-card-header img{
     width:30px;
     height: 30px;
     margin-right: 15px;
 }
 
-.winner-card-body{
+.player-card-body{
     border-top: 1px inset rgba(255,255,255,0.1);
     background-color:RGBA(22, 31, 43, 0.8);
-    height: 64px;
-    padding: 13px;
+    height: 50px;
+    padding: 5px 15px;
 }
 
-
-
-.winner-prize{
+.player-data-header{
     color: $theme-color;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 100;
 }
 
-.prize-info, .prize-date{
+.player-data{
     color: #ffffff;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+.number{
+    font-size: 46px;
+    color: black;
+    font-weight: 700;
+    line-height: 90px;
+}
+
+.stat-title{
+    font-size: 16px;
+    color: black;
+    margin-top: -25px;
 }

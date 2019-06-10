@@ -17,7 +17,7 @@ export class ContestInfoHeaderComponent implements OnInit {
     private authenticationService: AuthenticationService,private router: Router, 
     private route:ActivatedRoute, 
     private sportimoService: SportimoService,
-    private translate:TranslateService
+    public translate:TranslateService
     ) { }
 
   contestDetails: Contest;

@@ -11,7 +11,7 @@ import { AuthenticationService } from './authentication.service';
 // import { Socket } from 'ngx-socket-io';
 import * as io from 'socket.io-client';
 
-import demo from 'src/assets/json/demo.json';
+// import demo from 'src/assets/json/demo.json';
 
 
 // @Injectable()
@@ -361,10 +361,10 @@ export class SportimoService {
     // console.log(" --------- Initiating Demo");
     let index = 0;
 
-    return timer(7000, 500).pipe(
-      take(demo.length)).subscribe(x => {
-        this.parseSocket(demo[x]);
-      })
+    // return timer(7000, 500).pipe(
+    //   take(demo.length)).subscribe(x => {
+    //     this.parseSocket(demo[x]);
+    //   })
 
     // return timer(5000, 1500).pipe(
     //   take(1)).subscribe(x => {
@@ -429,7 +429,8 @@ export class SportimoService {
      Favorites
    ----------------------------------------------------------------------------------- */
   getFavoriteTeamData(teamId: string) {
-    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/favorite`);
+    // return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/favorite`);
+    return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/${teamId}/favorite`);
   }
 
   /*-----------------------------------------------------------------------------------

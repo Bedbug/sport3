@@ -35,7 +35,7 @@ export class MatchPagesComponent implements OnInit {
   stream: any;
   demoplay: any;
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private toastr: ToastrService, private state: Router, private translate: TranslateService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private toastr: ToastrService, private state: Router, public translate: TranslateService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

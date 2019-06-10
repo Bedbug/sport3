@@ -27,7 +27,7 @@ export class MainPageMyteamsComponent implements OnInit {
     private route: ActivatedRoute,
     private sportimoService: SportimoService,
     private authenticationService: AuthenticationService,
-    private translate: TranslateService
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {

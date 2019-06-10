@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
-import * as moment from 'moment';
-import { timer } from 'rxjs';
-import { take } from 'rxjs/operators';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ActivatedRoute } from '@angular/router';
 

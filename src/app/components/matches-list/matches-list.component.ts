@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
-import moment from 'moment';
+import moment from 'moment-mini';
 import { trigger, transition, stagger, animate, style, query } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
 import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
@@ -35,7 +35,7 @@ export class MatchesListComponent implements OnInit {
 
   
 
-  constructor(private translate:TranslateService) { 
+  constructor(public translate:TranslateService) { 
   }
 
   ngOnInit() {

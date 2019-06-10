@@ -25,7 +25,7 @@ export class MatchPageCardsComponent implements OnInit {
   // sticky: boolean = false;
   // menuPosition: any;
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private translate: TranslateService) {
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService) {
 
    console.log(translate.currentLang)
    }

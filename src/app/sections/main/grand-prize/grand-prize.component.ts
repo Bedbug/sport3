@@ -28,7 +28,7 @@ export class GrandPrizeComponent implements OnInit {
     expired: false
   }
 
-  constructor(private sportimoService: SportimoService, private translate:TranslateService) { }
+  constructor(private sportimoService: SportimoService, public translate:TranslateService) { }
 
   ngOnInit() {
     this.sportimoService.getGrandPrize()

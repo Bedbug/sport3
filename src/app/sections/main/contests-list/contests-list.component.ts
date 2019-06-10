@@ -32,7 +32,7 @@ export class ContestsListComponent implements OnInit {
 
   contests: Contest[];
 
-  constructor(private sportimoService: SportimoService, private router: Router, private translate:TranslateService) { }
+  constructor(private sportimoService: SportimoService, private router: Router, public translate:TranslateService) { }
 
   ngOnInit() {
     this.sportimoService.getContests()

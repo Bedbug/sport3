@@ -12,14 +12,13 @@ const errorCodes = {
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService, private toastr: ToastrService, private translate: TranslateService) { }
+    constructor(private authenticationService: AuthenticationService, private toastr: ToastrService, public translate: TranslateService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
             .pipe(tap((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
                     // do stuff with response if you want
-
                     if (event.body.errorCode) {
                         console.log(errorCodes[event.body.errorCode][this.translate.currentLang]);
                         this.toastr.show(errorCodes[event.body.errorCode][this.translate.currentLang],event.body.errorCode);

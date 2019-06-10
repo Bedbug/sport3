@@ -40,7 +40,7 @@ export class ContestPagePrizesComponent implements OnInit {
     }
   ]
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private translate:TranslateService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate:TranslateService) { }
 
   contestDetails: Contest;
 

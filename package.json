@@ -8,7 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --format namespaced-json --marker _"
+    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --format namespaced-json --marker _",
+    "build-statss": "ng build --prod --stats-json",
+    "stats-es5": "webpack-bundle-analyzer dist/universal/stats-es5.json",
+    "stats": "webpack-bundle-analyzer dist/universal/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
@@ -48,7 +51,7 @@
     "jquery-ui": "^1.12.1",
     "jstree": "^3.3.7",
     "lodash-es": "^4.17.11",
-    "moment": "^2.24.0",
+    "moment-mini": "^2.22.1",
     "ng-chartist": "^4.1.0",
     "ng2-charts": "^1.6.0",
     "ng2-completer": "^2.0.8",
@@ -103,6 +106,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.5"
+    "typescript": "~3.4.5",
+    "webpack-bundle-analyzer": "^3.3.2"
   }
 }

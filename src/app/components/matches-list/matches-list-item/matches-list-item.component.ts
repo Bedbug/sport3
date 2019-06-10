@@ -15,7 +15,7 @@ export class MatchesListItemComponent implements OnInit {
 
 
 
-  constructor(private router:Router, private translate: TranslateService) { }
+  constructor(private router:Router, public translate: TranslateService) { }
 
   ngOnInit() {
   }

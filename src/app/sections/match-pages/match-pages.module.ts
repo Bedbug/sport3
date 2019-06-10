@@ -7,7 +7,7 @@ import { MatchPageLeadersComponent } from './match-page-leaders/match-page-leade
 import { StatsComponent } from 'src/app/components/stats/stats.component';
 // import { NgArrayPipesModule } from 'ngx-pipes';
 import { CardComponent } from './match-page-cards/components/card/card.component'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PlaycardComponent } from './match-page-cards/components/playcard/playcard.component';
 import { ReversePipe } from 'src/app/pipes/reverse.pipe';
 import { TranslateModule } from '@ngx-translate/core';
@@ -27,7 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     MatchPagesRoutingModule,
     // NgArrayPipesModule,
-    NgbModule,
+    // NgbModule,
     TranslateModule.forChild()
   ]
 })

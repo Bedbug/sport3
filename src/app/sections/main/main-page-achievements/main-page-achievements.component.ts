@@ -12,7 +12,7 @@ export class MainPageAchievementsComponent implements OnInit {
 
   achievements:any[];
 
-  constructor(private sportimoService:SportimoService, private translate:TranslateService) { }
+  constructor(private sportimoService:SportimoService, public translate:TranslateService) { }
   
   ngOnInit() {
     this.sportimoService.getAchievements().subscribe(x=>{      

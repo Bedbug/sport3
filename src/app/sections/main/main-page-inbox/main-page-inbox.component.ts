@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
-import moment from 'moment';
+import moment from 'moment-mini';
 
 @Component({
   selector: 'app-main-page-inbox',
@@ -10,7 +10,7 @@ import moment from 'moment';
 })
 export class MainPageInboxComponent implements OnInit {
 
-  constructor(private translate: TranslateService, private sportimoService: SportimoService) {
+  constructor(public translate: TranslateService, private sportimoService: SportimoService) {
 
   }
 

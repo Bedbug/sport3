@@ -97,7 +97,7 @@ export class PlaycardComponent implements OnInit {
         , error => console.log('Could not load todos.'))
   }
 
-  constructor(private sportimoService: SportimoService, private translate: TranslateService) {
+  constructor(private sportimoService: SportimoService, public translate: TranslateService) {
 
   }
 

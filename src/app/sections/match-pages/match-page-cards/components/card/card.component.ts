@@ -3,7 +3,7 @@ import { PlayCard } from 'src/app/models/playcard';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { Subscription } from 'rxjs/internal/Subscription';
-import moment from 'moment';
+import moment from 'moment-mini';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -58,7 +58,7 @@ export class CardComponent implements OnInit {
   // return this.cardData.startPoints;
   // }
 
-  constructor(private sportimoService: SportimoService, private translate: TranslateService) { }
+  constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
 
   ngOnInit() {
     // console.log(this.cardData);
