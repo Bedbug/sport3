@@ -143,7 +143,7 @@ export class MainPageStandingsComponent implements OnInit {
 
   toggleFavorite() {
     this.isLoading = true;
-    this.authenticationService.updateFavorites(this.currentTeam, this.isFavoriteTeam).subscribe(response => {
+    this.authenticationService.updateFavorites(this.currentTeam, {_id:this.currentStandings.competition,name:this.currentStandings.name}, this.isFavoriteTeam).subscribe(response => {
       this.isLoading = false;
       this.isFavoriteTeam = false;
       this.authenticationService.currentUserValue.favoriteteams.forEach(team => {

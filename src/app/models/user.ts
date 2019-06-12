@@ -16,5 +16,6 @@ export class User {
     picture: string;
     subscription: string;
     wallet: Number;
-    favoriteteams:any;
+    favoriteteams: any;
+    favTeams: any;
 }

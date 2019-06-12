@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-page-myteams',
@@ -16,63 +18,71 @@ export class MainPageMyteamsComponent implements OnInit {
     Team: 1
   }
 
+  private ngUnsubscribe = new Subject();
+
   currentView = this.MyTeamsViews['Teams'];
   currentTeam: any;
   isFavoriteTeam: boolean;
   isLoading: boolean;
   favoriteTeams: any;
-  favoriteTeamsSubscription: any;
+  currentUser: boolean;
+
 
   constructor(
     private route: ActivatedRoute,
     private sportimoService: SportimoService,
     private authenticationService: AuthenticationService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private router: Router,
   ) { }
 
+  count = 0;
   ngOnInit() {
+
+    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+      this.currentUser = user != null;
+    });
+
     this.route.queryParamMap.subscribe(params => {
 
       this.currentTeam = null;
 
-      let teamId = params.get("teamId") || null;
+      let teamId = params.get("team") || null;
+      let competitionId = params.get("competition") || null;
 
-      if (teamId) {
+      if (teamId && competitionId) {
+
+        this.currentTeam = null;
+        this.isLoading = true;
         this.currentView = this.MyTeamsViews['Team'];
-        this.sportimoService.getTeam(teamId).subscribe(x => {
+
+        this.sportimoService.getFavoriteTeamData(teamId, competitionId).pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
+          this.isLoading = false;
           this.currentTeam = x;
-          // Check for favorite team
-          this.isFavoriteTeam = false;
-          this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
-            if (team._id == x._id)
-              this.isFavoriteTeam = true;
-          });
-        }
-        );
+          this.isFavoriteTeam = true;
+        });
         return;
       }
 
       this.currentView = this.MyTeamsViews['Teams'];
-
-      this.favoriteTeamsSubscription = this.authenticationService.currentUser.subscribe(x => {
+      this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
         console.log("Favorite teams view Teams Update");
         if (x)
-          this.favoriteTeams = x.favoriteteams;
+          this.favoriteTeams = x.favTeams;
         console.log(this.favoriteTeams);
-
       });
 
     })
   }
 
   ngOnDestroy() {
-    if (this.favoriteTeamsSubscription)
-      this.favoriteTeamsSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   toggleFavorite() {
     this.isLoading = true;
-    this.authenticationService.updateFavorites(this.currentTeam, this.isFavoriteTeam).subscribe(response => {
+    this.authenticationService.updateFavorites(this.currentTeam.team, this.currentTeam.competition, this.isFavoriteTeam).subscribe(response => {
       this.isLoading = false;
       this.isFavoriteTeam = false;
       this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
@@ -82,15 +92,22 @@ export class MainPageMyteamsComponent implements OnInit {
     })
   }
 
-  viewTeam(teamId: string) {
+  // viewTeam(fav: any) {
+  //   this.currentTeam = null;
+  //   this.isLoading = true;
+  //   this.currentView = this.MyTeamsViews['Team'];
+
+  //   this.sportimoService.getFavoriteTeamData(fav.team._id, fav.competition._id).subscribe(x => {
+  //     this.isLoading = false;
+  //     this.currentTeam = x;
+  //   })
+  // }
+
+  showTeam(fav: any) {
     this.currentTeam = null;
     this.isLoading = true;
     this.currentView = this.MyTeamsViews['Team'];
-
-    this.sportimoService.getFavoriteTeamData(teamId).subscribe(x => {
-      this.isLoading = false;
-      this.currentTeam = x;
-    })
+    this.router.navigate([], { queryParams: { team: fav.team._id, competition: fav.competition._id } });
   }
 
 }

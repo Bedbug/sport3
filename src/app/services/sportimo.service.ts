@@ -428,9 +428,9 @@ export class SportimoService {
   /*-----------------------------------------------------------------------------------
      Favorites
    ----------------------------------------------------------------------------------- */
-  getFavoriteTeamData(teamId: string) {
-    // return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/favorite`);
-    return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/${teamId}/favorite`);
+  getFavoriteTeamData(teamId: string, competitionId: string) {
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/favorite/competition/${competitionId}`);
+    // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/${teamId}/favorite`);
   }
 
   /*-----------------------------------------------------------------------------------

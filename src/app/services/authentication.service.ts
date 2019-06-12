@@ -41,20 +41,20 @@ export class AuthenticationService {
         this.currentUserSubject.next(null);
     }
 
-    updateFavorites(team: Team, remove:boolean) {
+    updateFavorites(team: Team, competition:any, remove:boolean) {
         
         let newTeamFavorites:any[] = this.currentUserSubject.value.favoriteteams;
        
         if(remove){
-            newTeamFavorites = newTeamFavorites.filter(favteam=> favteam._id != team._id);
+            newTeamFavorites = newTeamFavorites.filter(favteam=> favteam.team._id != team._id && favteam.competition._id != competition._id);
         }else{
-            newTeamFavorites.push(team);
+            newTeamFavorites.push({team:team,competition:competition});
         }
         
         this.currentUserSubject.value.favoriteteams = newTeamFavorites;
         this.currentUserSubject.next(this.currentUserSubject.value);
 
-        let mappedTeams = newTeamFavorites.map(x=>x._id);
+        let mappedTeams = newTeamFavorites.map(x=>  { return {team:x.team._id, competition: x.competition._id}});
         let putData = {"favoriteteams": mappedTeams};
     
         return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
