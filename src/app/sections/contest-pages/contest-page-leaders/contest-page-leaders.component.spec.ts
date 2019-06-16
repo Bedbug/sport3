@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ContestPageLeadersComponent } from './contest-page-leaders.component';
 
 describe('ContestPageLeadersComponent', () => {

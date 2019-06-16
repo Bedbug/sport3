@@ -54,7 +54,7 @@ export class MatchPagesComponent implements OnInit {
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
-            if (!isInfo) {
+            if (!isInfo && event) {
               if (event.type == "Event_added") {
                 this.openNotyf("", event.data.type, false);
               }

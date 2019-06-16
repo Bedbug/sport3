@@ -33,10 +33,10 @@ export class PlaycardComponent implements OnInit {
   selectedTime: number = 1;
   cardSelections: any = {};
   isSubmitingCard: boolean = false;
-  minTimeValue: number = 1; 
+  minTimeValue: number = 1;
 
 
-  openPlayModal(){
+  openPlayModal() {
     this.selectedTime = this.getMinimumTime();
     this.playCardModal = true;
   }
@@ -51,19 +51,26 @@ export class PlaycardComponent implements OnInit {
   }
 
   get SelectedTime() {
-    if (this.selectedTime == this.minTimeValue && this.sportimoService.currentMatch.matchData.state > 0 )
+    if (!this.sportimoService.currentMatch)
+      return 0;
+
+    if (this.selectedTime == this.minTimeValue && this.sportimoService.currentMatch.matchData.state > 0)
       return "Now";
     else
       return this.selectedTime + "'";
   }
 
   getMinimumTime() {
+    if (!this.sportimoService.currentMatch)
+      return 0;
     this.minTimeValue = this.sportimoService.currentMatch.matchData.time;
-    if(this.minTimeValue == null || this.minTimeValue ==0) this.minTimeValue = 1;
+    if (this.minTimeValue == null || this.minTimeValue == 0) this.minTimeValue = 1;
     return this.minTimeValue;
   }
 
   getFormatedOption(optionText: string) {
+    if (!this.sportimoService.currentMatch)
+      return '';
     const home_team = this.sportimoService.currentMatch.matchData.home_team.name[this.translate.currentLang];
     const away_team = this.sportimoService.currentMatch.matchData.away_team.name[this.translate.currentLang];
     return optionText.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
@@ -102,7 +109,7 @@ export class PlaycardComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     this.selectedTime = this.getMinimumTime();
   }
 

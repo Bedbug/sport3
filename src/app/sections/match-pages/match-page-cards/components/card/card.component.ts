@@ -67,7 +67,7 @@ export class CardComponent implements OnInit {
       // this.cardData.activationTime = moment().utc().add('30', 's').toDate();
 
 
-      if (this.cardData.status != 2) {
+      if (this.cardData && this.cardData.status != 2) {
         this.calculatePointsAndTimers();
       }
     });

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatsComponent } from './stats.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ConfigService } from 'src/app/services/config.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;
@@ -8,7 +12,9 @@ describe('StatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatsComponent ]
+      declarations: [ StatsComponent ],
+      imports:[HttpClientTestingModule,BrowserAnimationsModule],
+      providers:[AuthenticationService, ConfigService]
     })
     .compileComponents();
   }));

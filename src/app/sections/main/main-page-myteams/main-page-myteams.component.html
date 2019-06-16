@@ -36,91 +36,91 @@
   </div>
   <!-- Team -->
   <div *ngIf="currentView == 1 && currentTeam" style="width:100%">
-    <div *ngIf="currentTeam.nextmatch" class="match-info">
-      <div class="match-info-header" translate>Next Match</div>
-      <div class="team-side">
-        <div class="kit">
-          <img alt="" class="img-fluid" src="{{currentTeam.nextmatch.home.logo || './assets/images/sportimo/default-kit.png'}}">
-        </div>
-        <div class="team-name">{{currentTeam.nextmatch.home.name[translate.currentLang]}}</div>
-      </div>
-      <div class="match-info-date">
-        <div class="vs">VS</div>
-        <div class="date">{{currentTeam.nextmatch.eventdate | date:'dd/MM hh:mm' }}</div>
-      </div>
-      <div class="team-side">
-        <div class="kit">
-            <img alt="" class="img-fluid" src="{{currentTeam.nextmatch.away.logo || './assets/images/sportimo/default-kit.png'}}">
-        </div>
-        <div class="team-name">{{currentTeam.nextmatch.away.name[translate.currentLang]}}</div>
-      </div>
-    </div>
-
-    <div class="match-info">
-      <div class="match-info-header" translate>Recent Form</div>
-      <div class="inset-circle" *ngFor="let form of currentTeam.recentform">
-        <div class="circle-badge" [class]="form==='W'?'circle-badge won':form=='L'?'circle-badge lost':'circle-badge tie'">{{form}}</div>
-      </div>
-    </div>
-
-    <div class="match-info">
-      <div class="match-info-header" translate>Last Match</div>
-      <div class="team-side">
+      <div *ngIf="currentTeam.nextmatch" class="match-info">
+        <div class="match-info-header" translate>Next Match</div>
+        <div class="team-side" (click)="showStandingsTeam(currentTeam.nextmatch.home._id)">
           <div class="kit">
-            <img alt="" class="img-fluid" src="{{currentTeam.lastmatch.home.logo || './assets/images/sportimo/default-kit.png'}}">
+            <img alt="" class="img-fluid" src="{{currentTeam.nextmatch.home.logo || './assets/images/sportimo/default-kit.png'}}">
           </div>
-          <div class="team-name">{{currentTeam.lastmatch.home.name[translate.currentLang]}}</div>
+          <div class="team-name">{{currentTeam.nextmatch.home.name[translate.currentLang]}}</div>
         </div>
         <div class="match-info-date">
           <div class="vs">VS</div>
-          <div class="date">{{currentTeam.lastmatch.eventdate | date:'dd/MM hh:mm' }}</div>
+          <div class="date">{{currentTeam.nextmatch.eventdate | date:'dd/MM hh:mm' }}</div>
         </div>
-        <div class="team-side">
+        <div class="team-side isClickable" (click)="showStandingsTeam(currentTeam.nextmatch.away._id)">
           <div class="kit">
-              <img alt="" class="img-fluid" src="{{currentTeam.lastmatch.away.logo || './assets/images/sportimo/default-kit.png'}}">
+              <img alt="" class="img-fluid" src="{{currentTeam.nextmatch.away.logo || './assets/images/sportimo/default-kit.png'}}">
           </div>
-          <div class="team-name">{{currentTeam.lastmatch.away.name[translate.currentLang]}}</div>
+          <div class="team-name">{{currentTeam.nextmatch.away.name[translate.currentLang]}}</div>
         </div>
-    </div>
-
-    <div *ngIf="currentTeam.topscorer" class="top-player">
-        <div class="player-card" (click)="showPlayer(currentTeam.topscorer._id)">
-            <div class="player-card-header">
-              <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-              <div translate>Top Scorer</div>          
+      </div>
+  
+      <div class="match-info">
+        <div class="match-info-header" translate>Recent Form</div>
+        <div class="inset-circle" *ngFor="let form of currentTeam.recentform">
+          <div class="circle-badge" [class]="form==='W'?'circle-badge won':form=='L'?'circle-badge lost':'circle-badge tie'">{{form}}</div>
+        </div>
+      </div>
+  
+      <div class="match-info">
+        <div class="match-info-header" translate>Last Match</div>
+        <div class="team-side isClickable" (click)="showStandingsTeam(currentTeam.lastmatch.home._id)">
+            <div class="kit">
+              <img alt="" class="img-fluid" src="{{currentTeam.lastmatch.home.logo || './assets/images/sportimo/default-kit.png'}}">
             </div>
-            <div class="player-card-body">
-              <div class="player-data-header">
-                <div>{{currentTeam.topscorer.name[translate.currentLang]}}</div>                
+            <div class="team-name">{{currentTeam.lastmatch.home.name[translate.currentLang]}}</div>
+          </div>
+          <div class="match-info-date">
+            <div class="vs">VS</div>
+            <div class="date">{{currentTeam.lastmatch.eventdate | date:'dd/MM hh:mm' }}</div>
+          </div>
+          <div class="team-side isClickable" (click)="showStandingsTeam(currentTeam.lastmatch.away._id)">
+            <div class="kit">
+                <img alt="" class="img-fluid" src="{{currentTeam.lastmatch.away.logo || './assets/images/sportimo/default-kit.png'}}">
+            </div>
+            <div class="team-name">{{currentTeam.lastmatch.away.name[translate.currentLang]}}</div>
+          </div>
+      </div>
+  
+      <div *ngIf="currentTeam.topscorer" class="top-player">
+          <div class="player-card isClickable" (click)="showStandingsPlayer(currentTeam.topscorer._id)">
+              <div class="player-card-header">
+                <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                <div translate>Top Scorer</div>          
               </div>
-              
-            </div>
-          </div>
-          <div class="stat">
-              <div class="number">{{85}}</div>
-              <div class="stat-title" translate>Goals</div>
-          </div>
-    </div>
-
-    <div *ngIf="currentTeam.topassister" class="top-player">
-        <div class="player-card" (click)="showPlayer(currentTeam.topscorer._id)">
-            <div class="player-card-header">
-              <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
-              <div translate>Top Assister</div>          
-            </div>
-            <div class="player-card-body">
-              <div class="player-data-header">
-                  <div>{{currentTeam.topassister.name[translate.currentLang]}}</div>                
+              <div class="player-card-body">
+                <div class="player-data-header">
+                  <div>{{currentTeam.topscorer.name[translate.currentLang]}}</div>                
+                </div>
+                
               </div>
-              
             </div>
-          </div>
-          <div class="stat">
-              <div class="number">{{12}}</div>
-              <div class="stat-title" translate>Assists</div>
-          </div>
+            <div class="stat">
+                <div class="number">{{85}}</div>
+                <div class="stat-title" translate>Goals</div>
+            </div>
+      </div>
+  
+      <div *ngIf="currentTeam.topassister" class="top-player">
+          <div class="player-card isClickable" (click)="showStandingsPlayer(currentTeam.topscorer._id)">
+              <div class="player-card-header">
+                <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
+                <div translate>Top Assister</div>          
+              </div>
+              <div class="player-card-body">
+                <div class="player-data-header">
+                    <div>{{currentTeam.topassister.name[translate.currentLang]}}</div>                
+                </div>
+                
+              </div>
+            </div>
+            <div class="stat">
+                <div class="number">{{12}}</div>
+                <div class="stat-title" translate>Assists</div>
+            </div>
+      </div>
+  
     </div>
-
-  </div>
 
 </div>

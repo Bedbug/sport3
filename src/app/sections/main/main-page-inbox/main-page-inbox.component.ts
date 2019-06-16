@@ -18,19 +18,16 @@ export class MainPageInboxComponent implements OnInit {
 
   ngOnInit() {
     this.sportimoService.getMessages().subscribe(x => {
-      console.log("---- Reading Messages");
       let last_check = localStorage.getItem('last_inbox_check');
-      x.forEach(message => {
-        console.log(last_check);
-        message.read = (last_check && moment(message.created).utc() < moment(last_check).utc());
-      });
+      if (x != null)
+        x.forEach(message => {
+          message.read = (last_check && moment(message.created).utc() < moment(last_check).utc());
+        });
       this.messages = x;
-      console.log((this.messages));
-      
     })
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     localStorage.setItem('last_inbox_check', moment().utc().format());
   }
 

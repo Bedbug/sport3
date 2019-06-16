@@ -8,16 +8,16 @@
     </div>
     <!-- Contest Navbar -->
     <nav class="navbar fixed-bottom mobile-app-navbar">
-      <a [routerLink]="['/contest',contestId,'info']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'info']" routerLinkActive="active" href="#">
         <div class="icn-info"></div><span translate>Info</span>
       </a>
-      <a [routerLink]="['/contest',contestId,'matches']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'matches']" routerLinkActive="active" href="#">
         <div class="icn-match"></div><span translate>Matches</span>
       </a>
-      <a [routerLink]="['/contest',contestId,'leaders']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'leaders']" routerLinkActive="active" href="#">
         <div class="icn-leaders"></div><span translate>Leaders</span>
       </a>
-      <a [routerLink]="['/contest',contestId,'prizes']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'prizes']" routerLinkActive="active" href="#">
         <div class="icn-prize"></div><span translate>Prizes</span>
       </a>
     </nav>

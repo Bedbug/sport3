@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
-import { userInfo } from 'os';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatchPageInfoComponent } from './match-page-info.component';
+import { StatsComponent } from 'src/app/components/stats/stats.component';
+import { SportimoService } from 'src/app/services/sportimo.service';
+import { SportimoServiceStub } from '../../contest-pages/contest-pages.component.spec';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
 
 describe('MatchPageInfoComponent', () => {
   let component: MatchPageInfoComponent;
@@ -8,7 +13,11 @@ describe('MatchPageInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchPageInfoComponent ]
+      declarations: [ MatchPageInfoComponent, StatsComponent ],
+      providers: [
+        { provide: SportimoService, useClass: SportimoServiceStub },       
+        { provide: TranslateService, useClass: TranslateServiceStub }
+      ]
     })
     .compileComponents();
   }));

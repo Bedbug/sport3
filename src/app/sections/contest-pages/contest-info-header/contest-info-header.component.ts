@@ -14,7 +14,8 @@ export class ContestInfoHeaderComponent implements OnInit {
   isLoggedIn: boolean;
 
   constructor(
-    private authenticationService: AuthenticationService,private router: Router, 
+    private authenticationService: AuthenticationService,
+    private router: Router, 
     private route:ActivatedRoute, 
     private sportimoService: SportimoService,
     public translate:TranslateService

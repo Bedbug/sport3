@@ -3,7 +3,7 @@ import { Injectable, APP_INITIALIZER } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment'; //path to your environment files
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ConfigService {

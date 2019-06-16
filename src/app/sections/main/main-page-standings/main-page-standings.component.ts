@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
-import { map } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
 
 
 
@@ -44,6 +45,7 @@ export class MainPageStandingsComponent implements OnInit {
   isFavoriteTeam: boolean = false;
   isLoggedIn: boolean = false;
   isLoading: boolean;
+  private ngUnsubscribe = new Subject();
 
   constructor(
     private sportimoService: SportimoService,
@@ -55,46 +57,50 @@ export class MainPageStandingsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authenticationService.currentUser.subscribe(user => {
+    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+      console.log(user);
       this.isLoggedIn = user != null;
     });
 
     this.route.queryParamMap.subscribe(params => {
 
-      this.currentStandings = null;
-      this.currentTeam = null;
       this.currentPlayer = null;
 
       let leagueId = params.get("leagueId") || null;
-      if (leagueId) {
-        console.log(leagueId);
-        this.currentView = this.StandingsViews['Standings'];
-        this.sportimoService.getStandings(leagueId).subscribe(x => {
-          this.currentStandings = x;
-        }
-        );
-        return;
-      }
-
       let teamId = params.get("teamId") || null;
+      let playerId = params.get("playerId") || null;
 
-      if (teamId) {
-        this.currentView = this.StandingsViews['Team'];
-        this.sportimoService.getTeam(teamId).subscribe(x => {
-          this.currentTeam = x;
-          // Check for favorite team
-          this.isFavoriteTeam = false;
-          if (this.authenticationService.currentUserValue)
-            this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
-              if (team._id == x._id)
-                this.isFavoriteTeam = true;
-            });
+      if (leagueId) {
+        if (!this.currentStandings || leagueId != this.currentStandings.competition._id)
+          this.sportimoService.getStandings(leagueId).subscribe(x => {
+            this.currentStandings = x;
+          });
+
+        if (!teamId) {
+          this.currentView = this.StandingsViews['Standings'];
+          return;
         }
-        );
+      }
+
+      if (teamId && leagueId) {
+        this.currentView = this.StandingsViews['Team'];
+        if (!this.currentTeam || this.currentTeam._id != teamId) {
+          this.currentTeam = null;
+          this.sportimoService.getTeam(teamId).subscribe(x => {
+            this.currentTeam = x;
+            // Check for favorite team
+            this.isFavoriteTeam = false;
+            if (this.authenticationService.currentUserValue)
+              this.authenticationService.currentUserValue.favTeams.forEach(fav => {
+                if (fav.team._id == teamId && fav.competition._id == leagueId)
+                  this.isFavoriteTeam = true;
+              });
+          }
+          );
+        }
         return;
       }
 
-      let playerId = params.get("playerId") || null;
       if (playerId) {
         this.currentView = this.StandingsViews['Player'];
         this.sportimoService.getPlayer(playerId).subscribe(x => {
@@ -103,7 +109,6 @@ export class MainPageStandingsComponent implements OnInit {
         );
         return;
       }
-
 
       this.currentView = this.StandingsViews['Leagues'];
 
@@ -115,7 +120,7 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   showTeam(teamId: string) {
-    this.router.navigate([], { queryParams: { teamId: teamId } });
+    this.router.navigate([], { queryParams: { leagueId: this.currentStandings.competition._id, teamId: teamId } });
   }
 
   showPlayer(playerId: string) {
@@ -143,14 +148,18 @@ export class MainPageStandingsComponent implements OnInit {
 
   toggleFavorite() {
     this.isLoading = true;
-    this.authenticationService.updateFavorites(this.currentTeam, {_id:this.currentStandings.competition,name:this.currentStandings.name}, this.isFavoriteTeam).subscribe(response => {
+    this.authenticationService.updateFavorites(this.currentTeam, this.currentStandings.competition, this.isFavoriteTeam).pipe(takeUntil(this.ngUnsubscribe)).subscribe(response => {
       this.isLoading = false;
       this.isFavoriteTeam = false;
-      this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
-        if (team._id == this.currentTeam._id)
+      this.authenticationService.currentUserValue.favTeams.forEach(fav => {
+        if (fav.team._id == this.currentTeam._id && fav.competition._id == this.currentStandings.competition._id)
           this.isFavoriteTeam = true;
       });
     })
+  }
 
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

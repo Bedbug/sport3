@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainPageProfileComponent } from './main-page-profile.component';
+import { SportimoService } from 'src/app/services/sportimo.service';
+import { SportimoServiceStub, AuthenticationServiceStub } from '../../contest-pages/contest-pages.component.spec';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 describe('MainPageProfileComponent', () => {
   let component: MainPageProfileComponent;
@@ -8,7 +15,13 @@ describe('MainPageProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageProfileComponent ]
+      declarations: [ MainPageProfileComponent ],
+      imports:[FormsModule,ReactiveFormsModule, NgxChartsModule],
+      providers: [
+        {provide: SportimoService, useClass: SportimoServiceStub},
+        {provide: AuthenticationService, useClass: AuthenticationServiceStub},
+        {provide: TranslateService, useClass: TranslateServiceStub}
+      ]
     })
     .compileComponents();
   }));

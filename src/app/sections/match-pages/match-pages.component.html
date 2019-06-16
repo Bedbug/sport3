@@ -37,13 +37,13 @@
     </div>
     <!-- Contest Navbar -->
     <nav class="navbar fixed-bottom mobile-app-navbar">
-      <a [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
         <div class="icn-match"></div>Match Info
       </a>
-      <a [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']" routerLinkActive="active" href="#">
         <div class="icn-cards"></div>Cards
       </a>
-      <a [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">
         <div class="icn-leaders"></div>Leaders
       </a>
     </nav>

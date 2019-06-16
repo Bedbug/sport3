@@ -18,29 +18,29 @@ export class ContestPagePrizesComponent implements OnInit {
       position: { from: 1 },
       prize: {
         picture: "https://via.placeholder.com/640x450",
-        name:{en: "Your favorite Team Jerseys"},
-        text:{en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."}
+        name: { en: "Your favorite Team Jerseys" },
+        text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
       }
     },
     {
       position: { from: 2 },
       prize: {
         picture: "https://via.placeholder.com/640x450",
-        name:{en: "4G Mobile Data"},
-        text:{en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."}
+        name: { en: "4G Mobile Data" },
+        text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
       }
     },
     {
       position: { from: 3 },
       prize: {
         picture: "https://via.placeholder.com/640x450",
-        name:{en: "100 signed autographs"},
-        text:{en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti."}
+        name: { en: "100 signed autographs" },
+        text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
       }
     }
   ]
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate:TranslateService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService) { }
 
   contestDetails: Contest;
 
@@ -49,10 +49,11 @@ export class ContestPagePrizesComponent implements OnInit {
       this.sportimoService.getContestQuickDetails(params.get("contestId"))
         .subscribe(result => {
           this.contestDetails = result;
-          this.sportimoService.getContestPrizes(this.contestDetails._id).subscribe(prizes => {
-            this.prizes = prizes;
-          }
-          );
+          if (this.contestDetails)
+            this.sportimoService.getContestPrizes(this.contestDetails._id).subscribe(prizes => {
+              this.prizes = prizes;
+            }
+            );
         });
     })
   }

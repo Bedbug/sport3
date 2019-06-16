@@ -1,14 +1,14 @@
 <div (click)="openPlayModal()" class="playcard">
   <div class="icon">
-    <div [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
+    <div [ngClass]="Utils.getIconBySprite(data?.image.sprite)"></div>
   </div>
   <div class="card-name">
-    {{data.title[translate.currentLang]}}
+    {{data?.title[translate.currentLang]}}
   </div>
   <div style="width:100%; text-align: right; padding-right: 15px;">
     <span class="label label-default" style="background-color: white;
       color: #42454a;
-      padding: 3px 5px;">{{data.cardType=="Overall"?"90'":"LIVE"}}</span>
+      padding: 3px 5px;">{{data?.cardType=="Overall"?"90'":"LIVE"}}</span>
   </div>
 </div>
 
@@ -76,9 +76,9 @@
       <div class="playcard-event">
         <div class="playcard-header">
           <div class="event-icon">
-            <div class="icon" [ngClass]="Utils.getIconBySprite(data.image.sprite)"></div>
+            <div class="icon" [ngClass]="Utils.getIconBySprite(data?.image.sprite)"></div>
           </div>
-          <div class="name"> {{data.title[translate.currentLang]}}</div>
+          <div class="name"> {{data?.title[translate.currentLang]}}</div>
         </div>
         <div class="info">{{data.text[translate.currentLang]}}<span *ngIf="data.cardType!='Overall'">, starting from:</span></div>
         <div class="time" *ngIf="data.cardType!='Overall'">

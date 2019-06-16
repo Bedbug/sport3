@@ -85,7 +85,7 @@ export class MainPageMyteamsComponent implements OnInit {
     this.authenticationService.updateFavorites(this.currentTeam.team, this.currentTeam.competition, this.isFavoriteTeam).subscribe(response => {
       this.isLoading = false;
       this.isFavoriteTeam = false;
-      this.authenticationService.currentUserValue.favoriteteams.forEach(team => {
+      this.authenticationService.currentUserValue.favTeams.forEach(team => {
         if (team._id == this.currentTeam._id)
           this.isFavoriteTeam = true;
       });
@@ -109,5 +109,16 @@ export class MainPageMyteamsComponent implements OnInit {
     this.currentView = this.MyTeamsViews['Team'];
     this.router.navigate([], { queryParams: { team: fav.team._id, competition: fav.competition._id } });
   }
+
+  showStandingsTeam(teamId: string) {
+    this.currentTeam = null;
+    this.isLoading = true;
+    this.router.navigate(['/main/standings'], { queryParams: { teamId: teamId, leagueId:this.route.snapshot.queryParamMap.get("competition") } });
+  }
+
+  showStandingsPlayer(id: string){
+    this.router.navigate(['/main/standings'], { queryParams: { playerId: id } });
+  }
+
 
 }

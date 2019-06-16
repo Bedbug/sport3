@@ -13,8 +13,6 @@ export class MatchesListItemComponent implements OnInit {
   @Input() contestMatch: ContestMatch;
   @Input() isClickable: boolean;
 
-
-
   constructor(private router:Router, public translate: TranslateService) { }
 
   ngOnInit() {

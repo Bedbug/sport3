@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+// import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { first } from 'rxjs/operators';
 
@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   error = '';
 
   constructor(private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
+    // private route: ActivatedRoute,
+    // private router: Router,
     private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
@@ -43,13 +43,8 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {          
-          this.isSubmitting = false;
-          
+          this.isSubmitting = false;          
           $('#app-login-modal').addClass('hidden');
-          // if (!this.returnUrl)
-          //   this.router.navigate(['/main/contests']);
-          // else
-          //   this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
@@ -61,9 +56,7 @@ export class LoginComponent implements OnInit {
 
   cancel(){
     let el = $('#app-login-modal');
-    console.log(el);
     el.addClass('hidden');
-    console.log(el);
   }
 
 }

@@ -1,14 +1,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatchesListItemComponent } from './matches-list-item.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateService } from '@ngx-translate/core';
+
+export class TranslateServiceStub{
+
+	public get(key: any): any {
+		return "_"+key;
+	}
+}
+
 
 describe('MatchListItemComponent', () => {
   let component: MatchesListItemComponent;
   let fixture: ComponentFixture<MatchesListItemComponent>;
-
+  
+  let isClickable: boolean = false;
   beforeEach(async(() => {
+    
     TestBed.configureTestingModule({
-      declarations: [ MatchesListItemComponent ]
+      declarations: [ MatchesListItemComponent ],
+      imports: [RouterTestingModule],
+      providers: [{provide: TranslateService, useClass: TranslateServiceStub}]
     })
     .compileComponents();
   }));

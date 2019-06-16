@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import $ from 'jquery'
 @Component({
   selector: 'app-contest-page-leaders',
   templateUrl: './contest-page-leaders.component.html',

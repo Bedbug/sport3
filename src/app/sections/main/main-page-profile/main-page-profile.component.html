@@ -1,18 +1,69 @@
-<div class="row">
-    <div class="main-pages-header" translate>Profile</div>
-    <div class="main-pages-scrollarea container">
-      <div class="winner-card">
-        <div class="winner-card-header col-12">
-          <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
-          <div>George Best</div>
+<div class="background"></div>
+<div class="row" style="position: relative">
+  <div class="main-pages-header" translate>Profile</div>
+  <div class="main-pages-scrollarea">
+    <div class="winner-card">
+      <div class="winner-card-header">
+        <div class="background-ring">
+          <img class="rounded-circle" [src]="user.picture" alt="#">
         </div>
-        <div class="winner-card-body">
-          <div class="winner-prize">PS4 Pro</div>
-          <div class="row">
-            <div class="col-8 prize-info">1st Prize, UEFA Champions LEgaue</div>
-            <div class="col-4 prize-date text-right">28/06/2018</div>
+
+        <div class="input-icon">
+          <div class="icn-user"></div>
+        </div>
+        <div class="input-control">
+          <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text" class="form-control-plaintext"
+            placeholder="Username">
+        </div>
+        <div *ngIf="username.dirty">
+          <button [disabled]="isSubmitting" style="height: 31px;" (click)="updateName(username)"
+            class="btn btn-sportimo login-form-button">
+            <div class="loader-label" [class.btn-active]="isSubmitting">
+              <span class="button-label" translate>Update</span>
+              <div class="fadeInLoader">
+                <span class="rotate dotted button-loader"></span>
+              </div>
+            </div>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="winner-card-body" *ngIf="stats.user.stats">
+          <div class="profile-stats">
+            <div class="profile-stat-title" translate>Games Played:</div>
+            <div class="profile-stat-value">{{stats?.user.stats.matchesPlayed}}</div>
+            <div class="profile-stat-title" translate>Points/game:</div>
+            <div class="profile-stat-value">{{stats?.pointsPerGame}}</div>
+            <div class="profile-stat-title" translate>Cards Played:</div>
+            <div class="profile-stat-value">{{stats?.user.stats.cardsPlayed}}</div>
+            <div class="profile-stat-title" translate>Cards won:</div>
+            <div class="profile-stat-value">{{stats?.user.stats.cardsWon}}</div>
+          </div>
+          <div style="text-align: center; color: #ffffff">
+            <div class="chart-container">
+              <ngx-charts-bar-vertical
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]=true
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="Hello"
+              [yAxisLabel]="yAxisLabel"
+              [roundEdges]= false
+              (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+          </div>
+            <div class="chart-footer" translate>Last 5 games</div>
+            
+            <!-- <div class="col-8 prize-info">1st Prize, UEFA Champions LEgaue</div>
+            <div class="col-4 prize-date text-right">28/06/2018</div> -->
           </div>
         </div>
-      </div>
     </div>
   </div>
+</div>
