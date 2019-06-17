@@ -21,7 +21,6 @@ export class MainPageHomeComponent implements OnInit {
 
   constructor(private routeParams: ActivatedRoute, private config: ConfigService, private toastr: ToastrService) {
     this.contestID = routeParams.snapshot.params['contestID'];
-    console.log(config.getClient(), this.contestID);
   }
 
   ngOnInit() {

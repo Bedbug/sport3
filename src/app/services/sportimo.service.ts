@@ -187,9 +187,6 @@ export class SportimoService {
    SOCKETS
  ----------------------------------------------------------------------------------- */
   getStream() {
-
-    // console.log(demo.length);
-
     let observable = new Observable(observer => {
       this.socket = io(this.Config.getApi('SOCKET'));
       this.socket.on('message', (data) => {
@@ -197,13 +194,11 @@ export class SportimoService {
         this.parseSocket(data);
       });
 
-      this.socket.on('welcome', (data) => {
-        console.log(data);
+      this.socket.on('welcome', (data) => {      
         this.registerUserToStream();
       })
 
       this.socket.on('registered', (data) => {
-        console.log(data);
         this.subscribeToMatchStream();
       });
 
@@ -219,8 +214,6 @@ export class SportimoService {
   parseSocket(data: any) {
 
     if (!data) return;
-
-    console.log(data);
     if (data.type == "Event_added") {
       this.addTimelineEvent(data);
     } else if (data.type == "Event_updated") {
@@ -231,8 +224,7 @@ export class SportimoService {
       this.advanceTimelineSegment(data);
     } else if (data.type == "Match_Reload") {
       this.reloadMatch(data);
-    } else if (data.type == "Card_resumed" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {
-      console.log("Update Card Request");
+    } else if (data.type == "Card_resumed" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {      
       this.updateCardStatus(data);
     } else if (data.type == "Match_full_time") {
       this.finalizeMatch(data);
@@ -244,7 +236,6 @@ export class SportimoService {
 
   }
   updateCardStatus(data: any) {
-    console.log("Card Update");
     Object.assign(this.currentLiveMatch.value.playedCards[
       this.currentLiveMatch.value.playedCards.findIndex(el => el.id === data.data.id)], data.data)
     this.currentLiveMatch.next(this.currentLiveMatch.value);
@@ -307,8 +298,7 @@ export class SportimoService {
         return match;
       }));
   }
-  advanceTimelineSegment(data: any) {
-    console.log(data.data.segment);
+  advanceTimelineSegment(data: any) {    
     if (data.data.segment.timed)
       console.log("[SPORTIMO SERVICE][TIMER]: We START counting match time");
     // this.currentMatchTimer.subscribe();
@@ -369,10 +359,8 @@ export class SportimoService {
     // return timer(5000, 1500).pipe(
     //   take(1)).subscribe(x => {
     //     // if(demo[x].type == "Event_added")
-    //     // console.log(index,demo[x].type);
     //     // index++;
     //     // let demoEvent = demo.data.find(x=>x.type =='Substitution');
-    //     // console.log(demoEvent);
     //     this.parseSocket(demo[133]);
     //     // this.parseSocket(demo[x]);
     //   })
@@ -387,8 +375,6 @@ export class SportimoService {
   }
 
   subscribeToMatchStream() {
-    console.log(this.currentLiveMatch.value);
-
     this.socket.emit('subscribe', { room: this.currentLiveMatch.value.matchData._id });
   }
 
@@ -411,7 +397,6 @@ export class SportimoService {
     return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/players/${playerId}`);
   }
   getTeam(teamId: string) {
-    console.log("Team", teamId);
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/full`);    
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/${teamId}/full`);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/588a8d890bb50f00feda8dc0/full`);    

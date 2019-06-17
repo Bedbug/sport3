@@ -61,7 +61,7 @@ export class CardComponent implements OnInit {
   constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
 
   ngOnInit() {
-    // console.log(this.cardData);
+
     setTimeout(() => {
       // this.cardData.status = 0;
       // this.cardData.activationTime = moment().utc().add('30', 's').toDate();
@@ -149,8 +149,7 @@ export class CardComponent implements OnInit {
     this.isPlayingSpecial = true;
 
     this.playcardSubscription = this.sportimoService.playSpecial(this.cardData.id, postData)
-      .subscribe(response => {
-        console.log(response);
+      .subscribe(response => {      
         this.isPlayingSpecial = false;
       });
 

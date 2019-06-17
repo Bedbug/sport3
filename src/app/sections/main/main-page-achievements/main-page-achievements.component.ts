@@ -16,7 +16,6 @@ export class MainPageAchievementsComponent implements OnInit {
   ngOnInit() {
     this.sportimoService.getAchievements().subscribe(x=>{      
       this.achievements = x.user.achievements;
-      console.log(this.achievements);
     });
   }
 

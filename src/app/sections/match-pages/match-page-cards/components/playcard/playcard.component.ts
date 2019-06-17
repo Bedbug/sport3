@@ -96,12 +96,11 @@ export class PlaycardComponent implements OnInit {
     this.isSubmitingCard = true;
     this.cardSelections.minute = this.selectedTime;
     this.sportimoService.submitUserCard(this.cardSelections)
-      .subscribe(playedCard => {
-        console.log(playedCard);
+      .subscribe(playedCard => {        
         this.isSubmitingCard = false;
         this.closeModal();
       }
-        , error => console.log('Could not load todos.'))
+        , error => console.log('Error'))
   }
 
   constructor(private sportimoService: SportimoService, public translate: TranslateService) {
@@ -109,7 +108,6 @@ export class PlaycardComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.selectedTime = this.getMinimumTime();
   }
 

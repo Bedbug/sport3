@@ -27,7 +27,6 @@ export class MainPageMyteamsComponent implements OnInit {
   favoriteTeams: any;
   currentUser: boolean;
 
-
   constructor(
     private route: ActivatedRoute,
     private sportimoService: SportimoService,
@@ -65,11 +64,9 @@ export class MainPageMyteamsComponent implements OnInit {
       }
 
       this.currentView = this.MyTeamsViews['Teams'];
-      this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
-        console.log("Favorite teams view Teams Update");
+      this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {        
         if (x)
-          this.favoriteTeams = x.favTeams;
-        console.log(this.favoriteTeams);
+          this.favoriteTeams = x.favTeams;        
       });
 
     })
@@ -91,17 +88,6 @@ export class MainPageMyteamsComponent implements OnInit {
       });
     })
   }
-
-  // viewTeam(fav: any) {
-  //   this.currentTeam = null;
-  //   this.isLoading = true;
-  //   this.currentView = this.MyTeamsViews['Team'];
-
-  //   this.sportimoService.getFavoriteTeamData(fav.team._id, fav.competition._id).subscribe(x => {
-  //     this.isLoading = false;
-  //     this.currentTeam = x;
-  //   })
-  // }
 
   showTeam(fav: any) {
     this.currentTeam = null;

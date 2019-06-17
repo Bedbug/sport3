@@ -56,7 +56,6 @@ export class SportimoUtils {
       else
         return null;
     } else{
-      console.log(type);
       return null;
     }
   }

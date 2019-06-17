@@ -8,6 +8,11 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { ConfigService } from 'src/app/services/config.service';
+import { ConfigServiceStub } from '../../contest-pages/contest-page-info/contest-page-info.component.spec';
+import { User } from 'src/app/models/user';
+import { of } from 'rxjs';
+import { Component } from '@angular/core';
 
 describe('MainPageMyteamsComponent', () => {
   let component: MainPageMyteamsComponent;
@@ -15,24 +20,33 @@ describe('MainPageMyteamsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageMyteamsComponent ],
-      imports:[RouterTestingModule, HttpClientTestingModule],
+      declarations: [MainPageMyteamsComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule],
       providers: [
         { provide: SportimoService, useClass: SportimoServiceStub },
         { provide: AuthenticationService, useClass: AuthenticationServiceStub },
+        { provide: ConfigService, useClass: ConfigServiceStub },
         { provide: TranslateService, useClass: TranslateServiceStub }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
+
+  let authenticationService: AuthenticationService;
+  let httpClientSpy: { post: jasmine.Spy };
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MainPageMyteamsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post']);
+    authenticationService = new AuthenticationService(<any>httpClientSpy, <any>ConfigServiceStub);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  
 });

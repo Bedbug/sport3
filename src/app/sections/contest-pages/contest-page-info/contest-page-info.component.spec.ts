@@ -9,9 +9,14 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 
 
 export class ConfigServiceStub {
-  getApi(key:string) {
-    return '';
-  }
+  // getApi(key:string) {
+  //   return "https://clientserver-3.herokuapp.com/v1";
+  // }
+
+  getApi(key: string): string {
+    return "https://clientserver-3.herokuapp.com/v1";
+}
+
   getClient(){
     return '';
   }

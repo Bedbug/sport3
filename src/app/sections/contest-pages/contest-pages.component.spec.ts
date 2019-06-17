@@ -76,6 +76,10 @@ export class AuthenticationServiceStub {
       favTeams: []
     });
   }
+
+  currentUserValue = {
+    favTeams: []
+  }
 }
 
 

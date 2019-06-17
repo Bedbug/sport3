@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../models/user';
@@ -11,6 +11,7 @@ import { Team } from '../models/team';
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+  lo: any;
 
     constructor(private http: HttpClient, private Config: ConfigService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -21,8 +22,10 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/authenticate`, { username, password })
+    login(username: string, password: string) {    
+        // return of(null);
+        // return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/authenticate`, { username, password })
+        return this.http.post<any>(`https://clientserver-3.herokuapp.com/v1/users/authenticate`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -30,7 +33,6 @@ export class AuthenticationService {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }
-
                 return user;
             }));
     }
@@ -42,7 +44,6 @@ export class AuthenticationService {
     }
 
     updateFavorites(team: Team, competition:any, remove:boolean) {
-        
         let newTeamFavorites:any[] = this.currentUserSubject.value.favTeams;
 
         if(remove){

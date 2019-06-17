@@ -26,8 +26,6 @@ export class MatchPageCardsComponent implements OnInit {
   // menuPosition: any;
 
   constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService) {
-
-   console.log(translate.currentLang)
    }
 
   ngOnInit() {
@@ -65,23 +63,5 @@ export class MatchPageCardsComponent implements OnInit {
     return this.liveMatch.playedCards.filter(x=>x.status == 0 || x.status == 1);
     return [];
   }
-  // ngAfterViewInit() {
-  //   this.menuPosition = this.menuElement.nativeElement.offsetTop
-  // }
-
-
-  // @HostListener('window:scroll', ['$event'])
-  // handleScroll(){
-
-  //     const windowScroll = window.pageYOffset;
-
-  //     console.log(windowScroll,this.menuPosition);
-
-  //     if(windowScroll >= 105){
-  //         this.sticky = true;
-  //     } else {
-  //         this.sticky = false;
-  //     }
-  // }
-
+ 
 }

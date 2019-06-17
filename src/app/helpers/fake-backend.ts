@@ -118,7 +118,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(grandPrize);
             }
 
-            // console.log(request.url);
             
             if (request.url.match(/subscription/i) && request.method === 'POST') {
                 // if (role !== Role.Admin) return unauthorised();

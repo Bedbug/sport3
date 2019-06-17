@@ -58,7 +58,6 @@ export class MainPageStandingsComponent implements OnInit {
   ngOnInit() {
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
-      console.log(user);
       this.isLoggedIn = user != null;
     });
 
