@@ -40,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotyfToastError,
     ContestInfoHeaderComponent,
     SubscribeNoticeComponent,
-    MatchPagesComponent
+    MatchPagesComponent,
   ],
   imports: [
     BrowserModule,

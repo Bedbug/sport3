@@ -13,6 +13,8 @@ import { MainPageProfileComponent } from './main-page-profile/main-page-profile.
 import { MainPageInboxComponent } from './main-page-inbox/main-page-inbox.component';
 import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartsModule } from 'ng2-charts';
+import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     GrandPrizeComponent,
     MainPageMyteamsComponent,
     MainPageProfileComponent,
-    MainPageInboxComponent
+    MainPageInboxComponent,
+    MainPageAvatarsComponent
 ],
   imports: [
     CommonModule,
     MainRoutingModule,
     TranslateModule.forChild(),
     FormsModule,
-    NgxChartsModule
+    NgxChartsModule,
+    ChartsModule
   ]
 })
 export class MainModule { }

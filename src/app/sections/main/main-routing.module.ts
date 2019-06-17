@@ -7,6 +7,7 @@ import { MainPageStandingsComponent } from './main-page-standings/main-page-stan
 import { MainPageMyteamsComponent } from './main-page-myteams/main-page-myteams.component';
 import { MainPageProfileComponent } from './main-page-profile/main-page-profile.component';
 import { MainPageInboxComponent } from './main-page-inbox/main-page-inbox.component';
+import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
       {
         path: 'inbox',
         component: MainPageInboxComponent
+      },
+      {
+        path: 'avatars',
+        component: MainPageAvatarsComponent
       },
       // {
       //   path: 'standings/league/:leageid',

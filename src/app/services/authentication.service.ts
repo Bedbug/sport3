@@ -9,9 +9,10 @@ import { Team } from '../models/team';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-  lo: any;
+    lo: any;
 
     constructor(private http: HttpClient, private Config: ConfigService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -22,7 +23,7 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {    
+    login(username: string, password: string) {
         // return of(null);
         // return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/authenticate`, { username, password })
         return this.http.post<any>(`https://clientserver-3.herokuapp.com/v1/users/authenticate`, { username, password })
@@ -43,24 +44,39 @@ export class AuthenticationService {
         this.currentUserSubject.next(null);
     }
 
-    updateFavorites(team: Team, competition:any, remove:boolean) {
-        let newTeamFavorites:any[] = this.currentUserSubject.value.favTeams;
+    updateFavorites(team: Team, competition: any, remove: boolean) {
+        let newTeamFavorites: any[] = this.currentUserSubject.value.favTeams;
 
-        if(remove){
-            newTeamFavorites = newTeamFavorites.filter(favteam=> favteam.team._id != team._id && favteam.competition._id != competition._id);
-        }else{
-            newTeamFavorites.push({team:team,competition:competition});
+        if (remove) {
+            newTeamFavorites = newTeamFavorites.filter(favteam => favteam.team._id != team._id && favteam.competition._id != competition._id);
+        } else {
+            newTeamFavorites.push({ team: team, competition: competition });
         }
-        
+
         this.currentUserSubject.value.favTeams = newTeamFavorites;
+        localStorage.setItem('currentUser', JSON.stringify(this.currentUserSubject.value));
         this.currentUserSubject.next(this.currentUserSubject.value);
-        
+
         // let mappedTeams = newTeamFavorites.map(x=>  { return {team:x.team._id, competition: x.competition._id}});
-        let postData = {"team":team._id,"competition":competition._id};
-        
+        let postData = { "team": team._id, "competition": competition._id };
+
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/favTeam`, postData)
-            .pipe(map(response => {       
-               return response;             
+            .pipe(map(response => {
+                return response;
             }));
-      }
+    }
+
+    updateAvatar(avatarUrl: string) {
+        this.currentUserSubject.value.picture = avatarUrl;
+        this.currentUserSubject.next(this.currentUserSubject.value);
+        let postData = { "picture": avatarUrl };
+
+        return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, postData)
+            .pipe(map(response => {
+                console.log(response);
+                console.log("Updating avatar");
+                localStorage.setItem('currentUser', JSON.stringify(this.currentUserSubject.value));
+                return response;
+            }));
+    }
 }

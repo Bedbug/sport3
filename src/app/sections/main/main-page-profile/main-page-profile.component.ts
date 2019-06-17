@@ -4,6 +4,9 @@ import { User } from 'src/app/models/user';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { ChartType, ChartOptions } from 'chart.js';
+import { MultiDataSet, Label, SingleDataSet, Color } from 'ng2-charts'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page-profile',
@@ -12,35 +15,13 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 })
 export class MainPageProfileComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService, private sportimoService: SportimoService) { }
+  constructor(private authenticationService: AuthenticationService, private sportimoService: SportimoService, private router: Router) { }
 
   user: User;
   ngUnsubscribe = new Subject();
 
-  single: any[] = [
-    {
-      "name": "21/5",
-      "value": 8940000
-    },
-    {
-      "name": "22/5",
-      "value": 5000000
-    },
-    {
-      "name": "23/5",
-      "value": 5000000
-    },
-    {
-      "name": "24/5",
-      "value": 5000000
-    },
-    {
-      "name": "25/5",
-      "value": 5000000
-    }
-  ];
+  single: any[] = [];
   multi: any[];
-
   view: any[] = null;//[100, 400];
 
   // options
@@ -59,6 +40,39 @@ export class MainPageProfileComponent implements OnInit {
 
   stats: any;
 
+  // Pie charts
+  public OverallChartLabels: Label[] = ['You', 'All players'];
+  public OveralltChartData: SingleDataSet = [
+    350, 450
+  ];
+  public InstantChartData: SingleDataSet = [
+    350, 450
+  ];
+  public doughnutChartType: ChartType = 'polarArea';
+  public ChartColors: Color[] = [{ borderWidth: 0, backgroundColor: ['RGBA(171, 236, 120, 0.9)', 'RGBA(255, 52, 88, 0.7)'] }]
+  public ChartOprions: ChartOptions = {
+    title:{display:false},
+    showLines:false,
+    spanGaps:false,
+    rotation:10,
+    scales: {
+      yAxes: [{
+        display: false, //this will remove all the x-axis grid lines
+        ticks: {
+          display: false //this will remove only the label
+      }
+      }]
+    },
+    tooltips: {
+      enabled: true,
+    }
+  };
+
+  public data: any = {
+    overall: { you: 0, all: 0 },
+    instant: { you: 0, all: 0 }
+  }
+
   ngOnInit() {
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
@@ -72,7 +86,25 @@ export class MainPageProfileComponent implements OnInit {
           count++;
           return { name: "Game " + count, value: each };
         })
+
+      this.data.overall.you = (100 * (x.user.stats.overallCardsWon / x.user.stats.overallCardsPlayed)).toFixed(2);
+      this.data.overall.all = x.all.overallSuccessPercent.toFixed(2);
+
+      this.data.instant.you = (100 * (x.user.stats.instantCardsWon / x.user.stats.instantCardsPlayed)).toFixed(2);
+      this.data.instant.all = x.all.instantSuccessPercent.toFixed(2);
+
+      this.OveralltChartData = [
+        this.data.overall.you, this.data.overall.all
+      ]
+
+      this.InstantChartData = [
+        this.data.instant.you, this.data.instant.all
+      ]
     });
+  }
+
+  openAvatarSelection() {
+    this.router.navigate(['/main/avatars']);
   }
 
   ngOnDestroy() {

@@ -1,0 +1,45 @@
+<div class="background"></div>
+<div class="row" style="position: relative">
+  <div class="main-pages-header" translate>Profile</div>
+  <div class="main-pages-scrollarea">
+    <div class="winner-card">
+      <div class="winner-card-header">
+        <div class="background-ring">
+          <img class="rounded-circle" [src]="user?.picture" alt="">
+        </div>
+        <div class="avatar-select-info" translate>Select Avatar</div>
+        <!-- <div class="input-icon">
+          <div class="icn-user"></div>
+        </div>
+        <div class="input-control">
+          <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text" class="form-control-plaintext"
+            placeholder="Username">
+        </div>
+        <div *ngIf="username.dirty">
+          <button [disabled]="isSubmitting" style="height: 31px;" (click)="updateName(username)"
+            class="btn btn-sportimo login-form-button">
+            <div class="loader-label" [class.btn-active]="isSubmitting">
+              <span class="button-label" translate>Update</span>
+              <div class="fadeInLoader">
+                <span class="rotate dotted button-loader"></span>
+              </div>
+            </div>
+          </button>
+        </div> -->
+
+      </div>
+      <div class="winner-card-body">
+        <div class="avatars-list">
+          <div class="avatar-container" [class.selected]="avatar===user?.picture" [class.isClickable]="avatar!=user?.picture" *ngFor="let avatar of avatars" (click)="selectAvatar(avatar)">
+            <div class="background-ring">
+              <img class="rounded-circle" [src]="avatar" alt="" >
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
