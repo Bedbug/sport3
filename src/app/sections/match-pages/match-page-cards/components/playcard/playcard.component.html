@@ -97,10 +97,32 @@
           </div>
         </div>
         <div *ngIf="!optionSelected && data.cardType!='Overall'" [@fadein] class="time-slider">
-          <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
-            [attr.min]="minTimeValue" [attr.max]="90" [attr.value]="minTimeValue">
+          <!-- <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
+            [attr.min]="minTimeValue" [attr.max]="90" [attr.value]="minTimeValue"> -->
+             <ion-range-slider #sliderElement
+          type="single"
+          min="1"
+          max="90"
+          [from]="fromTimeValue"
+          [from_min]="minTimeValue"
+          from_max="90"
+          from_shadow="true"
+          to="40"
+          to_min="40"
+          to_max="90"
+          to_shadow="true"          
+          grid="true"
+          grid_num="10"          
+          postfix="'"
+          decorate_both="true"    
+          (onChange)="valueChanged($event)"     
+          ></ion-range-slider>
+          <!--  (onUpdate)="myOnUpdate($event)"
+          (onChange)="valueChanged($event.target.value)"
+          (onFinish)="myOnFinish($event)" -->
           <span class="slider-guide">Drag slider to set the time that the card will be activated.</span>
         </div>
+      
       </div>
     </div>
 

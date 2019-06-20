@@ -1,0 +1,150 @@
+// LOGIN-FORM
+.is-invalid {
+  border: 1px solid red;
+}
+
+.login-form-info {
+  font-weight: 700;
+  font-size: 16px;
+  width: 195px;
+  margin: auto;
+  padding: 45px 0;
+}
+
+.login-form-content {
+  width: 219px;
+  height: 290px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+}
+
+.login-form-content .form-group {
+  margin-bottom: 20px;
+}
+
+.login-form-content input {
+  height: 40px;
+  font-size: 18px;
+}
+
+.login-form-buttons {
+  width: 219px;
+  margin: auto;
+  position: absolute;
+  bottom: 60px;
+  left: 54px;
+}
+
+.notice {
+  width: 265px;
+  margin: auto;
+  position: absolute;
+  bottom: 15px;
+  left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  flex-wrap: wrap;
+}
+
+.login-form-button {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+}
+
+.icn-info-alt {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+
+a {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.contest-join-image {
+  background-image: url("~src/assets/images/sportimo/contest-join.jpg");
+  width: 100%;
+  height: 178px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid;
+}
+
+.contest-coin-front {
+  background-image: url("~src/assets/images/sportimo/coin-front.png");
+  width: 122px;
+  height: 122px;
+  background-size: cover;
+  position: absolute;
+  top: 58px;
+  right: 25%;
+}
+.contest-coin-back {
+  background-image: url("~src/assets/images/sportimo/coin-back.png");
+  width: 122px;
+  height: 122px;
+  background-size: cover;
+  position: absolute;
+  top: 58px;
+  left: 25%;
+}
+
+.modal-appear .contest-coin-front {
+  animation-name: fadeInRight;
+  animation-duration: 1s;  
+}
+.modal-appear .contest-coin-back {
+  animation-name: fadeInLeft;
+  animation-duration: 1s;
+}
+
+.registration-bonus-text {
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 16px;
+  width: 132px;
+  color: #ffffff;
+  margin: auto;
+  animation-name: fadeinDelay;
+  animation-duration: 1.5s;
+}
+
+.registration-bonus{
+font-family: Roboto;
+font-weight: 700;
+font-size: 29px;
+color: #FFFFFF;
+letter-spacing: -1.9px;
+margin: auto;
+animation-name: fadeinDelay;
+  animation-duration: 2.5s;
+}
+
+.coin{
+    width: 25px;
+    height: 25px;
+}
+
+@keyframes fadeinDelay{
+    0% { opacity:0; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+  }
+  
+  @-webkit-keyframes fadeinDelay{
+    0% { opacity:0; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+  }
+  

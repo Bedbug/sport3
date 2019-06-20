@@ -27,18 +27,22 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
+              "src/assets/css/ion.rangeSlider.skinHTML5.css",
               "node_modules/font-awesome/scss/font-awesome.scss",
               "src/assets/app.scss",
               "src/assets/css/style.css",
               "src/assets/css/responsive.css",
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
+              
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/jquery-ui.min.js",
               "src/assets/js/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js"
             ]
           },
           "configurations": {

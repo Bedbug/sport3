@@ -5,6 +5,6 @@
     "ROOT":"https://clientserver-3.herokuapp.com/v1",
     "AUTHENTICATE":"users/authenticate",
     "SUBSCRIPTION": "api/gugroup/subscription",
-    "SOCKET":"http://localhost:3031"
+    "SOCKET":"https://socketserver-3.herokuapp.com/"
   }
 }

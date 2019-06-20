@@ -1,7 +1,7 @@
 export class User {
     _id: string;
-    username: string;
-    password: string;
+    username?: string;
+    password?: string;
     firstName?: string;
     lastName?: string;
     inbox?: string[];
@@ -13,7 +13,7 @@ export class User {
     role?: string;
     name?: String;
     email?: string;
-    token?: string;
+    token: string;
     country?: string;
     birth?: string;
     gender?: string;
@@ -21,6 +21,7 @@ export class User {
     pincode?: string;
     picture?: string;
     subscription?: string;
-    wallet?: Number;
+    subscriptionEnd?: Date;
+    wallet?: number;
     favTeams?: any;
 }

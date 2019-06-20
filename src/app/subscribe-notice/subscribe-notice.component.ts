@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { SubscriptionService } from '../services/subscription.service';
-import { first } from 'rxjs/operators';
+import $ from 'jquery';
+import moment from 'moment-mini';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-subscribe-notice',
@@ -19,27 +21,32 @@ export class SubscribeNoticeComponent implements OnInit {
     this.checkState();
   }
 
-  
+
   checkState() {
-    
-    this.authenticationService.currentUser.subscribe(user=>{
-      this.isLoggedIn = user!=null;
-      
-      if(this.isLoggedIn)
-      this.subscriptionService.getSubscriptionDataForUser(this.authenticationService.currentUserValue._id)
-        .subscribe(
-          data => {         
-              this.isSubscribed = (data && data.status == "active");
-          },
-          error => {
 
-          }
-        );
+    this.authenticationService.currentUser.subscribe(user => {
+      this.isLoggedIn = user != null;
+      if (this.isLoggedIn) {
+        this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
+      }
     })
+  }
 
-    
-      
-    
+  subscribe() {
+    $('#app-register-modal').removeClass('hidden');
+    $('#app-register-modal #step1').addClass('modal-appear');
+    $('#app-register-modal #step1').removeClass('hidden');
+    $('#app-register-modal #step2').removeClass('modal-appear');
+    $('#app-register-modal #step2').addClass('hidden');
+    $('#app-register-modal #step3').removeClass('modal-appear');
+    $('#app-register-modal #step3').addClass('hidden');
+    $('#app-register-modal #step4').removeClass('modal-appear');
+    $('#app-register-modal #step4').addClass('hidden');
+  }
+
+  login(){    
+      $('#app-login-modal').removeClass('hidden');
+      $('#app-login-modal').addClass('modal-appear');
   }
 
 

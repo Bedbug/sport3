@@ -5,6 +5,9 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { utils } from 'protractor';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
+import { timer, Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
+import { LiveMatch } from 'src/app/models/live-match';
 
 @Component({
   selector: 'app-playcard',
@@ -34,6 +37,9 @@ export class PlaycardComponent implements OnInit {
   cardSelections: any = {};
   isSubmitingCard: boolean = false;
   minTimeValue: number = 1;
+  fromTimeValue: number = 1;
+  liveMatch: LiveMatch;
+  ngUnsubscribe = new Subject();
 
 
   openPlayModal() {
@@ -47,7 +53,7 @@ export class PlaycardComponent implements OnInit {
   }
 
   valueChanged(e) {
-    this.selectedTime = e;
+    this.selectedTime = e.from;
   }
 
   get SelectedTime() {
@@ -63,8 +69,9 @@ export class PlaycardComponent implements OnInit {
   getMinimumTime() {
     if (!this.sportimoService.currentMatch)
       return 0;
-    this.minTimeValue = this.sportimoService.currentMatch.matchData.time;
+    this.minTimeValue = this.sportimoService.currentMatch.matchData.time; //this.sportimoService.currentMatch.matchData.time;   
     if (this.minTimeValue == null || this.minTimeValue == 0) this.minTimeValue = 1;
+    if(this.fromTimeValue<this.minTimeValue) this.fromTimeValue = this.minTimeValue;
     return this.minTimeValue;
   }
 
@@ -109,6 +116,29 @@ export class PlaycardComponent implements OnInit {
 
   ngOnInit() {
     this.selectedTime = this.getMinimumTime();
+
+    //Update minimum values
+    this.sportimoService.getCurrentLiveMatchData().pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
+      if (match) {
+        this.liveMatch = match;
+        this.minTimeValue = this.liveMatch.matchData.time;
+        if(this.selectedTime<this.minTimeValue)this.selectedTime = this.minTimeValue;
+      }
+    })
+    
+    // timer(0, 60000).pipe(
+    //     take(15)).subscribe(x => {
+    //       this.matchTime ++;
+    //       console.log(this.matchTime);
+    //       this.minTimeValue = this.matchTime;
+    //       // if(this.fromTimeValue<this.minTimeValue) this.fromTimeValue = this.minTimeValue;
+    //       if(this.selectedTime<this.matchTime)this.selectedTime = this.matchTime;
+    //     })
+  }
+
+  ngOnDestroy(){
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
 

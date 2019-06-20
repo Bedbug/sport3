@@ -10,7 +10,7 @@
     Sportimo Styles
 
 ----------------------------------------------------------------------------------- */
-.page-background-black{
+.page-background-black {
   display: block; /* Hidden by default */
   position: absolute; /* Stay in place */
   left: 0;
@@ -35,8 +35,8 @@
   background-color: rgba(0, 0, 0, 0.3); /* Black w/ opacity */
 }
 
-.hidden{
-  display:none !important;
+.hidden {
+  display: none !important;
 }
 
 .h-200 {
@@ -59,17 +59,28 @@
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
+  margin: 0;
   position: relative;
-  top: 3px;
-  // left: -2px;
+  top: 2px;
 }
 
-.user-wallet{
+.user-wallet {
   margin-right: 15px;
   font-size: 16px;
   font-weight: 700;
+}
+
+.problem-info{
+  display: flex;
+    justify-content: center;
+    padding: 5px;
+    line-height: 15px;
+    font-size: 11px;
+    margin-top: 10px;
+    color: $theme-color;
+    font-style: italic;
 }
 
 body {
@@ -87,17 +98,17 @@ body {
   display: flex;
 }
 
-.lottie-container{
+.lottie-container {
   max-width: 360px;
   margin-right: 16%;
   margin-bottom: 92px;
 }
-#lottie{
-  width:100%;
-  height:100%;
-  display:none;
+#lottie {
+  width: 100%;
+  height: 100%;
+  display: none;
   overflow: hidden;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
 }
 
 .btn {
@@ -109,6 +120,13 @@ body {
   padding: 5px;
   font-family: Roboto;
   font-weight: 600;
+}
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  background-image: linear-gradient(-180deg, #EAEAEA 0%, #CFCFCF 96%);
 }
 
 body .page-wrapper .page-main-header {
@@ -137,9 +155,9 @@ body .page-wrapper .page-main-header {
   z-index: 2;
 }
 
-.nav{
-    text-align: center;
-    border-bottom: none;
+.nav {
+  text-align: center;
+  border-bottom: none;
 }
 
 .app-navbar {
@@ -238,7 +256,8 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-.icn-contests, .icn-contest {
+.icn-contests,
+.icn-contest {
   background: url("~src/assets/images/sportimo/icon-contests.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
@@ -310,6 +329,13 @@ body .page-wrapper .page-main-header {
 
 .active .icn-info {
   background: url("~src/assets/images/sportimo/icon-info.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.icn-info-alt {
+  background: url("~src/assets/images/sportimo/icon-info.alt.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
@@ -524,7 +550,6 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-
 /* Current/active navbar link */
 
 .app-navbar a.active {
@@ -606,7 +631,7 @@ body .page-wrapper .page-main-header {
      02. Main
 ==========================**/
 
-.main-pages-header{
+.main-pages-header {
   height: 50px;
   width: 100%;
   text-align: center;
@@ -617,14 +642,13 @@ body .page-wrapper .page-main-header {
   line-height: 50px;
 }
 
-.main-pages-scrollarea{
+.main-pages-scrollarea {
   height: calc(100vh - 144px);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
   padding-top: 15px;
 }
-
 
 /**=====================
      02. Contests
@@ -762,14 +786,13 @@ body .page-wrapper .page-main-header {
   }
 }
 
-.btn-active .fadeInLoader{
+.btn-active .fadeInLoader {
   animation-name: fadeIn;
   animation-duration: 0.5s;
 }
 
 .btn-active .button-loader {
   display: block;
-  
 }
 
 .btn-active .button-label {
@@ -786,7 +809,6 @@ body .page-wrapper .page-main-header {
   margin: 0 auto;
   float: none;
   border-color: #000000;
-
 }
 
 /**=====================
@@ -797,7 +819,7 @@ body .page-wrapper .page-main-header {
   box-shadow: -6px 0px 5px -3px rgba(0, 0, 0, 0.75);
 }
 
-.menu-icon{
+.menu-icon {
   width: 25px;
   height: 16px;
   float: left;
@@ -805,22 +827,33 @@ body .page-wrapper .page-main-header {
   margin-right: 15px !important;
 }
 
-.sidebar-header{
+.sidebar-header {
   background-color: #3b4655;
-/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#404b58+1,36414f+9,374250+100 */
-background: #404b58; /* Old browsers */
-background: -moz-linear-gradient(top,  #404b58 1%, #36414f 9%, #374250 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  #404b58 1%,#36414f 9%,#374250 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  #404b58 1%,#36414f 9%,#374250 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404b58', endColorstr='#374250',GradientType=0 ); /* IE6-9 */
-border-bottom: #1f252e 1px solid;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#404b58+1,36414f+9,374250+100 */
+  background: #404b58; /* Old browsers */
+  background: -moz-linear-gradient(top, #404b58 1%, #36414f 9%, #374250 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #404b58 1%, #36414f 9%, #374250 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #404b58 1%,
+    #36414f 9%,
+    #374250 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404b58', endColorstr='#374250',GradientType=0 ); /* IE6-9 */
+  border-bottom: #1f252e 1px solid;
   padding: 0 20px;
 }
 
 /**=====================
      05. Modals
 ==========================**/
-.modal-appear .modal-card{
+.modal-appear .modal-card {
+  animation-name: modalSlideInUp;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
+
+.modal-appear.modal-card {
   animation-name: modalSlideInUp;
   animation-duration: 0.3s;
   animation-timing-function: ease-out;
@@ -835,7 +868,7 @@ border-bottom: #1f252e 1px solid;
   }
 
   to {
-    opacity:1;
+    opacity: 1;
     -webkit-transform: translate3d(-50%, -50%, 0);
     transform: translate3d(-50%, -50%, 0);
   }
@@ -869,7 +902,7 @@ border-bottom: #1f252e 1px solid;
   background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 }
 
-.modal-card{
+.modal-card {
   width: 327px;
   z-index: 1032; /* Sit on top */
   position: absolute;
@@ -878,29 +911,28 @@ border-bottom: #1f252e 1px solid;
   transform: translate(-50%, -50%);
 }
 
-.modal-card-header{
-    width: 100%;
-    height: 35px;
-    color: #ffffff;
-    background: #1C242F;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 700;
+.modal-card-header {
+  width: 100%;
+  height: 35px;
+  color: #ffffff;
+  background: #1c242f;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
 }
 
-.modal-card-body{
+.modal-card-body {
   width: 100%;
   height: 550px;
   color: #ffffff;
-  background-image: linear-gradient(-180deg, #3F4856 0%, #28313D 100%);
+  background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
 }
 
-.modal-title{
-    margin-left: 15px;
+.modal-title {
+  margin-left: 15px;
 }
-.modal-exit{
-    margin-right: 15px;
+.modal-exit {
+  margin-right: 15px;
 }
-

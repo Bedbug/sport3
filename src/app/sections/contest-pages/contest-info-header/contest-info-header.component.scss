@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+.modal-card-body {
+  width: 100%;
+  height: 500px;
+  margin-top: -1px;
+}
+
 .sportimo-divider {
   height: 2px;
   background-color: $theme-color;
@@ -42,4 +48,84 @@
 
 .user-chances span {
   color: $theme-color;
+}
+
+// .modal-card-body{
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: flex-start;
+//   flex-direction: column;
+// }
+
+.modal-card-header {
+  background: #3f4856;
+}
+
+.join-modal-header {
+  padding: 5px;
+  font-family: Roboto;
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.join-modal-contest {
+  margin-bottom: 20px;
+  font-family: Roboto;
+  font-weight: 100;
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  width: 100%;
+  animation: fadeinDelay;
+  animation-duration: 0.8s;
+}
+
+.finalize li button {
+  width: 272px;
+  height: 44px;
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+.bottom-buttons {
+  position: relative;
+  bottom: -45px;
+}
+
+.contest-image {
+  width: 100%;
+}
+
+.modal-appear img {
+  animation-name: zoomIn;
+  animation-duration: 0.6s;
+  animation-delay: 0.2s;
+}
+
+
+.modal-appear .contest-image {
+  animation-name: fadeinDelay;
+  animation-duration: 0.6s;
+  // animation-delay: 1s;
+  // opacity: 1;
+}
+
+@keyframes fadeinDelay{
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+@-webkit-keyframes fadeinDelay{
+  0% { opacity:0; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+.icn-info-alt{
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
 }

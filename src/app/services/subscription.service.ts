@@ -27,9 +27,11 @@ export class SubscriptionService {
   // }
 
   getSubscriptionDataForUser(userId:string){
+    console.log(userId);
+    console.log("Check State")  
     return this.http.post<any>(`${this.Config.getApi("SUBSCRIPTION")}`, { userId })
             .pipe(map(subscriptionData => {    
-                        
+                        console.log(subscriptionData);
                 if (subscriptionData) {
                     this.currentSubscriptionSubject.next(subscriptionData);
                 }

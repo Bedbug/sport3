@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { ConfigService } from './config.service';
 import { Team } from '../models/team';
+import moment from 'moment-mini';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -17,10 +18,29 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private Config: ConfigService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
+
+        // Always sign in when loading
+        if (this.currentUserValue && this.currentUserValue.token) {
+            let that = this;
+            setTimeout(function () { that.singleSignOn().subscribe() });
+        }
     }
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
+    }
+
+    singleSignOn() {
+
+        return this.http.post<any>(`https://clientserver-3.herokuapp.com/v1/users/single_signon`, null)
+            .pipe(map(user => {
+                // login successful if there's a jwt token in the response
+                if (user && user.token) {
+                    // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify({ _id: user._id, token: user.token }));
+                    this.currentUserSubject.next(user);
+                }
+            }));
     }
 
     login(username: string, password: string) {
@@ -31,7 +51,7 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentUser', JSON.stringify({ _id: user._id, token: user.token }));
                     this.currentUserSubject.next(user);
                 }
                 return user;
@@ -79,4 +99,15 @@ export class AuthenticationService {
                 return response;
             }));
     }
+
+    pay(contestPrice: number) {
+        this.currentUserSubject.value.wallet -= contestPrice;
+        this.currentUserSubject.next(this.currentUserSubject.value);
+    }
+
+    addDemoOneWeekSubscription() {
+        this.currentUserSubject.value.subscriptionEnd = moment().utc().add(6,'d').toDate();
+        this.currentUserSubject.next(this.currentUserSubject.value);
+      }
+    
 }

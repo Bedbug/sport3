@@ -76,7 +76,7 @@ export class SportimoService {
     // 
   }
 
-  // Quick Info does not to be fresh
+  // Quick Info does not need to be fresh
   getContestQuickDetails(contestId: string): Observable<Contest> {
 
     if (this.cachedContests.value) {
@@ -106,6 +106,16 @@ export class SportimoService {
         return prizes;
       }));
   }
+
+  joinContest(contestId:string) {
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`,null)
+    .pipe(map(result=>{
+      this.cachedContests.value.find(x => x._id == contestId).isSubscribed = true;
+      this.cachedContests.next(this.cachedContests.value);
+      return result;
+    }))
+  }
+
 
 
   /*-----------------------------------------------------------------------------------

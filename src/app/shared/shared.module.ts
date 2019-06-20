@@ -10,11 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent} from '../components/login/login.component'
 import { from } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
+import { RegisterComponent } from '../components/register/register.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidebarComponent,  ChatSidebarComponent, ToggleFullscreenDirective,LoginComponent],
+  declarations: [HeaderComponent, FooterComponent, SidebarComponent,  ChatSidebarComponent, ToggleFullscreenDirective,LoginComponent, RegisterComponent],
   imports: [CommonModule, RouterModule,FormsModule,    //added here too
     ReactiveFormsModule,TranslateModule],
-  exports: [HeaderComponent, FooterComponent, SidebarComponent, ChatSidebarComponent, ToggleFullscreenDirective,LoginComponent]
+  exports: [HeaderComponent, FooterComponent, SidebarComponent, ChatSidebarComponent, ToggleFullscreenDirective,LoginComponent, RegisterComponent]
 })
 export class SharedModule { }

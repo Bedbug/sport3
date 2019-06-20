@@ -1,0 +1,15 @@
+
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="register_03" transform="translate(-105.000000, -333.000000)">
+            <g id="Group-6" transform="translate(33.000000, 80.000000)">
+                <g id="Group" transform="translate(70.000000, 251.000000)">
+                    <g id="baseline-error-24px">
+                        <polygon id="Path" points="0 0 23 0 23 23 0 23"></polygon>
+                        <path d="M11.5,2 C6.256,2 2,6.256 2,11.5 C2,16.744 6.256,21 11.5,21 C16.744,21 21,16.744 21,11.5 C21,6.256 16.744,2 11.5,2 Z M12.45,16.25 L10.55,16.25 L10.55,14.35 L12.45,14.35 L12.45,16.25 Z M12.45,12.45 L10.55,12.45 L10.55,6.75 L12.45,6.75 L12.45,12.45 Z" id="Shape" fill="#FFC531" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

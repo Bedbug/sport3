@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 .playcard {
   background-color: #42464a;
   font-family: Roboto;
@@ -315,7 +317,7 @@
 
 .playcard-event .time-slider {
   width: 251px;
-  margin: 10px 0;
+  // margin: 10px 0;
 }
 .playcard-event .slider-guide {
   font-size: 10px;
@@ -339,3 +341,22 @@
   height: 44px;
   font-size: 19px;
 }
+
+
+.irs-min, .irs-max {
+  color: #ffffff !important;
+}
+
+.irs-single {
+  background: $theme-color !important;
+}
+
+// .irs-from, .irs-to, .irs-single {
+//   color: #fff;
+//   font-size: 14px;
+//   line-height: 1.333;
+//   text-shadow: none;
+//   padding: 1px 5px;
+//   background: #428bca;
+//   border-radius: 3px;
+//   -moz-border-radius: 3px;

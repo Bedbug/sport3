@@ -3,6 +3,9 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { LiveMatch } from 'src/app/models/live-match';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-match-page-info',
@@ -52,11 +55,12 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 export class MatchPageInfoComponent implements OnInit {
   Utils: SportimoUtils = new SportimoUtils();
   liveMatch: LiveMatch;
+  ngUnsubscribe = new Subject();
 
-  constructor(private sportimoService: SportimoService) { }
+  constructor(private sportimoService: SportimoService,public translate:TranslateService) { }
 
   ngOnInit() {
-    this.sportimoService.getCurrentLiveMatchData().subscribe(match => {
+    this.sportimoService.getCurrentLiveMatchData().pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
       if (match) {
         this.liveMatch = match;
       }
@@ -76,5 +80,9 @@ export class MatchPageInfoComponent implements OnInit {
     return this.liveMatch.matchData[team].logo;
   }
 
+  ngOnDestroy(){
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
 
 }
