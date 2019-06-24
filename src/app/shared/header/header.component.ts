@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 
@@ -27,7 +28,8 @@ export class HeaderComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    public translate:TranslateService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);

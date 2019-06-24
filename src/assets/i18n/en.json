@@ -35,6 +35,7 @@
 	"Join Contest": "Join Contest",
 	"Kicked": "Kicked",
 	"LIVE": "LIVE",
+	"Language": "",
 	"Last 5 games": "Last 5 games",
 	"Last Match": "Last Match",
 	"Leaders": "Leaders",
@@ -97,6 +98,7 @@
 	"You have insufficient coins to join": "You have insufficient coins to join",
 	"You:": "You:",
 	"Your chances:": "Your chances:",
+	"app-name": "pabetoop",
 	"correct": "correct",
 	"english": "",
 	"farsi": ""

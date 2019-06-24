@@ -3194,8 +3194,13 @@ table thead .border-bottom-warning th, table tbody .border-bottom-warning th, ta
 }
 
 .page-main-header .main-header-left .logo-wrapper {
-  display: block;
-  position: relative;
+  display: flex;
+    position: relative;
+    align-items: center;
+    color: #ffffff;
+    font-size: 21px;
+    font-weight: 700;
+    width: 180px;
 }
 
 .page-main-header .main-header-left .logo-wrapper img {
