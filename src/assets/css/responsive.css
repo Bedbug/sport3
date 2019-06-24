@@ -1276,7 +1276,8 @@
   }
     .page-wrapper .page-body-wrapper .page-sidebar ~ .page-body {
       margin-right: 0px;
-      padding-top: 0 !important; }
+      padding-top: 0 !important; 
+    }
   .page-wrapper .page-body-wrapper .page-sidebar-open {
     width: 250px; }
   .page-wrapper .page-body-wrapper .page-header {

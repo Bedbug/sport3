@@ -1,0 +1,6 @@
+.scorllable-area{
+    height: calc(100vh - 93px);
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;    
+}

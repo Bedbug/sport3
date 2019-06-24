@@ -5,6 +5,7 @@ export class SportimoUtils {
     "Offside": { text: "Offside", icon: "icn-offside", show: true },
     "Corner": { text: "Corner", icon: "icn-corner", show: true },
     "Yellow": { text: "Yellow", icon: "icn-yellow", show: true },
+    "Red": { text: "Red", icon: "icn-red", show: true },
     "Foul": { text: "Foul", icon: "icn-foul", show: true },
     "Substitution": { text: "Substitution", icon: "icn-substitution", show: true },
     "First_Half_Starts": { text: "First Half Starts", icon: "icn-stopwatch" },
