@@ -36,7 +36,6 @@ export class ContestInfoHeaderComponent implements OnInit {
       this.sportimoService.getContestDetails(params.get("contestId"))
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(result => {
-        console.log("Contest details changed");
         this.contestDetails = result;
       });
     })

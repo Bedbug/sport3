@@ -8,6 +8,7 @@ import { SportimoServiceStub } from '../../contest-pages/contest-pages.component
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
 import { RouterTestingModule } from '@angular/router/testing';
+import { IonRangeSliderModule } from 'ng2-ion-range-slider';
 
 describe('MatchPageCardsComponent', () => {
   let component: MatchPageCardsComponent;
@@ -16,7 +17,7 @@ describe('MatchPageCardsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MatchPageCardsComponent, CardComponent, PlaycardComponent ],
-      imports:[RouterTestingModule],
+      imports:[RouterTestingModule, IonRangeSliderModule],
       providers: [
         { provide: SportimoService, useClass: SportimoServiceStub },       
         { provide: TranslateService, useClass: TranslateServiceStub }

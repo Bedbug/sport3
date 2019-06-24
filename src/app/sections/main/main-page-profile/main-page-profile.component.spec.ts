@@ -8,6 +8,8 @@ import { TranslateServiceStub } from 'src/app/components/matches-list/matches-li
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartsModule } from 'ng2-charts';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('MainPageProfileComponent', () => {
   let component: MainPageProfileComponent;
@@ -15,15 +17,15 @@ describe('MainPageProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainPageProfileComponent ],
-      imports:[FormsModule,ReactiveFormsModule, NgxChartsModule],
+      declarations: [MainPageProfileComponent],
+      imports: [RouterTestingModule, FormsModule, ReactiveFormsModule, NgxChartsModule, ChartsModule],
       providers: [
-        {provide: SportimoService, useClass: SportimoServiceStub},
-        {provide: AuthenticationService, useClass: AuthenticationServiceStub},
-        {provide: TranslateService, useClass: TranslateServiceStub}
+        { provide: SportimoService, useClass: SportimoServiceStub },
+        { provide: AuthenticationService, useClass: AuthenticationServiceStub },
+        { provide: TranslateService, useClass: TranslateServiceStub }
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

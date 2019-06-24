@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { TranslateService } from '@ngx-translate/core';
 
 export const passwordMismatchValidator: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
   const password1 = control.get('password');
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
   ngUnsubscribe = new Subject();
   user: User;
 
-  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService) { }
+  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, public translate:TranslateService) { }
 
   ngOnInit() {
     this.step1Form = this.formBuilder.group({
@@ -45,7 +46,7 @@ export class RegisterComponent implements OnInit {
     },
      { validators: passwordMismatchValidator }
     );
-
+    
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
       this.user = user;
     })
@@ -54,6 +55,10 @@ export class RegisterComponent implements OnInit {
   cancel(){
     let el = $('#app-register-modal');
     el.addClass('hidden');
+  }
+
+  openTerms(){
+
   }
 
   onCredsSubmit(){

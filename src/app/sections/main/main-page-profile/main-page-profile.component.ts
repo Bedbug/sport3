@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ChartType, ChartOptions } from 'chart.js';
-import { MultiDataSet, Label, SingleDataSet, Color } from 'ng2-charts'
+import { Label, SingleDataSet, Color } from 'ng2-charts'
 import { Router } from '@angular/router';
 
 @Component({
@@ -51,16 +51,16 @@ export class MainPageProfileComponent implements OnInit {
   public doughnutChartType: ChartType = 'polarArea';
   public ChartColors: Color[] = [{ borderWidth: 0, backgroundColor: ['RGBA(171, 236, 120, 0.9)', 'RGBA(255, 52, 88, 0.7)'] }]
   public ChartOprions: ChartOptions = {
-    title:{display:false},
-    showLines:false,
-    spanGaps:false,
-    rotation:10,
+    title: { display: false },
+    showLines: false,
+    spanGaps: false,
+    rotation: 10,
     scales: {
       yAxes: [{
         display: false, //this will remove all the x-axis grid lines
         ticks: {
           display: false //this will remove only the label
-      }
+        }
       }]
     },
     tooltips: {
@@ -87,19 +87,21 @@ export class MainPageProfileComponent implements OnInit {
           return { name: "Game " + count, value: each };
         })
 
-      this.data.overall.you = (100 * (x.user.stats.overallCardsWon / x.user.stats.overallCardsPlayed)).toFixed(2);
-      this.data.overall.all = x.all.overallSuccessPercent.toFixed(2);
+      if (x && x.user && x.user.stats) {
+        this.data.overall.you = (100 * (x.user.stats.overallCardsWon / x.user.stats.overallCardsPlayed)).toFixed(2);
+        this.data.overall.all = x.all.overallSuccessPercent.toFixed(2);
 
-      this.data.instant.you = (100 * (x.user.stats.instantCardsWon / x.user.stats.instantCardsPlayed)).toFixed(2);
-      this.data.instant.all = x.all.instantSuccessPercent.toFixed(2);
+        this.data.instant.you = (100 * (x.user.stats.instantCardsWon / x.user.stats.instantCardsPlayed)).toFixed(2);
+        this.data.instant.all = x.all.instantSuccessPercent.toFixed(2);
 
-      this.OveralltChartData = [
-        this.data.overall.you, this.data.overall.all
-      ]
+        this.OveralltChartData = [
+          this.data.overall.you, this.data.overall.all
+        ]
 
-      this.InstantChartData = [
-        this.data.instant.you, this.data.instant.all
-      ]
+        this.InstantChartData = [
+          this.data.instant.you, this.data.instant.all
+        ]
+      }
     });
   }
 

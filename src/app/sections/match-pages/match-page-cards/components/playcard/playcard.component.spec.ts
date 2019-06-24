@@ -6,6 +6,7 @@ import { SportimoServiceStub, AuthenticationServiceStub } from 'src/app/sections
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { IonRangeSliderModule } from "ng2-ion-range-slider";
 
 describe('PlaycardComponent', () => {
   let component: PlaycardComponent;
@@ -14,6 +15,7 @@ describe('PlaycardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ PlaycardComponent ],
+      imports:[IonRangeSliderModule],
       providers: [
         { provide: SportimoService, useClass: SportimoServiceStub },
         { provide: AuthenticationService, useClass: AuthenticationServiceStub },

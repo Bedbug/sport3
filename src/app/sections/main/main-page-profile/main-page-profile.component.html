@@ -2,7 +2,7 @@
 <div class="row" style="position: relative">
   <div class="main-pages-header" translate>Profile</div>
   <div class="main-pages-scrollarea">
-    <div class="winner-card">
+    <div *ngIf="user" class="winner-card">
       <div class="winner-card-header">
         <div class="background-ring isClickable" (click)="openAvatarSelection()">
           <img class="rounded-circle" [src]="user.picture" alt="">
@@ -11,7 +11,7 @@
         <div class="input-icon">
           <div class="icn-user"></div>
         </div>
-        <div class="input-control">
+        <div  class="input-control">
           <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text" class="form-control-plaintext"
             placeholder="Username">
         </div>
