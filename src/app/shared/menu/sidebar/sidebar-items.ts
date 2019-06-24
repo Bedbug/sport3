@@ -47,7 +47,13 @@ export const MENUITEMS: Menu[] = [
         { path: '/base/dropdown', title: 'Terms & Conditions', type: 'link', badgeType:'danger', badgeValue: "11 new" },
         { path: '/base/grid', title: 'Privacy Policy', type: 'link' }
     ]
-  }
+  },
+  {
+    title: 'Language', icon: 'menu-icon icn-user', type: 'sub',  children: [
+        { path: 'en', title: 'english', type: 'languageLink' },
+        { path: 'fa', title: 'farsi', type: 'languageLink' },                
+    ]
+  },
   // {
   //   path: '/pages/stater-kit', title: 'Dashboard', icon: 'icon-desktop', type: 'link'
   // },

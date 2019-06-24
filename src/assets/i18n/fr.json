@@ -16,6 +16,7 @@
 	"Continue": "",
 	"Days": "Journées",
 	"Duration": "Durée",
+	"Exit": "",
 	"Fouls commited": "Fautes commises",
 	"Fouls suffered": "Fautes subies",
 	"Games Played:": "",
@@ -96,5 +97,7 @@
 	"You have insufficient coins to join": "",
 	"You:": "",
 	"Your chances:": "Vos chances:",
-	"correct": ""
+	"correct": "",
+	"english": "",
+	"farsi": ""
 }

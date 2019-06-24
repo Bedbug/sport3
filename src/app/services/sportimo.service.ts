@@ -107,13 +107,13 @@ export class SportimoService {
       }));
   }
 
-  joinContest(contestId:string) {
-    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`,null)
-    .pipe(map(result=>{
-      this.cachedContests.value.find(x => x._id == contestId).isSubscribed = true;
-      this.cachedContests.next(this.cachedContests.value);
-      return result;
-    }))
+  joinContest(contestId: string) {
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`, null)
+      .pipe(map(result => {
+        this.cachedContests.value.find(x => x._id == contestId).isSubscribed = true;
+        this.cachedContests.next(this.cachedContests.value);
+        return result;
+      }))
   }
 
 
@@ -204,7 +204,7 @@ export class SportimoService {
         this.parseSocket(data);
       });
 
-      this.socket.on('welcome', (data) => {      
+      this.socket.on('welcome', (data) => {
         this.registerUserToStream();
       })
 
@@ -234,7 +234,7 @@ export class SportimoService {
       this.advanceTimelineSegment(data);
     } else if (data.type == "Match_Reload") {
       this.reloadMatch(data);
-    } else if (data.type == "Card_resumed" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {      
+    } else if (data.type == "Card_resumed" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {
       this.updateCardStatus(data);
     } else if (data.type == "Match_full_time") {
       this.finalizeMatch(data);
@@ -249,56 +249,6 @@ export class SportimoService {
     Object.assign(this.currentLiveMatch.value.playedCards[
       this.currentLiveMatch.value.playedCards.findIndex(el => el.id === data.data.id)], data.data)
     this.currentLiveMatch.next(this.currentLiveMatch.value);
-    // {
-    //   "type": "Card_lost",
-    //   "client": "58a7325fbbcfc09e55bde5a5",
-    //   "room": "5cf776ab742e6442c4897194",
-    //   "data": {
-    //     "id": "5cf7cd80a53c8600046e3787",
-    //     "userid": "58a7325fbbcfc09e55bde5a5",
-    //     "matchid": "5cf776ab742e6442c4897194",
-    //     "gamecardDefinitionId": "5cf7797b057bf489ec948a4a",
-    //     "title": {
-    //       "ar": "هدف",
-    //       "en": "Goal"
-    //     },
-    //     "image": {
-    //       "url": "",
-    //       "sprite": "goal"
-    //     },
-    //     "text": {
-    //       "en": "[[home_team_name]]"
-    //     },
-    //     "minute": 84,
-    //     "segment": 3,
-    //     "primaryStatistic": "Goal",
-    //     "cardType": "Instant",
-    //     "isDoubleTime": false,
-    //     "isDoublePoints": false,
-    //     "status": 2,
-    //     "specials": {
-    //       "DoublePoints": {
-    //         "status": 0,
-    //         "_id": "5cf7cd80a53c8600046e3788",
-    //         "activationLatency": 30000
-    //       },
-    //       "DoubleTime": {
-    //         "status": 0,
-    //         "_id": "5cf7cd80a53c8600046e3789",
-    //         "activationLatency": 0
-    //       }
-    //     },
-    //     "startPoints": 300,
-    //     "endPoints": 150,
-    //     "activationLatency": 20000,
-    //     "duration": 600000,
-    //     "optionId": "1",
-    //     "creationTime": "2019-06-05T14:11:12.061Z",
-    //     "activationTime": "2019-06-05T14:11:32.061Z",
-    //     "terminationTime": "2019-06-05T14:21:32.349Z"
-    //   },
-    //   "inst": 788
-    // }
   }
   reloadMatch(data: any) {
     console.log("[SPORTIMO SERVICE]: Reloading match");
@@ -308,7 +258,7 @@ export class SportimoService {
         return match;
       }));
   }
-  advanceTimelineSegment(data: any) {    
+  advanceTimelineSegment(data: any) {
     if (data.data.segment.timed)
       console.log("[SPORTIMO SERVICE][TIMER]: We START counting match time");
     // this.currentMatchTimer.subscribe();
@@ -379,7 +329,7 @@ export class SportimoService {
   registerUserToStream() {
     this.socket.emit('register', {
       uid: this.authenticationService.currentUserValue._id,
-      uname: this.authenticationService.currentUserValue.name,
+      uname: this.authenticationService.currentUserValue.username,
       admin: false
     })
   }
@@ -407,7 +357,7 @@ export class SportimoService {
     return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/players/${playerId}`);
   }
   getTeam(teamId: string) {
-    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/full`);    
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/teams/${teamId}/full`);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/${teamId}/full`);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/teams/588a8d890bb50f00feda8dc0/full`);    
   }
@@ -431,7 +381,7 @@ export class SportimoService {
   /*-----------------------------------------------------------------------------------
      Inbox
    ----------------------------------------------------------------------------------- */
-  getMessages(){
+  getMessages() {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/messages`);
   }
 }

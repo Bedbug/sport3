@@ -28,9 +28,11 @@ export class TranslateHttpLoader implements TranslateLoader {
 				if (this.options.useKeyForEmptyTranslations) {
 					Object.keys(translations).forEach(key => {
 						if (key.length && !translations[key].length) {
-							translations[key] = "__"+key;
+							// translations[key] = "__"+key;
+							translations[key] = key;
 						}else{
-							translations[key] = "__"+translations[key];
+							translations[key] = translations[key];
+							// translations[key] = "__"+translations[key];
 						}
 					});
 				}

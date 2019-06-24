@@ -16,6 +16,7 @@
 	"Continue": "Continue",
 	"Days": "Days",
 	"Duration": "Duration",
+	"Exit": "",
 	"Fouls commited": "Fouls commited",
 	"Fouls suffered": "Fouls suffered",
 	"Games Played:": "Games Played:",
@@ -96,5 +97,7 @@
 	"You have insufficient coins to join": "You have insufficient coins to join",
 	"You:": "You:",
 	"Your chances:": "Your chances:",
-	"correct": "correct"
+	"correct": "correct",
+	"english": "",
+	"farsi": ""
 }

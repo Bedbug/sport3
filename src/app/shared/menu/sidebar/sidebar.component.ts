@@ -45,6 +45,9 @@ export class SidebarComponent implements OnInit {
         _('Support');
         _('Terms & Conditions');
         _('Privacy Policy'); 
+        _('Language'); 
+        _('english'); 
+        _('farsi'); 
   }
 
   ngOnInit() {
@@ -69,6 +72,10 @@ export class SidebarComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.isLoggedIn = false;
+}
+
+switchLanguage(lang:string){
+  this.translate.use(lang);
 }
 
 }

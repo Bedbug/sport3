@@ -24,8 +24,8 @@
 
 .sidebar-background {
   // opacity: 1;
-  display: block; /* Hidden by default */
-  // visibility: visible;
+  // display: block; /* Hidden by default */
+  visibility: visible;
   position: fixed; /* Stay in place */
   z-index: 1031; /* Sit on top */
   left: 0;
@@ -39,8 +39,8 @@
 }
 
 .hidden {
-  display: none !important;
-  // visibility: hidden;
+  // display: none !important;
+  visibility: hidden;
   // opacity: 0 !important;
   background-color: rgba(0, 0, 0, 0);
 }

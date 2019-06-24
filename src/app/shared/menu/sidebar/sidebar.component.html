@@ -39,6 +39,12 @@
         <!-- 2nd Level Menu -->
         <ul class="sidebar-submenu" *ngIf="menuItem.children">
             <li *ngFor="let childrenItem of menuItem.children">
+                <!-- languageLink -->
+                <a href="javascript:void(0)" (click)="switchLanguage(childrenItem.path)" *ngIf="childrenItem.type === 'languageLink'">
+                        <span [translate]="childrenItem.title"></span>
+                  <span class="badge badge-{{childrenItem.badgeType}}" *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                  <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
+                </a>
                 <!-- Sub -->
                 <a href="javascript:void(0)" *ngIf="childrenItem.type === 'sub'">
                         <span [translate]="childrenItem.title"></span>
