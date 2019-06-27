@@ -22,7 +22,7 @@
   <div class="main-pages-scrollarea container" *ngIf="currentView == 0">
     <div class="winner-card isClickable" *ngFor="let fav of favoriteTeams" (click)="showTeam(fav)">
       <div class="winner-card-header col-12">
-        <img class="rounded-circle" [src]="fav.team.logo || ''" alt="#">
+        <img class="rounded-circle" [src]="fav.team.logo || './assets/images/sportimo/default-kit.png'" alt="#">
         <div>{{fav.team.name[translate.currentLang]}}</div>
       </div>
       <!-- <div class="winner-card-body">
