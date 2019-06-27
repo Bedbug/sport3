@@ -63,22 +63,15 @@
     // lottie.setQuality('low');
     anim = lottie.loadAnimation(animData);
 
-    console.log("-- anim loaded");
-    console.log("-- App loaded");
-
-    console.log("-- #lottie fadeIn");
-
-    $('#lottie').fadeIn();
-    anim.play();
-    //    var lines = document.getElementById('lines');
-
-    console.log("-- #lines fadeOut");
-    $('#lines').fadeOut();
+    // $('#lottie').fadeIn();
+    // anim.play();
+    
+    // $('#lines').fadeOut();
 
     setTimeout(function () {
         $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow');
-    }, 5000)
+    }, 2000)
 
 
     });
