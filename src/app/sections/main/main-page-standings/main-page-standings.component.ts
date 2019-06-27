@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
 
-
 @Component({
   selector: 'app-main-page-standings',
   templateUrl: './main-page-standings.component.html',
@@ -23,21 +22,6 @@ export class MainPageStandingsComponent implements OnInit {
     Player: 3
   }
 
-  leagues: any[] = [
-    {
-      id: "56f4800fe4b02f2226646297",
-      img: "./assets/images/sportimo/flags/england.png",
-      title: { "en": "Premier League" },
-      text: { "en": "England, 18/09/19-01/06/19" }
-    },
-    {
-      id: "577ec1a61916317238fd2f36",
-      img: "./assets/images/sportimo/flags/spain.png",
-      title: { "en": "La Liga" },
-      text: { "en": "Spain, 18/09/19-01/06/19" }
-    }
-  ]
-
   currentStandings: any;
   currentPlayer: any;
   currentTeam: any;
@@ -45,7 +29,8 @@ export class MainPageStandingsComponent implements OnInit {
   isFavoriteTeam: boolean = false;
   isLoggedIn: boolean = false;
   isLoading: boolean;
-  private ngUnsubscribe = new Subject();
+  ngUnsubscribe = new Subject();
+  leagues: any;
 
   constructor(
     private sportimoService: SportimoService,
@@ -53,9 +38,15 @@ export class MainPageStandingsComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     public translate: TranslateService
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit() {
+
+    this.sportimoService.getStandingsLeagues().subscribe(leagues =>{      
+      this.leagues = leagues;
+    })
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isLoggedIn = user != null;

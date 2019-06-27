@@ -37,7 +37,6 @@ import * as io from 'socket.io-client';
 })
 export class SportimoService {
 
-
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
   private cachedContests: BehaviorSubject<Contest[]>;
   private currentMatchId;
@@ -347,6 +346,9 @@ export class SportimoService {
   /*-----------------------------------------------------------------------------------
      Standings / Teams / Players
    ----------------------------------------------------------------------------------- */
+  getStandingsLeagues() {
+    return this.http.get<any>('./assets/json/standings-leagues.json');
+  }
   getStandings(leagueId: string) {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/standings/${leagueId}`);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/data/standings/${leagueId}`);     

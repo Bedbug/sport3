@@ -1,0 +1,24 @@
+[
+    {
+       "id": "56f4800fe4b02f2226646297",
+       "img": "./assets/images/sportimo/flags/england.png",
+       "title": {
+          "en": "Premier League"
+       },
+       "text": {
+          "en": "England, 18/09/19-01/06/19"
+       },
+       "visible": true
+    },
+    {
+       "id": "577ec1a61916317238fd2f36",
+       "img": "./assets/images/sportimo/flags/spain.png",
+       "title": {
+          "en": "La Liga"
+       },
+       "text": {
+          "en": "Spain, 18/09/19-01/06/19"
+       },
+       "visible": false
+    }
+ ]

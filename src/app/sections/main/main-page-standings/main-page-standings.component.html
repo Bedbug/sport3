@@ -6,31 +6,34 @@
     <div class="col-6">{{currentTeam?.name[translate.currentLang]}}</div>
     <div class="favorite col-6">
       <!-- <button class="btn btn-sportimo" style="width: 100%">Add to favorites</button> -->
-      
-      <button *ngIf="isLoggedIn && currentTeam" [disabled]="isLoading" (click)="toggleFavorite()" class="btn btn-sportimo" style="width: 100%">
-          <div class="loader-label" [class.btn-active]="isLoading">
-            <span *ngIf="isFavoriteTeam" class="button-label">Remove from favorites</span>
-            <span *ngIf="!isFavoriteTeam" class="button-label">Add to favorites</span>
-            <div class="fadeInLoader">
-              <span class="rotate dotted button-loader"></span>
-            </div>
+      <button *ngIf="isLoggedIn && currentTeam" [disabled]="isLoading" (click)="toggleFavorite()"
+        class="btn btn-sportimo" style="width: 100%">
+        <div class="loader-label" [class.btn-active]="isLoading">
+          <span *ngIf="isFavoriteTeam" class="button-label">Remove from favorites</span>
+          <span *ngIf="!isFavoriteTeam" class="button-label">Add to favorites</span>
+          <div class="fadeInLoader">
+            <span class="rotate dotted button-loader"></span>
           </div>
-        </button>
+        </div>
+      </button>
     </div>
   </div>
-  <div *ngIf="currentView == 3" class="main-pages-header" style="width:100%">{{currentPlayer?.name[translate.currentLang]}}</div>
+  <div *ngIf="currentView == 3" class="main-pages-header" style="width:100%">
+    {{currentPlayer?.name[translate.currentLang]}}</div>
   <!-- Leagues -->
-  <div class="main-pages-scrollarea container" *ngIf="currentView == 0">
-    <div class="league-item isClickable" *ngFor="let league of leagues" (click)="showStantings(league.id)">
-      <div class="img"><img src="{{league?.img}}" alt=""></div>
-      <div class="info">
-        <div class="title">{{league?.title[translate.currentLang]}}</div>
-        <div class="text">{{league?.text[translate.currentLang]}}</div>
+  <div class="main-pages-scrollarea container p-t-15"  *ngIf="currentView == 0">
+    <div *ngFor="let league of leagues">
+      <div *ngIf="league.visible" class="league-item isClickable" (click)="showStantings(league.id)">
+        <div class="img"><img src="{{league?.img}}" alt=""></div>
+        <div class="info">
+          <div class="title">{{league?.title[translate.currentLang]}}</div>
+          <div class="text">{{league?.text[translate.currentLang]}}</div>
+        </div>
       </div>
     </div>
   </div>
   <!-- Standings -->
-  <div *ngIf="currentView == 1" style="width:100%">
+  <div class="main-pages-scrollarea" *ngIf="currentView == 1" style="width:100%">
     <div class="standings-table">
       <div class="standings-header">
         <div class="cell-50 header-rank">#</div>
@@ -60,7 +63,7 @@
     </div>
   </div>
   <!-- Team -->
-  <div *ngIf="currentView == 2" style="width:100%">
+  <div class="main-pages-scrollarea" *ngIf="currentView == 2" style="width:100%">
     <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-bottom: 0">
       <li class="nav-item">
         <a class="nav-link active" id="players-tab" data-toggle="tab" href="#players" role="tab" aria-controls="players"
@@ -248,85 +251,85 @@
               </div>
             </div>
             <div class="team-stat">
-                <div class="icn-goal" style="height: 40px;width: 60px"></div>
-                <div>
-                  <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
-                  <div class="stat-text" style="font-size: 17px; font-weight: 700">Total goals</div>
-                </div>
+              <div class="icn-goal" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Total goals</div>
               </div>
+            </div>
           </div>
 
           <div class="stat-card" style="margin-bottom: 5px;">
-              <div class="team-stat">
-                <div class="icn-shot" style="height: 40px;width: 60px"></div>
-                <div>
-                  <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
-                  <div class="stat-text" style="font-size: 17px; font-weight: 700">Shots on Target</div>
-                </div>
+            <div class="team-stat">
+              <div class="icn-shot" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Shots on Target</div>
               </div>
-              <div class="team-stat">
-                  <div class="icn-cross" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
-                    <div class="stat-text" style="font-size: 17px; font-weight: 700">Crosses</div>
-                  </div>
-                </div>
             </div>
-
-            <div class="stat-card" style="margin-bottom: 5px;">
-                <div class="team-stat">
-                  <div class="icn-corner" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">18</div>
-                    <div class="stat-text" style="font-size: 12px">Corners</div>
-                  </div>
-                </div>
-                <div class="team-stat">
-                    <div class="icn-offside" style="height: 40px;width: 60px"></div>
-                    <div>
-                      <div class="stat-number" style="font-size: 37px">18</div>
-                      <div class="stat-text" style="font-size: 12px">Offsides</div>
-                    </div>
-                  </div>
-                  <div class="team-stat">
-                      <div class="icn-penalty" style="height: 40px;width: 60px"></div>
-                      <div>
-                        <div class="stat-number" style="font-size: 37px">18</div>
-                        <div class="stat-text" style="font-size: 12px">Penalties</div>
-                      </div>
-                    </div>
+            <div class="team-stat">
+              <div class="icn-cross" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 50px; font-weight: 700">18</div>
+                <div class="stat-text" style="font-size: 17px; font-weight: 700">Crosses</div>
               </div>
-              
-              <div class="stat-card" style="margin-bottom: 5px;">
-                  <div class="team-stat">
-                    <div class="icn-foul" style="height: 40px;width: 60px"></div>
-                    <div>
-                      <div class="stat-number" style="font-size: 37px">18</div>
-                      <div class="stat-text" style="font-size: 12px">Fouls</div>
-                    </div>
-                  </div>
-                  <div class="team-stat">
-                      <div class="icn-yellow" style="height: 40px;width: 60px"></div>
-                      <div>
-                        <div class="stat-number" style="font-size: 37px">18</div>
-                        <div class="stat-text" style="font-size: 12px">Yellow cards</div>
-                      </div>
-                    </div>
-                    <div class="team-stat">
-                        <div class="icn-red" style="height: 40px;width: 60px"></div>
-                        <div>
-                          <div class="stat-number" style="font-size: 37px">18</div>
-                          <div class="stat-text" style="font-size: 12px">Red cards</div>
-                        </div>
-                      </div>
-                </div>
+            </div>
+          </div>
+
+          <div class="stat-card" style="margin-bottom: 5px;">
+            <div class="team-stat">
+              <div class="icn-corner" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Corners</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-offside" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Offsides</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-penalty" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Penalties</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="stat-card" style="margin-bottom: 5px;">
+            <div class="team-stat">
+              <div class="icn-foul" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Fouls</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-yellow" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Yellow cards</div>
+              </div>
+            </div>
+            <div class="team-stat">
+              <div class="icn-red" style="height: 40px;width: 60px"></div>
+              <div>
+                <div class="stat-number" style="font-size: 37px">18</div>
+                <div class="stat-text" style="font-size: 12px">Red cards</div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
     </div>
   </div>
   <!-- Player -->
-  <div *ngIf="currentView == 3" style="width:100%">
+  <div class="main-pages-scrollarea" *ngIf="currentView == 3" style="width:100%">
     <div class="player-card" style="margin-bottom: 0">
       <div class="player-card-header col-12">
         <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
