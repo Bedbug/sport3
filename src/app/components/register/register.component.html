@@ -81,7 +81,8 @@
               </div>
               <div class="login-form-buttons">
                 <div class="form-group">
-                  <button [disabled]="isSubmitting || step2Form.controls.pin.errors" type="submit" class="btn btn-sportimo login-form-button" >
+                  <!-- <button [disabled]="isSubmitting || step2Form.controls.pin.errors" type="submit" class="btn btn-sportimo login-form-button"> -->
+                  <button type="submit" class="btn btn-sportimo login-form-button">
                     <div class="loader-label" [class.btn-active]="isSubmitting">
                       <span class="button-label" translate>Submit</span>
                       <div class="fadeInLoader">
