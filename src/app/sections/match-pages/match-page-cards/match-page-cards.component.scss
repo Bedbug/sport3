@@ -94,7 +94,7 @@
 }
 
 .card-scroll-list{
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100vh - 239px);
   -webkit-overflow-scrolling: touch;
 }

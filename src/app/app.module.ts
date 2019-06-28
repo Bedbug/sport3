@@ -21,7 +21,7 @@ import { MatchPagesComponent } from './sections/match-pages/match-pages.componen
 import { ToastrModule } from 'ngx-toastr';
 import { NotyfToastSuccess } from './components/custom-toast/notyf.toast';
 import { NotyfToastError } from './components/custom-toast/notyf.error';
-import {TranslateHttpLoader} from './helpers/translate-http-loader';
+import { TranslateHttpLoader } from './helpers/translate-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 // AoT requires an exported function for factories
@@ -53,16 +53,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     ToastrModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
       }
-  })
+    }),
+   
   ],
   exports: [
     TranslateModule
-],
-  entryComponents: [NotyfToastSuccess,NotyfToastError],
+  ],
+  entryComponents: [NotyfToastSuccess, NotyfToastError],
   providers: [
     ConfigService,
     ConfigModule.init(),
