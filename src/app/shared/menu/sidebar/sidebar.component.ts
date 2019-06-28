@@ -69,6 +69,11 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  closeSidebar(){
+    $(".page-body-wrapper").addClass("sidebar-close");
+      $('.sidebar-background').addClass('hidden');
+  }
+
   logout() {
     this.authenticationService.logout();
     this.isLoggedIn = false;

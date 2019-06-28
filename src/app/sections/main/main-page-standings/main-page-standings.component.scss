@@ -73,7 +73,7 @@
     height: 36px;
     color: #ffffff;
     font-family: Roboto;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
 
 }
@@ -92,8 +92,8 @@
     border-bottom: 1px solid rgb(200,200,200);
 }
 
-.standings-header .header-name{
-    min-width: 50%;
+.standings-header .header-name, .standings-name{
+    min-width: 150px;
 }
 
 .standings-pts{

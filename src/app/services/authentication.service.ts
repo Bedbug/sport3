@@ -14,7 +14,7 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     lo: any;
-  curren: any;
+    curren: any;
 
     constructor(private http: HttpClient, private Config: ConfigService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -23,7 +23,16 @@ export class AuthenticationService {
         // Always sign in when loading
         if (this.currentUserValue && this.currentUserValue.token) {
             let that = this;
-            setTimeout(function () { that.singleSignOn().subscribe() });
+            this.Config.inited.subscribe(hasInited => {
+                // if(!hasInited)
+                // console.log("Not Yet");
+
+                if (hasInited) {
+                    that.singleSignOn().subscribe()
+                }
+
+            })
+            // setTimeout(function () { that.singleSignOn().subscribe() },5000);
         }
     }
 
@@ -32,8 +41,7 @@ export class AuthenticationService {
     }
 
     singleSignOn() {
-
-        return this.http.post<any>(`https://clientserver-3.herokuapp.com/v1/users/single_signon`, null)
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/single_signon`, null)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
@@ -46,14 +54,14 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         // return of(null);
-        // return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/authenticate`, { username, password })
-        return this.http.post<any>(`https://clientserver-3.herokuapp.com/v1/users/authenticate`, { username, password })
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/authenticate`, { username, password })
+            // return this.http.post<any>(`https://clientserver-3.herokuapp.com/v1/users/authenticate`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ _id: user._id, token: user.token }));
-                    
+
                     this.currentUserSubject.next(user);
                 }
                 return user;
@@ -108,8 +116,8 @@ export class AuthenticationService {
     }
 
     addDemoOneWeekSubscription() {
-        this.currentUserSubject.value.subscriptionEnd = moment().utc().add(6,'d').toDate();
+        this.currentUserSubject.value.subscriptionEnd = moment().utc().add(6, 'd').toDate();
         this.currentUserSubject.next(this.currentUserSubject.value);
-      }
-    
+    }
+
 }
