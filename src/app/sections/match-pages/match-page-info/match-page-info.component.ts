@@ -67,6 +67,9 @@ export class MatchPageInfoComponent implements OnInit {
     })
   }
 
+  isSegment(type:string){
+    return type.match(/Starts|Ends/i)
+  }
   get timelineEvents() {
     var xarray = this.liveMatch.matchData.timeline.map(x => x.events);
     var flattenReversed = [].concat(...xarray).reverse();

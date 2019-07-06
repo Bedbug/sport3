@@ -1,6 +1,6 @@
 <ul class="sidebar-menu">
     <!-- 1st level Menu -->
-    <li *ngFor="let menuItem of menuItems" [class.hidden]="menuItem.authenticate && !isLoggedIn">
+    <li *ngFor="let menuItem of menuItems" [class.disabled]="menuItem.authenticate && !isLoggedIn">
            
         <div class="sidebar-title" *ngIf="menuItem.headTitle">
             {{menuItem.headTitle}}

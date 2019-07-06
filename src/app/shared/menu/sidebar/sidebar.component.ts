@@ -59,9 +59,10 @@ export class SidebarComponent implements OnInit {
   }
 
   toggleUserStatus(){
-    if(this.isLoggedIn)
+    if(this.isLoggedIn){
     this.logout();
-    else{
+    this.closeSidebar()
+    }else{
       $(".page-body-wrapper").addClass("sidebar-close");
       $('.sidebar-background').addClass('hidden');
       $('#app-login-modal').removeClass('hidden');

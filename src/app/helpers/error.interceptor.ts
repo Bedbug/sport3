@@ -5,6 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../services/authentication.service'
 import { TranslateService } from '@ngx-translate/core';
+import { ErrorDisplayService } from '../services/error-display.service';
 
 const errorCodes = {
     10002: { 'en': "The card has already closed." }
@@ -12,7 +13,11 @@ const errorCodes = {
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService, private toastr: ToastrService, public translate: TranslateService) { }
+    constructor(
+        private authenticationService: AuthenticationService, 
+        // private toastr: ToastrService, 
+        // public translate: TranslateService, 
+        private errorDisplay:ErrorDisplayService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
@@ -20,8 +25,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                 if (event instanceof HttpResponse) {
                     // do stuff with response if you want
                     if (event.body.errorCode) {
-                        console.log(errorCodes[event.body.errorCode][this.translate.currentLang]);
-                        this.toastr.show(errorCodes[event.body.errorCode][this.translate.currentLang],event.body.errorCode);
+                        // console.log(errorCodes[event.body.errorCode][this.translate.currentLang]);
+                        this.errorDisplay.showError(event.body.errorCode);
+                        // this.toastr.show(errorCodes[event.body.errorCode][this.translate.currentLang],event.body.errorCode);
                     }
                 }
             }, (err => {

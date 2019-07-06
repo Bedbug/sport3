@@ -8,6 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 import { NotyfToastError } from 'src/app/components/custom-toast/notyf.error';
 import { NotyfToastSuccess } from 'src/app/components/custom-toast/notyf.toast';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-match-pages',
@@ -34,13 +37,27 @@ export class MatchPagesComponent implements OnInit {
   liveMatch: LiveMatch;
   stream: any;
   demoplay: any;
-
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private toastr: ToastrService, private state: Router, public translate: TranslateService) { }
+  ngUnsubscribe = new Subject();
+  
+  constructor(
+    private route: ActivatedRoute, 
+    private sportimoService: SportimoService, 
+    private toastr: ToastrService, 
+    private state: Router, 
+    public translate: TranslateService,
+    private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
+
     this.route.paramMap.subscribe(params => {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
+
+      this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
+        if(!user){
+          this.state.navigate(['/contest',this.contestId,'info']);
+        }
+      });
 
       // Retrieve the Live Match data from the service
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
@@ -63,9 +80,7 @@ export class MatchPagesComponent implements OnInit {
               }
             }
           });
-        });
-
-
+        });       
 
       // this.demoplay = this.sportimoService.playDemo();
     })
@@ -105,6 +120,9 @@ export class MatchPagesComponent implements OnInit {
 
     // Clears current Match Data in order for the new view to be clean if necessary
     this.sportimoService.clearMatch();
+
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   openNotyf(title: string, message: string, error: boolean) {

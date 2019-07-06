@@ -1,0 +1,81 @@
+.rtl {
+  // -- GENERAL -- //
+  //   ul {
+  //     text-align: right;
+  //   }
+
+  // -- SIDEBAR -- //
+  .page-body-wrapper .page-sidebar {
+    left: 0;
+    right: auto;
+    text-align: right;
+  }
+
+  .sidebar-close .page-sidebar {
+    -webkit-transform: translate(-250px);
+    transform: translate(-250px);
+  }
+
+  .menu-icon {
+    float: right;
+    margin: 0 0 0 15px !important;
+  }
+
+  .page-body-wrapper .page-sidebar .sidebar-menu > li > a i.pull-right {
+    position: absolute;
+    left: 20px;
+    right: auto;
+  }
+
+  .page-body-wrapper .page-sidebar .sidebar-menu li.active > .sidebar-submenu > li > a {
+    width: 100%;
+    padding-right: 54px;
+    padding-left: 0;
+  }
+
+  // -- HEADER -- //
+  .page-main-header {
+    flex-direction: row-reverse;
+  }
+  .page-main-header .main-header-left .logo-wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .app-name {
+    margin-right: 10px;
+  }
+
+  .page-main-header .main-header-right .nav-right {
+    flex-direction: row-reverse;
+  }
+
+  // -- SUBSCRIPTION NOTICE -- //
+  .subscribe-notice-container {
+    text-align: right;
+  }
+
+  // -- app-match-page-info -- //
+  app-match-page-info .event .row {
+    flex-direction: row-reverse;
+  }
+
+  app-match-page-info .player {
+      text-align: left;
+  }
+
+  app-match-page-info .type {
+    text-align: left;
+  }
+  app-match-page-info .time {
+    margin-right: 0;
+    margin-left: 15px;
+  }
+
+  // -- CONTEST > PRIZES -- //
+  .prize-header, .prize-text-body{
+      text-align: right;
+  }
+  .selected-prize-rank, .selected-prize-body, .selected-prize-title{
+      text-align: right;
+  }
+}

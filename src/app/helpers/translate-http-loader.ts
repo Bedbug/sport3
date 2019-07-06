@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { isArray, isObject } from 'util';
 
 export interface TranslateHttpOptions {
 	prefix?: string;
@@ -25,11 +26,13 @@ export class TranslateHttpLoader implements TranslateLoader {
 	public getTranslation(lang: string): Observable<Object> {
 		return this.http.get(`${this.options.prefix}${lang}${this.options.suffix}`).pipe(
 			map(translations => {
+				// console.log(translations)
 				if (this.options.useKeyForEmptyTranslations) {
+					
 					Object.keys(translations).forEach(key => {
-						if (key.length && !translations[key].length) {
-							// translations[key] = "__"+key;
-							translations[key] = key;
+						if (key.length && !translations[key].length && !isObject(translations[key])) {
+							translations[key] = "__"+key;
+							// translations[key] = key;
 						}else{
 							translations[key] = translations[key];
 							// translations[key] = "__"+translations[key];

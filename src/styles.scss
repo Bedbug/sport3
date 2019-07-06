@@ -45,6 +45,11 @@
   background-color: rgba(0, 0, 0, 0);
 }
 
+.disabled {
+  display: none !important;
+  background-color: rgba(0, 0, 0, 0);
+}
+
 .h-200 {
   height: 200px;
 }
@@ -73,7 +78,7 @@
 }
 
 .user-wallet {
-  margin-right: 15px;
+  margin: 0 15px;
   font-size: 16px;
   font-weight: 700;
 }

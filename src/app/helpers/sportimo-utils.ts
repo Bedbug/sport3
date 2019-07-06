@@ -1,3 +1,5 @@
+import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
+
 export class SportimoUtils {
   events_mapping = {
     "Goal": { text: "Goal", icon: "icn-goal", show: true },
@@ -5,6 +7,7 @@ export class SportimoUtils {
     "Offside": { text: "Offside", icon: "icn-offside", show: true },
     "Corner": { text: "Corner", icon: "icn-corner", show: true },
     "Yellow": { text: "Yellow", icon: "icn-yellow", show: true },
+    "Penalty": { text: "Penalty", icon: "icn-penalty", show: true },
     "Red": { text: "Red", icon: "icn-red", show: true },
     "Foul": { text: "Foul", icon: "icn-foul", show: true },
     "Substitution": { text: "Substitution", icon: "icn-substitution", show: true },
@@ -36,6 +39,26 @@ export class SportimoUtils {
     'most-shots-target':'icn-shots',
   }
 
+  translateMappings(){
+    _("Goal");
+    _("Shot_on_Goal");
+    _("Offside");
+    _("Corner");
+    _("Yellow");
+    _("Penalty");
+    _("Red");
+    _("Foul");
+    _("Substitution");
+    _("First_Half_Starts");
+    _("First_Half_Ends");
+    _("Second_Half_Starts");
+    _("Second_Half_Ends");
+    _("Overtime_First_Half_Starts");
+    _("Overtime_First_Half_Ends");
+    _("Overtime_Second_Half_Starts");
+    _("Overtime_Second_Half_Ends");
+  }
+
   getFromEventType(type: string) {
 
   }
@@ -44,10 +67,10 @@ export class SportimoUtils {
     return this.sprite_mappings[sprite];
   }
 
-  getTextByType(type: string) {
+  getTextByType(type: string) {    
     return this.events_mapping[type].text;
   }
-  getIconByType(type: string) {
+  getIconByType(type: string) {    
     return this.events_mapping[type].icon;
   }
   shouldShow(type: string, data: any) {

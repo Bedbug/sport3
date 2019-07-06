@@ -5,7 +5,7 @@
         <div class="card-header contest-header">
           <div class="row">
             <span class="contest-name col">{{contest.titleText[translate.currentLang]}}</span>
-            <span class="contest-duration col text-right"><strong>Ends:</strong> {{contest.endToDate | date }}</span>
+            <span class="contest-duration col text-right"><strong translate>Ends:</strong> {{contest.endToDate | date }}</span>
           </div>
         </div>
         <div class="card-body" [ngStyle]="{background: 'url(' + contest.promoDetailImage + ')', 'background-size': 'cover'}">
@@ -15,7 +15,7 @@
           </div>
           <div class="col-5 contest-details text-center">
             <p class="contest-details-text">{{contest.smallInfoText[translate.currentLang]}}</p>
-            <p>{{contest.subscriptionPrice}} <i class="coin"></i> to Join</p>
+            <p>{{contest.subscriptionPrice}} <i class="coin"></i> <span translate>to Join</span></p>
           </div>
         </div>
         </div>

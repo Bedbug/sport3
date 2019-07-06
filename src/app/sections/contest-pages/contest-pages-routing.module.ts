@@ -27,6 +27,7 @@ const routes: Routes = [
       {
         path: 'prizes',
         component: ContestPagePrizesComponent
+        ,data: {animation: 'Fourth'}
       }
     ]
   }

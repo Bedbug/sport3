@@ -34,6 +34,7 @@
               "src/assets/css/style.css",
               "src/assets/css/responsive.css",
               "src/styles.scss",
+              "src/rtl.scss",
               "node_modules/ngx-toastr/toastr.css"
               
             ],
