@@ -36,7 +36,9 @@ export class CardComponent implements OnInit {
   getFormatedOption(text: string) {
     const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang];
     const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang];
-    return text.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
+    if (text)
+      return text.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
+    else return "__missing text";
   }
 
   // get curentCardPoints(){
@@ -137,10 +139,10 @@ export class CardComponent implements OnInit {
   playSpecial(specialName: string) {
     if (this.isPlayingSpecial) return;
 
-    if(this.cardData.status)
+    if (this.cardData.status)
 
-    if (specialName === "doublePoints" && this.cardData.isDoublePoints)
-      return;
+      if (specialName === "doublePoints" && this.cardData.isDoublePoints)
+        return;
     if (specialName === "doubleTime" && this.cardData.isDoubleTime)
       return;
 
@@ -149,7 +151,7 @@ export class CardComponent implements OnInit {
     this.isPlayingSpecial = true;
 
     this.playcardSubscription = this.sportimoService.playSpecial(this.cardData.id, postData)
-      .subscribe(response => {      
+      .subscribe(response => {
         this.isPlayingSpecial = false;
       });
 

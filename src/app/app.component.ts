@@ -13,7 +13,7 @@ export class AppComponent {
     let selected_language = localStorage.getItem('language');
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
-
+    // translate.getTranslation('en').subscribe(() => {});
     // the lang to use, if the lang isn't available, it will use the current loader to get them
    translate.use(selected_language || this.configService.get('language'));
   }

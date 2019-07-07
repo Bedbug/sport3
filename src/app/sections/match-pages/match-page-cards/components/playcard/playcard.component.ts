@@ -71,7 +71,7 @@ export class PlaycardComponent implements OnInit {
       return 0;
     this.minTimeValue = this.sportimoService.currentMatch.matchData.time; //this.sportimoService.currentMatch.matchData.time;   
     if (this.minTimeValue == null || this.minTimeValue == 0) this.minTimeValue = 1;
-    if(this.fromTimeValue<this.minTimeValue) this.fromTimeValue = this.minTimeValue;
+    if (this.fromTimeValue < this.minTimeValue) this.fromTimeValue = this.minTimeValue;
     return this.minTimeValue;
   }
 
@@ -80,7 +80,9 @@ export class PlaycardComponent implements OnInit {
       return '';
     const home_team = this.sportimoService.currentMatch.matchData.home_team.name[this.translate.currentLang];
     const away_team = this.sportimoService.currentMatch.matchData.away_team.name[this.translate.currentLang];
-    return optionText.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
+    if (optionText)
+      return optionText.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
+    else return optionText;
   }
 
   cancelAll() {
@@ -103,7 +105,7 @@ export class PlaycardComponent implements OnInit {
     this.isSubmitingCard = true;
     this.cardSelections.minute = this.selectedTime;
     this.sportimoService.submitUserCard(this.cardSelections)
-      .subscribe(playedCard => {        
+      .subscribe(playedCard => {
         this.isSubmitingCard = false;
         this.closeModal();
       }
@@ -122,10 +124,10 @@ export class PlaycardComponent implements OnInit {
       if (match) {
         this.liveMatch = match;
         this.minTimeValue = this.liveMatch.matchData.time;
-        if(this.selectedTime<this.minTimeValue)this.selectedTime = this.minTimeValue;
+        if (this.selectedTime < this.minTimeValue) this.selectedTime = this.minTimeValue;
       }
     })
-    
+
     // timer(0, 60000).pipe(
     //     take(15)).subscribe(x => {
     //       this.matchTime ++;
@@ -136,7 +138,7 @@ export class PlaycardComponent implements OnInit {
     //     })
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }

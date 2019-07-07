@@ -22,13 +22,19 @@
   font-size: 14px;
 }
 
+.card-type {
+  width: 100%;
+  text-align: right;
+  padding-right: 15px;
+}
+
 .icon div {
   width: 30px;
   height: 20px;
   margin: auto;
 }
 
-.modal-close{
+.modal-close {
   display: flex;
   width: 40px;
   height: 40px;
@@ -342,8 +348,8 @@
   font-size: 19px;
 }
 
-
-.irs-min, .irs-max {
+.irs-min,
+.irs-max {
   color: #ffffff !important;
 }
 

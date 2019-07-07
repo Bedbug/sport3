@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/models/user';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ErrorDisplayService } from 'src/app/services/error-display.service';
 
 @Component({
   selector: 'app-contest-info-header',
@@ -24,7 +25,8 @@ export class ContestInfoHeaderComponent implements OnInit {
     private router: Router, 
     private route:ActivatedRoute, 
     private sportimoService: SportimoService,
-    public translate:TranslateService
+    public translate:TranslateService,
+    private errorDisplay:ErrorDisplayService
     ) { }
 
   contestDetails: Contest;
@@ -60,7 +62,12 @@ export class ContestInfoHeaderComponent implements OnInit {
   }
 
   joinContest(){
-    this.joiningContest = true;
+    if(!this.isLoggedIn)
+      this.errorDisplay.showError('101');
+      else{
+        this.sportimoService.joinContest(this.contestDetails._id).subscribe(x=>console.log(x));
+      }
+    // this.joiningContest = true;
   }
 
   cancel(){

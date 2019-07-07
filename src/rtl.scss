@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 .rtl {
   // -- GENERAL -- //
   //   ul {
@@ -60,7 +62,7 @@
   }
 
   app-match-page-info .player {
-      text-align: left;
+    text-align: left;
   }
 
   app-match-page-info .type {
@@ -72,10 +74,93 @@
   }
 
   // -- CONTEST > PRIZES -- //
-  .prize-header, .prize-text-body{
-      text-align: right;
+  .prize-header,
+  .prize-text-body {
+    text-align: right;
   }
-  .selected-prize-rank, .selected-prize-body, .selected-prize-title{
-      text-align: right;
+  .selected-prize-rank,
+  .selected-prize-body,
+  .selected-prize-title {
+    text-align: right;
   }
+
+  // -- STANDINGS -- //
+  .standings-table {
+    direction: rtl;
+  }
+
+  .cell-50,
+  .cell {
+    direction: ltr;
+  }
+
+  .cell.header-name,
+  .cell.standings-name {
+    text-align: right;
+  }
+
+  // -- LEADERBOARDS -- //
+  .leaders-table {
+    direction: rtl;
+    text-align: right !important;
+  }
+
+  .leaders-cell {
+    direction: ltr;
+  }
+
+  .leaders-cell.text-right {
+    text-align: left !important;
+    padding-left: 20px;
+  }
+
+  .leaders-player-cell img {
+    margin-right: 0 !important;
+    margin-left: 15px;
+  }
+  .leaders-player-cell {
+    flex-direction: row-reverse;
+  }
+
+  // -- CARDS -- //
+  .playcard {
+    flex-direction: row-reverse;
+  }
+
+  .card-type {
+    text-align: left !important;
+    padding-right: 0 !important;
+    padding-left: 15px;
+  }
+
+  .card-name {
+    text-align: right;
+  }
+
+  .gamecard {
+    flex-direction: row-reverse;
+  }
+
+  .details {
+    margin-right: 0px !important;
+    margin-left: 2px;
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .playing .details {
+    border-left: 0px solid $card-side-active !important;
+    border-right: 3px solid $card-side-active;
+  }
+
+  .won .details {
+    border-left: 0px solid $card-side-won !important;
+    border-right: 3px solid $card-side-won;
+  }
+
+  .lost .details {
+    border-left: 0px solid $card-side-lost !important;
+    border-right: 3px solid $card-side-lost;
+  }
+  
 }
