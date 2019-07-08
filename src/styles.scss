@@ -745,12 +745,12 @@ body .page-wrapper .page-main-header {
   padding: 10px;
 }
 
-.prize-header {
+.grand-prize-header {
   color: #ffffff;
   flex: 1 1 100%;
 }
 
-.prize-header h4 {
+.grand-prize-header h4 {
   color: $theme-color;
   margin-bottom: 0;
 }
@@ -794,7 +794,7 @@ body .page-wrapper .page-main-header {
 }
 
 @include media-breakpoint-up(md) {
-  .prize-header {
+  .grand-prize-header {
     flex: 1;
   }
 }

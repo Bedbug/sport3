@@ -4,7 +4,7 @@
             <div class="card grand-prize" style="width: 100%">
                 <div class="card-body">
                     <div *ngIf="prize" class="prize-wrapper" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}">
-                      <div class="prize-header"><h4 translate>Grand prize</h4>
+                      <div class="grand-prize-header"><h4 translate>Grand prize</h4>
                         <span>{{prize.titleText[translate.currentLang]}}</span>
                       </div>
                       <div  class="prize-image h-200">

@@ -82,6 +82,7 @@ export class SidebarComponent implements OnInit {
 
 switchLanguage(lang:string){
   this.translate.use(lang);
+  this.closeSidebar();
 }
 
 }

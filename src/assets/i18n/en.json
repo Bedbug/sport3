@@ -1,6 +1,6 @@
 {
 	"90'": "90'",
-	"About Sportimo": "About Sportimo",
+	"About Sportimo": "About Pabetoop",
 	"Achievements": "Achievements",
 	"Add to favorites": "Add to favorites",
 	"Alerady a member?": "Alerady a member?",
@@ -92,7 +92,7 @@
 	"Select Avatar": "Select Avatar",
 	"Settings": "Settings",
 	"Shot_on_Goal": "Shot_on_Goal",
-	"Sportimo Winners": "Sportimo Winners",
+	"Sportimo Winners": "Pabetoop Winners",
 	"Standings": "Standings",
 	"Starting lineup": "Starting lineup",
 	"Submit": "Submit",
@@ -110,7 +110,7 @@
 	"Username is required": "Username is required",
 	"Username required": "Username required",
 	"Username/Email": "Username/Email",
-	"Welcome to Sportimo!": "Welcome to Sportimo!",
+	"Welcome to Sportimo!": "Welcome to Pabetoop!",
 	"Winners": "Winners",
 	"Winning": "Winning",
 	"Won": "Won",
@@ -128,6 +128,6 @@
 		"101": "You must be logged in in order to join a contest",
 		"10002": "This card has expired."
 	},
-	"farsi": "فارسی",
+	"farsi": "farsi",
 	"to Join": "to Join"
 }

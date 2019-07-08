@@ -50,10 +50,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             id: "1",
             promoImage: "./assets/images/grandprize.png",
             titleText: {
-                "en": "Season 2019 - 2020"
+                "en": "Season 2019 - 2020",
+                "fa": "Season 2019 - 2020"
             },
-            infoText: { "en": "Play matches this season and increase your chances to win the Grand Prize!" },
-            endToDate: new Date("2019-06-28T23:59:59.000Z"),
+            infoText: { "en": "Play matches this season and increase your chances to win the Grand Prize!",
+            "fa": "Play matches this season and increase your chances to win the Grand Prize!" },
+            endToDate: new Date("2019-08-28T23:59:59.000Z"),
             created: new Date()
         }
 
