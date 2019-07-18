@@ -11,11 +11,14 @@
       <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{ind+1}}</div>
       <div class="leaders-cell cell-border">
         <div class="leaders-player-cell">
+          <!-- Image -->
           <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
-          <div>George Best</div>
+          <!-- Name -->
+          <div>{{i.name}}</div>
         </div>
       </div>
-      <div class="leaders-cell text-right p-r-20 cell-border">5482</div>
+      <!-- userRank -->
+      <div class="leaders-cell text-right p-r-20 cell-border">{{i.score}}</div>
     </div>
   </div>
 </div>
@@ -25,10 +28,10 @@
       <div class="leaders-cell cell-border">
         <div class="leaders-player-cell">
           <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
-          <div>George Best</div>
+          <div>{{cellArray[userRank].name}}</div>
         </div>
       </div>
-      <div class="leaders-cell text-right p-r-20 cell-border">5482</div>
+      <div class="leaders-cell text-right p-r-20 cell-border">{{cellArray[userRank].score}}</div>
     </div>
   </div>
 

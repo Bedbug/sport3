@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SportimoService } from 'src/app/services/sportimo.service';
+import { ActivatedRoute } from '@angular/router';
+import { Contest } from 'src/app/models/contest';
 import $ from 'jquery'
 @Component({
   selector: 'app-contest-page-leaders',
@@ -89,10 +92,28 @@ export class ContestPageLeadersComponent implements OnInit {
     { user: false },
     { user: false },
   ];
-  constructor() { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
+  
   userRank: Number;
+  contestDetails: Contest;
+
   ngOnInit() {
-    this.userRank = this.cellArray.findIndex(x=>x.user) + 1;
+    this.route.paramMap.subscribe(params => {
+      this.sportimoService.getContestQuickDetails(params.get("contestId"))
+        .subscribe(result => {
+          this.contestDetails = result;
+          if (this.contestDetails)
+            this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {
+              console.table(leaders);
+              
+              this.cellArray = leaders;
+              console.log(this.cellArray.length);
+              this.userRank = this.cellArray.findIndex(x=>x.user) + 1;
+            }
+            );
+        });
+    })
+    
   }
 
   ngAfterViewInit(){
