@@ -22,16 +22,16 @@
     </div>
   </div>
 </div>
-<div class="leaders-table-user">
-    <div class="leaders-row leaders-user">
-      <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{userRank}}</div>
+<div class="leaders-table-user" >
+    <div class="leaders-row leaders-user" *ngIf="show">
+      <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{userRank+1}}</div>
       <div class="leaders-cell cell-border">
         <div class="leaders-player-cell">
           <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
-          <div>{{cellArray[userRank].name}}</div>
+          <div >{{cellArray[userRank].name}}</div>
         </div>
       </div>
       <div class="leaders-cell text-right p-r-20 cell-border">{{cellArray[userRank].score}}</div>
     </div>
-  </div>
+</div>
 

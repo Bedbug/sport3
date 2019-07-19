@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Contest } from 'src/app/models/contest';
+import { Subject } from 'rxjs';
 import $ from 'jquery'
+
 @Component({
   selector: 'app-contest-page-leaders',
   templateUrl: './contest-page-leaders.component.html',
@@ -10,7 +14,7 @@ import $ from 'jquery'
 })
 export class ContestPageLeadersComponent implements OnInit {
   cellArray = [
-    { user: false },
+    { _id: "" },
     { user: false },
     { user: false },
     { user: false },
@@ -92,10 +96,13 @@ export class ContestPageLeadersComponent implements OnInit {
     { user: false },
     { user: false },
   ];
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService) { }
+  show: boolean;
   
-  userRank: Number;
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private authenticationService: AuthenticationService) { }
+  
+  userRank: Number = 0;
   contestDetails: Contest;
+  ngUnsubscribe = new Subject();
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -105,10 +112,20 @@ export class ContestPageLeadersComponent implements OnInit {
           if (this.contestDetails)
             this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {
               console.table(leaders);
-              
               this.cellArray = leaders;
-              console.log(this.cellArray.length);
-              this.userRank = this.cellArray.findIndex(x=>x.user) + 1;
+              
+              // console.table(this.athenticationService.currentUser);
+              // console.log("User Id: "+this.athenticationService.currentUser.source._value.id);
+              // if(this.athenticationService.currentUser != null) {
+              //   this.userRank = this.cellArray.findIndex(x=>x._id == this.athenticationService.currentUser.source._value.id);
+              // }
+              this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
+                console.log(user._id);
+                this.userRank = this.cellArray.findIndex(x=>x._id == user._id);
+                console.log("userRank "+this.userRank);
+                if(this.userRank >= 0)
+                    this.show = true;
+              })
             }
             );
         });

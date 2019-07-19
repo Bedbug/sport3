@@ -114,7 +114,7 @@ export class SportimoService {
         return result;
       }))
   }
-  
+
   /*-----------------------------------------------------------------------------------
    LEADERBOARDS
  ----------------------------------------------------------------------------------- */
@@ -126,7 +126,17 @@ export class SportimoService {
     .pipe(map(leaders => {
       return leaders;
     }));
-}
+  }
+
+  getContestMatchLeaders(contestId: string, matchId: string) {
+    return this.http.get<any>(
+      // http://localhost:3030/v1/data/client/5be2bfc7135a3e1e2d4a637f/tournament/5be2f82c135a3e1e2d4a6380/match/5be2fc12135a3e1e2d4a6381/leaders
+      `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${matchId}/leaders`) 
+      .pipe(map(leaders => {
+        return leaders;
+      }));
+  }
+
 
   /*-----------------------------------------------------------------------------------
     Matches
