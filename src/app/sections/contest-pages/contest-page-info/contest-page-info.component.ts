@@ -3,6 +3,7 @@ import { Contest } from 'src/app/models/contest';
 import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { trigger, style, transition, animate, query, stagger } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contest-page-info',
@@ -29,7 +30,11 @@ import { trigger, style, transition, animate, query, stagger } from '@angular/an
 })
 export class ContestPageInfoComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute, private sportimoService:SportimoService) { }
+  constructor(
+    private route:ActivatedRoute, 
+    private sportimoService:SportimoService,
+    public translate:TranslateService,
+    ) { }
 
   contestDetails: Contest;
 
