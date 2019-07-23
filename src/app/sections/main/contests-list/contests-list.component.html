@@ -10,10 +10,10 @@
         </div>
         <div class="card-body" [ngStyle]="{background: 'url(' + (contest.promoDetailImage || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
           <div class="row">
-          <div class="col-7 contest-image">
+          <div class="col-6 contest-image">
             <img src="{{contest.promoImage}}" alt="">
           </div>
-          <div class="col-5 contest-details text-center">
+          <div class="col-6 contest-details text-center">
             <p class="contest-details-text">{{contest.infoText[translate.currentLang]}}</p>
             <p>{{contest.subscriptionPrice}} <i class="coin"></i> <span translate>to Join</span></p>
           </div>

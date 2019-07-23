@@ -709,10 +709,12 @@ body .page-wrapper .page-main-header {
 }
 
 .contest-details p:first-child {
-  margin-top: 10px;
-  height: 125px;
-  display: table-cell;
-  vertical-align: middle;
+  // margin-top: 10px;
+  min-height: 125px;
+  padding-bottom: 15px;
+    padding-top: 15px;
+  // display: table-cell;
+  // vertical-align: middle;
 }
 
 .contest-details p:last-child {
