@@ -7,7 +7,7 @@
 </div>
 <div class="leaders-scrollable-group" (scroll)="checkScroll()">
   <div class="leaders-table">
-    <div class="leaders-row" [class.leaders-user]="i.user" *ngFor="let i of cellArray; let ind = index">
+    <div class="leaders-row" [class.leaders-user]="ind == userRank" *ngFor="let i of cellArray; let ind = index">
       <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{ind+1}}</div>
       <div class="leaders-cell cell-border">
         <div class="leaders-player-cell">

@@ -9,6 +9,7 @@ export class Contest {
     titleText?: object;
     smallInfoText?: object;
     infoText?: object;
+    detailText?: object;
     startFromDate?: Date;
     endToDate?: Date;
     state?: string;

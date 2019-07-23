@@ -46,18 +46,18 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             }
         ]
 
-        const grandPrize: GrandPrize = {
-            id: "1",
-            promoImage: "./assets/images/grandprize.png",
-            titleText: {
-                "en": "Season 2019 - 2020",
-                "fa": "Season 2019 - 2020"
-            },
-            infoText: { "en": "Play matches this season and increase your chances to win the Grand Prize!",
-            "fa": "Play matches this season and increase your chances to win the Grand Prize!" },
-            endToDate: new Date("2019-08-28T23:59:59.000Z"),
-            created: new Date()
-        }
+        // const grandPrize: GrandPrize = {
+        //     id: "1",
+        //     promoImage: "./assets/images/grandprize.png",
+        //     titleText: {
+        //         "en": "Season 2019 - 2020",
+        //         "fa": "Season 2019 - 2020"
+        //     },
+        //     infoText: { "en": "Play matches this season and increase your chances to win the Grand Prize!",
+        //     "fa": "Play matches this season and increase your chances to win the Grand Prize!" },
+        //     endToDate: new Date("2019-08-28T23:59:59.000Z"),
+        //     created: new Date()
+        // }
 
         const subscription: Subscription = {
             userId: "1",
@@ -115,10 +115,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(Contests);
             }
 
-            if (request.url.match(/grandprize/i) && request.method === 'GET') {
-                // if (role !== Role.Admin) return unauthorised();
-                return ok(grandPrize);
-            }
+            // if (request.url.match(/grandprize/i) && request.method === 'GET') {
+            //     // if (role !== Role.Admin) return unauthorised();
+            //     return ok(grandPrize);
+            // }
 
             
             if (request.url.match(/subscription/i) && request.method === 'POST') {

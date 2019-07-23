@@ -3,6 +3,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { GrandPrize } from 'src/app/models/grand-prize';
 import { trigger, transition, query, style, stagger, animate, state } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-grand-prize',
@@ -15,7 +16,7 @@ import { TranslateService } from '@ngx-translate/core';
         state('false', style({ opacity: 0 })),
         transition('false <=> true', animate(500))
       ]),
-      ]
+  ]
 })
 export class GrandPrizeComponent implements OnInit {
 
@@ -28,20 +29,32 @@ export class GrandPrizeComponent implements OnInit {
     expired: false
   }
 
-  constructor(private sportimoService: SportimoService, public translate:TranslateService) { }
+  ngUnsubscribe = new Subject();
+
+
+  constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
 
   ngOnInit() {
     this.sportimoService.getGrandPrize()
       .subscribe(data => {
-        this.prize = data;
-        this.startCountdownTimer();
+        if (data != null && data.length > 0) {
+          this.prize = data[0];
+          this.startCountdownTimer();
+        }
       })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
 
   startCountdownTimer() {
     // / Set the date we're counting down to
-    var countDownDate = this.prize.endToDate.getTime();
+    console.log(this.prize.endToDate);
+    
+    var countDownDate = new Date(this.prize.endToDate).getTime();
     var that = this;
     clearInterval(x);
 
@@ -59,7 +72,7 @@ export class GrandPrizeComponent implements OnInit {
       that.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       that.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       that.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
+
       // If the count down is finished, write some text 
       if (distance < 0) {
         clearInterval(x);

@@ -2,7 +2,7 @@
 <div *ngIf="contestDetails" [@staggerAnimation] class="card fade show">
   <div class="card-body" style="background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;" [ngStyle]="{'background-image': 'url(' + contestDetails?.promoDetailImage + ')'}">
+  background-position: center;" [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
 
     <div class="contest-image">
       <img src="{{contestDetails?.promoImage}}" style="max-height: 200px" alt="">
@@ -10,6 +10,6 @@
 
   </div>
   <div class="card-body text-white">
-    <div [innerHTML] = "contestDetails?.infoText.en"></div>
+    <div [innerHTML] = "contestDetails?.detailText.en"></div>
   </div>
 </div>
