@@ -6,7 +6,7 @@
         <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
       </div>
       <div class="col" style="min-height:33px; line-height: 33px">
-        <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12"><span translate>Join</span> {{contestDetails?.subscriptionPrice}} <i class="coin"></i></button>
+        <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12"><span translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></button>
         <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span translate >Your chances: </span> {{contestDetails?.participations || 0}}</div>
       </div>
     </div>

@@ -1,0 +1,39 @@
+.counter-container-new {
+    width: 150px;
+    margin: auto;
+    bottom: 15px;
+    left: 10%;
+  }
+
+.grand-prize-details {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.grand-prize-image {
+    // background-color: aqua;
+    min-width: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.grand-prize-text {
+    // background-color: green;
+    min-width: 50%;
+    width: 50%;
+    padding: 10px;
+}
+
+.grand-prize-counter {
+    // background-color: greenyellow;
+    min-width: 50%;
+}
+
+.grand-prize-user-details {
+    // background-color: brown;
+    min-width: 50%;
+}

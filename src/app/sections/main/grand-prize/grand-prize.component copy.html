@@ -1,0 +1,35 @@
+<div class="container-fluid p-0" [@fadein]="prize?true:false">
+    <div class="starter-main">
+        <div class="col-sm-12 p-0">
+            <div class="card grand-prize" style="width: 100%">
+                <div class="card-body">
+                    <div *ngIf="prize" class="prize-wrapper" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}">
+                      <div class="grand-prize-header"><h4 translate>Grand prize</h4>
+                        <span>{{prize.titleText[translate.currentLang]}}</span>
+                      </div>
+                      <div  class="prize-image h-200">
+                        <div class="counter-container">
+                          <div class="counter-header col-sm-12">
+                            <div class="row">
+                            <div class="col p-0" translate>Days</div>
+                            <div class="col p-0" translate>Hours</div>
+                            <div class="col p-0" translate>Minutes</div>
+                          </div>
+                          </div>
+                          <div class="counter-body col-sm-12">
+                            <div class="row">
+                            <div class="col p-0">{{countdown.days<10?"0"+countdown.days:countdown.days}}</div>
+                            <div class="col p-0">{{countdown.hours<10?"0"+countdown.hours:countdown.hours}}</div>
+                            <div class="col p-0">{{countdown.minutes<10?"0"+countdown.minutes:countdown.minutes}}</div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="prize-details">{{prize.infoText[translate.currentLang]}}</div>
+                    <!-- <img class="img-fluid pull-left h-200" src="{{prize?.promoImage}}" alt=""> -->
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

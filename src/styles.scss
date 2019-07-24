@@ -72,7 +72,7 @@
   background-repeat: no-repeat;
   width: 18px;
   height: 18px;
-  margin: 0;
+  margin: 0 5px;
   position: relative;
   top: 2px;
 }
@@ -740,7 +740,7 @@ body .page-wrapper .page-main-header {
   background-position: left top;
   background-size: contain;
   background-repeat: no-repeat;
-  padding: 0 15px;
+  // padding: 0 15px;
 }
 
 .prize-wrapper > * {
