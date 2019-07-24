@@ -10,6 +10,6 @@
 
   </div>
   <div class="card-body text-white">
-    <div [innerHTML] = "contestDetails?.detailText.en"></div>
+    <div [innerHTML] = "contestDetails?.detailText[translate.currentLang]"></div>
   </div>
 </div>
