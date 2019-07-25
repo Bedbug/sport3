@@ -49,10 +49,7 @@ export const MENUITEMS: Menu[] = [
     ]
   },
   {
-    title: 'Language', icon: 'menu-icon icn-user', type: 'sub',  children: [
-        { path: 'en', title: 'english', type: 'languageLink' },
-        { path: 'fa', title: 'farsi', type: 'languageLink' },                
-    ]
+    title: 'Language', icon: 'menu-icon icn-user', type: 'sub'
   },
   // {
   //   path: '/pages/stater-kit', title: 'Dashboard', icon: 'icon-desktop', type: 'link'

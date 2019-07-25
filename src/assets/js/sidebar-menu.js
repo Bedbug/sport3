@@ -6,6 +6,7 @@ $.sidebarMenu = function(menu) {
     var $this = $(this);
     var checkElement = $this.next();
     if (checkElement.is(subMenuSelector) && checkElement.is(':visible')) {
+      console.log(checkElement);
       checkElement.slideUp(animationSpeed, function() {
         checkElement.removeClass('menu-open');
       });

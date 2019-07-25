@@ -3687,7 +3687,7 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
   letter-spacing: 1px;
   padding-bottom: 7px;
   padding-top: 7px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 500;
 }
 
