@@ -65,9 +65,13 @@ export class ContestInfoHeaderComponent implements OnInit {
     if(!this.isLoggedIn)
       this.errorDisplay.showError('101');
       else{
+        if(this.joiningContest)
         this.sportimoService.joinContest(this.contestDetails._id).subscribe(x=>console.log(x));
+        else{
+          this.joiningContest = true;
+        }
       }
-    // this.joiningContest = true;
+    
   }
 
   cancel(){

@@ -1,13 +1,22 @@
-<div class="card" style="margin-bottom: 0"  >
+<div class="card" style="margin-bottom: 0">
   <div class="card-body">
     <div class="row">
       <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
-          {{contestDetails?.titleText[translate.currentLang]}} 
+        {{contestDetails?.titleText[translate.currentLang]}}
         <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
       </div>
       <div class="col" style="min-height:33px; line-height: 33px">
-        <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12"><span translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></button>
-        <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span translate >Your chances: </span> {{contestDetails?.participations || 0}}</div>
+        <!-- <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
+          <span translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></button> -->
+        <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn"
+          class="btn btn-sportimo col-12">
+          <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
+              translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></div>
+          <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join
+              For Free</span></div>
+        </button>
+        <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span
+            translate>Your chances: </span> {{contestDetails?.participations || 0}}</div>
       </div>
     </div>
     <div class="sportimo-divider"></div>
@@ -22,54 +31,68 @@
         <div class="contest-info-cell">{{contestDetails?.matches}}</div>
         <div class="contest-info-cell">{{contestDetails?.participations}}</div>
         <div class="contest-info-cell">{{contestDetails?.winners}}</div>
-        <div class="contest-info-cell">{{contestDetails?.startFromDate | date:"dd/MM/yy"}}-{{contestDetails?.endToDate | date:"dd/MM/yy"}}</div>
+        <div class="contest-info-cell">
+          {{contestDetails?.startFromDate | date:"dd/MM/yy"}}-{{contestDetails?.endToDate | date:"dd/MM/yy"}}</div>
       </div>
     </div>
   </div>
 </div>
 
-<div *ngIf="isLoggedIn" class="modal-background" (click)="cancel()" [class.hidden]="!joiningContest || !isLoggedIn" [class.modal-appear]="joiningContest && isLoggedIn" id="join-contest-modal">
-    <div class="modal-card" (click)="preventDefault($event)">
-      <div class="modal-card-header">
-        <div class="modal-title"></div>
-        <div (click)="cancel()" class="modal-exit pull-right">X</div>
-      </div>
-      <div class="modal-card-body text-center">
-        <div class="join-modal-header" translate>Join Contest</div>
-        <div class="join-modal-contest">{{contestDetails?.titleText[translate.currentLang]}}</div>
-        <div class="contest-image" style="background-repeat: no-repeat;
+<div *ngIf="isLoggedIn" class="modal-background" (click)="cancel()" [class.hidden]="!joiningContest || !isLoggedIn"
+  [class.modal-appear]="joiningContest && isLoggedIn" id="join-contest-modal">
+  <div class="modal-card" (click)="preventDefault($event)">
+    <div class="modal-card-header">
+      <div class="modal-title"></div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="join-modal-header" translate>Join Contest</div>
+      <div class="join-modal-contest">{{contestDetails?.titleText[translate.currentLang]}}</div>
+      <div class="contest-image" style="background-repeat: no-repeat;
         background-size: cover;
-        background-position: center; height: 200px; display:flex " [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
-            <img src="{{contestDetails?.promoImage}}" style="max-height: 150px" alt="">
-          </div>
-          <div *ngIf="contestDetails?.subscriptionPrice > user?.wallet" class="problem-info"><div class="icn-info-alt"></div> <span translate>You have insufficient coins to join</span></div>
-          <div class="bottom-buttons">          
-              <ul class="finalize" >
-                <li>
-                  <button *ngIf="contestDetails?.subscriptionPrice <= user?.wallet" [disabled]="isJoinRequesting" (click)="requestJoin()" class="btn btn-sportimo">
-                    <div class="loader-label" [class.btn-active]="isJoinRequesting">
-                      <span class="button-label"> <span translate>Join</span> {{contestDetails?.subscriptionPrice}} <i _ngcontent-vii-c2="" class="coin"></i></span>
-                      <div class="fadeInLoader">
-                        <span class="rotate dotted button-loader"></span>
-                      </div>
-                    </div>
-                  </button>      
-                  <button *ngIf="contestDetails?.subscriptionPrice > user.wallet" [disabled]="isJoinRequesting" (click)="getCoins()" class="btn btn-sportimo">
-                      <div class="loader-label" [class.btn-active]="isJoinRequesting">
-                        <span class="button-label"> <span translate>Get</span> {{contestDetails?.subscriptionPrice}} <i _ngcontent-vii-c2="" class="coin"></i></span>
-                        <div class="fadeInLoader">
-                          <span class="rotate dotted button-loader"></span>
-                        </div>
-                      </div>
-                    </button>        
-                </li>
-                <li>
-                  <button [disabled]="isJoinRequesting" (click)="cancel()" class="btn btn-default">Cancel</button>
-                </li>
-              </ul>
-            </div>
-  
-  
+        background-position: center; height: 200px; display:flex "
+        [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
+        <img src="{{contestDetails?.promoImage}}" style="max-height: 150px" alt="">
       </div>
+      <div *ngIf="contestDetails?.subscriptionPrice > user?.wallet" class="problem-info">
+        <div class="icn-info-alt"></div> <span translate>You have insufficient coins to join</span>
+      </div>
+      <div class="bottom-buttons">
+        <ul class="finalize">
+          <li>
+            <button *ngIf="contestDetails?.subscriptionPrice <= user?.wallet" [disabled]="isJoinRequesting"
+              (click)="requestJoin()" class="btn btn-sportimo">
+              <div class="loader-label" [class.btn-active]="isJoinRequesting">
+                <!-- <span translate>Join</span> {{contestDetails?.subscriptionPrice}} <i _ngcontent-vii-c2="" class="coin"></i> -->
+                <span class="button-label">
+                  <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
+                      translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></div>
+                  <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span
+                      translate>Join For Free</span></div>
+                </span>
+                <div class="fadeInLoader">
+                  <span class="rotate dotted button-loader"></span>
+                </div>
+              </div>
+            </button>
+            <button *ngIf="contestDetails?.subscriptionPrice > user.wallet" [disabled]="isJoinRequesting"
+              (click)="getCoins()" class="btn btn-sportimo">
+              <div class="loader-label" [class.btn-active]="isJoinRequesting">
+                <span class="button-label"> <span translate>Get</span> {{contestDetails?.subscriptionPrice}} <i
+                    _ngcontent-vii-c2="" class="coin"></i></span>
+                <div class="fadeInLoader">
+                  <span class="rotate dotted button-loader"></span>
+                </div>
+              </div>
+            </button>
+          </li>
+          <li>
+            <button [disabled]="isJoinRequesting" (click)="cancel()" class="btn btn-default">Cancel</button>
+          </li>
+        </ul>
+      </div>
+
+
     </div>
   </div>
+</div>
