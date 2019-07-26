@@ -14,30 +14,30 @@ export class ContestPagePrizesComponent implements OnInit {
   selectedPrize: any = null;
 
   prizes: any[] = [
-    {
-      position: { from: 1 },
-      prize: {
-        picture: "https://via.placeholder.com/640x450",
-        name: { en: "Your favorite Team Jerseys" },
-        text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
-      }
-    },
-    {
-      position: { from: 2 },
-      prize: {
-        picture: "https://via.placeholder.com/640x450",
-        name: { en: "4G Mobile Data" },
-        text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
-      }
-    },
-    {
-      position: { from: 3 },
-      prize: {
-        picture: "https://via.placeholder.com/640x450",
-        name: { en: "100 signed autographs" },
-        text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
-      }
-    }
+    // {
+    //   position: { from: 1 },
+    //   prize: {
+    //     picture: "https://via.placeholder.com/640x450",
+    //     name: { en: "Your favorite Team Jerseys" },
+    //     text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
+    //   }
+    // },
+    // {
+    //   position: { from: 2 },
+    //   prize: {
+    //     picture: "https://via.placeholder.com/640x450",
+    //     name: { en: "4G Mobile Data" },
+    //     text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
+    //   }
+    // },
+    // {
+    //   position: { from: 3 },
+    //   prize: {
+    //     picture: "https://via.placeholder.com/640x450",
+    //     name: { en: "100 signed autographs" },
+    //     text: { en: "Nam porttitor blandit accumsan. Ut vel dictum sem, a pretium dui. In malesuada enim in dolor euismod, id commodo mi consectetur. Curabitur at vestibulum nisi. Nullam vehicula nisi velit. Mauris turpis nisl, molesti." }
+    //   }
+    // }
   ]
 
   constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService) { }
@@ -64,5 +64,12 @@ export class ContestPagePrizesComponent implements OnInit {
 
   cancel() {
     this.selectedPrize = null;
+  }
+
+  strippedPrizedText(text:string) {
+    if (text){      
+      return text.replace(/<\/?[^>]+(>|$)/g, "");
+    }else
+      return "";
   }
 }

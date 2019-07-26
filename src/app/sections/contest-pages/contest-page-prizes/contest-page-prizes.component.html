@@ -9,7 +9,7 @@
       background-position: center;" [ngStyle]="{'background-image': 'url('+ prize?.prize.picture +')'}"></div>
       <div class="prize-text">
         <div class="prize-text-title">{{prize?.prize.name[translate.currentLang]}}</div>
-        <div class="prize-text-body">{{prize?.prize.text[translate.currentLang]}}</div>
+        <div class="prize-text-body">{{strippedPrizedText(prize?.prize.text[this.translate.currentLang])}}</div>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
           background-size: cover;
           background-position: center;" [ngStyle]="{'background-image': 'url('+ selectedPrize?.prize.picture +')'}"></div>
           <div class="selected-prize-title">{{selectedPrize?.prize.name[translate.currentLang]}}</div>
-          <div class="selected-prize-body">{{selectedPrize?.prize.text[translate.currentLang]}}</div>
+          <div class="selected-prize-body" [innerHTML]="selectedPrize?.prize.text[translate.currentLang]"></div>
       </div>
       
     </div>
