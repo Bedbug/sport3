@@ -3,7 +3,9 @@ import { Contest } from 'src/app/models/contest';
 import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { trigger, style, transition, animate, query, stagger } from '@angular/animations';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contest-page-info',
@@ -32,19 +34,32 @@ export class ContestPageInfoComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute, 
-    private sportimoService:SportimoService,
+    public sportimoService:SportimoService,
     public translate:TranslateService,
     ) { }
 
+  // private langIsRTL: boolean = false;
+  ngUnsubscribe = new Subject();
   contestDetails: Contest;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {      
-      this.sportimoService.getContestQuickDetails(params.get("contestId"))
+      this.sportimoService.getContestQuickDetails(params.get("contestId")).pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(result => {
         this.contestDetails = result;
       });
     })
+
+    // this.langIsRTL = this.sportimoService.langIsRTL;
+    // this.translate.onLangChange.pipe(takeUntil(this.ngUnsubscribe)).subscribe((event: LangChangeEvent) => {
+    //   this.langIsRTL = this.sportimoService.langIsRTL;
+    // });
   }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
 
 }

@@ -44,7 +44,7 @@ export const MENUITEMS: Menu[] = [
     title: 'About Sportimo', icon: 'menu-icon icn-logo', type: 'sub', children: [
         { path: '/base/accordion', title: 'How to Play', type: 'link' },
         { path: '/base/alert', title: 'Support', type: 'link' },
-        { path: '/base/dropdown', title: 'Terms & Conditions', type: 'link', badgeType:'danger', badgeValue: "11 new" },
+        { path: '/base/dropdown', title: 'Terms & Conditions', type: 'link'},
         { path: '/base/grid', title: 'Privacy Policy', type: 'link' }
     ]
   },
