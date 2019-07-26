@@ -12,8 +12,7 @@
           class="btn btn-sportimo col-12">
           <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
               translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></div>
-          <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join
-              For Free</span></div>
+          <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join For Free</span></div>
         </button>
         <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span
             translate>Your chances: </span> {{contestDetails?.participations || 0}}</div>
