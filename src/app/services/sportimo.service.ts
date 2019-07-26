@@ -63,6 +63,10 @@ export class SportimoService {
     return this.http.get<GrandPrize[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/grand-prizes/`);
   }
 
+  getGrandPrizeUserChances(prizeId:string) {    
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/grand-prize/${prizeId}/chances`);
+  }
+
   /*-----------------------------------------------------------------------------------
     Contests
   ----------------------------------------------------------------------------------- */

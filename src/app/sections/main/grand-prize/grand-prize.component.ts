@@ -30,7 +30,7 @@ export class GrandPrizeComponent implements OnInit {
   }
 
   ngUnsubscribe = new Subject();
-
+  userChances = 0;
 
   constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
 
@@ -40,8 +40,15 @@ export class GrandPrizeComponent implements OnInit {
         if (data != null && data.length > 0) {
           this.prize = data[0];
           this.startCountdownTimer();
+
+          this.sportimoService.getGrandPrizeUserChances(data[0]._id)
+            .subscribe(data => {
+              this.userChances = data || 0;
+            })
         }
       })
+
+
   }
 
   ngOnDestroy() {
@@ -53,7 +60,7 @@ export class GrandPrizeComponent implements OnInit {
   startCountdownTimer() {
     // / Set the date we're counting down to
     console.log(this.prize.endToDate);
-    
+
     var countDownDate = new Date(this.prize.endToDate).getTime();
     var that = this;
     clearInterval(x);
