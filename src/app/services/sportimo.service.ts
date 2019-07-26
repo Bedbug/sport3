@@ -43,6 +43,7 @@ export class SportimoService {
   private currentContestId;
 
   private socket;
+  langIsRTL: boolean = false;
 
   constructor(
     private http: HttpClient,

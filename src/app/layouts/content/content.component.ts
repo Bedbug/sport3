@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 @Component({
   selector: 'app-content',
@@ -8,7 +9,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 })
 export class ContentComponent implements OnInit {
   
-  isRTL: boolean;
+  public isRTL: boolean;
   RTL_languages = ["fa"];
 
   constructor(private translate: TranslateService) { }
@@ -19,8 +20,7 @@ export class ContentComponent implements OnInit {
     
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       
-      localStorage.setItem('language',this.translate.currentLang);
-      
+      localStorage.setItem('language',this.translate.currentLang);      
       this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
     });
     this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;

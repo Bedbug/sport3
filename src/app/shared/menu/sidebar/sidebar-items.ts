@@ -44,15 +44,12 @@ export const MENUITEMS: Menu[] = [
     title: 'About Sportimo', icon: 'menu-icon icn-logo', type: 'sub', children: [
         { path: '/base/accordion', title: 'How to Play', type: 'link' },
         { path: '/base/alert', title: 'Support', type: 'link' },
-        { path: '/base/dropdown', title: 'Terms & Conditions', type: 'link', badgeType:'danger', badgeValue: "11 new" },
+        { path: '/base/dropdown', title: 'Terms & Conditions', type: 'link'},
         { path: '/base/grid', title: 'Privacy Policy', type: 'link' }
     ]
   },
   {
-    title: 'Language', icon: 'menu-icon icn-user', type: 'sub',  children: [
-        { path: 'en', title: 'english', type: 'languageLink' },
-        { path: 'fa', title: 'farsi', type: 'languageLink' },                
-    ]
+    title: 'Language', icon: 'menu-icon icn-user', type: 'sub'
   },
   // {
   //   path: '/pages/stater-kit', title: 'Dashboard', icon: 'icon-desktop', type: 'link'
