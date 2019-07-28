@@ -54,10 +54,11 @@ export class MatchPagesComponent implements OnInit {
       this.contestId = params.get("contestId");
 
       this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
-        if(!user){
+        if(!user && this.contestId){
           this.state.navigate(['/contest',this.contestId,'info']);
         }
       });
+
 
       // Retrieve the Live Match data from the service
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).

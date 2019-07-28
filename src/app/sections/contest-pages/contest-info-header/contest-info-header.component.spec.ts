@@ -7,6 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
 import { ConfigServiceStub } from '../contest-page-info/contest-page-info.component.spec';
+import { ToastrModule } from 'ngx-toastr';
 
 
 describe('ContestInfoHeaderComponent', () => {
@@ -16,7 +17,7 @@ describe('ContestInfoHeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ContestInfoHeaderComponent ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [ToastrModule.forRoot(),HttpClientTestingModule, RouterTestingModule],
       providers: [{provide: TranslateService, useClass: TranslateServiceStub},  { provide: ConfigService, useClass: ConfigServiceStub }],
     })
     .compileComponents();
