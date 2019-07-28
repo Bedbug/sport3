@@ -1,5 +1,5 @@
 export class GrandPrize {
-    id: string;
+    _id: string;
     promoImage: string;
     titleText: object;
     infoText: object;
