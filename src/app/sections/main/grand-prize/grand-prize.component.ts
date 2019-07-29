@@ -4,6 +4,8 @@ import { GrandPrize } from 'src/app/models/grand-prize';
 import { trigger, transition, query, style, stagger, animate, state } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-grand-prize',
@@ -32,7 +34,7 @@ export class GrandPrizeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   userChances = 0;
 
-  constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
+  constructor(private sportimoService: SportimoService, public translate: TranslateService, private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.sportimoService.getGrandPrize()
@@ -41,10 +43,16 @@ export class GrandPrizeComponent implements OnInit {
           this.prize = data[0];
           this.startCountdownTimer();
 
-          this.sportimoService.getGrandPrizeUserChances(data[0]._id)
-            .subscribe(data => {
-              this.userChances = data || 0;
-            })
+          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+            if (user)
+              this.sportimoService.getGrandPrizeUserChances(data[0]._id)
+                .subscribe(data => {
+                  this.userChances = data || 0;
+                })
+                else
+                this.userChances = 0;
+          })
+
         }
       })
 
