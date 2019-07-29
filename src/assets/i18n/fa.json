@@ -8,7 +8,7 @@
 	"Assists": "پاس گل",
 	"Balance": "اعتبار",
 	"Both passwords required": "هر دو گذرواژه الزامی است",
-	"By clicking \"Subscribe\", you agree to the": "با کلیک عضویت شما اعلام می دارید که با قوانین زیر موافقید",
+	"SubscribeNotice": "با کلیک عضویت شما اعلام می دارید که با قوانین زیر موافقید",
 	"By subscribing, you have earned:": "با عضویت از موارد زیر بهره‌مند خواهید شد",
 	"Cards Played:": "کارت‌های بازی‌شده :",
 	"Cards won:": "کارت‌های برنده‌شده:",
@@ -120,7 +120,7 @@
 	"Yellow cards": "کارت‌های زرد",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
 	"You:": "شما:",
-	"Your chances:": "شانس‌های شما:",
+	"Your chances:": "شانس‌های شما: ",
 	"activation time:": "زمان فعالسازی",
 	"app-name": "پا به توپ",
 	"correct": "صحیح",
@@ -131,5 +131,6 @@
 		"10002": ""
 	},
 	"farsi": "فارسی",
-	"to Join": "عضویت"
+	"to Join": "عضویت",
+	"View Details": ""
 }

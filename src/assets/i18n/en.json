@@ -8,7 +8,7 @@
 	"Assists": "Assists",
 	"Balance": "Balance",
 	"Both passwords required": "Both passwords required",
-	"By clicking \"Subscribe\", you agree to the": "By clicking \"Subscribe\", you agree to the",
+	"SubscribeNotice": "By clicking \"Subscribe\", you agree to the",
 	"By subscribing, you have earned:": "By subscribing, you have earned:",
 	"Cards Played:": "Cards Played:",
 	"Cards won:": "Cards won:",
@@ -120,7 +120,7 @@
 	"Yellow cards": "Yellow cards",
 	"You have insufficient coins to join": "You have insufficient coins to join",
 	"You:": "You:",
-	"Your chances:": "Your chances:",
+	"Your chances:": "Your chances: ",
 	"activation time:": "activation time:",
 	"app-name": "pabetoop",
 	"correct": "correct",
@@ -131,5 +131,6 @@
 		"10002": "This card has expired."
 	},
 	"farsi": "فارسی",
-	"to Join": "to Join"
+	"to Join": "to Join",
+	"View Details": "View Details"
 }
