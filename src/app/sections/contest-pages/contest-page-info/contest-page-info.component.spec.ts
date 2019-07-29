@@ -6,6 +6,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ConfigService } from 'src/app/services/config.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { TranslateService } from '@ngx-translate/core';
+import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
 
 
 export class ConfigServiceStub {
@@ -33,7 +35,8 @@ describe('ContestPageInfoComponent', () => {
       providers: [
         AuthenticationService,
         SportimoService,
-        { provide: ConfigService, useClass: ConfigServiceStub }
+        { provide: ConfigService, useClass: ConfigServiceStub },
+        {provide: TranslateService, useClass: TranslateServiceStub}
       ]
     })
     .compileComponents();

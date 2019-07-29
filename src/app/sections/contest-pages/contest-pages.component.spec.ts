@@ -13,8 +13,15 @@ import { of } from 'rxjs';
 import { ConfigService } from 'src/app/services/config.service';
 import { ConfigServiceStub } from './contest-page-info/contest-page-info.component.spec';
 import { Contest } from 'src/app/models/contest';
+import { ErrorDisplayService } from 'src/app/services/error-display.service';
+import { ToastrModule } from 'ngx-toastr';
 
 export class SportimoServiceStub {
+
+  getStandingsLeagues() {
+    return of(null);
+  }
+  
   getContestDetails(id: string) {
     return of(null);
   }
@@ -87,11 +94,16 @@ describe('ContestPagesComponent', () => {
   let component: ContestPagesComponent;
   let fixture: ComponentFixture<ContestPagesComponent>;
 
+
+  // imports:[ToastrModule.forRoot()],
+  
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContestPagesComponent, ContestInfoHeaderComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],
+      imports: [ToastrModule.forRoot(),RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],
       providers: [
+      
         { provide: SportimoService, useClass: SportimoServiceStub },
         { provide: AuthenticationService, useClass: AuthenticationServiceStub },
         { provide: ConfigService, useClass: ConfigServiceStub },

@@ -1,5 +1,12 @@
 @import "src/variables.scss";
 
+.formated-text {
+   ul {
+  padding-left: 30px;
+  list-style-type: disc;
+  margin-bottom: 15px;
+} 
+}
 .rtl {
   // -- GENERAL -- //
   //   ul {
