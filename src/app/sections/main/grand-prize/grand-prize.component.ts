@@ -44,6 +44,7 @@ export class GrandPrizeComponent implements OnInit {
           this.startCountdownTimer();
 
           this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+            console.log(user);
             if (user)
               this.sportimoService.getGrandPrizeUserChances(data[0]._id)
                 .subscribe(data => {
