@@ -2,7 +2,7 @@
   <div class="starter-main">
     <div class="col-sm-12 p-0">
       <div class="card grand-prize" style="width: 100%">
-        <div class="card-body" [ngStyle]="{background: 'url(' + ('./assets/images/contest-bg.png') + ')','background-position': 'left center', 'background-size': 'cover'}">
+        <div class="card-body" [ngStyle]="{background: 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ')','background-position': 'left center', 'background-size': 'cover'}">
           <div *ngIf="prize" class="prize-wrapper">
             <div class="grand-prize-header">
               <h4 translate>Grand prize</h4>
