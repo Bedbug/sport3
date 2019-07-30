@@ -3,7 +3,8 @@
         <div class="col-sm-12 p-0">
             <div class="card grand-prize" style="width: 100%">
                 <div class="card-body">
-                    <div *ngIf="prize" class="prize-wrapper" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}">
+                    <!-- <div *ngIf="prize" class="prize-wrapper" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"> -->
+                        <div *ngIf="prize" class="prize-wrapper" [ngStyle]="{background: 'url(' + (prize.promoImage || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
                       <div class="grand-prize-header"><h4 translate>Grand prize</h4>
                         <span>{{prize.titleText[translate.currentLang]}}</span>
                       </div>
