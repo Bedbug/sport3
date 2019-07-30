@@ -1,29 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { SportimoService } from 'src/app/services/sportimo.service';
 import { GrandPrize } from 'src/app/models/grand-prize';
-import { trigger, transition, query, style, stagger, animate, state } from '@angular/animations';
-import { TranslateService } from '@ngx-translate/core';
-import { Subject } from 'rxjs';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { takeUntil } from 'rxjs/operators';
-import { debug } from 'util';
+import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-grand-prize',
-  templateUrl: './grand-prize.component.html',
-  styleUrls: ['./grand-prize.component.scss'],
-  animations: [
-    trigger(
-      'fadein', [
-        state('true', style({ opacity: 1 })),
-        state('false', style({ opacity: 0 })),
-        transition('false <=> true', animate(500))
-      ]),
-  ]
+  selector: 'app-grand-prize-details',
+  templateUrl: './grand-prize-details.component.html',
+  styleUrls: ['./grand-prize-details.component.scss']
 })
-export class GrandPrizeComponent implements OnInit {
+export class GrandPrizeDetailsComponent implements OnInit {
 
   prize: GrandPrize;
+  prizeID: string;
   countdown: any = {
     days: 0,
     hours: 0,
@@ -31,35 +22,47 @@ export class GrandPrizeComponent implements OnInit {
     seconds: 0,
     expired: false
   }
-  CountDownInterval;
 
   ngUnsubscribe = new Subject();
   userChances = 0;
+  CountDownInterval;
+  selectedPrize: any;
 
-  constructor(private sportimoService: SportimoService, public translate: TranslateService, private authenticationService: AuthenticationService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private sportimoService: SportimoService,
+    private authenticationService: AuthenticationService,
+    public translate: TranslateService
+  ) { }
 
   ngOnInit() {
+    this.prizeID = this.route.snapshot.params['prizeid']
+    
+    if(this.prizeID == "1")
+    this.prizeID = "5d2f080ff2a2969010a16204";
+
+
     this.sportimoService.getGrandPrize()
       .subscribe(data => {
         if (data != null && data.length > 0) {
-          this.prize = data[0];
-          console.table(this.prize);
+
+
+          this.prize = data.find(x => x._id == this.prizeID);
+          console.log(this.prize);
           this.startCountdownTimer();
 
-          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
-            if (user)
-              this.sportimoService.getGrandPrizeUserChances(data[0]._id)
-                .subscribe(data => {
-                  this.userChances = data || 0;
-                })
-                else
-                this.userChances = 0;
-          })
+          // this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
+          //   if (user)
+          //     this.sportimoService.getGrandPrizeUserChances(data[0]._id)
+          //       .subscribe(data => {
+          //         this.userChances = data || 0;
+          //       })
+          //       else
+          //       this.userChances = 0;
+          // })
 
         }
       })
-
-
   }
 
   ngOnDestroy() {
@@ -68,6 +71,20 @@ export class GrandPrizeComponent implements OnInit {
     clearInterval(this.CountDownInterval);
   }
 
+  strippedPrizedText(text:string) {
+    if (text){      
+      return text.replace(/<\/?[^>]+(>|$)/g, "");
+    }else
+      return "";
+  }
+
+  selectPrize(prize: any) {
+    this.selectedPrize = prize;
+  }
+
+  cancel() {
+    this.selectedPrize = null;
+  }
 
   startCountdownTimer() {
     // / Set the date we're counting down to

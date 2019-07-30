@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="row">
       <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
-        {{contestDetails?.titleText[translate.currentLang]}}
+        {{contestDetails?.titleText[translate.currentLang]||'_Name Missing' }}
         <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
       </div>
       <div class="col" style="min-height:33px; line-height: 33px">
@@ -15,7 +15,7 @@
           <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join For Free</span></div>
         </button>
         <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span
-            translate>Your chances: </span> {{contestDetails?.participations || 0}}</div>
+            translate>Your chances:</span> {{contestDetails?.participations || 0}}</div>
       </div>
     </div>
     <div class="sportimo-divider"></div>

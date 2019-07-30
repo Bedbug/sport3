@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartsModule } from 'ng2-charts';
 import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
+import { GrandPrizeDetailsComponent } from './grand-prize-details/grand-prize-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.
     MainPageMyteamsComponent,
     MainPageProfileComponent,
     MainPageInboxComponent,
-    MainPageAvatarsComponent
+    MainPageAvatarsComponent,
+    GrandPrizeDetailsComponent
 ],
   imports: [
     CommonModule,

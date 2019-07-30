@@ -1,11 +1,11 @@
 @import "src/variables.scss";
 
 .formated-text {
-   ul {
-  padding-left: 30px;
-  list-style-type: disc;
-  margin-bottom: 15px;
-} 
+  ul {
+    padding-left: 30px;
+    list-style-type: disc;
+    margin-bottom: 15px;
+  }
 }
 .rtl {
   // -- GENERAL -- //
@@ -82,13 +82,16 @@
 
   // -- CONTEST > PRIZES -- //
   .prize-header,
-  .prize-text-body {
+  .prize-text-body,
+  .prize-text-title {
     text-align: right;
+    direction: rtl;
   }
   .selected-prize-rank,
   .selected-prize-body,
   .selected-prize-title {
-    text-align: right;
+    text-align: right !important;
+    direction: rtl;
   }
 
   // -- STANDINGS -- //
@@ -170,8 +173,7 @@
     border-right: 3px solid $card-side-lost;
   }
 
- .formated-text{
-    direction: rtl; 
-}
-  
+  .formated-text {
+    direction: rtl;
+  }
 }
