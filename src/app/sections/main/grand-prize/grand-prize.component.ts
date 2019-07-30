@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-grand-prize',
@@ -41,6 +42,7 @@ export class GrandPrizeComponent implements OnInit {
       .subscribe(data => {
         if (data != null && data.length > 0) {
           this.prize = data[0];
+          console.table(this.prize);
           this.startCountdownTimer();
 
           this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
