@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-grand-prize-details',
@@ -47,19 +48,18 @@ export class GrandPrizeDetailsComponent implements OnInit {
         if (data != null && data.length > 0) {
 
 
-          this.prize = data.find(x => x._id == this.prizeID);
-          console.log(this.prize);
+          this.prize = data.find(x => x._id == this.prizeID);          
           this.startCountdownTimer();
 
-          // this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
-          //   if (user)
-          //     this.sportimoService.getGrandPrizeUserChances(data[0]._id)
-          //       .subscribe(data => {
-          //         this.userChances = data || 0;
-          //       })
-          //       else
-          //       this.userChances = 0;
-          // })
+          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
+            if (user)
+              this.sportimoService.getGrandPrizeUserChances(this.prizeID)
+                .subscribe(data => {
+                  this.userChances = data || 0;
+                })
+                else
+                this.userChances = 0;
+          })
 
         }
       })
