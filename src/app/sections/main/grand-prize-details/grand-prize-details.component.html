@@ -65,9 +65,9 @@
             <div translate>Seconds</div>
           </div>
           <div class="timer-body">
-            <div>{{countdown.days}}</div>
-            <div>{{countdown.hours}}</div>
-            <div>{{countdown.seconds}}</div>
+            <div class="col p-0">{{countdown.days<10?"0"+countdown.days:countdown.days}}</div>
+            <div class="col p-0">{{countdown.hours<10?"0"+countdown.hours:countdown.hours}}</div>
+            <div class="col p-0">{{countdown.seconds<10?"0"+countdown.seconds:countdown.seconds}}</div>
           </div>
 
           <div class="p-15 text-white formated-text">
