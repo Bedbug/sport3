@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
 import { debug } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grand-prize',
@@ -36,7 +37,12 @@ export class GrandPrizeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   userChances = 0;
 
-  constructor(private sportimoService: SportimoService, public translate: TranslateService, private authenticationService: AuthenticationService) { }
+  constructor(
+    private router: Router,
+    private sportimoService: SportimoService,
+    public translate: TranslateService,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
     this.sportimoService.getGrandPrize()
@@ -46,20 +52,23 @@ export class GrandPrizeComponent implements OnInit {
           console.table(this.prize);
           this.startCountdownTimer();
 
-          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
+          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
             if (user)
               this.sportimoService.getGrandPrizeUserChances(data[0]._id)
                 .subscribe(data => {
                   this.userChances = data || 0;
                 })
-                else
-                this.userChances = 0;
+            else
+              this.userChances = 0;
           })
 
         }
       })
+  }
 
-
+  showPrizeDetails(prizeid: string) {
+    console.log(prizeid);
+    this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
   ngOnDestroy() {
