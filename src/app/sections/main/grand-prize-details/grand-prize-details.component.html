@@ -1,4 +1,5 @@
-<div class="row">
+<div _ngcontent-kee-c10="" class="background"></div>
+<div class="row" style="position: relative">
   <div class="card" style="margin-bottom: 0; width: 100%">
     <div class="card-body">
       <div class="row">
@@ -49,17 +50,33 @@
             background-size: cover;
             background-position: center;"
             [ngStyle]="{'background-image': 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
-
+            <div class="grand-prize-header" style="text-align: center">
+              <!-- <h4 translate>Grand prize</h4> -->
+              <span>{{prize?.titleText[translate.currentLang]}}</span>
+            </div>
             <div class="contest-image">
               <img src="{{prize?.promoImage}}" style="max-height: 200px; min-height:140px" alt="">
             </div>
-
           </div>
-          <div class="card-body text-white formated-text">
+          <!-- TIMER -->
+          <div class="timer-header">
+            <div translate>Days</div>
+            <div translate>Hours</div>
+            <div translate>Seconds</div>
+          </div>
+          <div class="timer-body">
+            <div>{{countdown.days}}</div>
+            <div>{{countdown.hours}}</div>
+            <div>{{countdown.seconds}}</div>
+          </div>
+
+          <div class="p-15 text-white formated-text">
             <div [innerHTML]="prize?.infoText[translate.currentLang]"></div>
           </div>
+
         </div>
       </div>
+
       <!-- PRIZE TAB -->
       <div class="tab-pane fade" id="Prizes" role="tabpanel" aria-labelledby="Prizes-tab">
         <div class="prizes-container container">
@@ -74,7 +91,8 @@
               </div>
               <div class="prize-text">
                 <div class="prize-text-title">{{eachPrize?.prize.name[translate.currentLang]}}</div>
-                <div class="prize-text-body">{{strippedPrizedText(eachPrize?.prize.text[this.translate.currentLang])}}</div>
+                <div class="prize-text-body">{{strippedPrizedText(eachPrize?.prize.text[this.translate.currentLang])}}
+                </div>
               </div>
             </div>
           </div>
@@ -82,14 +100,14 @@
       </div>
     </div>
   </div>
-
 </div>
+
 
 <!-- MODAL -->
 <div class="modal-background" (click)="cancel()" [class.hidden]="!selectedPrize" [class.modal-appear]="selectedPrize">
   <div class="modal-card">
     <div class="modal-card-header">
-      <div class="modal-title"> {{contestDetails?.titleText[translate.currentLang]}} </div>
+      <div class="modal-title"> {{prize?.titleText[translate.currentLang]||'_Name Missing'}} </div>
       <div (click)="cancel()" class="modal-exit pull-right">X</div>
     </div>
     <div class="modal-card-body text-left">
@@ -99,7 +117,8 @@
           background-position: center;" [ngStyle]="{'background-image': 'url('+ selectedPrize?.prize.picture +')'}">
       </div>
       <div class="selected-prize-title">{{selectedPrize?.prize.name[translate.currentLang]}}</div>
-      <div class="selected-prize-body formated-text" [innerHTML]="selectedPrize?.prize.text[translate.currentLang]"></div>
+      <div class="selected-prize-body formated-text" [innerHTML]="selectedPrize?.prize.text[translate.currentLang]">
+      </div>
     </div>
 
   </div>

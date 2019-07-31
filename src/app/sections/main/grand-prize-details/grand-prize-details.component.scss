@@ -1,5 +1,17 @@
 @import "src/variables.scss";
 
+.background{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .card-body {
   padding: 5px 15px 0 15px !important;
 }
@@ -140,4 +152,32 @@ padding: 20px 20px 10px 20px;
     color: #ffffff;
     font-size: 14px;
     padding: 0 20px;
+}
+
+.timer-header, .timer-body{
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-evenly;
+}
+.timer-header div, .timer-body div{
+  width: 33%;
+  text-align: center;
+  // justify-content: space-evenly;
+}
+
+.timer-header{  
+  background:rgba(0, 0, 0, 0.33);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: Roboto;
+  margin-bottom: 2px;
+}
+
+.timer-body{
+  background:rgba(0, 0, 0, 0.54);
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: Roboto;
 }
