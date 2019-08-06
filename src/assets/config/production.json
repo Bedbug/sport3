@@ -1,5 +1,6 @@
 {
   "debugging": true,
+  "language": "fa",
   "CLIENT_ID": "5be2bfc7135a3e1e2d4a637f",
   "API_ENDPOINTS": {
     "ROOT":"https://clientserver-3.herokuapp.com/v1",
