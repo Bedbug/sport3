@@ -6,4 +6,5 @@ export class GrandPrize {
     infoText: object;
     endToDate: Date;
     created: Date;
+    prizes: any[];
 }
