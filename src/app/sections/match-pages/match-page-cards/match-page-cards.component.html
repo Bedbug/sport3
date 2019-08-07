@@ -191,7 +191,7 @@
 
 
   <!-- CARD MODAL -->
-  <div *ngIf="playCardModal">
+  <div *ngIf="playCardModal && selectedCard">
     <div class="modal-playcard" (click)="closeModal()"></div>
     <div class="modal-playcard-center">
 
@@ -209,7 +209,7 @@
               <span>Get {{optionSelected?.startPoints*2}} pts</span>
             </div>
 
-            <div *ngIf="data?.duration> 0" class="col-6 powerup isClickable"
+            <div *ngIf="selectedCard?.duration > 0" class="col-6 powerup isClickable"
               (click)="!isSubmitingCard && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
               [class.active-power]="cardSelections.isDoubleTime">
               <span>Double Time</span>
@@ -218,13 +218,13 @@
                   <div class="power-icon icn-stopwatch"></div>
                 </div>
               </div>
-              <span>Increase time range to {{((data?.duration/1000)/60) * 2}}'</span>
+              <span>Increase time range to {{((selectedCard?.duration/1000)/60) * 2}}'</span>
             </div>
           </div>
         </div>
         <div class="bottom-buttons">
           <ul class="options" *ngIf="!optionSelected" [@fadein]>
-            <li (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard.options">
+            <li (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
               <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
               <p><strong>{{option.startPoints}}</strong> pts</p>
             </li>
@@ -260,9 +260,9 @@
             </div>
             <div class="name"> {{selectedCard?.title[translate.currentLang]}}</div>
           </div>
-          <div class="info">{{selectedCard.text[translate.currentLang]}}<span *ngIf="selectedCard.cardType!='Overall'">,
+          <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span *ngIf="selectedCard?.cardType!='Overall'">,
               starting from:</span></div>
-          <div class="time" *ngIf="selectedCard.cardType!='Overall'">
+          <div class="time" *ngIf="selectedCard?.cardType!='Overall'">
             <div class="event-time-icon">
               <div class="icon icn-stopwatch"></div>
             </div>
@@ -277,7 +277,7 @@
               <span class="pts"> pts</span>
             </div>
           </div>
-          <div *ngIf="!optionSelected && selectedCard.cardType!='Overall'" [@fadein] class="time-slider">
+          <div *ngIf="!optionSelected && selectedCard?.cardType!='Overall'" [@fadein] class="time-slider">
             <!-- <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
             [attr.min]="minTimeValue" [attr.max]="90" [attr.value]="minTimeValue"> -->
             <ion-range-slider #sliderElement type="single" min="1" max="90" [from]="fromTimeValue"

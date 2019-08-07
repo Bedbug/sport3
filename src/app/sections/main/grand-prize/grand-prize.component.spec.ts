@@ -7,6 +7,7 @@ import { ConfigServiceStub } from '../../contest-pages/contest-page-info/contest
 import { TranslateService } from '@ngx-translate/core';
 import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('GrandPrizeComponent', () => {
   let component: GrandPrizeComponent;
@@ -15,7 +16,7 @@ describe('GrandPrizeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [GrandPrizeComponent],
-      imports: [HttpClientTestingModule, BrowserAnimationsModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],
       providers: [
         { provide: ConfigService, useClass: ConfigServiceStub },
         { provide: TranslateService, useClass: TranslateServiceStub }

@@ -6,7 +6,7 @@ import { MatchPageCardsComponent } from './match-page-cards/match-page-cards.com
 import { MatchPageLeadersComponent } from './match-page-leaders/match-page-leaders.component';
 import { StatsComponent } from 'src/app/components/stats/stats.component';
 import { CardComponent } from './match-page-cards/components/card/card.component'
-import { PlaycardComponent } from './match-page-cards/components/playcard/playcard.component';
+// import { PlaycardComponent } from './match-page-cards/components/playcard/playcard.component';
 import { ReversePipe } from 'src/app/pipes/reverse.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonRangeSliderModule } from "ng2-ion-range-slider";
@@ -19,7 +19,7 @@ import { IonRangeSliderModule } from "ng2-ion-range-slider";
     MatchPageLeadersComponent,
     StatsComponent,
     CardComponent,
-    PlaycardComponent,
+    // PlaycardComponent,
     ReversePipe
   ],
   imports: [

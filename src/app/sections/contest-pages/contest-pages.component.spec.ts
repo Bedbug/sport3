@@ -18,6 +18,10 @@ import { ToastrModule } from 'ngx-toastr';
 
 export class SportimoServiceStub {
 
+  getGrandPrize() {
+    return of(null);
+  }
+
   getStandingsLeagues() {
     return of(null);
   }

@@ -43,16 +43,16 @@ export class MatchPageCardsComponent implements OnInit {
   fromTimeValue: number = 1;
   cardSelections: any = {};
   selectedCard: any;
-  
+
   Utils: SportimoUtils = new SportimoUtils();
-  
+
   // @ViewChild('stickyMenu') menuElement: ElementRef;
 
   // sticky: boolean = false;
   // menuPosition: any;
 
   constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService) {
-   }
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -60,7 +60,7 @@ export class MatchPageCardsComponent implements OnInit {
       this.contestId = params.get("contestId");
     })
 
-    this.sportimoService.getCurrentLiveMatchData().subscribe(x=>this.liveMatch = x)
+    this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x)
   }
 
   playCard() {
@@ -72,26 +72,37 @@ export class MatchPageCardsComponent implements OnInit {
     })
   }
 
-  get wonCards(){
-    if(this.liveMatch && this.liveMatch.playedCards)
-    return this.liveMatch.playedCards.filter(x=>x.status == 2 && x.pointsAwarded);
+  get wonCards() {
+    if (this.liveMatch && this.liveMatch.playedCards)
+      return this.liveMatch.playedCards.filter(x => x.status == 2 && x.pointsAwarded);
     return [];
   }
 
-  get lostCards(){
-    if(this.liveMatch && this.liveMatch.playedCards)
-    return this.liveMatch.playedCards.filter(x=>x.status == 2 && !x.pointsAwarded);
+  get lostCards() {
+    if (this.liveMatch && this.liveMatch.playedCards)
+      return this.liveMatch.playedCards.filter(x => x.status == 2 && !x.pointsAwarded);
     return [];
   }
 
-  get pendingCards(){
-    if(this.liveMatch && this.liveMatch.playedCards)
-    return this.liveMatch.playedCards.filter(x=>x.status == 0 || x.status == 1);
+  get pendingCards() {
+    if (this.liveMatch && this.liveMatch.playedCards)
+      return this.liveMatch.playedCards.filter(x => x.status == 0 || x.status == 1);
     return [];
   }
- 
+
 
   // PLAYCARDS
+  get SelectedTime() {
+    if (!this.sportimoService.currentMatch)
+      return 0;
+
+    if (this.selectedTime == this.minTimeValue && this.sportimoService.currentMatch.matchData.state > 0)
+      return "Now";
+    else
+      return this.selectedTime + "'";
+  }
+
+
   getMinimumTime() {
     if (!this.sportimoService.currentMatch)
       return 0;
@@ -101,7 +112,7 @@ export class MatchPageCardsComponent implements OnInit {
     return this.minTimeValue;
   }
 
-  openPlayModal(card:any) {
+  openPlayModal(card: any) {
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();
     this.playCardModal = true;
@@ -110,6 +121,8 @@ export class MatchPageCardsComponent implements OnInit {
   closeModal() {
     if (this.isSubmitingCard) return;
     this.playCardModal = false;
+    this.selectedCard = null;
+    this.cancelAll();
   }
 
   valueChanged(e) {
@@ -139,6 +152,8 @@ export class MatchPageCardsComponent implements OnInit {
   }
 
   get optionSelected() {
+    if (!this.selectedCard)
+      return [];
     return this.selectedCard.options.find(x => x.optionId == this.cardSelections.optionId)
   }
 

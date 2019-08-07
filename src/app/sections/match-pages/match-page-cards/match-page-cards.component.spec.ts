@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MatchPageCardsComponent } from './match-page-cards.component';
 import { CardComponent } from './components/card/card.component'
-import { PlaycardComponent } from './components/playcard/playcard.component';
+// import { PlaycardComponent } from './components/playcard/playcard.component';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { SportimoServiceStub } from '../../contest-pages/contest-pages.component.spec';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,7 +16,9 @@ describe('MatchPageCardsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchPageCardsComponent, CardComponent, PlaycardComponent ],
+      declarations: [ MatchPageCardsComponent, CardComponent,
+        //  PlaycardComponent 
+        ],
       imports:[RouterTestingModule, IonRangeSliderModule],
       providers: [
         { provide: SportimoService, useClass: SportimoServiceStub },       
