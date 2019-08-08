@@ -4,6 +4,7 @@ export class GrandPrize {
     promoImage: string;
     titleText: object;
     infoText: object;
+    detailText: object;
     endToDate: Date;
     created: Date;
     prizes: any[];

@@ -71,7 +71,7 @@
           </div>
 
           <div class="p-15 text-white formated-text">
-            <div [innerHTML]="prize?.infoText[translate.currentLang]"></div>
+            <div *ngIf="prize?.detailText" [innerHTML]="prize?.detailText[translate.currentLang]"></div>
           </div>
 
         </div>

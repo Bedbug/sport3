@@ -1,0 +1,32 @@
+<!-- <div *ngIf="topPickModalisActive">
+    <div class="modal-toppick-background" (click)="closeModal()"></div>
+    <div class="modal-card">
+        <div class="modal-card-header">
+          <div class="modal-title"> {{prize?.titleText[translate.currentLang]||'_Name Missing'}} </div>
+          <div (click)="cancel()" class="modal-exit pull-right">X</div>
+        </div>
+        <div class="modal-card-body text-left">
+          <div class="selected-prize-rank"><span translate>Prize</span>{{selectedPrize?.position.from}}</div>
+          <div class="prize-image" style="background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;" [ngStyle]="{'background-image': 'url('+ selectedPrize?.prize.picture +')'}">
+          </div>
+          <div class="selected-prize-title">{{selectedPrize?.prize.name[translate.currentLang]}}</div>
+          <div class="selected-prize-body formated-text" [innerHTML]="selectedPrize?.prize.text[translate.currentLang]">
+          </div>
+        </div>
+    
+      </div>
+</div> -->
+
+<div class="modal-toppick-background" [class.hidden]="!topPickModalisActive"  (click)="closeModal()">
+    <div class="modal-card">
+      <div class="modal-card-header">
+        <div class="modal-title" translate>Top Picks</div>
+        <div (click)="closeModal()" class="modal-exit pull-right">X</div>
+      </div>
+      <div class="modal-card-body text-center">
+        
+      </div>
+    </div>
+  </div>

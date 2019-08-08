@@ -13,7 +13,7 @@ import { JwtInterceptor } from './helpers/jws.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SubscribeNoticeComponent } from './subscribe-notice/subscribe-notice.component';
+import { SubscribeNoticeComponent } from './components/subscribe-notice/subscribe-notice.component';
 import { MainComponent } from './sections/main/main.component';
 import { ContestPagesComponent } from './sections/contest-pages/contest-pages.component';
 import { ContestInfoHeaderComponent } from './sections/contest-pages/contest-info-header/contest-info-header.component';
@@ -23,6 +23,7 @@ import { NotyfToastSuccess } from './components/custom-toast/notyf.toast';
 import { NotyfToastError } from './components/custom-toast/notyf.error';
 import { TranslateHttpLoader } from './helpers/translate-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { ToppickComponent } from './components/toppick/toppick.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NotyfToastError,
     ContestInfoHeaderComponent,
     SubscribeNoticeComponent,
-    MatchPagesComponent    
+    MatchPagesComponent,
+    ToppickComponent    
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../services/authentication.service';
-import { SubscriptionService } from '../services/subscription.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { SubscriptionService } from '../../services/subscription.service';
 import $ from 'jquery';
 import moment from 'moment-mini';
 import { TranslateService } from '@ngx-translate/core';
