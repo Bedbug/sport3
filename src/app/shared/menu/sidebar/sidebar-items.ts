@@ -26,7 +26,7 @@ export const MENUITEMS: Menu[] = [
     ]
   },
   {
-    path: '/pages/stater-kit', title: 'Top Picks', icon: 'menu-icon icon-agenda text-center', type: 'link'
+    path: '/pages/stater-kit', title: 'Top Picks', icon: 'menu-icon icon-agenda text-center', type: 'toppicks'
   },
   {
     path: '/main/contests', title: 'Contests', icon: 'menu-icon icn-contests', type: 'link'

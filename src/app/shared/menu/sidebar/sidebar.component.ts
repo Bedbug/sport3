@@ -5,6 +5,8 @@ import $ from 'jquery';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+import { ToppickService } from 'src/app/components/toppick/toppick.service';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -19,7 +21,9 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    public translate:TranslateService) {
+    public translate:TranslateService,
+    private toppickService: ToppickService
+    ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);
@@ -68,6 +72,10 @@ export class SidebarComponent implements OnInit {
       $('#app-login-modal').removeClass('hidden');
       $('#app-login-modal').addClass('modal-appear');
     }
+  }
+
+  openTopPick(){
+    this.toppickService.Show();    
   }
 
   closeSidebar(){
