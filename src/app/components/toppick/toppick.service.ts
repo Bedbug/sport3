@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ToppickService {
 
   // Initializing the observable value that opens and closes the modal
-  topPickModalIsActive: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);;
+  topPickModalIsActive: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() {    
    }
