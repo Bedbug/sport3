@@ -241,3 +241,11 @@
 *+.uk-grid-margin, .uk-grid+.uk-grid, .uk-grid>.uk-grid-margin {
     margin-top: 10px;
 }
+.icn-winners {
+    background: url('~src/assets/images/sportimo/icon-winners.active.svg') no-repeat center center;
+    display: block;
+    text-indent: -9999px;
+    background-size: contain;
+    width: 50px;
+    height: 16px;
+}
