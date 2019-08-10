@@ -35,12 +35,15 @@
               "src/assets/css/responsive.css",
               "src/styles.scss",
               "src/rtl.scss",
+              "node_modules/uikit/dist/css/uikit.min.css",
               "node_modules/ngx-toastr/toastr.css"
               
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "src/assets/js/jquery-ui.min.js",
+              "node_modules/uikit/dist/js/uikit.min.js",
+              "node_modules/uikit/dist/js/uikit-icons.min.js",
               "src/assets/js/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js"

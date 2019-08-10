@@ -1,11 +1,287 @@
-<div class="modal-toppick-background" [class.hidden]="!topPickModalisActive"  (click)="closeModal()">
+<!-- <div class="modal-toppick-background" [class.hidden]="!topPickModalisActive"  (click)="closeModal()"> -->
+    <div class="modal-toppick-background" [class.hidden]="!topPickModalisActive" >
     <div class="modal-card">
       <div class="modal-card-header">
         <div class="modal-title" translate>Top Picks</div>
         <div (click)="closeModal()" class="modal-exit pull-right">X</div>
       </div>
       <div class="modal-card-body text-center">
+        <div class="slideshow-container" uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: false"  style="height: 97%;"> 
+          <div class="uk-position-relative" style="height: inherit;">
+              <ul class="uk-slideshow-items" style="height: inherit;">
+                  
+                <!-- YESTERDAY'S MATCHES -->
+                  <li class="list-wrapper">
+                      <div class="card-body" style="background-repeat: no-repeat; background-size: cover; background-position: center; min-height: 90px;" [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
+                              <div class="contest-image" style="text-align: center">
+                                  <div style="display: inline-block; font-weight: bold;">Yesterday's Games</div>
+                                  <br>
+                                  <div uk-icon="icon: calendar; ratio: 3" style="display: inline-block;font-weight: bold;"></div>
+                              </div>
+
+                      </div>
+                      <div class="uk-panel uk-panel-scrollable" style="height: 79%; border-left: 0; border-right: 0;">
+                          <div class="match-info">
+                            <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;"> 
+                              <div class="match-league" translate>League</div>
+                              <div class="match-date">21/01/19, 12:30</div>
+                              <div class="match-teams" translate>Home Team - Away Team</div>
+                              <div class="match-people">Participants: 55,345</div>
+                            </div>
+                              
+                              <div class="team-side">
+                                  <div class="kit">
+                                    <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                  </div>
+                                  <div class="team-name">Home Team</div>
+                                </div>
+                                <div class="match-info-date">
+                                  <div class="vs">VS</div>
+                                  
+                                </div>
+                                <div class="team-side">
+                                  <div class="kit">
+                                      <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                  </div>
+                                  <div class="team-name">Away Team</div>
+                                </div>
+                          </div>
+                          <div class="match-info">
+                              <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;"> 
+                                <div class="match-league" translate>League</div>
+                                <div class="match-date">21/01/19, 12:30</div>
+                                <div class="match-teams" translate>Home Team - Away Team</div>
+                                <div class="match-people">Participants: 55,345</div>
+                              </div>
+                                
+                                <div class="team-side">
+                                    <div class="kit">
+                                      <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                    </div>
+                                    <div class="team-name">Home Team</div>
+                                  </div>
+                                  <div class="match-info-date">
+                                    <div class="vs">VS</div>
+                                    
+                                  </div>
+                                  <div class="team-side">
+                                    <div class="kit">
+                                        <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                    </div>
+                                    <div class="team-name">Away Team</div>
+                                  </div>
+                            </div>
+                          <div class="match-info">
+                                <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;"> 
+                                  <div class="match-league" translate>League</div>
+                                  <div class="match-date">21/01/19, 12:30</div>
+                                  <div class="match-teams" translate>Home Team - Away Team</div>
+                                  <div class="match-people">Participants: 55,345</div>
+                                </div>
+                                  
+                                  <div class="team-side">
+                                      <div class="kit">
+                                        <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                      </div>
+                                      <div class="team-name">Home Team</div>
+                                    </div>
+                                    <div class="match-info-date">
+                                      <div class="vs">VS</div>
+                                      
+                                    </div>
+                                    <div class="team-side">
+                                      <div class="kit">
+                                          <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                      </div>
+                                      <div class="team-name">Away Team</div>
+                                    </div>
+                          </div>
+                          <div class="match-info">
+                              <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;"> 
+                                <div class="match-league" translate>League</div>
+                                <div class="match-date">21/01/19, 12:30</div>
+                                <div class="match-teams" translate>Home Team - Away Team</div>
+                                <div class="match-people">Participants: 55,345</div>
+                              </div>
+                                
+                                <div class="team-side">
+                                    <div class="kit">
+                                      <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                    </div>
+                                    <div class="team-name">Home Team</div>
+                                  </div>
+                                  <div class="match-info-date">
+                                    <div class="vs">VS</div>
+                                    
+                                  </div>
+                                  <div class="team-side">
+                                    <div class="kit">
+                                        <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                    </div>
+                                    <div class="team-name">Away Team</div>
+                                  </div>
+                          </div>
+                          <!-- <table class="uk-table uk-table-striped uk-table-condensed uk-text-nowrap">
+                              
+                              <tbody>
+                                  <tr>
+                                      <td>Table Data</td>
+                                      
+                                  </tr>
+                                  <tr>
+                                      <td>Table Data</td>
+                                      
+                                  </tr>
+                                  <tr>
+                                      <td>Table Data</td>
+                                      
+                                  </tr>
+                                  <tr>
+                                      <td>Table Data</td>
+                                      
+                                  </tr>
+                                  <tr>
+                                      <td>Table Data</td>
+                                      
+                                  </tr>
+                                  <tr>
+                                      <td>Table Data</td>
+                                      
+                                  </tr>
+                              </tbody>
+                              
+                          </table> -->
+                      </div>
+                  </li>
+                <!-- TOP SCORERS -->
+                <li class="list-wrapper">
+                    <div class="card-body" style="background-repeat: no-repeat; background-size: cover; background-position: center; min-height: 90px; padding-bottom: 1.11em" [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
+                        <div class="contest-image" style="text-align: center">
+                            <div style="display: inline-block; font-weight: bold; margin-bottom: 10px;">Yesterday's Top Scorers</div>
+                            <br>
+                            <div uk-icon="icon: users; ratio: 3" style="display: inline-block;font-weight: bold; margin-bottom: -6px;"></div>
+                        </div>
+
+                    </div>
+                    <div class="uk-panel uk-panel-scrollable" style="height: 79%; border-left: 0; border-right: 0;">
+                        <div class="match-info">
+
+                          <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;"> 
+                            <div class="match-league" translate>League</div>
+                            <div class="match-date">21/01/19, 12:30</div>
+                            <div class="match-teams" translate>Home Team - Away Team</div>
+                            <!-- <div class="match-people">Participans: 55,345</div> -->
+                          </div>
+                            
+                            <div class="team-side uk-width-1-3" uk-grid style="margin-left: 9px; margin-right: 7px;">
+                                <div class="background-ring isClickable" (click)="openAvatarSelection()">
+                                  <!-- <img class="rounded-circle" [src]="user.picture" alt=""> -->
+                                </div>
+                              </div>
+                              <div class="match-info-date uk-width-2-3"uk-grid style="margin-bottom: 19px;">
+                                  <div class="uk-text-left" uk-grid>
+                                      <div class="uk-width-1-1">
+                                          Player Name
+                                      </div>
+                                      <br>
+                                      <div class="uk-width-1-3">
+                                          Rank
+                                      </div>
+                                      <div class="uk-width-2-3">
+                                          Points
+                                      </div>
+                                      <br>
+                                      <div class="uk-width-1-3" style="margin-top: 0px;">
+                                          1
+                                      </div>
+                                      <div class="uk-width-2-3" style="margin-top: 0px;">
+                                          22,000
+                                      </div>
+                                  </div>
+                                
+                              </div>
+                              <div class="team-side">
+                                
+                              </div>
+                              
+                        </div> 
+                    </div>
+                  </li>
+                <!-- UPCOMING MATCHES -->
+                  <li class="list-wrapper">
+                    <div class="card-body" style="background-repeat: no-repeat; background-size: cover; background-position: center; min-height: 90px; padding-bottom: 1.11em" [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
+                        <div class="contest-image" style="text-align: center">
+                            <div style="display: inline-block; font-weight: bold; margin-bottom: 10px;">Upcoming Matches</div>
+                            <br>
+                            <div class="icn-logo" style="text-align: center;display: inline-block;width: 100px;height: 48px;"></div>
+                        </div>
+
+                    </div>
+                    <div class="uk-panel uk-panel-scrollable" style="height: 79%; border-left: 0; border-right: 0;">
+                        <div class="match-info">
+                          <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;"> 
+                            <div class="match-league" translate>League</div>
+                            <div class="match-date">21/01/19, 12:30</div>
+                            <div class="match-teams" translate>Home Team - Away Team</div>
+                            <!-- <div class="match-people">Participans: 55,345</div> -->
+                          </div>
+                            
+                            <div class="team-side">
+                                <div class="kit">
+                                  <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                </div>
+                                <div class="team-name">Home Team</div>
+                              </div>
+                              <div class="match-info-date">
+                                <div class="vs">VS</div>
+                                
+                              </div>
+                              <div class="team-side">
+                                <div class="kit">
+                                    <img alt="" class="img-fluid" src="{{'./assets/images/sportimo/default-kit.png'}}" >
+                                </div>
+                                <div class="team-name">Away Team</div>
+                              </div>
+                              <div class="form-info">
+                                  
+                                  <div class="inset-circle" *ngFor="let form of recentform">
+                                    <div class="circle-badge" [class]="form==='W'?'circle-badge won':form=='L'?'circle-badge lost':'circle-badge tie'">{{form}}</div>
+                                  </div>
+                              </div>
+                        </div> 
+                    </div>
+                  </li>
+              </ul>
+              
+              <!-- NAVIGATION -->
+              <ul class="uk-slideshow-nav uk-dotnav uk-flex-center " style="margin-top: 10px;"></ul>
+              <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+          </div>
+          
+        </div>
         
+        <!-- <div class="slideshow-container" uk-slideshow="animation: fade; autoplay: false; autoplay-interval: 1000; pause-on-hover: false;" >
+
+          <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+
+            <ul class="uk-slideshow-items" style="min-height: 300px;">
+              <li class="list-wrapper">
+                
+                <div class="uk-position-center uk-position-small uk-text-center uk-light">
+                  <h3 class="uk-margin">Slide 1</h3>
+                </div>
+              </li>
+              
+              
+            </ul>
+        
+            <ul class="uk-slideshow-nav uk-dotnav uk-flex-center "></ul>
+          </div>
+          
+        
+        </div> -->
+
       </div>
     </div>
   </div>

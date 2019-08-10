@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-main-page-myteams',
@@ -59,6 +60,7 @@ export class MainPageMyteamsComponent implements OnInit {
           this.isLoading = false;
           this.currentTeam = x;
           this.isFavoriteTeam = true;
+          console.table(this.currentTeam);
         });
         return;
       }

@@ -9,6 +9,7 @@ import { ToppickService } from './toppick.service';
 export class ToppickComponent implements OnInit {
   
   topPickModalisActive: boolean = true;
+  recentform = ["W", "L", "L", "T", "W"];
 
   constructor(
     private topPickService: ToppickService

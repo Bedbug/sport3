@@ -23,3 +23,221 @@
 .modal-card-header {
     background-color: #3b4654;
 }
+.uk-dotnav>.uk-active>* {
+    background-color: rgba(255, 236, 0, 0.6);
+    border-color: transparent;
+} 
+
+.uk-dotnav>.uk-active>* {
+    background-color: rgba(255, 236, 0, 0.6);
+    border-color: transparent;
+}
+
+.uk-dotnav>*>* {
+    display: block;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: 0 0;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid rgb(255, 196, 0);
+    transition: .2s ease-in-out;
+    transition-property: background-color,border-color;
+}
+
+.match-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(-180deg, #192128 20%, #282f39 30%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #a2aab2;
+    padding: 0px;
+  }
+  .match-info-enter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    border-bottom: 1px solid #000000;
+    padding: 0px;
+  }
+
+ 
+  
+  .match-info-header {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .match-league {
+    position: relative;
+    text-align: left;
+    font-size: 12px;
+    top: -12px;
+  }
+  .match-date {
+    font-size: 12px;
+    text-align: right;
+    top: -30px;
+    position: relative;
+  }
+  .match-teams {
+    position: relative;
+    text-align: left;
+    font-size: 12px;
+    top: -32px;
+  }
+  .match-people {
+    font-size: 12px;
+    text-align: right;
+    top: -50px;
+    position: relative;
+  }
+  
+  .match-info-date {
+    text-align: center;
+  }
+  
+  .team-side {
+    width: 30%;
+    text-align: center;
+  }
+  
+  // .team-side img{
+  //     margin: auto;
+  // }
+  
+  .kit {
+    max-width: 60px;
+    margin: auto;
+  }
+  
+  .vs {
+    font-size: 36px;
+  }
+  
+  .team-name,
+  .date {
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .card-top {
+    background: linear-gradient(to bottom, rgba(86, 95, 108, 1) 0%, rgba(59, 66, 74, 1) 100%);
+    border-top: 0.5mm ridge rgba(219, 219, 219, 0.6);
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    border-bottom: 0.5mm ridge rgba(0, 0, 0, 0.6);
+}
+.uk-panel-scrollable {
+    
+    padding: 0px;
+    border: 0.1px solid #e5e5e5;
+   
+}
+.uk-dotnav>.uk-active>a {
+    background-color: rgba(255, 178, 0, 1);
+    border-color: transparent;
+}
+.modal-card-body {
+    height: 575px;
+    max-height: 85%;
+}
+.modal-card-header{
+    /* background-color: #141d29; */
+    background: linear-gradient(to bottom, rgba(38, 48, 63, 1) 0%, rgba(30, 33, 36, 1) 100%);
+    border-top: 0.5mm ridge rgba(43, 46, 52, 0.6);
+    border-bottom: 0.5mm ridge rgba(98, 105, 119, 10.6);
+}
+
+.form-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(-180deg, #1c2127 20%, #1c2127 30%);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    border-top: 1px solid #0d0f13;
+    padding: 0px 35px;
+    width: 100%;
+    height: 35px;
+  }
+
+.inset-circle {
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 1px 1px 0 inset #000000;
+    margin: 0px 0;
+  }
+
+.circle-badge {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 2px;
+    text-align: center;
+    
+}
+
+.circle-badge.won{
+    background: #00B15C;
+}
+.circle-badge.lost{
+    background: #E20000;
+}
+.circle-badge.tie{
+    background: #2C91E9;
+}
+
+.background-ring {
+    background: url("~src/assets/images/sportimo/profile-ring.png") no-repeat center center;
+    background-size: contain;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .background-ring img {
+    width: 84px;
+    height: 84px;
+    margin-top: 7px;
+  }
+
+  .uk-table th {
+    padding: 6px 12px;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: .875rem;
+    font-weight: 400;
+    color: #999;
+    text-transform: uppercase;
+}
+// .icn-winners {
+//     background: url(icon-winners.svg) no-repeat center center;
+//     display: block;
+//     text-indent: -9999px;
+//     background-size: contain;
+// }
+*+.uk-grid-margin, .uk-grid+.uk-grid, .uk-grid>.uk-grid-margin {
+    margin-top: 10px;
+}
