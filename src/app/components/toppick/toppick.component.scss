@@ -72,6 +72,8 @@
     border-bottom: 1px solid #000000;
     padding: 0px;
   }
+
+ 
   
   .match-info-header {
     width: 100%;
@@ -159,4 +161,83 @@
     background: linear-gradient(to bottom, rgba(38, 48, 63, 1) 0%, rgba(30, 33, 36, 1) 100%);
     border-top: 0.5mm ridge rgba(43, 46, 52, 0.6);
     border-bottom: 0.5mm ridge rgba(98, 105, 119, 10.6);
+}
+
+.form-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-image: linear-gradient(-180deg, #1c2127 20%, #1c2127 30%);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    border-top: 1px solid #0d0f13;
+    padding: 0px 35px;
+    width: 100%;
+    height: 35px;
+  }
+
+.inset-circle {
+    width: 20px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 1px 1px 0 inset #000000;
+    margin: 0px 0;
+  }
+
+.circle-badge {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 2px;
+    text-align: center;
+    
+}
+
+.circle-badge.won{
+    background: #00B15C;
+}
+.circle-badge.lost{
+    background: #E20000;
+}
+.circle-badge.tie{
+    background: #2C91E9;
+}
+
+.background-ring {
+    background: url("~src/assets/images/sportimo/profile-ring.png") no-repeat center center;
+    background-size: contain;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .background-ring img {
+    width: 84px;
+    height: 84px;
+    margin-top: 7px;
+  }
+
+  .uk-table th {
+    padding: 6px 12px;
+    text-align: left;
+    vertical-align: bottom;
+    font-size: .875rem;
+    font-weight: 400;
+    color: #999;
+    text-transform: uppercase;
+}
+// .icn-winners {
+//     background: url(icon-winners.svg) no-repeat center center;
+//     display: block;
+//     text-indent: -9999px;
+//     background-size: contain;
+// }
+*+.uk-grid-margin, .uk-grid+.uk-grid, .uk-grid>.uk-grid-margin {
+    margin-top: 10px;
 }
