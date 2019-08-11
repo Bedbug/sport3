@@ -16,10 +16,10 @@
     max-width: 427px;
 }
 
-.modal-card-body{
-    height: 475px;
-    max-height: 85%;
-}
+// .modal-card-body{
+//     height: 475px;
+//     max-height: 85%;
+// }
 .modal-card-header {
     background-color: #3b4654;
 }
@@ -153,8 +153,8 @@
     border-color: transparent;
 }
 .modal-card-body {
-    height: 575px;
-    max-height: 85%;
+    height: 490px;
+    max-height: 100%;
 }
 .modal-card-header{
     /* background-color: #141d29; */
@@ -248,4 +248,8 @@
     background-size: contain;
     width: 50px;
     height: 16px;
+}
+.uk-position-small[class*=uk-position-center-left], .uk-position-small[class*=uk-position-center-right] {
+  -webkit-transform: translateY(-50%) translateY(-15px);
+  transform: translateY(0%) translateY(205px);
 }
