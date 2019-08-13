@@ -27,7 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/uikit/dist/css/uikit.min.css",
+              "src/assets/css/uikit.min.css",
               "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
               "src/assets/css/ion.rangeSlider.skinHTML5.css",
               "node_modules/font-awesome/scss/font-awesome.scss",
