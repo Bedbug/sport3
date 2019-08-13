@@ -76,6 +76,7 @@ export class MainPageProfileComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
+      // console.table(this.user);
     });
 
     this.sportimoService.getAchievements().subscribe(x => {

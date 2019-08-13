@@ -67,6 +67,24 @@ export class SportimoService {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/grand-prize/${prizeId}/chances`);
   }
 
+   /*-----------------------------------------------------------------------------------
+    Top Picks
+  ----------------------------------------------------------------------------------- */
+  getYesterdayGames() {
+    // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/matches/past
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/top-picks/matches/past`);
+  }
+
+  getTopScorers() {
+    // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/scorers
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/top-picks/scorers`);
+  }
+
+  getUpcoming() {
+    // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/matches/upcoming
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/top-picks/matches/upcoming`);
+  }
+
   /*-----------------------------------------------------------------------------------
     Contests
   ----------------------------------------------------------------------------------- */

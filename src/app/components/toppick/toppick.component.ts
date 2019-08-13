@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToppickService } from './toppick.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-toppick',
@@ -10,15 +12,44 @@ export class ToppickComponent implements OnInit {
   
   topPickModalisActive: boolean = true;
   recentform = ["W", "L", "L", "T", "W"];
+  pastMatches: any;
+  topScorers: any;
+  upcoming: any;
 
   constructor(
-    private topPickService: ToppickService
+    private topPickService: ToppickService,
+    private sportimoService: SportimoService,
+    public translate: TranslateService,
   ) { }
 
   ngOnInit() {
     this.topPickService.topPickModalIsActive.subscribe(x=>{
       this.topPickModalisActive = x;
     })
+
+    this.sportimoService.getYesterdayGames()
+      .subscribe(data => {
+        if (data != null && data.length > 0) {
+          this.pastMatches = data;
+          console.table(this.pastMatches);
+        }
+      })
+    
+    this.sportimoService.getTopScorers()
+      .subscribe(data => {
+        if (data != null && data.length > 0) {
+          this.topScorers = data;
+          console.table(this.topScorers);
+        }
+      })
+
+    this.sportimoService.getUpcoming()
+      .subscribe(data => {
+        if (data != null && data.length > 0) {
+          this.upcoming = data;
+          console.table(this.upcoming);
+        }
+      })
 
     console.log("Show");
     this.topPickService.Show();   
