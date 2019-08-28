@@ -15,7 +15,7 @@
               <!-- <label class="">Username/Email</label> -->
               <input type="text" formControlName="msisdn" class="form-control-plaintext"
                 [ngClass]="{ 'is-invalid': submitted && step1Form.controls.msisdn.errors }"
-                placeholder="Enter mobile phone" required>
+                placeholder="{{ 'Enter mobile phone' | translate }}" required>
               <div *ngIf="submitted && step1Form.controls.msisdn.errors" class="invalid-feedback">
                 <div *ngIf="step1Form.controls.msisdn.errors.required">MSISDN is required</div>
               </div>
@@ -66,7 +66,7 @@
             <div class="form-group text-center">
               <!-- <label class="">Username/Email</label> -->
               <input type="text" formControlName="pin" maxlength="4" minlength="4" class="form-control-plaintext"
-                [ngClass]="{ 'is-invalid': submitted && step2Form.controls.pin.errors }" placeholder="Enter PIN"
+                [ngClass]="{ 'is-invalid': submitted && step2Form.controls.pin.errors }" placeholder="{{ 'Enter PIN' | translate }}"
                 required>
               <div *ngIf="submitted && step2Form.controls.pin.errors" class="invalid-feedback">
                 <div *ngIf="step2Form.controls.pin.errors.required">PIN is required</div>
@@ -140,10 +140,10 @@
             <div class="form-group">
               <label class="" translate>Password</label>
               <input type="password" formControlName="password" class="form-control-plaintext"
-                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password.errors }" placeholder="Password"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password.errors }" placeholder="{{ 'Password' | translate }}"
                 required>
               <input type="password" formControlName="password2" class="form-control-plaintext"
-                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password2.errors }" placeholder="Password"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password2.errors }" placeholder="{{ 'Password' | translate }}"
                 required>
 
               <div
