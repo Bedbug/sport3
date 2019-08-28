@@ -12,6 +12,13 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.prize-details-scrollarea {
+  height: calc(100vh - 170px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0;
+}
+
 .card-body {
   padding: 5px 15px 0 15px !important;
 }
