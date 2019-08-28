@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
   ngUnsubscribe = new Subject();
   user: User;
 
-  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, public translate:TranslateService) { }
+  constructor(private formBuilder: FormBuilder, private authenticationService: AuthenticationService, public translate: TranslateService) { }
 
   ngOnInit() {
     this.step1Form = this.formBuilder.group({
@@ -44,42 +44,72 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       password2: ['', Validators.required]
     },
-     { validators: passwordMismatchValidator }
+      { validators: passwordMismatchValidator }
     );
-    
-    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
+
+    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
     })
   }
 
-  cancel(){
+  cancel() {
     let el = $('#app-register-modal');
     el.addClass('hidden');
   }
 
-  openTerms(){
+  openTerms() {
 
   }
 
-  onCredsSubmit(){
-    $('#app-register-modal #step4').addClass('modal-appear');
-    $('#app-register-modal #step4').removeClass('hidden');
-    $('#app-register-modal #step3').removeClass('modal-appear');
-    $('#app-register-modal #step3').addClass('hidden');
-    this.authenticationService.addDemoOneWeekSubscription();
+  onCredsSubmit() {
+    this.isSubmitting = true;
+    this.authenticationService.registerUser(this.step3Form.controls.username.value, this.step3Form.controls.password.value)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.isSubmitting = false;
+          $('#app-register-modal #step4').addClass('modal-appear');
+          $('#app-register-modal #step4').removeClass('hidden');
+          $('#app-register-modal #step3').removeClass('modal-appear');
+          $('#app-register-modal #step3').addClass('hidden');
+          this.authenticationService.login(this.step3Form.controls.username.value, this.step3Form.controls.password.value).subscribe();
+        },
+        error => {
+          this.isSubmitting = false;
+        });
+   
   }
 
-  onMSISDNSubmit(){
-    $('#app-register-modal #step2').addClass('modal-appear');
-    $('#app-register-modal #step2').removeClass('hidden');
-    $('#app-register-modal #step1').removeClass('modal-appear');
-    $('#app-register-modal #step1').addClass('hidden');
+  onMSISDNSubmit() {
+    this.isSubmitting = true;
+    this.authenticationService.registerMSISDN(this.step1Form.controls.msisdn.value)
+      .subscribe(response => {
+        console.log(response);
+        this.isSubmitting = false;
+        $('#app-register-modal #step2').addClass('modal-appear');
+        $('#app-register-modal #step2').removeClass('hidden');
+        $('#app-register-modal #step1').removeClass('modal-appear');
+        $('#app-register-modal #step1').addClass('hidden');
+      });
+
   }
 
-  onPinSubmit(){
-    $('#app-register-modal #step3').addClass('modal-appear');
-    $('#app-register-modal #step3').removeClass('hidden');
-    $('#app-register-modal #step2').removeClass('modal-appear');
-    $('#app-register-modal #step2').addClass('hidden');
+  onPinSubmit() {
+    this.isSubmitting = true;
+    this.authenticationService.validatePIN(this.step2Form.controls.pin.value)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.incorrectPin = false;
+          this.isSubmitting = false;
+          $('#app-register-modal #step3').addClass('modal-appear');
+          $('#app-register-modal #step3').removeClass('hidden');
+          $('#app-register-modal #step2').removeClass('modal-appear');
+          $('#app-register-modal #step2').addClass('hidden');
+        },
+        error => {
+          this.incorrectPin = true;
+          this.isSubmitting = false;
+        });
   }
 }

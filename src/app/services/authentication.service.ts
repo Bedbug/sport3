@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, interval, observable } from 'rxjs';
+import { map, timeout } from 'rxjs/operators';
 
 import { User } from '../models/user';
 import { ConfigService } from './config.service';
@@ -67,6 +67,32 @@ export class AuthenticationService {
                 return user;
             }));
     }
+
+    
+   /*-----------------------------------------------------------------------------------
+     User registration
+   ----------------------------------------------------------------------------------- */
+
+   registerMSISDN(msisdn: string){
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/msisdn`, { msisdn: msisdn })
+    .pipe(map(response => {
+        return response;
+    }));
+   }
+
+   validatePIN(pin: string){
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/pin`, { pin: pin })
+    .pipe(map(response => {
+        return response;
+    }));
+   }
+
+   registerUser(username: string, password:string){
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/register`, { username: username, password:password })
+    .pipe(map(response => {
+        return response;
+    }));
+   }
 
     logout() {
         // remove user from local storage to log user out

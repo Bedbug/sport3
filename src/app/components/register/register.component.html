@@ -1,25 +1,26 @@
 <div class="modal-background hidden" id="app-register-modal">
   <!-- STEP 1 -->
-    <div id="step1" class="modal-card hidden">
-      <div class="modal-card-header">
-        <div class="modal-title" translate>Subscribe to Play</div>
-        <div (click)="cancel()" class="modal-exit pull-right">X</div>
-      </div>
-      <div class="modal-card-body text-center">
-        <div class="login-form-body">
-          <div class="login-form-info" translate>Please enter your mobile phone number to receive your PIN code</div>
-  
-          <form [formGroup]="step1Form" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
-            <div class="login-form-content">
-              <div class="form-group text-center">
-                <!-- <label class="">Username/Email</label> -->
-                <input type="text" formControlName="msisdn" class="form-control-plaintext"
-                  [ngClass]="{ 'is-invalid': submitted && step1Form.controls.msisdn.errors }" placeholder="Enter mobile phone" required>
-                <div *ngIf="submitted && step1Form.controls.msisdn.errors" class="invalid-feedback">
-                  <div *ngIf="step1Form.controls.msisdn.errors.required">MSISDN is required</div>
-                </div>
+  <div id="step1" class="modal-card hidden">
+    <div class="modal-card-header">
+      <div class="modal-title" translate>Subscribe to Play</div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="login-form-body">
+        <div class="login-form-info" translate>Please enter your mobile phone number to receive your PIN code</div>
+
+        <form [formGroup]="step1Form" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
+          <div class="login-form-content">
+            <div class="form-group text-center">
+              <!-- <label class="">Username/Email</label> -->
+              <input type="text" formControlName="msisdn" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && step1Form.controls.msisdn.errors }"
+                placeholder="Enter mobile phone" required>
+              <div *ngIf="submitted && step1Form.controls.msisdn.errors" class="invalid-feedback">
+                <div *ngIf="step1Form.controls.msisdn.errors.required">MSISDN is required</div>
               </div>
-              <!-- <div class="form-group">
+            </div>
+            <!-- <div class="form-group">
                 <label class="">Password/Email</label>
                 <input type="password" formControlName="password" class="form-control-plaintext"
                   [ngClass]="{ 'is-invalid': submitted && step1Form.controls.password.errors }" placeholder="Password" required>
@@ -27,50 +28,54 @@
                   <div *ngIf="step1Form.controls.password.errors.required">Password is required</div>
                 </div>
               </div> -->
-            </div>
-            <div class="login-form-buttons">
-              <div class="form-group">
-                <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button" >
-                  <div class="loader-label" [class.btn-active]="isSubmitting">
-                    <span class="button-label" translate>Get PIN</span>
-                    <div class="fadeInLoader">
-                      <span class="rotate dotted button-loader"></span>
-                    </div>
+          </div>
+          <div class="login-form-buttons">
+            <div class="form-group">
+              <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button">
+                <div class="loader-label" [class.btn-active]="isSubmitting">
+                  <span class="button-label" translate>Get PIN</span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
                   </div>
-                </button>
-              </div>              
-              <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+                </div>
+              </button>
             </div>
-            <div class="notice" style="font-size: 12px"> <span translate>SubscribeNotice</span><a style="margin-top: -15px;" href="#" (click)="openTerms()" translate>Terms & Conditions</a></div>
-          </form>
-  
-        </div>
+            <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+          </div>
+          <div class="notice" style="font-size: 12px"> <span translate>SubscribeNotice</span><a
+              style="margin-top: -15px;" href="#" (click)="openTerms()" translate>Terms & Conditions</a></div>
+        </form>
+
       </div>
     </div>
-    <!-- END OF STEP 1 -->
-    <!-- STEP 2 -->
-    <div id="step2" class="modal-card hidden">
-        <div class="modal-card-header">
-          <div class="modal-title" translate>Subscribe to Play</div>
-          <div (click)="cancel()" class="modal-exit pull-right">X</div>
-        </div>
-        <div class="modal-card-body text-center">
-          <div class="login-form-body">
-            <div class="login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div>
-    
-            <form [formGroup]="step2Form" (ngSubmit)="onPinSubmit()" class="sportimo-form">
-                
-              <div class="login-form-content">
-                <div class="form-group text-center">
-                  <!-- <label class="">Username/Email</label> -->
-                  <input type="text" formControlName="pin" maxlength="4" minlength="4" class="form-control-plaintext"
-                    [ngClass]="{ 'is-invalid': submitted && step2Form.controls.pin.errors }" placeholder="Enter PIN" required>
-                  <div *ngIf="submitted && step2Form.controls.pin.errors" class="invalid-feedback">
-                    <div *ngIf="step2Form.controls.pin.errors.required">PIN is required</div>
-                  </div>
-                  <div *ngIf="incorrectPin" class="problem-info"><div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span></div>
-                </div>                          
-                <!-- <div class="form-group">
+  </div>
+  <!-- END OF STEP 1 -->
+  <!-- STEP 2 -->
+  <div id="step2" class="modal-card hidden">
+    <div class="modal-card-header">
+      <div class="modal-title" translate>Subscribe to Play</div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="login-form-body">
+        <div class="login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div>
+
+        <form [formGroup]="step2Form" (ngSubmit)="onPinSubmit()" class="sportimo-form">
+
+          <div class="login-form-content">
+            <div class="form-group text-center">
+              <!-- <label class="">Username/Email</label> -->
+              <input type="text" formControlName="pin" maxlength="4" minlength="4" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && step2Form.controls.pin.errors }" placeholder="Enter PIN"
+                required>
+              <div *ngIf="submitted && step2Form.controls.pin.errors" class="invalid-feedback">
+                <div *ngIf="step2Form.controls.pin.errors.required">PIN is required</div>
+              </div>
+              <div *ngIf="incorrectPin" class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span>
+              </div>
+            </div>
+            <!-- <div class="form-group">
                   <label class="">Password/Email</label>
                   <input type="password" formControlName="password" class="form-control-plaintext"
                     [ngClass]="{ 'is-invalid': submitted && step2Form.controls.password.errors }" placeholder="Password" required>
@@ -78,114 +83,136 @@
                     <div *ngIf="step2Form.controls.password.errors.required">Password is required</div>
                   </div>
                 </div> -->
-              </div>
-              <div class="login-form-buttons">
-                <div class="form-group">
-                  <!-- <button [disabled]="isSubmitting || step2Form.controls.pin.errors" type="submit" class="btn btn-sportimo login-form-button"> -->
-                  <button type="submit" class="btn btn-sportimo login-form-button">
-                    <div class="loader-label" [class.btn-active]="isSubmitting">
-                      <span class="button-label" translate>Submit</span>
-                      <div class="fadeInLoader">
-                        <span class="rotate dotted button-loader"></span>
-                      </div>
-                    </div>
-                  </button>
-                </div>                
-                <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
-              </div>
-              <div class="notice" style="font-size: 13px" *ngIf="incorrectPin"><a href="#">Resend PIN</a></div>
-            </form>
-    
           </div>
-        </div>
+          <div class="login-form-buttons">
+            <div class="form-group">
+              <!-- <button [disabled]="isSubmitting || step2Form.controls.pin.errors" type="submit" class="btn btn-sportimo login-form-button"> -->
+              <button type="submit" class="btn btn-sportimo login-form-button">
+                <div class="loader-label" [class.btn-active]="isSubmitting">
+                  <span class="button-label" translate>Submit</span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+          </div>
+          <div class="notice" style="font-size: 13px" *ngIf="incorrectPin"><a href="#">Resend PIN</a></div>
+        </form>
+
       </div>
-      <!-- END OF STEP 2 -->
-      <!-- STEP 3 -->
-    <div id="step3" class="modal-card hidden">
-        <div class="modal-card-header">
-          <div class="modal-title" translate>Subscribe to Play</div>
-          <div (click)="cancel()" class="modal-exit pull-right">X</div>
-        </div>
-        <div class="modal-card-body text-center">
-          <div class="login-form-body">
-            <div class="login-form-info" translate>Please enter your Username and Password</div>
-            
-            <form [formGroup]="step3Form" (ngSubmit)="onCredsSubmit()" class="sportimo-form">  
-              <div class="login-form-content">
-                <div class="form-group text-center">
-                  <label class="">Username</label>
-                  <input type="text" formControlName="username" class="form-control-plaintext"
-                    [ngClass]="{ 'is-invalid': submitted && step3Form.controls.username.errors }" placeholder="Enter username" required>
-                  <div *ngIf="submitted && step3Form.controls.username.errors" class="invalid-feedback">
-                      <div *ngIf="step3Form.controls.username.errors.required" class="problem-info"><div class="icn-info-alt"></div> <span translate>Username required</span></div>
+    </div>
+  </div>
+  <!-- END OF STEP 2 -->
+  <!-- STEP 3 -->
+  <div id="step3" class="modal-card hidden">
+    <div class="modal-card-header">
+      <div class="modal-title" translate>Subscribe to Play</div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="login-form-body">
+        <div class="login-form-info" translate>Please enter your Username and Password</div>
+
+        <form [formGroup]="step3Form" (ngSubmit)="onCredsSubmit()" class="sportimo-form">
+          <div class="login-form-content">
+            <div class="form-group text-center">
+              <label class="">Username</label>
+              <!-- <p>
+                Form Status: {{ step3Form.controls.password2.errors | json }}
+              </p> -->
+              <input type="text" formControlName="username" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.username.errors }" required minlength="5">
+              <div
+                *ngIf="step3Form.controls.username.invalid && (step3Form.controls.username.dirty || step3Form.controls.username.touched)">
+                <div *ngIf="step3Form.controls.username.errors">
+                  <div *ngIf="step3Form.controls.username.errors.required" class="problem-info">
+                    <div class="icn-info-alt"></div> <span translate>Username is required</span>
                   </div>
-                  <!-- <div *ngIf="incorrectusername" class="problem-info"><div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span></div> -->
-                </div>                
-                <div class="form-group">
-                  <label class="">Password</label>
-                  <input type="password" formControlName="password" class="form-control-plaintext"
-                    [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password.errors }" placeholder="Password" required>
-                    <input type="password" formControlName="password2" class="form-control-plaintext"
-                    [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password2.errors }" placeholder="Password" required>
-                  <div *ngIf="submitted && step3Form.controls.password2.errors" class="invalid-feedback">
-                    <div *ngIf="step3Form.controls.password.errors.required || step3Form.controls.password2.errors.required" class="problem-info"><div class="icn-info-alt"></div> <span translate>Both passwords required</span></div>
+                  <div *ngIf="step3Form.controls.username.errors.minlength" class="problem-info">
+                    <div class="icn-info-alt"></div> <span translate>Username must be atleast
+                      5 characters long</span>
                   </div>
-                  <div *ngIf="step3Form?.errors?.passwordMismatch" class="problem-info"><div class="icn-info-alt"></div> <span translate>Passwords must match</span></div>
                 </div>
               </div>
-              
-              <div class="login-form-buttons">
-                <div class="form-group">
-                  <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button" >
-                    <div class="loader-label" [class.btn-active]="isSubmitting">
-                      <span class="button-label" translate>Submit</span>
-                      <div class="fadeInLoader">
-                        <span class="rotate dotted button-loader"></span>
-                      </div>
-                    </div>
-                  </button>
-                </div>                
-                <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
-              </div>
-              <div class="notice" style="font-size: 13px" *ngIf="incorrectPin">You can change your Username anytime from your Profile</div>
-            </form>
-    
-          </div>
-        </div>
-      </div>
-      <!-- END OF STEP 3 -->
-      <!-- STEP 4 -->
-    <div id="step4" class="modal-card hidden">
-        <div class="modal-card-header">
-          <div class="modal-title" translate>Subscribe to Play</div>
-          <div (click)="cancel()" class="modal-exit pull-right">X</div>
-        </div>
-        <div class="modal-card-body text-center">
-          <div class="login-form-body">                
-            <div class="contest-join-image">
-              <div class="contest-coin-back"></div>
-              <div class="contest-coin-front"></div>
+              <!-- <div *ngIf="incorrectusername" class="problem-info"><div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span></div> -->
             </div>
-            
-            <div class="login-form-info" translate>Welcome to Sportimo!</div>
-            <div class="registration-bonus-text" translate >By subscribing, you have earned:</div>
-            <div class="registration-bonus">70 <i _ngcontent-vii-c2="" class="coin"></i></div>
+            <div class="form-group">
+              <label class="">Password</label>
+              <input type="password" formControlName="password" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password.errors }" placeholder="Password"
+                required>
+              <input type="password" formControlName="password2" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password2.errors }" placeholder="Password"
+                required>
 
-            <div class="login-form-buttons">
-                <div class="form-group">
-                  <button (click)="cancel()" type="submit" class="btn btn-sportimo login-form-button" >
-                    <div class="loader-label" [class.btn-active]="isSubmitting">
-                      <span class="button-label" translate>Continue</span>
-                      <div class="fadeInLoader">
-                        <span class="rotate dotted button-loader"></span>
-                      </div>
-                    </div>
-                  </button>
-                </div>                
-                <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+              <div
+                *ngIf="(step3Form.controls.password2.errors || step3Form.controls.password2.errors) && !step3Form?.errors?.passwordMismatch"
+                class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Both passwords required</span>
               </div>
+
+              <div *ngIf="step3Form?.errors?.passwordMismatch" class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Passwords must match</span>
+              </div>
+            </div>
           </div>
+
+          <div class="login-form-buttons">
+            <div class="form-group">
+              <button [disabled]="isSubmitting || step3Form.invalid" type="submit"
+                class="btn btn-sportimo login-form-button">
+                <div class="loader-label" [class.btn-active]="isSubmitting">
+                  <span class="button-label" translate>Submit</span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+          </div>
+          <div class="notice" style="font-size: 13px" *ngIf="incorrectPin">You can change your Username anytime from
+            your Profile</div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <!-- END OF STEP 3 -->
+  <!-- STEP 4 -->
+  <div id="step4" class="modal-card hidden">
+    <div class="modal-card-header">
+      <div class="modal-title" translate>Subscribe to Play</div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="login-form-body">
+        <div class="contest-join-image">
+          <div class="contest-coin-back"></div>
+          <div class="contest-coin-front"></div>
+        </div>
+
+        <div class="login-form-info" translate>Welcome to Sportimo!</div>
+        <div class="registration-bonus-text" translate>By subscribing, you have earned:</div>
+        <div class="registration-bonus">70 <i _ngcontent-vii-c2="" class="coin"></i></div>
+
+        <div class="login-form-buttons">
+          <div class="form-group">
+            <button (click)="cancel()" type="submit" class="btn btn-sportimo login-form-button">
+              <div class="loader-label" [class.btn-active]="isSubmitting">
+                <span class="button-label" translate>Continue</span>
+                <div class="fadeInLoader">
+                  <span class="rotate dotted button-loader"></span>
+                </div>
+              </div>
+            </button>
+          </div>
+          <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
         </div>
       </div>
-      <!-- END OF STEP 4 -->
+    </div>
   </div>
+  <!-- END OF STEP 4 -->
+</div>

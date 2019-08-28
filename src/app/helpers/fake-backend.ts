@@ -126,6 +126,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return ok(subscription);
             }
 
+            if (request.url.match(/msisdn/i) && request.method === 'POST') {
+                // if (role !== Role.Admin) return unauthorised();
+                return ok("MSISDN OK");
+            }
+
+            if (request.url.match(/pin/i) && request.method === 'POST') {
+                // if (role !== Role.Admin) return unauthorised();
+                if(request.body.pin == '1234')
+                return ok('PIN OK');
+                else error('NOT CORRECT PIN');
+            }
+
+            if (request.url.match(/register/i) && request.method === 'POST') {
+                // if (role !== Role.Admin) return unauthorised();
+                return ok('User Created');
+            }
+
             // pass through any requests not handled above
             return next.handle(request);
         }))

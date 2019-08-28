@@ -430,4 +430,5 @@ export class SportimoService {
   getMessages() {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/messages`);
   }
+
 }
