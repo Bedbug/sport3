@@ -21,12 +21,13 @@
 .uk-panel-scrollable {
   
   height: 170px;
-  padding: 10px;
+  padding: 0;
   border: 1px solid #e5e5e5;
   overflow: initial;
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   resize: both;
+  border: 0;
 }
 
 // .modal-card-body{
@@ -178,12 +179,12 @@
     padding: 1.25rem;
     border-bottom: 0.5mm ridge rgba(0, 0, 0, 0.6);
 }
-.uk-panel-scrollable {
+// .uk-panel-scrollable {
     
-    padding: 0px;
-    border: 0.1px solid #e5e5e5;
+//     padding: 0px;
+//     border: 0.1px solid #e5e5e5;
    
-}
+// }
 .uk-dotnav>.uk-active>a {
     background-color: rgba(255, 178, 0, 1);
     border-color: transparent;

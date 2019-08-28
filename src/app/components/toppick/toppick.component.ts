@@ -31,7 +31,7 @@ export class ToppickComponent implements OnInit {
           .subscribe(data => {
             if (data != null && data.length > 0) {
               this.pastMatches = data;
-              console.table(this.pastMatches);
+           
             }
           })
 
@@ -39,7 +39,7 @@ export class ToppickComponent implements OnInit {
           .subscribe(data => {
             if (data != null && data.length > 0) {
               this.topScorers = data;
-              console.table(this.topScorers);
+           
             }
           })
 
@@ -47,7 +47,7 @@ export class ToppickComponent implements OnInit {
           .subscribe(data => {
             if (data != null && data.length > 0) {
               this.upcoming = data;
-              console.table(this.upcoming);
+             
             }
           })
       }
@@ -57,10 +57,15 @@ export class ToppickComponent implements OnInit {
     this.checkDailyDisplay();
   }
 
+  Onscroll(){
+
+  }
+
   closeModal() {
     console.log("Hide");
 
     this.topPickService.Hide();
+    $('body').removeClass('modal-open');
   }
 
   checkDailyDisplay() {
@@ -71,7 +76,7 @@ export class ToppickComponent implements OnInit {
       localStorage.setItem("last_picks_check",todayDate);
     }
     this.topPickService.Show();
-    
+    $('body').addClass('modal-open');
   }
 
 }

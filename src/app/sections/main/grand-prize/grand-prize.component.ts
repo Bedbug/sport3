@@ -49,7 +49,7 @@ export class GrandPrizeComponent implements OnInit {
       .subscribe(data => {
         if (data != null && data.length > 0) {
           this.prize = data[0];
-          console.table(this.prize);
+          
           this.startCountdownTimer();
 
           this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
@@ -67,7 +67,7 @@ export class GrandPrizeComponent implements OnInit {
   }
 
   showPrizeDetails(prizeid: string) {
-    console.log(prizeid);
+
     this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
@@ -80,7 +80,7 @@ export class GrandPrizeComponent implements OnInit {
 
   startCountdownTimer() {
     // / Set the date we're counting down to
-    console.log(this.prize.endToDate);
+ 
 
     var countDownDate = new Date(this.prize.endToDate).getTime();
     var that = this;

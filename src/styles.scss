@@ -10,6 +10,11 @@
     Sportimo Styles
 
 ----------------------------------------------------------------------------------- */
+
+.body.modal-open{
+  overflow:hidden;
+}
+
 .page-background-black {
   display: block; /* Hidden by default */
   position: absolute; /* Stay in place */
