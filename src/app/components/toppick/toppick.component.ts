@@ -70,7 +70,7 @@ export class ToppickComponent implements OnInit {
       this.topPickService.Show();
       localStorage.setItem("last_picks_check",todayDate);
     }
-
+    this.topPickService.Show();
     
   }
 

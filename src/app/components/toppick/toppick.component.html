@@ -7,7 +7,7 @@
     </div>
     <div class="modal-card-body text-center">
       <div class="slideshow-container"
-        uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: false"
+        uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true"
         style="height: 97%;">
         <div class="uk-position-relative" style="height: inherit;">
           <ul class="uk-slideshow-items" style="height: inherit;">
@@ -57,6 +57,35 @@
                   </div>
                 </div>
 
+                <div class="match-info" *ngFor="let pastMatch of pastMatches; let i = index">
+                    <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;">
+                      <div class="match-league">{{pastMatch.tournament.titleText[translate.currentLang]}}</div>
+                      <div class="match-date">{{pastMatch.updated | date:'dd/MM hh:mm' }}</div>
+                      <div class="match-teams">
+                        {{pastMatch.match.home_team.name[translate.currentLang] +" - "+ pastMatch.match.away_team.name[translate.currentLang]}}
+                      </div>
+                      <div class="match-people">Participants: {{pastMatch.participants}}</div>
+                    </div>
+  
+                    <div class="team-side">
+                      <div class="kit">
+                        <img alt="" class="img-fluid"
+                          src="{{pastMatch.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}">
+                      </div>
+                      <div class="team-name">{{pastMatch.match.home_team.name[translate.currentLang]}}</div>
+                    </div>
+                    <div class="match-info-date">
+                      <div class="vs">{{pastMatch.match.home_score +" - "+ pastMatch.match.away_score}}</div>
+  
+                    </div>
+                    <div class="team-side">
+                      <div class="kit">
+                        <img alt="" class="img-fluid"
+                          src="{{pastMatch.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}">
+                      </div>
+                      <div class="team-name">{{pastMatch.match.away_team.name[translate.currentLang]}}</div>
+                    </div>
+                  </div>
 
               </div>
             </li>

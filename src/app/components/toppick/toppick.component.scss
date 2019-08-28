@@ -18,7 +18,16 @@
     z-index: 1035;
 }
 
-
+.uk-panel-scrollable {
+  
+  height: 170px;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  overflow: initial;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  resize: both;
+}
 
 // .modal-card-body{
 //     height: 475px;
