@@ -9222,8 +9222,6 @@
                     }
 
                     this.start(e);
-                    e.preventDefault();
-                    e.stopPropagation();
                     console.log('down');
                 }
 
@@ -9344,7 +9342,7 @@
     
                     }
     
-                    css(this.list, { userSelect: '', pointerEvents: '' });
+                    css(this.list, { userSelect: '', pointerEvents: 'all' });
     
                     this.drag
                         = this.percent
@@ -9420,8 +9418,8 @@
             },
 
             end: function () {
-                if($this)
-                clearTimeout(this$1.timeout);
+                // if(this$1)
+                // clearTimeout(this$1.timeout);
 
                 off(window, 'scroll', this.unbindMove);
                 this.unbindMove && this.unbindMove();

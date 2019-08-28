@@ -14,7 +14,18 @@
 .body.modal-open{
   overflow:hidden;
 }
+.scorllable-area{
+  width: 100%;
+  height: calc(100vh - 207px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;    
+}
 
+.modal-open .scorllable-area{
+  overflow: hidden;
+  -webkit-overflow-scrolling: auto;
+}
 .page-background-black {
   display: block; /* Hidden by default */
   position: absolute; /* Stay in place */
