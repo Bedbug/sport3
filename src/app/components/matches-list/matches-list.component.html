@@ -30,7 +30,7 @@
       <div class="container">
         <div [@staggerAnimation]="present?.length">
           <div *ngFor="let contestMatch of present; let i = index">
-            <app-matches-list-item [contestMatch]='contestMatch' isClickable=true></app-matches-list-item>
+            <app-matches-list-item [contestMatch]='contestMatch' isClickable=true [hasJoined]='isSubscribed'></app-matches-list-item>
           </div>
         </div>
       </div>
@@ -38,23 +38,23 @@
     <div class="tab-pane fade" id="live" role="tabpanel" aria-labelledby="live-tab">
       <div class="container">
         <div >
-          <app-matches-list-item *ngFor="let contestMatch of liveMatches" [contestMatch]='contestMatch'
+          <app-matches-list-item *ngFor="let contestMatch of liveMatches" [hasJoined]='isSubscribed' [contestMatch]='contestMatch'
             isClickable=true></app-matches-list-item>
         </div>
       </div>
     </div>
     <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
       <div class="container">
-        <ul>
+        <ul> 
           <app-matches-list-item *ngFor="let contestMatch of upcomingMatches"
-            [contestMatch]='contestMatch' isClickable=true></app-matches-list-item>
+            [contestMatch]='contestMatch' isClickable=true [hasJoined]='isSubscribed'></app-matches-list-item>
         </ul>
       </div>
     </div>
     <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
       <div class="container">
         <ul>
-          <app-matches-list-item *ngFor="let contestMatch of pastMatches" [contestMatch]='contestMatch'
+          <app-matches-list-item *ngFor="let contestMatch of pastMatches" [hasJoined]='true' [contestMatch]='contestMatch'
             isClickable=true></app-matches-list-item>
         </ul>
       </div>

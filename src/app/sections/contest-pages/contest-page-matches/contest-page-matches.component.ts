@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contest-page-matches',
@@ -11,6 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 export class ContestPageMatchesComponent implements OnInit {
 
   contestId: string;
+  contestDetails: any;
+
+  ngUnsubscribe = new Subject();
 
   presentMatches: ContestMatch[] = [
     // {id:"1",title:"Match 1", home_score:3, away_score: 1, live: true,  start: moment().toDate()},
@@ -32,5 +37,11 @@ export class ContestPageMatchesComponent implements OnInit {
       this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => this.presentMatches = matches);
       this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
     });
+
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

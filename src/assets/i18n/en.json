@@ -155,6 +155,7 @@
 	"errors": {
 		"100": "You must be logged in to access this page.",
 		"101": "You must be logged in in order to join a contest",
+		"102": "You must have joined the contest in order to view matches.",
 		"10002": "This card has expired."
 	},
 	"farsi": "فارسی",

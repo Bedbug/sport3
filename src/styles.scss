@@ -16,7 +16,8 @@
 }
 .scorllable-area{
   width: 100%;
-  height: calc(100vh - 207px);
+  height: calc(100vh - 93px);  
+  height: calc((var(--vh, 1vh) * 100) - 93px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0;    

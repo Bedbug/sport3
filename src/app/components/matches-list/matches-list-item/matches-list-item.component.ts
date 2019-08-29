@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ErrorDisplayService } from 'src/app/services/error-display.service';
 
 @Component({
   selector: 'app-matches-list-item',
@@ -12,15 +13,19 @@ export class MatchesListItemComponent implements OnInit {
 
   @Input() contestMatch: ContestMatch;
   @Input() isClickable: boolean;
+  @Input() hasJoined: boolean;
 
-  constructor(private router:Router, public translate: TranslateService) { }
+
+  constructor(private router:Router, public translate: TranslateService, private errorDisplay:ErrorDisplayService) { }
 
   ngOnInit() {
   }
 
   gotoMatch() {
-    if (this.isClickable)
+    if (this.isClickable && this.hasJoined)
     this.router.navigate(['/contest',this.contestMatch.tournament,'match',this.contestMatch._id,'info']);   
+    else
+    this.errorDisplay.showError(102);
   }
 
 }

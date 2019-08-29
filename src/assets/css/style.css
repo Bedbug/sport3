@@ -3856,7 +3856,8 @@ ul.notification-dropdown.onhover-show-div li .notification-icon {
 }
 
 .page-wrapper .page-body-wrapper .page-body {
-  min-height: calc(100vh - 207px);
+  min-height: calc(100vh - 93px);
+  min-height: calc((var(--vh, 1vh) * 100) - 93px);
   margin-top: 50px;
   padding: 0 0;
   position: relative;

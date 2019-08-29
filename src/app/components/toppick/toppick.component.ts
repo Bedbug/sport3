@@ -73,10 +73,11 @@ export class ToppickComponent implements OnInit {
     const todayDate = new Date().getDate().toString();
     if(lastDayViewed != todayDate){
       this.topPickService.Show();
+      $('body').addClass('modal-open');
       localStorage.setItem("last_picks_check",todayDate);
     }
-    this.topPickService.Show();
-    $('body').addClass('modal-open');
+   
+    
   }
 
 }
