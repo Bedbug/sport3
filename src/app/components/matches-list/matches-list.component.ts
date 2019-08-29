@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { takeUntil } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-matches-list',
@@ -38,10 +39,14 @@ export class MatchesListComponent implements OnInit {
   @Input() past: ContestMatch[];
   
   contestId: string;
-  isSubscribed: boolean;
+  hasJoined: boolean;
+  // isSubscribed: boolean;
+
   ngUnsubscribe = new Subject();
 
-  constructor(public translate:TranslateService,private route: ActivatedRoute, private sportimoService: SportimoService) { 
+  constructor(public translate:TranslateService,private route: ActivatedRoute, private sportimoService: SportimoService, 
+    // private authenticationService:AuthenticationService
+    ) { 
   }
 
   ngOnInit() {
@@ -50,9 +55,20 @@ export class MatchesListComponent implements OnInit {
       this.sportimoService.getContestDetails(this.contestId)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(result => {
-        this.isSubscribed = result.isSubscribed;
+        this.hasJoined = result.isSubscribed;
       });
     });
+
+    // this.authenticationService.currentUser
+    // .pipe(takeUntil(this.ngUnsubscribe))
+    // .subscribe(user => {
+  
+    //   if (user != null) {
+    //     // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
+    //     this.isSubscribed = this.authenticationService.isSubscribed;
+    //   }
+    // })
+
   }
 
   ngOnDestroy() {

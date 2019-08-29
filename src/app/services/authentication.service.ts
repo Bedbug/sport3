@@ -146,4 +146,8 @@ export class AuthenticationService {
         this.currentUserSubject.next(this.currentUserSubject.value);
     }
 
+    get isSubscribed(){
+        return moment().utc().toDate() < this.currentUserSubject.value.subscriptionEnd;
+    }
+
 }
