@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-body user-info">
-    <div class="container">
+      <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to play cards.</div>
+    <div class="container">       
       <div class="row">
         <div class="col-8">
           <div class="info">
@@ -14,7 +15,7 @@
           </div>
         </div>
         <div class="col-4 text-center">
-          <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard" (click)="playCard()"
+          <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard || !subscribed" (click)="playCard()"
             class="btn btn-sportimo" style="width: 100%">
             <div class="loader-label" [class.btn-active]="isLoadingCards">
               <div translate class="button-label">Play</div>
@@ -22,8 +23,7 @@
                 <span class="rotate dotted button-loader"></span>
               </div>
             </div>
-          </button>
-
+          </button>          
           <button *ngIf="isPlayingCard && !isLoadingCards" (click)="isPlayingCard = false" class="btn btn-sportimo"
             style="width: 100%">
             <div class="loader-label">

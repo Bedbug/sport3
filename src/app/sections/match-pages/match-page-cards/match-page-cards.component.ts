@@ -6,6 +6,9 @@ import { LiveMatch } from 'src/app/models/live-match';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -50,8 +53,10 @@ export class MatchPageCardsComponent implements OnInit {
 
   // sticky: boolean = false;
   // menuPosition: any;
+  subscribed: boolean;
+  ngUnsubscribe = new Subject();
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService) {
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService, private authenticationService:AuthenticationService) {
   }
 
   ngOnInit() {
@@ -60,8 +65,24 @@ export class MatchPageCardsComponent implements OnInit {
       this.contestId = params.get("contestId");
     })
 
-    this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x)
+    this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x);
+
+    this.authenticationService.currentUser
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(user => {
+  
+      if (user != null) {
+        // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
+        this.subscribed = this.authenticationService.isSubscribed;
+      }
+    })
   }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
 
   playCard() {
     this.isPlayingCard = true;
