@@ -92,7 +92,7 @@ export class ContestsListComponent implements OnInit {
   
   startCountdownTimers() {
     // / Set the date we're counting down to
-    console.log(this.prizes);
+    // console.log(this.prizes);
     this.prizes.forEach(prize => {
       var that = prize;
       prize.countDownEndDate = new Date(prize.endToDate).getTime();
@@ -112,7 +112,7 @@ export class ContestsListComponent implements OnInit {
       that.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       that.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       that.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      console.log(that.countdown);
+      // console.log(that.countdown);
       // If the count down is finished, write some text 
       if (distance < 0) {
         clearInterval(this.CountDownInterval);

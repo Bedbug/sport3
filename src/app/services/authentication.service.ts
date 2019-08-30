@@ -147,7 +147,8 @@ export class AuthenticationService {
     }
 
     get isSubscribed(){
-        return moment().utc().toDate() < this.currentUserSubject.value.subscriptionEnd;
+        // console.log(moment().utc().toDate(),moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate(),moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate())        
+        return moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate();
     }
 
 }
