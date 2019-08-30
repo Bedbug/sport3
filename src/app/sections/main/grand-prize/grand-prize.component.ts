@@ -45,16 +45,17 @@ export class GrandPrizeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sportimoService.getGrandPrize()
+    this.sportimoService.getGrandPrizes()
+    .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(data => {
         if (data != null && data.length > 0) {
-          this.prize = data[0];
+          this.prize = data.find(each=>each.isMajor==true) || data[0];        
           
           this.startCountdownTimer();
 
           this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
             if (user)
-              this.sportimoService.getGrandPrizeUserChances(data[0]._id)
+              this.sportimoService.getGrandPrizeUserChances(this.prize._id)
                 .subscribe(data => {
                   this.userChances = data || 0;
                 })
@@ -66,18 +67,19 @@ export class GrandPrizeComponent implements OnInit {
       })
   }
 
-  showPrizeDetails(prizeid: string) {
-
-    this.router.navigate(['main/grand-prize/', prizeid]);
-  }
-
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
     clearInterval(this.CountDownInterval);
   }
+  
 
+  showPrizeDetails(prizeid: string) {
 
+    this.router.navigate(['main/grand-prize/', prizeid]);
+  }
+
+  
   startCountdownTimer() {
     // / Set the date we're counting down to
  

@@ -2,15 +2,15 @@
   <div class="starter-main">
     <div class="col-sm-12 p-0">
       <div class="card grand-prize" style="width: 100%">
-        <div class="card-body" [ngStyle]="{background: 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ')','background-position': 'left center', 'background-size': 'cover'}">
+        <div class="card-body"
+          [ngStyle]="{background: 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ')','background-position': 'left center', 'background-size': 'cover'}">
           <div *ngIf="prize" class="prize-wrapper isClickable" (click)="showPrizeDetails(prize._id)">
             <div class="grand-prize-header">
               <h4 translate>Grand prize</h4>
               <span>{{prize.titleText[translate.currentLang]}}</span>
             </div>
             <div class="grand-prize-details">
-              <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}">
-              </div>
+              <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"></div>
               <div class="grand-prize-text formated-text">
                 <div [innerHTML]="prize.infoText[translate.currentLang]" class="prize-details"></div>
               </div>
@@ -34,31 +34,11 @@
               </div>
               <div class="grand-prize-user-details text-white">
                 <div class="user-chances">
-                    <span translate>Your chances:</span> {{userChances || 0}}
+                  <span translate>Your chances:</span> {{userChances || 0}}
                 </div>
-                  <div class="details-link" translate>View Details</div>
+                <div class="details-link" translate>View Details</div>
               </div>
             </div>
-            <!-- <div class="prize-image h-200">
-              <div class="counter-container">
-                <div class="counter-header col-sm-12">
-                  <div class="row">
-                    <div class="col p-0" translate>Days</div>
-                    <div class="col p-0" translate>Hours</div>
-                    <div class="col p-0" translate>Minutes</div>
-                  </div>
-                </div>
-                <div class="counter-body col-sm-12">
-                  <div class="row">
-                    <div class="col p-0">{{countdown.days<10?"0"+countdown.days:countdown.days}}</div>
-                    <div class="col p-0">{{countdown.hours<10?"0"+countdown.hours:countdown.hours}}</div>
-                    <div class="col p-0">{{countdown.minutes<10?"0"+countdown.minutes:countdown.minutes}}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div [innerHTML]="prize.infoText[translate.currentLang]" class="prize-details"></div> -->
-            <!-- <img class="img-fluid pull-left h-200" src="{{prize?.promoImage}}" alt=""> -->
           </div>
         </div>
       </div>

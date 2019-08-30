@@ -1,25 +1,77 @@
-
-  <div [@staggerAnimation]="contests?.length">
-    <div class="col-sm-12 p-0 contest-list-item"  *ngFor="let contest of contests; let i = index">
-      <div class="card contest-item-container"  tab-index="0" (click)="ContestClicked(contest?._id)">
-        <div class="card-header contest-header">
-          <div class="row">
-            <span class="contest-name col">{{contest.titleText[translate.currentLang]}}</span>
-            <span class="contest-duration col text-right"><strong translate>Ends:</strong> {{contest.endToDate | date }}</span>
+<div [@staggerAnimation]="prizes?.length">
+  <div class="col-sm-12 p-0 contest-list-item" *ngFor="let prize of prizes; let i = index">
+    <div class="card contest-item-container" tab-index="0" (click)="showPrizeDetails(prize?._id)">
+      <div class="card-header contest-header">
+        <div class="row">
+          <span class="contest-name col">{{prize.titleText[translate.currentLang]}}</span>
+          <span class="contest-duration col text-right"><strong translate>Ends:</strong>
+            {{prize.endToDate | date }}</span>
+        </div>
+      </div>
+      <div class="card-body"
+        [ngStyle]="{background: 'url(' + (prize.promoDetailImage || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
+        <div class="row">
+          <div class="grand-prize-details">
+            <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"></div>
+            <div class="grand-prize-text formated-text">
+              <div [innerHTML]="prize.infoText[translate.currentLang]" class="prize-details"></div>
+            </div>
+            <div class="grand-prize-counter">
+              <div class="counter-container-new">
+                <div class="counter-header col-sm-12">
+                  <div class="row">
+                    <div class="col p-0" translate>Days</div>
+                    <div class="col p-0" translate>Hours</div>
+                    <div class="col p-0" translate>Minutes</div>
+                  </div>
+                </div>
+                <div class="counter-body col-sm-12">
+                  <div class="row">
+                    <div class="col p-0">{{prize.countdown.days<10?"0"+prize.countdown.days:prize.countdown.days}}</div>
+                    <div class="col p-0">{{prize.countdown.hours<10?"0"+prize.countdown.hours:prize.countdown.hours}}</div>
+                    <div class="col p-0">{{prize.countdown.minutes<10?"0"+prize.countdown.minutes:prize.countdown.minutes}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grand-prize-user-details text-white">
+              <div class="user-chances">
+                <span translate>Your chances:</span> {{prize.chances || 0}}
+              </div>
+              <div class="details-link" translate>View Details</div>
+            </div>
           </div>
         </div>
-        <div class="card-body" [ngStyle]="{background: 'url(' + (contest.promoDetailImage || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
-          <div class="row">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [@staggerAnimation]="contests?.length">
+  <div class="col-sm-12 p-0 contest-list-item" *ngFor="let contest of contests; let i = index">
+    <div class="card contest-item-container" tab-index="0" (click)="ContestClicked(contest?._id)">
+      <div class="card-header contest-header">
+        <div class="row">
+          <span class="contest-name col">{{contest.titleText[translate.currentLang]}}</span>
+          <span class="contest-duration col text-right"><strong translate>Ends:</strong>
+            {{contest.endToDate | date }}</span>
+        </div>
+      </div>
+      <div class="card-body"
+        [ngStyle]="{background: 'url(' + (contest.promoDetailImage || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
+        <div class="row">
           <div class="col-6 contest-image">
             <img src="{{contest.promoImage}}" alt="">
           </div>
           <div class="col-6 contest-details text-center">
             <p class="contest-details-text">{{contest.infoText[translate.currentLang]}}</p>
-            <p *ngIf="contest.subscriptionPrice && contest.subscriptionPrice>0">{{contest.subscriptionPrice}}<i class="coin"></i> <span translate>to Join</span></p>
-            <p *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0" class='contest-free-toplay'> <span translate>Free-to-Play</span></p>
+            <p *ngIf="contest.subscriptionPrice && contest.subscriptionPrice>0">{{contest.subscriptionPrice}}<i
+                class="coin"></i> <span translate>to Join</span></p>
+            <p *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0" class='contest-free-toplay'> <span
+                translate>Free-to-Play</span></p>
           </div>
-        </div>
         </div>
       </div>
     </div>
   </div>
+</div>

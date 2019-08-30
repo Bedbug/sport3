@@ -6,3 +6,70 @@
   .contest-free-toplay{
     color: #ffc300;
   }
+
+  @import "src/variables.scss";
+
+.counter-container-new {
+  width: 150px;
+  margin: auto;
+  bottom: 15px;
+  left: 10%;
+}
+
+.grand-prize-details {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.grand-prize-image {
+  // background-color: aqua;
+  min-width: $grandPrizeLeftColumnMinWidth;
+  min-height: $grandPrizeTopRowMinHeight;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.grand-prize-text {
+  // background-color: green;
+  min-width: 100% - $grandPrizeLeftColumnMinWidth;
+  min-height: $grandPrizeTopRowMinHeight;
+  width: 100% - $grandPrizeLeftColumnMinWidth;
+  padding: 10px;
+  font-weight: 300;
+  line-height: 14px;
+}
+
+.grand-prize-counter {
+  // background-color: greenyellow;
+  min-width: $grandPrizeLeftColumnMinWidth;
+  min-height: $grandPrizeBottomRowMinHeight;
+  display: flex;
+}
+
+.grand-prize-user-details {
+  // background-color: brown;
+  min-width: 100% - $grandPrizeLeftColumnMinWidth;
+  min-height: $grandPrizeBottomRowMinHeight;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-chances {
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-chances span {
+  color: $theme-color;
+}
+
+.details-link {
+  font-weight: 300;
+  text-decoration: underline;
+}

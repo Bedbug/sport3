@@ -43,11 +43,10 @@ export class GrandPrizeDetailsComponent implements OnInit {
     this.prizeID = "5d2f080ff2a2969010a16204";
 
 
-    this.sportimoService.getGrandPrize()
+    this.sportimoService.getGrandPrizes()
+    .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(data => {
         if (data != null && data.length > 0) {
-
-
           this.prize = data.find(x => x._id == this.prizeID);          
           this.startCountdownTimer();
 

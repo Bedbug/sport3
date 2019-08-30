@@ -8,4 +8,9 @@ export class GrandPrize {
     endToDate: Date;
     created: Date;
     prizes: any[];
+    isMajor: boolean;
+    chances: number;
+    timer: any;
+    countDownEndDate: number;
+    countdown: any;
 }
