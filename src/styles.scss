@@ -23,6 +23,17 @@
   margin: 0;    
 }
 
+.page-wrapper .page-main-header .main-header-left .logo-wrapper .app-logo {
+  background-image: $theme-header-logo;
+  background-size: contain;
+  height: 30px;
+  width: 30px
+}
+
+.mobile-toggle{
+  color: $theme-header-text-color;
+}
+
 .modal-open .scorllable-area{
   overflow: hidden;
   -webkit-overflow-scrolling: auto;
@@ -98,6 +109,7 @@
   margin: 0 15px;
   font-size: 16px;
   font-weight: 700;
+  color: $theme-header-text-color;
 }
 
 .problem-info {

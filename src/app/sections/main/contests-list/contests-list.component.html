@@ -25,11 +25,11 @@
                     <div class="col p-0" translate>Minutes</div>
                   </div>
                 </div>
-                <div class="counter-body col-sm-12">
-                  <div class="row">
-                    <div class="col p-0">{{prize.countdown.days<10?"0"+prize.countdown.days:prize.countdown.days}}</div>
-                    <div class="col p-0">{{prize.countdown.hours<10?"0"+prize.countdown.hours:prize.countdown.hours}}</div>
-                    <div class="col p-0">{{prize.countdown.minutes<10?"0"+prize.countdown.minutes:prize.countdown.minutes}}</div>
+                <div class="counter-body col-sm-12" *ngIf="prize && prize.countdown">
+                  <div class="row">                    
+                    <div class="col p-0">{{prize.countdown?.days<10?"0"+prize.countdown.days:prize.countdown.days}}</div>
+                    <div class="col p-0">{{prize.countdown?.hours<10?"0"+prize.countdown.hours:prize.countdown.hours}}</div>
+                    <div class="col p-0">{{prize.countdown?.minutes<10?"0"+prize.countdown.minutes:prize.countdown.minutes}}</div>
                   </div>
                 </div>
               </div>

@@ -1,5 +1,13 @@
 $theme-color: #ffc300;
-$theme-header-color: #ffc300; // rgba(0, 0, 0, 0.7);
+// Pabetoop
+// $theme-header-color: #ffc300; // rgba(0, 0, 0, 0.7);
+// $theme-header-logo: url("~src/assets/images/sportimo/logo.jpg");
+// $theme-header-color: #333333;
+// Sportimo
+$theme-header-color: RGBA(10, 28, 45, 1.00);
+$theme-header-logo: url("~src/assets/images/sportimo/icon-logo.svg");
+$theme-header-text-color: white;
+
 $theme-navbar-color: rgba(34, 52, 77, 0.9);
 $theme-background-image: url("~src/assets/images/sportimo/background2.jpg");
 
