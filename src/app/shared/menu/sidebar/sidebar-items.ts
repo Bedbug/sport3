@@ -37,15 +37,15 @@ export const MENUITEMS: Menu[] = [
   {
     path: '/main/standings', title: 'Standings', icon: 'menu-icon icn-standings', type: 'link'
   },
-  {
-    path: '/main/settings', title: 'Settings', icon: 'menu-icon icn-gear', type: 'link'
-  },
+  // {
+  //   path: '/main/settings', title: 'Settings', icon: 'menu-icon icn-gear', type: 'link'
+  // },
   {
     title: 'About Sportimo', icon: 'menu-icon icn-logo', type: 'sub', children: [
-        { path: '/base/accordion', title: 'How to Play', type: 'link' },
-        { path: '/base/alert', title: 'Support', type: 'link' },
-        { path: '/base/dropdown', title: 'Terms & Conditions', type: 'link'},
-        { path: '/base/grid', title: 'Privacy Policy', type: 'link' }
+        // { path: '/base/accordion', title: 'How to Play', type: 'link' },
+        // { path: '/base/alert', title: 'Support', type: 'link' },
+        { path: 'http://sportimo.com/en/terms/', title: 'Terms & Conditions', type: 'extLink'},
+        { path: 'http://sportimo.com/en/privacy-cookies/', title: 'Privacy Policy', type: 'extLink' }
     ]
   },
   {
