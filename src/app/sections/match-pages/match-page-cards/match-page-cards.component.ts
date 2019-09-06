@@ -93,6 +93,19 @@ export class MatchPageCardsComponent implements OnInit {
     })
   }
 
+  get availableCardPlays(){
+    if(!this.liveMatch)
+    return "";
+    return this.liveMatch.matchData.settings.gameCards.totalcards - this.liveMatch.playedCards.length;
+  }
+
+  get availableSpecialPlays(){
+    if(!this.liveMatch)
+    return "";
+    var specialsUsed = this.liveMatch.playedCards.filter(x => x.isDoublePoints || x.isDoubleTime).length
+    return this.liveMatch.matchData.settings.gameCards.specials - specialsUsed;
+  }
+
   get wonCards() {
     if (this.liveMatch && this.liveMatch.playedCards)
       return this.liveMatch.playedCards.filter(x => x.status == 2 && x.pointsAwarded);

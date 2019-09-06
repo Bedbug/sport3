@@ -15,6 +15,7 @@ export class Match {
     home_score: number;
     home_team: Team;
     isTimeCounting: boolean;
+    settings: any;
     moderation: []
     name: string;
     season: string;
