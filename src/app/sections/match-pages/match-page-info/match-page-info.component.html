@@ -4,7 +4,19 @@
     <div class="card-body">
       <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
         The match hasn't started yet.
+        <br><br>
+        <button [disabled]="initiated" type="button" class="btn btn-sportimo" (click)="openModal(template)">{{initiated?"The match will begin shortly.":"Initiate Demo Play"}}</button>
+      <br><br>
+      <pre *ngIf="message" class="card card-block card-header">{{message}}</pre>
+      <ng-template #template>
+        <div class="modal-body text-center">
+          <p>Do you want to confirm?</p>
+          <button type="button" class="btn btn-sportimo" (click)="confirm()">Yes</button>
+          <button type="button" class="btn btn-light" (click)="decline()">No</button>
+        </div>
+      </ng-template>
       </div>
+      
       <ul>
         <li>
           <!-- *ngFor="let section of liveMatch?.matchData.timeline | reverser" -->
@@ -14,7 +26,7 @@
             <!-- ALL CARDS -->
             <li class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
               [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)">
-              
+
               <div *ngIf="event.type!='Substitution'" class="container">
                 <div class="row">
                   <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
@@ -26,7 +38,8 @@
                   <div class="col">
                     <p class="type">{{translate.instant(event.type)}}</p>
                     <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                      <div>{{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]|| event.players[0].name['en']:'')}}
+                      <div>
+                        {{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]|| event.players[0].name['en']:'')}}
                       </div>
                     </div>
                   </div>
@@ -48,10 +61,12 @@
                   <div class="col">
                     <p class="type">{{Utils.getTextByType(event.type)}}</p>
                     <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                      <div class="sub-icon icn-arrow-out"></div>{{event.players[0].name[translate.currentLang] || event.players[0].name['en']}}
+                      <div class="sub-icon icn-arrow-out"></div>
+                      {{event.players[0].name[translate.currentLang] || event.players[0].name['en']}}
                     </div>
                     <div *ngIf="event.players && event.players.length>1" [@fadein] class="player">
-                      <div class="sub-icon icn-arrow-in"></div>{{event.players[1].name[translate.currentLang] || event.players[1].name['en']}}
+                      <div class="sub-icon icn-arrow-in"></div>
+                      {{event.players[1].name[translate.currentLang] || event.players[1].name['en']}}
                     </div>
                   </div>
                   <div class="team-logo">

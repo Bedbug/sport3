@@ -24,6 +24,7 @@ import { NotyfToastError } from './components/custom-toast/notyf.error';
 import { TranslateHttpLoader } from './helpers/translate-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ToppickComponent } from './components/toppick/toppick.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -60,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    ModalModule.forRoot(),
    
   ],
   exports: [

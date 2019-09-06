@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { LiveMatch } from 'src/app/models/live-match';
 import { trigger, transition, style, animate, state } from '@angular/animations';
@@ -6,6 +6,7 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-match-page-info',
@@ -57,7 +58,11 @@ export class MatchPageInfoComponent implements OnInit {
   liveMatch: LiveMatch;
   ngUnsubscribe = new Subject();
 
-  constructor(private sportimoService: SportimoService,public translate:TranslateService) { }
+  constructor(
+    private sportimoService: SportimoService,
+    public translate:TranslateService,
+    private modalService: BsModalService
+    ) { }
 
   ngOnInit() {
     this.sportimoService.getCurrentLiveMatchData().pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
@@ -86,6 +91,29 @@ export class MatchPageInfoComponent implements OnInit {
   ngOnDestroy(){
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  modalRef: BsModalRef;
+  config = {
+    animated: true
+  };
+
+  initiated: boolean = false;
+ 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
+  }
+
+  confirm(){
+    console.log("YES");   
+    this.initiated = true; 
+    this.modalRef.hide();
+  }
+
+  decline(){
+    console.log("NO");
+    this.initiated = false;
+    this.modalRef.hide();
   }
 
 }
