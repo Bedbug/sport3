@@ -23,6 +23,7 @@
 .achievement-item img {
   height: 60px;
   width: 60px;
+  min-width: 60px;
   //   float: left;
   //   display: block;
   //   background-color: aqua;
@@ -32,6 +33,8 @@
   // float: left;
   padding: 5px;
   text-align: center;
+  height: 60px;
+  width: 60px;
 }
 
 .achievement-item .info {
