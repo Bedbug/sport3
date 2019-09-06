@@ -6,6 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ToppickService } from 'src/app/components/toppick/toppick.service';
+import { debug } from 'util';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class SidebarComponent implements OnInit {
 
   public menuItems: Menu[];
   public isLoggedIn: boolean = false;
+  public unread: number = 0;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -59,6 +61,8 @@ export class SidebarComponent implements OnInit {
     this.menuItems = MENUITEMS.filter(menuItem => menuItem);
     this.authenticationService.currentUser.subscribe(user=>{
       this.isLoggedIn = user!=null;
+      if(user)
+        this.unread = this.authenticationService.currentUserValue.unread;      
     });
   }
 

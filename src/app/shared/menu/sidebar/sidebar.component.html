@@ -1,4 +1,4 @@
-<ul class="sidebar-menu">
+<ul class="sidebar-menu">{{unread}}
     <!-- 1st level Menu -->
     <li *ngFor="let menuItem of menuItems" [class.disabled]="menuItem.authenticate && !isLoggedIn">
 
@@ -27,7 +27,7 @@
             routerLinkActive="active-option" class="sidebar-header" *ngIf="menuItem.type === 'link'">
             <i [class]="menuItem.icon"></i><span><span [translate]="menuItem.title"></span> <span
                     style="margin-left:10px" class="badge badge-{{menuItem.badgeType}} ml-3"
-                    *ngIf="menuItem.badgeType">{{menuItem.badgeValue}}</span></span>
+                    *ngIf="menuItem.badgeType"></span></span>
             <i class="fa fa-angle-right pull-right" *ngIf="menuItem.children"></i>
         </a>
          <!-- TopPicks -->
@@ -79,7 +79,7 @@
                     <span [translate]="childrenItem.title"></span><span
                         style="margin-left:10px;border-radius: 10px;background-color: #ff0000"
                         class="badge badge-{{childrenItem.badgeType}}"
-                        *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                        *ngIf="childrenItem.badgeType && this[childrenItem.badgeValue]>0">{{this[childrenItem.badgeValue]}}</span>
                     <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
                 <!-- External Link -->
