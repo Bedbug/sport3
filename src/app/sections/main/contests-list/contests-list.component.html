@@ -64,7 +64,7 @@
             <img src="{{contest.promoImage}}" alt="">
           </div>
           <div class="col-6 contest-details text-center">
-            <p class="contest-details-text">{{contest.infoText[translate.currentLang]}}</p>
+            <p class="contest-details-text" [innerHTML]="contest.infoText[translate.currentLang]"></p>
             <p *ngIf="contest.subscriptionPrice && contest.subscriptionPrice>0">{{contest.subscriptionPrice}}<i
                 class="coin"></i> <span translate>to Join</span></p>
             <p *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0" class='contest-free-toplay'> <span
