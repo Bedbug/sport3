@@ -59,6 +59,16 @@ export class SportimoService {
   }
 
   /*-----------------------------------------------------------------------------------
+    For Demo purposes ONLY
+  ----------------------------------------------------------------------------------- */
+  startDemo(){
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/start`, {})
+      .pipe(map(response => {        
+        return response;
+      }))
+  }  
+
+  /*-----------------------------------------------------------------------------------
     Grand Prize
   ----------------------------------------------------------------------------------- */
   getGrandPrizes() {

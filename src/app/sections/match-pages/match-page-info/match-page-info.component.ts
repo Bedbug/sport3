@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ErrorDisplayService } from 'src/app/services/error-display.service';
 
 @Component({
   selector: 'app-match-page-info',
@@ -41,10 +42,10 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
     trigger(
       'fadein', [
         transition(':enter', [
-          style({ opacity: 0}),
+          style({ opacity: 0 }),
           animate('300ms')
         ]),
-        state('*', style({ opacity: 1})),
+        state('*', style({ opacity: 1 })),
         // transition(':leave', [
         //   style({ opacity: 1}),
         //   animate('500ms', style({opacity: 0}))
@@ -60,9 +61,10 @@ export class MatchPageInfoComponent implements OnInit {
 
   constructor(
     private sportimoService: SportimoService,
-    public translate:TranslateService,
-    private modalService: BsModalService
-    ) { }
+    public translate: TranslateService,
+    private modalService: BsModalService,
+    private errorService: ErrorDisplayService
+  ) { }
 
   ngOnInit() {
     this.sportimoService.getCurrentLiveMatchData().pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
@@ -72,7 +74,7 @@ export class MatchPageInfoComponent implements OnInit {
     })
   }
 
-  isSegment(type:string){
+  isSegment(type: string) {
     return type.match(/Starts|Ends/i)
   }
   get timelineEvents() {
@@ -88,7 +90,7 @@ export class MatchPageInfoComponent implements OnInit {
     return this.liveMatch.matchData[team].logo;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
@@ -99,19 +101,30 @@ export class MatchPageInfoComponent implements OnInit {
   };
 
   initiated: boolean = false;
- 
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
   }
 
-  confirm(){
-    console.log("YES");   
-    this.initiated = true; 
+  startingDemo: boolean = false;
+  startedDemo: boolean = false;
+  confirm() {    
+    this.initiated = true;
     this.modalRef.hide();
+    this.startingDemo = true;
+    this.sportimoService.startDemo().subscribe(response => {  
+      this.startingDemo = false;
+      this.startedDemo = true;
+    },
+    error=>{      
+      if(error.status == 403)
+      this.errorService.showError(103);
+      this.startingDemo = false;
+      this.startedDemo = false;
+      })
   }
 
-  decline(){
-    console.log("NO");
+  decline() {    
     this.initiated = false;
     this.modalRef.hide();
   }

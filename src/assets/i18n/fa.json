@@ -47,6 +47,7 @@
 	"How to Play": "چگونه بازی کنید",
 	"Incorrect PIN code": "کد وارد شده نا معتبر است",
 	"Info": "اطلاعات",
+	"Initiate Demo Play": "",
 	"Instant Cards Played:": "کارت‌های آنی بازی‌شده",
 	"Interceptions": "جلوگیری",
 	"Join": "ورود",
@@ -123,6 +124,9 @@
 	"Substitution": "تعویض",
 	"Support": "پشتیبانی",
 	"Terms & Conditions": "شرایط و ضوابط",
+	"The match will begin shortly": {
+		"0": ""
+	},
 	"Top Assister": "بیشترین پاس گل",
 	"Top Picks": "لحظات منتخب",
 	"Top Scorer": "امتیازآورترین‌ها",
@@ -146,6 +150,9 @@
 	"Yesterday's Top Scorers": "",
 	"You can change your Username anytime from your Profile": "",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
+	"You need to have an active subscription in order to play cards": {
+		"0": ""
+	},
 	"You:": "شما:",
 	"Your chances:": "شانس‌های شما: ",
 	"activation time:": "زمان فعالسازی",
@@ -156,6 +163,7 @@
 		"100": "",
 		"101": "",
 		"102": "",
+		"103": "",
 		"10002": ""
 	},
 	"farsi": "فارسی",
