@@ -113,7 +113,7 @@
 	"Settings": "Settings",
 	"Shot_on_Goal": "Shot_on_Goal",
 	"Shots on Target": "Shots on Target",
-	"Sportimo Winners": "Pabetoop Winners",
+	"Sportimo Winners": "Sportimo Winners",
 	"Standings": "Standings",
 	"Starting lineup": "Starting lineup",
 	"Stats": "Stats",
@@ -124,9 +124,7 @@
 	"Substitution": "Substitution",
 	"Support": "Support",
 	"Terms & Conditions": "Terms & Conditions",
-	"The match will begin shortly": {
-		"0": ""
-	},
+	"The match will begin shortly": "The match will begin shorty. (30secs)",
 	"Top Assister": "Top Assister",
 	"Top Picks": "Top Picks",
 	"Top Scorer": "Top Scorer",
@@ -140,7 +138,7 @@
 	"Username/Email": "Username/Email",
 	"View Details": "View Details",
 	"Weight": "Weight",
-	"Welcome to Sportimo!": "Welcome to Pabetoop!",
+	"Welcome to Sportimo!": "Welcome to Sportimo!",
 	"Winners": "Winners",
 	"Winning": "Winning",
 	"Won": "Won",
