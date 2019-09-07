@@ -15,5 +15,6 @@
     overflow-y: auto;
     height: calc(100vh - 180px);
     height: calc((var(--vh, 1vh) * 100) - 180px);
+    -webkit-overflow-scrolling: touch;
 }
 
