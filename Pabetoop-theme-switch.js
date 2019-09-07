@@ -37,8 +37,14 @@ const options2 = {
     // Change Texts
 const options3 = {
     files: 'src/assets/i18n/en.json',
-    to: ['app-name": "pabetoop"'],
-    from: ['app-name": "SPORTIMO"'],
+    to: [
+      'app-name": "pabetoop"',
+    '"Welcome to Sportimo!": "Welcome to Pabetoop!"',
+    '"Sportimo Winners": "Pabetoop Winners"'],
+    from: [
+      'app-name": "SPORTIMO"',
+      '"Welcome to Sportimo!": "Welcome to Sportimo!"',
+    '"Sportimo Winners": "Sportimo Winners"'],
     countMatches: true,
   };
   
