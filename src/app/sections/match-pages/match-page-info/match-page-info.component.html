@@ -5,11 +5,10 @@
       <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
         The match hasn't started yet.
         <br><br>
-        <!-- <button  type="button" class="btn btn-sportimo" (click)="openModal(template)">{{initiated?"The match will begin shortly.":"Initiate Demo Play"}}</button> -->
         <button [disabled]="startedDemo" (click)="openModal(template)"
         class="btn btn-sportimo" style="width: 100%">
         <div class="loader-label" [class.btn-active]="startingDemo">
-          <span *ngIf="startedDemo" translate class="button-label">The match will begin shortly.</span>
+          <span *ngIf="startedDemo" translate class="button-label">The match will begin shortly</span>
           <span *ngIf="!startingDemo && !startedDemo" translate class="button-label">Initiate Demo Play</span>
           <div class="fadeInLoader">
             <span class="rotate dotted button-loader"></span>
