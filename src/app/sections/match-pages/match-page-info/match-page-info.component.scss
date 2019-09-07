@@ -1,5 +1,14 @@
+.scroll-area{
+    overflow-y: auto;
+    height: calc(100vh - 221px);
+    height: calc((var(--vh, 1vh) * 100) - 221px);
+    -webkit-overflow-scrolling: touch;
+}
+
+
 .timeline {
   margin-top: 10px;
+  margin-bottom: 0 !important;
 }
 
 .timeline .card-body {

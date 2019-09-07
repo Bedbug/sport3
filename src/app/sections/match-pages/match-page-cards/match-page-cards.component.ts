@@ -114,7 +114,7 @@ export class MatchPageCardsComponent implements OnInit {
 
   get lostCards() {
     if (this.liveMatch && this.liveMatch.playedCards)
-      return this.liveMatch.playedCards.filter(x => x.status == 2 && !x.pointsAwarded);
+      return this.liveMatch.playedCards.filter(x => x.status == 2);// && !x.pointsAwarded);
     return [];
   }
 

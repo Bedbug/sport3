@@ -110,7 +110,7 @@ export class CardComponent implements OnInit {
       }
     }
 
-    if (this.cardData.status == 1) {
+    if (this.cardData.status == 1 && this.cardData.cardType !="Overall") {
       // This card is activated
       const point_spread = this.cardData.startPoints - this.cardData.endPoints;
       const points_step = point_spread / (this.cardData.duration / 1000);

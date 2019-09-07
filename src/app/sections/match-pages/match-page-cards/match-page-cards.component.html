@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="col-4 text-center">
-          <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard || !subscribed" (click)="playCard()"
+          <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard || !subscribed || liveMatch?.matchData.completed" (click)="playCard()"
             class="btn btn-sportimo" style="width: 100%">
             <div class="loader-label" [class.btn-active]="isLoadingCards">
               <div translate class="button-label">Play</div>

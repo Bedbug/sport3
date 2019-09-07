@@ -1,4 +1,5 @@
-<div class="container" *ngIf="liveMatch" [@enterAnimation]>
+<div *ngIf="liveMatch" [@enterAnimation]>
+  <div class="scroll-area">
   <app-stats></app-stats>
   <div class="card timeline">
     <div class="card-body">
@@ -91,4 +92,5 @@
       </ul>
     </div>
   </div>
+</div>
 </div>
