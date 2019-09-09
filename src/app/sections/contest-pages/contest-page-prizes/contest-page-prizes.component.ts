@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { Contest } from 'src/app/models/contest';
 import { TranslateService } from '@ngx-translate/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contest-page-prizes',
@@ -12,6 +14,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class ContestPagePrizesComponent implements OnInit {
 
   selectedPrize: any = null;
+
+  ngUnsubscribe = new Subject();
 
   prizes: any[] = [
     // {
@@ -47,6 +51,7 @@ export class ContestPagePrizesComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.sportimoService.getContestQuickDetails(params.get("contestId"))
+      .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe(result => {
           this.contestDetails = result;
           if (this.contestDetails)
@@ -56,6 +61,11 @@ export class ContestPagePrizesComponent implements OnInit {
             );
         });
     })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   selectPrize(prize: any) {

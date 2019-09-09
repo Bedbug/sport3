@@ -18,6 +18,22 @@ try {
     console.error('Error occurred:', error);
   }
 
+    // Index -  Default language
+const options1 = {
+  files: ['src/assets/config/development.json','src/assets/config/production.json'],
+  to: ['"language": "fa"'],
+  from: ['"language": "en"'],
+  countMatches: true,
+};
+
+try {
+    const results = replace.sync(options1);
+    console.log('Replacement results:', results);
+  }
+  catch (error) {
+    console.error('Error occurred:', error);
+  }
+
   // Index -  Variables
 const options2 = {
     files: 'src/variables.scss',
