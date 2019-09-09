@@ -262,7 +262,7 @@ export class SportimoService {
  ----------------------------------------------------------------------------------- */
   getStream() {
     let observable = new Observable(observer => {
-      this.socket = io(this.Config.getApi('SOCKET'));
+      this.socket = io(this.Config.getApi('SOCKET'),{ transports: ['websocket', 'polling'] });
       this.socket.on('message', (data) => {
         observer.next(data);
         this.parseSocket(data);
