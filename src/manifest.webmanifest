@@ -1,8 +1,8 @@
 {
   "name": "sportimo",
   "short_name": "sportimo",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#0A1C2C",
+  "background_color": "#0A1C2C",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

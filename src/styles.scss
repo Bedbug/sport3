@@ -10,7 +10,6 @@
     Sportimo Styles
 
 ----------------------------------------------------------------------------------- */
-
 .body.modal-open{
   overflow:hidden;
 }
@@ -690,6 +689,7 @@ body .page-wrapper .page-main-header {
 
 .main-pages-scrollarea {
   height: calc(100vh - 144px);
+  height: calc((var(--vh, 1vh) * 100) - 144px );
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
