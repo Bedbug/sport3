@@ -15,7 +15,7 @@
           <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join For Free</span></div>
         </button>
         <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span
-            translate>Your chances:</span> {{contestDetails?.participations || 0}}</div>
+            translate>Your chances:</span> {{contestDetails?.user_chances || 0}}</div>
       </div>
     </div>
     <div class="sportimo-divider"></div>

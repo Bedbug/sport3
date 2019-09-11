@@ -135,7 +135,8 @@ export class SportimoService {
       return this.getContestQuickDetails(contestId);
     } else {
       return this.http.get<Contest>(
-        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournaments/${contestId}/user/${this.authenticationService.currentUserValue._id}`)
+        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)
+        ///user/${this.authenticationService.currentUserValue._id}
         .pipe(map(contest => {
           return contest;
         }));
