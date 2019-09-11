@@ -102,7 +102,9 @@ export class MatchPageCardsComponent implements OnInit {
   get availableSpecialPlays(){
     if(!this.liveMatch)
     return "";
-    var specialsUsed = this.liveMatch.playedCards.filter(x => x.isDoublePoints || x.isDoubleTime).length
+    var doublePointsUsed = this.liveMatch.playedCards.filter(x => x.isDoublePoints).length;
+    var doubleTimeUsed = this.liveMatch.playedCards.filter(x => x.isDoubleTime).length;
+    var specialsUsed = doublePointsUsed + doubleTimeUsed;
     return this.liveMatch.matchData.settings.gameCards.specials - specialsUsed;
   }
 
