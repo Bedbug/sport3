@@ -6,7 +6,7 @@ const replace = require('replace-in-file');
 const options = {
   files: 'src/index.html',
   from: /\.\/assets\/images\/sportimo\/logo-pabetoop.jpg/g,
-  to: './assets/images/sportimo/logo-sportimo.jpg',
+  to: './assets/icons/icon-72x72.png',
   countMatches: true,
 };
 

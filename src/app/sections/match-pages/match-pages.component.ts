@@ -129,14 +129,14 @@ export class MatchPagesComponent implements OnInit {
   openNotyf(title: string, message: string, error: boolean) {
     let options = this.toastr.toastrConfig;
     // options.timeOut = 0;
-    if (error)
-      options.toastComponent = NotyfToastError;
-    else
-      options.toastComponent = NotyfToastSuccess;
-    options.toastClass = 'notyf confirm';
+    // if (error)
+    //   options.toastComponent = NotyfToastError;
+    // else
+    //   options.toastComponent = NotyfToastSuccess;
+    // options.toastClass = 'notyf confirm';
     // opt.positionClass = 'notyf__wrapper';
     // this.options.newestOnTop = false;
-    this.toastr.show(title, message, options);
+    this.toastr.info(title, message, options);
   }
 
 }

@@ -32,6 +32,9 @@
           <div *ngFor="let contestMatch of present; let i = index">
             <app-matches-list-item [contestMatch]='contestMatch' isClickable=true [hasJoined]='hasJoined'></app-matches-list-item>
           </div>
+          <div *ngFor="let contestMatch of past; let i = index">
+            <app-matches-list-item [contestMatch]='contestMatch' isClickable=true [hasJoined]='hasJoined'></app-matches-list-item>
+          </div>
         </div>
       </div>
     </div>

@@ -59,8 +59,7 @@ export class MainPageMyteamsComponent implements OnInit {
         this.sportimoService.getFavoriteTeamData(teamId, competitionId).pipe(takeUntil(this.ngUnsubscribe)).subscribe(x => {
           this.isLoading = false;
           this.currentTeam = x;
-          this.isFavoriteTeam = true;
-          console.table(this.currentTeam);
+          this.isFavoriteTeam = true;        
         });
         return;
       }
@@ -81,10 +80,14 @@ export class MainPageMyteamsComponent implements OnInit {
 
   toggleFavorite() {
     this.isLoading = true;
+
+   
+
     this.authenticationService.updateFavorites(this.currentTeam.team, this.currentTeam.competition, this.isFavoriteTeam).subscribe(response => {
       this.isLoading = false;
       this.isFavoriteTeam = false;
       this.authenticationService.currentUserValue.favTeams.forEach(team => {
+        console.log(team);
         if (team._id == this.currentTeam._id)
           this.isFavoriteTeam = true;
       });

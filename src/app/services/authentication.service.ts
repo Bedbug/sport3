@@ -103,8 +103,11 @@ export class AuthenticationService {
     updateFavorites(team: Team, competition: any, remove: boolean) {
         let newTeamFavorites: any[] = this.currentUserSubject.value.favTeams;
 
+        console.log("Remove:"+ remove);
         if (remove) {
-            newTeamFavorites = newTeamFavorites.filter(favteam => favteam.team._id != team._id && favteam.competition._id != competition._id);
+            newTeamFavorites = newTeamFavorites.filter(favteam =>{                
+               return  favteam.team._id != team._id;//&& favteam.competition._id != competition._id;
+            });                       
         } else {
             newTeamFavorites.push({ team: team, competition: competition });
         }

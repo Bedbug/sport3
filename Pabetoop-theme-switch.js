@@ -5,7 +5,7 @@ const replace = require('replace-in-file');
 // Index -  Chagne Favicon
 const options = {
   files: 'src/index.html',
-  from: /\.\/assets\/images\/sportimo\/logo-sportimo.jpg/g,  
+  from: './assets/icons/icon-72x72.png',  
   to: './assets/images/sportimo/logo-pabetoop.jpg',
   countMatches: true,
 };
