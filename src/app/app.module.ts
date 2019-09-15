@@ -27,6 +27,9 @@ import { ToppickComponent } from './components/toppick/toppick.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+// import { OverlayModule } from '@angular/cdk/overlay';
+import { ToastModule } from './components/card-toast/toast.module';
+import { CardToastComponent } from './components/card-toast/card-toast.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -45,7 +48,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContestInfoHeaderComponent,
     SubscribeNoticeComponent,
     MatchPagesComponent,
-    ToppickComponent    
+    ToppickComponent,
+    CardToastComponent
+
   ],
   imports: [
     BrowserModule,
@@ -65,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     ModalModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-   
+    ToastModule.forRoot(),
   ],
   exports: [
     TranslateModule

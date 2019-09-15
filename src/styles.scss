@@ -5,6 +5,9 @@
 @import "./inputrange.scss";
 @import "notyf.css";
 
+@import "~@angular/cdk/overlay";
+@include cdk-overlay();
+
 /*-----------------------------------------------------------------------------------
 
     Sportimo Styles
