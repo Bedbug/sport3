@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CardToastService } from 'src/app/components/card-toast/card-toast.service';
 import { debug } from 'util';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-match-pages',
@@ -33,7 +34,7 @@ import { debug } from 'util';
       ])]
 })
 export class MatchPagesComponent implements OnInit {
-
+  Utils: SportimoUtils = new SportimoUtils();
   contestMatchId: string;
   contestId: string;
   liveMatch: LiveMatch;
@@ -80,7 +81,7 @@ export class MatchPagesComponent implements OnInit {
               if (event.type == "Event_added") {
                 // this.openNotyf("", event.data.type, false);                
                 this.cardToastService.Show({
-                  icon: 'icn-'+event.data.type.toLowerCase(),
+                  icon: this.Utils.getIconByType(event.data.type),
                   time: event.data.time+"'",
                   event: this.translate.instant(event.data.type),
                   teamKit: this.liveMatch.matchData[event.data.team].logo

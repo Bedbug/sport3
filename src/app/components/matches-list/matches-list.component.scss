@@ -40,6 +40,13 @@
   animation-duration: 0.5s;
 }
 
+.matches-list-scrollarea{
+  overflow-y: auto;
+  height: calc(100vh - 240px);
+  height: calc((var(--vh, 1vh) * 100) - 240px);
+  -webkit-overflow-scrolling: touch;
+}
+
 
 
 
