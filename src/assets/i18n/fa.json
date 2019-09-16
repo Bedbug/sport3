@@ -48,6 +48,7 @@
 	"Incorrect PIN code": "کد وارد شده نا معتبر است",
 	"Info": "اطلاعات",
 	"Initiate Demo Play": "",
+	"Initiate Disclaimer": "",
 	"Instant Cards Played:": "کارت‌های آنی بازی‌شده",
 	"Interceptions": "جلوگیری",
 	"Join": "ورود",
@@ -157,11 +158,15 @@
 	"app-name": "SPORTIMO",
 	"correct": "صحیح",
 	"english": "english",
+	"error": {
+		"0": ""
+	},
 	"errors": {
 		"100": "",
 		"101": "",
 		"102": "",
 		"103": "",
+		"104": "",
 		"10002": ""
 	},
 	"farsi": "فارسی",

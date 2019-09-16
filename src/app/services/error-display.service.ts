@@ -31,7 +31,7 @@ export class ErrorDisplayService {
     _('errors.101'); // "You must be logged in in order to join a contest."
     _('errors.102'); // "You must have joined the contest in order to view matches"
     _('errors.103'); // "This is not a scheduled Demo match"
-    
+    _('errors.104');
     _('errors.10002'); // "The card has already closed."
 
   }
