@@ -18,6 +18,8 @@
 }
 
 .league-item {
+  display: flex;
+  flex-wrap: nowrap;
   height: 60px;
   background: rgba(0, 0, 0, 0.61);
   margin-bottom: 15px;
@@ -32,12 +34,12 @@
 }
 
 .league-item .img {
-  float: left;
+  // float: left;
 }
 
 .league-item .info {
   padding: 5px 15px;
-  margin-left: 60px;
+  // margin-left: 60px;
 }
 .league-item .info .title {
   font-family: Roboto;
