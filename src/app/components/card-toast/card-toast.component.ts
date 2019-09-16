@@ -22,7 +22,7 @@ export class CardToastComponent implements OnInit {
   constructor(
     readonly data: ToastData,
     readonly ref: ToastRef,
-    @Inject(TOAST_CONFIG_TOKEN) private toastConfig: ToastConfig
+    @Inject(TOAST_CONFIG_TOKEN) public toastConfig: ToastConfig
   ) { }
 
   ngOnInit() {
