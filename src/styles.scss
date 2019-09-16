@@ -986,7 +986,8 @@ body .page-wrapper .page-main-header {
 
 .modal-card-body {
   width: 100%;
-  height: 550px;
+  // height: 550px;
+  padding-bottom: 15px;
   color: #ffffff;
   background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
 }
