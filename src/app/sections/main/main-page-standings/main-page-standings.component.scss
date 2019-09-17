@@ -42,14 +42,14 @@
   // margin-left: 60px;
 }
 .league-item .info .title {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 18px;
   color: #ffc531;
 }
 
 .league-item .info .text {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 14px;
   color: #ffffff;
 }
@@ -79,7 +79,7 @@
   display: table-row;
   height: 36px;
   color: #ffffff;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 400;
   font-size: 16px;
 }

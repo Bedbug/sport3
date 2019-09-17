@@ -1,3 +1,4 @@
+@import "./variables.scss";
 
 /*-----------------------------------------------------------------------------------
 
@@ -80,7 +81,7 @@ body {
   background-color: rgba(246, 246, 246, 0.6);
   font-size: 14px;
   overflow-x: hidden;
-  font-family: Roboto, sans-serif;;
+  font-family: $theme-font, sans-serif;;
   color: #333333;
 }
 
@@ -9487,7 +9488,7 @@ ul .submenu input {
 }
 
 .user-profile .hovercard .cardheader {
-  background: url(../images/bg-profile.png);
+  background: url(./assets/images/bg-profile.png);
   background-size: cover;
   background-position: 10%;
   height: 470px;
@@ -9741,7 +9742,7 @@ ul .submenu input {
 }
 
 .authentication-main .auth-innerleft {
-  background: url(../images/auth-layer.png), #fff;
+  background: url(./assets/images/auth-layer.png), #fff;
   -webkit-box-shadow: 1px 1px 1px 0 #eeeeee;
   box-shadow: 1px 1px 1px 0 #eeeeee;
   background-repeat: no-repeat;
@@ -9799,7 +9800,7 @@ ul .submenu input {
 }
 
 .auth-bg {
-  background: url(../images/auth-bg-1.jpg);
+  background: url(./assets/images/auth-bg-1.jpg);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9852,7 +9853,7 @@ ul .submenu input {
 .auth-bg-effect .first-effect {
   width: 250px;
   height: 250px;
-  background: url(../images/flower/01.png) no-repeat;
+  background: url(./assets/images/flower/01.png) no-repeat;
   background-size: cover;
   -webkit-animation: rotate-effect 40s infinite linear;
   animation: rotate-effect 40s infinite linear;
@@ -9863,7 +9864,7 @@ ul .submenu input {
 .auth-bg-effect .second-effect {
   width: 220px;
   height: 220px;
-  background: url(../images/flower/02.png) no-repeat;
+  background: url(./assets/images/flower/02.png) no-repeat;
   background-size: cover;
   -webkit-animation: rotate-effect 40s infinite linear;
   animation: rotate-effect 40s infinite linear;
@@ -9875,7 +9876,7 @@ ul .submenu input {
 .auth-bg-effect .third-effect {
   width: 200px;
   height: 200px;
-  background: url(../images/flower/03.png) no-repeat;
+  background: url(./assets/images/flower/03.png) no-repeat;
   background-size: cover;
   -webkit-animation: rotate-effect 40s infinite linear;
   animation: rotate-effect 40s infinite linear;
@@ -9887,7 +9888,7 @@ ul .submenu input {
 .auth-bg-effect .fourth-effect {
   width: 200px;
   height: 200px;
-  background: url(../images/flower/04.png) no-repeat;
+  background: url(./assets/images/flower/04.png) no-repeat;
   background-size: cover;
   -webkit-animation: rotate-effect 40s infinite linear;
   animation: rotate-effect 40s infinite linear;
@@ -10072,7 +10073,7 @@ ul .submenu input {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px 10px;
-  background-image: url("../images/dashboard/search.png");
+  background-image: url("./assets/images/dashboard/search.png");
   background-repeat: no-repeat;
   background-position: 95%;
 }
@@ -10100,7 +10101,7 @@ ul .submenu input {
 ==========================**/
 
 .comingsoon-bgimg {
-  background: url(../images/coming-soon-bg.jpg);
+  background: url(./assets/images/coming-soon-bg.jpg);
   background-position: bottom;
   background-size: cover;
 }
@@ -11084,12 +11085,12 @@ td.highlight {
 }
 
 td.details-control {
-  background: url("../images/details_open.png") no-repeat center center;
+  background: url("./assets/images/details_open.png") no-repeat center center;
   cursor: pointer;
 }
 
 tr.shown td.details-control {
-  background: url("../images/details_close.png") no-repeat center center;
+  background: url("./assets/images/details_close.png") no-repeat center center;
 }
 
 .dataTables_scroll~.dataTables_paginate {
@@ -12024,7 +12025,7 @@ table.dataTable.display tbody tr.odd>.sorting_1 {
 }
 
 .landing-main .landing-home {
-  background-image: url(../images/landing/home/main_bg.jpg);
+  background-image: url(./assets/images/landing/home/main_bg.jpg);
   background-position: right bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12219,7 +12220,7 @@ table.dataTable.display tbody tr.odd>.sorting_1 {
 }
 
 .landing-main .advance-bg {
-  background-image: url(../images/landing/background.jpg);
+  background-image: url(./assets/images/landing/background.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -12317,7 +12318,7 @@ table.dataTable.display tbody tr.odd>.sorting_1 {
 }
 
 .landing-main .advance-widget .widgets-section {
-  background-image: url(../images/landing/widgets-bck.png);
+  background-image: url(./assets/images/landing/widgets-bck.png);
   background-size: cover;
   height: 600px;
   animation: widget-animation 110s linear infinite reverse;
@@ -12375,7 +12376,7 @@ table.dataTable.display tbody tr.odd>.sorting_1 {
 }
 
 .landing-main .exclusive-features {
-  background-image: url("../images/landing/home/pattern.jpg");
+  background-image: url("./assets/images/landing/home/pattern.jpg");
 }
 
 .landing-main .exclusive-features .container .row:last-child {
@@ -16544,7 +16545,7 @@ ngb-datepicker {
 
 .whether-widget .whether-widget-top {
   background-color: #ab8ce4;
-  background-image: url(../images/dashboard/whether.png);
+  background-image: url(./assets/images/dashboard/whether.png);
   -webkit-animation: animate 10s linear 0s normal none infinite;
   animation: animate 10s linear 0s normal none infinite;
   background-size: cover;
@@ -17230,7 +17231,7 @@ ngb-datepicker {
 }
 
 .weather-widget-two {
-  background: url(../images/whether-widgetbg.jpg);
+  background: url(./assets/images/whether-widgetbg.jpg);
   height: 352px;
   border-radius: 4px;
   background-repeat: no-repeat;
@@ -17268,7 +17269,7 @@ ngb-datepicker {
 }
 
 .mobile-clock-widget {
-  background: url(../images/mobile-clock-wallpaper.jpg);
+  background: url(./assets/images/mobile-clock-wallpaper.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 352px;
@@ -17294,7 +17295,7 @@ ngb-datepicker {
   height: 175px;
   width: 175px;
   display: block;
-  background: url(../images/clock-face.png) 5% center no-repeat;
+  background: url(./assets/images/clock-face.png) 5% center no-repeat;
 }
 
 .mobile-clock-widget .date {
@@ -17302,17 +17303,17 @@ ngb-datepicker {
 }
 
 .mobile-clock-widget .sec {
-  background: url(../images/sec.svg);
+  background: url(./assets/images/sec.svg);
   z-index: 3;
 }
 
 .mobile-clock-widget .min {
-  background: url(../images/min.svg);
+  background: url(./assets/images/min.svg);
   z-index: 2;
 }
 
 .mobile-clock-widget .hour {
-  background: url(../images/hour.svg);
+  background: url(./assets/images/hour.svg);
   z-index: 1;
 }
 
@@ -17513,7 +17514,7 @@ ngb-datepicker {
 }
 
 .calender-widget .cal-img {
-  background: url(../images/calender-bg.png);
+  background: url(./assets/images/calender-bg.png);
   background-size: cover;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -20489,7 +20490,7 @@ body[main-theme-layout="main-theme-layout-2"] .page-wrapper .comingsoon .comings
 }
 
 body[main-theme-layout="main-theme-layout-2"] .page-wrapper .authentication-main .auth-innerleft {
-  background: url(../images/auth-layer.png), rgba(54, 64, 74, 0.9);
+  background: url(./assets/images/auth-layer.png), rgba(54, 64, 74, 0.9);
   background-blend-mode: overlay;
 }
 
@@ -23238,7 +23239,7 @@ body[main-theme-layout="main-theme-layout-3"] .page-wrapper .comingsoon .comings
 }
 
 body[main-theme-layout="main-theme-layout-3"] .page-wrapper .authentication-main .auth-innerleft {
-  background: url(../images/auth-layer.png), rgba(54, 64, 74, 0.9);
+  background: url(./assets/images/auth-layer.png), rgba(54, 64, 74, 0.9);
   background-blend-mode: overlay;
 }
 
@@ -24165,7 +24166,7 @@ body[main-theme-layout="main-theme-layout-3"] .my-gallery.gallery-with-descripti
 body[main-theme-layout="main-theme-layout-4"] {
   color: rgba(255, 255, 255, 0.7);
   background-color: #303841;
-  background: url("../images/background.png") no-repeat center center fixed;
+  background: url("./assets/images/background.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -26082,7 +26083,7 @@ body[main-theme-layout="main-theme-layout-4"] .page-wrapper .comingsoon .comings
 }
 
 body[main-theme-layout="main-theme-layout-4"] .page-wrapper .authentication-main .auth-innerleft {
-  background: url(../images/auth-layer.png), rgba(54, 64, 74, 0.9);
+  background: url(./assets/images/auth-layer.png), rgba(54, 64, 74, 0.9);
   background-blend-mode: overlay;
 }
 
@@ -27143,7 +27144,7 @@ body .page-sidebar[navigation-layout="right-side-menu"] .sidebar-menu>li>a i:las
 }
 
 body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg {
-  background-image: url("../images/sidebar-bg.jpg");
+  background-image: url("./assets/images/sidebar-bg.jpg");
 }
 
 body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-user {
@@ -31192,7 +31193,7 @@ body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-use
   border: none;
   border-radius: 20px;
   background-color: #9173ef54;
-  background-image: url(../images/dashboard/search-white.png);
+  background-image: url(./assets/images/dashboard/search-white.png);
 }
 
 .modern-layout .header .page-main-header .modern-header .search-form input:-ms-input-placeholder {
@@ -32036,7 +32037,7 @@ body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-use
   position: relative;
   background-blend-mode: overlay;
   background-attachment: fixed;
-  background-image: url("../images/maintence-bg.jpg");
+  background-image: url("./assets/images/maintence-bg.jpg");
 }
 
 .fixed-nav-layout .container {
@@ -32337,7 +32338,7 @@ body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-use
     width: 56%;
   }
   .fixed-nav-layout .page-main-header .nav-right>ul .search-form .mobile-search {
-    background-image: url(../images/dashboard/search.png);
+    background-image: url(./assets/images/dashboard/search.png);
     height: 15px;
     width: 15px;
     display: inline-block;
@@ -33210,7 +33211,7 @@ body .page-wrapper .page-body-wrapper .page-sidebar.native-image-bg .sidebar-use
 
 .vertical-layout .search-form input {
   border-radius: 20px;
-  background-image: url(../images/dashboard/search.png);
+  background-image: url(./assets/images/dashboard/search.png);
   background-color: #fff;
   color: #000;
   width: 275px;

@@ -60,7 +60,7 @@
 
 .title {
   color: $theme-color;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0;
@@ -68,7 +68,7 @@
 
 .date {
   color: $theme-color;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 12px;
   letter-spacing: 0;
 }
@@ -76,7 +76,7 @@
 .text {
   margin-top: 5px;
   color: #ffffff;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 12px;
   letter-spacing: 0;
 }

@@ -160,7 +160,7 @@ body {
 .btn-sportimo {
   background: $theme-color;
   padding: 5px 20px;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 600;
   min-width: 74px;
 }
@@ -999,6 +999,19 @@ body .page-wrapper .page-main-header {
   margin-right: 15px;
 }
 
+@font-face {
+  font-family: 'IranSans';
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/IranSans/IranSans.ttf"); 
+}
+
+@font-face {
+  font-family: 'IranSans';
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/IranSans/IRANSans_Bold.ttf");
+}
 
 /* cyrillic-ext */
 @font-face {
