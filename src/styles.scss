@@ -1003,14 +1003,14 @@ body .page-wrapper .page-main-header {
   font-family: 'IranSans';
   font-style: normal;
   font-weight: 400;
-  src: url(./assets/fonts/iran-sans/IranSans.ttf); 
+  src: url('./assets/fonts/iran-sans/IRANSans.ttf'); 
 }
 
 @font-face {
   font-family: 'IranSans';
   font-style: normal;
   font-weight: 700;
-  src: url(./assets/fonts/iran-sans/IRANSans_Bold.ttf);
+  src: url('./assets/fonts/iran-sans/IRANSans_Bold.ttf');
 }
 
 /* cyrillic-ext */
@@ -1018,7 +1018,7 @@ body .page-wrapper .page-main-header {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  src: url(./assets/fonts/roboto/Roboto-Regular.ttf);
+  src: url('./assets/fonts/roboto/Roboto-Regular.ttf');
   // src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
   // unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -1027,7 +1027,7 @@ body .page-wrapper .page-main-header {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
-  src: url(./assets/fonts/roboto/Roboto-Bold.ttf);
+  src: url('./assets/fonts/roboto/Roboto-Bold.ttf');
   // src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
   // unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
