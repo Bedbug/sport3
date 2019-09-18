@@ -79,7 +79,10 @@ export class MatchPagesComponent implements OnInit {
 
             if (!isInfo && event) {             
               if (event.type == "Event_added") {
-                // this.openNotyf("", event.data.type, false);                
+                // this.openNotyf("", event.data.type, false);  
+                // console.log(this.liveMatch.matchData);
+                //               console.log(event.data.team);
+                              
                 this.cardToastService.Show({
                   icon: this.Utils.getIconByType(event.data.type),
                   time: event.data.time+"'",

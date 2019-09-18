@@ -38,14 +38,15 @@ export class CardToastService {
     return this.overlay.position()
       .global()
       .top(this.getPosition())
-      .right(this.toastConfig.position.right + 'px');
+      .right((this.toastConfig.position?this.toastConfig.position.right:15) + 'px');
   }
 
   getPosition() {
+
     const lastToastIsVisible = this.lastToast && this.lastToast.isVisible();
     const position = lastToastIsVisible 
       ? this.lastToast.getPosition().bottom
-      : this.toastConfig.position.top;
+      : this.toastConfig.position?this.toastConfig.position.top:55;
     return position + 'px';
   }
 
