@@ -81,10 +81,10 @@ export class MatchesListComponent implements OnInit {
   }
 
   get upcomingMatches(){
-    const today = moment().utc().toDate();
+    // const today = moment().utc().toDate();
     
     return this.present.filter(x=>{
-      return moment(x.match.start).utc().toDate() > today;
+      return  x.match.state == 0; //moment(x.match.start).utc().toDate() > today &&
     });
   }
 

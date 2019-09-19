@@ -8,6 +8,7 @@ import { defaultToastConfig, TOAST_CONFIG_TOKEN } from './toast-config';
   declarations: [],
   entryComponents: [CardToastComponent]
 })
+
 export class ToastModule {
   public static forRoot(config = defaultToastConfig): ModuleWithProviders {
         return {
