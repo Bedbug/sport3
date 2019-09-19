@@ -38,7 +38,7 @@ import * as io from 'socket.io-client';
 export class SportimoService {
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
-  private cachedContests: BehaviorSubject<Contest[]>;
+  public cachedContests: BehaviorSubject<Contest[]>;
   private grandPrizes: BehaviorSubject<GrandPrize[]>
   private currentMatchId;
   private currentContestId;

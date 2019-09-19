@@ -94,8 +94,7 @@ export class ContestInfoHeaderComponent implements OnInit {
   requestJoin() {
 
     this.isJoinRequesting = true;
-    this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => {
-      console.log(x);
+    this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => {      
       this.authenticationService.pay(this.contestDetails.subscriptionPrice);
       this.contestDetails.isSubscribed = true;
       this.isJoinRequesting = false;

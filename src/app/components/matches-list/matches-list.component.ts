@@ -56,6 +56,11 @@ export class MatchesListComponent implements OnInit {
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(result => {
         this.hasJoined = result.isSubscribed;
+
+        this.sportimoService.cachedContests.pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((allContests)=>{
+          this.hasJoined = allContests.find(x => x._id == this.contestId).isSubscribed;
+        });          
       });
     });
 
