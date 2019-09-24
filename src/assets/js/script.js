@@ -19,6 +19,14 @@ $(document).ready(function(){
     // });
 });
 
+let defferedPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  console.log("beforeinstallprompt");
+  e.prompt();
+});
+
 /*----------------------------------------
      Mobile Sidebar Menu
   ----------------------------------------*/
