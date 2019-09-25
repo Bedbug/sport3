@@ -32,7 +32,7 @@
               "src/app/scss/uikit/components/_import.scss",
               "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
               "src/assets/css/ion.rangeSlider.skinHTML5.css",
-              "node_modules/font-awesome/scss/font-awesome.scss",
+             
               "src/assets/app.scss",
               "src/style_base.scss",
               "src/assets/css/responsive.css",
