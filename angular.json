@@ -110,7 +110,11 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
               "src/manifest.webmanifest"
             ]
           }
