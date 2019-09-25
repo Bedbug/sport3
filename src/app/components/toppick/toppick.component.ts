@@ -69,6 +69,7 @@ export class ToppickComponent implements OnInit {
   }
 
   checkDailyDisplay() {
+    localStorage.removeItem("last_picks_check");
     const lastDayViewed = localStorage.getItem("last_picks_check");
     const todayDate = new Date().getDate().toString();
     if(lastDayViewed != todayDate){
