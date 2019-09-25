@@ -6,6 +6,7 @@
 	"All": "همه",
 	"Already a member?": "عضو هستید؟ ",
 	"Assists": "پاس گل",
+	"Away Team": "",
 	"Balance": "اعتبار",
 	"Born": "متولد",
 	"Both passwords required": "هر دو گذرواژه الزامی است",
@@ -43,6 +44,7 @@
 	"Grand prize": "جایزه‌ی اصلی",
 	"Headers": "سرتیتر",
 	"Height": "قد",
+	"Home Team": "",
 	"Hours": "ساعت‌ها",
 	"How to Play": "چگونه بازی کنید",
 	"Incorrect PIN code": "کد وارد شده نا معتبر است",
@@ -158,9 +160,6 @@
 	"app-name": "SPORTIMO",
 	"correct": "صحیح",
 	"english": "english",
-	"error": {
-		"0": ""
-	},
 	"errors": {
 		"100": "",
 		"101": "",

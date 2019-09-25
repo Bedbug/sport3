@@ -1,11 +1,12 @@
 {
-	"90'": "90'",
+	"90'": "Play 90'",
 	"About Sportimo": "About",
 	"Achievements": "Achievements",
 	"Add to favorites": "Add to My Teams",
 	"All": "All",
 	"Already a member?": "Already a member? ",
 	"Assists": "Assists",
+	"Away Team": "Away Team",
 	"Balance": "Balance",
 	"Born": "Born",
 	"Both passwords required": "Both passwords required",
@@ -43,6 +44,7 @@
 	"Grand prize": "Grand prize",
 	"Headers": "Headers",
 	"Height": "Height",
+	"Home Team": "Home Team",
 	"Hours": "Hours",
 	"How to Play": "How to Play",
 	"Incorrect PIN code": "Incorrect PIN code",
@@ -60,7 +62,7 @@
 	"Last 5 games": "Last 5 games",
 	"Last Match": "Last Match",
 	"Leaders": "Leaders",
-	"Live": "Live",
+	"Live": "Play Live",
 	"Log in here": "Log in here",
 	"Login": "Login",
 	"Logout": "Logout",
@@ -158,9 +160,6 @@
 	"app-name": "SPORTIMO",
 	"correct": "correct",
 	"english": "english",
-	"error": {
-		"0": ""
-	},
 	"errors": {
 		"100": "You must be logged in to access this page.",
 		"101": "You must be logged in in order to join a contest",

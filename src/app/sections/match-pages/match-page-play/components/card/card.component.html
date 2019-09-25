@@ -1,0 +1,36 @@
+<!-- <div *ngIf="cardData.status == 0 && cardData.cardType!='Overall'" class="activation-info">Card will be activated at 67'</div> -->
+<div *ngIf="cardData" style="max-height: 79px" [class.lost]="cardData.status == 2 && cardData.pointsAwarded == 0" [class.playing]="cardData.status == 1 || cardData.status == 0" [class.won]="cardData.status == 2 && cardData.pointsAwarded > 0">
+  <div class="gamecard" [class.not-active]="cardData.status == 0 && cardData.cardType!='Overall'">
+    <div class="details">
+      <div class="icon">
+        <div class="card-icon" [ngClass]="sportUtils.getIconBySprite(cardData?.image.sprite)"></div>
+      </div>
+      <div class="texts">
+        <p class="event-name">{{cardData?.title[translate.currentLang]}}</p>
+        <p class="event-team">{{getFormatedOption(cardData.text[translate.currentLang])}}</p>
+        <p *ngIf="cardData.status > 0" class="event-time"><span translate>activation time:</span> {{cardData.activationTime | date:"hh:mm:ss"}}</p>
+      </div>
+    </div>
+    <div class="info">
+      <div class="points"><strong>{{currentPoints || cardData.pointsAwarded || cardData.startPoints}}</strong> pts
+      </div>
+      <div class="powers">
+        <div class="double-points" [class.active]="cardData.isDoublePoints" [class.isClickable]="!cardData.isDoublePoints || isPlayingSpecial" (click)="playSpecial('doublePoints')">x2</div>
+        <div class="double-time" [class.active]="cardData.isDoubleTime" [class.isClickable]="!cardData.isDoubleTime || isPlayingSpecial" (click)="playSpecial('doubleTime')">
+          <div class="double-time-icon">
+            <div class="power-icon icn-stopwatch"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <ngb-progressbar type="card-timer" [value]="75" height="3px"></ngb-progressbar> -->
+  <div *ngIf="cardTimerScale && cardData?.status == 1" class="progress">
+    <div class="progress-bar" role="progressbar" [class]="cardTimerScale<20?'bg-card-timer-red':'bg-card-timer-green'" [ngStyle]="{'width': cardTimerScale +'%'}" aria-valuenow="25" aria-valuemin="0"
+      aria-valuemax="100"></div>
+  </div>
+  <div *ngIf="activationScale" class="progress">
+    <div class="progress-bar bg-card-activation-timer" role="progressbar" [ngStyle]="{'width': activationScale +'%'}" aria-valuenow="25" aria-valuemin="0"
+      aria-valuemax="100"></div>
+  </div>
+</div>

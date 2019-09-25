@@ -10,6 +10,7 @@ import { CardComponent } from './match-page-cards/components/card/card.component
 import { ReversePipe } from 'src/app/pipes/reverse.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonRangeSliderModule } from "ng2-ion-range-slider";
+import { MatchPagePlayComponent } from './match-page-play/match-page-play.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { IonRangeSliderModule } from "ng2-ion-range-slider";
     MatchPageInfoComponent,
     MatchPageCardsComponent,
     MatchPageLeadersComponent,
+    MatchPagePlayComponent,
     StatsComponent,
     CardComponent,
     // PlaycardComponent,
