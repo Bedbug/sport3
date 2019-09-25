@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { Contest } from '../models/contest';
-import { Observable, BehaviorSubject, timer } from 'rxjs';
+import { Observable, BehaviorSubject, timer, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { GrandPrize } from '../models/grand-prize';
 import { ContestMatch } from '../models/contest-match';
@@ -434,7 +434,9 @@ export class SportimoService {
      Achievements
    ----------------------------------------------------------------------------------- */
   getAchievements() {
+    if(this.authenticationService.currentUserValue)
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/stats`);
+    else return  of(null);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/users/${this.authenticationService.currentUserValue._id}/stats`);
   }
 
