@@ -19,10 +19,10 @@ $(document).ready(function(){
     // });
 });
 
-let defferedPrompt;
+// let defferedPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
   // Stash the event so it can be triggered later.
-  deferredPrompt = e;
+  // defferedPrompt = e;
   console.log("beforeinstallprompt");
   e.prompt();
 });
