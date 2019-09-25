@@ -354,6 +354,21 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+
+.icn-mycards {
+  background: url("~src/assets/images/sportimo/icon-cardsstack.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-mycards {
+  background: url("~src/assets/images/sportimo/icon-cardsstack.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 .icn-leaders {
   background: url("~src/assets/images/sportimo/icon-leaders.svg") no-repeat center center;
   display: block;

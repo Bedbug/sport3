@@ -44,7 +44,7 @@
         <div class="icn-cards"></div><span translate>Play</span>
       </a>
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']" routerLinkActive="active" href="#">
-        <div class="icn-cards"></div><span translate>My Cards</span>
+        <div class="icn-mycards"></div><span translate>My Cards</span>
       </a>
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">
         <div class="icn-leaders"></div><span translate>Leaders</span>
