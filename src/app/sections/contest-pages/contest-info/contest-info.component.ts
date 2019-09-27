@@ -25,7 +25,7 @@ export class ContestInfoComponent implements OnInit {
 
   // private langIsRTL: boolean = false;
   ngUnsubscribe = new Subject();
-  contestDetails: Contest;
+  contestDetails: any;
 
   ngOnInit() {
     // console.log(this.data);
