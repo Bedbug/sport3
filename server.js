@@ -10,6 +10,7 @@ app.use(compression());
 
 const _environment = process.env.ENVIRONMENT;
 
+console.log(_environment);
 
 if (_environment === 'production') {    
     app.enable('trust proxy');
