@@ -1,25 +1,19 @@
-<div _ngcontent-kee-c10="" class="background"></div>
+<!-- <div _ngcontent-kee-c10="" class="background"></div> -->
 <div class="row" style="position: relative">
   <div class="card" style="margin-bottom: 0; width: 100%">
     <div class="card-body">
       <div class="row">
-        <div class="col-7 font-weight-bold text-white isClickable">
+        <div class="prize-top-header">
+        <div class="prize-name font-weight-bold text-white isClickable">
           {{prize?.titleText[translate.currentLang]||'_Name Missing'}}
           <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
         </div>
-        <div class="col" style="min-height:33px; line-height: 33px">
-          <!-- <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
-            <span translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></button> -->
-          <!-- <button (click)="joinContest()" [disabled]="joiningContest"
-            *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
-            <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
-                translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></div>
-            <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join
-                For Free</span></div>
-          </button> -->
-          <div class="text-right text-white user-chances"> <span translate>Your chances:</span>
+        <div class="chances" >     
+          <div class="text-white user-chances"> <span translate>Your chances:</span>
             {{userChances || 0}}</div>
         </div>
+      </div>
+        <div (click)="close()" class="close-button">X</div>
       </div>
       <div class="sportimo-divider"></div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { GrandPrize } from 'src/app/models/grand-prize';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -6,6 +6,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
+import { FILE_PREVIEW_DIALOG_DATA } from '../prize-view-overlay/prize-preview-overlay.tokens';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-grand-prize-details',
@@ -33,15 +36,19 @@ export class GrandPrizeDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private sportimoService: SportimoService,
     private authenticationService: AuthenticationService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public dialogRef: FilePreviewOverlayRef,
+    @Inject(FILE_PREVIEW_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit() {
     this.prizeID = this.route.snapshot.params['prizeid']
+    console.log(this.data);
+    if(this.data){
+    this.prizeID = this.data;
     
-    if(this.prizeID == "1")
-    this.prizeID = "5d2f080ff2a2969010a16204";
-
+    
+    }
 
     this.sportimoService.getGrandPrizes()
     .pipe(takeUntil(this.ngUnsubscribe))
@@ -64,6 +71,11 @@ export class GrandPrizeDetailsComponent implements OnInit {
       })
   }
 
+  close(){
+    this.dialogRef.close();
+    this.cancel();
+  }
+
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
@@ -71,8 +83,11 @@ export class GrandPrizeDetailsComponent implements OnInit {
   }
 
   strippedPrizedText(text:string) {
-    if (text){      
-      return text.replace(/<\/?[^>]+(>|$)/g, "");
+    if (text){  
+      let str:string = text.replace(/<\/?[^>]+(>|$)/g, "");
+      if(str.length>100)
+      str = str.substring(0,100)+"...";
+      return str;
     }else
       return "";
   }

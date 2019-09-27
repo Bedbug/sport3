@@ -30,7 +30,8 @@ import { environment } from '../environments/environment';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ToastModule } from './components/card-toast/toast.module';
 import { CardToastComponent } from './components/card-toast/card-toast.component';
-import { PrizeViewOverlayComponent } from './sections/main/prize-view-overlay/prize-view-overlay.component';
+import { GrandPrizeDetailsComponent } from './sections/main/grand-prize-details/grand-prize-details.component';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -51,7 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatchPagesComponent,
     ToppickComponent,
     CardToastComponent,
-    PrizeViewOverlayComponent
+    GrandPrizeDetailsComponent
   ],
   imports: [
     OverlayModule,
@@ -77,7 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [
     TranslateModule
   ],
-  entryComponents: [NotyfToastSuccess, NotyfToastError, PrizeViewOverlayComponent],
+  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent],
   providers: [
     ConfigService,
     ConfigModule.init(),

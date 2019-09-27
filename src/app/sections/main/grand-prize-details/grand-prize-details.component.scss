@@ -12,6 +12,29 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.prize-top-header{
+display: flex;
+width: 80%;
+flex-wrap: wrap;
+}
+
+.prize-name{
+flex: 1 auto;
+}
+
+.chances{
+flex: 1 auto;
+}
+
+.close-button{
+  flex: 1 auto;
+  color: white;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  width: 20%;
+}
+
 .prize-details-scrollarea {
   height: calc(100vh - 170px);
   overflow: auto;
@@ -25,6 +48,7 @@
 
 .row {
   align-items: center;
+  padding-left: 10px;
 }
 
 .sportimo-divider {
@@ -40,7 +64,8 @@
   font-family: $theme-font;
   font-weight: 700;
   font-size: 14px;
-  text-align: right;
+  line-height: initial;
+  // text-align: right;
 }
 
 .user-chances span {
@@ -83,14 +108,14 @@
     animation-duration: 0.5s;
   }
 
-  .prizes-container{
-    padding: 25px;
-}
+//   .prizes-container{
+//     padding: 25px;
+// }
 
-.prize-container{
-    background-color: #000000;
-    margin-bottom: 20px;
-}
+// .prize-container{
+//     background-color: #000000;
+//     margin-bottom: 20px;
+// }
 
 .prize-header{
     color: #ffffff;
@@ -119,7 +144,7 @@
     padding: 1px 10px 10px 10px;
     color: #ffffff;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    // white-space: nowrap;
     overflow: hidden;
 }
 

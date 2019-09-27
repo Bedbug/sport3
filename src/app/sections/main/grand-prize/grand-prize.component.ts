@@ -9,6 +9,8 @@ import { takeUntil } from 'rxjs/operators';
 import { debug } from 'util';
 import { Router } from '@angular/router';
 import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
+import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
+import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
 
 @Component({
   selector: 'app-grand-prize',
@@ -78,7 +80,7 @@ export class GrandPrizeComponent implements OnInit {
 
   showPrizeDetails(prizeid: string) {
     
-    this.prizeViewOverlay.open({prizeID:prizeid});
+    this.prizeViewOverlay.open<GrandPrizeDetailsComponent>(GrandPrizeDetailsComponent,{data:prizeid});
     // this.router.navigate(['main/grand-prize/', prizeid]);
   }
 

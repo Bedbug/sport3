@@ -1,54 +1,59 @@
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken, ComponentRef, Injector } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { PrizeViewOverlayComponent } from './prize-view-overlay.component';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+import { ComponentPortal, PortalInjector, ComponentType } from '@angular/cdk/portal';
+import { FilePreviewOverlayRef } from './prize-preview-overlay-ref';
+import { FILE_PREVIEW_DIALOG_DATA } from './prize-preview-overlay.tokens';
 
 // Each property can be overridden by the consumer
 interface PrizeViewDialogConfig {
-  prizeID: string;
   panelClass?: string;
   hasBackdrop?: boolean;
   backdropClass?: string;
+  data?:any;
 }
 
 const DEFAULT_CONFIG: PrizeViewDialogConfig = {
-  prizeID: "",
   hasBackdrop: true,
   backdropClass: 'dark-backdrop',
   panelClass: 'tm-file-preview-dialog-panel'
 }
 
-export class FilePreviewOverlayRef {
-
-  constructor(private overlayRef: OverlayRef) { }
-
-  close(): void {
-    this.overlayRef.dispose();
-  }
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrizeViewOverlayService {
 
-  constructor(private overlay: Overlay) { }
+  constructor(private injector: Injector, private overlay: Overlay) { }
 
-  open(config: PrizeViewDialogConfig) {
+  open<T>(component: ComponentType<T>, config: PrizeViewDialogConfig = {}) {
     // Override default configuration
     const dialogConfig = { ...DEFAULT_CONFIG, ...config };
 
     const overlayRef = this.createOverlay(dialogConfig);
 
-    // Create ComponentPortal that can be attached to a PortalHost
-    const filePreviewPortal = new ComponentPortal(PrizeViewOverlayComponent);
-
-    // Attach ComponentPortal to PortalHost
-    overlayRef.attach(filePreviewPortal);
-
+    // Instantiate remote control
     const dialogRef = new FilePreviewOverlayRef(overlayRef);
 
+    const overlayComponent = this.attachDialogContainer<T>(overlayRef, dialogConfig, dialogRef, component);
+
+    overlayRef.backdropClick().subscribe(_ => dialogRef.close());
+
     return dialogRef;
+  }
+
+  private attachDialogContainer<T>(
+    overlayRef: OverlayRef, 
+    config: PrizeViewDialogConfig, 
+    dialogRef: FilePreviewOverlayRef,
+    component: ComponentType<T>) {
+    const injector = this.createInjector(config, dialogRef);
+
+    const containerPortal = new ComponentPortal(component, null, injector);
+    const containerRef: ComponentRef<T> = overlayRef.attach(containerPortal);
+
+    return containerRef.instance;
   }
 
   private getOverlayConfig(config: PrizeViewDialogConfig): OverlayConfig {
@@ -82,7 +87,7 @@ export class PrizeViewOverlayService {
 
     // Set custom injection tokens
     injectionTokens.set(FilePreviewOverlayRef, dialogRef);
-    injectionTokens.set(FILE_PREVIEW_DIALOG_DATA, config.prizeID);
+    injectionTokens.set(FILE_PREVIEW_DIALOG_DATA, config.data);
 
     // Instantiate new PortalInjector
     return new PortalInjector(this.injector, injectionTokens);
