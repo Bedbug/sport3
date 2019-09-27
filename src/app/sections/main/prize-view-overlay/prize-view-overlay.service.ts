@@ -1,6 +1,5 @@
-import { Injectable, InjectionToken, ComponentRef, Injector } from '@angular/core';
+import { Injectable, ComponentRef, Injector } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { PrizeViewOverlayComponent } from './prize-view-overlay.component';
 import { ComponentPortal, PortalInjector, ComponentType } from '@angular/cdk/portal';
 import { FilePreviewOverlayRef } from './prize-preview-overlay-ref';
 import { FILE_PREVIEW_DIALOG_DATA } from './prize-preview-overlay.tokens';
