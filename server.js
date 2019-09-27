@@ -11,9 +11,14 @@ app.use(compression());
 app.use(express.static(__dirname + '/dist/sportimo'));
 
 app.get('/*', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/sportimo/index.html'));
+    if (req.secure) {
+        res.sendFile(path.join(__dirname+'/dist/sportimo/index.html'));
+    }else{
+        res.redirect('https://' + req.headers.host + req.url);
+    }
 });
+
+
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 8080);
