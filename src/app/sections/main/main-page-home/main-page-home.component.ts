@@ -19,7 +19,12 @@ export class MainPageHomeComponent implements OnInit {
   message = '';
   private lastInserted: number[] = [];
 
-  constructor(private routeParams: ActivatedRoute, private config: ConfigService, private toastr: ToastrService) {
+  constructor(
+    private routeParams: ActivatedRoute, 
+    private config: ConfigService, 
+    private toastr: ToastrService,
+    
+    ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
 

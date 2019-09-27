@@ -40,7 +40,7 @@ export class MatchesListComponent implements OnInit {
   @Input() past: ContestMatch[];
 
   contestId: string;
-  hasJoined: boolean;
+  @Input() hasJoined: boolean;
   // isSubscribed: boolean;
 
   ngUnsubscribe = new Subject();
@@ -51,30 +51,29 @@ export class MatchesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.contestId = params.get("contestId");
-      this.sportimoService.getContestDetails(this.contestId)
-        .pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe(result => {
-          this.hasJoined = result.isSubscribed;
-          console.log(result.isSubscribed);
-        });
+    // this.route.paramMap.subscribe(params => {
+    //   this.contestId = params.get("contestId");
+    //   this.sportimoService.getContestDetails(this.contestId)
+    //     .pipe(takeUntil(this.ngUnsubscribe))
+    //     .subscribe(result => {
+    //       this.hasJoined = result.isSubscribed;
+    //       console.log(result.isSubscribed);
+    //     });
 
-      this.sportimoService.cachedContests.pipe(takeUntil(this.ngUnsubscribe))
-        .subscribe((allContests) => {
-          if (allContests) {
-            console.log("Check for update");
+    //   this.sportimoService.cachedContests.pipe(takeUntil(this.ngUnsubscribe))
+    //     .subscribe((allContests) => {
+    //       if (allContests) {
+    //         console.log("Check for update");
             
-            this.sportimoService.getContestDetails(this.contestId)
-              .pipe(takeUntil(this.ngUnsubscribe))
-              .subscribe(result => {
-                this.hasJoined = result.isSubscribed;
-                console.log(result.isSubscribed);
-              });
-          }
-        });
-
-    });
+    //         this.sportimoService.getContestDetails(this.contestId)
+    //           .pipe(takeUntil(this.ngUnsubscribe))
+    //           .subscribe(result => {
+    //             this.hasJoined = result.isSubscribed;
+    //             console.log(result.isSubscribed);
+    //           });
+    //       }
+    //     });
+    // });
 
     // this.authenticationService.currentUser
     // .pipe(takeUntil(this.ngUnsubscribe))

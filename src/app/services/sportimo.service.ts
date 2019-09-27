@@ -53,7 +53,7 @@ export class SportimoService {
     // private devSocket: developmentSocket,
     // private socket: Socket
   ) {
-    this.cachedContests = new BehaviorSubject<Contest[]>(null);
+    this.cachedContests = new BehaviorSubject<Contest[]>([]);
     this.currentLiveMatch = new BehaviorSubject<LiveMatch>(null);
     this.grandPrizes = new BehaviorSubject<GrandPrize[]>(null);
   }
@@ -113,19 +113,19 @@ export class SportimoService {
   getContests() {
     return this.http.get<Contest[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournaments/present`)
       .pipe(map(contests => {
-        this.cachedContests.next(contests);
+        this.cachedContests.next(contests);       
         return contests;
       }));
     // 
   }
 
   // Quick Info does not need to be fresh
-  getContestQuickDetails(contestId: string): Observable<Contest> {
-
+  getContestQuickDetails(contestId: string): Observable<Contest> {  
     if (this.cachedContests.value) {
       return this.cachedContests.pipe(map(contests => contests.find(x => x._id == contestId)));
     } else {
       // In case we load a contest page directly
+      console.log("DEBUG: Requesting direct contest Quick details");
       return this.getContests().pipe(map(contests => contests.find(x => x._id == contestId)));
     }
   }
@@ -135,12 +135,21 @@ export class SportimoService {
       return this.getContestQuickDetails(contestId);
     } else {
       return this.http.get<Contest>(
-        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)
-        ///user/${this.authenticationService.currentUserValue._id}
+        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)    
         .pipe(map(contest => {
+          console.log("DEBUG: Requesting direct contest details");
+          this.updateCachedContests(contest);
           return contest;
         }));
     }
+  }
+
+  updateCachedContests(contest: Contest) {
+    
+    const i = this.cachedContests.value.findIndex(_item => _item._id === contest._id);
+    if (i > -1) this.cachedContests.value[i] = contest; // (2)
+    else this.cachedContests.value.push(contest);
+    this.cachedContests.next(this.cachedContests.value);
   }
 
   getContestPrizes(contestId: string) {

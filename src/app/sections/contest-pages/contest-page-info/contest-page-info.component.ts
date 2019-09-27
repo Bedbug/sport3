@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Contest } from 'src/app/models/contest';
 import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
@@ -35,20 +35,22 @@ export class ContestPageInfoComponent implements OnInit {
   constructor(
     private route:ActivatedRoute, 
     public sportimoService:SportimoService,
-    public translate:TranslateService,
+    public translate:TranslateService
     ) { }
 
   // private langIsRTL: boolean = false;
   ngUnsubscribe = new Subject();
   contestDetails: Contest;
+    contestId: string;
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {      
-      this.sportimoService.getContestQuickDetails(params.get("contestId")).pipe(takeUntil(this.ngUnsubscribe))
+    this.contestId = this.route.snapshot.params['contestId']
+    // this.route.paramMap.subscribe(params => {      
+      this.sportimoService.getContestQuickDetails(this.contestId).pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(result => {
         this.contestDetails = result;
       });
-    })
+    // })
 
     // this.langIsRTL = this.sportimoService.langIsRTL;
     // this.translate.onLangChange.pipe(takeUntil(this.ngUnsubscribe)).subscribe((event: LangChangeEvent) => {

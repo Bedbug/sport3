@@ -8,7 +8,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
 import { FILE_PREVIEW_DIALOG_DATA } from '../prize-view-overlay/prize-preview-overlay.tokens';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-grand-prize-details',
@@ -43,35 +42,32 @@ export class GrandPrizeDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.prizeID = this.route.snapshot.params['prizeid']
-    console.log(this.data);
-    if(this.data){
-    this.prizeID = this.data;
-    
-    
+    if (this.data) {
+      this.prizeID = this.data;
     }
 
     this.sportimoService.getGrandPrizes()
-    .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(data => {
         if (data != null && data.length > 0) {
-          this.prize = data.find(x => x._id == this.prizeID);          
+          this.prize = data.find(x => x._id == this.prizeID);
           this.startCountdownTimer();
 
-          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
+          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
             if (user)
               this.sportimoService.getGrandPrizeUserChances(this.prizeID)
                 .subscribe(data => {
                   this.userChances = data || 0;
                 })
-                else
-                this.userChances = 0;
+            else
+              this.userChances = 0;
           })
 
         }
       })
   }
 
-  close(){
+  close() {
     this.dialogRef.close();
     this.cancel();
   }
@@ -82,13 +78,13 @@ export class GrandPrizeDetailsComponent implements OnInit {
     clearInterval(this.CountDownInterval);
   }
 
-  strippedPrizedText(text:string) {
-    if (text){  
-      let str:string = text.replace(/<\/?[^>]+(>|$)/g, "");
-      if(str.length>100)
-      str = str.substring(0,100)+"...";
+  strippedPrizedText(text: string) {
+    if (text) {
+      let str: string = text.replace(/<\/?[^>]+(>|$)/g, "");
+      if (str.length > 100)
+        str = str.substring(0, 100) + "...";
       return str;
-    }else
+    } else
       return "";
   }
 
