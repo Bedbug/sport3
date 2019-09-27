@@ -11,15 +11,18 @@ app.use(compression());
 const _environment = process.env.ENVIRONMENT;
 
 console.log(_environment);
-
+console.log(_environment === 'production');
+console.log(_environment == 'production');
 if (_environment === 'production') {    
     app.enable('trust proxy');
     app.use(function (req, res, next) {
         console.log(req.secure);
         if (req.secure) {
+            console.log("secure");
             // https request, nothing to handle
             next();
         } else {
+            console.log("not secure");
             // this is an http request, redirect to https
             res.redirect(301, 'https://' + req.headers.host + req.url);   
         }
