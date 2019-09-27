@@ -10,15 +10,8 @@ app.use(compression());
 
 const _environment = process.env.ENVIRONMENT;
 
-// ---- SERVE STATIC FILES ---- //
-app.get('*.*', express.static(_app_folder, {maxAge: '1y'}));
 
-// ---- SERVE APLICATION PATHS ---- //
-app.all('*', function (req, res) {
-    res.status(200).sendFile(`/`, {root: _app_folder});
-});
-
-// if (_environment === 'production') {
+if (_environment === 'production') {    
     app.enable('trust proxy');
     app.use(function (req, res, next) {
         console.log(req.secure);
@@ -30,7 +23,17 @@ app.all('*', function (req, res) {
             res.redirect(301, 'https://' + req.headers.host + req.url);   
         }
     });
-// }
+}
+
+// ---- SERVE STATIC FILES ---- //
+app.get('*.*', express.static(_app_folder, {maxAge: '1y'}));
+
+// ---- SERVE APLICATION PATHS ---- //
+app.all('*', function (req, res) {
+    res.status(200).sendFile(`/`, {root: _app_folder});
+});
+
+
 
 // ---- START UP THE NODE SERVER  ----
 app.listen(_port, function () {
