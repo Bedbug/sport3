@@ -1178,3 +1178,15 @@ body .page-wrapper .page-main-header {
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
 }
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  &.dark-backdrop {
+    background: #000;
+    opacity: 0.85 !important;
+  }
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1040;
+}
