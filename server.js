@@ -13,7 +13,7 @@ const _environment = process.env.ENVIRONMENT;
 if (_environment === 'production') {    
     app.enable('trust proxy');
     app.use(function (req, res, next) {
-        console.log(req.secure);
+
         if (req.secure) {
             // https request, nothing to handle
             next();
