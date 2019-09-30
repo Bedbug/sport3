@@ -8,6 +8,7 @@ import { IfStmt } from '@angular/compiler';
 import { Contest } from 'src/app/models/contest';
 import { PrizeViewOverlayService } from '../../main/prize-view-overlay/prize-view-overlay.service';
 import { ContestInfoComponent } from '../contest-info/contest-info.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-contest-page-matches',
@@ -37,7 +38,8 @@ export class ContestPageMatchesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private sportimoService: SportimoService,
-    private prizeViewOverlay: PrizeViewOverlayService) { }
+    private prizeViewOverlay: PrizeViewOverlayService,
+    private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -60,7 +62,7 @@ export class ContestPageMatchesComponent implements OnInit {
 
             // Set a timeout in order to avoid async calls and duplicates
             // setTimeout(()=>{
-              if(!this.hasJoined && !this.hasShownModal && this.contestDetails.isUserDetails){        
+              if(!this.hasJoined && !this.hasShownModal && (this.contestDetails.isUserDetails || !this.authenticationService.currentUserValue)){        
                 this.hasShownModal = true;
                 console.log("DEBUG: Will show modal for first time contest player.");     
                 this.prizeViewOverlay.open<ContestInfoComponent>(ContestInfoComponent,{data:this.contestDetails});
