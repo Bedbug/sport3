@@ -53,18 +53,19 @@ export class ContestPageMatchesComponent implements OnInit {
           this.contestDetails = allContests.find(x => x._id == this.contestId);
           if (this.contestDetails)
             this.hasJoined = this.contestDetails.isSubscribed || false;
+            // console.log("IsUserDetails:",this.contestDetails.isUserDetails);
             
             // console.log("DEBUG: hasJoined always returns false");            
             // this.hasJoined = false;
 
             // Set a timeout in order to avoid async calls and duplicates
-            setTimeout(()=>{
-              if(!this.hasJoined && !this.hasShownModal){        
+            // setTimeout(()=>{
+              if(!this.hasJoined && !this.hasShownModal && this.contestDetails.isUserDetails){        
                 this.hasShownModal = true;
                 console.log("DEBUG: Will show modal for first time contest player.");     
                 this.prizeViewOverlay.open<ContestInfoComponent>(ContestInfoComponent,{data:this.contestDetails});
               }
-            },1000)
+            // },3000)
             
         }
       });

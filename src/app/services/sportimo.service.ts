@@ -138,6 +138,7 @@ export class SportimoService {
         `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)    
         .pipe(map(contest => {
           console.log("DEBUG: Requesting direct contest details");
+          contest.isUserDetails = true;
           this.updateCachedContests(contest);
           return contest;
         }));
