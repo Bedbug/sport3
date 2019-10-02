@@ -66,7 +66,7 @@ export class ContestInfoHeaderComponent implements OnInit {
   }
 
   gotoContest() {
-    this.router.navigate(['/contest', this.contestDetails._id, 'info']);
+    this.router.navigate(['/contest', this.contestDetails._id, 'matches']);
   }
 
   joinContest() {
