@@ -261,7 +261,7 @@ body .page-wrapper .page-main-header {
 
 .app-navbar a:hover,
 .mobile-app-navbar a:hover {
-  background-color: $theme-navbar-color;
+  background-color: $theme-navbar-color-active;
 }
 
 .mobile-app-navbar a {
@@ -634,6 +634,7 @@ body .page-wrapper .page-main-header {
   color: $theme-color !important;
   animation-name: flipInX;
   animation-duration: 0.5s;
+  background-color: #22344d;
 }
 
 /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
