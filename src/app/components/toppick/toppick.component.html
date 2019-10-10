@@ -148,7 +148,7 @@
               </div>
             </li>
             <!-- UPCOMING MATCHES -->
-            <li class="list-wrapper" *ngIf="upcoming != null">
+            <li class="list-wrapper" *ngIf="pastMatches != null">
               <div class="card-body"
                 style="background-repeat: no-repeat; background-size: cover; background-position: center; min-height: 90px; padding-bottom: 1.11em; height: 140px;"
                 [ngStyle]="{'background-image': 'url(' + ('./assets/images/sportimo/toppicks/bg-image3.png') + ')'}">
@@ -162,7 +162,7 @@
 
               </div>
               <div class="uk-panel uk-panel-scrollable" style="height: 314px; border-left: 0; border-right: 0;">
-                <div class="match-info" *ngFor="let upcomingMatch of upcoming; let i = index">
+                <div class="match-info" *ngFor="let upcomingMatch of pastMatches; let i = index">
                   <div class="card-top" style="width: 100%; height: 50px; margin-bottom: 12px;">
                     <div class="match-league">{{upcomingMatch.tournament.titleText[translate.currentLang]}}</div>
                     <div class="match-date">{{upcomingMatch.updated | date:'dd/MM hh:mm' }}</div>
