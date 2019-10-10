@@ -1,0 +1,61 @@
+.modal-card {
+    margin-top: 0px;
+    width: 100%;
+    z-index: 1032;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.modal-card-body {
+    width: 100%;
+    padding-bottom: 15px;
+    color: #ffffff;
+    background-image: linear-gradient(-180deg, #000000 0%, #000000 100%);
+    height: 100%;
+}
+
+.slideText {
+    position: absolute;
+    bottom: 5%;
+    /* display: inline-block; */
+    text-shadow: 2px 3px 1px #28313d;
+    left: 50%;
+    /* margin: 0 auto; */
+    width: 400px;
+    /* margin: 0 auto; */
+    margin-left: -200px;
+}
+
+.btn-sportimo {
+    background: #ffc30000;
+    padding: 5px 20px;
+    font-family: IranSans;
+    font-weight: 600;
+    min-width: 74px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.modal-toppick-background {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1030; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+  }
+
+  
+  .bgimage {
+    width:100%; 
+    height:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
