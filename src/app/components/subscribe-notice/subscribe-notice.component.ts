@@ -27,8 +27,9 @@ export class SubscribeNoticeComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(user => {
       this.isLoggedIn = user != null;
       if (this.isLoggedIn) {
-        // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
-        this.isSubscribed = (user != null);
+          this.isSubscribed = this.authenticationService.isSubscribed;
+      //   this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
+        // this.isSubscribed = (user != null);
       }
     })
   }

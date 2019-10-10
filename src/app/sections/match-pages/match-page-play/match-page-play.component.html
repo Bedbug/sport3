@@ -150,7 +150,7 @@
     <div class="tab-pane fade show active" id="live" role="tabpanel" aria-labelledby="live-tab">
       <div class="card-scroll-list">
         <div *ngFor="let availablePlaycard of availableCards">
-          <div *ngIf="availablePlaycard?.cardType!='Overall'" (click)="openPlayModal(availablePlaycard)"
+          <div *ngIf="availablePlaycard?.cardType!='Overall'" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}" (click)="subscribed && openPlayModal(availablePlaycard)"
             class="playcard">
             <div class="icon">
               <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
@@ -170,7 +170,7 @@
     <div class="tab-pane fade" id="ninenty" role="tabpanel" aria-labelledby="ninenty-tab">
       <div class="card-scroll-list">
         <div *ngFor="let availablePlaycard of availableCards">
-          <div *ngIf="availablePlaycard?.cardType=='Overall'" (click)="openPlayModal(availablePlaycard)"
+          <div *ngIf="availablePlaycard?.cardType=='Overall'" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}" (click)="subscribed && openPlayModal(availablePlaycard)"
             class="playcard">
             <div class="icon">
               <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
