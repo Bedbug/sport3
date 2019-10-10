@@ -22,29 +22,37 @@ export class ContestInfoHeaderComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private router: Router, 
-    private route:ActivatedRoute, 
+    private router: Router,
+    private route: ActivatedRoute,
     private sportimoService: SportimoService,
-    public translate:TranslateService,
-    private errorDisplay:ErrorDisplayService
-    ) { }
+    public translate: TranslateService,
+    private errorDisplay: ErrorDisplayService
+  ) { }
 
   contestDetails: Contest;
   ngUnsubscribe = new Subject();
+  private contestId: string;
 
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {      
+    this.route.paramMap.subscribe(params => {
       this.sportimoService.getContestDetails(params.get("contestId"))
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(result => {
-        this.contestDetails = result;
-      });
+        .pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe(result => {
+          this.contestId = params.get("contestId");
+          this.contestDetails = result;
+        });
     })
 
-    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
-      this.isLoggedIn = user!=null;
+    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+      this.isLoggedIn = user != null;
       this.user = user;
+      if (this.contestId)
+        this.sportimoService.getContestDetails(this.contestId)
+          .pipe(takeUntil(this.ngUnsubscribe))
+          .subscribe(result => {
+            this.contestDetails = result;
+          });
     });
   }
 
@@ -53,41 +61,40 @@ export class ContestInfoHeaderComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  getDuration(){
+  getDuration() {
     return 0;
   }
 
-  gotoContest(){
-    this.router.navigate(['/contest',this.contestDetails._id,'info']);
+  gotoContest() {
+    this.router.navigate(['/contest', this.contestDetails._id, 'matches']);
   }
 
-  joinContest(){
-    if(!this.isLoggedIn)
+  joinContest() {
+    if (!this.isLoggedIn)
       this.errorDisplay.showError('101');
-      else{
-        if(this.joiningContest)
-        this.sportimoService.joinContest(this.contestDetails._id).subscribe(x=>console.log(x));
-        else{
-          this.joiningContest = true;
-        }
+    else {
+      if (this.joiningContest)
+        this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => console.log(x));
+      else {
+        this.joiningContest = true;
       }
-    
+    }
+
   }
 
-  cancel(){
-    if(this.isJoinRequesting) return;
+  cancel() {
+    if (this.isJoinRequesting) return;
     this.joiningContest = false;
   }
 
-  preventDefault(event){
+  preventDefault(event) {
     event.stopPropagation();
   }
 
-  requestJoin(){
+  requestJoin() {
 
     this.isJoinRequesting = true;
-    this.sportimoService.joinContest(this.contestDetails._id).subscribe(x=>{
-      console.log(x);
+    this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => {      
       this.authenticationService.pay(this.contestDetails.subscriptionPrice);
       this.contestDetails.isSubscribed = true;
       this.isJoinRequesting = false;
@@ -95,7 +102,7 @@ export class ContestInfoHeaderComponent implements OnInit {
     });
   }
 
-  getCoins(){
-    
+  getCoins() {
+
   }
 }

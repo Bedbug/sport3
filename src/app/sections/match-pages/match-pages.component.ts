@@ -11,6 +11,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { CardToastService } from 'src/app/components/card-toast/card-toast.service';
+import { debug } from 'util';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-match-pages',
@@ -31,7 +34,7 @@ import { takeUntil } from 'rxjs/operators';
       ])]
 })
 export class MatchPagesComponent implements OnInit {
-
+  Utils: SportimoUtils = new SportimoUtils();
   contestMatchId: string;
   contestId: string;
   liveMatch: LiveMatch;
@@ -41,11 +44,13 @@ export class MatchPagesComponent implements OnInit {
   
   constructor(
     private route: ActivatedRoute, 
-    private sportimoService: SportimoService, 
-    private toastr: ToastrService, 
+    private sportimoService: SportimoService,     
     private state: Router, 
     public translate: TranslateService,
-    private authenticationService:AuthenticationService) { }
+    private authenticationService:AuthenticationService,
+    private cardToastService:CardToastService
+
+    ) { }
 
   ngOnInit() {
 
@@ -72,12 +77,27 @@ export class MatchPagesComponent implements OnInit {
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
-            if (!isInfo && event) {
+            if (!isInfo && event) {             
               if (event.type == "Event_added") {
-                this.openNotyf("", event.data.type, false);
+                // this.openNotyf("", event.data.type, false);  
+                // console.log(this.liveMatch.matchData);
+                //               console.log(event.data.team);
+                              
+                this.cardToastService.Show({
+                  icon: this.Utils.getIconByType(event.data.type),
+                  time: event.data.time+"'",
+                  event: this.translate.instant(event.data.type),
+                  teamKit: this.liveMatch.matchData[event.data.team].logo
+                });
               }
               if (event.type == "Advance_Segment") {
-                this.openNotyf("", event.data.text[this.translate.currentLang], false);
+                // this.openNotyf("", event.data.text[this.translate.currentLang], false);
+                this.cardToastService.Show({
+                  icon:"",
+                  time: "",
+                  event: this.translate.instant(event.data.type),
+                  teamKit: ""
+                });
               }
             }
           });
@@ -126,17 +146,17 @@ export class MatchPagesComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  openNotyf(title: string, message: string, error: boolean) {
-    let options = this.toastr.toastrConfig;
-    // options.timeOut = 0;
-    if (error)
-      options.toastComponent = NotyfToastError;
-    else
-      options.toastComponent = NotyfToastSuccess;
-    options.toastClass = 'notyf confirm';
-    // opt.positionClass = 'notyf__wrapper';
-    // this.options.newestOnTop = false;
-    this.toastr.show(title, message, options);
-  }
+  // openNotyf(title: string, message: string, error: boolean) {
+  //   let options = this.toastr.toastrConfig;
+  //   // options.timeOut = 0;
+  //   // if (error)
+  //   //   options.toastComponent = NotyfToastError;
+  //   // else
+  //   //   options.toastComponent = NotyfToastSuccess;
+  //   // options.toastClass = 'notyf confirm';
+  //   // opt.positionClass = 'notyf__wrapper';
+  //   // this.options.newestOnTop = false;
+  //   this.toastr.info(title, message, options);
+  // }
 
 }

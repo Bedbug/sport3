@@ -61,7 +61,7 @@
         path: './assets/json/loader.json'
     };
     // lottie.setQuality('low');
-    anim = lottie.loadAnimation(animData);
+    // anim = lottie.loadAnimation(animData);
 
     // $('#lottie').fadeIn();
     // anim.play();

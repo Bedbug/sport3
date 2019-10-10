@@ -4,13 +4,12 @@
   <div *ngIf="currentView == 1" class="main-pages-header">{{currentStandings?.name[translate.currentLang]}}</div>
   <div *ngIf="currentView == 2" class="main-pages-header" style="display: flex">
     <div class="col-6">{{currentTeam?.name[translate.currentLang]}}</div>
-    <div class="favorite col-6">
-      <!-- <button class="btn btn-sportimo" style="width: 100%">Add to favorites</button> -->
+    <div class="favorite col-6">      
       <button *ngIf="isLoggedIn && currentTeam" [disabled]="isLoading" (click)="toggleFavorite()"
         class="btn btn-sportimo" style="width: 100%">
-        <div class="loader-label" [class.btn-active]="isLoading">
-          <span *ngIf="isFavoriteTeam" class="button-label">Remove from favorites</span>
-          <span *ngIf="!isFavoriteTeam" class="button-label">Add to favorites</span>
+        <div class="loader-label" [class.btn-active]="isLoading" style="font-size: 13px;">
+          <span *ngIf="isFavoriteTeam" translate class="button-label">Remove from favorites</span>
+          <span *ngIf="!isFavoriteTeam" translate class="button-label">Add to favorites</span>
           <div class="fadeInLoader">
             <span class="rotate dotted button-loader"></span>
           </div>
@@ -129,8 +128,8 @@
                       <div class="col-4" translate>Born</div>
                     </div>
                     <div class="row player-data">
-                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-                      <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                        <div class="col-4">{{player.personalData.height?.centimeters}}</div>
+                      <div class="col-4">{{player.personalData.weight?.kilograms}}</div>                      
                       <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
                     </div>
                   </div>

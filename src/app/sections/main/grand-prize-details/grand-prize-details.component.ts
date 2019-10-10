@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { GrandPrize } from 'src/app/models/grand-prize';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
+import { FILE_PREVIEW_DIALOG_DATA } from '../prize-view-overlay/prize-preview-overlay.tokens';
 
 @Component({
   selector: 'app-grand-prize-details',
@@ -33,35 +35,41 @@ export class GrandPrizeDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private sportimoService: SportimoService,
     private authenticationService: AuthenticationService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    public dialogRef: FilePreviewOverlayRef,
+    @Inject(FILE_PREVIEW_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit() {
     this.prizeID = this.route.snapshot.params['prizeid']
-    
-    if(this.prizeID == "1")
-    this.prizeID = "5d2f080ff2a2969010a16204";
-
+    if (this.data) {
+      this.prizeID = this.data;
+    }
 
     this.sportimoService.getGrandPrizes()
-    .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(data => {
         if (data != null && data.length > 0) {
-          this.prize = data.find(x => x._id == this.prizeID);          
+          this.prize = data.find(x => x._id == this.prizeID);
           this.startCountdownTimer();
 
-          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {          
+          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
             if (user)
               this.sportimoService.getGrandPrizeUserChances(this.prizeID)
                 .subscribe(data => {
                   this.userChances = data || 0;
                 })
-                else
-                this.userChances = 0;
+            else
+              this.userChances = 0;
           })
 
         }
       })
+  }
+
+  close() {
+    this.dialogRef.close();
+    this.cancel();
   }
 
   ngOnDestroy() {
@@ -70,10 +78,13 @@ export class GrandPrizeDetailsComponent implements OnInit {
     clearInterval(this.CountDownInterval);
   }
 
-  strippedPrizedText(text:string) {
-    if (text){      
-      return text.replace(/<\/?[^>]+(>|$)/g, "");
-    }else
+  strippedPrizedText(text: string) {
+    if (text) {
+      let str: string = text.replace(/<\/?[^>]+(>|$)/g, "");
+      if (str.length > 100)
+        str = str.substring(0, 100) + "...";
+      return str;
+    } else
       return "";
   }
 

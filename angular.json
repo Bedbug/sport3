@@ -24,16 +24,17 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/css/uikit.min.css",
+              "src/app/scss/uikit/components/_import.scss",
               "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
               "src/assets/css/ion.rangeSlider.skinHTML5.css",
-              "node_modules/font-awesome/scss/font-awesome.scss",
+             
               "src/assets/app.scss",
-              "src/assets/css/style.css",
+              "src/style_base.scss",
               "src/assets/css/responsive.css",
               "src/styles.scss",
               "src/rtl.scss",
@@ -41,7 +42,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/js/jquery-ui.min.js",
+             
               "src/assets/js/uikit.js",
               "node_modules/uikit/dist/js/uikit-icons.min.js",
               "src/assets/js/popper.min.js",
@@ -58,7 +59,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "all",
+              "outputHashing": "bundles",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
@@ -72,7 +73,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
@@ -107,7 +110,12 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              "src/manifest.webmanifest"
             ]
           }
         },

@@ -5,13 +5,29 @@ const replace = require('replace-in-file');
 // Index -  Chagne Favicon
 const options = {
   files: 'src/index.html',
-  from: /\.\/assets\/images\/sportimo\/logo-sportimo.jpg/g,  
+  from: './assets/icons/icon-72x72.png',  
   to: './assets/images/sportimo/logo-pabetoop.jpg',
   countMatches: true,
 };
 
 try {
     const results = replace.sync(options);
+    console.log('Replacement results:', results);
+  }
+  catch (error) {
+    console.error('Error occurred:', error);
+  }
+
+    // Index -  Default language
+const options1 = {
+  files: ['src/assets/config/development.json','src/assets/config/production.json'],
+  to: ['"language": "fa"'],
+  from: ['"language": "en"'],
+  countMatches: true,
+};
+
+try {
+    const results = replace.sync(options1);
     console.log('Replacement results:', results);
   }
   catch (error) {

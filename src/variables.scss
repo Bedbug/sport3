@@ -4,8 +4,10 @@ $theme-header-color: RGBA(10, 28, 45, 1.00);
 $theme-header-logo: url("~src/assets/images/sportimo/icon-logo.svg");
 $theme-header-text-color: white;
 
-$theme-navbar-color: rgba(34, 52, 77, 0.9);
+$theme-navbar-color: rgba(56, 72, 85, 1);//;rgba(34, 52, 77, 0.9);
+$theme-navbar-color-active: rgba(34, 52, 77, 1);
 $theme-background-image: url("~src/assets/images/sportimo/background2.jpg");
+$theme-font: IranSans;
 
 //  CARDS
 $card-side-lost: transparent;

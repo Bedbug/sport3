@@ -133,6 +133,6 @@ export class ContestsListComponent implements OnInit {
   }
 
   ContestClicked(contestId) {
-    this.router.navigate(['/contest', contestId, 'info']);
+    this.router.navigate(['/contest', contestId, 'matches']);
   }
 }

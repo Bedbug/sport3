@@ -1,0 +1,32 @@
+<div class="card" style="margin-bottom: 0; width: 100%">
+    <div class="card-body">
+      <div class="row">
+        <div class="prize-top-header">
+        <div class="prize-name font-weight-bold text-white isClickable">
+          {{contestDetails?.titleText[translate.currentLang]||'_Name Missing'}}
+          <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
+        </div>
+        <div class="chances" >     
+          <div class="text-white user-chances"> <span translate>Your chances:</span>
+            {{contestDetails.user_chances || 0}}</div>
+        </div>
+      </div>
+        <div (click)="close()" class="close-button">X</div>
+      </div>
+      <div class="sportimo-divider"></div>
+    </div>
+  </div>
+<div *ngIf="contestDetails" class="card fade show m-b-0" class="contest-pages-scrollarea">
+    <div class="card-body" style="background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;" [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
+  
+      <div class="contest-image">
+        <img src="{{contestDetails?.promoImage}}" style="max-height: 200px; min-height:140px" alt="">
+      </div>
+  
+    </div>
+    <div class="card-body text-white formated-text" >
+      <div [innerHTML] = "contestDetails?.detailText[translate.currentLang]"></div>
+    </div>
+  </div>

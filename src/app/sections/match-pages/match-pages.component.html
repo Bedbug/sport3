@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class="col row text-center">
-            <div class="col-12 p-0 score">{{homeScore}} - {{awayScore}}
-            </div>
+            <div *ngIf="liveMatch.matchData.state> 0" class="col-12 p-0 score">{{homeScore}} - {{awayScore}}</div>
+            <div *ngIf="liveMatch.matchData.state == 0" class="col-12 p-0 match-versus"><strong>VS</strong></div>
             <div *ngIf="liveMatch.matchData.state>0" class="time col-12 p-0">{{liveMatch?.matchData.time}}'</div>
           </div>
           <div class="col-5 p-l-0 text-left team-name">
@@ -38,13 +38,16 @@
     <!-- Contest Navbar -->
     <nav class="navbar fixed-bottom mobile-app-navbar">
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
-        <div class="icn-match"></div>Match Info
+        <div class="icn-match"></div><span translate>Match Info</span>
+      </a>
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'play']" routerLinkActive="active" href="#">
+        <div class="icn-cards"></div><span translate>Play</span>
       </a>
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']" routerLinkActive="active" href="#">
-        <div class="icn-cards"></div>Cards
+        <div class="icn-mycards"></div><span translate>My Cards</span>
       </a>
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">
-        <div class="icn-leaders"></div>Leaders
+        <div class="icn-leaders"></div><span translate>Leaders</span>
       </a>
     </nav>
   </div>

@@ -18,5 +18,5 @@ export class Contest {
     leaderboardDefinition?: string;
     isSubscribed?: boolean;
     created?: Date;
-
+    isUserDetails?: boolean;
 }

@@ -25,6 +25,14 @@ import { TranslateHttpLoader } from './helpers/translate-http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { ToppickComponent } from './components/toppick/toppick.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { ToastModule } from './components/card-toast/toast.module';
+import { CardToastComponent } from './components/card-toast/card-toast.component';
+import { GrandPrizeDetailsComponent } from './sections/main/grand-prize-details/grand-prize-details.component';
+import { ContestInfoComponent } from './sections/contest-pages/contest-info/contest-info.component';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -43,9 +51,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContestInfoHeaderComponent,
     SubscribeNoticeComponent,
     MatchPagesComponent,
-    ToppickComponent    
+    ToppickComponent,
+    CardToastComponent,
+    GrandPrizeDetailsComponent,
+    ContestInfoComponent
   ],
   imports: [
+    OverlayModule,
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
@@ -62,12 +74,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     ModalModule.forRoot(),
-   
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ToastModule.forRoot(),
   ],
   exports: [
     TranslateModule
   ],
-  entryComponents: [NotyfToastSuccess, NotyfToastError],
+  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent],
   providers: [
     ConfigService,
     ConfigModule.init(),

@@ -14,7 +14,8 @@ export class MainPageAchievementsComponent implements OnInit {
   constructor(private sportimoService:SportimoService, public translate:TranslateService) { }
   
   ngOnInit() {
-    this.sportimoService.getAchievements().subscribe(x=>{      
+    this.sportimoService.getAchievements().subscribe(x=>{    
+      if(x)  
       this.achievements = x.user.achievements;
     });
   }

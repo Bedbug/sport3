@@ -1,5 +1,5 @@
 
-<div *ngIf="contestDetails" [@staggerAnimation] class="card fade show m-b-0">
+<div *ngIf="contestDetails" [@staggerAnimation] class="card fade show m-b-0" class="contest-pages-scrollarea">
   <div class="card-body" style="background-repeat: no-repeat;
   background-size: cover;
   background-position: center;" [ngStyle]="{'background-image': 'url(' + (contestDetails?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">

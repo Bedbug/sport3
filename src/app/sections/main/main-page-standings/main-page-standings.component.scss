@@ -18,6 +18,8 @@
 }
 
 .league-item {
+  display: flex;
+  flex-wrap: nowrap;
   height: 60px;
   background: rgba(0, 0, 0, 0.61);
   margin-bottom: 15px;
@@ -31,23 +33,23 @@
   //   background-color: aqua;
 }
 
-.league-item .img {
-  float: left;
-}
+// .league-item .img {
+//   // float: left;
+// }
 
 .league-item .info {
   padding: 5px 15px;
-  margin-left: 60px;
+  // margin-left: 60px;
 }
 .league-item .info .title {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 18px;
   color: #ffc531;
 }
 
 .league-item .info .text {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 14px;
   color: #ffffff;
 }
@@ -56,6 +58,7 @@
 .standings-scrollarea {
   width: 100%;
   height: calc(100vh - 180px);
+  height: calc((var(--vh, 1vh) * 100) - 180px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
@@ -76,7 +79,7 @@
   display: table-row;
   height: 36px;
   color: #ffffff;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 400;
   font-size: 16px;
 }

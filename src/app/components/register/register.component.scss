@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 // LOGIN-FORM
 .is-invalid {
   border: 1px solid red;
@@ -110,7 +112,7 @@ input {
 }
 
 .registration-bonus-text {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 100;
   font-size: 16px;
   width: 132px;
@@ -121,7 +123,7 @@ input {
 }
 
 .registration-bonus{
-font-family: Roboto;
+font-family: $theme-font;
 font-weight: 700;
 font-size: 29px;
 color: #FFFFFF;

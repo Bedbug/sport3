@@ -120,7 +120,7 @@
 
 .profile-stat-title {
   width: 65%;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 14px;
   color: #ffffff;
   font-weight: bold;
@@ -130,7 +130,7 @@
 
 .profile-stat-value {
   width: 25%;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 14px;
   color: $theme-color;
   font-weight: bold;
@@ -180,7 +180,7 @@
 }
 
 .player-chart-label {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 16px;
   color: #ffffff;

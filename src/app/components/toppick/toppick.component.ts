@@ -54,7 +54,7 @@ export class ToppickComponent implements OnInit {
 
     })
 
-    this.checkDailyDisplay();
+    // this.checkDailyDisplay();
   }
 
   Onscroll(){
@@ -69,15 +69,14 @@ export class ToppickComponent implements OnInit {
   }
 
   checkDailyDisplay() {
+    localStorage.removeItem("last_picks_check");
     const lastDayViewed = localStorage.getItem("last_picks_check");
     const todayDate = new Date().getDate().toString();
     if(lastDayViewed != todayDate){
       this.topPickService.Show();
       $('body').addClass('modal-open');
       localStorage.setItem("last_picks_check",todayDate);
-    }
-   
-    
+    }      
   }
 
 }

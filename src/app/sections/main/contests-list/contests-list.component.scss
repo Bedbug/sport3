@@ -38,7 +38,7 @@
   min-height: $grandPrizeTopRowMinHeight;
   width: 100% - $grandPrizeLeftColumnMinWidth;
   padding: 10px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 14px;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .user-chances {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 14px;
 }
@@ -70,6 +70,6 @@
 }
 
 .details-link {
-  font-weight: 300;
+  font-weight: 400;
   text-decoration: underline;
 }

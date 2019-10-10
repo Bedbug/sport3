@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 .background{
     display: block;
     position: absolute;
@@ -42,21 +44,21 @@
   // margin-left: 60px;
 }
 .achievement-item .info .title {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 16px;
   color: #ffc531;
 }
 
 .achievement-item .info .text {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 13px;
   color: #ffffff;
 }
 
 .achievement-item .progress-text {
     width: 100px;
-    font-family: Roboto;
+    font-family: $theme-font;
     font-weight: 700;
     font-size: 16px;
     color: #ffc531;

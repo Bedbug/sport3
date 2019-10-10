@@ -80,6 +80,23 @@
     margin-left: 15px;
   }
 
+  // -- MAIN > WINNERS -- //
+  .winner-card{
+    text-align: right;
+    direction: rtl;
+  }
+
+  .winner-card-header img{
+    margin-right: 0px !important;
+    margin-left: 15px;
+  }
+
+  // -- MAIN > ACHIEVEMENTS -- //
+  .achievement-item{
+    text-align: right;
+    direction: rtl;
+  }
+
   // -- CONTEST > PRIZES -- //
   .prize-header,
   .prize-text-body,
@@ -95,6 +112,11 @@
   }
 
   // -- STANDINGS -- //
+  .league-item{
+    direction:rtl;
+    text-align: right;
+  }
+
   .standings-table {
     direction: rtl;
   }

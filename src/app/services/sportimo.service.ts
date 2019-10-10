@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { Contest } from '../models/contest';
-import { Observable, BehaviorSubject, timer } from 'rxjs';
+import { Observable, BehaviorSubject, timer, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { GrandPrize } from '../models/grand-prize';
 import { ContestMatch } from '../models/contest-match';
@@ -38,7 +38,7 @@ import * as io from 'socket.io-client';
 export class SportimoService {
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
-  private cachedContests: BehaviorSubject<Contest[]>;
+  public cachedContests: BehaviorSubject<Contest[]>;
   private grandPrizes: BehaviorSubject<GrandPrize[]>
   private currentMatchId;
   private currentContestId;
@@ -53,7 +53,7 @@ export class SportimoService {
     // private devSocket: developmentSocket,
     // private socket: Socket
   ) {
-    this.cachedContests = new BehaviorSubject<Contest[]>(null);
+    this.cachedContests = new BehaviorSubject<Contest[]>([]);
     this.currentLiveMatch = new BehaviorSubject<LiveMatch>(null);
     this.grandPrizes = new BehaviorSubject<GrandPrize[]>(null);
   }
@@ -113,19 +113,19 @@ export class SportimoService {
   getContests() {
     return this.http.get<Contest[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournaments/present`)
       .pipe(map(contests => {
-        this.cachedContests.next(contests);
+        this.cachedContests.next(contests);       
         return contests;
       }));
     // 
   }
 
   // Quick Info does not need to be fresh
-  getContestQuickDetails(contestId: string): Observable<Contest> {
-
+  getContestQuickDetails(contestId: string): Observable<Contest> {  
     if (this.cachedContests.value) {
       return this.cachedContests.pipe(map(contests => contests.find(x => x._id == contestId)));
     } else {
       // In case we load a contest page directly
+      console.log("DEBUG: Requesting direct contest Quick details");
       return this.getContests().pipe(map(contests => contests.find(x => x._id == contestId)));
     }
   }
@@ -135,11 +135,22 @@ export class SportimoService {
       return this.getContestQuickDetails(contestId);
     } else {
       return this.http.get<Contest>(
-        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournaments/${contestId}/user/${this.authenticationService.currentUserValue._id}`)
+        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)    
         .pipe(map(contest => {
+          console.log("DEBUG: Requesting direct contest details");
+          contest.isUserDetails = true;
+          this.updateCachedContests(contest);
           return contest;
         }));
     }
+  }
+
+  updateCachedContests(contest: Contest) {
+    
+    const i = this.cachedContests.value.findIndex(_item => _item._id === contest._id);
+    if (i > -1) this.cachedContests.value[i] = contest; // (2)
+    else this.cachedContests.value.push(contest);
+    this.cachedContests.next(this.cachedContests.value);
   }
 
   getContestPrizes(contestId: string) {
@@ -262,7 +273,7 @@ export class SportimoService {
  ----------------------------------------------------------------------------------- */
   getStream() {
     let observable = new Observable(observer => {
-      this.socket = io(this.Config.getApi('SOCKET'));
+      this.socket = io(this.Config.getApi('SOCKET'),{ transports: ['websocket', 'polling'] });
       this.socket.on('message', (data) => {
         observer.next(data);
         this.parseSocket(data);
@@ -433,7 +444,9 @@ export class SportimoService {
      Achievements
    ----------------------------------------------------------------------------------- */
   getAchievements() {
+    if(this.authenticationService.currentUserValue)
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/stats`);
+    else return  of(null);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/users/${this.authenticationService.currentUserValue._id}/stats`);
   }
 

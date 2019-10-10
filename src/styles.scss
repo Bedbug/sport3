@@ -5,12 +5,14 @@
 @import "./inputrange.scss";
 @import "notyf.css";
 
+@import "~@angular/cdk/overlay";
+@include cdk-overlay();
+
 /*-----------------------------------------------------------------------------------
 
     Sportimo Styles
 
 ----------------------------------------------------------------------------------- */
-
 .body.modal-open{
   overflow:hidden;
 }
@@ -126,7 +128,7 @@
 body {
   // color: rgba(255, 255, 255, 0.7);
   background-color: #303841;
-  background: $theme-background-image no-repeat center center fixed;
+  background: $theme-background-image no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -158,7 +160,7 @@ body {
 .btn-sportimo {
   background: $theme-color;
   padding: 5px 20px;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 600;
   min-width: 74px;
 }
@@ -259,7 +261,7 @@ body .page-wrapper .page-main-header {
 
 .app-navbar a:hover,
 .mobile-app-navbar a:hover {
-  background-color: $theme-navbar-color;
+  background-color: $theme-navbar-color-active;
 }
 
 .mobile-app-navbar a {
@@ -317,6 +319,13 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.icn-burger{
+  background: url("~src/assets/images/sportimo/icon-burger.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 .icn-power {
   background: url("~src/assets/images/sportimo/icon-power.svg") no-repeat center center;
   display: block;
@@ -340,6 +349,21 @@ body .page-wrapper .page-main-header {
 
 .active .icn-cards {
   background: url("~src/assets/images/sportimo/icon-cards.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+
+.icn-mycards {
+  background: url("~src/assets/images/sportimo/icon-cardsstack.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-mycards {
+  background: url("~src/assets/images/sportimo/icon-cardsstack.active.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
@@ -610,6 +634,7 @@ body .page-wrapper .page-main-header {
   color: $theme-color !important;
   animation-name: flipInX;
   animation-duration: 0.5s;
+  background-color: #22344d;
 }
 
 /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
@@ -690,6 +715,7 @@ body .page-wrapper .page-main-header {
 
 .main-pages-scrollarea {
   height: calc(100vh - 144px);
+  height: calc((var(--vh, 1vh) * 100) - 144px );
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
@@ -699,6 +725,14 @@ body .page-wrapper .page-main-header {
 /**=====================
      02. Contests
 ==========================**/
+
+.contest-pages-scrollarea{
+  overflow-y: auto;
+  height: calc(100vh - 180px);
+  height: calc((var(--vh, 1vh) * 100) - 180px);
+  -webkit-overflow-scrolling: touch;
+}
+
 .contest-list-item {
   cursor: pointer;
 }
@@ -941,7 +975,7 @@ body .page-wrapper .page-main-header {
 .modal-background {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1031; /* Sit on top */
+  z-index: 1035; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -975,7 +1009,8 @@ body .page-wrapper .page-main-header {
 
 .modal-card-body {
   width: 100%;
-  height: 550px;
+  // height: 550px;
+  padding-bottom: 15px;
   color: #ffffff;
   background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
 }
@@ -987,25 +1022,40 @@ body .page-wrapper .page-main-header {
   margin-right: 15px;
 }
 
-
-/* cyrillic-ext */
 @font-face {
-  font-family: 'Roboto';
+  font-family: 'IranSans';
   font-style: normal;
   font-weight: 400;
-  src: url("./assets/fonts/roboto/Roboto-Regular.ttf");
-  // src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
-  // unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-display: block;
+  src: url('./assets/fonts/iran-sans/IRANSans.ttf'); 
 }
 
 @font-face {
-  font-family: 'Roboto';
+  font-family: 'IranSans';
   font-style: normal;
   font-weight: 700;
-  src: url("./assets/fonts/roboto/Roboto-Bold.ttf");
-  // src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
-  // unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+  font-display: block;
+  src: url('./assets/fonts/iran-sans/IRANSans_Bold.ttf');
 }
+
+/* cyrillic-ext */
+// @font-face {
+//   font-family: 'Roboto';
+//   font-style: normal;
+//   font-weight: 400;
+//   src: url('./assets/fonts/roboto/Roboto-Regular.ttf');
+//   // src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
+//   // unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+// }
+
+// @font-face {
+//   font-family: 'Roboto';
+//   font-style: normal;
+//   font-weight: 700;
+//   src: url('./assets/fonts/roboto/Roboto-Bold.ttf');
+//   // src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v19/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');
+//   // unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+// }
 // /* cyrillic */
 // @font-face {
 //   font-family: 'Roboto';
@@ -1130,4 +1180,21 @@ body .page-wrapper .page-main-header {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555; 
+}
+
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  &.dark-backdrop {
+    background: #000;
+    opacity: 0.85 !important;
+  }
+}
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1040;
+}
+
+
+.cdk-overlay-pane {
+  width: 80%;
 }

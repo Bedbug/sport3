@@ -5,30 +5,43 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">  
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="./assets/images/sportimo/logo-sportimo.jpg">
-  <link rel="icon" type="image/png" sizes="192x192" href="./assets/images/sportimo/logo-sportimo.jpg">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192x192.png">
   <meta name="apple-mobile-web-app-title" content="Sportimo">
   <meta name="description" content="If you like Sports, you will love Sportimo!">
   <meta name="keywords" content="sports, games">
   <meta name="author" content="bedbug">
-  <link rel="icon" type="image/x-icon" href="./assets/images/sportimo/logo-sportimo.jpg">
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/images/sportimo/logo-sportimo.jpg">
+  <link rel="icon" type="image/x-icon" href="./assets/icons/icon-72x72.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/icons/icon-72x72.png">
+  <link rel="preconnect" href="https://sportimo-media.s3-eu-west-1.amazonaws.com" crossorigin>
+  <link rel="preconnect" href="https://s3-eu-west-1.amazonaws.com" crossorigin>
+  <link rel="preload" href="/IRANSans.ttf" as='font' type='font/ttf' crossorigin>
+  <link rel="preload" href="/IRANSans_Bold.ttf" as='font' type='font/ttf' crossorigin>
+
   <title>Sportimo 3 - The way to watch football</title>
   <base href="/">
-  <!--Google font-->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet"> -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,600,700,800" rel="stylesheet"> -->
-  <!-- <script src="//cdn.ckeditor.com/4.7.1/full/ckeditor.js"></script> -->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TWTPVTH');</script>
+  <!-- End Google Tag Manager -->
   
-  <script src="./assets/js/lottie.js"></script>
+  <!-- <script src="./assets/js/lottie.js"></script> -->
 
 
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
 </head>
 
 <body style="overflow: hidden;">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TWTPVTH"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="mobile-container">
     <!-- Loader starts -->
     <div class="loader-wrapper">
@@ -53,6 +66,7 @@
     <!-- Loader ends -->
     <app-root></app-root>
   </div>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 
 </html>

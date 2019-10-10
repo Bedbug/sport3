@@ -2,19 +2,19 @@
   <div class="card-body user-info">
       <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to play cards.</div>
     <div class="container">       
-      <div class="row">
-        <div class="col-8">
+      <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
+        <div class="col-12">
           <div class="info">
             <div class="cards active">
-              <div class="icn-cards pull-left" style="height: 24px;width: 30px;"></div> {{availableCardPlays}}
+              <div class="icn-cards pull-left" style="height: 24px;width: 30px; display: flex"></div> {{availableCardPlays}}
             </div>
             <div class="powers">
-              <div class="icn-power pull-left" style="height: 24px;width: 30px;"></div> {{availableSpecialPlays}}
+              <div class="icn-power pull-left" style="height: 24px;width: 30px; display: flex"></div> {{availableSpecialPlays}}
             </div>
             <div class="points"><strong>{{liveMatch?.userScore}}</strong> pts</div>
           </div>
         </div>
-        <div class="col-4 text-center">
+        <!-- <div class="text-right" style="width: 100%">
           <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard || !subscribed || liveMatch?.matchData.completed" (click)="playCard()"
             class="btn btn-sportimo" style="width: 100%">
             <div class="loader-label" [class.btn-active]="isLoadingCards">
@@ -27,13 +27,13 @@
           <button *ngIf="isPlayingCard && !isLoadingCards" (click)="isPlayingCard = false" class="btn btn-sportimo"
             style="width: 100%">
             <div class="loader-label">
-              <span class="button-label" translate>Exit</span>
+              <span class="button-label" translate>ExitCards</span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
             </div>
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -200,7 +200,7 @@
           <p class="title">Activate powerups:</p>
           <div class="power-container">
             <div class="col-6 powerup isClickable"
-              (click)="!isSubmitingCard && cardSelections.isDoublePoints=!cardSelections.isDoublePoints"
+              (click)="!isSubmitingCard && availableSpecialPlays >0 && cardSelections.isDoublePoints=!cardSelections.isDoublePoints"
               [class.active-power]="cardSelections.isDoublePoints">
               <span>Double Points</span>
               <div class="power-button double-points">
@@ -210,7 +210,7 @@
             </div>
 
             <div *ngIf="selectedCard?.duration > 0" class="col-6 powerup isClickable"
-              (click)="!isSubmitingCard && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
+              (click)="!isSubmitingCard && availableSpecialPlays > 0 && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
               [class.active-power]="cardSelections.isDoubleTime">
               <span>Double Time</span>
               <div class="power-button double-time">

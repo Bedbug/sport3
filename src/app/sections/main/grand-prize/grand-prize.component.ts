@@ -8,6 +8,9 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
 import { debug } from 'util';
 import { Router } from '@angular/router';
+import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
+import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
+import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
 
 @Component({
   selector: 'app-grand-prize',
@@ -41,7 +44,8 @@ export class GrandPrizeComponent implements OnInit {
     private router: Router,
     private sportimoService: SportimoService,
     public translate: TranslateService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private prizeViewOverlay: PrizeViewOverlayService
   ) { }
 
   ngOnInit() {
@@ -75,8 +79,9 @@ export class GrandPrizeComponent implements OnInit {
   
 
   showPrizeDetails(prizeid: string) {
-
-    this.router.navigate(['main/grand-prize/', prizeid]);
+    
+    this.prizeViewOverlay.open<GrandPrizeDetailsComponent>(GrandPrizeDetailsComponent,{data:prizeid});
+    // this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
   

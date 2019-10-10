@@ -33,14 +33,14 @@
 }
 .contest-info-cell {
   display: table-cell;
-  font-family: Helvetica;
+  font-family: $theme-font;
   color: #ffffff;
   padding: 0 5px 0 0;
   font-size: 0.7rem;
 }
 
 .user-chances {
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 700;
   font-size: 14px;
   text-align: right;
@@ -63,7 +63,7 @@
 
 .join-modal-header {
   padding: 5px;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-size: 21px;
   font-weight: 700;
   color: #ffffff;
@@ -72,7 +72,7 @@
 
 .join-modal-contest {
   margin-bottom: 20px;
-  font-family: Roboto;
+  font-family: $theme-font;
   font-weight: 100;
   font-size: 18px;
   color: #ffffff;
