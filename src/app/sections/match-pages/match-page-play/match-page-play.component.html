@@ -151,7 +151,7 @@
       <div class="card-scroll-list">
         <div *ngFor="let availablePlaycard of availableCards">
           <div *ngIf="availablePlaycard?.cardType!='Overall'"           
-          placement="bottom" adaptivePosition="false" popover="Play a Goal Card" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay && availablePlaycard?.title[translate.currentLang]=='Goal'" containerClass="popover"
+          placement="bottom" adaptivePosition="false" popover="{{translate.instant('tip.2')}}" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay && availablePlaycard?.title[translate.currentLang]=='Goal'" containerClass="popover"
           [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}" (click)="subscribed && openPlayModal(availablePlaycard)"
             class="playcard">
             <div class="icon">

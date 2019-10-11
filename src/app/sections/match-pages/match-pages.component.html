@@ -41,7 +41,7 @@
         <div class="icn-match"></div><span translate>Match Info</span>
       </a>
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'play']" routerLinkActive="active" href="#" (click)="hasClickedPlay=true">      
-        <span popover="{{playCardsPopoverText}}"
+        <span popover="{{translate.instant('tip.1')}}"
         triggers=""  [isOpen]="showPlayCardsPop && !hasClickedPlay" containerClass="popover"></span>
         <div class="icn-cards"></div><span translate>Play</span>
       </a>

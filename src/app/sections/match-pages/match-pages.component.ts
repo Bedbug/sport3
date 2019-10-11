@@ -40,11 +40,9 @@ export class MatchPagesComponent implements OnInit {
   liveMatch: LiveMatch;
   stream: any;
   demoplay: any;
-  ngUnsubscribe = new Subject();
-  
-  playCardsPopoverText = "Tap here to play cards!"
+  ngUnsubscribe = new Subject();  
   showPlayCardsPop = false;
-  hasJoinedContest: string;
+  hasJoinedContest: string;  
 
   constructor(
     private route: ActivatedRoute, 
@@ -69,8 +67,7 @@ export class MatchPagesComponent implements OnInit {
         if(!user && this.contestId){
           this.state.navigate(['/contest',this.contestId,'info']);
         }
-      });
-
+      });           
 
       // Retrieve the Live Match data from the service
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
