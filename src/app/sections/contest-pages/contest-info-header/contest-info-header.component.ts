@@ -41,6 +41,8 @@ export class ContestInfoHeaderComponent implements OnInit {
         .subscribe(result => {
           this.contestId = params.get("contestId");
           this.contestDetails = result;
+          if(this.contestDetails.isSubscribed)
+              localStorage.setItem("hasjoinedcontest","true");
         });
     })
 
@@ -52,6 +54,8 @@ export class ContestInfoHeaderComponent implements OnInit {
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe(result => {
             this.contestDetails = result;
+            if(this.contestDetails.isSubscribed)
+              localStorage.setItem("hasjoinedcontest","true");
           });
     });
   }
@@ -74,7 +78,12 @@ export class ContestInfoHeaderComponent implements OnInit {
       this.errorDisplay.showError('101');
     else {
       if (this.joiningContest)
-        this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => console.log(x));
+        this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => 
+          {
+            localStorage.setItem("hasjoinedcontest","true");
+            console.log(x)
+        }
+          );
       else {
         this.joiningContest = true;
       }

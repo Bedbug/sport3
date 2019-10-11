@@ -6,7 +6,6 @@
 	"All": "All",
 	"Already a member?": "Already a member? ",
 	"Assists": "Assists",
-	"Away Team": "Away Team",
 	"Balance": "Balance",
 	"Born": "Born",
 	"Both passwords required": "Both passwords required",
@@ -25,7 +24,6 @@
 	"Ends:": "Ends:",
 	"Enter PIN": "Enter PIN",
 	"Enter mobile phone": "Enter mobile phone",
-	"ExitCards": "My Cards",
 	"FW": "FW",
 	"First_Half_Ends": "First Half Ends",
 	"First_Half_Starts": "First Half Starts",
@@ -44,7 +42,6 @@
 	"Grand prize": "Grand prize",
 	"Headers": "Headers",
 	"Height": "Height",
-	"Home Team": "Home Team",
 	"Hours": "Hours",
 	"How to Play": "How to Play",
 	"Incorrect PIN code": "Incorrect PIN code",
@@ -68,11 +65,13 @@
 	"Logout": "Logout",
 	"Lost": "Lost",
 	"MED": "MED",
+	"Match Info": "",
 	"Matches": "Matches",
 	"Matches played": "Matches played",
 	"Messages": "Messages",
 	"Minutes": "Minutes",
 	"My Account": "My Account",
+	"My Cards": "",
 	"My Teams": "My Teams",
 	"Next Match": "Next Match",
 	"Offside": "Offside",
@@ -169,5 +168,9 @@
 		"10002": "This card has expired."
 	},
 	"farsi": "فارسی",
+	"tip": {
+		"1": "Tap here to play your cards!",
+		"2": "Tap to play a 'Goal' card"
+	},
 	"to Join": "to Join"
 }

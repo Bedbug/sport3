@@ -637,6 +637,16 @@ body .page-wrapper .page-main-header {
   background-color: #22344d;
 }
 
+.popover{
+  background-color: #FFC107;
+  font-weight: bold;
+  text-align: center;
+}
+
+.popover>.arrow:after {
+  border-top-color: #FFC107;
+  border-bottom-color: #FFC107;
+}
 /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
 
 @media screen and (max-width: 500px) {
@@ -645,6 +655,8 @@ body .page-wrapper .page-main-header {
     display: block;
   }
 }
+
+
 
 @include media-breakpoint-down(sm) {
   .app-navbar {

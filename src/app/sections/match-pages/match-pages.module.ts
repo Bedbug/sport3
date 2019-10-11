@@ -11,6 +11,7 @@ import { ReversePipe } from 'src/app/pipes/reverse.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonRangeSliderModule } from "ng2-ion-range-slider";
 import { MatchPagePlayComponent } from './match-page-play/match-page-play.component';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MatchPagePlayComponent } from './match-page-play/match-page-play.compon
   imports: [
     CommonModule,
     MatchPagesRoutingModule,
+    PopoverModule.forRoot(),
     // NgArrayPipesModule,
     // NgbModule,
     TranslateModule.forChild(),
