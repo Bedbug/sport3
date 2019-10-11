@@ -42,6 +42,10 @@ export class MatchPagesComponent implements OnInit {
   demoplay: any;
   ngUnsubscribe = new Subject();
   
+  playCardsPopoverText = "Tap here to play cards!"
+  showPlayCardsPop = false;
+  hasJoinedContest: string;
+
   constructor(
     private route: ActivatedRoute, 
     private sportimoService: SportimoService,     
@@ -57,6 +61,9 @@ export class MatchPagesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
+
+      this.hasJoinedContest = localStorage.getItem("hasjoinedcontest");
+      this.showPlayCardsPop = !this.hasJoinedContest;
 
       this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
         if(!user && this.contestId){

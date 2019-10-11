@@ -55,6 +55,9 @@ export class MatchPagePlayComponent implements OnInit {
   // menuPosition: any;
   subscribed: boolean;
   ngUnsubscribe = new Subject();
+  hasClickedPlay: boolean = false;
+  hasJoinedContest: string;
+  showPlayCardsPop: boolean;
 
   constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService, private authenticationService:AuthenticationService) {
   }
@@ -66,6 +69,9 @@ export class MatchPagePlayComponent implements OnInit {
     })
 
     this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x);
+    
+    this.hasJoinedContest = localStorage.getItem("hasjoinedcontest");
+      this.showPlayCardsPop = !this.hasJoinedContest;
 
     this.authenticationService.currentUser
     .pipe(takeUntil(this.ngUnsubscribe))
@@ -154,6 +160,7 @@ export class MatchPagePlayComponent implements OnInit {
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();
     this.playCardModal = true;
+    this.hasClickedPlay = true;
   }
 
   closeModal() {

@@ -33,6 +33,8 @@ import { CardToastComponent } from './components/card-toast/card-toast.component
 import { GrandPrizeDetailsComponent } from './sections/main/grand-prize-details/grand-prize-details.component';
 import { ContestInfoComponent } from './sections/contest-pages/contest-info/contest-info.component';
 import { OnboardComponent } from './onboard/onboard.component';
+import {NgxPopperModule} from 'ngx-popper';
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 // AoT requires an exported function for factories
@@ -65,6 +67,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
+    // NgxPopperModule.forRoot({}),
+    PopoverModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),

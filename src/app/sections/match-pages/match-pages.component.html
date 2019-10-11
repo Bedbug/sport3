@@ -40,14 +40,16 @@
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
         <div class="icn-match"></div><span translate>Match Info</span>
       </a>
-      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'play']" routerLinkActive="active" href="#">
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'play']" routerLinkActive="active" href="#" (click)="hasClickedPlay=true">      
+        <span popover="{{playCardsPopoverText}}"
+        triggers=""  [isOpen]="showPlayCardsPop && !hasClickedPlay" containerClass="popover"></span>
         <div class="icn-cards"></div><span translate>Play</span>
       </a>
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']" routerLinkActive="active" href="#">
         <div class="icn-mycards"></div><span translate>My Cards</span>
       </a>
-      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">
-        <div class="icn-leaders"></div><span translate>Leaders</span>
+      <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">        
+    <div class="icn-leaders"></div><span translate>Leaders</span>
       </a>
     </nav>
   </div>
