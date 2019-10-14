@@ -60,7 +60,7 @@ export class MatchPagesComponent implements OnInit {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
 
-      this.hasJoinedContest = localStorage.getItem("hasjoinedcontest");
+      this.hasJoinedContest = localStorage.getItem("hasplayedcard");
       this.showPlayCardsPop = !this.hasJoinedContest;
 
       this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{

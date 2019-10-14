@@ -40,9 +40,7 @@ export class ContestInfoHeaderComponent implements OnInit {
         .pipe(takeUntil(this.ngUnsubscribe))
         .subscribe(result => {
           this.contestId = params.get("contestId");
-          this.contestDetails = result;
-          if(this.contestDetails.isSubscribed)
-              localStorage.setItem("hasjoinedcontest","true");
+          this.contestDetails = result;          
         });
     })
 
@@ -53,9 +51,7 @@ export class ContestInfoHeaderComponent implements OnInit {
         this.sportimoService.getContestDetails(this.contestId)
           .pipe(takeUntil(this.ngUnsubscribe))
           .subscribe(result => {
-            this.contestDetails = result;
-            if(this.contestDetails.isSubscribed)
-              localStorage.setItem("hasjoinedcontest","true");
+            this.contestDetails = result;            
           });
     });
   }
@@ -79,9 +75,8 @@ export class ContestInfoHeaderComponent implements OnInit {
     else {
       if (this.joiningContest)
         this.sportimoService.joinContest(this.contestDetails._id).subscribe(x => 
-          {
-            localStorage.setItem("hasjoinedcontest","true");
-            console.log(x)
+          {            
+            // console.log(x)
         }
           );
       else {

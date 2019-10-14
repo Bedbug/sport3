@@ -70,7 +70,7 @@ export class MatchPagePlayComponent implements OnInit {
 
     this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x);
     
-    this.hasJoinedContest = localStorage.getItem("hasjoinedcontest");
+    this.hasJoinedContest = localStorage.getItem("hasplayedcard");
       this.showPlayCardsPop = !this.hasJoinedContest;
 
     this.authenticationService.currentUser
@@ -208,7 +208,8 @@ export class MatchPagePlayComponent implements OnInit {
     this.sportimoService.submitUserCard(this.cardSelections)
       .subscribe(playedCard => {
         this.isSubmitingCard = false;
-        this.closeModal();
+        this.closeModal();        
+        localStorage.setItem("hasplayedcard","true");
       }
         , error => console.log('Error'))
   }

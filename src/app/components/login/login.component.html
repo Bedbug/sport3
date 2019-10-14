@@ -12,7 +12,7 @@
           <div class="login-form-content">
             <div class="form-group text-center">
               <label class="" translate>Username/Email</label>
-              <input type="text" formControlName="username" class="form-control-plaintext"
+              <input type="text" formControlName="username" class="form-control-plaintext" autocorrect="off" autocapitalize="none"
                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="{{ 'Username' | translate }}" required>
               <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                 <div *ngIf="f.username.errors.required" translate>Username is required</div>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
               <label class="" translate>Password/Email</label>
-              <input type="password" formControlName="password" class="form-control-plaintext"
+              <input type="password" formControlName="password" class="form-control-plaintext" autocorrect="off" autocapitalize="none"
                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="{{ 'Password' | translate }}" required>
               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                 <div *ngIf="f.password.errors.required" translate>Password is required</div>
