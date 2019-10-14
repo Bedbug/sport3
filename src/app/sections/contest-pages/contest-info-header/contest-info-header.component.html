@@ -22,13 +22,13 @@
     <div class="contest-info-container">
       <div class="contest-info-row">
         <div translate class="contest-info-cell font-weight-bold">Matches</div>
-        <div translate class="contest-info-cell font-weight-bold">Participations</div>
+        <div translate *ngIf="contestDetails?.showParticipations" class="contest-info-cell font-weight-bold">Participations</div>
         <div translate class="contest-info-cell font-weight-bold">Winners</div>
         <div translate class="contest-info-cell font-weight-bold">Duration</div>
       </div>
       <div class="contest-info-row">
         <div class="contest-info-cell">{{contestDetails?.matches}}</div>
-        <div class="contest-info-cell">{{contestDetails?.participations}}</div>
+        <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations" >{{contestDetails?.participations}}</div>
         <div class="contest-info-cell">{{contestDetails?.winners}}</div>
         <div class="contest-info-cell">
           {{contestDetails?.startFromDate | date:"dd/MM/yy"}}-{{contestDetails?.endToDate | date:"dd/MM/yy"}}</div>
