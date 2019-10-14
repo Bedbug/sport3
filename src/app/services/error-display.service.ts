@@ -22,7 +22,7 @@ export class ErrorDisplayService {
   //   console.log(translation);
   // });
 
-    this.toastr.show(this.translate.instant('errors.'+errorCode), errorCode);
+    this.toastr.show(this.translate.instant('errors.'+errorCode), "");//errorCode
   }
 
   constructor(private toastr: ToastrService, public translate: TranslateService) {
