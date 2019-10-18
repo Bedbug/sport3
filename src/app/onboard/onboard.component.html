@@ -7,7 +7,7 @@
       </div> -->
       <div class="modal-card-body text-center">
         <div class="slideshow-container"
-          uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true"
+          uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true; finite:true;"
           style="height: 100%; margin: 7px;">
           <div class="uk-position-relative" style="height: inherit;">
             <ul class="uk-slideshow-items" style="height: inherit;">
@@ -57,7 +57,7 @@
                       <h3 style="font-size: 22px;font-size: 22px;max-width: 320px;margin: auto;" translate="onBoarding.5"></h3>
                         <!-- <h4 style="font-size: 22px;">win amazing prizes!</h4> -->
                         <button  [disabled]="loading" type="submit" class="btn btn-sportimo">
-                            <a  (click)="closeModal()"><img src="assets/images/sportimo/onboard/next.svg" alt="" ></a>
+                            <a  (click)="closeModal()"><img src="assets/images/sportimo/onboard/close.svg" alt="" ></a>
                         </button>
                       </div>
                 </li>
