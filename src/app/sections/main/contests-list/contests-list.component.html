@@ -5,7 +5,7 @@
         <div class="row">
           <span class="contest-name col">{{prize.titleText[translate.currentLang]}}</span>
           <span class="contest-duration col text-right"><strong translate>Ends:</strong>
-            {{prize.endToDate | date }}</span>
+            date {{ parseDate(prize.endToDate) | date }}</span>
         </div>
       </div>
       <div class="card-body"
@@ -53,8 +53,8 @@
       <div class="card-header contest-header">
         <div class="row">
           <span class="contest-name col">{{contest.titleText[translate.currentLang]}}</span>
-          <span class="contest-duration col text-right"><strong translate>Ends:</strong>
-            {{contest.endToDate | date }}</span>
+          <span class="contest-duration col text-right" style="padding-left: 0;"><strong translate>Ends:</strong>
+            {{parseDate(contest.endToDate)}}</span>
         </div>
       </div>
       <div class="card-body"

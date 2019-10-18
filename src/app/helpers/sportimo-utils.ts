@@ -1,4 +1,5 @@
 import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
+import moment from "jalali-moment";
 
 export class SportimoUtils {
   events_mapping = {
@@ -82,5 +83,12 @@ export class SportimoUtils {
     } else{
       return null;
     }
+  }
+
+  parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
+    if(jalali)
+    return moment(date).locale('fa').format(format);
+    else
+    return moment(date).format(format);
   }
 }

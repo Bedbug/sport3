@@ -8,6 +8,7 @@ import { User } from 'src/app/models/user';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ErrorDisplayService } from 'src/app/services/error-display.service';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-contest-info-header',
@@ -19,6 +20,7 @@ export class ContestInfoHeaderComponent implements OnInit {
   joiningContest: boolean;
   user: User;
   isJoinRequesting: boolean;
+  Utils: SportimoUtils = new SportimoUtils();
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -108,5 +110,10 @@ export class ContestInfoHeaderComponent implements OnInit {
 
   getCoins() {
 
+  }
+
+  parseDate(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa',"DD/MM/YY");
+    
   }
 }

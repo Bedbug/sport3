@@ -8,6 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GrandPrize } from 'src/app/models/grand-prize';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-contests-list',
@@ -38,6 +39,9 @@ export class ContestsListComponent implements OnInit {
   ngUnsubscribe = new Subject();
   prizes: GrandPrize[];
   countdownTimers: any[];
+
+  Utils: SportimoUtils = new SportimoUtils();
+  
   
   constructor(
     private sportimoService: SportimoService,
@@ -120,11 +124,13 @@ export class ContestsListComponent implements OnInit {
       }
     }, 1000);
     });
-   
-   
-    
+       
 
     
+  }
+
+  parseDate(date:string){
+      return this.Utils.parseDate(date,this.translate.currentLang=='fa');
   }
 
   showPrizeDetails(prizeid: string) {

@@ -13,89 +13,7 @@ import $ from 'jquery'
   styleUrls: ['./contest-page-leaders.component.scss']
 })
 export class ContestPageLeadersComponent implements OnInit {
-  cellArray = [
-    // { _id: "" },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: true },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-    // { user: false },
-  ];
+  cellArray = [];
   show: boolean;
   
   constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private authenticationService: AuthenticationService) { }
@@ -119,9 +37,11 @@ export class ContestPageLeadersComponent implements OnInit {
               //   this.userRank = this.cellArray.findIndex(x=>x._id == this.athenticationService.currentUser.source._value.id);
               // }
               this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{             
-                this.userRank = this.cellArray.findIndex(x=>x._id == user._id);                
-                if(this.userRank >= 0)
-                    this.show = true;
+                this.userRank = -1;
+                if(user)
+                  this.userRank = this.cellArray.findIndex(x => x._id == user._id);         
+          
+                this.show = (user && this.userRank >= 0);
               })
             }
             );

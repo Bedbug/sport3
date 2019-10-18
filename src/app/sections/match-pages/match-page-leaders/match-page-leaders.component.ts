@@ -42,9 +42,11 @@ export class MatchPageLeadersComponent implements OnInit {
       // }
 
       this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
-        this.userRank = this.cellArray.findIndex(x => x._id == user._id);
-        if (this.userRank >= 0)
-          this.show = true;
+        this.userRank = -1;
+        if(user)
+          this.userRank = this.cellArray.findIndex(x => x._id == user._id);         
+          
+          this.show = (user && this.userRank >= 0);
       })
 
     });
