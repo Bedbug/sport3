@@ -1,6 +1,6 @@
 import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
-// import moment from "jalali-moment";
-import * as moment from 'jalali-moment';
+import moment from "jalali-moment";
+// import * as moment from 'jalali-moment';
 
 export class SportimoUtils {
   events_mapping = {
@@ -14,13 +14,13 @@ export class SportimoUtils {
     "Foul": { text: "Foul", icon: "icn-foul", show: true },
     "Substitution": { text: "Substitution", icon: "icn-substitution", show: true },
     "First_Half_Starts": { text: "First Half Starts", icon: "icn-stopwatch" },
-    "First_Half_Ends": { text: "First Half Ends", icon: "icn-stopwatch"},
-    "Second_Half_Starts": { text: "Second Half Starts", icon: "icn-stopwatch"},
-    "Second_Half_Ends": { text: "Second Half Ends", icon: "icn-stopwatch"},
-    "Overtime_First_Half_Starts": { text: "Overtime First Half", icon: "icn-stopwatch"},
-    "Overtime_First_Half_Ends": { text: "Overtime First Half Ends", icon: "icn-stopwatch"},
-    "Overtime_Second_Half_Starts": { text: "Overtime Second Half", icon: "icn-stopwatch"},
-    "Overtime_Second_Half_Ends": { text: "Overtime Second Half Ends", icon: "icn-stopwatch"},
+    "First_Half_Ends": { text: "First Half Ends", icon: "icn-stopwatch" },
+    "Second_Half_Starts": { text: "Second Half Starts", icon: "icn-stopwatch" },
+    "Second_Half_Ends": { text: "Second Half Ends", icon: "icn-stopwatch" },
+    "Overtime_First_Half_Starts": { text: "Overtime First Half", icon: "icn-stopwatch" },
+    "Overtime_First_Half_Ends": { text: "Overtime First Half Ends", icon: "icn-stopwatch" },
+    "Overtime_Second_Half_Starts": { text: "Overtime Second Half", icon: "icn-stopwatch" },
+    "Overtime_Second_Half_Ends": { text: "Overtime Second Half Ends", icon: "icn-stopwatch" },
   }
 
   sprite_mappings = {
@@ -37,11 +37,11 @@ export class SportimoUtils {
     'result': 'icn-result',
     'nr-offsides': 'icn-offsides',
     'nr-corners': 'icn-corners',
-    'firstgoal':'icn-defence',
-    'most-shots-target':'icn-shots',
+    'firstgoal': 'icn-defence',
+    'most-shots-target': 'icn-shots',
   }
 
-  translateMappings(){
+  translateMappings() {
     _("Goal");
     _("Shot_on_Goal");
     _("Offside");
@@ -69,10 +69,10 @@ export class SportimoUtils {
     return this.sprite_mappings[sprite];
   }
 
-  getTextByType(type: string) {    
+  getTextByType(type: string) {
     return this.events_mapping[type].text;
   }
-  getIconByType(type: string) {    
+  getIconByType(type: string) {
     return this.events_mapping[type].icon;
   }
   shouldShow(type: string, data: any) {
@@ -81,41 +81,41 @@ export class SportimoUtils {
         return data;
       else
         return null;
-    } else{
+    } else {
       return null;
     }
   }
 
-  parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
+  parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY') {
     // console.log("Is Jalali: "+ jalali, date);
-    if(!date)
-return "";
+    if (!date)
+      return "";
 
     moment.locale('en');
-    let returnDate  = moment.from(date,'en');
-    
-    if(jalali){
-    return this.parseNumbers(returnDate.locale('fa').format(format), true);
-    // console.log("fa: "+returnDate);
-    }else{
-    return returnDate.locale('en').format(format);
-    // console.log("en: "+returnDate);
-    }
+    let returnDate = moment(date);
+    return returnDate;
+    // if (jalali) {
+    //   return this.parseNumbers(returnDate.locale('fa').format(format), true);
+    //   // console.log("fa: "+returnDate);
+    // } else {
+    //   return returnDate.locale('en').format(format);
+    //   // console.log("en: "+returnDate);
+    // }
     // return returnDate;
 
   }
 
-  parseNumbers(text:string, persian: boolean){
-    if(!text)
-    return "";
-    if(persian){
-    var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-    return text.toString().replace(/[0-9]/g, function(w){
+  parseNumbers(text: string, persian: boolean) {
+    if (!text)
+      return "";
+    if (persian) {
+      var id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+      return text.toString().replace(/[0-9]/g, function (w) {
         return id[+w]
-    });
+      });
     }
     else
-    return text;
+      return text;
   }
 
 }
