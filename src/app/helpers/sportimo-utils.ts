@@ -88,7 +88,9 @@ export class SportimoUtils {
 
   parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
     // console.log("Is Jalali: "+ jalali, date);
+    moment.locale('en');
     let returnDate  = moment.from(date,'en');
+    
     if(jalali){
     return returnDate.locale('fa').format(format);
     // console.log("fa: "+returnDate);
