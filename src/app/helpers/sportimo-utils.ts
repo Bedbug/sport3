@@ -1,6 +1,7 @@
 import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
-import moment from "jalali-moment";
-import 'moment/min/locales';
+// import moment from "jalali-moment";
+import moment from 'moment-jalaali';
+// import 'moment/min/locales';
 // import * as moment from 'jalali-moment';
 
 export class SportimoUtils {
@@ -87,22 +88,23 @@ export class SportimoUtils {
     }
   }
 
-  parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY') {
-    console.log(date);
+  parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY', jalaliFormat:string = 'jD jMMM jYYYY') {
+    // console.log(date);
     if (!date)
       return "";
 
-    moment.locale('en');
-    let returnDate = moment.from(date, 'en');
+    moment.locale('en');    
+    let returnDate = moment(date);
+   
+    if (jalali) {
+      return returnDate.format(jalaliFormat);
+      // return this.parseNumbers(returnDate.locale('fa').format(format), true);
+      // console.log("fa: "+returnDate);
+    } else {
+      return returnDate.locale('en').format(format);
+      // console.log("en: "+returnDate);
+    }
     return returnDate;
-    // if (jalali) {
-    //   return this.parseNumbers(returnDate.locale('fa').format(format), true);
-    //   // console.log("fa: "+returnDate);
-    // } else {
-    //   return returnDate.locale('en').format(format);
-    //   // console.log("en: "+returnDate);
-    // }
-    // return returnDate;
 
   }
 
