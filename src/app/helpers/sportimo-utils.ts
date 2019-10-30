@@ -92,7 +92,7 @@ export class SportimoUtils {
     returnDate = moment(date).utc().locale('fa').format(format);
     console.log("fa: "+returnDate);
     }else{
-    returnDate = moment(date).utc().format(format);
+    returnDate = moment(date).utc().locale('en').format(format);
     console.log("en: "+returnDate);
     }
     return returnDate;
