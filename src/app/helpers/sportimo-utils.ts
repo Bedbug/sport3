@@ -87,12 +87,12 @@ export class SportimoUtils {
   }
 
   parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY') {
-    // console.log("Is Jalali: "+ jalali, date);
+    console.log(date);
     if (!date)
       return "";
 
     moment.locale('en');
-    let returnDate = moment(date);
+    let returnDate = moment.from(date, 'en');
     return returnDate;
     // if (jalali) {
     //   return this.parseNumbers(returnDate.locale('fa').format(format), true);
