@@ -130,6 +130,8 @@ export class ContestsListComponent implements OnInit {
   }
 
   parseDate(date:string){
+    console.log(this.translate.currentLang == 'fa');
+    console.log(this.translate.currentLang);
       return this.Utils.parseDate(date,this.translate.currentLang=='fa');
   }
 
