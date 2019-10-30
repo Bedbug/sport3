@@ -86,9 +86,16 @@ export class SportimoUtils {
   }
 
   parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
-    if(jalali)
-    return moment(date).locale('fa').format(format);
-    else
-    return moment(date).format(format);
+    console.log("Is Jalali: "+ jalali, date);
+    var returnDate  = "";
+    if(jalali){
+    returnDate = moment(date).utc().locale('fa').format(format);
+    console.log("fa: "+returnDate);
+    }else{
+    returnDate = moment(date).utc().format(format);
+    console.log("en: "+returnDate);
+    }
+    return returnDate;
+
   }
 }
