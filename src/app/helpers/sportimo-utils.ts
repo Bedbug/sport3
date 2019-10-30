@@ -1,5 +1,6 @@
 import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
-import moment from "jalali-moment";
+// import moment from "jalali-moment";
+import * as moment from 'jalali-moment';
 
 export class SportimoUtils {
   events_mapping = {
@@ -87,7 +88,7 @@ export class SportimoUtils {
 
   parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
     // console.log("Is Jalali: "+ jalali, date);
-    var returnDate  = moment(date);
+    let returnDate  = moment.from(date,'en');
     if(jalali){
     return returnDate.locale('fa').format(format);
     // console.log("fa: "+returnDate);
