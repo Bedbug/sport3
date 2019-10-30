@@ -88,11 +88,14 @@ export class SportimoUtils {
 
   parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
     // console.log("Is Jalali: "+ jalali, date);
+    if(!date)
+return "";
+
     moment.locale('en');
     let returnDate  = moment.from(date,'en');
     
     if(jalali){
-    return returnDate.locale('fa').format(format);
+    return this.parseNumbers(returnDate.locale('fa').format(format), true);
     // console.log("fa: "+returnDate);
     }else{
     return returnDate.locale('en').format(format);
@@ -101,4 +104,18 @@ export class SportimoUtils {
     // return returnDate;
 
   }
+
+  parseNumbers(text:string, persian: boolean){
+    if(!text)
+    return "";
+    if(persian){
+    var id= ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+    return text.toString().replace(/[0-9]/g, function(w){
+        return id[+w]
+    });
+    }
+    else
+    return text;
+  }
+
 }

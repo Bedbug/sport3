@@ -28,7 +28,7 @@
       </div>
       <div class="contest-info-row">
         <div class="contest-info-cell">{{contestDetails?.matches}}</div>
-        <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations" >{{contestDetails?.participations}}</div>
+        <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations" >{{parseNumbers(contestDetails?.participations)}}</div>
         <div class="contest-info-cell">{{contestDetails?.winners}}</div>
         <div class="contest-info-cell ">
           {{parseDate(contestDetails?.startFromDate)}} - {{parseDate(contestDetails?.endToDate)}}</div>
