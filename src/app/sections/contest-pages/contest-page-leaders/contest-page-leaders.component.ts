@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Contest } from 'src/app/models/contest';
 import { Subject } from 'rxjs';
 import $ from 'jquery'
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contest-page-leaders',
@@ -16,11 +18,13 @@ export class ContestPageLeadersComponent implements OnInit {
   cellArray = [];
   show: boolean;
   
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private authenticationService: AuthenticationService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private authenticationService: AuthenticationService,public translate: TranslateService,) { }
   
   userRank: Number = 0;
   contestDetails: Contest;
   ngUnsubscribe = new Subject();
+  Utils: SportimoUtils = new SportimoUtils();
+
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -76,5 +80,9 @@ export class ContestPageLeadersComponent implements OnInit {
     } else {
       $(".leaders-table-user").removeClass('leaders-table-user-down');
     }
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 }

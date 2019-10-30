@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
 import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
 import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-grand-prize',
@@ -40,6 +41,8 @@ export class GrandPrizeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   userChances = 0;
 
+  Utils: SportimoUtils = new SportimoUtils();
+  
   constructor(
     private router: Router,
     private sportimoService: SportimoService,
@@ -114,6 +117,10 @@ export class GrandPrizeComponent implements OnInit {
         that.countdown.expired = true;
       }
     }, 1000);
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
 }

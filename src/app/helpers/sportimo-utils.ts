@@ -88,7 +88,7 @@ export class SportimoUtils {
     }
   }
 
-  parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY', jalaliFormat:string = 'jD jMMM jYYYY') {
+  parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY', jalaliFormat:string = 'jD jMM jYYYY') {
     // console.log(date);
     if (!date)
       return "";
@@ -97,7 +97,7 @@ export class SportimoUtils {
     let returnDate = moment(date);
    
     if (jalali) {
-      return returnDate.format(jalaliFormat);
+      return this.parseNumbers(returnDate.format(jalaliFormat),true);
       // return this.parseNumbers(returnDate.locale('fa').format(format), true);
       // console.log("fa: "+returnDate);
     } else {

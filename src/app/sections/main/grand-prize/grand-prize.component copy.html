@@ -19,9 +19,9 @@
                           </div>
                           <div class="counter-body col-sm-12">
                             <div class="row">
-                            <div class="col p-0">{{countdown.days<10?"0"+countdown.days:countdown.days}}</div>
-                            <div class="col p-0">{{countdown.hours<10?"0"+countdown.hours:countdown.hours}}</div>
-                            <div class="col p-0">{{countdown.minutes<10?"0"+countdown.minutes:countdown.minutes}}</div>
+                            <div class="col p-0">{{countdown.days<10?parseNumbers("0"+countdown.days):parseNumbers(countdown.days)}}</div>
+                            <div class="col p-0">{{countdown.hours<10?parseNumbers("0"+countdown.hours):parseNumbers(countdown.hours)}}</div>
+                            <div class="col p-0">{{countdown.minutes<10?parseNumbers("0"+countdown.minutes):parseNumbers(countdown.minutes)}}</div>
                           </div>
                           </div>
                         </div>

@@ -113,7 +113,7 @@ export class ContestInfoHeaderComponent implements OnInit {
   }
 
   parseDate(date:string){    
-    return this.Utils.parseDate(date,this.translate.currentLang == 'fa',"DD/MM/YY");
+    return this.Utils.parseDate(date,this.translate.currentLang == 'fa',"DD/MM/YY", "jDD/jMM/jYY");
   }
 
   parseNumbers(text:string){

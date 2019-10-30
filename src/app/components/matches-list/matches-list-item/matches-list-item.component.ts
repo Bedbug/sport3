@@ -33,4 +33,8 @@ export class MatchesListItemComponent implements OnInit {
     return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM/YY, hh:mm');
   }
 
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  }
+
 }

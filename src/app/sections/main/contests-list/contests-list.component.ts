@@ -133,6 +133,10 @@ export class ContestsListComponent implements OnInit {
       return this.Utils.parseDate(date,this.translate.currentLang=='fa');
   }
 
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  }
+
   showPrizeDetails(prizeid: string) {
 
     this.router.navigate(['main/grand-prize/', prizeid]);

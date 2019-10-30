@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import { TranslateService } from '@ngx-translate/core';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 declare var $: any;
 
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
   error = '';
   showLoginForm = false;
   currentUser: User;
-
+  Utils: SportimoUtils = new SportimoUtils();
 
   constructor(private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -81,6 +82,10 @@ export class HeaderComponent implements OnInit {
           this.error = error;
           this.loading = false;
         });
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
   logout() {

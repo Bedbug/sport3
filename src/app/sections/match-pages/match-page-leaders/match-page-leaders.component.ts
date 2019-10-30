@@ -7,6 +7,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 // import { Contest } from 'src/app/models/contest';
 import $ from 'jquery';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-match-page-leaders',
@@ -17,9 +19,10 @@ export class MatchPageLeadersComponent implements OnInit {
   cellArray = [];
   contestMatchId: string;
   contestId: string;
+  Utils: SportimoUtils = new SportimoUtils();
 
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private authenticationService: AuthenticationService) { }
+  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, private authenticationService: AuthenticationService,public translate: TranslateService,) { }
   userRank: Number;
   liveMatch: LiveMatch;
   ngUnsubscribe = new Subject();
@@ -81,6 +84,10 @@ export class MatchPageLeadersComponent implements OnInit {
       $(".leaders-table-user").removeClass('leaders-table-user-down');
     }
 
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
 }
