@@ -1,5 +1,6 @@
 import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
 import moment from "jalali-moment";
+import 'moment/min/locales';
 // import * as moment from 'jalali-moment';
 
 export class SportimoUtils {
