@@ -88,13 +88,13 @@ export class SportimoUtils {
   parseDate(date:string, jalali: boolean, format:string = 'D MMM YYYY'){
     console.log("Is Jalali: "+ jalali, date);
     var returnDate  = "";
-    if(jalali){
-    returnDate = moment(date).utc().locale('fa').format(format);
-    console.log("fa: "+returnDate);
-    }else{
-    returnDate = moment(date).utc().locale('en').format(format);
-    console.log("en: "+returnDate);
-    }
+    // if(jalali){
+    // returnDate = moment(date).utc().locale('fa').format(format);
+    // console.log("fa: "+returnDate);
+    // }else{
+    returnDate = moment(date).format(format);
+    // console.log("en: "+returnDate);
+    // }
     return returnDate;
 
   }
