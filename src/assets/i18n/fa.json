@@ -22,8 +22,8 @@
 	"Days": "روزها",
 	"Duration": "زمان",
 	"Ends:": "تمام شد",
-	"Enter PIN": "",
-	"Enter mobile phone": "",
+	"Enter PIN": "رمز یکبار مصرف را وارد کنید",
+	"Enter mobile phone": "شماره تلفن خود را وارد کنید",
 	"FW": "حمله",
 	"First_Half_Ends": "پایان نیمه اول",
 	"First_Half_Starts": "آغاز نیمه اول",
@@ -71,7 +71,7 @@
 	"Messages": "پیام‌ها",
 	"Minutes": "دقایق",
 	"My Account": "حساب من",
-	"My Cards": "",
+	"My Cards": "کارت‌های من",
 	"My Teams": "تیم‌های من",
 	"Next Match": "بازی بعدی",
 	"Offside": "آفساید",
@@ -84,7 +84,7 @@
 	"Overtime_Second_Half_Starts": "آغاز وقت‌های اضافه نیمه دوم",
 	"Participations": "مشارکت‌ها",
 	"Passes": "پاس‌ها",
-	"Password": "",
+	"Password": "گذرواژه",
 	"Password is required": "گذرواژه الزامی است",
 	"Password/Email": "گذرواژه/ایمیل",
 	"Passwords must match": "گذرواژه‌ها یکسان نیستند",
@@ -132,9 +132,9 @@
 	"Top Scorer": "امتیازآورترین‌ها",
 	"Total goals": "گل‌های منتخب",
 	"Upcoming": "به زودی",
-	"Upcoming Matches": "",
+	"Upcoming Matches": "مسابقه‌های آتی",
 	"Update": "به روزرسانی",
-	"Username": "",
+	"Username": "نام کاربری",
 	"Username is required": "نام‌کاربری الزامی است",
 	"Username must be atleast 5 characters long": "",
 	"Username/Email": "نام‌کاربری/ایمیل",
@@ -146,9 +146,9 @@
 	"Won": "برنده",
 	"Yellow": "زرد",
 	"Yellow cards": "کارت‌های زرد",
-	"Yesterday's Games": "",
+	"Yesterday's Games": "بازی‌های دیروز",
 	"Yesterday's Top Scorers": "",
-	"You can change your Username anytime from your Profile": "",
+	"You can change your Username anytime from your Profile": "شما می توانید هرزمان که مایل باشید نام کاربری خود را تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
 	"You need to have an active subscription in order to play cards": {
 		"0": ""
@@ -156,21 +156,28 @@
 	"You:": "شما:",
 	"Your chances:": "شانس‌های شما: ",
 	"activation time:": "زمان فعالسازی",
-	"app-name": "SPORTIMO",
+	"app-name": "پا‌به‌توپ",
 	"correct": "صحیح",
-	"english": "english",
+	"english": "انگلیسی",
 	"errors": {
-		"100": "",
-		"101": "",
-		"102": "",
-		"103": "",
-		"104": "",
-		"10002": ""
+		"100": "برای دسترسی به این صفجه باید وارد شوید",
+		"101": "برای شرکت در مسابقه باید وارد شوید",
+		"102": "باید عضو یک مسابقه باشید تا بازی‌های در جریان را ببینید",
+		"103": "این یک مسابقه‌ی آزمایشی نیست",
+		"104": "با این نام کاربری، کاربری یافت نشد",
+		"10002": "این کارت منقضی شده است"
 	},
 	"farsi": "فارسی",
-	"pop1": "",
+	"onBoarding": {
+		"1": "به پا‌به‌توپ خوش آمدید",
+		"2": "هر بازی واقعی، اکنون مسابقه‌ای برای شماست",
+		"3": "وارد یکی از لیگ‌ها شوید و مسابقه‌ی دلخواهتان را انتخاب کنید",
+		"4": "پیش‌بینی کنید",
+		"5": "با دیگران رقابت کنید ‍و برنده‌ی جوایز ویژه‌ی ما باشید"
+	},
 	"tip": {
-		"2": ""
+		"1": "کلیک کنید تا کارت‌های خود را بازی کنید",
+		"2": "کلید کنید تا یک کارت «گل» استفاده کنید"
 	},
 	"to Join": "عضویت"
 }

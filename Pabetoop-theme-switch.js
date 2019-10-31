@@ -54,10 +54,12 @@ const options2 = {
 const options3 = {
     files: 'src/assets/i18n/en.json',
     to: [
+      '"1": "Welcome to Pabetoop!"',
       'app-name": "pabetoop"',
     '"Welcome to Sportimo!": "Welcome to Pabetoop!"',
     '"Sportimo Winners": "Pabetoop Winners"'],
     from: [
+      '"1": "Welcome to SPORTIMO!"',
       'app-name": "SPORTIMO"',
       '"Welcome to Sportimo!": "Welcome to Sportimo!"',
     '"Sportimo Winners": "Sportimo Winners"'],

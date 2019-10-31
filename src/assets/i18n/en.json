@@ -168,16 +168,16 @@
 		"10002": "This card has expired."
 	},
 	"farsi": "فارسی",
-	"tip": {
-		"1": "Tap here to play your cards!",
-		"2": "Tap to play a 'Goal' card"
-	},
-	"to Join": "to Join",
 	"onBoarding": {
 		"1": "Welcome to SPORTIMO!",
 		"2": "Every match is now your game",
 		"3": "Enter a contest and choose your favorite football matches",
 		"4": "Make your guesses",
 		"5": "Compete with others, gather points and win amazing prizes!"
-	}
+	},
+	"tip": {
+		"1": "Tap here to play your cards!",
+		"2": "Tap to play a 'Goal' card"
+	},
+	"to Join": "to Join"
 }
