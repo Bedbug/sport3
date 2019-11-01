@@ -149,6 +149,7 @@ export class MatchPageCardsComponent implements OnInit {
   }
 
   openPlayModal(card: any) {
+    console.log(this.liveMatch.matchData.completed);
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();
     this.playCardModal = true;

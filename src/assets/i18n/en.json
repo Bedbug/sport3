@@ -165,6 +165,7 @@
 		"102": "You must have joined the contest in order to view matches.",
 		"103": "This is not a scheduled Demo match.",
 		"104": "No user found with these credentials.",
+		"10001": "This match has finished.",
 		"10002": "This card has expired."
 	},
 	"farsi": "فارسی",

@@ -9,6 +9,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ErrorDisplayService } from 'src/app/services/error-display.service';
 
 @Component({
   selector: 'app-match-page-play',
@@ -59,7 +60,12 @@ export class MatchPagePlayComponent implements OnInit {
   hasJoinedContest: string;
   showPlayCardsPop: boolean;
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService, private authenticationService:AuthenticationService) {
+  constructor(
+    private route: ActivatedRoute, 
+    private sportimoService: SportimoService,
+     public translate: TranslateService, 
+     private authenticationService:AuthenticationService,
+     private errorService: ErrorDisplayService) {
   }
 
   ngOnInit() {
@@ -157,10 +163,14 @@ export class MatchPagePlayComponent implements OnInit {
   }
 
   openPlayModal(card: any) {
+    if(!this.liveMatch.matchData.completed){
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();
     this.playCardModal = true;
     this.hasClickedPlay = true;
+    }else{
+      this.errorService.showError("10001");
+    }
   }
 
   closeModal() {

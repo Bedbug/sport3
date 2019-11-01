@@ -33,6 +33,7 @@ export class ErrorDisplayService {
     _('errors.103'); // "This is not a scheduled Demo match"
     _('errors.104');
     _('errors.10002'); // "The card has already closed."
+    _('errors.10001'); // "The card has already closed."
 
 
     _('tip.1');
