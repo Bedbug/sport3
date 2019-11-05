@@ -59,6 +59,7 @@ export class MatchPagePlayComponent implements OnInit {
   hasClickedPlay: boolean = false;
   hasJoinedContest: string;
   showPlayCardsPop: boolean;
+  userScore: number;
 
   constructor(
     private route: ActivatedRoute, 
@@ -74,7 +75,12 @@ export class MatchPagePlayComponent implements OnInit {
       this.contestId = params.get("contestId");
     })
 
-    this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x);
+    this.sportimoService.getCurrentLiveMatchData()
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(x => {
+      this.liveMatch = x;
+      this.userScore = this.sportimoService.getMatchScore();
+    });
     
     this.hasJoinedContest = localStorage.getItem("hasplayedcard");
       this.showPlayCardsPop = !this.hasJoinedContest;

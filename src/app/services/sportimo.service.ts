@@ -61,12 +61,12 @@ export class SportimoService {
   /*-----------------------------------------------------------------------------------
     For Demo purposes ONLY
   ----------------------------------------------------------------------------------- */
-  startDemo(){
+  startDemo() {
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/start`, {})
-      .pipe(map(response => {        
+      .pipe(map(response => {
         return response;
       }))
-  }  
+  }
 
   /*-----------------------------------------------------------------------------------
     Grand Prize
@@ -84,13 +84,13 @@ export class SportimoService {
     }
   }
 
-  getGrandPrizeUserChances(prizeId:string) {    
+  getGrandPrizeUserChances(prizeId: string) {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/grand-prize/${prizeId}/chances`);
   }
 
-   /*-----------------------------------------------------------------------------------
-    Top Picks
-  ----------------------------------------------------------------------------------- */
+  /*-----------------------------------------------------------------------------------
+   Top Picks
+ ----------------------------------------------------------------------------------- */
   getYesterdayGames() {
     // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/matches/past
     return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/top-picks/matches/past`);
@@ -113,14 +113,14 @@ export class SportimoService {
   getContests() {
     return this.http.get<Contest[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournaments/present`)
       .pipe(map(contests => {
-        this.cachedContests.next(contests);       
+        this.cachedContests.next(contests);
         return contests;
       }));
     // 
   }
 
   // Quick Info does not need to be fresh
-  getContestQuickDetails(contestId: string): Observable<Contest> {  
+  getContestQuickDetails(contestId: string): Observable<Contest> {
     if (this.cachedContests.value) {
       return this.cachedContests.pipe(map(contests => contests.find(x => x._id == contestId)));
     } else {
@@ -135,7 +135,7 @@ export class SportimoService {
       return this.getContestQuickDetails(contestId);
     } else {
       return this.http.get<Contest>(
-        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)    
+        `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)
         .pipe(map(contest => {
           console.log("DEBUG: Requesting direct contest details");
           contest.isUserDetails = true;
@@ -146,7 +146,7 @@ export class SportimoService {
   }
 
   updateCachedContests(contest: Contest) {
-    
+
     const i = this.cachedContests.value.findIndex(_item => _item._id === contest._id);
     if (i > -1) this.cachedContests.value[i] = contest; // (2)
     else this.cachedContests.value.push(contest);
@@ -173,20 +173,20 @@ export class SportimoService {
   /*-----------------------------------------------------------------------------------
    LEADERBOARDS
  ----------------------------------------------------------------------------------- */
- getContestLeaders(contestId: string) {
-  return this.http.get<any>(
-    // Get The end point
-    // http://localhost:3030/v1/data/client/5be2bfc7135a3e1e2d4a637f/tournament/5be2f82c135a3e1e2d4a6380/leaders
-    `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/leaders`) 
-    .pipe(map(leaders => {
-      return leaders;
-    }));
+  getContestLeaders(contestId: string) {
+    return this.http.get<any>(
+      // Get The end point
+      // http://localhost:3030/v1/data/client/5be2bfc7135a3e1e2d4a637f/tournament/5be2f82c135a3e1e2d4a6380/leaders
+      `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/leaders`)
+      .pipe(map(leaders => {
+        return leaders;
+      }));
   }
 
   getContestMatchLeaders(contestId: string, matchId: string) {
     return this.http.get<any>(
       // http://localhost:3030/v1/data/client/5be2bfc7135a3e1e2d4a637f/tournament/5be2f82c135a3e1e2d4a6380/match/5be2fc12135a3e1e2d4a6381/leaders
-      `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${matchId}/leaders`) 
+      `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${matchId}/leaders`)
       .pipe(map(leaders => {
         return leaders;
       }));
@@ -268,12 +268,20 @@ export class SportimoService {
       }))
   }
 
+  getMatchScore() {
+    if (this.currentLiveMatch.value) {     
+      return (this.currentLiveMatch.value.playedCards.filter(x=>x.pointsAwarded).map(item=>item.pointsAwarded).reduce((prev,curr)=> 
+      prev+curr,0))
+    } else
+      return 0;
+  }
+
   /*-----------------------------------------------------------------------------------
    SOCKETS
  ----------------------------------------------------------------------------------- */
   getStream() {
     let observable = new Observable(observer => {
-      this.socket = io(this.Config.getApi('SOCKET'),{ transports: ['websocket', 'polling'] });
+      this.socket = io(this.Config.getApi('SOCKET'), { transports: ['websocket', 'polling'] });
       this.socket.on('message', (data) => {
         observer.next(data);
         this.parseSocket(data);
@@ -444,9 +452,9 @@ export class SportimoService {
      Achievements
    ----------------------------------------------------------------------------------- */
   getAchievements() {
-    if(this.authenticationService.currentUserValue)
-    return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/stats`);
-    else return  of(null);
+    if (this.authenticationService.currentUserValue)
+      return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/stats`);
+    else return of(null);
     // return this.http.get<any>(`https://sportimo-clientonly-server-dev.herokuapp.com/v1/users/${this.authenticationService.currentUserValue._id}/stats`);
   }
 

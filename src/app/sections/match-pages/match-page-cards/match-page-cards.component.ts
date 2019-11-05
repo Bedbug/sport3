@@ -55,6 +55,7 @@ export class MatchPageCardsComponent implements OnInit {
   // menuPosition: any;
   subscribed: boolean;
   ngUnsubscribe = new Subject();
+  userScore: number;
 
   constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService, private authenticationService:AuthenticationService) {
   }
@@ -65,7 +66,12 @@ export class MatchPageCardsComponent implements OnInit {
       this.contestId = params.get("contestId");
     })
 
-    this.sportimoService.getCurrentLiveMatchData().subscribe(x => this.liveMatch = x);
+    this.sportimoService.getCurrentLiveMatchData()
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(x => {
+      this.liveMatch = x;
+      this.userScore = this.sportimoService.getMatchScore();
+    });
 
     this.authenticationService.currentUser
     .pipe(takeUntil(this.ngUnsubscribe))

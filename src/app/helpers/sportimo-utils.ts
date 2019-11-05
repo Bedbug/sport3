@@ -108,8 +108,8 @@ export class SportimoUtils {
 
   }
 
-  parseNumbers(text: string, persian: boolean) {
-    if (!text)
+  parseNumbers(text: string, persian: boolean) {    
+    if (text === undefined)
       return "";
     if (persian) {
       var id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
