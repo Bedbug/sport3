@@ -43,9 +43,8 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.sportimoService.getStandingsLeagues().subscribe(leagues =>{    
-      console.log(leagues);
+  
+    this.sportimoService.getStandingsLeagues().subscribe(leagues =>{         
       this.leagues = leagues;
     })
 
@@ -62,11 +61,12 @@ export class MainPageStandingsComponent implements OnInit {
       let playerId = params.get("playerId") || null;
 
       if (leagueId) {
-        if (!this.currentStandings || leagueId != this.currentStandings.competition._id)
+        if (!this.currentStandings || leagueId != this.currentStandings.competition._id){
+          this.currentStandings = null;
           this.sportimoService.getStandings(leagueId).subscribe(x => {
             this.currentStandings = x;
           });
-
+        }
         if (!teamId) {
           this.currentView = this.StandingsViews['Standings'];
           return;
@@ -152,6 +152,7 @@ export class MainPageStandingsComponent implements OnInit {
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.ngUnsubscribe.complete();    
+    
   }
 }
