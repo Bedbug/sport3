@@ -22,11 +22,11 @@
   <!-- Leagues -->
   <div class="main-pages-scrollarea container p-t-15" *ngIf="currentView == 0">
     <div *ngFor="let league of leagues">
-      <div *ngIf="league.visible" class="league-item isClickable" (click)="showStantings(league.id)">
-        <div class="img"><img src="{{league?.img}}" alt=""></div>
+      <div class="league-item isClickable" (click)="showStantings(league._id)">
+        <div class="img"><img src="{{league?.competition.logo}}" alt=""></div>
         <div class="info">
-          <div class="title">{{league?.title[translate.currentLang]}}</div>
-          <div class="text">{{league?.text[translate.currentLang]}}</div>
+          <div class="title">{{league?.competition.name[translate.currentLang]}}</div>
+          <div class="text">{{league?.name[translate.currentLang]}}</div>
         </div>
       </div>
     </div>

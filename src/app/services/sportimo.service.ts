@@ -431,7 +431,9 @@ export class SportimoService {
      Standings / Teams / Players
    ----------------------------------------------------------------------------------- */
   getStandingsLeagues() {
-    return this.http.get<any>('./assets/json/standings-leagues.json');
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/competition-seasons?status=Active`);
+    // return this.http.get<any>('./assets/json/standings-leagues.json');
+    // /client-api/v1/data/competition-seasons?status=Active
   }
   getStandings(leagueId: string) {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/standings/${leagueId}`);

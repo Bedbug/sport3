@@ -44,7 +44,8 @@ export class MainPageStandingsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.sportimoService.getStandingsLeagues().subscribe(leagues =>{      
+    this.sportimoService.getStandingsLeagues().subscribe(leagues =>{    
+      console.log(leagues);
       this.leagues = leagues;
     })
 
@@ -106,6 +107,7 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   showStantings(leagueId: string) {
+    console.log(leagueId);
     this.router.navigate([], { queryParams: { leagueId: leagueId } });
   }
 
