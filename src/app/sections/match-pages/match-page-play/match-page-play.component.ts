@@ -224,8 +224,13 @@ export class MatchPagePlayComponent implements OnInit {
     this.sportimoService.submitUserCard(this.cardSelections)
       .subscribe(playedCard => {
         this.isSubmitingCard = false;
+        
+        // Reload available to play cards
+        this.playCard();
+        
         this.closeModal();        
         localStorage.setItem("hasplayedcard","true");
+
       }
         , error => console.log('Error'))
   }

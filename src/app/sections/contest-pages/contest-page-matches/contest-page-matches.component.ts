@@ -4,7 +4,6 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { IfStmt } from '@angular/compiler';
 import { Contest } from 'src/app/models/contest';
 import { PrizeViewOverlayService } from '../../main/prize-view-overlay/prize-view-overlay.service';
 import { ContestInfoComponent } from '../contest-info/contest-info.component';
@@ -22,6 +21,7 @@ export class ContestPageMatchesComponent implements OnInit {
   hasJoined = false;
   hasShownModal = false;
   ngUnsubscribe = new Subject();
+  dataReload;
 
   presentMatches: ContestMatch[] = [
     // {id:"1",title:"Match 1", home_score:3, away_score: 1, live: true,  start: moment().toDate()},
@@ -36,15 +36,24 @@ export class ContestPageMatchesComponent implements OnInit {
   ]
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private sportimoService: SportimoService,
     private prizeViewOverlay: PrizeViewOverlayService,
-    private authenticationService:AuthenticationService) { }
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.contestId = params.get("contestId");
-      this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => this.presentMatches = matches);
+      this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => {
+        this.presentMatches = matches;
+        //         .sort(function(a, b) {       
+        //           console.log(b.match.start, a.match.start);
+        // ;        return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
+        //     });
+      });
+      var that = this;
+      this.dataReload = setInterval(function(){that.reload();},20000);
+
       this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
     });
 
@@ -55,25 +64,32 @@ export class ContestPageMatchesComponent implements OnInit {
           this.contestDetails = allContests.find(x => x._id == this.contestId);
           if (this.contestDetails)
             this.hasJoined = this.contestDetails.isSubscribed || false;
-            // console.log("IsUserDetails:",this.contestDetails.isUserDetails);
-            
-            // console.log("DEBUG: hasJoined always returns false");            
-            // this.hasJoined = false;
+          // console.log("IsUserDetails:",this.contestDetails.isUserDetails);
 
-            // Set a timeout in order to avoid async calls and duplicates
-            // setTimeout(()=>{
-              if(!this.hasJoined && !this.hasShownModal && (this.contestDetails.isUserDetails || !this.authenticationService.currentUserValue)){        
-                this.hasShownModal = true;
-                console.log("DEBUG: Will show modal for first time contest player.");     
-                this.prizeViewOverlay.open<ContestInfoComponent>(ContestInfoComponent,{data:this.contestDetails});
-              }
-            // },3000)
-            
+          // console.log("DEBUG: hasJoined always returns false");            
+          // this.hasJoined = false;
+
+          // Set a timeout in order to avoid async calls and duplicates
+          // setTimeout(()=>{
+          if (!this.hasJoined && !this.hasShownModal && (this.contestDetails.isUserDetails || !this.authenticationService.currentUserValue)) {
+            this.hasShownModal = true;
+            console.log("DEBUG: Will show modal for first time contest player.");
+            this.prizeViewOverlay.open<ContestInfoComponent>(ContestInfoComponent, { data: this.contestDetails });
+          }
+          // },3000)
+
         }
       });
   }
 
+  reload() {
+    this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => {
+      this.presentMatches = matches;
+    });
+  }
+
   ngOnDestroy() {
+    clearInterval(this.dataReload);
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
