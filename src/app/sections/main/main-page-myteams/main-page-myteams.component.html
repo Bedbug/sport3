@@ -62,7 +62,7 @@
         </div>
       </div> -->
   
-      <div class="match-info">
+      <div *ngIf="currentTeam.lastmatch" class="match-info">
         <div class="match-info-header" translate>Last Match</div>
         <div class="team-side isClickable" (click)="showStandingsTeam(currentTeam.lastmatch.home._id)">
             <div class="kit">

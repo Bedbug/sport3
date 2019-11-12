@@ -31,6 +31,7 @@ export class MainPageStandingsComponent implements OnInit {
   isLoading: boolean;
   ngUnsubscribe = new Subject();
   leagues: any;
+  stats: any;
 
   constructor(
     private sportimoService: SportimoService,
@@ -79,6 +80,8 @@ export class MainPageStandingsComponent implements OnInit {
           this.currentTeam = null;
           this.sportimoService.getTeam(teamId).subscribe(x => {
             this.currentTeam = x;
+            this.stats = this.currentTeam.stats.find(x=>x.competition == leagueId);
+            console.log(this.stats);
             // Check for favorite team
             this.isFavoriteTeam = false;
             if (this.authenticationService.currentUserValue)
