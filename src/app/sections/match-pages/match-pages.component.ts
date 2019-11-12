@@ -83,15 +83,13 @@ export class MatchPagesComponent implements OnInit {
 
             if (!isInfo && event) {             
               if (event.type == "Event_added") {
-                // this.openNotyf("", event.data.type, false);  
-                // console.log(this.liveMatch.matchData);
-                //               console.log(event.data.team);
-                              
+                
+                
                 this.cardToastService.Show({
                   icon: this.Utils.getIconByType(event.data.type),
-                  time: event.data.time+"'",
+                  time: this.Utils.shouldShow(event.type,1)?event.data.time+"'":"",
                   event: this.translate.instant(event.data.type),
-                  teamKit: this.liveMatch.matchData[event.data.team].logo
+                  teamKit: this.Utils.shouldShow(event.type,1)?this.liveMatch.matchData[event.data.team].logo:null
                 });
               }
               if (event.type == "Advance_Segment") {

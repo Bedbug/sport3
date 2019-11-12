@@ -235,5 +235,12 @@ export class MatchPagePlayComponent implements OnInit {
         , error => console.log('Error'))
   }
 
+  parseNumbers(text:string){
+    if(text)
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+    else
+    return "";
+  }
+
 
 }

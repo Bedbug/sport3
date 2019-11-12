@@ -8,7 +8,7 @@
   <div class="card-type">
     <span class="label label-default" style="background-color: white;
       color: #42454a;
-      padding: 3px 5px;">{{data?.cardType=="Overall"?"90'":"LIVE"}}</span>
+      padding: 3px 5px;">{{data?.cardType=="Overall"?parseNumbers("90'"):translate.instant("LVE")}}</span>
   </div>
 </div>
 
@@ -28,7 +28,6 @@
             </div>
             <span>Get {{optionSelected?.startPoints*2}} pts</span>
           </div>
-
           <div *ngIf="data?.duration> 0" class="col-6 powerup isClickable"
             (click)="!isSubmitingCard && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
             [class.active-power]="cardSelections.isDoubleTime">
