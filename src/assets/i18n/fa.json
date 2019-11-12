@@ -1,7 +1,10 @@
 {
+	",\n              starting from:": "",
+	", starting from:": "",
 	"90'": "نود",
 	"About Sportimo": "درباره پا به توپ",
 	"Achievements": "افتخارات",
+	"Activate powerups:": "",
 	"Add to favorites": "اضافه کردن به علاقه‌مندی ها",
 	"All": "همه",
 	"Already a member?": "عضو هستید؟ ",
@@ -10,6 +13,8 @@
 	"Born": "متولد",
 	"Both passwords required": "هر دو گذرواژه الزامی است",
 	"By subscribing, you have earned:": "با عضویت از موارد زیر بهره‌مند خواهید شد",
+	"By:": "",
+	"Cancel": "",
 	"Cards Played:": "کارت‌های بازی‌شده :",
 	"Cards won:": "کارت‌های برنده‌شده:",
 	"Career Statistics": "آمار کلی",
@@ -20,6 +25,9 @@
 	"Crosses": "ارسال‌ها",
 	"DEF": "دفاع",
 	"Days": "روزها",
+	"Double Points": "",
+	"Double Time": "",
+	"Drag slider to set the time that the card will be activated": "",
 	"Duration": "زمان",
 	"Ends:": "تمام شد",
 	"Enter PIN": "رمز یکبار مصرف را وارد کنید",
@@ -53,6 +61,8 @@
 	"Join": "ورود",
 	"Join Contest": "ورود به مسابقه",
 	"Join For Free": "رایگان عضو شوید",
+	"Key_get_card_points": "",
+	"Key_increase_time": "",
 	"Kicked": "اخراج",
 	"LIVE": "زنده",
 	"Language": "زبان",
@@ -126,6 +136,9 @@
 	"Substitution": "تعویض",
 	"Support": "پشتیبانی",
 	"Terms & Conditions": "شرایط و ضوابط",
+	"The match hasn't started yet": {
+		"0": ""
+	},
 	"The match will begin shortly": "",
 	"Top Assister": "بیشترین پاس گل",
 	"Top Picks": "لحظات منتخب",
@@ -176,6 +189,7 @@
 		"4": "پیش‌بینی کنید",
 		"5": "با دیگران رقابت کنید ‍و برنده‌ی جوایز ویژه‌ی ما باشید"
 	},
+	"pts": "",
 	"tip": {
 		"1": "کلیک کنید تا کارت‌های خود را بازی کنید",
 		"2": "کلید کنید تا یک کارت «گل» استفاده کنید"

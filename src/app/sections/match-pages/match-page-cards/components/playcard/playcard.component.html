@@ -80,7 +80,7 @@
           </div>
           <div class="name"> {{data?.title[translate.currentLang]}}</div>
         </div>
-        <div class="info">{{data.text[translate.currentLang]}}<span *ngIf="data.cardType!='Overall'">, starting from:</span></div>
+        <div class="info">{{data.text[translate.currentLang]}}<span *ngIf="data.cardType!='Overall'" translate>, starting from:</span></div>
         <div class="time" *ngIf="data.cardType!='Overall'">
           <div class="event-time-icon">
             <div class="icon icn-stopwatch"></div>
@@ -88,12 +88,12 @@
           <div class="time-text">{{SelectedTime}}</div>
         </div>
         <div *ngIf="optionSelected" [@fadein]>
-          <div>By:</div>
+          <div translate>By:</div>
           <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
           <div [class.active-points]="cardSelections?.isDoublePoints">
             <span
               class="points">{{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>
-            <span class="pts"> pts</span>
+            <span class="pts" translate> pts</span>
           </div>
         </div>
         <div *ngIf="!optionSelected && data.cardType!='Overall'" [@fadein] class="time-slider">
@@ -120,7 +120,7 @@
           <!--  (onUpdate)="myOnUpdate($event)"
           (onChange)="valueChanged($event.target.value)"
           (onFinish)="myOnFinish($event)" -->
-          <span class="slider-guide">Drag slider to set the time that the card will be activated.</span>
+          <!-- <span class="slider-guide" translate>Drag slider to set the time that the card will be activated.</span> -->
         </div>
       
       </div>

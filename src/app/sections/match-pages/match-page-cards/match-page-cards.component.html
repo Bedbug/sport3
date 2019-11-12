@@ -11,7 +11,7 @@
             <div class="powers">
               <div class="icn-power pull-left" style="height: 24px;width: 30px; display: flex"></div> {{availableSpecialPlays}}
             </div>
-            <div class="points"><strong>{{userScore}}</strong> pts</div>
+            <div class="points"><strong>{{userScore}}</strong> <span translate>pts</span></div>
           </div>
         </div>
         <!-- <div class="text-right" style="width: 100%">
@@ -260,7 +260,7 @@
             </div>
             <div class="name"> {{selectedCard?.title[translate.currentLang]}}</div>
           </div>
-          <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span *ngIf="selectedCard?.cardType!='Overall'">,
+          <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span *ngIf="selectedCard?.cardType!='Overall'" translate>,
               starting from:</span></div>
           <div class="time" *ngIf="selectedCard?.cardType!='Overall'">
             <div class="event-time-icon">
@@ -269,12 +269,12 @@
             <div class="time-text">{{SelectedTime}}</div>
           </div>
           <div *ngIf="optionSelected" [@fadein]>
-            <div>By:</div>
+            <div translate>By:</div>
             <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
             <div [class.active-points]="cardSelections?.isDoublePoints">
               <span
                 class="points">{{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>
-              <span class="pts"> pts</span>
+              <span class="pts" translate> pts</span>
             </div>
           </div>
           <div *ngIf="!optionSelected && selectedCard?.cardType!='Overall'" [@fadein] class="time-slider">
@@ -288,7 +288,7 @@
             <!--  (onUpdate)="myOnUpdate($event)"
           (onChange)="valueChanged($event.target.value)"
           (onFinish)="myOnFinish($event)" -->
-            <span class="slider-guide">Drag slider to set the time that the card will be activated.</span>
+            <!-- <span class="slider-guide" translate>Drag slider to set the time that the card will be activated.</span> -->
           </div>
 
         </div>

@@ -1,7 +1,10 @@
 {
+	",\n              starting from:": ",\n              starting from:",
+	", starting from:": ", starting from:",
 	"90'": "Play 90'",
 	"About Sportimo": "About",
 	"Achievements": "Achievements",
+	"Activate powerups:": "Activate powerups:",
 	"Add to favorites": "Add to My Teams",
 	"All": "All",
 	"Already a member?": "Already a member? ",
@@ -10,6 +13,8 @@
 	"Born": "Born",
 	"Both passwords required": "Both passwords required",
 	"By subscribing, you have earned:": "By subscribing, you have earned:",
+	"By:": "By:",
+	"Cancel": "Cancel",
 	"Cards Played:": "Cards Played:",
 	"Cards won:": "Cards won:",
 	"Career Statistics": "Career Statistics",
@@ -20,6 +25,9 @@
 	"Crosses": "Crosses",
 	"DEF": "DEF",
 	"Days": "Days",
+	"Double Points": "Double Points",
+	"Double Time": "Double Time",
+	"Drag slider to set the time that the card will be activated": "Drag slider to set the time that the card will be activated",
 	"Duration": "Duration",
 	"Ends:": "Ends:",
 	"Enter PIN": "Enter PIN",
@@ -53,6 +61,8 @@
 	"Join": "Join",
 	"Join Contest": "Join Contest",
 	"Join For Free": "Join For Free",
+	"Key_get_card_points": "Get {{value}} pts",
+	"Key_increase_time": "Increase time range to {{value}}",
 	"Kicked": "Kicked",
 	"LIVE": "LIVE",
 	"Language": "Language",
@@ -126,6 +136,9 @@
 	"Substitution": "Substitution",
 	"Support": "Support",
 	"Terms & Conditions": "Terms & Conditions",
+	"The match hasn't started yet": {
+		"0": ""
+	},
 	"The match will begin shortly": "The match will begin shorty. (30secs)",
 	"Top Assister": "Top Assister",
 	"Top Picks": "Top Picks",
@@ -176,6 +189,7 @@
 		"4": "Make your guesses",
 		"5": "Compete with others, gather points and win amazing prizes!"
 	},
+	"pts": "pts",
 	"tip": {
 		"1": "Tap here to play your cards!",
 		"2": "Tap to play a 'Goal' card"

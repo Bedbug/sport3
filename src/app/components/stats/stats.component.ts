@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LiveMatch } from 'src/app/models/live-match';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stats',
@@ -24,8 +26,9 @@ export class StatsComponent implements OnInit {
   homeKit: string;
   awayKit: string;
   liveMatch: LiveMatch;
+  Utils: SportimoUtils = new SportimoUtils();
 
-  constructor(private sportimoService: SportimoService) { }
+  constructor(private sportimoService: SportimoService,public translate: TranslateService,) { }
 
   ngOnInit() {
     this.sportimoService.getCurrentLiveMatchData().subscribe(match => {
@@ -45,9 +48,13 @@ export class StatsComponent implements OnInit {
 
     let teamObject = this.liveMatch.matchData.stats.find(x => x.name == team);
     if (teamObject)
-      return teamObject[stat] | 0;
+      return this.parseNumbers(teamObject[stat]) || this.parseNumbers("0");
     else
-      return 0;
+      return this.parseNumbers(0);
+  }
+
+  parseNumbers(text:any){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
 }
