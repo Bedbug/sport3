@@ -107,6 +107,7 @@ export class MatchPagePlayComponent implements OnInit {
   playCard() {
     this.isPlayingCard = true;
     this.isLoadingCards = true;
+    this.availableCards = [];
     this.sportimoService.getAvailableCards(this.contestId, this.contestMatchId).subscribe(availableCards => {
       this.availableCards = availableCards;
       this.isLoadingCards = false;
@@ -169,6 +170,9 @@ export class MatchPagePlayComponent implements OnInit {
   }
 
   openPlayModal(card: any) {
+if(this.isLoadingCards)
+return;
+
     if(!this.liveMatch.matchData.completed){
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();

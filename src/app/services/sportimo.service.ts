@@ -36,6 +36,7 @@ import * as io from 'socket.io-client';
   providedIn: 'root'
 })
 export class SportimoService {
+ 
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;
@@ -66,6 +67,14 @@ export class SportimoService {
       .pipe(map(response => {
         return response;
       }))
+  }
+
+  /*-----------------------------------------------------------------------------------
+    Winners
+  ----------------------------------------------------------------------------------- */
+  getWinners() {
+    let winnersApi = '/data/client/${this.Config.getClient()}/winners/';
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}${winnersApi}`);
   }
 
   /*-----------------------------------------------------------------------------------
