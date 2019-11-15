@@ -82,9 +82,7 @@ export class MatchPagesComponent implements OnInit {
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
             if (!isInfo && event) {             
-              if (event.type == "Event_added") {
-                
-                
+              if (event.type == "Event_added") {                                
                 this.cardToastService.Show({
                   icon: this.Utils.getIconByType(event.data.type),
                   time: this.Utils.shouldShow(event.type,1)?event.data.time+"'":"",
@@ -94,10 +92,11 @@ export class MatchPagesComponent implements OnInit {
               }
               if (event.type == "Advance_Segment") {
                 // this.openNotyf("", event.data.text[this.translate.currentLang], false);
+                           console.log(event.data);
                 this.cardToastService.Show({
                   icon:"",
                   time: "",
-                  event: this.translate.instant(event.data.type),
+                  event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
                   teamKit: ""
                 });
               }
