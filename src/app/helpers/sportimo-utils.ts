@@ -100,9 +100,8 @@ export class SportimoUtils {
       return this.parseNumbers(returnDate.format(jalaliFormat),true);
       // return this.parseNumbers(returnDate.locale('fa').format(format), true);
       // console.log("fa: "+returnDate);
-    } else {
-      return returnDate.locale('en').format(format);
-      // console.log("en: "+returnDate);
+    } else {      
+      return returnDate.locale('en').format(format);      
     }
     return returnDate;
 

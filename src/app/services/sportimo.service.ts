@@ -73,7 +73,7 @@ export class SportimoService {
     Winners
   ----------------------------------------------------------------------------------- */
   getWinners() {
-    let winnersApi = '/data/client/${this.Config.getClient()}/winners/';
+    let winnersApi = '/data/client/'+this.Config.getClient()+'/winners/';
     return this.http.get<any>(`${this.Config.getApi("ROOT")}${winnersApi}`);
   }
 
