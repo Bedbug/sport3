@@ -171,6 +171,7 @@
 	"Your chances:": "Your chances: ",
 	"activation time:": "activation time:",
 	"app-name": "SPORTIMO",
+	"contest_loc_key": "Contest",
 	"correct": "correct",
 	"english": "english",
 	"errors": {
@@ -183,6 +184,7 @@
 		"10002": "This card has expired."
 	},
 	"farsi": "فارسی",
+	"grandprize_loc_key": "Grand Prize",
 	"onBoarding": {
 		"1": "Welcome to SPORTIMO!",
 		"2": "Every match is now your game",
