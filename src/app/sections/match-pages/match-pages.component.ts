@@ -90,16 +90,16 @@ export class MatchPagesComponent implements OnInit {
                   teamKit: this.Utils.shouldShow(event.type,1)?this.liveMatch.matchData[event.data.team].logo:null
                 });
               }
-              if (event.type == "Advance_Segment") {
-                // this.openNotyf("", event.data.text[this.translate.currentLang], false);
-                           console.log(event.data);
-                this.cardToastService.Show({
-                  icon:"",
-                  time: "",
-                  event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
-                  teamKit: ""
-                });
-              }
+              // if (event.type == "Advance_Segment") {
+              //   // this.openNotyf("", event.data.text[this.translate.currentLang], false);
+              //              console.log(event.data);
+              //   this.cardToastService.Show({
+              //     icon:"",
+              //     time: "",
+              //     event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
+              //     teamKit: ""
+              //   });
+              // }
             }
           });
         });       

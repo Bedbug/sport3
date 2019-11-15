@@ -152,9 +152,9 @@ export class MatchPagePlayComponent implements OnInit {
   get SelectedTime() {
     if (!this.sportimoService.currentMatch)
       return 0;
-
+      
     if (this.selectedTime == this.minTimeValue && this.sportimoService.currentMatch.matchData.state > 0)
-      return "Now";
+      return this.translate.instant("Now");
     else
       return this.selectedTime + "'";
   }

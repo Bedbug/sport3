@@ -26,7 +26,7 @@ export class ErrorDisplayService {
   }
 
   constructor(private toastr: ToastrService, public translate: TranslateService) {
-
+    _('Now');
     _('errors.100'); // "You must be logged in to access this page."
     _('errors.101'); // "You must be logged in in order to join a contest."
     _('errors.102'); // "You must have joined the contest in order to view matches"
