@@ -260,8 +260,7 @@
             </div>
             <div class="name"> {{selectedCard?.title[translate.currentLang]}}</div>
           </div>
-          <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span *ngIf="selectedCard?.cardType!='Overall'" translate>,
-              starting from:</span></div>
+          <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span *ngIf="selectedCard?.cardType!='Overall'" translate>, starting from:</span></div>
           <div class="time" *ngIf="selectedCard?.cardType!='Overall'">
             <div class="event-time-icon">
               <div class="icon icn-stopwatch"></div>
