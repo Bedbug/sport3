@@ -207,7 +207,7 @@
               [class.active-power]="cardSelections.isDoublePoints">
               <span translate>Double Points</span>
               <div class="power-button double-points">
-                <span style="margin:auto">x2</span>
+                <span style="margin:auto" translate>x2</span>
               </div> 
               <!-- optionSelected?.startPoints*2 -->
               <span translate [translateParams]="{value: optionSelected?.startPoints*2}">Key_get_card_points</span>
@@ -231,7 +231,7 @@
           <ul class="options" *ngIf="!optionSelected" [@fadein]>
             <li (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
               <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
-              <p><strong>{{option.startPoints}}</strong>  <span translate>pts</span></p>
+              <p><strong>{{parseNumbers(option.startPoints)}}</strong>  <span translate>pts</span></p>
             </li>
           </ul>
           <ul class="finalize" *ngIf="optionSelected" [@fadein]>
@@ -271,14 +271,14 @@
             <div class="event-time-icon">
               <div class="icon icn-stopwatch"></div>
             </div>
-            <div class="time-text">{{SelectedTime}}</div>
+            <div class="time-text">{{parseNumbers(SelectedTime)}}</div>
           </div>
           <div *ngIf="optionSelected" [@fadein]>
             <div translate>By:</div>
             <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
             <div [class.active-points]="cardSelections?.isDoublePoints">
               <span
-                class="points">{{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>
+                class="points">{{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
               <span class="pts" translate> pts</span>
             </div>
           </div>

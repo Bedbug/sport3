@@ -23,7 +23,7 @@
 	"Corner": "Corner",
 	"Corners": "Corners",
 	"Crosses": "Crosses",
-	"D": "",
+	"D": "D",
 	"DEF": "DEF",
 	"Days": "Days",
 	"Double Points": "Double Points",
@@ -41,7 +41,7 @@
 	"Fouls commited": "Fouls commited",
 	"Fouls suffered": "Fouls suffered",
 	"Free-to-Play": "Free-to-Play",
-	"GD": "",
+	"GD": "GD",
 	"GK": "GK",
 	"Games Played:": "Games Played:",
 	"Games played": "Games played",
@@ -66,7 +66,7 @@
 	"Key_get_card_points": "Get {{value}} pts",
 	"Key_increase_time": "Increase time range to {{value}}",
 	"Kicked": "Kicked",
-	"L": "",
+	"L": "L",
 	"LIVE": "LIVE",
 	"Language": "Language",
 	"Last 5 games": "Last 5 games",
@@ -96,7 +96,7 @@
 	"Overtime_First_Half_Starts": "Overtime First Half Starts",
 	"Overtime_Second_Half_Ends": "Overtime Second Half Ends",
 	"Overtime_Second_Half_Starts": "Overtime Second Half Starts",
-	"P": "",
+	"P": "P",
 	"Participations": "Participations",
 	"Passes": "Passes",
 	"Password": "Password",
@@ -119,7 +119,7 @@
 	"Prize": "Prize ",
 	"Prizes": "Prizes",
 	"Profile": "Profile",
-	"Pts": "",
+	"Pts": "Pts",
 	"Rank": "Rank",
 	"Red": "Red",
 	"Red Cards": "Red Cards",
@@ -141,7 +141,7 @@
 	"SubscribeNotice": "By clicking \"Subscribe\", you agree to the",
 	"Substitution": "Substitution",
 	"Support": "Support",
-	"Team": "",
+	"Team": "Team",
 	"Terms & Conditions": "Terms & Conditions",
 	"The match hasn't started yet": {
 		"0": ""
@@ -159,7 +159,7 @@
 	"Username must be atleast 5 characters long": "Username must be atleast 5 characters long",
 	"Username/Email": "Username/Email",
 	"View Details": "View Details",
-	"W": "",
+	"W": "W",
 	"Weight": "Weight",
 	"Welcome to Sportimo!": "Welcome to Sportimo!",
 	"Winners": "Winners",
@@ -204,5 +204,6 @@
 		"1": "Tap here to play your cards!",
 		"2": "Tap to play a 'Goal' card"
 	},
-	"to Join": "to Join"
+	"to Join": "to Join",
+	"x2": "x2"
 }

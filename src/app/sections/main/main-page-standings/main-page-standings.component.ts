@@ -5,6 +5,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class MainPageStandingsComponent implements OnInit {
   ngUnsubscribe = new Subject();
   leagues: any;
   stats: any;
-
+  Utils: SportimoUtils = new SportimoUtils();
+  
   constructor(
     private sportimoService: SportimoService,
     private route: ActivatedRoute,
@@ -151,6 +153,10 @@ export class MainPageStandingsComponent implements OnInit {
           this.isFavoriteTeam = true;
       });
     })
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
   ngOnDestroy() {

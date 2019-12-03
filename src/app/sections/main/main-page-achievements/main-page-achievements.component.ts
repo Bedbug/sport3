@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-main-page-achievements',
@@ -10,6 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class MainPageAchievementsComponent implements OnInit {
 
   achievements:any[];
+
+  Utils: SportimoUtils = new SportimoUtils();
 
   constructor(private sportimoService:SportimoService, public translate:TranslateService) { }
   
@@ -22,6 +25,10 @@ export class MainPageAchievementsComponent implements OnInit {
 
   getPercent(achievement:any){
     return (achievement.has / achievement.total) * 100;
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
 }

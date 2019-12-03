@@ -49,14 +49,14 @@
       <div class="standings-table">
         <div class="standings-row isClickable" *ngFor="let team of currentStandings?.teams; let i = index"
           (click)="showTeam(team.teamId)">
-          <div class="cell-50 standings-rank">{{i+1}}</div>
+          <div class="cell-50 standings-rank">{{parseNumbers (i+1)}}</div>
           <div class="cell standings-name">{{team.teamName[translate.currentLang]}}</div>
-          <div class="cell-50 standings-p">{{team.gamesPlayed}}</div>
-          <div class="cell-50 standings-w">{{team.wins}}</div>
-          <div class="cell-50 standings-d">{{team.ties}}</div>
-          <div class="cell-50 standings-l">{{team.losses}}</div>
-          <div class="cell-50 standings-gd">{{team.goalsFor-team.goalsAgainst}}</div>
-          <div class="cell-50 standings-pts">{{team.points}}</div>
+          <div class="cell-50 standings-p">{{parseNumbers(team.gamesPlayed.toString())}}</div>
+          <div class="cell-50 standings-w">{{parseNumbers(team.wins.toString())}}</div>
+          <div class="cell-50 standings-d">{{parseNumbers(team.ties.toString())}}</div>
+          <div class="cell-50 standings-l">{{parseNumbers(team.losses.toString())}}</div>
+          <div class="cell-50 standings-gd">{{parseNumbers(team.goalsFor-team.goalsAgainst)}}</div>
+          <div class="cell-50 standings-pts">{{parseNumbers(team.points.toString())}}</div>
         </div>
       </div>
     </div>

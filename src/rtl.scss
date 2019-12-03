@@ -203,4 +203,21 @@
   .formated-text {
     direction: rtl;
   }
+
+  .achievement-item .progress-text-ltr {
+    display: none !important;
+  }
+  
+  .achievement-item .progress-text-rtl {   
+    display: block !important;
+  }
+
+  .modal-playcard-center .bottom-buttons .options li{
+    direction: rtl !important;
+  }
+
+  .playcard-event{
+    direction: rtl !important;
+  }
+
 }
