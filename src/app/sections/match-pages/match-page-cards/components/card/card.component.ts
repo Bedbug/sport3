@@ -34,8 +34,8 @@ export class CardComponent implements OnInit {
   cardTimerScale: number;
 
   getFormatedOption(text: string) {
-    const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang];
-    const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang];
+    const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
+    const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name['en'];
     if (text)
       return text.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
     else return "__missing text";
@@ -155,6 +155,13 @@ export class CardComponent implements OnInit {
         this.isPlayingSpecial = false;
       });
 
+  }
+
+  parseNumbers(text:string){
+    if(text)
+    return this.sportUtils.parseNumbers(text,this.translate.currentLang == 'fa');
+    else
+    return "";
   }
 
   ngOnDestroy() {

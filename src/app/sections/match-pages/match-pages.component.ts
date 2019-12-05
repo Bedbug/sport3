@@ -165,6 +165,13 @@ export class MatchPagesComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
+  parseNumbers(text:string){
+    if(text)
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+    else
+    return "";
+  }
+  
   // openNotyf(title: string, message: string, error: boolean) {
   //   let options = this.toastr.toastrConfig;
   //   // options.timeOut = 0;
