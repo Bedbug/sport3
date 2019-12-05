@@ -1,5 +1,4 @@
 {
-	",\n              starting from:": ",\n              starting from:",
 	", starting from:": ", starting from:",
 	"90'": "Play 90'",
 	"About Sportimo": "About",
@@ -15,6 +14,9 @@
 	"By subscribing, you have earned:": "By subscribing, you have earned:",
 	"By:": "By:",
 	"Cancel": "Cancel",
+	"Card_PresetInstant_activated_text": "A card was activated.",
+	"Card_lost_text": "You just lost a card.",
+	"Card_won_text": "You just won a card.",
 	"Cards Played:": "Cards Played:",
 	"Cards won:": "Cards won:",
 	"Career Statistics": "Career Statistics",
@@ -96,6 +98,7 @@
 	"Overtime_First_Half_Starts": "Overtime First Half Starts",
 	"Overtime_Second_Half_Ends": "Overtime Second Half Ends",
 	"Overtime_Second_Half_Starts": "Overtime Second Half Starts",
+	"Own_Goal": "Own Goal",
 	"P": "P",
 	"Participations": "Participations",
 	"Passes": "Passes",

@@ -1,5 +1,4 @@
 {
-	",\n              starting from:": "",
 	", starting from:": "",
 	"90'": "نود",
 	"About Sportimo": "درباره پا به توپ",
@@ -15,6 +14,9 @@
 	"By subscribing, you have earned:": "با عضویت از موارد زیر بهره‌مند خواهید شد",
 	"By:": "",
 	"Cancel": "لغو",
+	"Card_PresetInstant_activated_text": "",
+	"Card_lost_text": "",
+	"Card_won_text": "",
 	"Cards Played:": "کارت‌های بازی‌شده :",
 	"Cards won:": "کارت‌های برنده‌شده:",
 	"Career Statistics": "آمار کلی",
@@ -96,6 +98,7 @@
 	"Overtime_First_Half_Starts": "آغاز وقت‌های اضافه نیمه اول",
 	"Overtime_Second_Half_Ends": "پایان وفت‌های اضافه نیمه دوم",
 	"Overtime_Second_Half_Starts": "آغاز وقت‌های اضافه نیمه دوم",
+	"Own_Goal": "",
 	"P": "",
 	"Participations": "مشارکت‌ها",
 	"Passes": "پاس‌ها",

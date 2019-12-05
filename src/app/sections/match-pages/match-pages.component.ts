@@ -14,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 import { CardToastService } from 'src/app/components/card-toast/card-toast.service';
 import { debug } from 'util';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 
 @Component({
   selector: 'app-match-pages',
@@ -23,15 +24,15 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
     slideInAnimation,
     trigger(
       'enterAnimation', [
-        transition(':enter', [
-          style({ transform: 'translateY(-100%)', opacity: 0 }),
-          animate('500ms ease-in-out', style({ transform: 'translateY(0)', opacity: 1 }))
-        ]),
-        transition(':leave', [
-          style({ transform: 'translateY(0)', opacity: 1 }),
-          animate('500ms', style({ transform: 'translateY(-100%)', opacity: 0 }))
-        ])
-      ])]
+      transition(':enter', [
+        style({ transform: 'translateY(-100%)', opacity: 0 }),
+        animate('500ms ease-in-out', style({ transform: 'translateY(0)', opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ transform: 'translateY(0)', opacity: 1 }),
+        animate('500ms', style({ transform: 'translateY(-100%)', opacity: 0 }))
+      ])
+    ])]
 })
 export class MatchPagesComponent implements OnInit {
   Utils: SportimoUtils = new SportimoUtils();
@@ -40,19 +41,23 @@ export class MatchPagesComponent implements OnInit {
   liveMatch: LiveMatch;
   stream: any;
   demoplay: any;
-  ngUnsubscribe = new Subject();  
+  ngUnsubscribe = new Subject();
   showPlayCardsPop = false;
-  hasJoinedContest: string;  
+  hasJoinedContest: string;
 
   constructor(
-    private route: ActivatedRoute, 
-    private sportimoService: SportimoService,     
-    private state: Router, 
+    private route: ActivatedRoute,
+    private sportimoService: SportimoService,
+    private state: Router,
     public translate: TranslateService,
-    private authenticationService:AuthenticationService,
-    private cardToastService:CardToastService
+    private authenticationService: AuthenticationService,
+    private cardToastService: CardToastService
 
-    ) { }
+  ) {
+    _("Card_lost_text");
+    _("Card_won_text");
+    _("Card_PresetInstant_activated_text");
+  }
 
   ngOnInit() {
 
@@ -63,11 +68,11 @@ export class MatchPagesComponent implements OnInit {
       this.hasJoinedContest = localStorage.getItem("hasplayedcard");
       this.showPlayCardsPop = !this.hasJoinedContest;
 
-      this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{
-        if(!user && this.contestId){
-          this.state.navigate(['/contest',this.contestId,'info']);
+      this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+        if (!user && this.contestId) {
+          this.state.navigate(['/contest', this.contestId, 'info']);
         }
-      });           
+      });
 
       // Retrieve the Live Match data from the service
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
@@ -81,14 +86,27 @@ export class MatchPagesComponent implements OnInit {
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
-            if (!isInfo && event) {             
-              if (event.type == "Event_added") {                                
+            const isCards: any = this.state.routerState.snapshot.url.match(/cards/i);
+
+            if (!isInfo && event) {
+              if (event.type == "Event_added") {
                 this.cardToastService.Show({
                   icon: this.Utils.getIconByType(event.data.type),
-                  time: this.Utils.shouldShow(event.type,1)?event.data.time+"'":"",
+                  time: this.Utils.shouldShow(event.type, 1) ? event.data.time + "'" : "",
                   event: this.translate.instant(event.data.type),
-                  teamKit: this.Utils.shouldShow(event.type,1)?this.liveMatch.matchData[event.data.team].logo:null
+                  teamKit: this.Utils.shouldShow(event.type, 1) ? this.liveMatch.matchData[event.data.team].logo : null
                 });
+              }
+            if (!isCards && (event.type == "Card_lost" || event.type == "Card_won" || event.type == "Card_PresetInstant_activated")) {
+
+
+                this.cardToastService.Show({
+                  icon: null,
+                  time: "",
+                  event: this.translate.instant(event.type + "_text"),
+                  teamKit: null
+                });
+
               }
               // if (event.type == "Advance_Segment") {
               //   // this.openNotyf("", event.data.text[this.translate.currentLang], false);
@@ -102,7 +120,7 @@ export class MatchPagesComponent implements OnInit {
               // }
             }
           });
-        });       
+        });
 
       // this.demoplay = this.sportimoService.playDemo();
     })

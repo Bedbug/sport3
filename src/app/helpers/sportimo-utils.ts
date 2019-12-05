@@ -7,6 +7,7 @@ import moment from 'moment-jalaali';
 export class SportimoUtils {
   events_mapping = {
     "Goal": { text: "Goal", icon: "icn-goal", show: true },
+    "Own_Goal": { text: "Own Goal", icon: "icn-goal", show: true },
     "Shot_on_Goal": { text: "Shot on Target", icon: "icn-shot", show: true },
     "Offside": { text: "Offside", icon: "icn-offside", show: true },
     "Corner": { text: "Corner", icon: "icn-corner", show: true },
@@ -45,6 +46,7 @@ export class SportimoUtils {
 
   translateMappings() {
     _("Goal");
+    _("Own_Goal");
     _("Shot_on_Goal");
     _("Offside");
     _("Corner");
