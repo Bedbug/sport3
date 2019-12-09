@@ -98,8 +98,6 @@ export class MatchPagesComponent implements OnInit {
                 });
               }
             if (!isCards && (event.type == "Card_lost" || event.type == "Card_won" || event.type == "Card_PresetInstant_activated")) {
-
-
                 this.cardToastService.Show({
                   icon: null,
                   time: "",
