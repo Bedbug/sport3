@@ -12,7 +12,8 @@
       </div>
     </div>
     <div class="info">
-      <div class="points"><strong>{{currentPoints || cardData.pointsAwarded || cardData.startPoints}}</strong> pts
+      <div class="points"><strong>{{currentPoints?parseNumbers(currentPoints):null || cardData.pointsAwarded?parseNumbers(cardData.pointsAwarded):null || cardData.startPoints?parseNumbers(cardData.startPoints):null}}</strong> <span translate>pts</span>
+        
       </div>
       <div class="powers">
         <div class="double-points" [class.active]="cardData.isDoublePoints" [class.isClickable]="!cardData.isDoublePoints || isPlayingSpecial" (click)="playSpecial('doublePoints')">x2</div>
