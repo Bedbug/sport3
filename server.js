@@ -23,6 +23,26 @@ if (_environment === 'production') {
         }
     });
 }
+else {
+	// Replace production.json API endpoints with development env ones if the _environment is not set to production
+	
+	const replace = require('replace-in-file');
+
+	const options = {
+	  files: ['src/assets/config/production.json'],
+	  to: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
+	  from: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
+	  countMatches: true,
+	};
+
+	try {
+		const results = replace.sync(options);
+		console.log('Replacement results:', results);
+	  }
+	  catch (error) {
+		console.error('Error occurred during production environment API settings replacement with development ones:', error);
+	  }
+}
 
 // ---- SERVE STATIC FILES ---- //
 app.get('*.*', express.static(_app_folder, {maxAge: '1y'}));
