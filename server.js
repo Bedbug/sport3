@@ -31,7 +31,7 @@ else {
 	const options = {
 	  files: ['src/assets/config/production.json'],
 	  to: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
-	  from: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
+	  from: ['"ROOT":"https://clientserver-3-prod.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
 	  countMatches: true,
 	};
 
