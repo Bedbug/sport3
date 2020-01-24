@@ -17,7 +17,11 @@ export class ConfigService {
     load() {
         return new Promise((resolve, reject) => {
             this._env = 'development';
-            if (environment.production)
+// Initially this._env was notified by the build configuration env			
+//            if (environment.production)
+// It is changed so as to be notified by the current NODE_ENV environmental variable (set in a Heroku app)
+// so that we can have both a dev and a prod deployments in the same heroku pipeline.
+            if (process.env.NODE_ENV === 'production')
                 this._env = 'production';
 
             this._http.get('assets/config/' + this._env + '.json')               
