@@ -89,9 +89,10 @@ export class ContestsListComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-    this.prizes.forEach(prize=>{
-      clearInterval(prize.timer);
-    })
+    if (this.prizes && this.prizes.length > 0)
+		this.prizes.forEach(prize=>{
+		  clearInterval(prize.timer);
+		});
   }
   
   startCountdownTimers() {
