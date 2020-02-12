@@ -138,6 +138,11 @@
             <span translate>farsi</span>
         </a>
     </li> -->
+     <li>
+        <a href="javascript:void(0)" class="" [class.active]="translate.currentLang=='ru'" style="padding:7px 60px" (click)="switchLanguage('ru')">
+            <span translate>russian</span>
+        </a>
+    </li>
     <li>
         <!-- Authenticate -->
         <a href="javascript:void(0)" class="sidebar-header" (click)="toggleUserStatus()">

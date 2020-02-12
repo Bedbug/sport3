@@ -3,13 +3,20 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { ContentComponent } from './layouts/content/content.component';
 import { content } from "./shared/routes/content.routes";
+import { ResetComponent } from './reset/reset.component';
+
 
 
 const appRoutes: Routes = [
-  { 
-  	path: '', 
-  	component: ContentComponent,
-  	children: content 
+  
+  {
+    path:'reset/:token',
+    component: ResetComponent
+  },
+  {
+    path:'',
+    component: ContentComponent,
+  	children: content
   }
 ];
 

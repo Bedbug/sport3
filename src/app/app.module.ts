@@ -35,6 +35,7 @@ import { ContestInfoComponent } from './sections/contest-pages/contest-info/cont
 import { OnboardComponent } from './onboard/onboard.component';
 import {NgxPopperModule} from 'ngx-popper';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ResetComponent } from './reset/reset.component';
 
 
 // AoT requires an exported function for factories
@@ -58,7 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CardToastComponent,
     GrandPrizeDetailsComponent,
     ContestInfoComponent,
-    OnboardComponent
+    OnboardComponent,
+    ResetComponent
   ],
   imports: [
     OverlayModule,

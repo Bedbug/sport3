@@ -46,6 +46,23 @@
   bottom: 0px;
   left: 54px;
 }
+.modal-background-img{
+    background-color: #303841;
+    background: $theme-background-image no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    display: block;
+    position: fixed;
+    z-index: 1035;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+}
 
 .notice {
   width: 265px;

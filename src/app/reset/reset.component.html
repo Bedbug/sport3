@@ -1,0 +1,79 @@
+<div class="modal-background-img" id="app-register-modal">  
+  <div class="modal-background">
+  <div id="step3" class="modal-card">
+    <div class="modal-card-header">
+      <div class="modal-title" translate>Reset Password</div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-center">
+      <div class="login-form-body" style="height: 510px;">
+        <div class="login-form-info" translate>Please enter your new password</div>
+
+        <form [formGroup]="step3Form" (ngSubmit)="onSubmit()" class="sportimo-form">
+          <div class="login-form-content">
+            <div class="form-group text-center">
+
+              <input type="text" formControlName="token" class="form-control-plaintext" autocorrect="off" autocapitalize="none"
+                disabled>
+
+              <label class="" translate>Username</label>
+              <!-- <p>
+                Form Status: {{ step3Form.controls.password2.errors | json }}
+              </p> -->
+              <input type="text" formControlName="username" class="form-control-plaintext" autocorrect="off" autocapitalize="none"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.username.errors }" required minlength="5">
+              <div
+                *ngIf="step3Form.controls.username.invalid && (step3Form.controls.username.dirty || step3Form.controls.username.touched)">
+                <div *ngIf="step3Form.controls.username.errors">
+                  <div *ngIf="step3Form.controls.username.errors.required" class="problem-info">
+                    <div class="icn-info-alt"></div> <span translate>Username is required</span>
+                  </div>
+                  <div *ngIf="step3Form.controls.username.errors.minlength" class="problem-info">
+                    <div class="icn-info-alt"></div> <span translate>Username must be atleast 5 characters long</span>
+                  </div>
+                </div>
+              </div>
+              <!-- <div *ngIf="incorrectusername" class="problem-info"><div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span></div> -->
+            </div>
+            <div class="form-group">
+              <label class="" translate>Password</label>
+              <input type="password" formControlName="password" class="form-control-plaintext" autocorrect="off" autocapitalize="none"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password.errors }" placeholder="{{ 'Password' | translate }}" 
+                required>
+              <input type="password" formControlName="password2" class="form-control-plaintext"
+                [ngClass]="{ 'is-invalid': submitted && step3Form.controls.password2.errors }" placeholder="{{ 'Password' | translate }}"
+                required>
+
+              <div
+                *ngIf="(step3Form.controls.password2.errors || step3Form.controls.password2.errors) && !step3Form?.errors?.passwordMismatch"
+                class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Both passwords required</span>
+              </div>
+
+              <div *ngIf="step3Form?.errors?.passwordMismatch" class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Passwords must match</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="register-form-buttons">
+            <div class="form-group">
+              <button [disabled]="isSubmitting || step3Form.invalid" type="submit"
+                class="btn btn-sportimo login-form-button">
+                <div class="loader-label" [class.btn-active]="isSubmitting">
+                  <span class="button-label" translate>Submit</span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+          </div>
+          <div class="notice" style="font-size: 13px" *ngIf="incorrectPin" translate>You can change your Username anytime from your Profile</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -184,6 +184,7 @@
 	"contest_loc_key": "Contest",
 	"correct": "correct",
 	"english": "english",
+	"russian": "russian",
 	"errors": {
 		"100": "You must be logged in to access this page.",
 		"101": "You must be logged in in order to join a contest",

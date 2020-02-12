@@ -112,7 +112,7 @@
       <div (click)="cancel()" class="modal-exit pull-right">X</div>
     </div>
     <div class="modal-card-body text-center">
-      <div class="login-form-body">
+      <div class="login-form-body" style="height: 460px;">
         <div class="login-form-info" translate>Please enter your Username and Password</div>
 
         <form [formGroup]="step3Form" (ngSubmit)="onCredsSubmit()" class="sportimo-form">
@@ -158,7 +158,7 @@
             </div>
           </div>
 
-          <div class="login-form-buttons">
+          <div class="register-form-buttons">
             <div class="form-group">
               <button [disabled]="isSubmitting || step3Form.invalid" type="submit"
                 class="btn btn-sportimo login-form-button">
