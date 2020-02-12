@@ -55,6 +55,10 @@ export class ResetComponent implements OnInit {
     );
   }
 
+  cancel() {
+    let el = $('#app-register-modal');
+    el.addClass('hidden');
+  }
 
    onSubmit() {
     this.isSubmitting = true;
