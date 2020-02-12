@@ -20,7 +20,9 @@ export class ResetComponent implements OnInit {
 
   step1Form: FormGroup;
   step3Form: FormGroup;
-  isSubmitting = false;
+  incorrectPin: boolean;
+  isSubmitting: boolean = false;
+  submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder, 
