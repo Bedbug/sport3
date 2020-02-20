@@ -3,7 +3,7 @@
     <div class="kit text-center"><img src="{{contestMatch?.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
     <div class="team-name text-left">{{contestMatch?.match.home_team.name[translate.currentLang]}} </div>
     <div *ngIf="contestMatch?.match.state > 0" class="match-score text-center">{{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div>
-    <div *ngIf="contestMatch?.match.state == 0" class="match-type text-center"><strong>VS</strong></div>
+    <div *ngIf="contestMatch?.match.state == 0" class="match-type text-center"><strong>-</strong></div>
     <div class="team-name  text-right">{{contestMatch?.match.away_team.name[translate.currentLang]}}</div>
     <div class="kit text-center"><img src="{{contestMatch?.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
   </div>

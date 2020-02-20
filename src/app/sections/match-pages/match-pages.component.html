@@ -17,7 +17,7 @@
           </div>
           <div class="col row text-center">
             <div *ngIf="liveMatch.matchData.state> 0" class="col-12 p-0 score">{{parseNumbers(homeScore.toString())}} - {{parseNumbers(awayScore.toString())}}</div>
-            <div *ngIf="liveMatch.matchData.state == 0" class="col-12 p-0 match-versus"><strong>VS</strong></div>
+            <div *ngIf="liveMatch.matchData.state == 0" class="col-12 p-0 match-versus"><strong>-</strong></div>
             <div *ngIf="liveMatch.matchData.state>0" class="time col-12 p-0">{{parseNumbers(liveMatch?.matchData.time)}}'</div>
           </div>
           <div class="col-5 p-l-0 text-left team-name">
