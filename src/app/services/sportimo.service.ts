@@ -38,7 +38,7 @@ import * as io from 'socket.io-client';
 export class SportimoService {
   
   private defaultConfiguration = {
-    News: true,
+    News: false,
     DefaultLanguage: "en"
   }
 
