@@ -1,0 +1,28 @@
+<div [@staggerAnimation]="news?.length">
+  <div class="col-sm-12 p-0 news-list-item" *ngFor="let article of news; let i = index">
+    <div class="card news-item-container" tab-index="0" (click)="newsClicked(article?._id)">
+      <div class="card-header news-header">
+        <div class="row">
+          <span class="news-name col">{{article.titleText[translate.currentLang]}}</span>
+          <span class="news-duration col text-right" style="padding-left: 0;"><strong translate>Ends:</strong>
+            {{parseDate(article.endToDate)}}</span>
+        </div>
+      </div>
+      <div class="card-body"
+        [ngStyle]="{background: 'url(' + (article.promoDetailImage || './assets/images/news-bg.png') + ')', 'background-size': 'cover'}">
+        <div class="row">
+          <div class="col-6 news-image">
+            <img src="{{article.promoImage}}" alt="">
+          </div>
+          <div class="col-6 news-details text-center">
+            <p class="news-details-text" [innerHTML]="article.infoText[translate.currentLang]"></p>
+            <p *ngIf="article.subscriptionPrice && article.subscriptionPrice>0">{{article.subscriptionPrice}}<i
+                class="coin"></i> <span translate>to Join</span></p>
+            <p *ngIf="!article.subscriptionPrice || article.subscriptionPrice==0" class='article-free-toplay'> <span
+                translate>Free-to-Play</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

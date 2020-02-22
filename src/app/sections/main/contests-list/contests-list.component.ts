@@ -77,11 +77,8 @@ export class ContestsListComponent implements OnInit {
               })
               else
                 eachPrize.chances = 0
-            })
-              
-            
+            })        
           })
-
         }
       })
   }

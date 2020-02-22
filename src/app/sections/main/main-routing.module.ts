@@ -8,6 +8,7 @@ import { MainPageMyteamsComponent } from './main-page-myteams/main-page-myteams.
 import { MainPageProfileComponent } from './main-page-profile/main-page-profile.component';
 import { MainPageInboxComponent } from './main-page-inbox/main-page-inbox.component';
 import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
+import { MainPageNewsComponent } from './main-page-news/main-page-news.component';
 
 
 const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'avatars',
         component: MainPageAvatarsComponent
+      },
+      {
+        path: 'news',
+        component: MainPageNewsComponent
       },
       // {
       //   path: 'grand-prize/:prizeid',

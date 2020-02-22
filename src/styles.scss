@@ -269,13 +269,14 @@ body .page-wrapper .page-main-header {
   align-items: center;
   justify-content: flex-end;
   height: 51px;
+  flex:1;
   flex-direction: column;
   font-size: 10px;
   text-align: center;
   padding: 12px;
   color: white;
   text-decoration: none;
-  width: 25%;
+  // width: 25%;
   padding: 0;
   border-bottom: 3px solid transparent;
 }
@@ -318,6 +319,21 @@ body .page-wrapper .page-main-header {
   text-indent: -9999px;
   background-size: contain;
 }
+
+.icn-news {
+  background: url("~src/assets/images/sportimo/icon-news.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+.active .icn-news {
+  background: url("~src/assets/images/sportimo/icon-news.active.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
 
 .icn-burger{
   background: url("~src/assets/images/sportimo/icon-burger.svg") no-repeat center center;

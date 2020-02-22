@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/services/config.service';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private configService:ConfigService, private sportimoService:SportimoService) { }
+  public hasNews:boolean  = false;
   ngOnInit() {
+    // this.hasNews = this.configService.get("NEWS");
+    this.hasNews = this.sportimoService.getConfigurationFor("News");
   }
 
 }

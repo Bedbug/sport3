@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from './services/config.service';
 import { CardToastService } from './components/card-toast/card-toast.service';
+import { SportimoService } from './services/sportimo.service';
 
 @Component({
   selector: 'app-root',
@@ -9,19 +10,29 @@ import { CardToastService } from './components/card-toast/card-toast.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public serviceConfiguration:any;
+
   constructor(
-    translate:TranslateService, 
-    private configService:ConfigService
-    ){    
-    let selected_language = localStorage.getItem('language');
-    // this language will be used as a fallback when a translation isn't found in the current language
-    translate.setDefaultLang('en');
-    // translate.getTranslation('en').subscribe(() => {});
-    // the lang to use, if the lang isn't available, it will use the current loader to get them
-   translate.use(selected_language || this.configService.get('language'));
+    translate: TranslateService,
+    private configService: ConfigService,
+    private sportimoService: SportimoService
+  ) {
+    this.sportimoService.getClientConfiguration().subscribe(data=>{
+      this.serviceConfiguration = data;
+      console.log(this.serviceConfiguration);
+
+      let selected_language = localStorage.getItem('language');
+      // this language will be used as a fallback when a translation isn't found in the current language
+      translate.setDefaultLang('en');
+      // translate.getTranslation('en').subscribe(() => {});
+      // the lang to use, if the lang isn't available, it will use the current loader to get them
+      translate.use(selected_language || this.configService.get('language') || this.sportimoService.getConfigurationFor("DefaultLanguage"));
+    });
+
+   
   }
 
-  ngOnInit(){
+  ngOnInit() {
     // this.cardToastService.Show({
     //   time: "14'",
     //   event: "offside",

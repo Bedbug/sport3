@@ -36,6 +36,7 @@ import { OnboardComponent } from './onboard/onboard.component';
 import {NgxPopperModule} from 'ngx-popper';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ResetComponent } from './reset/reset.component';
+import { MainPageNewsComponent } from './sections/main/main-page-news/main-page-news.component';
 
 
 // AoT requires an exported function for factories

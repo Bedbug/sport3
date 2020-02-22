@@ -36,16 +36,23 @@ import * as io from 'socket.io-client';
   providedIn: 'root'
 })
 export class SportimoService {
- 
+  
+  private defaultConfiguration = {
+    News: true,
+    DefaultLanguage: "en"
+  }
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;
   private grandPrizes: BehaviorSubject<GrandPrize[]>
   private currentMatchId;
   private currentContestId;
+  private configuration: BehaviorSubject<any> = new BehaviorSubject<any>(this.defaultConfiguration);
 
   private socket;
   langIsRTL: boolean = false;
+
+  
 
   constructor(
     private http: HttpClient,
@@ -70,10 +77,29 @@ export class SportimoService {
   }
 
   /*-----------------------------------------------------------------------------------
+   Client Configuration
+ ----------------------------------------------------------------------------------- */
+  getClientConfiguration() {
+    if (this.configuration.value)
+      return this.configuration;
+    else {
+      this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/configuraton`).pipe(data => {
+        this.configuration.next(data);
+        return data;
+      });
+    }
+  }
+
+  getConfigurationFor(key: string | number){
+    console.log(key);
+    return this.configuration.value[key];
+  }
+
+  /*-----------------------------------------------------------------------------------
     Winners
   ----------------------------------------------------------------------------------- */
   getWinners() {
-    let winnersApi = '/data/client/'+this.Config.getClient()+'/winners/';
+    let winnersApi = '/data/client/' + this.Config.getClient() + '/winners/';
     return this.http.get<any>(`${this.Config.getApi("ROOT")}${winnersApi}`);
   }
 
@@ -113,6 +139,13 @@ export class SportimoService {
   getUpcoming() {
     // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/matches/upcoming
     return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/top-picks/matches/upcoming`);
+  }
+
+  /*-----------------------------------------------------------------------------------
+    News
+  ----------------------------------------------------------------------------------- */
+  getNews() {
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/news`);
   }
 
   /*-----------------------------------------------------------------------------------
@@ -278,9 +311,9 @@ export class SportimoService {
   }
 
   getMatchScore() {
-    if (this.currentLiveMatch.value) {     
-      return (this.currentLiveMatch.value.playedCards.filter(x=>x.pointsAwarded).map(item=>item.pointsAwarded).reduce((prev,curr)=> 
-      prev+curr,0))
+    if (this.currentLiveMatch.value) {
+      return (this.currentLiveMatch.value.playedCards.filter(x => x.pointsAwarded).map(item => item.pointsAwarded).reduce((prev, curr) =>
+        prev + curr, 0))
     } else
       return 0;
   }
