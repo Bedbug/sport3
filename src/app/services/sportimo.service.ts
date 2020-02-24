@@ -38,8 +38,9 @@ import * as io from 'socket.io-client';
 export class SportimoService {
   
   private defaultConfiguration = {
-    News: false,
-    DefaultLanguage: "en"
+    News: true,
+    DefaultLanguage: "en",
+    AvailableLanguages:{"en":true,"ru":true,"fa":false}
   }
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
@@ -91,7 +92,7 @@ export class SportimoService {
   }
 
   getConfigurationFor(key: string | number){
-    console.log(key);
+    // console.log(key);
     return this.configuration.value[key];
   }
 
@@ -145,7 +146,7 @@ export class SportimoService {
     News
   ----------------------------------------------------------------------------------- */
   getNews() {
-    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/news`);
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/articles`);
   }
 
   /*-----------------------------------------------------------------------------------

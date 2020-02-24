@@ -1,28 +1,66 @@
-<div [@staggerAnimation]="news?.length">
-  <div class="col-sm-12 p-0 news-list-item" *ngFor="let article of news; let i = index">
-    <div class="card news-item-container" tab-index="0" (click)="newsClicked(article?._id)">
-      <div class="card-header news-header">
-        <div class="row">
-          <span class="news-name col">{{article.titleText[translate.currentLang]}}</span>
-          <span class="news-duration col text-right" style="padding-left: 0;"><strong translate>Ends:</strong>
-            {{parseDate(article.endToDate)}}</span>
-        </div>
-      </div>
-      <div class="card-body"
-        [ngStyle]="{background: 'url(' + (article.promoDetailImage || './assets/images/news-bg.png') + ')', 'background-size': 'cover'}">
-        <div class="row">
-          <div class="col-6 news-image">
-            <img src="{{article.promoImage}}" alt="">
-          </div>
-          <div class="col-6 news-details text-center">
-            <p class="news-details-text" [innerHTML]="article.infoText[translate.currentLang]"></p>
-            <p *ngIf="article.subscriptionPrice && article.subscriptionPrice>0">{{article.subscriptionPrice}}<i
-                class="coin"></i> <span translate>to Join</span></p>
-            <p *ngIf="!article.subscriptionPrice || article.subscriptionPrice==0" class='article-free-toplay'> <span
-                translate>Free-to-Play</span></p>
+<div class="background"></div>
+<div class="row" style="position: relative">
+  <div class="main-pages-header" translate>News {{selectedArticle?._id}}</div>
+  <div class="main-pages-scrollarea container p-t-15">
+    <div [@staggerAnimation]="news?.length">
+      <div class="col-sm-12 p-0 news-list-item" *ngFor="let article of news; let i = index">
+        <div class="news-item-container" tab-index="0" (click)="selectedArticle = article">
+          <!-- <div class="card-header news-header" [ngStyle]="{background: 'url(' + (article.imageUrl || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
+            <div class="row">
+              <span class="news-name col">{{article.titleText[translate.currentLang]}}</span>
+              <span class="news-duration col text-right" style="padding-left: 0;"><strong translate>Ends:</strong>
+                {{parseDate(article.endToDate)}}</span>
+            </div>
+          </div> -->
+          <div class="news-body">
+            <div class="news-image" [ngStyle]="{background: 'url(' + (article.imageUrl || './assets/images/news-bg.png') + ')', 'background-size': 'cover'}">
+              <!-- <img src="{{article.promoImage}}" alt=""> -->
+            </div>
+            <div class="news-date">
+              <div class="time text-right">{{parseDate(article?.publishDate)}}</div>
+            </div>
+            <div class="news-title">
+              <span  [innerHTML]="article.title[translate.currentLang]"></span>
+            </div>
+            <!-- <div class="news-eclipsed-text">
+              <p  [innerHTML]="article.text[translate.currentLang]"></p>
+            </div> -->
+            <!-- <div class="row">           
+              <div class="col-6 news-details text-center">
+                <p class="news-details-text" [innerHTML]="article.infoText[translate.currentLang]"></p>
+                <p *ngIf="article.subscriptionPrice && article.subscriptionPrice>0">{{article.subscriptionPrice}}<i
+                    class="coin"></i> <span translate>to Join</span></p>
+                <p *ngIf="!article.subscriptionPrice || article.subscriptionPrice==0" class='article-free-toplay'> <span
+                    translate>Free-to-Play</span></p>
+              </div>
+            </div> -->
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal-background" (click)="cancel()" [class.hidden]="!selectedArticle" [class.modal-appear]="selectedArticle">
+  <div class="modal-card">
+    <div class="modal-card-header">
+      <!-- <div class="modal-title"> {{contestDetails?.titleText[translate.currentLang]}} </div> -->
+      <div (click)="cancel()" class="pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-left">
+      <!-- <div class="selected-prize-rank">Prize {{selectedPrize?.position.from}}</div> -->
+      <div class="news-image" style="background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;" [ngStyle]="{'background-image': 'url('+ selectedArticle?.imageUrl +')'}">
+       
+      </div>
+      <div class="news-date">
+        <div class="time text-right">{{parseDate(selectedArticle?.publishDate)}}</div>
+      </div>
+      <div class="selected-news-title">{{selectedArticle?.title[translate.currentLang]}}</div>
+      <div class="selected-news-body formated-text" [innerHTML]="selectedArticle?.text[translate.currentLang]">
+      </div>
+    </div>
+
   </div>
 </div>

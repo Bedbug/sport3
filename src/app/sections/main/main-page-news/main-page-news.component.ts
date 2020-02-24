@@ -5,6 +5,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-main-page-news',
@@ -33,6 +34,8 @@ export class MainPageNewsComponent implements OnInit {
 
   news: any[];
   ngUnsubscribe = new Subject();
+  Utils: SportimoUtils = new SportimoUtils();
+  selectedArticle = null;
 
   constructor(private sportimoService: SportimoService,
     private router: Router,
@@ -50,5 +53,25 @@ export class MainPageNewsComponent implements OnInit {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
   }
+
+  parseDate(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM/YY, hh:mm');
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  }
+
+  cancel() {
+    this.selectedArticle = null;
+  }
+
+  strippedArticleText(text:string) {
+    if (text){      
+      return text.replace(/<\/?[^>]+(>|$)/g, "");
+    }else
+      return "";
+  }
+
 
 }

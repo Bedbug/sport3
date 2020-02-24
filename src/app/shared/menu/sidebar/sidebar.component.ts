@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ToppickService } from 'src/app/components/toppick/toppick.service';
 import { debug } from 'util';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class SidebarComponent implements OnInit {
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
     public translate:TranslateService,
-    private toppickService: ToppickService
+    private toppickService: ToppickService,
+    private sportimoService: SportimoService
     ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -64,6 +66,10 @@ export class SidebarComponent implements OnInit {
       if(user)
         this.unread = this.authenticationService.currentUserValue.unread;      
     });
+  }
+
+  hasLanguage( key: string){
+    return this.sportimoService.getConfigurationFor("AvailableLanguages")[key];
   }
 
   toggleUserStatus(){

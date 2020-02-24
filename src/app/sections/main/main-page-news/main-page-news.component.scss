@@ -1,0 +1,80 @@
+@import "src/variables.scss";
+
+.background{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.time{
+    padding-top: 10px;
+    font-size: 12px;
+    color: white;
+    padding: 10px 10px;
+}
+
+.news-body  {
+    background-color: black;
+    margin-bottom: 25px;
+}
+
+.news-image{
+    height: 180px;
+}
+
+.news-title{
+    color:white;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0 10px 5px 10px;
+}
+.news-eclipsed-text{
+color: white;
+
+}
+
+.news-eclipsed-text p{
+    text-align: justify;
+    letter-spacing: inherit;
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-card{
+    width: 85%;
+    max-width: 427px;
+}
+
+
+.modal-card-header {
+    background-color: #3b4654;
+}
+
+.selected-news-body{
+    max-height: 300px;
+    overflow-y: scroll;
+    text-align: justify;
+    letter-spacing: inherit;
+    padding: 0 10px 10px 10px;
+}
+
+.selected-news-title{
+    color:white;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 0 10px 5px 10px;
+}
+
+.modal-card-header{
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+
