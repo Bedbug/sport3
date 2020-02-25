@@ -146,7 +146,10 @@ export class SportimoService {
     News
   ----------------------------------------------------------------------------------- */
   getNews() {
-    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/articles`);
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/articles`);
+  }
+  getMoreNews(lastArticleID:string) {
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/articles?skip=${lastArticleID}`);
   }
 
   /*-----------------------------------------------------------------------------------

@@ -12,6 +12,12 @@ export class MainPageAchievementsComponent implements OnInit {
 
   achievements:any[];
 
+  data = {
+    type: "card-result",
+    icon:"",
+    lost: true
+  }
+
   Utils: SportimoUtils = new SportimoUtils();
 
   constructor(private sportimoService:SportimoService, public translate:TranslateService) { }
@@ -21,6 +27,10 @@ export class MainPageAchievementsComponent implements OnInit {
       if(x)  
       this.achievements = x.user.achievements;
     });
+
+
+    // test for card toasts
+    this.data.icon = this.Utils.getIconBySprite("penalty");
   }
 
   getPercent(achievement:any){

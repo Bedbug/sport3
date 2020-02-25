@@ -91,6 +91,7 @@ export class MatchPagesComponent implements OnInit {
             if (!isInfo && event) {
               if (event.type == "Event_added") {
                 this.cardToastService.Show({
+                  type: "simple",
                   icon: this.Utils.getIconByType(event.data.type),
                   time: this.Utils.shouldShow(event.type, 1) ? event.data.time + "'" : "",
                   event: this.translate.instant(event.data.type),
@@ -99,7 +100,8 @@ export class MatchPagesComponent implements OnInit {
               }
             if (!isCards && (event.type == "Card_lost" || event.type == "Card_won" || event.type == "Card_PresetInstant_activated")) {
                 this.cardToastService.Show({
-                  icon: null,
+                  type: "card-result",
+                  icon: this.Utils.getIconByType(event.data.type),
                   time: "",
                   event: this.translate.instant(event.type + "_text"),
                   teamKit: null

@@ -1,6 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 export class ToastData {
+    type: string;
     icon: string;
     time: string;
     event: string;

@@ -36,6 +36,11 @@ export class MainPageNewsComponent implements OnInit {
   ngUnsubscribe = new Subject();
   Utils: SportimoUtils = new SportimoUtils();
   selectedArticle = null;
+  hasMore: boolean;
+  lastArticleId: string;
+
+  // Button Properties
+  isLoading = false;
 
   constructor(private sportimoService: SportimoService,
     private router: Router,
@@ -43,9 +48,25 @@ export class MainPageNewsComponent implements OnInit {
     private authenticationService:AuthenticationService) { }
 
   ngOnInit() {
+    this.isLoading = true;
     this.sportimoService.getNews()
     .subscribe(data => {
-      this.news = data;
+      this.news = data.results;
+      this.hasMore = true;//data.hasMorePages;
+      this.lastArticleId = this.news[this.news.length-1]._id;
+      this.isLoading = false;
+    })
+  }
+
+  loadMore(){
+    this.isLoading = true;
+    this.sportimoService.getMoreNews(this.lastArticleId)
+    .subscribe(data => {
+      this.news.push(...data.results);
+      this.hasMore = data.hasMorePages;
+      this.lastArticleId = this.news[this.news.length-1]._id;
+      console.log(this.lastArticleId);
+      this.isLoading = false;
     })
   }
 

@@ -19,6 +19,7 @@ export class MainPageHomeComponent implements OnInit {
   message = '';
   private lastInserted: number[] = [];
 
+
   constructor(
     private routeParams: ActivatedRoute, 
     private config: ConfigService, 

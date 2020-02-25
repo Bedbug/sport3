@@ -1,8 +1,28 @@
 <div class="background"></div>
+<!-- Container-fluid starts -->
+
 <div class="row" style="position: relative">
   <div class="main-pages-header" translate>Achievements</div>
-  <div class="main-pages-scrollarea container p-t-15">
 
+
+  
+  <div class="event card-toast">
+    <div class="card-toast-result" [class.lost]="data.lost" *ngIf="data.type == 'card-result'">
+      <div class=" icon">
+        <div [ngClass]="data.icon"></div>
+      </div>
+      <div class="col">
+        <div class="row">Penalty</div>
+        <div class="row">Yes</div>
+      </div>
+      <div class="" >
+        Card Lost!
+      </div>
+      <div class="">180pts</div>
+    </div>
+  </div>
+
+  <div class="main-pages-scrollarea container p-t-15">
     <div class="achievement-item isClickable" *ngFor="let achievement of achievements">
       <div class="img"><img src="{{achievement?.icon}}" alt=""></div>
       <div class="info">
@@ -10,10 +30,12 @@
         <div class="text">{{achievement?.text[translate.currentLang]}}</div>
       </div>
       <div class="progress-text-ltr">{{achievement?.has+"/"+achievement?.total}}</div>
-      <div class="progress-text-rtl">{{parseNumbers(achievement?.total.toString())+"/"+parseNumbers(achievement?.has.toString())}}</div>
+      <div class="progress-text-rtl">
+        {{parseNumbers(achievement?.total.toString())+"/"+parseNumbers(achievement?.has.toString())}}</div>
       <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" [style.width]="(getPercent(achievement)) + '%'" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        <div class="progress-bar bg-success" role="progressbar" [style.width]="(getPercent(achievement)) + '%'"
+          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
     </div>
 
   </div>

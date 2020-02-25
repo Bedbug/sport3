@@ -2,7 +2,8 @@
 [@fadeAnimation]="{value: animationState, params:
   { fadeIn: 300, fadeOut: 300}}"
 (@fadeAnimation.done)="onFadeFinished($event)">
-  <!-- <div class="row"> -->
+ <!-- -------- Simple Toast -->
+  <div *ngIf="data.type == 'simple'">
     <div class="time">
       {{data.time}}
     </div>
@@ -15,5 +16,21 @@
     <div class="team-logo" *ngIf="data.teamKit">
       <img class="img-fluid" src="{{data.teamKit}}" alt="">
     </div>
-  <!-- </div> -->
+  </div>
+
+   <!-- --------- Card Result Toast -->
+  <div *ngIf="data.type == 'card-result'">
+    <div class="time">
+      {{data.time}}
+    </div>
+    <div class="icon" *ngIf="data.icon">
+      <div [ngClass]="data.icon"></div>
+    </div>
+    <div class="col">
+      <p class="type">{{data.event}}</p>      
+    </div>
+    <div class="team-logo" *ngIf="data.teamKit">
+      <img class="img-fluid" src="{{data.teamKit}}" alt="">
+    </div>
+  </div>
 </div>
