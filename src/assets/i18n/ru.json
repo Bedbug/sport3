@@ -15,7 +15,9 @@
 	"By:": "By:",
 	"Cancel": "Отмена",
 	"Card_PresetInstant_activated_text": "Карта активирована.",
+	"Card_lost": "",
 	"Card_lost_text": "Карта выиграла.",
+	"Card_won": "",
 	"Card_won_text": "Карта проиграла.",
 	"Cards Played:": "Карт сыграно:",
 	"Cards won:": "Выигравшие карты:",
@@ -75,6 +77,7 @@
 	"Last Match": "Последний матч",
 	"Leaders": "Лидеры",
 	"Live": "Играть Live",
+	"Load More": "",
 	"Log in here": "Войти здесь",
 	"Login": "Войти",
 	"Logout": "Выйти",
@@ -88,6 +91,10 @@
 	"My Account": "Мой аккаунт",
 	"My Cards": "Мои Карты",
 	"My Teams": "Мои Команды",
+	"News": "",
+	"News {{selectedArticle?": {
+		"_id}}": ""
+	},
 	"Next Match": "Следующий матч",
 	"Now": "Сейчас",
 	"Offside": "Офсайд",
@@ -115,6 +122,7 @@
 	"Players": "Игроки",
 	"Please enter your Username and Password": "Пожалуйста, введите Имя пользователя и Пароль",
 	"Please enter your mobile phone number to receive your PIN code": "Пожалуйста, введите мобильный номер для получения ПИН-кода",
+	"Please enter your new password": "",
 	"Please insert the 4-digit PIN code sent to your mobile number": "Пожалуйста, введите 4-значный ПИН-код, отправленный на ваш телефон",
 	"Points": "Очки",
 	"Points/game:": "Очки/игра:",
@@ -128,6 +136,7 @@
 	"Red Cards": "Красные Карточки",
 	"Red cards": "Красные карточки",
 	"Remove from favorites": "Убрать",
+	"Reset Password": "",
 	"Second_Half_Ends": "Конец второго тайма",
 	"Second_Half_Starts": "Начало второго тайма",
 	"Select Avatar": "Выберите аватар",
@@ -184,7 +193,6 @@
 	"contest_loc_key": "Турнир",
 	"correct": "верно",
 	"english": "английский",
-	"russian": "russian",
 	"errors": {
 		"100": "Вам нужно Войти для доступа к этой странице.",
 		"101": "Вам нужно Войти чтобы присоединиться к турниру.",
@@ -204,6 +212,7 @@
 		"5": "Соревнуйтесь с другими участниками, набирайте очки и выигрывайте замечательные призы!"
 	},
 	"pts": " очк",
+	"russian": "russian",
 	"tip": {
 		"1": "Нажмите здесь, чтобы сыграть карту!",
 		"2": "Нажмите, чтобы сыграть карту 'Гол'"

@@ -6,21 +6,22 @@
 
 
   
-  <div class="event card-toast">
-    <div class="card-toast-result" [class.lost]="data.lost" *ngIf="data.type == 'card-result'">
+  <!-- <div class="event card-toast">
+    <div class="card-toast-result" [class.lost]="data.status == 2 && (data.pointsAwarded == 0 || !data.pointsAwarded)"  [class.won]="data.status == 2 && data.pointsAwarded > 0">
       <div class=" icon">
-        <div [ngClass]="data.icon"></div>
+        <div [ngClass]="Utils.getIconBySprite(data?.image.sprite)"></div>
       </div>
-      <div class="col">
-        <div class="row">Penalty</div>
-        <div class="row">Yes</div>
+      <div class="col card-options">
+        <div class="card-name">{{data?.title[translate.currentLang]}}</div>
+        <div class="card-option">{{getFormatedOption(data.text[translate.currentLang])}}</div>
       </div>
-      <div class="" >
-        Card Lost!
+      <div class="card-status" >
+        <div *ngIf="data.status == 2 && (data.pointsAwarded == 0 || !data.pointsAwarded)" translate>card_lost</div>
+        <div *ngIf="data.status == 2 && data.pointsAwarded > 0" translate>card_won</div>
       </div>
-      <div class="">180pts</div>
+      <div class="card-points">{{data.pointsAwarded?parseNumbers(data.pointsAwarded):parseNumbers("0")}} <span translate>pts</span></div>
     </div>
-  </div>
+  </div> -->
 
   <div class="main-pages-scrollarea container p-t-15">
     <div class="achievement-item isClickable" *ngFor="let achievement of achievements">

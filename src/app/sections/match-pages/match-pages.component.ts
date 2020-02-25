@@ -56,6 +56,8 @@ export class MatchPagesComponent implements OnInit {
   ) {
     _("Card_lost_text");
     _("Card_won_text");
+    _("Card_lost");
+    _("Card_won");
     _("Card_PresetInstant_activated_text");
   }
 
@@ -86,7 +88,32 @@ export class MatchPagesComponent implements OnInit {
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
-            const isCards: any = this.state.routerState.snapshot.url.match(/cards/i);
+            const isCards: any = this.state.routerState.snapshot.url.match(/cards/i);             
+                        
+             if (!isCards &&  (event.type == "Card_lost" || event.type == "Card_won")) {
+ 
+               console.log(event.data.status == 2 && event.data.pointsAwarded > 0);               
+ 
+                 this.cardToastService.Show({
+                   type: "card-result",
+                   icon: this.Utils.getIconBySprite(event.data.image.sprite),
+                   title: event.data.title[this.translate.currentLang],
+                   option: this.getFormatedOption(event.data.text[this.translate.currentLang]), 
+                   points: event.data.pointsAwarded?this.parseNumbers(event.data.pointsAwarded):this.parseNumbers("0"),
+                   won: event.data.status == 2 && event.data.pointsAwarded > 0?true:false
+                 });
+
+                //  setTimeout(()=>{
+                //   this.cardToastService.Show({
+                //     type: "simple",
+                //     icon: this.Utils.getIconByType("First_Half_Starts"),
+                //     time: this.Utils.shouldShow("First_Half_Starts", 1) ? "96'" : "",
+                //     event: this.translate.instant("First_Half_Starts"),
+                //     teamKit: null
+                //   });
+                //  },1000)                 
+ 
+               }
 
             if (!isInfo && event) {
               if (event.type == "Event_added") {
@@ -98,16 +125,7 @@ export class MatchPagesComponent implements OnInit {
                   teamKit: this.Utils.shouldShow(event.type, 1) ? this.liveMatch.matchData[event.data.team].logo : null
                 });
               }
-            if (!isCards && (event.type == "Card_lost" || event.type == "Card_won" || event.type == "Card_PresetInstant_activated")) {
-                this.cardToastService.Show({
-                  type: "card-result",
-                  icon: this.Utils.getIconByType(event.data.type),
-                  time: "",
-                  event: this.translate.instant(event.type + "_text"),
-                  teamKit: null
-                });
-
-              }
+             
               // if (event.type == "Advance_Segment") {
               //   // this.openNotyf("", event.data.text[this.translate.currentLang], false);
               //              console.log(event.data);
@@ -172,6 +190,14 @@ export class MatchPagesComponent implements OnInit {
     return "";
   }
   
+  getFormatedOption(text: string) {
+    const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
+    const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name['en'];
+    if (text)
+      return text.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
+    else return "__missing text";
+  }
+
   // openNotyf(title: string, message: string, error: boolean) {
   //   let options = this.toastr.toastrConfig;
   //   // options.timeOut = 0;

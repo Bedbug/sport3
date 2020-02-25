@@ -8,16 +8,50 @@
   margin-bottom: 10px;
 }
 
-.card-toast-result{
-  display: flex;
-  width: 320px;
-  align-items: center;
-  padding: 10px;
-}
+// .card-toast-result{
+//   display: flex;
+//   width: 340px;
+//   align-items: center;
+//   padding-left: 10px;
+// }
 
-.card-toast-result.lost{
-    border: 2px solid $card-lost-color;
-}
+// .card-toast-result.lost{
+//     border: 2px solid $card-lost-color;
+// }
+
+// .card-toast-result.won{
+//   border: 2px solid $card-won-color;
+// }
+
+// .card-name{
+//   font-weight: 700;
+// }
+
+// .card-status{
+//   font-weight: 700;
+//   padding: 0 10px 0 0;
+//   width: 80px;
+//   font-size: 16px;
+// }
+// .card-options{
+// min-width: 130px;
+// }
+// .card-points{
+//   font-size: 16px;
+//   font-weight: 700;
+//   height: 55px;
+//   padding: 10px;
+//   min-width: 80px;
+//   line-height: 35px;
+// }
+
+// .lost .card-points{
+//   background-color: $card-lost-color;
+// }
+
+// .won .card-points{
+//   background-color: $card-won-color;
+// }
 
 .event .row{
   // height: 59px;

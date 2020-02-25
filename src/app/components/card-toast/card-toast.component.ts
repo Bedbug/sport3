@@ -46,5 +46,4 @@ export class CardToastComponent implements OnInit {
       this.close();
     }
   }
-
 }
