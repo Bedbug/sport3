@@ -45,10 +45,10 @@ export class SportimoService {
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;
-  private grandPrizes: BehaviorSubject<GrandPrize[]>
+  private grandPrizes: BehaviorSubject<GrandPrize[]>;
   private currentMatchId;
   private currentContestId;
-  private configuration: BehaviorSubject<any> = new BehaviorSubject<any>(this.defaultConfiguration);
+  private configuration: BehaviorSubject<any>;
 
   private socket;
   langIsRTL: boolean = false;
@@ -65,6 +65,7 @@ export class SportimoService {
     this.cachedContests = new BehaviorSubject<Contest[]>([]);
     this.currentLiveMatch = new BehaviorSubject<LiveMatch>(null);
     this.grandPrizes = new BehaviorSubject<GrandPrize[]>(null);
+    this.configuration = new BehaviorSubject<any>(null);
   }
 
   /*-----------------------------------------------------------------------------------
@@ -84,8 +85,9 @@ export class SportimoService {
     if (this.configuration.value)
       return this.configuration;
     else {
-      this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/configuraton`).pipe(data => {
+      return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}`).pipe(data => {
         this.configuration.next(data);
+        console.log(data);
         return data;
       });
     }
