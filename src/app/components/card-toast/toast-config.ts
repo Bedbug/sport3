@@ -3,9 +3,13 @@ import { InjectionToken } from '@angular/core';
 export class ToastData {
     type: string;
     icon: string;
-    time: string;
-    event: string;
-    teamKit: string;
+    time?: string;
+    event?: string;
+    teamKit?: string;
+    title?:string;
+    option?:string;
+    points?:string;
+    won?:boolean;
   }
 
   export interface ToastConfig {
@@ -22,7 +26,7 @@ export class ToastData {
 export const defaultToastConfig: ToastConfig = {
     position: {
         top: 55,
-        right: 15,
+        right: 45,
     },
     animation: {
         fadeOut: 300,

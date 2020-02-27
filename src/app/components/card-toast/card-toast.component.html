@@ -1,25 +1,8 @@
-<div class="event card-toast" 
-[@fadeAnimation]="{value: animationState, params:
-  { fadeIn: 300, fadeOut: 300}}"
-(@fadeAnimation.done)="onFadeFinished($event)">
- <!-- -------- Simple Toast -->
-  <div *ngIf="data.type == 'simple'">
-    <div class="time">
-      {{data.time}}
-    </div>
-    <div class="icon" *ngIf="data.icon">
-      <div [ngClass]="data.icon"></div>
-    </div>
-    <div class="col">
-      <p class="type">{{data.event}}</p>      
-    </div>
-    <div class="team-logo" *ngIf="data.teamKit">
-      <img class="img-fluid" src="{{data.teamKit}}" alt="">
-    </div>
-  </div>
+  <!-- -------- Simple Toast -->
+<div *ngIf="data.type == 'simple'" class="event card-toast" [@fadeAnimation]="{value: animationState, params:
+  { fadeIn: 300, fadeOut: 300}}" (@fadeAnimation.done)="onFadeFinished($event)">
 
-   <!-- --------- Card Result Toast -->
-  <div *ngIf="data.type == 'card-result'">
+  
     <div class="time">
       {{data.time}}
     </div>
@@ -27,10 +10,32 @@
       <div [ngClass]="data.icon"></div>
     </div>
     <div class="col">
-      <p class="type">{{data.event}}</p>      
+      <p class="type">{{data.event}}</p>
     </div>
     <div class="team-logo" *ngIf="data.teamKit">
       <img class="img-fluid" src="{{data.teamKit}}" alt="">
     </div>
-  </div>
+    
+</div>
+
+<!-- --------- Card Result Toast -->
+
+<div *ngIf="data.type == 'card-result'" class="event card-toast-result"
+[class.lost]="!data.won"
+[class.won]="data.won"
+[@fadeAnimation]="{value: animationState, params:
+  { fadeIn: 300, fadeOut: 300}}" (@fadeAnimation.done)="onFadeFinished($event)">
+<div class=" icon">
+  <div [ngClass]="data.icon"></div>
+</div>
+<div class="col card-options">
+  <div class="card-name">{{data.title}}</div>
+  <div class="card-option">{{data.option}}</div>
+</div>
+<div class="card-status">
+  <div *ngIf="!data.won" translate>Card_lost</div>
+  <div *ngIf="data.won" translate>Card_won</div>
+</div>
+<div class="card-points">{{data.points}} <span
+    translate>pts</span></div>
 </div>

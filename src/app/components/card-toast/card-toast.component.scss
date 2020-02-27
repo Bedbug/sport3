@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 .event {
     color: #fff;
     // height: 59px;
@@ -37,6 +39,7 @@
     margin-bottom: 5px !important;
     font-size: 14px;
     font-weight: bold;
+    line-height: 30px;
 }
 
 .card-toast {
@@ -45,10 +48,69 @@
     justify-content: space-around;
     margin-bottom: 20px;
     padding: 10px; 
-    width: 290px;
+    width: 340px;
     // background: #fff;
     border-width: 1px;
     border-style: solid;
     border-color: #dddddd #d6d6d6 #cfcfcf;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+  }
+
+  .card-toast-result{
+    position: relative;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.11);
+    display: flex;
+    width: 340px;
+    align-items: center;
+    padding-left: 10px;
+  }
+  
+  .card-toast-result.lost{
+      border: 2px solid $card-lost-color;
+  }
+  
+  .card-toast-result.won{
+    border: 2px solid $card-won-color;
+  }
+  
+  .card-name{
+    font-weight: 700;
+  }
+  
+  .card-status{
+    font-weight: 700;
+    padding: 0 10px 0 0;
+    width: 80px;
+    font-size: 16px;
+  }
+
+  .lost .card-status{
+    color: white;
+  }
+
+  .won .card-status{
+    color: RGBA(7, 141, 231, 1.00)
+  }
+//   .card-options{
+//   min-width: 130px;
+//   text-align: center;
+//   }
+  .card-points{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    height: 55px;
+    padding: 10px;
+    min-width: 80px;
+    line-height: 35px;
+  }
+  
+  .lost .card-points{
+    background-color: $card-lost-color;
+  }
+  
+  .won .card-points{
+    background-color: $card-won-color;
   }

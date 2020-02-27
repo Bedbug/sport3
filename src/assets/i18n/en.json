@@ -15,7 +15,9 @@
 	"By:": "By:",
 	"Cancel": "Cancel",
 	"Card_PresetInstant_activated_text": "A card was activated.",
+	"Card_lost": "Card lost",
 	"Card_lost_text": "You just lost a card.",
+	"Card_won": "Card won",
 	"Card_won_text": "You just won a card.",
 	"Cards Played:": "Cards Played:",
 	"Cards won:": "Cards won:",
@@ -75,6 +77,7 @@
 	"Last Match": "Last Match",
 	"Leaders": "Leaders",
 	"Live": "Play Live",
+	"Load More": "",
 	"Log in here": "Log in here",
 	"Login": "Login",
 	"Logout": "Logout",
@@ -88,6 +91,10 @@
 	"My Account": "My Account",
 	"My Cards": "My Cards",
 	"My Teams": "My Teams",
+	"News": "",
+	"News {{selectedArticle?": {
+		"_id}}": ""
+	},
 	"Next Match": "Next Match",
 	"Now": "Now",
 	"Offside": "Offside",
@@ -115,6 +122,7 @@
 	"Players": "Players",
 	"Please enter your Username and Password": "Please enter your Username and Password",
 	"Please enter your mobile phone number to receive your PIN code": "Please enter your mobile phone number to receive your PIN code",
+	"Please enter your new password": "",
 	"Please insert the 4-digit PIN code sent to your mobile number": "Please insert the 4-digit PIN code sent to your mobile number",
 	"Points": "Points",
 	"Points/game:": "Points/game:",
@@ -128,6 +136,7 @@
 	"Red Cards": "Red Cards",
 	"Red cards": "Red cards",
 	"Remove from favorites": "Remove",
+	"Reset Password": "",
 	"Second_Half_Ends": "Second Half Ends",
 	"Second_Half_Starts": "Second Half Starts",
 	"Select Avatar": "Select Avatar",
@@ -184,7 +193,6 @@
 	"contest_loc_key": "Contest",
 	"correct": "correct",
 	"english": "english",
-	"russian": "russian",
 	"errors": {
 		"100": "You must be logged in to access this page.",
 		"101": "You must be logged in in order to join a contest",
@@ -204,6 +212,7 @@
 		"5": "Compete with others, gather points and win amazing prizes!"
 	},
 	"pts": " pts",
+	"russian": "russian",
 	"tip": {
 		"1": "Tap here to play your cards!",
 		"2": "Tap to play a 'Goal' card"
