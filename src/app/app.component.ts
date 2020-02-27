@@ -10,23 +10,22 @@ import { SportimoService } from './services/sportimo.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public serviceConfiguration:any;
+ 
 
   constructor(
     translate: TranslateService,
     private configService: ConfigService,
     private sportimoService: SportimoService
   ) {
+    console.log("Subscribing to configuration");
+    
     this.sportimoService.getClientConfiguration().subscribe(data=>{
-      this.serviceConfiguration = data;
-      console.log(this.serviceConfiguration);
-
       let selected_language = localStorage.getItem('language');
       // this language will be used as a fallback when a translation isn't found in the current language
       translate.setDefaultLang('en');
       // translate.getTranslation('en').subscribe(() => {});
       // the lang to use, if the lang isn't available, it will use the current loader to get them
-      translate.use(selected_language || this.configService.get('language') || this.sportimoService.getConfigurationFor("DefaultLanguage"));
+      translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
     });
 
    

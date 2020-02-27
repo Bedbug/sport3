@@ -37,18 +37,14 @@ import * as io from 'socket.io-client';
 })
 export class SportimoService {
 
-  private defaultConfiguration = {
-    News: true,
-    DefaultLanguage: "en",
-    AvailableLanguages: { "en": true, "ru": true, "fa": false }
-  }
+  private defaultConfiguration = { appName: { "en": "Sportimo", "ar": "", "fa": "" }, availableLanguages: ["ar", "en", "ru"], defaultLanguage: "en", displayNews: true }
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;
   private grandPrizes: BehaviorSubject<GrandPrize[]>;
   private currentMatchId;
   private currentContestId;
-  private configuration: BehaviorSubject<any>;
+  public configuration: BehaviorSubject<any>;
 
   private socket;
   langIsRTL: boolean = false;
@@ -65,7 +61,7 @@ export class SportimoService {
     this.cachedContests = new BehaviorSubject<Contest[]>([]);
     this.currentLiveMatch = new BehaviorSubject<LiveMatch>(null);
     this.grandPrizes = new BehaviorSubject<GrandPrize[]>(null);
-    this.configuration = new BehaviorSubject<any>(null);
+    this.configuration = new BehaviorSubject<any>(this.defaultConfiguration);
   }
 
   /*-----------------------------------------------------------------------------------
@@ -82,19 +78,22 @@ export class SportimoService {
    Client Configuration
  ----------------------------------------------------------------------------------- */
   getClientConfiguration() {
-    if (this.configuration.value)
-      return this.configuration;
-    else {
-      return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}`).pipe(data => {
-        this.configuration.next(data);
-        console.log(data);
-        return data;
-      });
-    }
+    // if (this.configuration.value)
+    //   return this.configuration;
+    // else {
+    return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}`).pipe(map(data => {
+      console.log("Configuration loaded");
+      this.configuration.next(data);
+      return data;
+    }));
   }
+  // }
 
   getConfigurationFor(key: string | number) {
     // console.log(key);
+    if (!this.configuration.value)
+      return null;
+
     return this.configuration.value[key];
   }
 
@@ -347,12 +346,12 @@ export class SportimoService {
       // let data2 = {"type":"Card_lost","client":"5d7389fbd6126dd7ffe3df9d","room":"5e55256283019a001f4f1288","data":{"id":"5e5525c4b9c5eb0004f86a52","userid":"5d7389fbd6126dd7ffe3df9d","matchid":"5e55256283019a001f4f1288","gamecardDefinitionId":"5e55256383019a001f4f12cc","title":{"ar":"ضربة ركنية","en":"Corner","fa":"کرنر","ru":"Угловой"},"image":{"url":"","sprite":"corner","en":"","ar":"","fa":""},"text":{"ar":"لا","en":"No corner","fa":"","ru":"Не будет углового"},"minute":1,"segment":1,"primaryStatistic":"Corner","cardType":"PresetInstant","isDoubleTime":false,"isDoublePoints":false,"status":2,"specials":{"DoublePoints":{"status":0,"_id":"5e5525c4b9c5eb0004f86a53","activationLatency":0},"DoubleTime":{"status":0,"_id":"5e5525c4b9c5eb0004f86a54","activationLatency":0}},"startPoints":25,"endPoints":25,"activationLatency":20000,"duration":600000,"optionId":"4","creationTime":"2020-02-25T13:48:52.067Z","activationTime":"2020-02-25T13:50:02.568Z","terminationTime":"2020-02-25T14:00:02.568Z"},"inst":551};
       // setTimeout(() => {
       //   console.log("Firing test Event");
-        
+
       //   observer.next(data)
       // },2000)
       // setTimeout(() => {
       //   console.log("Firing test Event");
-        
+
       //   observer.next(data2)
       // },4000)
 

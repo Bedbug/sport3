@@ -17,16 +17,15 @@ export class OnboardComponent implements OnInit {
     // Get Value From local
     let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
     if (parsedFirst != null){
-      console.log(parsedFirst);
+    
       if(parsedFirst == 1){
         this.onBoardService.Hide();
-        console.log("Turning it to False!")
       }
         // this.isFirstGame = false;
       
     } else {
       // this.isFirstGame = true;
-      console.log("Turning it to True!")
+     
       this.onBoardService.Show();
     }
 

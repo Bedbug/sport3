@@ -69,7 +69,13 @@ export class SidebarComponent implements OnInit {
   }
 
   hasLanguage( key: string){
-    return this.sportimoService.getConfigurationFor("AvailableLanguages")[key];
+    let languages = this.sportimoService.getConfigurationFor("availableLanguages");
+    console.log(languages)
+    if(languages){
+      return languages && languages.includes(key);
+    }
+
+    return false;
   }
 
   toggleUserStatus(){

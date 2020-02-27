@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { User } from 'src/app/models/user';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 declare var $: any;
 
@@ -15,7 +16,7 @@ declare var $: any;
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  appname: any;
   isLoggedIn: boolean = false;
   loginForm: FormGroup;
   loading = false;
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit {
   Utils: SportimoUtils = new SportimoUtils();
 
   constructor(private formBuilder: FormBuilder,
+    private sportimoService:SportimoService,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -38,6 +40,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLoggedIn = false;
     }
+   
   }
 
   ngOnInit() {
@@ -52,6 +55,10 @@ export class HeaderComponent implements OnInit {
 
     this.authenticationService.currentUser.subscribe(x=>{
       this.currentUser = x;
+    })
+
+    this.sportimoService.configuration.subscribe(data=>{
+      this.appname = data.appName;
     })
   }
 
