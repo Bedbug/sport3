@@ -69,8 +69,7 @@ export class SidebarComponent implements OnInit {
   }
 
   hasLanguage( key: string){
-    let languages = this.sportimoService.getConfigurationFor("availableLanguages");
-    console.log(languages)
+    let languages = this.sportimoService.getConfigurationFor("availableLanguages");    
     if(languages){
       return languages && languages.includes(key);
     }

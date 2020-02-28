@@ -45,7 +45,7 @@
                     {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
                   </div>
                   <div class="icon">
-                    <div [ngClass]="Utils.getIconByType(event.type)"></div>
+                    <div [ngClass]="Utils.getIconByType(event.type)"></div>                    
                   </div>
                   <div class="col">
                     <p class="type">{{translate.instant(event.type)}}</p>
@@ -59,6 +59,7 @@
                     <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
                   </div>
                 </div>
+                <div *ngIf="Utils.shouldShow(event.type,1)" class="event-time">{{event.created | date:"hh:mm:ss"}}</div>
               </div>
 
               <!-- SUBTITUTION CARD -->
