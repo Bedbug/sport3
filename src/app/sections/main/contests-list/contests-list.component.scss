@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 .contest-image {
     display: flex;
     max-width: 50%;
@@ -89,4 +91,12 @@
 
 .contest-item-container{
   padding-right: 10px;
+}
+
+@include media-breakpoint-down(md) {
+  .contest-list-scrollable-area{
+    width: 100%;
+    height: auto;      
+    overflow: inherit;    
+  }
 }

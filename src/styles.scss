@@ -16,6 +16,8 @@
 .body.modal-open{
   overflow:hidden;
 }
+// @include media-breakpoint-down(sm) {
+  @media (max-width: 768px) {
 .scorllable-area{
   width: 100%;
   height: calc(100vh - 93px);  
@@ -23,6 +25,7 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0;    
+}
 }
 
 .page-wrapper .page-main-header .main-header-left .logo-wrapper .app-logo {
@@ -706,14 +709,14 @@ body .page-wrapper .page-main-header {
     display: none;
   }
 
-  .scorllable-area{
-    width: 100%;
-    height: calc(100vh - 100px);  
-    height: calc((var(--vh, 1vh) * 100) - 100px);
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 0;    
-  }
+  // .scorllable-area{
+  //   width: 100%;
+  //   height: calc(100vh - 100px);  
+  //   height: calc((var(--vh, 1vh) * 100) - 100px);
+  //   overflow: auto;
+  //   -webkit-overflow-scrolling: touch;
+  //   margin: 0;    
+  // }
 
   ::ng-deep .cdk-overlay-pane {
     width: 100%;

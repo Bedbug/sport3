@@ -1,5 +1,5 @@
 @import "src/variables.scss";
-
+@import "~bootstrap/scss/bootstrap-grid.scss";
 
 .home-container{
     max-width: 1140px;
@@ -108,4 +108,10 @@
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     margin: 0;    
+  }
+
+  @media (max-width: 768px) { 
+    .matches-list  {
+     display: none;
+  }
   }
