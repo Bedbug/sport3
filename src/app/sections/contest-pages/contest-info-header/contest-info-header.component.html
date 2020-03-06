@@ -1,5 +1,10 @@
 <div class="card" style="margin-bottom: 0">
   <div class="card-body">
+    <div class="container">
+      <div style="
+      margin-left: 15px;
+      margin-right: 15px;
+  ">
     <div class="row">
       <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
         {{contestDetails?.titleText[translate.currentLang]}}
@@ -35,6 +40,8 @@
       </div>
     </div>
   </div>
+  </div>
+</div>
 </div>
 
 <div *ngIf="isLoggedIn" class="modal-background" (click)="cancel()" [class.hidden]="!joiningContest || !isLoggedIn"

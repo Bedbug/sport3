@@ -37,6 +37,7 @@
     </div>
     <!-- Contest Navbar -->
     <nav class="navbar fixed-bottom universal-app-navbar">
+      <div class="container">
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
         <div class="icn-match"></div><span translate>Match Info</span>
       </a>
@@ -51,6 +52,7 @@
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']" routerLinkActive="active" href="#">        
     <div class="icn-leaders"></div><span translate>Leaders</span>
       </a>
+    </div>
     </nav>
   </div>
 </span>

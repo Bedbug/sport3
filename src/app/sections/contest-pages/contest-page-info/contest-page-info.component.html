@@ -1,4 +1,5 @@
 
+<div class="container">
 <div *ngIf="contestDetails" [@staggerAnimation] class="card fade show m-b-0" class="contest-pages-scrollarea">
   <div class="card-body" style="background-repeat: no-repeat;
   background-size: cover;
@@ -12,4 +13,5 @@
   <div class="card-body text-white formated-text" >
     <div [innerHTML] = "contestDetails?.detailText[translate.currentLang]"></div>
   </div>
+</div>
 </div>
