@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfigService } from 'src/app/services/config.service';
 import { ToastrService } from 'ngx-toastr';
 import { NotyfToastSuccess } from 'src/app/components/custom-toast/notyf.toast';
@@ -40,6 +40,7 @@ export class MainPageHomeComponent implements OnInit {
     private toastr: ToastrService,
     private sportimoService:SportimoService,
     public translate: TranslateService,
+    private router: Router,
     ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -66,6 +67,11 @@ export class MainPageHomeComponent implements OnInit {
     return null;
 
     return this.upcomingMatches.filter(x=>x.match.state > 0);
+  }
+
+  openContest(contestId: string){
+console.log(contestId);
+this.router.navigate(['/contest', contestId, 'matches']);
   }
 
   openNotyf(title: string, message: string, error: boolean) {
