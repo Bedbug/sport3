@@ -1,0 +1,105 @@
+@import "src/variables.scss";
+
+.card .card-header {
+    padding: 0px;
+}
+
+.card .card-body {
+    padding: 0px;
+    background: transparent !important;
+}
+
+.matches-list-container {
+    width: 100%;
+  }
+
+.matches-list .nav {
+    display: flex;
+    align-items: stretch;
+    // background: rgba(0, 0, 0, 0.58);
+    height: 24px;
+    justify-content: space-evenly;
+  }
+
+  .matches-list .nav .nav-link {
+    // padding: 0;
+    // height: 30px;
+    // line-height: 29px;
+    padding: 13px;
+    border: 0;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  
+  .matches-list .nav .nav-link.active {
+    background-color: transparent;
+    // padding: 0;
+    border: 0;
+    color: $theme-color;
+    border-radius: 0;
+    border-bottom: solid 6px #ffc531;
+  }
+
+  .nav-tabs .nav-item {
+    margin-bottom: -1px;
+    flex-grow: 1;    
+    // padding: 20px 0;
+}
+
+.match-contest-name{
+    color: white;
+    background-color: #21255dba;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.home-team-name{
+    width: 25%;
+    text-align: right;
+}
+
+.away-team-name{
+    width: 25%;
+    text-align: left;
+}
+
+.team-kit{
+    max-width: 60px;
+  }
+  .team-kit img {
+    height: 32px;
+  }
+
+.match-details{
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    align-items: center;
+    background-color: #2554a3d4;
+    height: 65px;
+    border-bottom: solid 1px gainsboro;
+}
+
+.time{
+    
+}
+
+.time .hour{
+    font-size: 17px;
+}
+
+.time .date{
+    font-size: 12px;
+}
+
+.matches-list-scrollarea{
+    width: 100%;
+    height: calc(100vh - 493px);  
+    height: calc((var(--vh, 1vh) * 100) - 493px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;    
+  }

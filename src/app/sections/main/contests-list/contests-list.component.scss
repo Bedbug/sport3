@@ -73,3 +73,20 @@
   font-weight: 400;
   text-decoration: underline;
 }
+
+.card-header{
+  padding: 10px;
+}
+
+.contest-list-scrollable-area{
+  width: 100%;
+  height: calc(100vh - 369px);  
+  height: calc((var(--vh, 1vh) * 100) - 410px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;    
+}
+
+.contest-item-container{
+  padding-right: 10px;
+}

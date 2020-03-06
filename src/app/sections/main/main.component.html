@@ -46,9 +46,11 @@
     <a routerLink="/main/winners" routerLinkActive="active" href="#" class="row"><div class="icn-winners"></div> <span translate>Winners</span></a>
     <a routerLink="/main/achievements" routerLinkActive="active" href="#" class="row"><div class="icn-achievements"></div> <span translate>Achievements</span></a>
     <a routerLink="/main/standings" routerLinkActive="active" href="#" class="row"><div class="icn-standings"></div> <span translate>Standings</span></a>
+    <a *ngIf="hasNews"  routerLink="/main/news" routerLinkActive="active" href="#" class="row"><div class="icn-news"></div> <span translate>News</span></a>
+    <!-- <a *ngIf="hasNews" routerLink="/main/news" routerLinkActive="active" href="#"><div class="icn-news"></div><span translate>News</span></a> -->
   </div>
 </div>
-<div class="container">
+<div class="">
   <router-outlet></router-outlet>
 </div>
 <nav class="navbar fixed-bottom mobile-app-navbar">

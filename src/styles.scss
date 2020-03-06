@@ -211,8 +211,8 @@ body .page-wrapper .page-main-header {
   background: $theme-navbar-color;
   overflow: auto;
   width: 100%;
-  position: fixed;
-  top: 50px;
+  position: inherit;
+  top: 42px;
   left: 0;
   z-index: 2;
   height: 50px;
@@ -221,7 +221,7 @@ body .page-wrapper .page-main-header {
   animation-duration: 0.5s;
 }
 
-.mobile-app-navbar {
+.mobile-app-navbar, .universal-app-navbar{
   background: $theme-navbar-color;
   height: 51px;
   padding: 0;
@@ -230,6 +230,7 @@ body .page-wrapper .page-main-header {
   // animation-duration: 0.5s;
   // transform: translate(0, 50px);
 }
+
 
 .app-navbar .app-nav-item {
   /* line-height: 40px; */
@@ -260,11 +261,12 @@ body .page-wrapper .page-main-header {
 /* Navbar links on mouse-over */
 
 .app-navbar a:hover,
-.mobile-app-navbar a:hover {
+.mobile-app-navbar a:hover,
+.universal-app-navbar a:hover {
   background-color: $theme-navbar-color-active;
 }
 
-.mobile-app-navbar a {
+.mobile-app-navbar a,.universal-app-navbar a {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -280,7 +282,7 @@ body .page-wrapper .page-main-header {
   padding: 0;
   border-bottom: 3px solid transparent;
 }
-.mobile-app-navbar [class^="icn-"] {
+.mobile-app-navbar [class^="icn-"], .universal-app-navbar [class^="icn-"] {
   width: 60px;
   height: 25px;
   margin-bottom: 3px;
@@ -644,7 +646,7 @@ body .page-wrapper .page-main-header {
   animation-name: flipInX;
   animation-duration: 0.5s;
 }
-.mobile-app-navbar a.active {
+.mobile-app-navbar a.active, .universal-app-navbar a.active {
   /* background-color: #4CAF50; */
   border-bottom: solid 3px $theme-color;
   color: $theme-color !important;
@@ -692,10 +694,20 @@ body .page-wrapper .page-main-header {
   .main-header-left img {
     height: 35px !important;
   }
+  
 }
 @include media-breakpoint-up(md) {
   .mobile-app-navbar {
     display: none;
+  }
+
+  .scorllable-area{
+    width: 100%;
+    height: calc(100vh - 100px);  
+    height: calc((var(--vh, 1vh) * 100) - 100px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;    
   }
 }
 
@@ -775,6 +787,7 @@ body .page-wrapper .page-main-header {
   padding: 0;
   margin: 0 !important;
   color: #fff !important;
+  display: flex;
 }
 
 .contest-name {
@@ -817,14 +830,15 @@ body .page-wrapper .page-main-header {
   position: absolute;
   width: 100%;
   bottom: 5px;
-  text-align: center;
+  text-align: left ;
   margin-left: -15px;
+  padding-left: 15px;
 }
 /**=====================
      03. GrandPrize
 ==========================**/
 .grand-prize .card-body {
-  padding: 0 !important;
+  // padding: 0 !important;
   min-height: 200px;
 }
 
@@ -861,6 +875,7 @@ body .page-wrapper .page-main-header {
   color: #ffffff;
   flex: 1 1 0;
   font-size: 12px;
+  max-width: 150px;
 }
 
 .counter-container {
@@ -891,11 +906,11 @@ body .page-wrapper .page-main-header {
   border-radius: 0 0 5px 5px;
 }
 
-@include media-breakpoint-up(md) {
-  .grand-prize-header {
-    flex: 1;
-  }
-}
+// @include media-breakpoint-up(md) {
+//   .grand-prize-header {
+//     flex: 1;
+//   }
+// }
 
 .btn-active .fadeInLoader {
   animation-name: fadeIn;
@@ -928,6 +943,12 @@ body .page-wrapper .page-main-header {
 .page-wrapper .page-body-wrapper .page-sidebar {
   background: #212a34;
   // box-shadow: -6px 0px 5px -3px rgba(0, 0, 0, 0.75);
+ 
+    // width: 0%;
+    // top: 42px;
+    // height: calc(100vh - 42px); 
+    z-index: 9000;
+ 
 }
 
 .menu-icon {

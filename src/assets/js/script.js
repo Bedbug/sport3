@@ -31,10 +31,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
      Mobile Sidebar Menu
   ----------------------------------------*/
 $(document).ready(function(){
-    if($(window).width() <= 991 ) {
+    // if($(window).width() <= 991 ) {
       $("#sidebar-toggle").prop('checked', false);
       $(".page-body-wrapper").addClass("sidebar-close");
-    }
+    // }
     $("#sidebar-toggle").change(function(){
       if($("#sidebar-toggle").attr('checked', true)){
         $(".page-sidebar").addClass("page-sidebar-open");

@@ -52,7 +52,7 @@ export class MainPageNewsComponent implements OnInit {
     this.sportimoService.getNews()
     .subscribe(data => {
       this.news = data.results;
-      this.hasMore = true;//data.hasMorePages;
+      this.hasMore = data.hasMorePages;
       this.lastArticleId = this.news[this.news.length-1]._id;
       this.isLoading = false;
     })

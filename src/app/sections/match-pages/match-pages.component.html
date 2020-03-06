@@ -36,7 +36,7 @@
       <router-outlet #o="outlet"></router-outlet>
     </div>
     <!-- Contest Navbar -->
-    <nav class="navbar fixed-bottom mobile-app-navbar">
+    <nav class="navbar fixed-bottom universal-app-navbar">
       <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'info']" routerLinkActive="active" href="#">
         <div class="icn-match"></div><span translate>Match Info</span>
       </a>

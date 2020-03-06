@@ -106,6 +106,15 @@ export class SportimoService {
   }
 
   /*-----------------------------------------------------------------------------------
+    Home Matches
+  ----------------------------------------------------------------------------------- */
+
+  getHomeMatches() {
+    // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/matches/upcoming
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/matches/front-page`);
+  }
+
+  /*-----------------------------------------------------------------------------------
     Grand Prize
   ----------------------------------------------------------------------------------- */
   getGrandPrizes() {

@@ -1,4 +1,6 @@
 @import "src/variables.scss";
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 
 
 .event {
@@ -76,10 +78,6 @@
   height: 25px;
 }
 
-
-
-
-
 .background{
     display: block;
     position: absolute;
@@ -137,7 +135,7 @@
 }
 
 .achievement-item .progress-text-ltr {
-    width: 100px;
+    // width: 100px;
     font-family: $theme-font;
     font-weight: 700;
     font-size: 16px;
@@ -145,18 +143,20 @@
     padding: 0 24px;
     text-align: right;
     display: block;
+    flex-grow: 1;
 }
 
 
 .achievement-item .progress-text-rtl {
   display: none;
-  width: 100px;
+  // width: 100px;
   font-family: $theme-font;
   font-weight: 700;
   font-size: 16px;
   color: #ffc531;
   padding: 0 24px;
-  text-align: right;
+  text-align: left;
+  flex-grow: 1;
 }
 
 
@@ -167,4 +167,10 @@
     height: 5px;
     bottom: -5px;
     left: 0px;
+}
+
+@include media-breakpoint-up(md) {
+  .background{
+    top: 50px;
+  }
 }

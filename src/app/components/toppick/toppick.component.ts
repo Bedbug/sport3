@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToppickService } from './toppick.service';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-toppick',
@@ -15,6 +16,8 @@ export class ToppickComponent implements OnInit {
   pastMatches: any;
   topScorers: any;
   upcoming: any;
+
+  Utils: SportimoUtils = new SportimoUtils();
 
   constructor(
     private topPickService: ToppickService,
@@ -77,6 +80,10 @@ export class ToppickComponent implements OnInit {
       $('body').addClass('modal-open');
       localStorage.setItem("last_picks_check",todayDate);
     }      
+  }
+
+  parseDate(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','D MMM YYYY, HH:mm', 'jD jMMM jYYYY, jHH:jmm');
   }
 
 }
