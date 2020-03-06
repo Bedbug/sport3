@@ -715,7 +715,7 @@ body .page-wrapper .page-main-header {
     margin: 0;    
   }
 
-  .cdk-overlay-pane {
+  ::ng-deep .cdk-overlay-pane {
     width: 100%;
   }
 }
@@ -1253,6 +1253,6 @@ body .page-wrapper .page-main-header {
 }
 
 
-.cdk-overlay-pane {
+::ng-deep .cdk-overlay-pane {
   width: 80%;
 }
