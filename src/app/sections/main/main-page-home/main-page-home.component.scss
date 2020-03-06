@@ -1,5 +1,11 @@
 @import "src/variables.scss";
 
+
+.home-container{
+    max-width: 1140px;
+    margin:auto;
+}
+
 .card .card-header {
     padding: 0px;
 }
