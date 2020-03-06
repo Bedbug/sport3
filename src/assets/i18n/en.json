@@ -91,7 +91,7 @@
 	"My Account": "My Account",
 	"My Cards": "My Cards",
 	"My Teams": "My Teams",
-	"News": "",
+	"News": "News",
 	"News {{selectedArticle?": {
 		"_id}}": ""
 	},

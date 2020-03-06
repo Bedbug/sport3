@@ -32,6 +32,11 @@
   width: 30px
 }
 
+// .page-wrapper{
+//   max-width:1140px;
+//   margin: auto;
+// }
+
 .mobile-toggle{
   color: $theme-header-text-color;
 }
@@ -708,6 +713,10 @@ body .page-wrapper .page-main-header {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     margin: 0;    
+  }
+
+  .cdk-overlay-pane {
+    width: 100%;
   }
 }
 
