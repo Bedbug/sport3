@@ -92,9 +92,6 @@
 	"My Cards": "My Cards",
 	"My Teams": "My Teams",
 	"News": "News",
-	"News {{selectedArticle?": {
-		"_id}}": ""
-	},
 	"Next Match": "Next Match",
 	"Now": "Now",
 	"Offside": "Offside",
@@ -155,9 +152,7 @@
 	"Support": "Support",
 	"Team": "Team",
 	"Terms & Conditions": "Terms & Conditions",
-	"The match hasn't started yet": {
-		"0": ""
-	},
+	"The match hasn't started yet": "",
 	"The match will begin shortly": "The match will begin shorty. (30secs)",
 	"Top Assister": "Top Assister",
 	"Top Picks": "Top Picks",
@@ -183,13 +178,10 @@
 	"Yesterday's Top Scorers": "Last Matches Top Scorers",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to play cards": {
-		"0": ""
-	},
+	"You need to have an active subscription in order to play cards": "",
 	"You:": "You:",
 	"Your chances:": "Your chances: ",
 	"activation time:": "activation time:",
-	"app-name": "SPORTIMO",
 	"contest_loc_key": "Contest",
 	"correct": "correct",
 	"english": "english",

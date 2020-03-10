@@ -92,9 +92,6 @@
 	"My Cards": "کارت های من",
 	"My Teams": "تیم‌های من",
 	"News": "",
-	"News {{selectedArticle?": {
-		"_id}}": ""
-	},
 	"Next Match": "بازی بعدی",
 	"Now": "اکنون",
 	"Offside": "آفساید",
@@ -155,9 +152,7 @@
 	"Support": "پشتیبانی",
 	"Team": "تیم",
 	"Terms & Conditions": "شرایط و ضوابط",
-	"The match hasn't started yet": {
-		"0": ""
-	},
+	"The match hasn't started yet": "",
 	"The match will begin shortly": "بازی به زودی آغاز می شود",
 	"Top Assister": "بیشترین پاس گل",
 	"Top Picks": "لحظات منتخب",
@@ -183,13 +178,10 @@
 	"Yesterday's Top Scorers": "بهترین گلزنان دیروز",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to play cards": {
-		"0": ""
-	},
+	"You need to have an active subscription in order to play cards": "",
 	"You:": "شما:",
 	"Your chances:": "شانس‌های شما: ",
 	"activation time:": "زمان فعالسازی",
-	"app-name": "PabeToop",
 	"contest_loc_key": "مسابقه",
 	"correct": "صحیح",
 	"english": "English",

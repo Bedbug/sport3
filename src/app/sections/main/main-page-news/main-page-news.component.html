@@ -1,7 +1,7 @@
 <div class="background"></div>
 <div class="container">
   <div class="row" style="position: relative">
-    <div class="main-pages-header" translate>News {{selectedArticle?._id}}</div>
+    <div class="main-pages-header"><span translate>News </span> {{selectedArticle?._id}}</div>
     <div class="main-pages-scrollarea container p-t-15">
       <div class="news-container" [@staggerAnimation]="news?.length">
         <div class="col-sm-12 p-0 news-list-item" *ngFor="let article of news; let i = index">
