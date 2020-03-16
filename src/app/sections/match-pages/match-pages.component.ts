@@ -88,54 +88,40 @@ export class MatchPagesComponent implements OnInit {
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
-            const isCards: any = this.state.routerState.snapshot.url.match(/cards/i);             
-                        
-             if (!isCards &&  (event.type == "Card_lost" || event.type == "Card_won")) {
- 
-               console.log(event.data.status == 2 && event.data.pointsAwarded > 0);               
- 
-                 this.cardToastService.Show({
-                   type: "card-result",
-                   icon: this.Utils.getIconBySprite(event.data.image.sprite),
-                   title: event.data.title[this.translate.currentLang],
-                   option: this.getFormatedOption(event.data.text[this.translate.currentLang]), 
-                   points: event.data.pointsAwarded?this.parseNumbers(event.data.pointsAwarded):this.parseNumbers("0"),
-                   won: event.data.status == 2 && event.data.pointsAwarded > 0?true:false
-                 });
+            const isCards: any = this.state.routerState.snapshot.url.match(/cards/i);
 
-                //  setTimeout(()=>{
-                //   this.cardToastService.Show({
-                //     type: "simple",
-                //     icon: this.Utils.getIconByType("First_Half_Starts"),
-                //     time: this.Utils.shouldShow("First_Half_Starts", 1) ? "96'" : "",
-                //     event: this.translate.instant("First_Half_Starts"),
-                //     teamKit: null
-                //   });
-                //  },1000)                 
- 
-               }
+            if (!isCards && (event.type == "Card_lost" || event.type == "Card_won")) {
+
+              console.log(event.data.status == 2 && event.data.pointsAwarded > 0);
+
+              this.cardToastService.Show({
+                type: "card-result",
+                icon: this.Utils.getIconBySprite(event.data.image.sprite),
+                title: event.data.title[this.translate.currentLang],
+                option: this.getFormatedOption(event.data.text[this.translate.currentLang]),
+                points: event.data.pointsAwarded ? this.parseNumbers(event.data.pointsAwarded) : this.parseNumbers("0"),
+                won: event.data.status == 2 && event.data.pointsAwarded > 0 ? true : false
+              });
+            }
 
             if (!isInfo && event) {
-              if (event.type == "Event_added") {
+              if (event.type == "Event_added") {               
                 this.cardToastService.Show({
-                  type: "simple",
+                  type: "match-event",
                   icon: this.Utils.getIconByType(event.data.type),
-                  time: this.Utils.shouldShow(event.type, 1) ? event.data.time + "'" : "",
+                  time: this.Utils.shouldShow(event.data.type, 1) ? event.data.time + "'" : "",
                   event: this.translate.instant(event.data.type),
-                  teamKit: this.Utils.shouldShow(event.type, 1) ? this.liveMatch.matchData[event.data.team].logo : null
+                  teamKit: this.Utils.shouldShow(event.data.type, 1) ? this.liveMatch.matchData[event.data.team].logo : null
+                });
+
+
+              }
+              if (event.type == "Advance_Segment") {
+                this.cardToastService.Show({
+                  type: "advance_segment",
+                  event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
                 });
               }
-             
-              // if (event.type == "Advance_Segment") {
-              //   // this.openNotyf("", event.data.text[this.translate.currentLang], false);
-              //              console.log(event.data);
-              //   this.cardToastService.Show({
-              //     icon:"",
-              //     time: "",
-              //     event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
-              //     teamKit: ""
-              //   });
-              // }
             }
           });
         });
@@ -183,13 +169,13 @@ export class MatchPagesComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  parseNumbers(text:string){
-    if(text)
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  parseNumbers(text: string) {
+    if (text)
+      return this.Utils.parseNumbers(text, this.translate.currentLang == 'fa');
     else
-    return "";
+      return "";
   }
-  
+
   getFormatedOption(text: string) {
     const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
     const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name['en'];

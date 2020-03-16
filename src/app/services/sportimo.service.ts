@@ -353,16 +353,24 @@ export class SportimoService {
 
       // let data = { "type": "Card_won", "client": "5d7389fbd6126dd7ffe3df9d", "room": "5e55256283019a001f4f1288", "data": { "id": "5e5525bbb9c5eb0004f86a4d", "userid": "5d7389fbd6126dd7ffe3df9d", "matchid": "5e55256283019a001f4f1288", "gamecardDefinitionId": "5e55256383019a001f4f12d1", "title": { "ar": "تسلل", "en": "Offside", "fa": "آفساید", "ru": "Офсайд" }, "image": { "url": "", "sprite": "offside", "en": "", "ar": "", "fa": "" }, "text": { "ar": "نعم اي فريق", "en": "Yes any team", "fa": "بله هر تیمی", "ru": "Любая команда" }, "minute": 1, "segment": 1, "primaryStatistic": "Offside", "cardType": "PresetInstant", "isDoubleTime": false, "isDoublePoints": false, "status": 2, "specials": { "DoublePoints": { "status": 0, "_id": "5e5525bbb9c5eb0004f86a4e", "activationLatency": 0 }, "DoubleTime": { "status": 0, "_id": "5e5525bbb9c5eb0004f86a4f", "activationLatency": 0 } }, "startPoints": 120, "endPoints": 60, "activationLatency": 20000, "pointsAwarded": 75, "duration": 600000, "optionId": "3", "creationTime": "2020-02-25T13:48:43.302Z", "activationTime": "2020-02-25T13:50:02.568Z", "terminationTime": "2020-02-25T14:00:02.568Z", "wonTime": "2020-02-25T13:57:27.992Z" }, "inst": 551 };
       // let data2 = {"type":"Card_lost","client":"5d7389fbd6126dd7ffe3df9d","room":"5e55256283019a001f4f1288","data":{"id":"5e5525c4b9c5eb0004f86a52","userid":"5d7389fbd6126dd7ffe3df9d","matchid":"5e55256283019a001f4f1288","gamecardDefinitionId":"5e55256383019a001f4f12cc","title":{"ar":"ضربة ركنية","en":"Corner","fa":"کرنر","ru":"Угловой"},"image":{"url":"","sprite":"corner","en":"","ar":"","fa":""},"text":{"ar":"لا","en":"No corner","fa":"","ru":"Не будет углового"},"minute":1,"segment":1,"primaryStatistic":"Corner","cardType":"PresetInstant","isDoubleTime":false,"isDoublePoints":false,"status":2,"specials":{"DoublePoints":{"status":0,"_id":"5e5525c4b9c5eb0004f86a53","activationLatency":0},"DoubleTime":{"status":0,"_id":"5e5525c4b9c5eb0004f86a54","activationLatency":0}},"startPoints":25,"endPoints":25,"activationLatency":20000,"duration":600000,"optionId":"4","creationTime":"2020-02-25T13:48:52.067Z","activationTime":"2020-02-25T13:50:02.568Z","terminationTime":"2020-02-25T14:00:02.568Z"},"inst":551};
+      // let data3 = {"type":"Event_added","room":"5dbc4477c92cab0020eb4451","data":{"players":[{"id":"5d00bfbeb06f57411005e253","name":{"en":"Konstantinos Fortounis"}}],"linked_mods":[],"_id":"5e6f5d105cc63100174d63d6","match_id":"5dbc4477c92cab0020eb4451","type":"Corner","stats":{"Corner":1},"playerscount":1,"status":"active","timeline_event":true,"state":5,"sender":"Moderator","time":93,"team":"home_team","team_id":"5ced76ac16085858dce99af1","complete":false,"playerSelected":"","created":"2020-03-16T11:03:44.901Z"},"inst":440};
+      // let data4 = {"type":"Advance_Segment","room":"5dbc4477c92cab0020eb4451","data":{"segment":{"start":"2020-03-16T11:01:04Z","sport_start_time":90,"timed":true,"text":{"en":"Overtime First Half","ar":"الشوط الإضافي الأول"},"break_time":0,"events":[]},"match_id":"5dbc4477c92cab0020eb4451","info":"The porperty segment should be pushed to the timeline","sportSegmenInfo":{"name":{"en":"Overtime First Half","ar":"الشوط الإضافي الأول"},"timed":true,"initialTime":90},"state":5,"timeline_event":false},"inst":440}
       // setTimeout(() => {
       //   console.log("Firing test Event");
 
-      //   observer.next(data)
-      // },2000)
+      //   observer.next(data3)
+      // },5000)
       // setTimeout(() => {
       //   console.log("Firing test Event");
 
       //   observer.next(data2)
       // },4000)
+      // setTimeout(() => {
+      //   console.log("Firing test Event");
+
+      //   observer.next(data4)
+      // },6000)
+
 
       return () => {
         this.socket.disconnect();
