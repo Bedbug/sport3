@@ -37,7 +37,7 @@ import * as io from 'socket.io-client';
 })
 export class SportimoService {
 
-  private defaultConfiguration = { appName: { "en": "Sportimo", "ar": "", "fa": "" }, availableLanguages: ["ar", "en", "ru"], defaultLanguage: "en", displayNews: true }
+  private defaultConfiguration = { appName: { "en": "Sportimo", "ar": "", "fa": "" }, availableLanguages: ["ar", "en", "ru"], defaultLanguage: "en", displayNews: true, theme: "beeline" }
 
   private currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;

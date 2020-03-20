@@ -1,21 +1,26 @@
 <div class="container">
-<div class="card">
-  <div class="card-body user-info">
-      <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to play cards.</div>
-    <div class="container">       
-      <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
-        <div class="col-12">
-          <div class="info">
-            <div class="cards active">
-              <div class="icn-cards pull-left" style="height: 24px;width: 30px; float: left"></div> {{parseNumbers(availableCardPlays.toString())}}
+  <div class="row">
+    <div class="card">
+      <div class="card-body user-info">
+        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to
+          play cards.</div>
+        <div class="container">
+          <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
+            <div class="col-12">
+              <div class="info">
+                <div class="cards active">
+                  <div class="icn-cards pull-left" style="height: 24px;width: 30px; float: left"></div>
+                  {{parseNumbers(availableCardPlays.toString())}}
+                </div>
+                <div class="powers">
+                  <div class="icn-power pull-left" style="height: 24px;width: 30px; float:left"></div>
+                  {{parseNumbers(availableSpecialPlays.toString())}}
+                </div>
+                <div class="points"><strong>{{parseNumbers(userScore.toString())}}</strong> <span translate>pts</span>
+                </div>
+              </div>
             </div>
-            <div class="powers">
-              <div class="icn-power pull-left" style="height: 24px;width: 30px; float:left"></div> {{parseNumbers(availableSpecialPlays.toString())}}
-            </div>
-            <div class="points"><strong>{{parseNumbers(userScore.toString())}}</strong> <span translate>pts</span></div>
-          </div>
-        </div>
-        <!-- <div class="text-right" style="width: 100%">
+            <!-- <div class="text-right" style="width: 100%">
           <button *ngIf="!isPlayingCard || isLoadingCards" [disabled]="isPlayingCard || !subscribed || liveMatch?.matchData.completed" (click)="playCard()"
             class="btn btn-sportimo" style="width: 100%">
             <div class="loader-label" [class.btn-active]="isLoadingCards">
@@ -35,102 +40,102 @@
             </div>
           </button>
         </div> -->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Card Tabs -->
-<div *ngIf='!isPlayingCard' class="cards-list-container">
-  <div #stickyMenu [class.sticky]="sticky">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
-          aria-selected="true">
-          <div translate>All</div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="won-tab" data-toggle="tab" href="#won" role="tab" aria-controls="won"
-          aria-selected="false">
-          <div translate>Won</div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending"
-          aria-selected="false">
-          <div translate>Pending</div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="lost-tab" data-toggle="tab" href="#lost" role="tab" aria-controls="lost"
-          aria-selected="false">
-          <div translate>Lost</div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
-      <ul class="card-scroll-list">
-        <li *ngFor="let playedCard of liveMatch?.playedCards">
-          <app-card [cardData]="playedCard"></app-card>
-        </li>
-      </ul>
+    <!-- Card Tabs -->
+    <div *ngIf='!isPlayingCard' class="cards-list-container">
+      <div #stickyMenu [class.sticky]="sticky">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
+              aria-selected="true">
+              <div translate>All</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="won-tab" data-toggle="tab" href="#won" role="tab" aria-controls="won"
+              aria-selected="false">
+              <div translate>Won</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pending-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending"
+              aria-selected="false">
+              <div translate>Pending</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="lost-tab" data-toggle="tab" href="#lost" role="tab" aria-controls="lost"
+              aria-selected="false">
+              <div translate>Lost</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+          <ul class="card-scroll-list">
+            <li *ngFor="let playedCard of liveMatch?.playedCards">
+              <app-card [cardData]="playedCard"></app-card>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="won" role="tabpanel" aria-labelledby="won-tab">
+          <ul class="card-scroll-list">
+            <li *ngFor="let playedCard of wonCards">
+              <app-card [cardData]="playedCard"></app-card>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
+          <ul class="card-scroll-list">
+            <li *ngFor="let playedCard of pendingCards">
+              <app-card [cardData]="playedCard"></app-card>
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane fade" id="lost" role="tabpanel" aria-labelledby="lost-tab">
+          <ul class="card-scroll-list">
+            <li *ngFor="let playedCard of lostCards">
+              <app-card [cardData]="playedCard"></app-card>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="tab-pane fade" id="won" role="tabpanel" aria-labelledby="won-tab">
-      <ul class="card-scroll-list">
-        <li *ngFor="let playedCard of wonCards">
-          <app-card [cardData]="playedCard"></app-card>
-        </li>
-      </ul>
-    </div>
-    <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab">
-      <ul class="card-scroll-list">
-        <li *ngFor="let playedCard of pendingCards">
-          <app-card [cardData]="playedCard"></app-card>
-        </li>
-      </ul>
-    </div>
-    <div class="tab-pane fade" id="lost" role="tabpanel" aria-labelledby="lost-tab">
-      <ul class="card-scroll-list">
-        <li *ngFor="let playedCard of lostCards">
-          <app-card [cardData]="playedCard"></app-card>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
 
-<div *ngIf='isPlayingCard' class="cards-list-container">
-  <div #stickyMenu [class.sticky]="sticky">
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-      <!-- <li class="nav-item">
+    <div *ngIf='isPlayingCard' class="cards-list-container">
+      <div #stickyMenu [class.sticky]="sticky">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <!-- <li class="nav-item">
         <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
           aria-selected="true">
           <div translate>All</div>
         </a>
       </li> -->
-      <li class="nav-item">
-        <a class="nav-link active" id="live-tab" data-toggle="tab" href="#live" role="tab" aria-controls="live"
-          aria-selected="false">
-          <div translate>Live</div>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="ninenty-tab" data-toggle="tab" href="#ninenty" role="tab" aria-controls="ninenty"
-          aria-selected="false">
-          <div >{{parseNumbers("90'")}}</div>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="tab-content" id="myTabContent">
-    <!-- <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+          <li class="nav-item">
+            <a class="nav-link active" id="live-tab" data-toggle="tab" href="#live" role="tab" aria-controls="live"
+              aria-selected="false">
+              <div translate>Live</div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="ninenty-tab" data-toggle="tab" href="#ninenty" role="tab" aria-controls="ninenty"
+              aria-selected="false">
+              <div>{{parseNumbers("90'")}}</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content" id="myTabContent">
+        <!-- <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
       <div class="card-scroll-list"> -->
-    <!-- <app-playcard *ngFor="let availablePlaycard of availableCards" [data]="availablePlaycard"></app-playcard> -->
-    <!-- Play-Card -->
-    <!-- <div *ngFor="let availablePlaycard of availableCards">
+        <!-- <app-playcard *ngFor="let availablePlaycard of availableCards" [data]="availablePlaycard"></app-playcard> -->
+        <!-- Play-Card -->
+        <!-- <div *ngFor="let availablePlaycard of availableCards">
           <div *ngIf="availablePlaycard?.cardType!='Overall'" (click)="openPlayModal(availablePlaycard)"
             class="playcard">
             <div class="icon">
@@ -148,157 +153,164 @@
         </div>
       </div>
     </div> -->
-    <div class="tab-pane fade show active" id="live" role="tabpanel" aria-labelledby="live-tab">
-      <div class="card-scroll-list">
-        <div *ngFor="let availablePlaycard of availableCards">
-          <div *ngIf="availablePlaycard?.cardType!='Overall'"           
-          placement="bottom" adaptivePosition="false" popover="{{translate.instant('tip.2')}}" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay && availablePlaycard?.title[translate.currentLang]=='Goal'" containerClass="popover"
-          [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}" (click)="subscribed && openPlayModal(availablePlaycard)"
-            class="playcard">
-            <div class="icon">
-              <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
-            </div>
-            <div class="card-name">
-              {{availablePlaycard?.title[translate.currentLang]}}
-            </div>
-            <div class="card-type">
-              <span class="label label-default" style="background-color: white;
+        <div class="tab-pane fade show active" id="live" role="tabpanel" aria-labelledby="live-tab">
+          <div class="card-scroll-list">
+            <div *ngFor="let availablePlaycard of availableCards">
+              <div *ngIf="availablePlaycard?.cardType!='Overall'" placement="bottom" adaptivePosition="false"
+                popover="{{translate.instant('tip.2')}}" triggers=""
+                [isOpen]="showPlayCardsPop && !hasClickedPlay && availablePlaycard?.title[translate.currentLang]=='Goal'"
+                containerClass="popover" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}"
+                (click)="subscribed && openPlayModal(availablePlaycard)" class="playcard">
+                <div class="icon">
+                  <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
+                </div>
+                <div class="card-name">
+                  {{availablePlaycard?.title[translate.currentLang]}}
+                </div>
+                <div class="card-type">
+                  <span class="label label-default"
+                    style="background-color: white;
                     color: #42454a;
                     padding: 3px 5px;">{{availablePlaycard?.cardType=="Overall"?parseNumbers("90'"):translate.instant("LIVE")}}</span>
+                </div>
+
+              </div>
             </div>
-            
           </div>
         </div>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="ninenty" role="tabpanel" aria-labelledby="ninenty-tab">
-      <div class="card-scroll-list">
-        <div *ngFor="let availablePlaycard of availableCards">
-          <div *ngIf="availablePlaycard?.cardType=='Overall'" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}" (click)="subscribed && openPlayModal(availablePlaycard)"
-            class="playcard">
-            <div class="icon">
-              <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
-            </div>
-            <div class="card-name">
-              {{availablePlaycard?.title[translate.currentLang]}}
-            </div>
-            <div class="card-type">
-              <span class="label label-default" style="background-color: white;
+        <div class="tab-pane fade" id="ninenty" role="tabpanel" aria-labelledby="ninenty-tab">
+          <div class="card-scroll-list">
+            <div *ngFor="let availablePlaycard of availableCards">
+              <div *ngIf="availablePlaycard?.cardType=='Overall'" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}"
+                (click)="subscribed && openPlayModal(availablePlaycard)" class="playcard">
+                <div class="icon">
+                  <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
+                </div>
+                <div class="card-name">
+                  {{availablePlaycard?.title[translate.currentLang]}}
+                </div>
+                <div class="card-type">
+                  <span class="label label-default" style="background-color: white;
                     color: #42454a;
                     padding: 3px 5px;">{{availablePlaycard?.cardType=="Overall"?parseNumbers("90'"):"LIVE"}}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
 
-  <!-- CARD MODAL -->
-  <div *ngIf="playCardModal && selectedCard">
-    <div class="modal-playcard" (click)="closeModal()"></div>
-    <div class="modal-playcard-center">
+      <!-- CARD MODAL -->
+      <div *ngIf="playCardModal && selectedCard">
+        <div class="modal-playcard" (click)="closeModal()"></div>
+        <div class="modal-playcard-center">
 
-      <div class="bottom-drawer" [class.active]="optionSelected">
-        <div class="top-buttons">
-          <p class="title" translate>Activate powerups:</p>
-          <div class="power-container">
-            <div class="col-6 powerup isClickable"
-              (click)="!isSubmitingCard && availableSpecialPlays >0 && cardSelections.isDoublePoints=!cardSelections.isDoublePoints"
-              [class.active-power]="cardSelections.isDoublePoints">
-              <span translate>Double Points</span>
-              <div class="power-button double-points">
-                <span style="margin:auto" translate>x2</span>
-              </div> 
-              <!-- optionSelected?.startPoints*2 -->
-              <span translate [translateParams]="{value: optionSelected?.startPoints*2}">Key_get_card_points</span>
-            </div>
+          <div class="bottom-drawer" [class.active]="optionSelected">
+            <div class="top-buttons">
+              <p class="title" translate>Activate powerups:</p>
+              <div class="power-container">
+                <div class="col-6 powerup isClickable"
+                  (click)="!isSubmitingCard && availableSpecialPlays >0 && cardSelections.isDoublePoints=!cardSelections.isDoublePoints"
+                  [class.active-power]="cardSelections.isDoublePoints">
+                  <span translate>Double Points</span>
+                  <div class="power-button double-points">
+                    <span style="margin:auto" translate>x2</span>
+                  </div>
+                  <!-- optionSelected?.startPoints*2 -->
+                  <span translate [translateParams]="{value: optionSelected?.startPoints*2}">Key_get_card_points</span>
+                </div>
 
-            <div *ngIf="selectedCard?.duration > 0" class="col-6 powerup isClickable"
-              (click)="!isSubmitingCard && availableSpecialPlays > 0 && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
-              [class.active-power]="cardSelections.isDoubleTime">
-              <span translate>Double Time</span>
-              <div class="power-button double-time">
-                <div class="double-time-icon">
-                  <div class="power-icon icn-stopwatch"></div>
+                <div *ngIf="selectedCard?.duration > 0" class="col-6 powerup isClickable"
+                  (click)="!isSubmitingCard && availableSpecialPlays > 0 && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
+                  [class.active-power]="cardSelections.isDoubleTime">
+                  <span translate>Double Time</span>
+                  <div class="power-button double-time">
+                    <div class="double-time-icon">
+                      <div class="power-icon icn-stopwatch"></div>
+                    </div>
+                  </div>
+                  <!-- Increase time range to {{((selectedCard?.duration/1000)/60) * 2}}' -->
+                  <span translate
+                    [translateParams]="{value: ((selectedCard?.duration/1000)/60) * 2}">Key_increase_time</span>
                 </div>
               </div>
-              <!-- Increase time range to {{((selectedCard?.duration/1000)/60) * 2}}' -->
-              <span translate [translateParams]="{value: ((selectedCard?.duration/1000)/60) * 2}">Key_increase_time</span>
             </div>
-          </div>
-        </div>
-        <div class="bottom-buttons">
-          <ul class="options" *ngIf="!optionSelected" [@fadein]>
-            <li (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
-              <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
-              <p><strong>{{parseNumbers(option.startPoints)}}</strong>  <span translate>pts</span></p>
-            </li>
-          </ul>
-          <ul class="finalize" *ngIf="optionSelected" [@fadein]>
-            <li>
-              <button [disabled]="isSubmitingCard" (click)="submitCard()" class="btn btn-sportimo">
-                <div class="loader-label" [class.btn-active]="isSubmitingCard">
-                  <span class="button-label" translate>Play</span>
-                  <div class="fadeInLoader">
-                    <span class="rotate dotted button-loader"></span>
-                  </div>
-                </div>
-              </button>
-              <!-- <button class="btn btn-sportimo loader-label" [class.active]="isLoadingCards">
+            <div class="bottom-buttons">
+              <ul class="options" *ngIf="!optionSelected" [@fadein]>
+                <li (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
+                  <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
+                  <p><strong>{{parseNumbers(option.startPoints)}}</strong> <span translate>pts</span></p>
+                </li>
+              </ul>
+              <ul class="finalize" *ngIf="optionSelected" [@fadein]>
+                <li>
+                  <button [disabled]="isSubmitingCard" (click)="submitCard()" class="btn btn-sportimo">
+                    <div class="loader-label" [class.btn-active]="isSubmitingCard">
+                      <span class="button-label" translate>Play</span>
+                      <div class="fadeInLoader">
+                        <span class="rotate dotted button-loader"></span>
+                      </div>
+                    </div>
+                  </button>
+                  <!-- <button class="btn btn-sportimo loader-label" [class.active]="isLoadingCards">
                 <span class="button-label">Play</span>
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div></button> -->
-            </li>
-            <li>
-              <button [disabled]="isSubmitingCard" (click)="cancelAll()" class="btn btn-default" translate>Cancel</button>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="top-drawer" [class.active]="optionSelected">
-        <div class="modal-close" (click)="closeModal()">X</div>
-        <div class="playcard-event">
-          <div class="playcard-header">
-            <div class="event-icon">
-              <div class="icon" [ngClass]="Utils.getIconBySprite(selectedCard?.image.sprite)"></div>
-            </div>
-            <div class="name"> {{selectedCard?.title[translate.currentLang]}}</div>
-          </div>
-          <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span *ngIf="selectedCard?.cardType!='Overall'" translate>, starting from:</span></div>
-          <div class="time" *ngIf="selectedCard?.cardType!='Overall'">
-            <div class="event-time-icon">
-              <div class="icon icn-stopwatch"></div>
-            </div>
-            <div class="time-text">{{parseNumbers(SelectedTime)}}</div>
-          </div>
-          <div *ngIf="optionSelected" [@fadein]>
-            <div translate>By:</div>
-            <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
-            <div [class.active-points]="cardSelections?.isDoublePoints">
-              <span
-                class="points">{{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
-              <span class="pts" translate> pts</span>
+                </li>
+                <li>
+                  <button [disabled]="isSubmitingCard" (click)="cancelAll()" class="btn btn-default"
+                    translate>Cancel</button>
+                </li>
+              </ul>
             </div>
           </div>
-          <div *ngIf="!optionSelected && selectedCard?.cardType!='Overall'" [@fadein] class="time-slider">
-            <!-- <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
+          <div class="top-drawer" [class.active]="optionSelected">
+            <div class="modal-close" (click)="closeModal()">X</div>
+            <div class="playcard-event">
+              <div class="playcard-header">
+                <div class="event-icon">
+                  <div class="icon" [ngClass]="Utils.getIconBySprite(selectedCard?.image.sprite)"></div>
+                </div>
+                <div class="name"> {{selectedCard?.title[translate.currentLang]}}</div>
+              </div>
+              <div class="modal-playcard-info">{{selectedCard?.text[translate.currentLang]}}<span
+                  *ngIf="selectedCard?.cardType!='Overall'" translate>, starting from:</span></div>
+              <div class="time" *ngIf="selectedCard?.cardType!='Overall'">
+                <div class="event-time-icon">
+                  <div class="icon icn-stopwatch"></div>
+                </div>
+                <div class="time-text">{{parseNumbers(SelectedTime)}}</div>
+              </div>
+              <div *ngIf="optionSelected" [@fadein]>
+                <div translate>By:</div>
+                <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
+                <div [class.active-points]="cardSelections?.isDoublePoints">
+                  <span
+                    class="points">{{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
+                  <span class="pts" translate> pts</span>
+                </div>
+              </div>
+              <div *ngIf="!optionSelected && selectedCard?.cardType!='Overall'" [@fadein] class="time-slider">
+                <!-- <input type="range" id="cowbell" name="cowbell" (input)="valueChanged($event.target.value)"
             [attr.min]="minTimeValue" [attr.max]="90" [attr.value]="minTimeValue"> -->
-            <ion-range-slider #sliderElement type="single" min="1" max="90" [from]="fromTimeValue"
-              [from_min]="minTimeValue" from_max="90" from_shadow="true" to="40" to_min="40" to_max="90"
-              to_shadow="true" grid="true" grid_num="10" postfix="'" decorate_both="true"
-              (onChange)="valueChanged($event)">
-            </ion-range-slider>
-            <!--  (onUpdate)="myOnUpdate($event)"
+                <ion-range-slider #sliderElement type="single" min="1" max="90" [from]="fromTimeValue"
+                  [from_min]="minTimeValue" from_max="90" from_shadow="true" to="40" to_min="40" to_max="90"
+                  to_shadow="true" grid="true" grid_num="10" postfix="'" decorate_both="true"
+                  (onChange)="valueChanged($event)">
+                </ion-range-slider>
+                <!--  (onUpdate)="myOnUpdate($event)"
           (onChange)="valueChanged($event.target.value)"
           (onFinish)="myOnFinish($event)" -->
-            <span class="slider-guide" translate>Drag slider to set the time that the card will be activated</span>
+                <span class="slider-guide" translate>Drag slider to set the time that the card will be activated</span>
+              </div>
+
+            </div>
           </div>
 
         </div>
       </div>
-
     </div>
   </div>
 </div>

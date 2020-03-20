@@ -11,6 +11,7 @@ import { SportimoService } from './services/sportimo.service';
 })
 export class AppComponent {
  
+  public appTheme = "";
 
   constructor(
     translate: TranslateService,
@@ -26,6 +27,9 @@ export class AppComponent {
       // translate.getTranslation('en').subscribe(() => {});
       // the lang to use, if the lang isn't available, it will use the current loader to get them
       translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
+
+      this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
+
     });
 
    

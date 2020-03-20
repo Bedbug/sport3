@@ -1,6 +1,6 @@
 <svg width="60px" height="50px" viewBox="0 0 60 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="news" transform="translate(-2.000000, -7.000000)" fill="#FFFFFF" fill-rule="nonzero">
+        <g id="news" transform="translate(-2.000000, -7.000000)" fill="#000" fill-rule="nonzero">
             <g transform="translate(2.000000, 7.000000)">
                 <polyline id="Fill-365" points="25 43.1818182 53.2290729 27.3564349 59.0909091 30.6442333 59.0909091 19.3557667 53.2290729 22.6439363 25 6.81818182 25 43.1818182"></polyline>
                 <polygon id="Fill-366" points="0 25 9.09090909 25 9.09090909 27.2727273 0 27.2727273"></polygon>

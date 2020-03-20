@@ -1,38 +1,40 @@
 <div class="container">
-<div class="leaders-table">
-  <div class="leaders-header">
-    <div class="leaders-cell p-l-20 p-r-20" style="width: 100px" translate>Rank</div>
-    <div class="leaders-cell" translate>Player</div>
-    <div class="leaders-cell text-right p-r-20" translate>Points</div>
-  </div>
-</div>
-<div class="leaders-scrollable-group" (scroll)="checkScroll()">
-  <div class="leaders-table">
-    <div class="leaders-row" [class.leaders-user]="ind == userRank" *ngFor="let i of cellArray; let ind = index">
-      <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{parseNumbers(ind+1)}}</div>
-      <div class="leaders-cell cell-border">
-        <div class="leaders-player-cell">
-          <!-- Image -->
-          <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
-          <!-- Name -->
-          <div>{{i.name}}</div>
-        </div>
+  <div class="row">
+    <div class="leaders-table">
+      <div class="leaders-header">
+        <div class="leaders-cell p-l-20 p-r-20" style="width: 100px" translate>Rank</div>
+        <div class="leaders-cell" translate>Player</div>
+        <div class="leaders-cell text-right p-r-20" translate>Points</div>
       </div>
-      <!-- userRank -->
-      <div class="leaders-cell text-right p-r-20 cell-border">{{parseNumbers(i.score.toString())}}</div>
     </div>
-  </div>
-</div>
-<div class="leaders-table-user" >
-    <div class="leaders-row leaders-user" *ngIf="show">
-      <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{parseNumbers(userRank+1)}}</div>
-      <div class="leaders-cell cell-border">
-        <div class="leaders-player-cell">
-          <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
-          <div >{{cellArray[userRank].name}}</div>
+    <div class="leaders-scrollable-group" (scroll)="checkScroll()">
+      <div class="leaders-table">
+        <div class="leaders-row" [class.leaders-user]="ind == userRank" *ngFor="let i of cellArray; let ind = index">
+          <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{parseNumbers(ind+1)}}</div>
+          <div class="leaders-cell cell-border">
+            <div class="leaders-player-cell">
+              <!-- Image -->
+              <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
+              <!-- Name -->
+              <div>{{i.name}}</div>
+            </div>
+          </div>
+          <!-- userRank -->
+          <div class="leaders-cell text-right p-r-20 cell-border">{{parseNumbers(i.score.toString())}}</div>
         </div>
       </div>
-      <div class="leaders-cell text-right p-r-20 cell-border">{{parseNumbers(cellArray[userRank].score)}}</div>
+    </div>
+    <div class="leaders-table-user">
+      <div class="leaders-row leaders-user" *ngIf="show">
+        <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{parseNumbers(userRank+1)}}</div>
+        <div class="leaders-cell cell-border">
+          <div class="leaders-player-cell">
+            <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#">
+            <div>{{cellArray[userRank].name}}</div>
+          </div>
+        </div>
+        <div class="leaders-cell text-right p-r-20 cell-border">{{parseNumbers(cellArray[userRank].score)}}</div>
+      </div>
     </div>
   </div>
 </div>

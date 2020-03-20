@@ -31,13 +31,13 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/app/scss/uikit/components/_import.scss",
               "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
-              "src/assets/css/ion.rangeSlider.skinHTML5.css",
-             
+              "src/assets/css/ion.rangeSlider.skinHTML5.css",             
               "src/assets/app.scss",
               "src/style_base.scss",
               "src/assets/css/responsive.css",
               "src/styles.scss",
-              "src/rtl.scss",
+              "src/rtl.scss",     
+              "src/themes.scss",       
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [

@@ -3,6 +3,7 @@
     height: calc(100vh - 221px);
     height: calc((var(--vh, 1vh) * 100) - 221px);
     -webkit-overflow-scrolling: touch;
+    width: 100%;
 }
 
 

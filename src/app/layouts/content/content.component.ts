@@ -10,6 +10,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 export class ContentComponent implements OnInit {
   
   public isRTL: boolean;
+  
   RTL_languages = ["fa"];
 
   constructor(private translate: TranslateService) { }

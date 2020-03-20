@@ -1,101 +1,104 @@
 <div class="container">
-<div *ngIf="liveMatch" [@enterAnimation]>
-  <div class="scroll-area">
-  <app-stats></app-stats>
-  <div class="card timeline">
-    <div class="card-body">
-      <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center" >
-        <span translate>The match hasn't started yet</span>
-        <br><br>
-        <button [disabled]="startedDemo" (click)="openModal(template)"
-        class="btn btn-sportimo" style="width: 100%">
-        <div class="loader-label" [class.btn-active]="startingDemo">
-          <span *ngIf="startedDemo" translate class="button-label">The match will begin shortly</span>
-          <span *ngIf="!startingDemo && !startedDemo" translate class="button-label">Initiate Demo Play</span>
-          <div class="fadeInLoader">
-            <span class="rotate dotted button-loader"></span>
-          </div>
-        </div>
-      </button>
-      <br><br>
-      <p style="text-align:left" translate>Initiate Disclaimer</p>
-      <br>
-      <pre *ngIf="message" class="card card-block card-header">{{message}}</pre>
-      <ng-template #template>
-        <div class="modal-body text-center">
-          <p>Do you want to confirm?</p>
-          <button type="button" class="btn btn-sportimo" (click)="confirm()">Yes</button>
-          <button type="button" class="btn btn-light" (click)="decline()">No</button>
-        </div>
-      </ng-template>
-      </div>
-      
-      <ul>
-        <li>
-          <!-- *ngFor="let section of liveMatch?.matchData.timeline | reverser" -->
-          <!-- <span *ngIf="section.text"> {{section.text[translate.currentLang]}}</span> -->
-          <ul class="section">
-
-            <!-- ALL CARDS -->
-            <li class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
-              [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)">
-
-              <div *ngIf="event.type!='Substitution'" class="container">
-                <div class="row">
-                  <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
-                    {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
+  <div class="row">
+    <div *ngIf="liveMatch" [@enterAnimation] style="width: 100%;">
+      <div class="scroll-area">
+        <app-stats></app-stats>
+        <div class="card timeline">
+          <div class="card-body">
+            <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
+              <span translate>The match hasn't started yet</span>
+              <br><br>
+              <button [disabled]="startedDemo" (click)="openModal(template)" class="btn btn-sportimo"
+                style="width: 100%">
+                <div class="loader-label" [class.btn-active]="startingDemo">
+                  <span *ngIf="startedDemo" translate class="button-label">The match will begin shortly</span>
+                  <span *ngIf="!startingDemo && !startedDemo" translate class="button-label">Initiate Demo Play</span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
                   </div>
-                  <div class="icon">
-                    <div [ngClass]="Utils.getIconByType(event.type)"></div>                    
-                  </div>
-                  <div class="col">
-                    <p class="type">{{translate.instant(event.type)}}</p>
-                    <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                      <div>
-                        {{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]|| event.players[0].name['en']:'')}}
+                </div>
+              </button>
+              <br><br>
+              <p style="text-align:left" translate>Initiate Disclaimer</p>
+              <br>
+              <pre *ngIf="message" class="card card-block card-header">{{message}}</pre>
+              <ng-template #template>
+                <div class="modal-body text-center">
+                  <p>Do you want to confirm?</p>
+                  <button type="button" class="btn btn-sportimo" (click)="confirm()">Yes</button>
+                  <button type="button" class="btn btn-light" (click)="decline()">No</button>
+                </div>
+              </ng-template>
+            </div>
+
+            <ul>
+              <li>
+                <!-- *ngFor="let section of liveMatch?.matchData.timeline | reverser" -->
+                <!-- <span *ngIf="section.text"> {{section.text[translate.currentLang]}}</span> -->
+                <ul class="section">
+
+                  <!-- ALL CARDS -->
+                  <li class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
+                    [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)">
+
+                    <div *ngIf="event.type!='Substitution'" class="container">
+                      <div class="row">
+                        <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
+                          {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
+                        </div>
+                        <div class="icon">
+                          <div [ngClass]="Utils.getIconByType(event.type)"></div>
+                        </div>
+                        <div class="col">
+                          <p class="type">{{translate.instant(event.type)}}</p>
+                          <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
+                            <div>
+                              {{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]|| event.players[0].name['en']:'')}}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="team-logo">
+                          <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
+                        </div>
+                      </div>
+                      <div *ngIf="Utils.shouldShow(event.type,1)" class="event-time">{{event.created | date:"hh:mm:ss"}}
                       </div>
                     </div>
-                  </div>
-                  <div class="team-logo">
-                    <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
-                  </div>
-                </div>
-                <div *ngIf="Utils.shouldShow(event.type,1)" class="event-time">{{event.created | date:"hh:mm:ss"}}</div>
-              </div>
 
-              
-              <!-- SUBTITUTION CARD -->
-              <div *ngIf="event.type=='Substitution'" class="container">
-                <div class="row">
-                  <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
-                    {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
-                  </div>
-                  <div class="icon">
-                    <div [ngClass]="Utils.getIconByType(event.type)"></div>
-                  </div>
-                  <div class="col">
-                    <p class="type">{{translate.instant(event.type)}}</p>
-                    <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                      <div class="sub-icon icn-arrow-out"></div>
-                      {{event.players[0].name[translate.currentLang] || event.players[0].name['en']}}
+
+                    <!-- SUBTITUTION CARD -->
+                    <div *ngIf="event.type=='Substitution'" class="container">
+                      <div class="row">
+                        <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
+                          {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
+                        </div>
+                        <div class="icon">
+                          <div [ngClass]="Utils.getIconByType(event.type)"></div>
+                        </div>
+                        <div class="col">
+                          <p class="type">{{translate.instant(event.type)}}</p>
+                          <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
+                            <div class="sub-icon icn-arrow-out"></div>
+                            {{event.players[0].name[translate.currentLang] || event.players[0].name['en']}}
+                          </div>
+                          <div *ngIf="event.players && event.players.length>1" [@fadein] class="player">
+                            <div class="sub-icon icn-arrow-in"></div>
+                            {{event.players[1].name[translate.currentLang] || event.players[1].name['en']}}
+                          </div>
+                        </div>
+                        <div class="team-logo">
+                          <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
+                        </div>
+                      </div>
                     </div>
-                    <div *ngIf="event.players && event.players.length>1" [@fadein] class="player">
-                      <div class="sub-icon icn-arrow-in"></div>
-                      {{event.players[1].name[translate.currentLang] || event.players[1].name['en']}}
-                    </div>
-                  </div>
-                  <div class="team-logo">
-                    <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
-                  </div>
-                </div>
-              </div>
-              <!-- <span> {{event.type}}</span> -->
-            </li>
-          </ul>
-        </li>
-      </ul>
+                    <!-- <span> {{event.type}}</span> -->
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </div>

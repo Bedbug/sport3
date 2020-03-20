@@ -1,0 +1,35 @@
+
+.beeline {
+
+  $theme-color: #ffc300;
+$theme-gradient: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1) 100%);
+
+  .active .footer-icon{
+    filter: invert(0%) sepia(0%) saturate(7%) hue-rotate(147deg) brightness(110%) contrast(100%);
+  }
+  
+  .mobile-app-navbar, .universal-app-navbar{
+    background-color: #000;
+  }
+
+  .app-navbar{
+    background-color: #000;
+  }
+
+  .app-navbar a.active {
+    border-bottom: solid 5px #000;
+    color: #000;    
+    background: $theme-gradient;
+  }
+
+  .mobile-app-navbar a.active, .universal-app-navbar a.active {  
+    border-bottom: solid 3px #000;
+    color: #000;    
+    background: $theme-gradient;
+  }
+
+  .leaders-user{
+    background: $theme-gradient;
+  }
+
+}
