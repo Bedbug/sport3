@@ -30,6 +30,9 @@ export class AppComponent {
 
       this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
 
+       // Change the app background
+      if(this.sportimoService.getConfigurationFor("appBackgroundUrl"))
+        $('Body').css("background-image",  `url(${this.sportimoService.getConfigurationFor("appBackgroundUrl")})`); 
     });
 
    
