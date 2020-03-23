@@ -1,47 +1,47 @@
 <div class="card" style="margin-bottom: 0">
   <div class="card-body">
     <div class="container">
-      <div style="
-      margin-left: 15px;
-      margin-right: 15px;
-  ">
-    <div class="row">
-      <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
-        {{contestDetails?.titleText[translate.currentLang]}}
-        <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
-      </div>
-      <div class="col" style="min-height:33px; line-height: 33px">
-        <!-- <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
+      <div class="" style="margin-left: 0; margin-right: 0;">
+        <div class="row">
+          <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
+            {{contestDetails?.titleText[translate.currentLang]}}
+            <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
+          </div>
+          <div class="col" style="min-height:33px; line-height: 33px">
+            <!-- <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
           <span translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></button> -->
-        <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn"
-          class="btn btn-sportimo col-12">
-          <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
-              translate>Join</span> {{parseNumbers(contestDetails?.subscriptionPrice)}}<i class="coin"></i></div>
-          <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span translate>Join For Free</span></div>
-        </button>
-        <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span
-            translate>Your chances:</span> {{parseNumbers(contestDetails?.user_chances) || parseNumbers(0)}}</div>
-      </div>
-    </div>
-    <div class="sportimo-divider"></div>
-    <div class="contest-info-container">
-      <div class="contest-info-row">
-        <div translate class="contest-info-cell font-weight-bold">Matches</div>
-        <div translate *ngIf="contestDetails?.showParticipations" class="contest-info-cell font-weight-bold">Participations</div>
-        <div translate class="contest-info-cell font-weight-bold">Winners</div>
-        <div translate class="contest-info-cell font-weight-bold">Duration</div>
-      </div>
-      <div class="contest-info-row">
-        <div class="contest-info-cell">{{parseNumbers(contestDetails?.matches)}}</div>
-        <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations" >{{parseNumbers(contestDetails?.participations)}}</div>
-        <div class="contest-info-cell">{{parseNumbers(contestDetails?.winners)}}</div>
-        <div class="contest-info-cell ">
-          {{parseDate(contestDetails?.startFromDate)}} - {{parseDate(contestDetails?.endToDate)}}</div>
+            <button (click)="joinContest()" [disabled]="joiningContest"
+              *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
+              <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
+                  translate>Join</span> {{parseNumbers(contestDetails?.subscriptionPrice)}}<i class="coin"></i></div>
+              <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span
+                  translate>Join For Free</span></div>
+            </button>
+            <div *ngIf="contestDetails?.isSubscribed && isLoggedIn" class="text-right text-white user-chances"> <span
+                translate>Your chances:</span> {{parseNumbers(contestDetails?.user_chances) || parseNumbers(0)}}</div>
+          </div>
+        </div>
+        <div class="sportimo-divider"></div>
+        <div class="contest-info-container">
+          <div class="contest-info-row">
+            <div translate class="contest-info-cell font-weight-bold">Matches</div>
+            <div translate *ngIf="contestDetails?.showParticipations" class="contest-info-cell font-weight-bold">
+              Participations</div>
+            <div translate class="contest-info-cell font-weight-bold">Winners</div>
+            <div translate class="contest-info-cell font-weight-bold">Duration</div>
+          </div>
+          <div class="contest-info-row">
+            <div class="contest-info-cell">{{parseNumbers(contestDetails?.matches)}}</div>
+            <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations">
+              {{parseNumbers(contestDetails?.participations)}}</div>
+            <div class="contest-info-cell">{{parseNumbers(contestDetails?.winners)}}</div>
+            <div class="contest-info-cell ">
+              {{parseDate(contestDetails?.startFromDate)}} - {{parseDate(contestDetails?.endToDate)}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-</div>
 </div>
 
 <div *ngIf="isLoggedIn" class="modal-background" (click)="cancel()" [class.hidden]="!joiningContest || !isLoggedIn"
@@ -72,7 +72,8 @@
                 <!-- <span translate>Join</span> {{contestDetails?.subscriptionPrice}} <i _ngcontent-vii-c2="" class="coin"></i> -->
                 <span class="button-label">
                   <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
-                      translate>Join</span> {{parseNumbers(contestDetails?.subscriptionPrice)}}<i class="coin"></i></div>
+                      translate>Join</span> {{parseNumbers(contestDetails?.subscriptionPrice)}}<i class="coin"></i>
+                  </div>
                   <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span
                       translate>Join For Free</span></div>
                 </span>
@@ -84,8 +85,8 @@
             <button *ngIf="contestDetails?.subscriptionPrice > user.wallet" [disabled]="isJoinRequesting"
               (click)="getCoins()" class="btn btn-sportimo">
               <div class="loader-label" [class.btn-active]="isJoinRequesting">
-                <span class="button-label"> <span translate>Get</span> {{parseNumbers(contestDetails?.subscriptionPrice)}} <i
-                    _ngcontent-vii-c2="" class="coin"></i></span>
+                <span class="button-label"> <span translate>Get</span>
+                  {{parseNumbers(contestDetails?.subscriptionPrice)}} <i _ngcontent-vii-c2="" class="coin"></i></span>
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>

@@ -32,4 +32,12 @@ $theme-gradient: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1
     background: $theme-gradient;
   }
 
+  .card .card-header{
+    background-color: black !important;
+  }
+
+  .page-main-header{
+    background: black !important;
+  }
+
 }
