@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ErrorDisplayService } from 'src/app/services/error-display.service';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
+import { MatchSubscribeComponent } from '../../match-subscribe/match-subscribe.component';
 
 @Component({
   selector: 'app-matches-list-item',
@@ -17,10 +19,14 @@ export class MatchesListItemComponent implements OnInit {
   @Input() hasJoined: boolean;
   Utils: SportimoUtils = new SportimoUtils();
 
-  constructor(private router:Router, public translate: TranslateService, private errorDisplay:ErrorDisplayService) { }
+  constructor(
+    private router:Router,
+     public translate: TranslateService,
+      private errorDisplay:ErrorDisplayService,
+      private ViewModalOverlay: PrizeViewOverlayService) { }
 
   ngOnInit() {
-    console.log(this.contestMatch);
+    // console.log(this.contestMatch);
     
   }
 
@@ -29,6 +35,10 @@ export class MatchesListItemComponent implements OnInit {
     this.router.navigate(['/contest',this.contestMatch.tournament,'match',this.contestMatch._id,'info']);   
     else
     this.errorDisplay.showError(102);
+  }
+
+  joinMatch(match){    
+    this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent,{data:match});
   }
 
   getStatusText(status){

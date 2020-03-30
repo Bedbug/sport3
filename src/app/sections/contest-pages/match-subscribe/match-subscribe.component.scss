@@ -1,0 +1,83 @@
+.match-item-main {
+  background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.team-block {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.kit {
+  padding: 15px;
+}
+.kit img {
+  height: 60px;
+}
+
+.team-name {
+  font-size: 12px;
+  line-height: 13px;
+}
+
+.match-text {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  font-size: 18px;
+  padding: 15px;
+}
+
+.match-text-vip{
+    font-size: 18px;
+    font-weight: 800;
+    padding: 15px 15px 0 15px;
+}
+
+.match-text-nocoins{
+    font-size: 14px;
+    padding: 5px;
+    font-style: italic;
+}
+
+.bottom-buttons {
+  position: relative;
+  bottom: 10px;
+}
+.finalize li button {
+  width: 272px;
+  height: 44px;
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+.modal-card-body {
+  width: 100%;
+  // height: 500px;
+  margin-top: -1px;
+}
+
+.match-details {
+  display: flex;
+  flex-direction: column;
+//   height: 150px;
+  align-items: center;
+  padding: 15px;
+}
+
+.user-balance{
+    padding: 10px;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.vip .modal-card-header {
+    background: linear-gradient(180deg, rgba(246, 230, 64, 1) 0%, rgba(255, 166, 2, 1) 100%);
+    color: black;
+  }

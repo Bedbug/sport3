@@ -5,7 +5,7 @@ import { ContestInfoHeaderComponent } from './contest-info-header/contest-info-h
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from 'src/app/sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';

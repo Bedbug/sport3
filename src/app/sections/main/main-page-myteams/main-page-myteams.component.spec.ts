@@ -7,7 +7,7 @@ import { SportimoServiceStub, AuthenticationServiceStub } from '../../contest-pa
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from 'src/app/sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 import { ConfigService } from 'src/app/services/config.service';
 import { ConfigServiceStub } from '../../contest-pages/contest-page-info/contest-page-info.component.spec';
 import { User } from 'src/app/models/user';

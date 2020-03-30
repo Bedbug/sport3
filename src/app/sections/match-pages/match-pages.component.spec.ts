@@ -7,7 +7,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { SportimoServiceStub } from '../contest-pages/contest-pages.component.spec';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from 'src/app/sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ConfigService } from 'src/app/services/config.service';
 import { ConfigServiceStub } from '../contest-pages/contest-page-info/contest-page-info.component.spec';

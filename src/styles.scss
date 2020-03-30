@@ -384,6 +384,19 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.icn-check {
+  background: url("~src/assets/images/sportimo/icon-check.svg") no-repeat center center;
+  display: inline-block;
+    text-indent: -9999px;
+    background-size: contain;
+    width: 18px;
+    height: 18px;
+    /* padding: 0 13px; */
+    margin: 0 5px;
+    top: 2px;
+    position: relative;
+}
+
 .icn-cards {
   background: url("~src/assets/images/sportimo/icon-cards.svg") no-repeat center center;
   display: block;

@@ -181,7 +181,7 @@
 	"Yesterday's Top Scorers": "بهترین گلزنان دیروز",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"You:": "شما:",
 	"Your chances:": "شانس‌های شما: ",
 	"activation time:": "زمان فعالسازی",
@@ -189,6 +189,7 @@
 	"availableCardsText": "",
 	"availablePowerups": "",
 	"availablePowerupsText": "",
+	"balance": "",
 	"contest_loc_key": "مسابقه",
 	"correct": "صحیح",
 	"english": "English",
@@ -203,6 +204,8 @@
 	},
 	"farsi": "فارسی",
 	"grandprize_loc_key": "جایزه بزرگ",
+	"joinMatchInfo": "",
+	"joinMatchNoCoins": "",
 	"matchFreePlay": "",
 	"onBoarding": {
 		"1": "به پا‌به‌توپ خوش آمدید",
@@ -219,5 +222,7 @@
 	},
 	"to Join": "عضویت",
 	"upto": "",
+	"vipMatch": "",
+	"vipMatchAwards": "",
 	"x2": "دو برابر"
 }

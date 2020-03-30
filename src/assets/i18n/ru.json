@@ -181,7 +181,7 @@
 	"Yesterday's Top Scorers": "Топ бомбардиров последних матчей",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, чтобы войти",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"You:": "Вы:",
 	"Your chances:": "Ваши баллы: ",
 	"activation time:": "Время активации:",
@@ -189,6 +189,7 @@
 	"availableCardsText": "",
 	"availablePowerups": "",
 	"availablePowerupsText": "",
+	"balance": "",
 	"contest_loc_key": "Турнир",
 	"correct": "верно",
 	"english": "English",
@@ -203,6 +204,8 @@
 	},
 	"farsi": "فارسی",
 	"grandprize_loc_key": "Главный приз",
+	"joinMatchInfo": "",
+	"joinMatchNoCoins": "",
 	"matchFreePlay": "",
 	"onBoarding": {
 		"1": "Добро пожаловать в Спортимо!",
@@ -219,5 +222,7 @@
 	},
 	"to Join": "Войти",
 	"upto": "",
+	"vipMatch": "",
+	"vipMatchAwards": "",
 	"x2": "x2"
 }

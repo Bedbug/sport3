@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ErrorDisplayService } from 'src/app/services/error-display.service';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-contest-info-header',
@@ -85,7 +86,6 @@ export class ContestInfoHeaderComponent implements OnInit {
         this.joiningContest = true;
       }
     }
-
   }
 
   cancel() {

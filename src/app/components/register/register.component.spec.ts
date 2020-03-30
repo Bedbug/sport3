@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ConfigService } from 'src/app/services/config.service';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from '../matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from '../../sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 import { ConfigServiceStub } from 'src/app/sections/contest-pages/contest-page-info/contest-page-info.component.spec';
 
 describe('RegisterComponent', () => {

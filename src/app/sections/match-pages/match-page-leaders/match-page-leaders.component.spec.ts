@@ -9,7 +9,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { ConfigServiceStub } from '../../contest-pages/contest-page-info/contest-page-info.component.spec';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from 'src/app/sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 
 describe('MatchPageLeadersComponent', () => {
   let component: MatchPageLeadersComponent;

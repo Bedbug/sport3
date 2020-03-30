@@ -1,13 +1,16 @@
 <div class="match-item" [class.vip]="contestMatch?.vipText">
   <div class="match-item-header">
-    <div class=" text-left" style="min-width: 50%;">{{contestMatch?.vipText && contestMatch?.vipText[translate.currentLang]}}</div>
+    <div class="text-left" style="min-width: 50%;">
+      <div *ngIf="contestMatch?.vipText">
+      <span translate>vipMatch</span> {{contestMatch?.vipText[translate.currentLang]}}</div>
+    </div>
     <div *ngIf="contestMatch?.isSubscribed" style="min-width: 50%;" class=" text-right"><span translate>Joined</span>
       <div class="icn-check"></div>
     </div>
-    <div *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice>0" style="min-width: 50%;" class=" text-right"><span
+    <div  (click)="joinMatch(contestMatch)" *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice>0" style="min-width: 50%;" class="isClickable text-right"><span
         translate>Join</span> {{contestMatch?.subscriptionPrice}}<i class="coin"></i></div>
-    <div *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice == 0"
-      style="min-width: 50%;" class=" text-right"> <span translate>matchFreePlay</span>
+    <div (click)="joinMatch(contestMatch)" *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice == 0"
+      style="min-width: 50%;" class="isClickable text-right"> <span translate>matchFreePlay</span>
       <div class="icn-check"></div>
     </div>
     <!-- <div *ngIf="contestMatch?.match.state>0 && !contestMatch?.match.completed" class="live text-center"> • <span

@@ -226,6 +226,16 @@ export class SportimoService {
       }))
   }
 
+  joinMatch(contestId: string, matchId: string) {
+    // POST /client-api/v1/data/client/:clientId/tournament/:tournamentId/match/:matchId
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${matchId}`, null)
+      .pipe(map(result => {
+        // this.cachedContests.value.find(x => x._id == contestId).isSubscribed = true;
+        // this.cachedContests.next(this.cachedContests.value);
+        return result;
+      }))
+  }
+
   /*-----------------------------------------------------------------------------------
    LEADERBOARDS
  ----------------------------------------------------------------------------------- */

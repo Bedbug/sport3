@@ -7,7 +7,7 @@ import { SportimoServiceStub, AuthenticationServiceStub } from '../../contest-pa
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from 'src/app/components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from 'src/app/sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 
 describe('MainPageStandingsComponent', () => {
   let component: MainPageStandingsComponent;

@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { ErrorDisplayService } from './error-display.service';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-import { TranslateServiceStub } from '../components/matches-list/matches-list-item/matches-list-item.component.spec';
+import { TranslateServiceStub } from '../sections/contest-pages/matches-list/matches-list-item/matches-list-item.component.spec';
 
 describe('ErrorDisplayService', () => {
   beforeEach(() => TestBed.configureTestingModule({

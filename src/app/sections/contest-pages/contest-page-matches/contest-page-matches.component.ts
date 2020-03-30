@@ -82,6 +82,11 @@ export class ContestPageMatchesComponent implements OnInit {
       });
   }
 
+  joinMatch(match){
+    console.log(match);
+    
+  }
+
   reload() {
     this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => {
       this.presentMatches = matches;
