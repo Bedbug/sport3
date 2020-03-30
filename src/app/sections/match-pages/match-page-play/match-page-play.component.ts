@@ -10,6 +10,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ErrorDisplayService } from 'src/app/services/error-display.service';
+import { PrizeViewOverlayService } from '../../main/prize-view-overlay/prize-view-overlay.service';
+import { ModalPowersInfoComponent } from '../match-page-cards/components/modal-powers-info/modal-powers-info.component';
 
 @Component({
   selector: 'app-match-page-play',
@@ -66,6 +68,7 @@ export class MatchPagePlayComponent implements OnInit {
     private sportimoService: SportimoService,
      public translate: TranslateService, 
      private authenticationService:AuthenticationService,
+     private ViewModalOverlay: PrizeViewOverlayService,
      private errorService: ErrorDisplayService) {
   }
 
@@ -103,6 +106,10 @@ export class MatchPagePlayComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
+  openPowersInfo(){
+    this.ViewModalOverlay.open<ModalPowersInfoComponent>(ModalPowersInfoComponent,{data:null});
+    // this.router.navigate(['main/grand-prize/', prizeid]);
+}
 
   playCard() {
     this.isPlayingCard = true;
