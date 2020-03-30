@@ -33,6 +33,11 @@ export class AppComponent {
        // Change the app background
       if(this.sportimoService.getConfigurationFor("appBackgroundUrl"))
         $('Body').css("background-image",  `url(${this.sportimoService.getConfigurationFor("appBackgroundUrl")})`); 
+
+      if(this.sportimoService.getConfigurationFor("appLogo"))
+        $('.app-logo').css("background-image",`url(${this.sportimoService.getConfigurationFor("appLogo")})`)
+      
+        
     });
 
    

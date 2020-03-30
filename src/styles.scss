@@ -31,6 +31,8 @@
 .page-wrapper .page-main-header .main-header-left .logo-wrapper .app-logo {
   background-image: $theme-header-logo;
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 30px;
   width: 30px
 }
