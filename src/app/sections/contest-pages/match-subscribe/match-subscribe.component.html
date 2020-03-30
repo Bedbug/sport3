@@ -6,7 +6,7 @@
   </div>
   <div class="modal-card-body text-center">
 
-    <div class="match-item-main" [ngClass]="{'isClickable': isClickable}">
+    <div class="match-item-main">
       <!-- Home Team -->
       <div class="team-block">
         <div class="kit text-center"><img
@@ -82,7 +82,7 @@
           </button>
         </li>
         <li>
-          <button [disabled]="isJoinRequesting" (click)="cancel()" class="btn btn-default">Cancel</button>
+          <button [disabled]="isJoinRequesting" (click)="close()" class="btn btn-default">Cancel</button>
         </li>
       </ul>
     </div>

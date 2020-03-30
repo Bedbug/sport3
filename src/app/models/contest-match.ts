@@ -10,5 +10,8 @@ export class ContestMatch {
     joined: boolean = false;
     joinPrize: number = 0;
     visibleInCountries: string[];
+    viptext?: string;
+    isSubscribed?: boolean;
+    subscriptionPrice?: number;
     _id: string;
 }
