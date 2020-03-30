@@ -441,6 +441,15 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.powers-info{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  filter: invert(86%) sepia(100%) saturate(0%) hue-rotate(275deg) brightness(109%) contrast(102%);
+}
+
 .active .icn-info {
   background: url("~src/assets/images/sportimo/icon-info.active.svg") no-repeat center center;
   display: block;
@@ -737,7 +746,7 @@ body .page-wrapper .page-main-header {
   // }
 
   ::ng-deep .cdk-overlay-pane {
-    width: 100%;
+    width: 85%;
   }
 }
 

@@ -20,6 +20,8 @@ export class MatchesListItemComponent implements OnInit {
   constructor(private router:Router, public translate: TranslateService, private errorDisplay:ErrorDisplayService) { }
 
   ngOnInit() {
+    console.log(this.contestMatch);
+    
   }
 
   gotoMatch() {
@@ -27,6 +29,13 @@ export class MatchesListItemComponent implements OnInit {
     this.router.navigate(['/contest',this.contestMatch.tournament,'match',this.contestMatch._id,'info']);   
     else
     this.errorDisplay.showError(102);
+  }
+
+  getStatusText(status){
+    if(!status)
+    return "";
+    
+    return this.translate.instant(this.Utils.getStatusText(status));
   }
 
   parseDate(date:string){

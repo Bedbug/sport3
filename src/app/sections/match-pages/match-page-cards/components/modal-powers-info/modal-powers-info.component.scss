@@ -1,0 +1,48 @@
+.icn-info{
+    filter: invert(86%) sepia(100%) saturate(0%) hue-rotate(275deg) brightness(109%) contrast(102%);
+    width: 20px;
+    height: 20px;
+    float: left; 
+    margin: 10px;
+} 
+
+.info-header{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: RGBA(10, 28, 45, 1);
+}
+
+.info-header .left, .info-header .right{
+        height: 40px;
+        padding-right: 21px;
+        line-height: 41px;
+}
+
+.icon-large{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+
+.info-text{
+    max-width: 300px;
+    // max-width: 50%;
+    padding: 0px 10px 20px 10px;
+    text-align: center;
+}
+
+.info-heading{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px;
+}
+.formated-text{
+display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+::ng-deep .cdk-overlay-pane {
+    max-width: 85%;
+  }

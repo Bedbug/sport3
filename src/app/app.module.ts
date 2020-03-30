@@ -37,6 +37,7 @@ import {NgxPopperModule} from 'ngx-popper';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ResetComponent } from './reset/reset.component';
 import { MainPageNewsComponent } from './sections/main/main-page-news/main-page-news.component';
+import { ModalPowersInfoComponent } from './sections/match-pages/match-page-cards/components/modal-powers-info/modal-powers-info.component';
 
 
 // AoT requires an exported function for factories
@@ -61,7 +62,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     GrandPrizeDetailsComponent,
     ContestInfoComponent,
     OnboardComponent,
-    ResetComponent
+    ResetComponent,
+   ModalPowersInfoComponent
   ],
   imports: [
     OverlayModule,
@@ -89,7 +91,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [
     TranslateModule
   ],
-  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent],
+  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent],
   providers: [
     ConfigService,
     ConfigModule.init(),

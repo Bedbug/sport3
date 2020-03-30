@@ -1,15 +1,41 @@
-<div class="match-item" >
+<div class="match-item" [class.vip]="contestMatch?.vipText">
+  <div class="match-item-header">
+    <div class=" text-left" style="min-width: 50%;">{{contestMatch?.vipText && contestMatch?.vipText[translate.currentLang]}}</div>
+    <div *ngIf="contestMatch?.isSubscribed" style="min-width: 50%;" class=" text-right"><span translate>Joined</span>
+      <div class="icn-check"></div>
+    </div>
+    <div *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice>0" style="min-width: 50%;" class=" text-right"><span
+        translate>Join</span> {{contestMatch?.subscriptionPrice}}<i class="coin"></i></div>
+    <div *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice == 0"
+      style="min-width: 50%;" class=" text-right"> <span translate>matchFreePlay</span>
+      <div class="icn-check"></div>
+    </div>
+    <!-- <div *ngIf="contestMatch?.match.state>0 && !contestMatch?.match.completed" class="live text-center"> • <span
+        translate>LIVE</span></div> -->
+  </div>
   <div class="match-item-main" [ngClass]="{'isClickable': isClickable}" (click)="gotoMatch()">
-    <div class="kit text-center"><img src="{{contestMatch?.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
+    <!-- Home Team -->
+    <div class="kit text-center"><img
+        src="{{contestMatch?.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
     <div class="team-name text-left">{{contestMatch?.match.home_team.name[translate.currentLang]}} </div>
-    <div *ngIf="contestMatch?.match.state > 0" class="match-score text-center">{{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div>
-    <div *ngIf="contestMatch?.match.state == 0" class="match-type text-center"><strong>-</strong></div>
+
+    <div class="match-status-block">
+      <div *ngIf="contestMatch?.match.state > 0" class="match-score text-center">
+        {{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div>
+      <div *ngIf="contestMatch?.match.state == 0" class="match-type text-center"><strong>-</strong></div>
+
+      <div *ngIf="contestMatch?.match.state >0 " class="match-status">{{getStatusText(contestMatch?.match.state)}}</div>
+    </div>
+    <!-- Away Team -->
     <div class="team-name  text-right">{{contestMatch?.match.away_team.name[translate.currentLang]}}</div>
-    <div class="kit text-center"><img src="{{contestMatch?.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
+    <div class="kit text-center"><img
+        src="{{contestMatch?.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
   </div>
   <div class="match-item-footer">
-    <div class="info text-left">{{contestMatch?.match.home_team.abbr}} - {{contestMatch?.match.away_team.abbr}}: {{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div>
+    <div class="info text-left">{{contestMatch?.match.home_team.abbr}} - {{contestMatch?.match.away_team.abbr}}:
+      {{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div>
     <div class="time text-right">{{parseDate(contestMatch?.match.start)}}</div>
-    <div *ngIf="contestMatch?.match.state>0 && !contestMatch?.match.completed" class="live text-center"> • <span translate>LIVE</span></div>
+    <div *ngIf="contestMatch?.match.state>0 && !contestMatch?.match.completed" class="live text-center"> • <span
+        translate>LIVE</span></div>
   </div>
 </div>

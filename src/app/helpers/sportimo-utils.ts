@@ -5,6 +5,7 @@ import moment from 'moment-jalaali';
 // import * as moment from 'jalali-moment';
 
 export class SportimoUtils {
+  
   events_mapping = {
     "Goal": { text: "Goal", icon: "icn-goal", show: true },
     "Own_Goal": { text: "Own Goal", icon: "icn-goal", show: true },
@@ -44,6 +45,14 @@ export class SportimoUtils {
     'most-shots-target': 'icn-shots',
   }
 
+  matchStatues = {
+    0: "Pregame",
+    1: "LIVE",
+    2: "LIVE",
+    3: "LIVE",
+    4: "MatchEnded"
+  }
+
   translateMappings() {
     _("Goal");
     _("Own_Goal");
@@ -63,10 +72,16 @@ export class SportimoUtils {
     _("Overtime_First_Half_Ends");
     _("Overtime_Second_Half_Starts");
     _("Overtime_Second_Half_Ends");
+    _("MatchEnded");
+    _("Pregame");
   }
 
   getFromEventType(type: string) {
 
+  }
+
+  getStatusText(status: any) {
+   return this.matchStatues[status];
   }
 
   getIconBySprite(sprite: string) {
@@ -90,7 +105,7 @@ export class SportimoUtils {
     }
   }
 
-  parseDate(date: string, jalali: boolean, format: string = 'D MMM YYYY', jalaliFormat:string = 'jD jMM jYYYY') {
+  parseDate(date: string, jalali: boolean, format: string = 'D/MM/YYYY', jalaliFormat:string = 'jD jMM jYYYY') {
     // console.log(date);
     if (!date)
       return "";

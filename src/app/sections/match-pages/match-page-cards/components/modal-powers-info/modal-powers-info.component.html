@@ -1,0 +1,69 @@
+<!-- <div _ngcontent-kee-c10="" class="background"></div> -->
+<div class="row" style="position: relative">
+  <div class="card" style="margin-bottom: 0; width: 100%">
+    <div class="info-header">
+      <div class="left">
+        <i class="icn-info"></i>
+        <span translate>Info</span>
+      </div>
+      <div class="right">
+        <div (click)="close()" class="close-button">X</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="p-15 text-white formated-text active">
+        <div class="icon-large icn-cards"></div>
+        <div class="info-heading" translate>availableCards</div>
+        <div class="info-text" translate>availableCardsText</div>
+
+        <div class="icon-large icn-power"></div>
+        <div class="info-heading" translate>availablePowerups</div>
+        <div class="info-text" translate>availablePowerupsText</div>
+
+        <!-- <div><b>Are you ready to claim the grand prizes of
+            Sportimo?<br></b>All your chances, from all the matches, add up in one big draw!<p></p>
+          <p><strong>Participation</strong><br><span>Play in any of the Sportimo contests of the season.</span></p>
+          <strong>Duration<br></strong><span>Until 31st of May
+            2020</span><br><br><strong>Prizes</strong><span>&nbsp;</span><br>
+          <ul>
+            <li>1st wins&nbsp;<span>a Nissan Q</span><span>ashqai</span>.</li>
+            <li><span>2nd wins</span>&nbsp;a trip for 2 persons to Spain, to attend in a Barcelona or Real Madrid match
+            </li>
+            <li>3rd wins a SONY 65' HD TV.</li>
+            <li><span>4th</span>&nbsp;wins a SONY playstation.<br></li>
+            <li>5th wins a SONY xperia mobile phone</li>
+            <li>6th wins six official team jerseys and one official adidas Champions League ball.</li>
+            <li>7th to 10th win 3 official team jerseys and one official adidas Champions League ball.</li>
+            <li>11th to 100nd win one official adidas Champions League ball.</li>
+          </ul><strong>Draw</strong><br>The draw will take place on 15/07/2020. More details will be announced up to 2
+          days before the event<br><br><strong>Winners</strong><br>Winners will be announced up to 48 hours after the
+          draw.<br>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- MODAL -->
+<!-- <div class="modal-background" (click)="cancel()" [class.hidden]="!selectedPrize" [class.modal-appear]="selectedPrize">
+  <div class="modal-card">
+    <div class="modal-card-header">
+      <div class="modal-title"> {{prize?.titleText[translate.currentLang]||'_Name Missing'}} </div>
+      <div (click)="cancel()" class="modal-exit pull-right">X</div>
+    </div>
+    <div class="modal-card-body text-left">
+      <div class="selected-prize-rank"><span translate>Prize</span>{{selectedPrize?.position.from}}</div>
+      <div class="prize-image" style="background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;" [ngStyle]="{'background-image': 'url('+ selectedPrize?.prize.picture +')'}">
+      </div>
+      <div class="selected-prize-title">{{selectedPrize?.prize.name[translate.currentLang]}}</div>
+      <div class="selected-prize-body formated-text" [innerHTML]="selectedPrize?.prize.text[translate.currentLang]">
+      </div>
+    </div>
+
+  </div>
+</div> -->

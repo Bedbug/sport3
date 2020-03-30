@@ -9,6 +9,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ModalPowersInfoComponent } from './components/modal-powers-info/modal-powers-info.component';
+import { PrizeViewOverlayService } from '../../main/prize-view-overlay/prize-view-overlay.service';
 
 @Component({
   selector: 'app-match-page-cards',
@@ -57,7 +59,13 @@ export class MatchPageCardsComponent implements OnInit {
   ngUnsubscribe = new Subject();
   userScore: number;
 
-  constructor(private route: ActivatedRoute, private sportimoService: SportimoService, public translate: TranslateService, private authenticationService:AuthenticationService) {
+  constructor(
+    private route: ActivatedRoute,
+     private sportimoService: SportimoService,
+      public translate: TranslateService,
+       private authenticationService:AuthenticationService,
+       private ViewModalOverlay: PrizeViewOverlayService
+       ) {
   }
 
   ngOnInit() {
@@ -159,6 +167,11 @@ export class MatchPageCardsComponent implements OnInit {
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();
     this.playCardModal = true;
+  }
+
+  openPowersInfo(){
+      this.ViewModalOverlay.open<ModalPowersInfoComponent>(ModalPowersInfoComponent,{data:null});
+      // this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
   closeModal() {

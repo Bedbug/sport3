@@ -12,6 +12,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonRangeSliderModule } from "ng2-ion-range-slider";
 import { MatchPagePlayComponent } from './match-page-play/match-page-play.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ModalPowersInfoComponent } from './match-page-cards/components/modal-powers-info/modal-powers-info.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     StatsComponent,
     CardComponent,
     // PlaycardComponent,
-    ReversePipe
+    ReversePipe,
+    
   ],
   imports: [
     CommonModule,
