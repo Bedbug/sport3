@@ -9,6 +9,8 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { GrandPrize } from 'src/app/models/grand-prize';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
+import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
 
 @Component({
   selector: 'app-contests-list',
@@ -47,7 +49,8 @@ export class ContestsListComponent implements OnInit {
     private sportimoService: SportimoService,
     private router: Router,
     public translate: TranslateService,
-    private authenticationService:AuthenticationService
+    private authenticationService:AuthenticationService,
+    private prizeViewOverlay: PrizeViewOverlayService
   ) { }
 
 
@@ -136,8 +139,9 @@ export class ContestsListComponent implements OnInit {
   }
 
   showPrizeDetails(prizeid: string) {
-
-    this.router.navigate(['main/grand-prize/', prizeid]);
+    
+    this.prizeViewOverlay.open<GrandPrizeDetailsComponent>(GrandPrizeDetailsComponent,{data:prizeid});
+    // this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
   ContestClicked(contestId) {

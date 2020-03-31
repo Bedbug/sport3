@@ -8,6 +8,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
+
 
 @Component({
   selector: 'app-page',
@@ -41,6 +43,7 @@ export class MainPageHomeComponent implements OnInit {
     private sportimoService:SportimoService,
     public translate: TranslateService,
     private router: Router,
+   
     ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -54,6 +57,8 @@ export class MainPageHomeComponent implements OnInit {
       this.matchesListVisible = true
     })
   }
+
+ 
 
   get getUpcoming () {
     if(!this.upcomingMatches)
