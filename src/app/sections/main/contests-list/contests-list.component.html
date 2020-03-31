@@ -1,6 +1,7 @@
 <div class="contest-list-scrollable-area">
   <div [@staggerAnimation]="prizes?.length">
-    <div class="col-sm-12 p-0 contest-list-item" *ngFor="let prize of prizes; let i = index">
+    <!-- Old Implementation -->
+    <!-- <div class="col-sm-12 p-0 contest-list-item" *ngFor="let prize of prizes; let i = index">
       <div class="card contest-item-container" tab-index="0" (click)="showPrizeDetails(prize?._id)">
         <div class="card-header contest-header">
           <div class="row">
@@ -51,6 +52,61 @@
           </div>
         </div>
       </div>
+    </div> -->
+    <div class="col-sm-12 p-0 contest-list-item" *ngFor="let prize of prizes; let i = index">
+      <div class="card contest-item-container" tab-index="0" (click)="showPrizeDetails(prize?._id)">
+        <!-- <div class="card-header contest-header">
+          <div class="row">
+            <span class="contest-name col">{{prize.titleText[translate.currentLang]}}</span>
+            <span class="contest-duration col text-right"><strong translate>Ends:</strong>
+              date {{ parseDate(prize.endToDate) }}</span>
+          </div>
+        </div> -->
+        <div class="card-body"
+          [ngStyle]="{background: 'url(' + (prize.promoDetailImage || './assets/images/contest-bg.png') + ') 50% 0% / cover'}">
+          <div class="row">
+            <span class="prize-name text-center col">{{prize.titleText[translate.currentLang]}}</span>
+          </div>
+          <div class="row">
+            <div class="grand-prize-details">
+              <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"></div>
+              <div class="grand-prize-text formated-text">
+                <div [innerHTML]="prize.infoText[translate.currentLang]" class="prize-details"></div>
+              </div>
+              <!-- <div class="grand-prize-counter">
+                <div class="counter-container-new">
+                  <div class="counter-header col-sm-12">
+                    <div class="row">
+                      <div class="col p-0" translate>Days</div>
+                      <div class="col p-0" translate>Hours</div>
+                      <div class="col p-0" translate>Minutes</div>
+                    </div>
+                  </div>
+                  <div class="counter-body col-sm-12" *ngIf="prize && prize.countdown">
+                    <div class="row">
+                      <div class="col p-0">
+                        {{prize.countdown?.days<10?parseNumbers("0"+prize.countdown.days):parseNumbers(prize.countdown.days)}}
+                      </div>
+                      <div class="col p-0">
+                        {{prize.countdown?.hours<10?parseNumbers("0"+prize.countdown.hours):parseNumbers(prize.countdown.hours)}}
+                      </div>
+                      <div class="col p-0">
+                        {{prize.countdown?.minutes<10?parseNumbers("0"+prize.countdown.minutes):parseNumbers(prize.countdown.minutes)}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="grand-prize-user-details text-white">
+                <div class="user-chances">
+                  <span translate>Your chances:</span> {{parseNumbers(prize.chances) || parseNumbers(0)}}
+                </div>
+                <div class="details-link" translate>View Details</div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -58,11 +114,11 @@
     <div class="col-sm-12 p-0 contest-list-item" *ngFor="let contest of contests; let i = index">
       <div class="card contest-item-container" tab-index="0" (click)="ContestClicked(contest?._id)">
         <div class="card-header contest-header">
-        
-            <div class="contest-name col">{{contest.titleText[translate.currentLang]}}</div>
-            <div class="contest-duration col text-right" style="padding-left: 0;"><strong translate>Ends:</strong>
-              {{parseDate(contest.endToDate)}}</div>
-        
+
+          <div class="contest-name col">{{contest.titleText[translate.currentLang]}}</div>
+          <div class="contest-duration col text-right" style="padding-left: 0;"><strong translate>Ends:</strong>
+            {{parseDate(contest.endToDate)}}</div>
+
         </div>
         <div class="card-body"
           [ngStyle]="{background: 'url(' + (contest.promoDetailImage || './assets/images/contest-bg.png') + ')', 'background-size': 'cover'}">
@@ -72,11 +128,41 @@
             </div>
             <div class="col-6 contest-details text-center">
               <p class="contest-details-text" [innerHTML]="contest.infoText[translate.currentLang]"></p>
-              <p *ngIf="contest.subscriptionPrice && contest.subscriptionPrice>0">{{contest.subscriptionPrice}}<i
-                  class="coin"></i> <span translate>to Join</span></p>
-              <p *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0" class='contest-free-toplay'> <span
-                  translate>Free-to-Play</span></p>
+              <div class="contest-buttons">
+                <button  [disabled]="isJoinRequesting"
+                  (click)="requestJoin()" class="btn btn-sportimo">
+                  <div class="loader-label" [class.btn-active]="isJoinRequesting">
+                    <!-- <span translate>Join</span> {{contestDetails?.subscriptionPrice}} <i _ngcontent-vii-c2="" class="coin"></i> -->
+                    <span class="button-label">
+                      <div *ngIf="contest.subscriptionPrice && contest.subscriptionPrice>0"><span
+                        translate [translateParams]="{value: parseNumbers(contest.subscriptionPrice)}">coinsToPlay</span>
+                          <!-- <i class="coin"></i> -->
+                      </div>
+                      <div *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0"><span
+                          translate>Play</span></div>
+                    </span>
+                    <div class="fadeInLoader">
+                      <span class="rotate dotted button-loader"></span>
+                    </div>
+                  </div>
+                </button>
+                <!-- <button *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0" [disabled]="isJoinRequesting"
+                  (click)="getCoins()" class="btn btn-sportimo">
+                  <div class="loader-label" [class.btn-active]="isJoinRequesting">
+                    <span class="button-label"> <span translate>Get</span>
+                      {{parseNumbers(contestDetails?.subscriptionPrice)}} <i _ngcontent-vii-c2="" class="coin"></i></span>
+                    <div class="fadeInLoader">
+                      <span class="rotate dotted button-loader"></span>
+                    </div>
+                  </div>
+                </button> -->
+              </div>
+              <!-- <p *ngIf="contest.subscriptionPrice && contest.subscriptionPrice>0">{{contest.subscriptionPrice}}<i
+                  class="coin"></i> <span translate>to Join</span></p> -->
+              <!-- <p *ngIf="!contest.subscriptionPrice || contest.subscriptionPrice==0" class='contest-free-toplay'> <span
+                  translate>Free-to-Play</span></p> -->
             </div>
+           
           </div>
         </div>
       </div>

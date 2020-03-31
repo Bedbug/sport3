@@ -1,5 +1,9 @@
 @import "src/variables.scss";
 
+::ng-deep .cdk-overlay-pane {
+  max-width: 85%;
+}
+
 .background{
   display: block;
   position: absolute;

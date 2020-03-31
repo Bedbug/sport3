@@ -26,7 +26,7 @@ export const MENUITEMS: Menu[] = [
     ]
   },
   {
-    path: '/pages/stater-kit', title: 'Top Picks', icon: 'menu-icon icon-agenda text-center', type: 'toppicks'
+    path: '/pages/stater-kit', title: 'Top Picks', icon: 'menu-icon icn-toppicks text-center', type: 'toppicks'
   },
   {
     path: '/main/contests', title: 'Contests', icon: 'menu-icon icn-contests', type: 'link'
@@ -41,7 +41,7 @@ export const MENUITEMS: Menu[] = [
   //   path: '/main/settings', title: 'Settings', icon: 'menu-icon icn-gear', type: 'link'
   // },
   {
-    title: 'About Sportimo', icon: 'menu-icon icn-logo', type: 'sub', children: [
+    title: 'About Sportimo', icon: 'menu-icon icn-about', type: 'sub', children: [
         // { path: '/base/accordion', title: 'How to Play', type: 'link' },
         // { path: '/base/alert', title: 'Support', type: 'link' },
         { path: 'http://sportimo.com/en/terms/', title: 'Terms & Conditions', type: 'extLink'},

@@ -3,41 +3,52 @@
     <div class="col-sm-12 p-0">
       <div class="card grand-prize" style="width: 100%">
         <div class="card-body"
-          [ngStyle]="{background: 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ')','background-position': 'left center', 'background-size': 'cover'}">
+          [ngStyle]="{background: 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ') 50% 0% / cover'}">
           <div *ngIf="prize" class="prize-wrapper isClickable" (click)="showPrizeDetails(prize._id)">
+            <!-- Title -->
             <div class="grand-prize-header">
               <h4 translate>Grand prize</h4>
               <span>{{prize.titleText[translate.currentLang]}}</span>
+              <!-- Text Details -->
+            <div class="grand-prize-text max-size formated-text">
+              <div [innerHTML]="prize.infoText[translate.currentLang]" ></div>
             </div>
-            <div class="grand-prize-details">
-              <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"></div>
-              <div class="grand-prize-text formated-text">
-                <div [innerHTML]="prize.infoText[translate.currentLang]" class="prize-details"></div>
+            </div>
+            <!-- Image -->
+            <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"></div>            
+            <!-- Counter -->
+            <div class="grand-prize-counter">
+               <!-- Text Details -->
+              <div class="grand-prize-text min-size formated-text">
+                <div [innerHTML]="prize.infoText[translate.currentLang]" ></div>
               </div>
-              <div class="grand-prize-counter">
-                <div class="counter-container-new">
-                  <div class="counter-header col-sm-12">
-                    <div class="row">
-                      <div class="col p-0" translate>Days</div>
-                      <div class="col p-0" translate>Hours</div>
-                      <div class="col p-0" translate>Minutes</div>
-                    </div>
+              <div class="counter-container-new">
+                <div class="counter-header col-sm-12">
+                  <div class="row">
+                    <div class="col p-0" translate>Days</div>
+                    <div class="col p-0" translate>Hours</div>
+                    <div class="col p-0" translate>Minutes</div>
                   </div>
-                  <div class="counter-body col-sm-12">
-                    <div class="row">
-                      <div class="col p-0">{{countdown.days<10?parseNumbers("0"+countdown.days):parseNumbers(countdown.days)}}</div>
-                            <div class="col p-0">{{countdown.hours<10?parseNumbers("0"+countdown.hours):parseNumbers(countdown.hours)}}</div>
-                            <div class="col p-0">{{countdown.minutes<10?parseNumbers("0"+countdown.minutes):parseNumbers(countdown.minutes)}}</div>
+                </div>
+                <div class="counter-body col-sm-12">
+                  <div class="row">
+                    <div class="col p-0">
+                      {{countdown.days<10?parseNumbers("0"+countdown.days):parseNumbers(countdown.days)}}</div>
+                    <div class="col p-0">
+                      {{countdown.hours<10?parseNumbers("0"+countdown.hours):parseNumbers(countdown.hours)}}</div>
+                    <div class="col p-0">
+                      {{countdown.minutes<10?parseNumbers("0"+countdown.minutes):parseNumbers(countdown.minutes)}}
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="grand-prize-user-details text-white">
-                <div class="user-chances">
-                  <span translate>Your chances:</span> {{parseNumbers(userChances) || parseNumbers(0)}}
+                <div class="grand-prize-user-details">
+                  <div class="user-chances">
+                    <span translate>Your chances:</span> {{parseNumbers(userChances) || parseNumbers(0)}}
+                  </div>
+                  <!-- <div class="details-link" translate>View Details</div> -->
                 </div>
-                <div class="details-link" translate>View Details</div>
               </div>
+              
             </div>
           </div>
         </div>

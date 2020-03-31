@@ -1,5 +1,17 @@
 @import "src/variables.scss";
+@import "~bootstrap/scss/bootstrap-grid.scss";
 
+.prize-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+  background-position: left top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+// ok
 .counter-container-new {
   width: 150px;
   // margin: auto;
@@ -7,14 +19,48 @@
   // left: 10%;
 }
 
-.grand-prize-details {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin-bottom: 10px;
-  flex: 1 1 100%;
+// ok
+.grand-prize .card-body{
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
+// ok
+.grand-prize-header{
+  color: #000;
+  padding: 10px 0;
+  flex: 1 1 100%;
+  order: 0;
+}
+
+.max-size{
+  display:none;
+}
+
+
+
+// ok
+.grand-prize-header h4{
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+// .prize-details-col{
+//   display: flex;
+//   flex-direction: column;
+//   width: 50%;
+// }
+
+// .grand-prize-details {
+//   display: flex;
+//   flex-wrap: wrap;
+//   padding: 0;
+//   margin-bottom: 10px;
+//   flex: 1 1 100%;
+//   color: #000;
+// }
+
+//ok
 .grand-prize-image {
   // background-color: aqua;
   min-width: $grandPrizeLeftColumnMinWidth;
@@ -22,50 +68,105 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
+  order: 1;
 }
 
+
+//ok
 .grand-prize-text {
   // background-color: green;
   min-width: $grandPrizeRightColumnMinWidth;
-  min-height: $grandPrizeTopRowMinHeight;
-  width: $grandPrizeRightColumnMinWidth;
+  // min-height: $grandPrizeTopRowMinHeight;
+  // width: $grandPrizeRightColumnMinWidth;
   padding: 10px 0;
   font-weight: 400;
   line-height: 14px;
+  // padding: 15px;
+  font-size: 12px;
+  max-width: 150px;
+  // order: 2;
 }
 
+.grand-prize-text.min-size {
+  padding-top: 0;
+}
+
+//ok
 .grand-prize-counter {
   // background-color: greenyellow;
   min-width: $grandPrizeLeftColumnMinWidth;
   min-height: $grandPrizeBottomRowMinHeight;
   display: flex;
   justify-content: flex-end;
-  // padding: 10px;
+  flex-direction: column;
+  padding-left: 15px;
+  order: 3;
+  max-width: 47%;
+  padding: 0 10px 10px;
 }
 
 .grand-prize-user-details {
   // background-color: brown;
   min-width: $grandPrizeRightColumnMinWidth;
-  min-height: $grandPrizeBottomRowMinHeight;
+  // min-height: $grandPrizeBottomRowMinHeight;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
-}
-
-.user-chances {
-  font-family: $theme-font;
+  color: #000;
   font-weight: 700;
-  font-size: 13px;
-  padding-left: 10px;
+  padding-top: 10px;
 }
 
-.user-chances span {
-  color: $theme-color;
-}
+// .user-chances {
+//   font-family: $theme-font;
+//   font-weight: 700;
+//   font-size: 13px;
+//   padding-top: 10px;
+// }
 
-.details-link {
-  font-weight: 400;
-  text-decoration: underline;
-  padding-left: 10px;
+// .user-chances span {
+//   color: $theme-color;
+// }
+
+// .details-link {
+//   font-weight: 400;
+//   text-decoration: underline;
+//   padding: 10px 0 0 10px;
+// }
+
+@include media-breakpoint-up(sm){
+  .grand-prize-header{   
+    flex: 1 0 auto;  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 200px;
+    justify-content: center;
+  }
+  .grand-prize-image {
+    flex: 1 0 auto; 
+    background-position: center;
+    min-width: auto;
+  }
+
+  .grand-prize-counter {
+    flex: 1 0 auto;
+    align-items: flex-end;
+    justify-content: center;
+    min-width: auto;
+  }
+  .grand-prize-user-details {   
+    align-items: center;
+  }
+  .prize-wrapper{
+    flex-flow: row nowrap;
+  }
+  .max-size{
+    display: block;
+  }
+
+  .min-size{
+    display: none;
+  }
 }
