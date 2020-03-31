@@ -16,6 +16,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartsModule } from 'ng2-charts';
 import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
 import { MainPageNewsComponent } from './main-page-news/main-page-news.component';
+import { SafeHTMLPipe } from 'src/app/pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MainPageNewsComponent } from './main-page-news/main-page-news.component
     MainPageProfileComponent,
     MainPageInboxComponent,
     MainPageAvatarsComponent,
-    MainPageNewsComponent
+    MainPageNewsComponent,
+    SafeHTMLPipe
 ],
   imports: [
     CommonModule,

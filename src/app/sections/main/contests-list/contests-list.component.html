@@ -65,13 +65,13 @@
         <div class="card-body"
           [ngStyle]="{background: 'url(' + (prize.promoDetailImage || './assets/images/contest-bg.png') + ') 50% 0% / cover'}">
           <div class="row">
-            <span class="prize-name text-center col" [innerHTML]="prize.titleText[translate.currentLang]"></span>
+            <span class="prize-name text-center col" [innerHTML]="prize.titleText[translate.currentLang] | safeHTML"></span>
           </div>
           <div class="row">
             <div class="grand-prize-details">
               <div class="grand-prize-image" [ngStyle]="{'background-image': 'url(' + prize.promoImage + ')'}"></div>
               <div class="grand-prize-text formated-text">
-                <div [innerHTML]="prize.infoText[translate.currentLang]" class="prize-details"></div>
+                <div [innerHTML]="prize.infoText[translate.currentLang] | safeHTML" class="prize-details"></div>
               </div>
               <!-- <div class="grand-prize-counter">
                 <div class="counter-container-new">

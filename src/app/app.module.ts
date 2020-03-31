@@ -39,6 +39,7 @@ import { ResetComponent } from './reset/reset.component';
 import { MainPageNewsComponent } from './sections/main/main-page-news/main-page-news.component';
 import { ModalPowersInfoComponent } from './sections/match-pages/match-page-cards/components/modal-powers-info/modal-powers-info.component';
 import { MatchSubscribeComponent } from './sections/contest-pages/match-subscribe/match-subscribe.component';
+import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 
 
 // AoT requires an exported function for factories

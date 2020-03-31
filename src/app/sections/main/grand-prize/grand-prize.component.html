@@ -8,10 +8,10 @@
             <!-- Title -->
             <div class="grand-prize-header">
               <h4 translate>Grand prize</h4>
-              <span [innerHTML]="prize.titleText[translate.currentLang]"></span>
+              <span [innerHTML]="prize.titleText[translate.currentLang] | safeHTML"></span>
               <!-- Text Details -->
             <div class="grand-prize-text max-size formated-text">
-              <div [innerHTML]="prize.infoText[translate.currentLang]" ></div>
+              <div [innerHTML]="prize.infoText[translate.currentLang] | safeHTML" ></div>
             </div>
             </div>
             <!-- Image -->
