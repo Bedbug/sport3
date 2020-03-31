@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   public hasNews:boolean  = false;
   ngOnInit() {
     this.sportimoService.configuration.pipe(takeUntil(this.ngUnsubscribe)).subscribe(data=> {
-      console.log("News Set");   
+      // console.log("News Set");   
       this.hasNews = data.displayNews;
 
     });

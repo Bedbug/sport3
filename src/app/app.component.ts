@@ -18,7 +18,7 @@ export class AppComponent {
     private configService: ConfigService,
     private sportimoService: SportimoService
   ) {
-    console.log("Subscribing to configuration");
+    // console.log("Subscribing to configuration");
     
     this.sportimoService.getClientConfiguration().subscribe(data=>{
       let selected_language = localStorage.getItem('language');

@@ -49,7 +49,7 @@ export class MainPageHomeComponent implements OnInit {
     this.matchesListVisible = false;
     // setTimeout(()=>{this.matchesListVisible = true},1000);
     this.sportimoService.getHomeMatches().subscribe(data=>{
-      console.log(data);
+      // console.log(data);
       this.upcomingMatches = data;
       this.matchesListVisible = true
     })
@@ -70,7 +70,7 @@ export class MainPageHomeComponent implements OnInit {
   }
 
   openContest(contestId: string){
-console.log(contestId);
+// console.log(contestId);
 this.router.navigate(['/contest', contestId, 'matches']);
   }
 

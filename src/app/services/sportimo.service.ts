@@ -82,7 +82,7 @@ export class SportimoService {
     //   return this.configuration;
     // else {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}`).pipe(map(data => {
-      console.log("Configuration loaded");
+      // console.log("Configuration loaded");
       this.configuration.next(data);
       return data;
     }));

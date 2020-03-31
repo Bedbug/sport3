@@ -65,7 +65,7 @@
         <div class="card-body"
           [ngStyle]="{background: 'url(' + (prize.promoDetailImage || './assets/images/contest-bg.png') + ') 50% 0% / cover'}">
           <div class="row">
-            <span class="prize-name text-center col">{{prize.titleText[translate.currentLang]}}</span>
+            <span class="prize-name text-center col" [innerHTML]="prize.titleText[translate.currentLang]"></span>
           </div>
           <div class="row">
             <div class="grand-prize-details">
