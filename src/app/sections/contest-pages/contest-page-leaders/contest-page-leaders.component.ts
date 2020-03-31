@@ -66,7 +66,8 @@ export class ContestPageLeadersComponent implements OnInit {
   checkScroll() {
     let a = $(".leaders-scrollable-group");
     let b = $('.leaders-user');
-
+    
+    
     if(b.length == 0 || a.length ==0) return;
     
     if (b.position().top < a.position().top) {

@@ -911,7 +911,8 @@ body .page-wrapper .page-main-header {
 ==========================**/
 .grand-prize .card-body {
   // padding: 0 !important;
-  min-height: 200px;
+  height: 230px;
+   transition: height 0.3s;
 }
 
 .prize-wrapper {

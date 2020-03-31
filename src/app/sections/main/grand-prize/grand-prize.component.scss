@@ -1,6 +1,10 @@
 @import "src/variables.scss";
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
+.container-fluid{
+  min-height: 240px;
+}
+
 .prize-wrapper {
   display: flex;
   flex-flow: row wrap;
@@ -69,6 +73,7 @@
   background-repeat: no-repeat;
   background-position: right;
   order: 1;
+  transition: width 0.3s;
 }
 
 
@@ -148,6 +153,7 @@
     flex: 1 0 auto; 
     background-position: center;
     min-width: auto;
+    
   }
 
   .grand-prize-counter {
@@ -156,8 +162,73 @@
     justify-content: center;
     min-width: auto;
   }
+
   .grand-prize-user-details {   
     align-items: center;
+  }
+  .prize-wrapper{
+    flex-flow: row nowrap;
+  }
+  .max-size{
+    display: block;
+  }
+
+  .min-size{
+    display: none;
+  }
+}
+.grand-prize.mini{
+  position: fixed;
+  z-index: 1000;
+}
+.mini {
+  .grand-prize-text{
+    display: none !important;
+  }
+
+  .grand-prize-header span{
+    display: none;
+  }
+
+  .grand-prize-header h4{
+    font-size: 18px;
+  }
+
+  .card-body 
+  {
+    height: 100px !important;
+   padding-top: 12px;
+  }
+  .grand-prize-header{   
+    flex: 1 0 auto;  
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // height: 200px;
+    justify-content: center;
+    min-width: 33%;
+  }
+  .grand-prize-image {
+    flex: 1 0 auto; 
+    background-position: center;
+    min-width: auto;
+    width: 90px;
+  }
+
+  .grand-prize-counter {
+    flex: 1 0 auto;
+    align-items: flex-end;
+    justify-content: center;
+    min-width: auto;
+  }
+
+  .counter-container-new {
+    width: 120px;    
+}
+
+  .grand-prize-user-details {   
+    align-items: center;
+    font-size: 12px;
   }
   .prize-wrapper{
     flex-flow: row nowrap;

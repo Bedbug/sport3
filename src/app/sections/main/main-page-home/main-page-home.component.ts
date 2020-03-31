@@ -103,4 +103,33 @@ this.router.navigate(['/contest', contestId, 'matches']);
     return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
+  ngAfterViewInit(){
+    this.checkScroll();
+  }
+
+  checkScroll() {
+    let a = $(".scorllable-area");
+   
+    // console.log(a.scrollTop());
+    let scroll = a.scrollTop();
+
+    if(scroll>65)
+    $(".grand-prize").addClass('mini');
+    else if(scroll<=64)
+    $(".grand-prize").removeClass('mini');
+    // if(b.length == 0 || a.length ==0) return;
+    
+    // if (b.position().top < a.position().top) {
+    //   $(".leaders-table-user").addClass('leaders-table-user-up');
+    // } else {
+    //   $(".leaders-table-user").removeClass('leaders-table-user-up');
+    // }
+    // let dist = b.position().top - a.position().top - a.height() + 42;
+    // if (dist >0) {
+    //   $(".leaders-table-user").addClass('leaders-table-user-down');
+    // } else {
+    //   $(".leaders-table-user").removeClass('leaders-table-user-down');
+    // }
+  }
+
 }
