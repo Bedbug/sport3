@@ -113,9 +113,9 @@ this.router.navigate(['/contest', contestId, 'matches']);
     // console.log(a.scrollTop());
     let scroll = a.scrollTop();
 
-    if(scroll>65)
+    if(scroll>5)
     $(".grand-prize").addClass('mini');
-    else if(scroll<=64)
+    else if(scroll<=5)
     $(".grand-prize").removeClass('mini');
     // if(b.length == 0 || a.length ==0) return;
     
