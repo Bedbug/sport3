@@ -49,7 +49,7 @@ export const MENUITEMS: Menu[] = [
     ]
   },
   {
-    title: 'Language', icon: 'menu-icon icn-user', type: 'sub'
+    title: 'Language', icon: 'menu-icon icn-language', type: 'sub'
   },
   // {
   //   path: '/pages/stater-kit', title: 'Dashboard', icon: 'icon-desktop', type: 'link'

@@ -58,8 +58,6 @@ export class MainPageHomeComponent implements OnInit {
     })
   }
 
- 
-
   get getUpcoming () {
     if(!this.upcomingMatches)
     return null;
