@@ -21,6 +21,10 @@ const appRoutes: Routes = [
     path:'',
     redirectTo:'app/0',
     pathMatch:'full'
+  },{
+    path:'**',
+    redirectTo:'app/0',
+    pathMatch:'full'
   }
 ];
 
