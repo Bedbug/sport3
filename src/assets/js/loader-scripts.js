@@ -68,10 +68,10 @@
     
     // $('#lines').fadeOut();
 
-    setTimeout(function () {
-        $('.loader-wrapper').fadeOut('slow');
-        $('.loader-wrapper').remove('slow');
-    }, 2000)
+    // setTimeout(function () {
+    //     $('.loader-wrapper').fadeOut('slow');
+    //     $('.loader-wrapper').remove('slow');
+    // }, 1)
 
 
     });

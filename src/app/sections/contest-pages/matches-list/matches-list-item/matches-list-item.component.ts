@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ContestMatch } from 'src/app/models/contest-match';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ErrorDisplayService } from 'src/app/services/error-display.service';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
@@ -21,6 +21,7 @@ export class MatchesListItemComponent implements OnInit {
 
   constructor(
     private router:Router,
+    private route: ActivatedRoute,
      public translate: TranslateService,
       private errorDisplay:ErrorDisplayService,
       private ViewModalOverlay: PrizeViewOverlayService) { }
@@ -32,13 +33,19 @@ export class MatchesListItemComponent implements OnInit {
 
   gotoMatch() {
     if (this.isClickable && this.hasJoined)
-    this.router.navigate(['/contest',this.contestMatch.tournament,'match',this.contestMatch._id,'info']);   
+    this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.route.parent});   
     else
     this.errorDisplay.showError(102);
   }
 
-  joinMatch(match){    
+  joinMatch(match:ContestMatch){    
+    if(!match.match.completed && !match.isSubscribed)
     this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent,{data:match});
+    else
+    if(match.isSubscribed)
+    this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.route.parent});
+    else
+    this.errorDisplay.showError(102);
   }
 
   getStatusText(status){

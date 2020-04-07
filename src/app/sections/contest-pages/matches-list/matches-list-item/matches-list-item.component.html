@@ -7,16 +7,16 @@
     <div *ngIf="contestMatch?.isSubscribed" style="min-width: 50%;" class=" text-right"><span translate>Joined</span>
       <div class="icn-check"></div>
     </div>
-    <div  (click)="joinMatch(contestMatch)" *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice>0" style="min-width: 50%;" class="isClickable text-right"><span
+    <div  (click)="joinMatch(contestMatch)" *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice>0 && !contestMatch.match.completed" style="min-width: 50%;" class="isClickable text-right"><span
         translate>Join</span> {{contestMatch?.subscriptionPrice}}<i class="coin"></i></div>
-    <div (click)="joinMatch(contestMatch)" *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice == 0"
+    <div (click)="joinMatch(contestMatch)" *ngIf="!contestMatch?.isSubscribed && contestMatch?.subscriptionPrice == 0 && !contestMatch.match.completed"
       style="min-width: 50%;" class="isClickable text-right"> <span translate>matchFreePlay</span>
       <div class="icn-check"></div>
     </div>
     <!-- <div *ngIf="contestMatch?.match.state>0 && !contestMatch?.match.completed" class="live text-center"> • <span
         translate>LIVE</span></div> -->
   </div>
-  <div class="match-item-main" [ngClass]="{'isClickable': isClickable}" (click)="gotoMatch()">
+  <div class="match-item-main" [ngClass]="{'isClickable': isClickable}" (click)="joinMatch(contestMatch)">
     <!-- Home Team -->
     <div class="kit text-center"><img
         src="{{contestMatch?.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>

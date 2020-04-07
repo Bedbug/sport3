@@ -10,6 +10,8 @@ export class ConfigService {
 
     private _config: Object
     private _env: string;
+    private _client:string;
+
     inited:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     
     constructor(private _http: HttpClient) { }
@@ -33,11 +35,18 @@ export class ConfigService {
                 });
         });
     }
+
+    setClient(clientid:string){
+            this._client = clientid;  
+    }
     // Is app in the development mode?
     isDevmode() {
         return this._env === 'development';
     }
     getClient(): string {
+        if(this._client)
+        return this._client;
+
         return this._config["CLIENT_ID"];
     }
     // Gets API route based on the provided key

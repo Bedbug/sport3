@@ -14,9 +14,13 @@ const appRoutes: Routes = [
     component: ResetComponent
   },
   {
-    path:'',
+    path:'app/:cid',
     component: ContentComponent,
   	children: content
+  },{
+    path:'',
+    redirectTo:'app/0',
+    pathMatch:'full'
   }
 ];
 

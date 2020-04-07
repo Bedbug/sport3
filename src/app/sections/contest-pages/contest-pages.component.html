@@ -13,19 +13,19 @@
       <div class="container">
         <div style="width:100%">
           <div class="row">
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'matches']" routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['matches']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
               <span translate>Matches</span>
             </a>
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'leaders']" routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['leaders']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
               <span translate>Leaders</span>
             </a>
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'prizes']" routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['prizes']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-prize.svg" class="footer-icon" /></div>
               <span translate>Prizes</span>
             </a>
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'info']" routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-info.svg" class="footer-icon" /></div>
               <span translate>Info</span>
             </a>

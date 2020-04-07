@@ -25,7 +25,8 @@ export const content: Routes = [
     loadChildren: () => import('src/app/sections/match-pages/match-pages.module').then(m => m.MatchPagesModule)
   },
   {
-    path:'**',
-    redirectTo:'main/contests'
+    path:'',
+    redirectTo:'main/contests',
+    pathMatch: 'full'
   }
 ];

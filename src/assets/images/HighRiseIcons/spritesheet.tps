@@ -74,7 +74,7 @@
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>webpQualityLevel</key>
         <uint>101</uint>
         <key>textureSubPath</key>
@@ -102,7 +102,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">Grid</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Basic</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -175,6 +175,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../../../../../../High Rise/Assets/High-Rise/Images/Icons/Brain.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.85</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>33,29,65,58</rect>
+                <key>scale9Paddings</key>
+                <rect>33,29,65,58</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">Icon.2_39.png</key>
             <key type="filename">Icon.2_66.png</key>
             <key type="filename">Icon.4_32.png</key>
@@ -232,6 +247,7 @@
             <filename>Icon.4_32.png</filename>
             <filename>Icon.4_92.png</filename>
             <filename>chest.png</filename>
+            <filename>../../../../../../High Rise/Assets/High-Rise/Images/Icons/Brain.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

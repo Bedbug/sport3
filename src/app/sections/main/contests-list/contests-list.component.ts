@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contest } from 'src/app/models/contest';
 import { SportimoService } from 'src/app/services/sportimo.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { trigger, style, transition, animate, query, stagger } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -11,6 +11,7 @@ import { GrandPrize } from 'src/app/models/grand-prize';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
 import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-contests-list',
@@ -47,7 +48,9 @@ export class ContestsListComponent implements OnInit {
   
   constructor(
     private sportimoService: SportimoService,
+    private configService: ConfigService, 
     private router: Router,
+    private route:ActivatedRoute,
     public translate: TranslateService,
     private authenticationService:AuthenticationService,
     private prizeViewOverlay: PrizeViewOverlayService
@@ -145,6 +148,8 @@ export class ContestsListComponent implements OnInit {
   }
 
   ContestClicked(contestId) {
-    this.router.navigate(['/contest', contestId, 'matches']);
+    console.log(this.route);
+    
+    this.router.navigate(['../contest', contestId, 'matches'],{relativeTo:this.route.parent});
   }
 }

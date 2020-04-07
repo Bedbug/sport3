@@ -73,8 +73,10 @@ export class MainPageHomeComponent implements OnInit {
   }
 
   openContest(contestId: string){
-// console.log(contestId);
-this.router.navigate(['/contest', contestId, 'matches']);
+console.log(contestId);
+console.log(this.config.getClient());
+
+this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
   }
 
   openNotyf(title: string, message: string, error: boolean) {

@@ -45,13 +45,13 @@
       <div class="container">
         <div style="width: 100%;">
           <div class="row">
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'info']"
+            <a *ngIf="contestId" [routerLink]="['info']"
               routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
               <span translate>Match Info</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'play']"
+            <a *ngIf="contestId" [routerLink]="['play']"
               routerLinkActive="active" href="#" (click)="hasClickedPlay=true">
               <span popover="{{translate.instant('tip.1')}}" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
                 containerClass="popover"></span>
@@ -59,13 +59,13 @@
               <span translate>Play</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'cards']"
+            <a *ngIf="contestId" [routerLink]="['cards']"
               routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-my-cards-footer.svg" class="footer-icon" /></div>
               <span translate>My Cards</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['/contest',contestId,'match',contestMatchId,'leaders']"
+            <a *ngIf="contestId" [routerLink]="['leaders']"
               routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
               <span translate>Leaders</span>
