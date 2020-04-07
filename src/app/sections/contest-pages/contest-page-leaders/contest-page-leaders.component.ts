@@ -32,8 +32,10 @@ export class ContestPageLeadersComponent implements OnInit {
         .subscribe(result => {
           this.contestDetails = result;
           if (this.contestDetails)
-            this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {        
-              this.cellArray = leaders;
+            this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {   
+              console.log(leaders.leaderboard);
+                   
+              this.cellArray = leaders.leaderboard;
               
               // console.table(this.athenticationService.currentUser);
               // console.log("User Id: "+this.athenticationService.currentUser.source._value.id);
@@ -43,7 +45,7 @@ export class ContestPageLeadersComponent implements OnInit {
               this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{             
                 this.userRank = -1;
                 if(user)
-                  this.userRank = this.cellArray.findIndex(x => x._id == user._id);         
+                  this.userRank = leaders.user.rank-1;//this.cellArray.findIndex(x => x._id == user._id);         
           
                 this.show = (user && this.userRank >= 0);
               })

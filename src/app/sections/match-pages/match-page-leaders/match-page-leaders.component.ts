@@ -36,7 +36,7 @@ export class MatchPageLeadersComponent implements OnInit {
 
     // Get Match Leaderboard
     this.sportimoService.getContestMatchLeaders(this.contestId, this.contestMatchId).pipe(takeUntil(this.ngUnsubscribe)).subscribe(leaders => {
-      this.cellArray = leaders;
+      this.cellArray = leaders.leaderboard;
 
       // console.table(this.authenticationService.currentUser);
       // console.log("User Id: "+this.authenticationService.currentUser.source._value.id);
@@ -47,7 +47,7 @@ export class MatchPageLeadersComponent implements OnInit {
       this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
         this.userRank = -1;
         if(user)
-          this.userRank = this.cellArray.findIndex(x => x._id == user._id);         
+        this.userRank = leaders.user.rank-1;//this.cellArray.findIndex(x => x._id == user._id);         
           
           this.show = (user && this.userRank >= 0);
       })
