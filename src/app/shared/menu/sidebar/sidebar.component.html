@@ -143,6 +143,11 @@
             <span translate>russian</span>
         </a>
     </li>
+    <li *ngIf="hasLanguage('kk')">
+        <a href="javascript:void(0)" class="" [class.active]="translate.currentLang=='kk'" style="padding:7px 60px" (click)="switchLanguage('kk')">
+            <span translate>kazzach</span>
+        </a>
+    </li>
     <li>
         <!-- Authenticate -->
         <a href="javascript:void(0)" class="sidebar-header" (click)="toggleUserStatus()">

@@ -55,8 +55,8 @@ export class MatchesListItemComponent implements OnInit {
     return this.translate.instant(this.Utils.getStatusText(status));
   }
 
-  parseDate(date:string){
-    return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM/YY, hh:mm');
+  parseDate(date:string, format: string, jaliformat: string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa',format, jaliformat);
   }
 
   parseNumbers(text:string){
