@@ -35,10 +35,10 @@
         src="{{contestMatch?.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}" alt=""></div>
   </div>
   <div class="match-item-footer">
-    <div class="info text-left">{{parseDate(contestMatch?.match.start,"D/MM/YYY")}}</div>
+    <div class="info text-left">{{parseDate(contestMatch?.match.start,"D/MM/YYY","jD/jMM/jYY")}}</div>
       <!-- <div class="info text-left">{{contestMatch?.match.home_team.abbr}} - {{contestMatch?.match.away_team.abbr}}:
         {{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div> -->
-    <div class="time text-right">{{parseDate(contestMatch?.match.start,"HH:mm")}}</div>
+    <div class="time text-right">{{parseDate(contestMatch?.match.start,"HH:mm,"jHH:jmm"")}}</div>
     <div *ngIf="contestMatch?.match.state>0 && !contestMatch?.match.completed" class="live text-center"> • <span
         translate>LIVE</span></div>
   </div>
