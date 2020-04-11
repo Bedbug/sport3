@@ -31,7 +31,7 @@
 
 // ok
 .grand-prize-header{
-  color: #000;
+  color:$theme-color;
   padding: 10px 0;
   flex: 1 1 100%;
   order: 0;
@@ -118,7 +118,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
-  color: #000;
+  color: $theme-color;
   font-weight: 700;
   padding-top: 10px;
 }

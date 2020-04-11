@@ -7,6 +7,14 @@ $theme-gradient: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1
   .active .footer-icon{
     filter: invert(0%) sepia(0%) saturate(7%) hue-rotate(147deg) brightness(110%) contrast(100%);
   }
+
+  .grand-prize-header{
+    color:#000 !important;
+  }
+
+  .grand-prize-user-details{
+    color:#000 !important;
+  }
   
   .mobile-app-navbar, .universal-app-navbar{
     background-color: #000;
