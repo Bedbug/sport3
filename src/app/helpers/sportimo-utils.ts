@@ -53,6 +53,8 @@ export class SportimoUtils {
     4: "MatchEnded",
     5:  "LIVE",
     6:  "LIVE",
+    7:  "LIVE",
+    8:  "LIVE",
   }
 
   translateMappings() {

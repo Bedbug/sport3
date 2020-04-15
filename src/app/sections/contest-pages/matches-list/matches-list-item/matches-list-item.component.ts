@@ -6,6 +6,8 @@ import { ErrorDisplayService } from 'src/app/services/error-display.service';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { MatchSubscribeComponent } from '../../match-subscribe/match-subscribe.component';
+import { SportimoService } from 'src/app/services/sportimo.service';
+import { FilePreviewOverlayRef } from 'src/app/sections/main/prize-view-overlay/prize-preview-overlay-ref';
 
 @Component({
   selector: 'app-matches-list-item',
@@ -24,6 +26,7 @@ export class MatchesListItemComponent implements OnInit {
     private route: ActivatedRoute,
      public translate: TranslateService,
       private errorDisplay:ErrorDisplayService,
+      private sportimoService:SportimoService,
       private ViewModalOverlay: PrizeViewOverlayService) { }
 
   ngOnInit() {
@@ -39,9 +42,20 @@ export class MatchesListItemComponent implements OnInit {
   }
 
   joinMatch(match:ContestMatch){    
-    if(!match.match.completed && !match.isSubscribed)
-    this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent,{data:match});
+    if(!match.match.completed && !match.isSubscribed){
+      if(match.subscriptionPrice>0)
+    {
+      this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent,{data:{match:match, route:this.route.parent}});      
+  }
+
+    
     else
+    this.sportimoService.joinMatch(this.contestMatch.tournament, this.contestMatch._id).subscribe(x => {      
+      if (x.match) {        
+        this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.route.parent});        
+      }
+    });
+  }else
     if(match.isSubscribed)
     this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.route.parent});
     else

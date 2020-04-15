@@ -26,8 +26,8 @@
       <div *ngIf="contestMatch?.match.state > 0" class="match-score text-center">
         {{parseNumbers(contestMatch?.match.home_score)}} - {{parseNumbers(contestMatch?.match.away_score)}}</div>
       <div *ngIf="contestMatch?.match.state == 0" class="match-type text-center"><strong>-</strong></div>
-
-      <div *ngIf="contestMatch?.match.state >0 " class="match-status">{{getStatusText(contestMatch?.match.state)}}</div>
+      <div *ngIf="contestMatch?.match.state >0 && !contestMatch?.match.completed" class="match-status">{{getStatusText(contestMatch?.match.state)}}</div>
+      <div *ngIf="contestMatch?.match.state > 0 && contestMatch?.match.completed" class="match-status">{{getStatusText(4)}}</div>
     </div>
     <!-- Away Team -->
     <div class="team-name  text-right">{{contestMatch?.match.away_team.name[translate.currentLang]}}</div>

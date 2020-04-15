@@ -4,8 +4,8 @@
     <div class="card-body">
       <div class="row">
         <div class="prize-top-header">
-        <div class="prize-name font-weight-bold text-white isClickable">
-          {{prize?.titleText[translate.currentLang]||'_Name Missing'}}
+        <div class="prize-name font-weight-bold text-white isClickable" [innerHTML]="prize?.titleText[translate.currentLang]||'_Name Missing'">
+        
           <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
         </div>
         <div class="chances" >     
@@ -46,7 +46,7 @@
             [ngStyle]="{'background-image': 'url(' + (prize?.promoDetailImage || './assets/images/contest-bg.png') + ')'}">
             <div class="grand-prize-header" style="text-align: center">
               <!-- <h4 translate>Grand prize</h4> -->
-              <span>{{prize?.titleText[translate.currentLang]}}</span>
+              <div [innerHTML]="prize?.titleText[translate.currentLang]"></div>
             </div>
             <div class="contest-image">
               <img src="{{prize?.promoImage}}" style="max-height: 200px; min-height:140px" alt="">
@@ -101,7 +101,7 @@
 <div class="modal-background" (click)="cancel()" [class.hidden]="!selectedPrize" [class.modal-appear]="selectedPrize">
   <div class="modal-card">
     <div class="modal-card-header">
-      <div class="modal-title"> {{prize?.titleText[translate.currentLang]||'_Name Missing'}} </div>
+      <div class="modal-title" [innerHTML]="prize?.titleText[translate.currentLang]||'_Name Missing'"></div>
       <div (click)="cancel()" class="modal-exit pull-right">X</div>
     </div>
     <div class="modal-card-body text-left">

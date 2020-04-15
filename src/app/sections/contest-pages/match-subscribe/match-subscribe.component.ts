@@ -23,7 +23,8 @@ export class MatchSubscribeComponent implements OnInit {
   isJoinRequesting = false;
   ngUnsubscribe = new Subject();
   Utils: SportimoUtils = new SportimoUtils();
-
+  routeCache: any;
+  
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
@@ -40,8 +41,8 @@ export class MatchSubscribeComponent implements OnInit {
   ngOnInit() {
     // if(this.data)
     // console.log(this.data);
-    this.contestMatch = this.data;
-
+    this.contestMatch = this.data.match;
+    this.routeCache = this.data.route;
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isLoggedIn = user != null;
       this.user = user;
@@ -58,14 +59,19 @@ export class MatchSubscribeComponent implements OnInit {
     if (!this.isLoggedIn)
       this.errorDisplay.showError('101');
     else {
+      // console.log("This");
+      
+      // console.log(this.routeCache);
+      
+      // this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.routeCache});
+      // return;
       this.isJoinRequesting = true;
       this.sportimoService.joinMatch(this.contestMatch.tournament, this.contestMatch._id).subscribe(x => {
-        this.isJoinRequesting = false;
-        console.log(x);
+        this.isJoinRequesting = false; 
 
         if (x.match) {
           this.authenticationService.pay(this.contestMatch.subscriptionPrice);
-          this.router.navigate(['/contest', this.contestMatch.tournament, 'match', this.contestMatch._id, 'info']);
+          this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.routeCache});
           this.close();
         }
       });
