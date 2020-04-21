@@ -130,7 +130,7 @@
               <p class="contest-details-text" [innerHTML]="contest.infoText[translate.currentLang]"></p>
               <div class="contest-buttons">
                 <button  [disabled]="isJoinRequesting"
-                  (click)="requestJoin()" class="btn btn-sportimo">
+                  (click)="requestJoin()" class="btn btn-sportimo" style="height: 50px;">
                   <div class="loader-label" [class.btn-active]="isJoinRequesting">
                     <!-- <span translate>Join</span> {{contestDetails?.subscriptionPrice}} <i _ngcontent-vii-c2="" class="coin"></i> -->
                     <span class="button-label">

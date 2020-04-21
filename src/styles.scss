@@ -169,6 +169,9 @@ body {
 
 .btn-sportimo {
   background: $theme-color;
+  background: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1) 100%);
+  border: 0px;
+  border-radius: 5px;
   padding: 5px 20px;
   font-family: $theme-font;
   font-weight: 600;

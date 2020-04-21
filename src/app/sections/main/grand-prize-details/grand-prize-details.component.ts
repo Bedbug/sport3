@@ -70,7 +70,7 @@ export class GrandPrizeDetailsComponent implements OnInit {
 
         };
 
-        if (this.prize.prizeDistribution != "Draw")
+        if (this.prize.prizeDistribution != "draw")
             this.sportimoService.getPrizeLeaders(this.prizeID).subscribe(leaders => {   
               console.log(leaders.leaderboard);
                    
