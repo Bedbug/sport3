@@ -49,8 +49,7 @@ export class ContestPageLeadersComponent implements OnInit {
           
                 this.show = (user && this.userRank >= 0);
               })
-            }
-            );
+            });
         });
     })
     

@@ -8,6 +8,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';
 import { FILE_PREVIEW_DIALOG_DATA } from '../prize-view-overlay/prize-preview-overlay.tokens';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-grand-prize-details',
@@ -30,6 +31,10 @@ export class GrandPrizeDetailsComponent implements OnInit {
   userChances = 0;
   CountDownInterval;
   selectedPrize: any;
+  Utils: SportimoUtils = new SportimoUtils();
+  cellArray = [];
+  userRank: Number = 0;
+  show: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -63,8 +68,27 @@ export class GrandPrizeDetailsComponent implements OnInit {
               this.userChances = 0;
           })
 
-        }
+        };
+
+        if (this.prize.prizeDistribution != "Draw")
+            this.sportimoService.getPrizeLeaders(this.prizeID).subscribe(leaders => {   
+              console.log(leaders.leaderboard);
+                   
+              this.cellArray = leaders.leaderboard;
+
+              this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user=>{             
+                this.userRank = -1;
+                if(user)
+                  this.userRank = leaders.user.rank-1;//this.cellArray.findIndex(x => x._id == user._id);         
+          
+                this.show = (user && this.userRank >= 0);
+              })
+            });
       })
+  }
+
+  ngAfterViewInit(){
+    this.checkScroll();
   }
 
   close() {
@@ -125,6 +149,33 @@ export class GrandPrizeDetailsComponent implements OnInit {
         that.countdown.expired = true;
       }
     }, 1000);
+  }
+
+
+  // Leaderboards
+  checkScroll() {
+    let a = $(".leaders-scrollable-group");
+    let b = $('.leaders-user');
+
+    if(b.length == 0 || a.length ==0) return;
+    
+    if (b.position().top < a.position().top) {
+      $(".leaders-table-user").addClass('leaders-table-user-up');
+    } else {
+      $(".leaders-table-user").removeClass('leaders-table-user-up');
+    }
+
+    let dist = b.position().top - a.position().top - a.height() + 42;
+    if (dist > 0) {
+      $(".leaders-table-user").addClass('leaders-table-user-down');
+    } else {
+      $(".leaders-table-user").removeClass('leaders-table-user-down');
+    }
+
+  }
+
+  parseNumbers(text:string){
+    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
 }

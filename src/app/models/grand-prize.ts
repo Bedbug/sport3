@@ -13,4 +13,5 @@ export class GrandPrize {
     timer: any;
     countDownEndDate: number;
     countdown: any;
+    prizeDistribution: string;
 }

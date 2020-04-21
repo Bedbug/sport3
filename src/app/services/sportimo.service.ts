@@ -258,6 +258,16 @@ export class SportimoService {
       }));
   }
 
+  getPrizeLeaders(prizeId: string) {
+    return this.http.get<any>(
+      // Get The end point
+      // http://localhost:3032/client-api/v1/data/client/:clientId/grand-prize/:grandPrizeId/leaders
+      `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/grand-prize/${prizeId}/leaders`)
+      .pipe(map(leaders => {
+        return leaders;
+      }));
+  }
+
 
   /*-----------------------------------------------------------------------------------
     Matches
