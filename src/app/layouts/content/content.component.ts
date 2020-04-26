@@ -39,9 +39,9 @@ export class ContentComponent implements OnInit {
       let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
       console.log(parsedFirst);
       
-      // if (parsedFirst != null) {
-      //   this.onBoardService.Show(null);
-      // }
+      if (parsedFirst != null) {
+        this.onBoardService.Show(null);
+      }
 
       let selected_language = localStorage.getItem('language');
       // this language will be used as a fallback when a translation isn't found in the current language

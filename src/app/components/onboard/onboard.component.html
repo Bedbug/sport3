@@ -11,13 +11,30 @@
         style="height: 100%; margin: 7px;">
         <div class="uk-position-relative" style="height: inherit;">
           <ul class="uk-slideshow-items" style="height: inherit;">
+            <!-- {{defaults.slides}} -->
 
-            <!-- SLIDE 1 -->
-            <li *ngIf="defaults.Slides.A.state" style="text-align: center;">
+            <li *ngFor="let slide of defaults.slides; let i = index"> style="text-align: center;">
               <div
                 style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
               </div>
               <!-- <img src="assets/images/sportimo/onboard/1.jpg" alt="" uk-contain> -->
+              <div class="slideText">
+                <h3 style="font-weight: bold;font-size: 25px;" translate="onBoarding.1"></h3>
+                <h4 style="font-size: 20px;" translate>"onBoarding."{{i}}</h4>                
+                <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-sportimo">
+                  <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
+                </button>
+                <button *ngIf="i == defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-sportimo">
+                  <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
+                </button>
+              </div>
+            </li>
+
+            <!-- SLIDE 1 -->
+            <!-- <li *ngIf="defaults.Slides.A.state" style="text-align: center;">
+              <div
+                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
+              </div>             
               <div class="slideText">
                 <h3 style="font-weight: bold;font-size: 25px;" translate="onBoarding.1"></h3>
                 <h4 style="font-size: 20px;" translate="onBoarding.2"></h4>
@@ -25,50 +42,47 @@
                   <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
               </div>
-            </li>
+            </li> -->
 
             <!-- SLIDE 2 -->
-            <li *ngIf="defaults.Slides.B.state">
+            <!-- <li *ngIf="defaults.Slides.B.state">
               <div
                 style="width:100%; height:100%; background-position: center; background: url(assets/images/sportimo/onboard/2b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
               </div>
               <div class="slideText">
-                <h3 style="font-size: 22px;" translate="onBoarding.3"></h3>
-                <!-- <h4 style="font-size: 22px;" translate="onBoarding.4"></h4> -->
+                <h3 style="font-size: 22px;" translate="onBoarding.3"></h3>               
                 <button [disabled]="loading" type="submit" class="btn btn-sportimo">
                   <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
               </div>
-            </li>
+            </li> -->
 
             <!-- SLIDE 3 -->
-            <li *ngIf="defaults.Slides.C.state">
+            <!-- <li *ngIf="defaults.Slides.C.state">
               <div
                 style="width:100%; height:100%; background-position: center; background: url(assets/images/sportimo/onboard/3b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
               </div>
               <div class="slideText">
-                <h3 style="font-size: 22px;" translate="onBoarding.4"></h3>
-                <!-- <h4 style="font-size: 22px; padding: 0 10%;" translate="onBoarding.5"></h4> -->
+                <h3 style="font-size: 22px;" translate="onBoarding.4"></h3>               
                 <button [disabled]="loading" type="submit" class="btn btn-sportimo">
                   <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
               </div>
-            </li>
+            </li> -->
 
             <!-- SLIDE 4 -->
-            <li *ngIf="defaults.Slides.D.state">
+            <!-- <li *ngIf="defaults.Slides.D.state">
               <div
                 style="width:100%; height:100%; background-position: center; background: url(assets/images/sportimo/onboard/4b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
               </div>
               <div class="slideText">
                 <h3 style="font-size: 22px;font-size: 22px;max-width: 320px;margin: auto;" translate="onBoarding.5">
-                </h3>
-                <!-- <h4 style="font-size: 22px;">win amazing prizes!</h4> -->
+                </h3>               
                 <button [disabled]="loading" type="submit" class="btn btn-sportimo">
                   <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
                 </button>
               </div>
-            </li>
+            </li> -->
           </ul>
 
           <!-- NAVIGATION -->

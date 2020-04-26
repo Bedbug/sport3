@@ -14,27 +14,39 @@ export class OnboardComponent implements OnInit {
   LandingPage = false;
 
   public defaults = {
-    Slides: {
-      A: {
+    sequence:["S","L"],
+    slides: [
+      {
+        state: true,
+        text: "localizedText",
+        image: "localImageName"
+      },
+      {
         state: true,
         text: "",
         image: ""
       },
-      B: {
+      {
         state: true,
         text: "",
         image: ""
       },
-      C: {
-        state: true,
-        text: "",
-        image: ""
-      },
-      D: {
+      {
         state: true,
         text: "",
         image: ""
       }
+    ],
+    landingPage:{
+      background:"",
+      terms:"localizedText",
+      slidesShow:[
+        {
+          header:"localizedText",
+          image: "imageUrl",
+          prizeText:"localizedText"
+        }
+      ]
     }
   }
 
