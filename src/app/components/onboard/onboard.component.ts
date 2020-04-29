@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { OnBoardService } from './onboard.service';
 import { TranslateService } from '@ngx-translate/core';
 import { debug } from 'util';
+import { SportimoService } from 'src/app/services/sportimo.service';
 
 @Component({
   selector: 'app-onboard',
@@ -15,6 +16,7 @@ export class OnboardComponent implements OnInit {
   Authenticated = false;
 
   public defaults = {
+    name:"",
     sequence: ["S", "L"],
     slides: [
       {
@@ -53,7 +55,7 @@ export class OnboardComponent implements OnInit {
 
   isSubmitting: boolean;
 
-  constructor(private onBoardService: OnBoardService, public translate: TranslateService) { }
+  constructor(private onBoardService: OnBoardService, public translate: TranslateService, private sportimoService:SportimoService) { }
 
 
   ngOnInit() {
@@ -73,6 +75,10 @@ export class OnboardComponent implements OnInit {
       if (x) {
         this.defaults = this.onBoardService.defaults;
         
+        this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x=>{
+          console.log(x);          
+        })
+
         this.Authenticated = false;
                      
         if (this.defaults.sequence[0] == "S")
@@ -97,6 +103,10 @@ export class OnboardComponent implements OnInit {
     this.Onboarding = false;
     if (this.defaults.sequence[0] == "S")
       this.LandingPage = true;
+      else
+      this.sportimoService.onboardingMetricsStop("").subscribe(x=>{
+        console.log(x);          
+      })
   }
 
   closeLandingPage(){
@@ -104,6 +114,10 @@ export class OnboardComponent implements OnInit {
     this.isSubmitting = true;
     if (this.defaults.sequence[0] == "L")
       this.Onboarding = true;
+      else
+      this.sportimoService.onboardingMetricsStop("").subscribe(x=>{
+        console.log(x);          
+      })
 
   }
 

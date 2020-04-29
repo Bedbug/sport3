@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class OnBoardService {
 
   public defaults = {
+    name: "",
     sequence:["S","L"],
     slides: [
       {

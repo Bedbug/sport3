@@ -352,6 +352,36 @@ export class SportimoService {
       return 0;
   }
 
+/*-----------------------------------------------------------------------------------
+   METRICS
+ ----------------------------------------------------------------------------------- */
+ private sequenceId: string;
+ private correlatorId: string;
+
+ onboardingMetricsStart(sequenceId:string) {
+   const postData = {client:this.Config.getClient(),sequence:sequenceId};
+   
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/start`, postData)
+      .pipe(map(result => {
+        this.correlatorId = result.correlator;
+        this.sequenceId = sequenceId;
+        return result;
+      }))
+  }
+
+  onboardingMetricsStop(msisdn:string) {
+    const postData = {
+      client:this.Config.getClient(),
+      sequence: this.sequenceId,
+      correlator: this.correlatorId,
+      msisdn: msisdn
+    };
+     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/stop`, postData)
+       .pipe(map(result => {       
+         return result;
+       }))
+   }
+
   /*-----------------------------------------------------------------------------------
    SOCKETS
  ----------------------------------------------------------------------------------- */
