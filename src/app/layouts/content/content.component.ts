@@ -37,11 +37,14 @@ export class ContentComponent implements OnInit {
     this.sportimoService.getClientConfiguration().subscribe(data => {
 
       let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
-      console.log(parsedFirst);
+      console.log(parsedFirst);            
+
+      let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
       
       if (parsedFirst != null) {
-        this.onBoardService.Show(null);
+        this.onBoardService.Show(onBoardingConfiguration);
       }
+      
 
       let selected_language = localStorage.getItem('language');
       // this language will be used as a fallback when a translation isn't found in the current language

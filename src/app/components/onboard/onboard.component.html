@@ -1,90 +1,31 @@
-<div class="modal-background" *ngIf="Onboarding"></div>
-<div *ngIf="Onboarding">  
+<div class="modal-background" *ngIf="!Authenticated && Onboarding"></div>
+
+<!-- ON-BOARDING -->
+<div *ngIf="Onboarding">
   <div class="modal-card">
-    <!-- <div class="modal-card-header">
-        <div class="modal-title" translate>OnBoarding</div>
-        <div (click)="closeModal()" class="modal-exit pull-right">X</div>
-      </div> -->
     <div class="modal-card-body text-center">
       <div class="slideshow-container"
         uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true; finite:true;"
         style="height: 100%; margin: 7px;">
         <div class="uk-position-relative" style="height: inherit;">
           <ul class="uk-slideshow-items" style="height: inherit;">
-            <!-- {{defaults.slides}} -->
-
             <li *ngFor="let slide of defaults.slides; let i = index"> style="text-align: center;">
               <div
-                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
+                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;"
+                [ngStyle]="{'background-image': 'url(assets/images/sportimo/onboard/' + (slide?.image || 'assets/images/sportimo/onboard/1b.jpg') + ')'}">
               </div>
-              <!-- <img src="assets/images/sportimo/onboard/1.jpg" alt="" uk-contain> -->
               <div class="slideText">
-                <h3 style="font-weight: bold;font-size: 25px;" translate="onBoarding.1"></h3>
-                <h4 style="font-size: 20px;" translate>"onBoarding."{{i}}</h4>                
-                <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-sportimo">
+                <h3 style="font-weight: bold;font-size: 25px;"> {{slide.title[translate.currentLang]}}</h3>
+                <h4 style="font-size: 20px;">{{slide.text[translate.currentLang]}}</h4>
+                <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
                   <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
-                <button *ngIf="i == defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-sportimo">
+                <button *ngIf="i == defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
                   <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
                 </button>
               </div>
             </li>
-
-            <!-- SLIDE 1 -->
-            <!-- <li *ngIf="defaults.Slides.A.state" style="text-align: center;">
-              <div
-                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
-              </div>             
-              <div class="slideText">
-                <h3 style="font-weight: bold;font-size: 25px;" translate="onBoarding.1"></h3>
-                <h4 style="font-size: 20px;" translate="onBoarding.2"></h4>
-                <button [disabled]="loading" type="submit" class="btn btn-sportimo">
-                  <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
-                </button>
-              </div>
-            </li> -->
-
-            <!-- SLIDE 2 -->
-            <!-- <li *ngIf="defaults.Slides.B.state">
-              <div
-                style="width:100%; height:100%; background-position: center; background: url(assets/images/sportimo/onboard/2b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
-              </div>
-              <div class="slideText">
-                <h3 style="font-size: 22px;" translate="onBoarding.3"></h3>               
-                <button [disabled]="loading" type="submit" class="btn btn-sportimo">
-                  <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
-                </button>
-              </div>
-            </li> -->
-
-            <!-- SLIDE 3 -->
-            <!-- <li *ngIf="defaults.Slides.C.state">
-              <div
-                style="width:100%; height:100%; background-position: center; background: url(assets/images/sportimo/onboard/3b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
-              </div>
-              <div class="slideText">
-                <h3 style="font-size: 22px;" translate="onBoarding.4"></h3>               
-                <button [disabled]="loading" type="submit" class="btn btn-sportimo">
-                  <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
-                </button>
-              </div>
-            </li> -->
-
-            <!-- SLIDE 4 -->
-            <!-- <li *ngIf="defaults.Slides.D.state">
-              <div
-                style="width:100%; height:100%; background-position: center; background: url(assets/images/sportimo/onboard/4b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;">
-              </div>
-              <div class="slideText">
-                <h3 style="font-size: 22px;font-size: 22px;max-width: 320px;margin: auto;" translate="onBoarding.5">
-                </h3>               
-                <button [disabled]="loading" type="submit" class="btn btn-sportimo">
-                  <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
-                </button>
-              </div>
-            </li> -->
           </ul>
-
           <!-- NAVIGATION -->
           <ul class="uk-slideshow-nav uk-dotnav uk-flex-center " style="margin-top: 19px;"></ul>
           <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
@@ -92,9 +33,63 @@
           <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
             uk-slideshow-item="next"></a>
         </div>
-
       </div>
+    </div>
+  </div>
+</div>
 
+<div class="landing-background" [hidden]="!LandingPage"></div>
+<!-- AUTHENTICATION -->
+<div *ngIf="LandingPage">
+  <div class="modal-card">
+    <div class="landing-card">
+      <div class="text-center text-white">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators" *ngIf="defaults.landingPage.slidesShow.length>1">
+            <li *ngIf="defaults.landingPage.slidesShow[0]" data-target="#carouselExampleIndicators" data-slide-to="0"
+              class="active"></li>
+            <li *ngIf="defaults.landingPage.slidesShow[1]" data-target="#carouselExampleIndicators" data-slide-to="1">
+            </li>
+            <li *ngIf="defaults.landingPage.slidesShow[2]" data-target="#carouselExampleIndicators" data-slide-to="2">
+            </li>
+          </ol>
+          <div class="carousel-inner">
+            <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
+              [class.active]="i==0">
+              <div class="slide-prize-header text-center" [innerHTML]="slide.header[translate.currentLang]"></div>
+              <img class="d-block w-100" [src]="slide.image" alt="First slide">
+              <div class="slide-prize-text">
+                <div [innerHTML]="slide.prizeText[translate.currentLang]"></div>
+              </div>
+            </div>
+          </div>
+          <a *ngIf="defaults.landingPage.slidesShow.length>1" class="carousel-control-prev"
+            href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a *ngIf="defaults.landingPage.slidesShow.length>1" class="carousel-control-next"
+            href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <div class="input-box">
+          <div class="input-area">+971</div>
+          <input type="number" formControlName="msisdn" class="form-control-plaintext" autocorrect="off"
+            autocapitalize="none" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+            placeholder="{{ 'enterMobilePhone' | translate }}" required>
+        </div>
+        <button [disabled]="isSubmitting" type="submit" (click)="closeLandingPage()" class="btn btn-sportimo login-form-button">
+          <div class="loader-label" [class.btn-active]="isSubmitting">
+            <span class="button-label" translate>Play</span>
+            <div class="fadeInLoader">
+              <span class="rotate dotted button-loader"></span>
+            </div>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 </div>

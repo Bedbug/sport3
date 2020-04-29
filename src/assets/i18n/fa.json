@@ -167,7 +167,6 @@
 	"Username is required": "نام‌کاربری الزامی است",
 	"Username must be atleast 5 characters long": "",
 	"Username/Email": "نام‌کاربری/ایمیل",
-	"View Details": "مشاهده‌ی جزییات",
 	"W": "برد",
 	"Weight": "وزن",
 	"Welcome to Sportimo!": "به پابه‌توپ خوش‌آمدید",
@@ -192,6 +191,7 @@
 	"contest_loc_key": "مسابقه",
 	"correct": "صحیح",
 	"english": "English",
+	"enterMobilePhone": "",
 	"errors": {
 		"100": "برای دسترسی به این صفحه می‌بایست وارد شوید",
 		"101": "برای عضویت در یک مسابقه باید وارد شوید",
@@ -205,14 +205,8 @@
 	"grandprize_loc_key": "جایزه بزرگ",
 	"joinMatchInfo": "",
 	"joinMatchNoCoins": "",
+	"kazzach": "",
 	"matchFreePlay": "",
-	"onBoarding": {
-		"1": "به پا‌به‌توپ خوش آمدید",
-		"2": "هر بازی، اکنون بازی شماست",
-		"3": "وارد مسابقه شوید و بازی تیم های مورد علاقه‌ی خود را دنبال کنید",
-		"4": "پیش‌بینی کنید",
-		"5": "با دیگران مسابقه دهید و برنده شوید"
-	},
 	"pts": "امتیاز",
 	"russian": "",
 	"tip": {

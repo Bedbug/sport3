@@ -167,7 +167,6 @@
 	"Username is required": "Username is required",
 	"Username must be atleast 5 characters long": "Username must be atleast 5 characters long",
 	"Username/Email": "Username/Email",
-	"View Details": "View Details",
 	"W": "W",
 	"Weight": "Weight",
 	"Welcome to Sportimo!": "Welcome to Sportimo!",
@@ -192,6 +191,7 @@
 	"contest_loc_key": "Contest",
 	"correct": "correct",
 	"english": "english",
+	"enterMobilePhone": "Enter mobile phone",
 	"errors": {
 		"100": "You must be logged in to access this page.",
 		"101": "You must be logged in in order to join a contest",
@@ -205,14 +205,8 @@
 	"grandprize_loc_key": "Grand Prize",
 	"joinMatchInfo": "You need {{value}} coins to join this match.",
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
+	"kazzach": "",
 	"matchFreePlay": "Free to Play",
-	"onBoarding": {
-		"1": "Welcome to SPORTIMO!",
-		"2": "Every match is now your game",
-		"3": "Enter a contest and choose your favorite football matches",
-		"4": "Make your guesses",
-		"5": "Compete with others, gather points and win amazing prizes!"
-	},
 	"pts": " pts",
 	"russian": "Русский",
 	"tip": {

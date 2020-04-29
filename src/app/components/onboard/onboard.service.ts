@@ -52,7 +52,8 @@ export class OnBoardService {
   Show(config: any) {
     if (config && config != null)
       this.defaults = config;
-
+    console.log("Show Count");
+    
     this.onboardModalIsActive.next(true);
   }
 

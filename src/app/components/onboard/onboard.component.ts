@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {OnBoardService} from './onboard.service';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { OnBoardService } from './onboard.service';
 import { TranslateService } from '@ngx-translate/core';
 import { debug } from 'util';
 
@@ -12,9 +12,10 @@ export class OnboardComponent implements OnInit {
 
   Onboarding = false;
   LandingPage = false;
+  Authenticated = false;
 
   public defaults = {
-    sequence:["S","L"],
+    sequence: ["S", "L"],
     slides: [
       {
         state: true,
@@ -37,28 +38,31 @@ export class OnboardComponent implements OnInit {
         image: ""
       }
     ],
-    landingPage:{
-      background:"",
-      terms:"localizedText",
-      slidesShow:[
+    landingPage: {
+      background: "",
+      terms: "localizedText",
+      slidesShow: [
         {
-          header:"localizedText",
+          header: "localizedText",
           image: "imageUrl",
-          prizeText:"localizedText"
+          prizeText: "localizedText"
         }
       ]
     }
   }
 
+  isSubmitting: boolean;
+
   constructor(private onBoardService: OnBoardService, public translate: TranslateService) { }
+
 
   ngOnInit() {
     // Get Value From local
     // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
     // if (parsedFirst != null){
-    
+
     //   if(parsedFirst == 1){
-        this.onBoardService.Hide();
+    this.onBoardService.Hide();
     //   }           
     // } else {      
     //   this.onBoardService.Show();
@@ -66,21 +70,41 @@ export class OnboardComponent implements OnInit {
 
     // Get value from Service
     this.onBoardService.onboardModalIsActive.subscribe(x => {
-      this.Onboarding = x;     
-      console.log("--- Onboarding");
-      
-      this.defaults = this.onBoardService.defaults;
+      if (x) {
+        this.defaults = this.onBoardService.defaults;
+        
+        this.Authenticated = false;
+                     
+        if (this.defaults.sequence[0] == "S")
+          this.Onboarding = x;
+          else
+          this.LandingPage = true;
+        
+          let bgElement =  $('.landing-background');
+          bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
+          bgElement.css("background-size", `cover`)
+      }
+
     });
 
     // this.isFirstGame = true;
     // localStorage.setItem(key, 'New Value');
-    
   }
 
-  closeOnBoarding() {   
+
+  closeOnBoarding() {
     localStorage.setItem("isFirstGame", "1");
     this.Onboarding = false;
-    this.LandingPage = true;
+    if (this.defaults.sequence[0] == "S")
+      this.LandingPage = true;
+  }
+
+  closeLandingPage(){
+    this.LandingPage = false;
+    this.isSubmitting = true;
+    if (this.defaults.sequence[0] == "L")
+      this.Onboarding = true;
+
   }
 
   nextSlide() {

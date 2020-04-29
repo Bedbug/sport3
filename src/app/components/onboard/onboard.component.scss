@@ -1,3 +1,5 @@
+@import "src/variables.scss";
+
 .modal-card {
     margin-top: 0px;
     width: 100%;
@@ -29,7 +31,7 @@
     margin-left: -200px;
 }
 
-.btn-sportimo {
+.btn-slide {
     background: #ffc30000;
     padding: 5px 20px;
     font-family: IranSans;
@@ -59,3 +61,85 @@
     background-size: cover;
   }
 
+  .landing-background
+  {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1030; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    background: $theme-background-image no-repeat center center;
+  }
+
+  .landing-card {
+    margin-top: 42px;
+    width: 100%;
+    padding: 20px;             
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.slide-prize-header{
+    width: 270px;
+    margin: auto;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.slide-prize-text{
+    background: url("~src/assets/images/sportimo/onboard/header_withblurs.png") no-repeat;
+    background-size: contain;
+    width: 310px;
+    height: 120px;
+    margin: auto;
+    padding: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+    margin-bottom: 40px;
+}
+
+.input-box{
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 270px;  
+    margin: auto;
+    height: 45px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.input-area{
+    border-right: 1px solid white;
+    padding: 0px;
+    padding-right: 10px;
+    margin-right: 10px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.form-control-plaintext
+{
+    color: white;
+}
+
+.btn-sportimo{
+    width: 270px;
+    height: 50px;
+    font-size: 20px;
+}
