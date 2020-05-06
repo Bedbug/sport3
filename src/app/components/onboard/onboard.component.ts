@@ -1,8 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { OnBoardService } from './onboard.service';
 import { TranslateService } from '@ngx-translate/core';
 import { debug } from 'util';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-onboard',
@@ -13,10 +15,11 @@ export class OnboardComponent implements OnInit {
 
   Onboarding = false;
   LandingPage = false;
+  PinVerify = false;
   Authenticated = false;
 
   public defaults = {
-    name:"",
+    name: "",
     sequence: ["S", "L"],
     slides: [
       {
@@ -53,9 +56,18 @@ export class OnboardComponent implements OnInit {
     }
   }
 
+  pinForm: FormGroup;
+  incorrectPin: boolean;
   isSubmitting: boolean;
+  submitted: boolean;
 
-  constructor(private onBoardService: OnBoardService, public translate: TranslateService, private sportimoService:SportimoService) { }
+  constructor(
+    private authenticationService: AuthenticationService,
+    private formBuilder: FormBuilder,
+    private onBoardService: OnBoardService,
+    public translate: TranslateService,
+    private sportimoService: SportimoService
+  ) { }
 
 
   ngOnInit() {
@@ -74,23 +86,28 @@ export class OnboardComponent implements OnInit {
     this.onBoardService.onboardModalIsActive.subscribe(x => {
       if (x) {
         this.defaults = this.onBoardService.defaults;
-        
-        this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x=>{
-          console.log(x);          
+
+        this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
+          console.log(x);
         })
 
         this.Authenticated = false;
-                     
+
         if (this.defaults.sequence[0] == "S")
           this.Onboarding = x;
-          else
+        else
           this.LandingPage = true;
-        
-          let bgElement =  $('.landing-background');
-          bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
-          bgElement.css("background-size", `cover`)
+
+        let bgElement = $('.landing-background');
+        bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
+        bgElement.css("background-size", `cover`)
       }
 
+    });
+
+    // Pin Verification Form
+    this.pinForm = this.formBuilder.group({
+      pin: ['', Validators.required]
     });
 
     // this.isFirstGame = true;
@@ -103,25 +120,45 @@ export class OnboardComponent implements OnInit {
     this.Onboarding = false;
     if (this.defaults.sequence[0] == "S")
       this.LandingPage = true;
-      else
-      this.sportimoService.onboardingMetricsStop("").subscribe(x=>{
-        console.log(x);          
+    else
+      this.sportimoService.onboardingMetricsStop("").subscribe(x => {
+        console.log(x);
       })
   }
 
-  closeLandingPage(){
+  closeLandingPage() {
     this.LandingPage = false;
     this.isSubmitting = true;
-    if (this.defaults.sequence[0] == "L")
-      this.Onboarding = true;
-      else
-      this.sportimoService.onboardingMetricsStop("").subscribe(x=>{
-        console.log(x);          
-      })
+
+    // if (this.defaults.sequence[0] == "L")
+    //   this.Onboarding = true;
+    // else
+    //   this.sportimoService.onboardingMetricsStop("").subscribe(x => {
+    //     console.log(x);
+    //   })
+    this.PinVerify = true;
 
   }
 
-  nextSlide() {
+  nextSlide() { }
 
+  onPinSubmit() {
+    this.isSubmitting = true;
+    this.authenticationService.validatePIN(this.pinForm.controls.pin.value)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.incorrectPin = false;
+          this.isSubmitting = false;
+          $('#app-register-modal #step3').addClass('modal-appear');
+          $('#app-register-modal #step3').removeClass('hidden');
+          $('#app-register-modal #step2').removeClass('modal-appear');
+          $('#app-register-modal #step2').addClass('hidden');
+        },
+        error => {
+          this.incorrectPin = true;
+          this.isSubmitting = false;
+        });
   }
 }
+
