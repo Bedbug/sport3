@@ -42,7 +42,7 @@ export class ContentComponent implements OnInit {
       let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
       
       if (parsedFirst != null) {
-        this.onBoardService.Show(onBoardingConfiguration);
+        this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
       }
       
 

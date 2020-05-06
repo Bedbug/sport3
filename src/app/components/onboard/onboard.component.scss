@@ -15,8 +15,17 @@
     width: 100%;
     padding-bottom: 15px;
     color: #ffffff;
-    background-image: linear-gradient(-180deg, #000000 0%, #000000 100%);
+    background-image: linear-gradient(-180deg, #000000 88%, #000000 100%);
+    height: 100%;    
+}
+
+.pin-card-body {
+    width: 100%;
+    padding-bottom: 15px;
+    color: #ffffff;
+    background-image: linear-gradient(-180deg, #16365bcf, #08131fcf);
     height: 100%;
+    margin-top: 40px;
 }
 
 .slideText {
@@ -143,3 +152,102 @@
     height: 50px;
     font-size: 20px;
 }
+
+.pin-title{
+    padding: 30px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pin-title h1{
+    font-size: 30px;  
+}
+
+.is-invalid {
+    border: 1px solid red;
+  }
+  
+  .login-form-info {
+    // font-weight: 700;
+    font-size: 20px;
+    width: 270px;
+    margin: auto;
+    padding: 45px 0 25px;
+  }
+  
+  .login-form-content {
+    width: 270px;
+    // height: 290px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+  }
+  
+  .login-form-content .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .login-form-content input {
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .login-form-buttons {
+    // width: 219px;
+    // margin: auto;
+    // position: absolute;
+    // bottom: 60px;
+    // left: 54px;
+  }
+  
+  .register-form-buttons {
+    width: 219px;
+    margin: auto;
+    position: absolute;
+    bottom: 0px;
+    left: 54px;
+  }
+  
+  .resend-pin-button{
+    font-size: 15px;
+    text-decoration: underline;
+  }
+
+  .enter-button{
+    font-size: 20px;
+    margin-top:15px;
+    margin-bottom:15px;
+    text-decoration: underline;
+  }
+
+  .enter-button.grey{
+    color: grey;
+  }
+
+  .notice {
+    width: 100%;
+    /* margin: auto; */
+    position: absolute;
+    bottom: 15px;
+    /* left: 30px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    flex-wrap: wrap;
+  }
+  
+//   .login-form-button {
+//     width: 100%;
+//     height: 50px;
+//     font-size: 20px;
+//   }
+  
+  .icn-info-alt {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+  }

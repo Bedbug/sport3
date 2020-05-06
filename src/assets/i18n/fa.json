@@ -209,6 +209,17 @@
 	"matchFreePlay": "",
 	"pts": "امتیاز",
 	"russian": "",
+	"susbcription_message_ACTIVE": "",
+	"susbcription_message_ACTIVEFREEPERIOD": "",
+	"susbcription_message_ACTIVEFREEPERIOD_action": "",
+	"susbcription_message_ACTIVE_action": "",
+	"susbcription_message_ENTER": "",
+	"susbcription_message_UNKNOWN": "",
+	"susbcription_message_UNKNOWN_action": "",
+	"susbcription_message_UNSUB": "",
+	"susbcription_message_UNSUBWITHCOINS": "",
+	"susbcription_message_UNSUBWITHCOINS_action": "",
+	"susbcription_message_UNSUB_action": "",
 	"tip": {
 		"1": "اینجا را کلیک کنید تا کارت‌های خود را انتخاب کنید",
 		"2": "کلیک کنید تا یک کارت «گل» بازی کنید"

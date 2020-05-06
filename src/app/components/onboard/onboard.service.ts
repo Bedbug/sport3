@@ -6,6 +6,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class OnBoardService {
 
+  public appName:any;
+
   public defaults = {
     name: "",
     sequence:["S","L"],
@@ -50,10 +52,13 @@ export class OnBoardService {
   constructor() {
   }
 
-  Show(config: any) {
+  Show(config: any, appName:any) {
     if (config && config != null)
       this.defaults = config;
-    console.log("Show Count");
+
+      this.appName = appName;
+
+    console.log(this.appName);
     
     this.onboardModalIsActive.next(true);
   }

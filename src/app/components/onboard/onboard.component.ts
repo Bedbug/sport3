@@ -1,10 +1,12 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { OnBoardService } from './onboard.service';
 import { TranslateService } from '@ngx-translate/core';
-import { debug } from 'util';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+import { ConfigService } from 'src/app/services/config.service';
+
 
 @Component({
   selector: 'app-onboard',
@@ -17,6 +19,20 @@ export class OnboardComponent implements OnInit {
   LandingPage = false;
   PinVerify = false;
   Authenticated = false;
+
+  translateMappings() {
+    _("susbcription_message_UNKNOWN");
+    _("susbcription_message_UNKNOWN_action");
+    _("susbcription_message_UNSUB");
+    _("susbcription_message_UNSUB_action");
+    _("susbcription_message_UNSUBWITHCOINS");
+    _("susbcription_message_UNSUBWITHCOINS_action");
+    _("susbcription_message_ACTIVEFREEPERIOD");
+    _("susbcription_message_ACTIVEFREEPERIOD_action");
+    _("susbcription_message_ACTIVE");
+    _("susbcription_message_ACTIVE_action");
+    _("susbcription_message_ENTER");
+  }
 
   public defaults = {
     name: "",
@@ -55,18 +71,22 @@ export class OnboardComponent implements OnInit {
       ]
     }
   }
+
+  appName: any;
   msisdnForm: FormGroup;
   pinForm: FormGroup;
   incorrectPin: boolean;
   isSubmitting: boolean;
   submitted: boolean;
+  subState: any;
 
   constructor(
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
     private onBoardService: OnBoardService,
     public translate: TranslateService,
-    private sportimoService: SportimoService,    
+    private sportimoService: SportimoService,
+    public config: ConfigService,
   ) { }
 
 
@@ -86,6 +106,7 @@ export class OnboardComponent implements OnInit {
     this.onBoardService.onboardModalIsActive.subscribe(x => {
       if (x) {
         this.defaults = this.onBoardService.defaults;
+        this.appName = this.onBoardService.appName;
 
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           console.log(x);
@@ -123,24 +144,17 @@ export class OnboardComponent implements OnInit {
     localStorage.setItem("isFirstGame", "1");
     this.Onboarding = false;
     if (this.defaults.sequence[0] == "S")
-      this.LandingPage = true;
-    else
-      this.sportimoService.onboardingMetricsStop("").subscribe(x => {
-        console.log(x);
-      })
+      this.LandingPage = true;         
   }
 
   closeLandingPage() {
     this.LandingPage = false;
-    this.isSubmitting = true;
 
-    // if (this.defaults.sequence[0] == "L")
-    //   this.Onboarding = true;
-    // else
-    //   this.sportimoService.onboardingMetricsStop("").subscribe(x => {
-    //     console.log(x);
-    //   })
     this.PinVerify = true;
+    console.log($('#pinInput'));
+    setTimeout(() => {
+      $('#pinInput').focus();
+    }, 0)
 
   }
 
@@ -148,32 +162,55 @@ export class OnboardComponent implements OnInit {
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
-    this.authenticationService.blaiseSignin(this.msisdnForm.controls.msisdn.value,)
+    this.authenticationService.blaiseSignin(this.msisdnForm.controls.msisdn.value)
       .subscribe(response => {
-        console.log(response);
+        if (response && response.success) {
+          this.subState = response.state;
+          if (this.subState == "UNSUB" && response.user.wallet > 0)
+            this.subState = "UNSUBWITHCOINS";
+          if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+            this.subState = "ACTIVEFREEPERIOD";
+          this.closeLandingPage();
+        }
         this.isSubmitting = false;
-       this.closeLandingPage();
       });
 
   }
 
-  onPinSubmit() {
+  onPinSubmit(noSubscription: boolean) {
+
+    if (this.pinForm.controls.pin.errors) {
+      return;
+    }
+
     this.isSubmitting = true;
-    this.authenticationService.validatePIN(this.pinForm.controls.pin.value)
+
+    this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
         response => {
-          console.log(response);
-          this.incorrectPin = false;
-          this.isSubmitting = false;
-          $('#app-register-modal #step3').addClass('modal-appear');
-          $('#app-register-modal #step3').removeClass('hidden');
-          $('#app-register-modal #step2').removeClass('modal-appear');
-          $('#app-register-modal #step2').addClass('hidden');
+          if (response && response.success) {
+            console.log(response);
+            this.incorrectPin = false;
+            this.isSubmitting = false;
+            this.PinVerify = false;
+
+            if (this.defaults.sequence[0] == "L")
+              this.Onboarding = true;
+            
+              // User Registered - We can stop the metrics
+              this.sportimoService.onboardingMetricsStop("").subscribe(x => {
+                console.log(x);
+              })
+          }
         },
         error => {
           this.incorrectPin = true;
           this.isSubmitting = false;
         });
+  }
+
+  ResendPin() {
+    console.log("TODO:Resending Pin");
   }
 }
 

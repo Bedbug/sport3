@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class ConfigService {
 
+    
     private _config: Object
     private _env: string;
     private _client:string;
