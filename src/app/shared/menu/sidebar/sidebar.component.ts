@@ -8,6 +8,7 @@ import {_} from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ToppickService } from 'src/app/components/toppick/toppick.service';
 import { debug } from 'util';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class SidebarComponent implements OnInit {
     private authenticationService: AuthenticationService,
     public translate:TranslateService,
     private toppickService: ToppickService,
-    private sportimoService: SportimoService
+    private sportimoService: SportimoService,
+    private config:ConfigService
     ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -91,6 +93,11 @@ export class SidebarComponent implements OnInit {
 
   openTopPick(){
     this.toppickService.Show();    
+  }
+
+  showRoute(path:string){  
+    console.log("app/"+this.config.getClient()+path);
+    this.router.navigateByUrl("app/"+this.config.getClient()+path);
   }
 
   closeSidebar(){

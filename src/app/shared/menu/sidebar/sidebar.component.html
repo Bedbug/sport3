@@ -22,8 +22,10 @@
             </span>
             <i class="fa fa-angle-right pull-right" *ngIf="menuItem.children"></i>
         </a>
+          <!-- [routerLink]="!menuItem.type ? null : [menuItem.path]"  -->
         <!-- Link -->
-        <a [routerLink]="!menuItem.type ? null : [menuItem.path]" (click)="closeSidebar()"
+        <a 
+        (click)="showRoute(menuItem.path); closeSidebar()"
             routerLinkActive="active-option" class="sidebar-header" *ngIf="menuItem.type === 'link'">
             <i [class]="menuItem.icon"></i><span><span [translate]="menuItem.title"></span> <span
                     style="margin-left:10px" class="badge badge-{{menuItem.badgeType}} ml-3"
@@ -72,8 +74,9 @@
                         *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
                     <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
+                <!-- [routerLink]="!childrenItem.type ? null : [childrenItem.path]" -->
                 <!-- Link -->
-                <a [routerLink]="!childrenItem.type ? null : [childrenItem.path]" (click)="closeSidebar()"
+                <a    (click)="showRoute(childrenItem.path); closeSidebar()" [routerLink]="!childrenItem.type ? null : [childrenItem.path]"
                     *ngIf="childrenItem.type === 'link'" routerLinkActive="active-option"
                     [routerLinkActiveOptions]="{exact: true}">
                     <span [translate]="childrenItem.title"></span><span

@@ -75,13 +75,14 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
+        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
         <div class="input-box">
           <div class="input-area">+971</div>
-          <input type="number" formControlName="msisdn" class="form-control-plaintext" autocorrect="off"
+          <input type="text" formControlName="msisdn" class="form-control-plaintext text-left" autocorrect="off"
             autocapitalize="none" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
             placeholder="{{ 'enterMobilePhone' | translate }}" required>
         </div>
-        <button [disabled]="isSubmitting" type="submit" (click)="closeLandingPage()" class="btn btn-sportimo login-form-button">
+        <button [disabled]="isSubmitting" type="submit"  class="btn btn-sportimo login-form-button">
           <div class="loader-label" [class.btn-active]="isSubmitting">
             <span class="button-label" translate>Play</span>
             <div class="fadeInLoader">
@@ -89,6 +90,7 @@
             </div>
           </div>
         </button>
+        </form>
       </div>
     </div>
   </div>

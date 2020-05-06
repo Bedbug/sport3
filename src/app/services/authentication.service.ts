@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { ConfigService } from './config.service';
 import { Team } from '../models/team';
 import moment from 'moment-mini';
+import { MissingTranslationHandler } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -72,6 +73,25 @@ export class AuthenticationService {
    /*-----------------------------------------------------------------------------------
      User registration
    ----------------------------------------------------------------------------------- */
+
+   blaiseSignin(msisdn: string){
+       let postData = {
+           msisdn: msisdn.toString(),
+           client:this.Config.getClient()
+       }
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/signin`, postData)
+    .pipe(map(response => {
+        // Save the signin data for future use
+        if(response !=null && response.success)
+        localStorage.setItem('signon', JSON.stringify({ msisdn: postData.msisdn, client: postData.client }));
+        return response;
+    }));
+   }
+
+   blaiseVerify(pin: string){
+       console.log("Verify pin and signon");
+       
+   }
 
    registerMSISDN(msisdn: string){
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/msisdn`, { msisdn: msisdn })

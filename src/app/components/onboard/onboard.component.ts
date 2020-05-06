@@ -55,7 +55,7 @@ export class OnboardComponent implements OnInit {
       ]
     }
   }
-
+  msisdnForm: FormGroup;
   pinForm: FormGroup;
   incorrectPin: boolean;
   isSubmitting: boolean;
@@ -66,7 +66,7 @@ export class OnboardComponent implements OnInit {
     private formBuilder: FormBuilder,
     private onBoardService: OnBoardService,
     public translate: TranslateService,
-    private sportimoService: SportimoService
+    private sportimoService: SportimoService,    
   ) { }
 
 
@@ -105,6 +105,10 @@ export class OnboardComponent implements OnInit {
 
     });
 
+    this.msisdnForm = this.formBuilder.group({
+      msisdn: ['', Validators.required]
+    });
+
     // Pin Verification Form
     this.pinForm = this.formBuilder.group({
       pin: ['', Validators.required]
@@ -141,6 +145,17 @@ export class OnboardComponent implements OnInit {
   }
 
   nextSlide() { }
+
+  onMSISDNSubmit() {
+    this.isSubmitting = true;
+    this.authenticationService.blaiseSignin(this.msisdnForm.controls.msisdn.value,)
+      .subscribe(response => {
+        console.log(response);
+        this.isSubmitting = false;
+       this.closeLandingPage();
+      });
+
+  }
 
   onPinSubmit() {
     this.isSubmitting = true;

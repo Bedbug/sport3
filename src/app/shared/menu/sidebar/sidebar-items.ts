@@ -18,7 +18,7 @@ export const MENUITEMS: Menu[] = [
   {
     title: 'My Account', icon: 'menu-icon icn-user', type: 'sub', authenticate:true ,  children: [
         { path: '/main/profile', title: 'Profile', type: 'link' },
-        { path: '/base/alert', title: 'Balance', type: 'link' },
+        // { path: '/base/alert', title: 'Balance', type: 'link' },
         { path: '/main/inbox', title: 'Messages', type: 'link', badgeType:'danger', badgeValue: "unread" },
         { path: '/main/achievements', title: 'Achievements', type: 'link' },
         { path: '/main/myteams', title: 'My Teams', type: 'link' },
