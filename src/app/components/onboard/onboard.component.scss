@@ -26,6 +26,7 @@
     background-image: linear-gradient(-180deg, #16365bcf, #08131fcf);
     height: 100%;
     margin-top: 40px;
+    display: flex;
 }
 
 .slideText {
@@ -86,9 +87,20 @@
   }
 
   .landing-card {
-    margin-top: 42px;
+    // margin-top: 42px;
     width: 100%;
-    padding: 20px;             
+    // padding: 20px;    
+    display: flex;  
+    flex-direction: column;   
+    position: relative;
+    height: 100%;    
+}
+.landing-card-content{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    height: 100%;
 }
 
 .carousel-indicators li {
@@ -98,27 +110,51 @@
 }
 
 .slide-prize-header{
-    width: 270px;
-    margin: auto;
-    font-size: 30px;
+  width: 100%;
+  margin: auto;
+  font-size: 25px;
     font-weight: 700;
-    line-height: 25px;
-    margin-top: 20px;
+    line-height: 25px;    
     margin-bottom: 10px;
 }
 
+.slide-prize-container{
+  // background: url("~src/assets/images/sportimo/onboard/header_withblurs.png") no-repeat;
+  // background-size: contain;
+ position: relative;
+ display: inline-block;
+ width: 100%;
+}
+
+.slide-prize-image{
+    width: 100%;
+}
+
+.carousel-indicators{
+  bottom: -38px;
+}
+
 .slide-prize-text{
-    background: url("~src/assets/images/sportimo/onboard/header_withblurs.png") no-repeat;
-    background-size: contain;
-    width: 310px;
-    height: 120px;
-    margin: auto;
-    padding: 30px;
-    font-size: 20px;
+    // background: url("~src/assets/images/sportimo/onboard/header_withblurs.png") no-repeat;
+    // background-size: contain;
+   position: absolute;
+   margin:0 auto;
+   left: 0;
+   right: 0;
+   top: 23%;
+   text-align: center;
+   width: 80%;
+   font-size: 19px;
     font-weight: 700;
     line-height: 25px;
-    margin-bottom: 40px;
 }
+
+// .form-bottom{
+//   position: absolute;    
+//     left: 50%;
+//     margin-left: -130px;
+//     bottom: 50px;
+// }
 
 .input-box{
     background-color: rgba(0, 0, 0, 0.8);
@@ -155,14 +191,14 @@
 
 .pin-title{
     padding: 30px;
-    min-height: 300px;
+    min-height: 185px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .pin-title h1{
-    font-size: 30px;  
+    font-size: 25px;  
 }
 
 .is-invalid {
@@ -171,10 +207,10 @@
   
   .login-form-info {
     // font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     width: 270px;
     margin: auto;
-    padding: 45px 0 25px;
+    padding: 0 0 25px;
   }
   
   .login-form-content {
@@ -195,12 +231,13 @@
     font-size: 18px;
   }
   
-  .login-form-buttons {
-    // width: 219px;
-    // margin: auto;
-    // position: absolute;
-    // bottom: 60px;
-    // left: 54px;
+  .login-form-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    max-width: 400px;
+
   }
   
   .register-form-buttons {
@@ -230,7 +267,7 @@
   .notice {
     width: 100%;
     /* margin: auto; */
-    position: absolute;
+    // position: absolute;
     bottom: 15px;
     /* left: 30px; */
     display: flex;
@@ -238,6 +275,7 @@
     align-items: center;
     height: 50px;
     flex-wrap: wrap;
+    margin-top: 30px;
   }
   
 //   .login-form-button {
