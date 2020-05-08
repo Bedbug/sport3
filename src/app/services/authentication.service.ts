@@ -7,7 +7,6 @@ import { User } from '../models/user';
 import { ConfigService } from './config.service';
 import { Team } from '../models/team';
 import moment from 'moment-mini';
-import { MissingTranslationHandler } from '@ngx-translate/core';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {

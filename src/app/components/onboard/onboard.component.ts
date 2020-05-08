@@ -7,6 +7,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ConfigService } from 'src/app/services/config.service';
 
+declare var Pace: any;
 
 @Component({
   selector: 'app-onboard',
