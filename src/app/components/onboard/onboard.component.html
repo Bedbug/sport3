@@ -1,4 +1,4 @@
-<div class="modal-background" *ngIf="!Authenticated && Onboarding"></div>
+<div class="modal-background" *ngIf="!Authenticated"></div>
 
 <!-- ON-BOARDING -->
 <div *ngIf="Onboarding">
@@ -95,6 +95,7 @@
             </div>
           </button>
         </form>
+        <div class="notice-msisdn" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
       </div>
     </div>
   </div>
@@ -154,8 +155,7 @@
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
         <div class="resend-pin-button" (click)="ResendPin()">Resend PIN</div>       
       </form>
-      <div class="notice" style="font-size: 13px">
-        First day FREE, then 69tg. per day
+      <div class="notice" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>

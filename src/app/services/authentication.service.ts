@@ -22,19 +22,19 @@ export class AuthenticationService {
         this.currentUser = this.currentUserSubject.asObservable();
 
         // Always sign in when loading
-        if (this.currentUserValue && this.currentUserValue.token) {
-            let that = this;
-            this.Config.inited.subscribe(hasInited => {
-                // if(!hasInited)
-                // console.log("Not Yet");
+        // if (this.currentUserValue && this.currentUserValue.token) {
+        //     let that = this;
+        //     this.Config.inited.subscribe(hasInited => {
+        //         // if(!hasInited)
+        //         // console.log("Not Yet");
 
-                if (hasInited) {
-                    that.singleSignOn().subscribe()
-                }
+        //         if (hasInited) {
+        //             that.singleSignOn().subscribe()
+        //         }
 
-            })
-            // setTimeout(function () { that.singleSignOn().subscribe() },5000);
-        }
+        //     })
+        //     // setTimeout(function () { that.singleSignOn().subscribe() },5000);
+        // }
     }
 
     public get currentUserValue(): User {
@@ -69,64 +69,70 @@ export class AuthenticationService {
             }));
     }
 
-    
-   /*-----------------------------------------------------------------------------------
-     User registration
-   ----------------------------------------------------------------------------------- */
 
-   blaiseSignin(msisdn: string){
-       let postData = {
-           msisdn: msisdn.toString(),
-           client:this.Config.getClient()
-       }
-    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/signin`, postData)
-    .pipe(map(response => {
-        // Save the signin data for future use
-        if(response !=null && response.success)
-        localStorage.setItem('signon', JSON.stringify({ msisdn: postData.msisdn, client: postData.client }));
-        
-        if (response.user && response.user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
-            this.currentUserSubject.next(response.user);
+    /*-----------------------------------------------------------------------------------
+      User registration
+    ----------------------------------------------------------------------------------- */
+
+    blaiseSignin(msisdn: string) {
+        let postData = {
+            msisdn: msisdn.toString(),
+            client: this.Config.getClient()
         }
-        return response;
-    }));
-   }
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/signin`, postData)
+            .pipe(map(response => {
+                // Save the signin data for future use
+                if (response != null && response.success)
+                    localStorage.setItem('signon', JSON.stringify({ msisdn: postData.msisdn, client: postData.client }));
 
-   blaiseVerify(pin: string, noSubscription:boolean){
-    let postData = JSON.parse(localStorage.getItem('signon'));
-    postData.pin = pin;
-    postData.noSubscription = noSubscription;
-    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/verify`, postData)
-    .pipe(map(response => {
-        // Save the signin data for future use
-        if(response !=null && response.success)
-        localStorage.setItem('signon', JSON.stringify({ pin:pin, msisdn: postData.msisdn, client: postData.client }));
-        return response;
-    }));
-   }
+                // if (response.user && response.user.token) {
+                //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //     localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
+                //     this.currentUserSubject.next(response.user);
+                // }
+                return response;
+            }));
+    }
 
-   registerMSISDN(msisdn: string){
-    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/msisdn`, { msisdn: msisdn })
-    .pipe(map(response => {
-        return response;
-    }));
-   }
+    blaiseVerify(pin: string, noSubscription: boolean) {
+        let postData = JSON.parse(localStorage.getItem('signon'));
+        postData.pin = pin;
+        postData.noSubscription = noSubscription;
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/verify`, postData)
+            .pipe(map(response => {
+                // Save the signin data for future use
+                if (response != null && response.success) {
+                    localStorage.setItem('signon', JSON.stringify({ pin: pin, msisdn: postData.msisdn, client: postData.client }));
+                    if (response.user && response.user.token) {
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
+                        this.currentUserSubject.next(response.user);
+                    }
+                }
+                return response;
+            }));
+    }
 
-   validatePIN(pin: string){
-    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/pin`, { pin: pin })
-    .pipe(map(response => {
-        return response;
-    }));
-   }
+    registerMSISDN(msisdn: string) {
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/msisdn`, { msisdn: msisdn })
+            .pipe(map(response => {
+                return response;
+            }));
+    }
 
-   registerUser(username: string, password:string){
-    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/register`, { username: username, password:password })
-    .pipe(map(response => {
-        return response;
-    }));
-   }
+    validatePIN(pin: string) {
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/pin`, { pin: pin })
+            .pipe(map(response => {
+                return response;
+            }));
+    }
+
+    registerUser(username: string, password: string) {
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/register`, { username: username, password: password })
+            .pipe(map(response => {
+                return response;
+            }));
+    }
 
     logout() {
         // remove user from local storage to log user out
@@ -137,11 +143,11 @@ export class AuthenticationService {
     updateFavorites(team: Team, competition: any, remove: boolean) {
         let newTeamFavorites: any[] = this.currentUserSubject.value.favTeams;
 
-        console.log("Remove:"+ remove);
+        console.log("Remove:" + remove);
         if (remove) {
-            newTeamFavorites = newTeamFavorites.filter(favteam =>{                
-               return  favteam.team._id != team._id;//&& favteam.competition._id != competition._id;
-            });                       
+            newTeamFavorites = newTeamFavorites.filter(favteam => {
+                return favteam.team._id != team._id;//&& favteam.competition._id != competition._id;
+            });
         } else {
             newTeamFavorites.push({ team: team, competition: competition });
         }
@@ -183,7 +189,7 @@ export class AuthenticationService {
         this.currentUserSubject.next(this.currentUserSubject.value);
     }
 
-    get isSubscribed(){
+    get isSubscribed() {
         // console.log(moment().utc().toDate(),moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate(),moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate())        
         return moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate();
     }

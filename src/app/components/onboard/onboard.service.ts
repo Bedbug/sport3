@@ -55,11 +55,8 @@ export class OnBoardService {
   Show(config: any, appName:any) {
     if (config && config != null)
       this.defaults = config;
-
-      this.appName = appName;
-
-    console.log(this.appName);
-    
+      
+      this.appName = appName;      
     this.onboardModalIsActive.next(true);
   }
 

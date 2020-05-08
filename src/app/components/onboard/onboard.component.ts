@@ -79,6 +79,7 @@ export class OnboardComponent implements OnInit {
   isSubmitting: boolean;
   submitted: boolean;
   subState: any;
+  firstLoad: boolean = true;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -122,6 +123,21 @@ export class OnboardComponent implements OnInit {
         let bgElement = $('.landing-background');
         bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
         bgElement.css("background-size", `cover`)
+
+        // Remove the loading screen
+        // $('.loader-wrapper').fadeOut('slow');
+        // $('.loader-wrapper').remove('slow');  
+        var releaseTimout;
+        Pace.on('done', function() {
+          console.log("done");
+          clearTimeout(releaseTimout);
+          releaseTimout = setTimeout(function(){   $('.loader-wrapper').fadeOut('slow');
+          $('.loader-wrapper').remove('slow'); }, 1000);
+          // if(this.firstLoad){
+           
+          //   this.firstLoad = false;
+          // }
+        });
       }
 
     });
@@ -151,10 +167,10 @@ export class OnboardComponent implements OnInit {
     this.LandingPage = false;
 
     this.PinVerify = true;
-    console.log($('#pinInput'));
-    setTimeout(() => {
-      $('#pinInput').focus();
-    }, 0)
+    // console.log($('#pinInput'));
+    // setTimeout(() => {
+    //   $('#pinInput').focus();
+    // }, 0)
 
   }
 
@@ -193,7 +209,7 @@ export class OnboardComponent implements OnInit {
             this.incorrectPin = false;
             this.isSubmitting = false;
             this.PinVerify = false;
-
+            this.Authenticated = true;
             if (this.defaults.sequence[0] == "L")
               this.Onboarding = true;
             

@@ -60,7 +60,7 @@
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+    // background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
   }
 
   
@@ -83,7 +83,8 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
-    background: $theme-background-image no-repeat center center;
+    background: $landing-background-image no-repeat center center;
+    background-size: cover;
   }
 
   .landing-card {
@@ -93,6 +94,7 @@
     display: flex;  
     flex-direction: column;   
     position: relative;
+    top:40px;
     height: 100%;    
 }
 .landing-card-content{
@@ -111,7 +113,8 @@
 
 .slide-prize-header{
   width: 100%;
-  margin: auto;
+  // margin: 20px auto;
+    font-size: 25px;
   font-size: 25px;
     font-weight: 700;
     line-height: 25px;    
@@ -276,6 +279,21 @@
     height: 50px;
     flex-wrap: wrap;
     margin-top: 30px;
+  }
+
+  .notice-msisdn {
+    width: 100%;
+    /* margin: auto; */
+    // position: absolute;
+    bottom: 10px;
+    /* left: 30px; */
+    display: flex;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    flex-wrap: wrap;
+    // margin-top: 30px;
   }
   
 //   .login-form-button {

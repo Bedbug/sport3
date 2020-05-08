@@ -35,17 +35,7 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
 
     this.sportimoService.getClientConfiguration().subscribe(data => {
-
-      let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
-      console.log(parsedFirst);            
-
-      let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
-      
-      if (parsedFirst != null) {
-        this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
-      }
-      
-
+            
       let selected_language = localStorage.getItem('language');
       // this language will be used as a fallback when a translation isn't found in the current language
       this.translate.setDefaultLang('en');
@@ -70,8 +60,17 @@ export class ContentComponent implements OnInit {
       });
       this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
 
-      $('.loader-wrapper').fadeOut('slow');
-      $('.loader-wrapper').remove('slow');
+     
+      let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
+           
+      let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
+      
+      if (parsedFirst != null) {
+        this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
+      }else{
+        $('.loader-wrapper').fadeOut('slow');
+        $('.loader-wrapper').remove('slow');
+      }
     });
 
   }
