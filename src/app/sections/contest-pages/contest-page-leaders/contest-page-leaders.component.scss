@@ -45,9 +45,8 @@
 .leaders-scrollable-group{
     height: calc(100vh - 218px);
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  height: calc((var(--vh, 1vh) * 100) - 218px);
-  width: 100%;
+    -webkit-overflow-scrolling: touch;  
+    width: 100%;
 }
 
 .leaders-table-user{

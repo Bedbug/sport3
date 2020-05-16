@@ -107,16 +107,14 @@
 
 .card-scroll-list {
   overflow-y: auto;
-  height: calc(100vh - 239px);
-  height: calc((var(--vh, 1vh) * 100) - 239px);
+  height: calc(100vh - 239px);  
   -webkit-overflow-scrolling: touch;
 }
 
 @if $showContestInfoOnMatches == true {
   .card-scroll-list {
     overflow-y: auto;
-    height: calc(100vh - 326px);
-    height: calc((var(--vh, 1vh) * 100) - 326px);
+    height: calc(100vh - 326px);    
     -webkit-overflow-scrolling: touch;
   }
 }

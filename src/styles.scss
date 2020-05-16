@@ -16,6 +16,27 @@
 .body.modal-open{
   overflow:hidden;
 }
+
+.scorllable-area{
+  width: 100%;
+  height: calc(100vh - 93px);    
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;    
+}
+
+.background{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 120%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 // @include media-breakpoint-down(sm) {
   @media (max-width: 768px) {
 .scorllable-area{
@@ -25,6 +46,107 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0;    
+}
+
+.main-pages-scrollarea {  
+  height: calc((var(--vh, 1vh) * 100) - 144px );  
+}
+
+
+.leaders-scrollable-group{
+  height: calc(100vh - 218px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: calc((var(--vh, 1vh) * 100) - 218px);
+  width: 100%;
+}
+.matches-list-scrollarea{
+  overflow-y: auto;
+  height: calc(100vh - 240px);
+  height: calc((var(--vh, 1vh) * 100) - 240px);
+  -webkit-overflow-scrolling: touch;
+}
+.contest-list-scrollable-area{
+  width: 100%;
+  height: calc(100vh - 369px);  
+  height: calc((var(--vh, 1vh) * 100) - 410px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;    
+}
+.matches-list-scrollarea{
+  width: 100%;
+  height: calc(100vh - 493px);  
+  height: calc((var(--vh, 1vh) * 100) - 493px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0;    
+}
+
+// Standings
+.standings-scrollarea {
+  width: 100%;
+  height: calc(100vh - 180px);
+  height: calc((var(--vh, 1vh) * 100) - 180px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0;
+}
+
+.players-scrollarea {
+  height: calc(100vh - 220px);
+  height: calc((var(--vh, 1vh) * 100) - 220px );
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0;
+  // padding-top: 15px;
+}
+.card-scroll-list {
+  overflow-y: auto;
+  height: calc(100vh - 239px);
+  height: calc((var(--vh, 1vh) * 100) - 239px);
+  -webkit-overflow-scrolling: touch;
+}
+
+@if $showContestInfoOnMatches == true {
+  .card-scroll-list {
+    overflow-y: auto;
+    height: calc(100vh - 326px);
+    height: calc((var(--vh, 1vh) * 100) - 326px);
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+// .card-scroll-list {
+//   overflow-y: auto;
+//   height: calc(100vh - 239px);
+//   height: calc((var(--vh, 1vh) * 100) - 239px);
+//   -webkit-overflow-scrolling: touch;
+// }
+
+// @if $showContestInfoOnMatches == true {
+//   .card-scroll-list {
+//     overflow-y: auto;
+//     height: calc(100vh - 326px);
+//     height: calc((var(--vh, 1vh) * 100) - 326px);
+//     -webkit-overflow-scrolling: touch;
+//   }
+// }
+
+.scroll-area{
+  overflow-y: auto;
+  height: calc(100vh - 221px);
+  height: calc((var(--vh, 1vh) * 100) - 221px);
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+.leaders-scrollable-group {
+  height: calc(100vh - 259px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: calc((var(--vh, 1vh) * 100) - 259px);
+  width: 100%;
 }
 }
 
@@ -841,8 +963,7 @@ body .page-wrapper .page-main-header {
 }
 
 .main-pages-scrollarea {
-  height: calc(100vh - 144px);
-  height: calc((var(--vh, 1vh) * 100) - 144px );
+  height: calc(100vh - 144px);  
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;

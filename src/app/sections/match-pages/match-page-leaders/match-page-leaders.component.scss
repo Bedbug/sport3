@@ -45,8 +45,7 @@
 .leaders-scrollable-group {
   height: calc(100vh - 259px);
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: calc((var(--vh, 1vh) * 100) - 259px);
+  -webkit-overflow-scrolling: touch;  
   width: 100%;
 }
 

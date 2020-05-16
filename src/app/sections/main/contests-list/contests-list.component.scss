@@ -95,8 +95,7 @@ color: #000;
 
 .contest-list-scrollable-area{
   width: 100%;
-  height: calc(100vh - 369px);  
-  height: calc((var(--vh, 1vh) * 100) - 410px);
+  height: calc(100vh - 410px);    
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0;    
@@ -109,6 +108,12 @@ color: #000;
 .btn-sportimo{
   min-width: 100%;
   padding: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .contest-list-scrollable-area{
+    height: calc((var(--vh, 1vh) * 100) - 410px);    
+  }
 }
 
 @include media-breakpoint-down(md) {
