@@ -116,6 +116,7 @@ export class OnboardComponent implements OnInit {
 
         this.Authenticated = false;
 
+        
         if (this.defaults.sequence[0] == "S")
           this.Onboarding = x;
         else
@@ -133,12 +134,12 @@ export class OnboardComponent implements OnInit {
           console.log("done");
           clearTimeout(releaseTimout);
           releaseTimout = setTimeout(function(){   $('.loader-wrapper').fadeOut('slow');
-          $('.loader-wrapper').remove('slow'); }, 1000);
-          // if(this.firstLoad){
-           
-          //   this.firstLoad = false;
-          // }
+          $('.loader-wrapper').remove('slow'); }, 1000);      
         });
+
+        // Limit to 6 secs
+        setTimeout(function(){   $('.loader-wrapper').fadeOut('slow');
+        $('.loader-wrapper').remove('slow'); }, 6000);   
       }
 
     });
