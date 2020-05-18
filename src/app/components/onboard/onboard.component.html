@@ -82,7 +82,7 @@
           <div class="input-box">
             <div class="input-area">+971</div>
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
-              autocorrect="off" autocapitalize="none" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+              autocorrect="off" autocapitalize="none" [ngClass]="{ 'is-invalid': submitted && msisdnForm.password.errors }"
               placeholder="{{ 'enterMobilePhone' | translate }}" required>
           </div>
           <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors" type="submit"
