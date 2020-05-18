@@ -40,7 +40,7 @@
 
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
-<div *ngIf="LandingPage">
+<div [hidden]="!LandingPage">
   <div class="modal-card">
     <div class="landing-card">
       <div class="landing-card-content text-center text-white">
