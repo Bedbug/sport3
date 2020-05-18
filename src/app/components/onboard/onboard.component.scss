@@ -140,16 +140,21 @@
 .slide-prize-text{
     // background: url("~src/assets/images/sportimo/onboard/header_withblurs.png") no-repeat;
     // background-size: contain;
-   position: absolute;
-   margin:0 auto;
-   left: 0;
-   right: 0;
-   top: 23%;
-   text-align: center;
-   width: 80%;
-   font-size: 19px;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    width: 80%;
+    font-size: 19px;
     font-weight: 700;
     line-height: 25px;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
 }
 
 // .form-bottom{
