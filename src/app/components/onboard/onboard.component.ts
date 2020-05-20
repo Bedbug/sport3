@@ -115,12 +115,13 @@ export class OnboardComponent implements OnInit {
         })
 
         this.Authenticated = false;
-
+        this.Onboarding = true;
+        this.LandingPage = true;
+        var this_m = this;
+        // if (this.defaults.sequence[0] == "S")
         
-        if (this.defaults.sequence[0] == "S")
-          this.Onboarding = x;
-        else
-          this.LandingPage = true;
+        this_m.Onboarding = this_m.defaults.sequence[0] == "S";
+            this_m.LandingPage = this_m.defaults.sequence[0] != "S"; 
 
         let bgElement = $('.landing-background');
         bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
@@ -133,13 +134,16 @@ export class OnboardComponent implements OnInit {
         Pace.on('done', function() {
           console.log("done");
           clearTimeout(releaseTimout);
-          releaseTimout = setTimeout(function(){   $('.loader-wrapper').fadeOut('slow');
-          $('.loader-wrapper').remove('slow'); }, 1000);      
+          releaseTimout = setTimeout(function(){
+            
+              $('.loader-wrapper').fadeOut('slow');
+          $('.loader-wrapper').remove('slow'); }, 500);      
         });
 
         // Limit to 6 secs
-        setTimeout(function(){   $('.loader-wrapper').fadeOut('slow');
-        $('.loader-wrapper').remove('slow'); }, 6000);   
+        setTimeout(function(){ 
+                $('.loader-wrapper').fadeOut('slow');
+        $('.loader-wrapper').remove('slow'); }, 7000);   
       }
 
     });
