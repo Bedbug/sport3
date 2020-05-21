@@ -444,7 +444,7 @@ export class SportimoService {
       this.advanceTimelineSegment(data);
     } else if (data.type == "Match_Reload") {
       this.reloadMatch(data);
-    } else if (data.type == "Card_resumed" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {
+    } else if (data.type == "Card_resumed" || data.type == "Card_Special_activated" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {
       this.updateCardStatus(data);
     } else if (data.type == "Match_full_time") {
       this.finalizeMatch(data);

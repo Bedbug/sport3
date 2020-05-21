@@ -33,6 +33,12 @@ export class CardComponent implements OnInit {
   terminationTimer: Subscription;
   cardTimerScale: number;
 
+  specialCount: number;
+  specialDPTimer: Subscription;
+  specialDPScale: number;
+
+  pointsTimeOut: any;
+
   getFormatedOption(text: string) {
     const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
     const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name['en'];
@@ -63,17 +69,22 @@ export class CardComponent implements OnInit {
   constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
 
   ngOnInit() {
+    console.log("Inits");
 
-    setTimeout(() => {
+    this.pointsTimeOut = setTimeout(() => {
       // this.cardData.status = 0;
       // this.cardData.activationTime = moment().utc().add('30', 's').toDate();
 
 
       if (this.cardData && this.cardData.status != 2) {
+        console.log("This is one");
+
         this.calculatePointsAndTimers();
       }
     });
   }
+
+  count = 0;
 
   ngAfterViewInit() {
     // this.cardData.status = 0;
@@ -84,6 +95,15 @@ export class CardComponent implements OnInit {
   }
 
   calculatePointsAndTimers() {
+
+    console.log(this.cardData.id + " | " + this.cardData.status);
+
+    if (this.cardData.status == 2) {
+      clearTimeout(this.pointsTimeOut);
+      return;
+    }
+
+
     // We need to deduct what timers are active
     if (this.cardData.status == 0) {
       // The card has not activated yet
@@ -101,8 +121,10 @@ export class CardComponent implements OnInit {
 
 
               if (x == this.activationCount + 1) {
+                this.activationTimer.unsubscribe();
                 this.cardData.status = 1;
                 this.activationScale = null;
+                console.log("This is two");
                 this.calculatePointsAndTimers();
               }
             })
@@ -110,10 +132,9 @@ export class CardComponent implements OnInit {
       }
     }
 
-    if (this.cardData.status == 1 && this.cardData.cardType !="Overall") {
+    if (this.cardData.status == 1 && this.cardData.cardType != "Overall") {
       // This card is activated
-      const point_spread = this.cardData.startPoints - this.cardData.endPoints;
-      const points_step = point_spread / (this.cardData.duration / 1000);
+
 
       let start = moment(this.cardData.activationTime).utc();
       let end = moment(this.cardData.terminationTime).utc();
@@ -125,18 +146,75 @@ export class CardComponent implements OnInit {
 
       this.terminationCount = Math.round(moment.duration(end.diff(now)).asSeconds());
 
+
       this.terminationTimer = timer(1000, 1000).pipe(
         take(this.terminationCount + 1)).subscribe(x => {
+
+          if (this.cardData.status == 2) {
+            this.terminationTimer.unsubscribe();
+            console.log(this.cardData.pointsAwarded);
+
+            this.currentPoints = this.cardData.pointsAwarded;
+            return;
+          }
+
+          if (moment(this.cardData.terminationTime).utc() > end) {
+            console.log("We have a change in time");
+             end = moment(this.cardData.terminationTime).utc();
+              now = moment().utc();
+
+            allDiff = moment.duration(end.diff(start)).asSeconds();
+            nowDiff = moment.duration(end.diff(now)).asSeconds();
+            traveledDiff = allDiff - nowDiff;
+
+            this.terminationCount = Math.round(moment.duration(end.diff(now)).asSeconds());
+
+          }
+          
+          const point_spread = this.cardData.startPoints - this.cardData.endPoints;
+          const points_step = point_spread / (this.cardData.duration / 1000);
+
           this.currentPoints = Math.round((points_step * (this.terminationCount - x)) + this.cardData.endPoints);
           this.cardTimerScale = 100 - (((traveledDiff + x) / allDiff) * 100); //100 - (100 * (x / this.terminationCount));
-          if (this.cardTimerScale < 0.1)
+
+          if (this.cardTimerScale < 0.1) {
             this.cardData.status = 2;
+            console.log("Timer Unsubscribed");
+            this.terminationTimer.unsubscribe();
+          }
         });
     }
 
   }
 
+  setSpecialSPTimmer() {
+    let timmerData = this.cardData.specials.DoublePoints;
+
+    let start = moment(timmerData.creationTime).utc();
+    let end = moment(timmerData.activationTime).utc();
+    let now = moment().utc();
+
+    let allDiff = moment.duration(end.diff(start)).asSeconds();
+    let nowDiff = moment.duration(end.diff(now)).asSeconds();
+    let traveledDiff = allDiff - nowDiff;
+
+    this.specialCount = Math.round(moment.duration(end.diff(now)).asSeconds());
+
+    this.specialDPTimer = timer(1000, 1000).pipe(
+      take(this.specialCount + 1)).subscribe(x => {
+        this.specialDPScale = 100 - (((traveledDiff + x) / allDiff) * 100); //100 - (100 * (x / this.terminationCount));
+        console.log(this.specialDPScale);
+        if (this.specialDPScale < 0.1) {
+          this.cardData.specials.DoublePoints.status = 2;
+          this.cardData.isDoublePoints = true;
+          this.specialDPTimer.unsubscribe();
+        }
+      });
+  }
+
   playSpecial(specialName: string) {
+
+
     if (this.isPlayingSpecial) return;
 
     if (this.cardData.status)
@@ -149,19 +227,27 @@ export class CardComponent implements OnInit {
     const postData = {};
     postData[specialName] = true;
     this.isPlayingSpecial = true;
-
+    console.log(specialName);
     this.playcardSubscription = this.sportimoService.playSpecial(this.cardData.id, postData)
       .subscribe(response => {
+        console.log(this.cardData);
+        console.log(response.userGameCard);
+        this.cardData.specials = response.userGamecard.specials;
+        if (this.cardData.specials.DoublePoints.status == 1) {
+          this.setSpecialSPTimmer();
+        }
+
         this.isPlayingSpecial = false;
       });
-
   }
 
-  parseNumbers(text:string){
-    if(text)
-    return this.sportUtils.parseNumbers(text,this.translate.currentLang == 'fa');
+
+
+  parseNumbers(text: string) {
+    if (text)
+      return this.sportUtils.parseNumbers(text, this.translate.currentLang == 'fa');
     else
-    return "";
+      return "";
   }
 
   ngOnDestroy() {
@@ -173,6 +259,9 @@ export class CardComponent implements OnInit {
 
     if (this.terminationTimer)
       this.terminationTimer.unsubscribe();
+
+    if (this.specialDPTimer)
+      this.specialDPTimer.unsubscribe();
   }
 
 

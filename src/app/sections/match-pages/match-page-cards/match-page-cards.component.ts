@@ -77,6 +77,8 @@ export class MatchPageCardsComponent implements OnInit {
     this.sportimoService.getCurrentLiveMatchData()
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe(x => {
+      console.log("Live Match Data Updated!");
+      
       this.liveMatch = x;
       this.userScore = this.sportimoService.getMatchScore();
     });
@@ -120,6 +122,13 @@ export class MatchPageCardsComponent implements OnInit {
     var doubleTimeUsed = this.liveMatch.playedCards.filter(x => x.isDoubleTime).length;
     var specialsUsed = doublePointsUsed + doubleTimeUsed;
     return this.liveMatch.matchData.settings.gameCards.specials - specialsUsed;
+  }
+
+
+  get allCards(){
+    if (this.liveMatch && this.liveMatch.playedCards)
+    return this.liveMatch.playedCards;
+  return [];
   }
 
   get wonCards() {

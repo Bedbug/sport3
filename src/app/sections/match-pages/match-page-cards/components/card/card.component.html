@@ -17,7 +17,9 @@
         
       </div>
       <div class="powers">
-        <div class="double-points" [class.active]="cardData.isDoublePoints" [class.isClickable]="!cardData.isDoublePoints || isPlayingSpecial" (click)="playSpecial('doublePoints')">x2</div>
+        <div class="double-points" [class.active]="cardData.isDoublePoints" [class.isClickable]="!cardData.isDoublePoints || isPlayingSpecial" (click)="playSpecial('doublePoints')">x2
+          <div [class.double-points-timer]="cardData.specials.DoublePoints.status == 1" [ngStyle]="{'height': specialDPScale +'%'}"></div>
+        </div>
         <div class="double-time" [class.active]="cardData.isDoubleTime" [class.isClickable]="!cardData.isDoubleTime || isPlayingSpecial" (click)="playSpecial('doubleTime')">
           <div class="double-time-icon">
             <div class="power-icon icn-stopwatch"></div>

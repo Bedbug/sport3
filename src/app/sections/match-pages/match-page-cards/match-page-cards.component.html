@@ -79,7 +79,7 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
           <ul class="card-scroll-list">
-            <li *ngFor="let playedCard of liveMatch?.playedCards">
+            <li *ngFor="let playedCard of allCards">
               <app-card [cardData]="playedCard"></app-card>
             </li>
           </ul>

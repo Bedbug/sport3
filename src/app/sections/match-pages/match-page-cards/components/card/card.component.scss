@@ -51,15 +51,24 @@
 }
 .double-points,
 .double-time {
+  position: relative;
   width: 37px;
   height: 38px;
   background-color: #65676a;
-  opacity: 0.28;
+  opacity: 0.5;
 }
 
 .double-points.active,
 .double-time.active {
   opacity: 1;
+}
+
+.double-points-timer{
+  position: absolute;
+    bottom: 0;
+    width: 37px;
+    height: 36px;
+    background-color: #69ef69;
 }
 
 .double-points {
