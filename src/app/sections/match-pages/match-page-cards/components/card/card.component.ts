@@ -160,15 +160,9 @@ export class CardComponent implements OnInit {
 
           if (moment(this.cardData.terminationTime).utc() > end) {
             console.log("We have a change in time");
-             end = moment(this.cardData.terminationTime).utc();
-              now = moment().utc();
-
-            allDiff = moment.duration(end.diff(start)).asSeconds();
-            nowDiff = moment.duration(end.diff(now)).asSeconds();
-            traveledDiff = allDiff - nowDiff;
-
-            this.terminationCount = Math.round(moment.duration(end.diff(now)).asSeconds());
-
+            this.terminationTimer.unsubscribe();
+            this.calculatePointsAndTimers();
+            return;
           }
           
           const point_spread = this.cardData.startPoints - this.cardData.endPoints;
@@ -176,7 +170,7 @@ export class CardComponent implements OnInit {
 
           this.currentPoints = Math.round((points_step * (this.terminationCount - x)) + this.cardData.endPoints);
           this.cardTimerScale = 100 - (((traveledDiff + x) / allDiff) * 100); //100 - (100 * (x / this.terminationCount));
-
+          console.log(x+":x | "+this.terminationCount+" | "+ this.cardTimerScale);
           if (this.cardTimerScale < 0.1) {
             this.cardData.status = 2;
             console.log("Timer Unsubscribed");
