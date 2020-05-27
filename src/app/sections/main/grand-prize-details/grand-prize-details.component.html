@@ -92,7 +92,7 @@
               </div>
               <div class="prize-text">
                 <div class="prize-text-title">{{eachPrize?.prize.name[translate.currentLang]}}</div>
-                <div class="prize-text-body">{{strippedPrizedText(eachPrize?.prize.text[this.translate.currentLang])}}
+                <div *ngIf="eachPrize?.prize.text" class="prize-text-body">{{strippedPrizedText(eachPrize?.prize.text[this.translate.currentLang])}}
                 </div>
               </div>
             </div>

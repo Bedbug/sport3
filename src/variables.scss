@@ -15,11 +15,11 @@ $theme-font: IranSans;
 
 //  CARDS
 $card-side-lost: transparent;
-$card-side-won: #009bff;
-$card-side-active: #00d600;
-$card-lost-color:#666a6d;
-$card-won-color:#005a93;
-$card-active-color:#007600;
+$card-side-won:  #00d600;
+$card-side-active: #009bff;
+$card-lost-color:red;
+$card-won-color:#007600;
+$card-active-color:#005a93;
 
 // GrandPrize Boxes
 $grandPrizeTopRowMinHeight: 90px;

@@ -44,21 +44,24 @@
   <div class="modal-card">
     <div class="landing-card">
       <div class="landing-card-content text-center text-white">
+     
+        <div *ngIf="defaults.landingPage.singleSlideText?.en" 
+        style="display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
+    margin-bottom: 25px;"
+     class="slide-prize-header text-center" [innerHTML]="defaults.landingPage.singleSlideText[translate.currentLang]"></div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators" *ngIf="defaults.landingPage.slidesShow.length>1">
-            <li *ngIf="defaults.landingPage.slidesShow[0]" data-target="#carouselExampleIndicators" data-slide-to="0"
-              class="active"></li>
-            <li *ngIf="defaults.landingPage.slidesShow[1]" data-target="#carouselExampleIndicators" data-slide-to="1">
-            </li>
-            <li *ngIf="defaults.landingPage.slidesShow[2]" data-target="#carouselExampleIndicators" data-slide-to="2">
-            </li>
-          </ol>
+         
           <div class="carousel-inner">
             <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
               [class.active]="i==0">
               <div style="max-width:230px;margin: auto;">
-                <div class="slide-prize-header text-center" [innerHTML]="slide.header[translate.currentLang]"></div>
+                
+                <div *ngIf="!defaults.landingPage.singleSlideText?.en" class="slide-prize-header text-center" [innerHTML]="slide.header[translate.currentLang]"></div>
                 <img class="d-block w-100" [src]="slide.image" alt="First slide">
                 <div class="slide-prize-container">
                   <img class="slide-prize-image" src="/assets/images/sportimo/onboard/header_withblurs.png" alt="">
@@ -66,6 +69,16 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="carousel-indicators-container">
+            <ol class="carousel-indicators" *ngIf="defaults.landingPage.slidesShow.length>1">
+              <li *ngIf="defaults.landingPage.slidesShow[0]" data-target="#carouselExampleIndicators" data-slide-to="0"
+                class="active"></li>
+              <li *ngIf="defaults.landingPage.slidesShow[1]" data-target="#carouselExampleIndicators" data-slide-to="1">
+              </li>
+              <li *ngIf="defaults.landingPage.slidesShow[2]" data-target="#carouselExampleIndicators" data-slide-to="2">
+              </li>
+            </ol>
           </div>
           <a *ngIf="defaults.landingPage.slidesShow.length>1" class="carousel-control-prev"
             href="#carouselExampleIndicators" role="button" data-slide="prev">

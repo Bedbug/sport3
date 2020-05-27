@@ -103,9 +103,14 @@
 .landing-card-content{
   display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     position: relative;
     height: 100%;
+}
+
+.carousel-indicators-container{
+  height: 50px;
+  position: relative;
 }
 
 .carousel-indicators li {
@@ -119,11 +124,11 @@
   // margin: 20px auto;
     font-size: 25px;
   font-size: 25px;
-    font-weight: 700;
-    line-height: 25px;    
+    // font-weight: 700;
+    // line-height: 25px;    
     margin-bottom: 10px;
     
-    height: 130px;
+    // height: 130px;
 }
 
 .slide-prize-container{
@@ -139,7 +144,7 @@
 }
 
 .carousel-indicators{
-  bottom: -38px;
+  bottom: 0;
 }
 
 .slide-prize-text{
