@@ -106,6 +106,8 @@ export class OnboardComponent implements OnInit {
 
     // Get value from Service
     this.onBoardService.onboardModalIsActive.subscribe(x => {
+      console.log(x);
+      
       if (x) {
         this.defaults = this.onBoardService.defaults;
         this.appName = this.onBoardService.appName;
@@ -144,6 +146,8 @@ export class OnboardComponent implements OnInit {
         setTimeout(function(){ 
                 $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow'); }, 7000);   
+      }else{
+        this.Authenticated  = true;
       }
 
     });

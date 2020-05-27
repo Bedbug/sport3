@@ -19,21 +19,22 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private Config: ConfigService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
-
+      
+        
         // Always sign in when loading
-        // if (this.currentUserValue && this.currentUserValue.token) {
-        //     let that = this;
-        //     this.Config.inited.subscribe(hasInited => {
-        //         // if(!hasInited)
-        //         // console.log("Not Yet");
+        if (this.currentUserValue && this.currentUserValue.token) {
+            let that = this;
+            this.Config.inited.subscribe(hasInited => {
+                // if(!hasInited)
+                // console.log("Not Yet");
 
-        //         if (hasInited) {
-        //             that.singleSignOn().subscribe()
-        //         }
+                if (hasInited) {
+                    that.singleSignOn().subscribe()
+                }
 
-        //     })
-        //     // setTimeout(function () { that.singleSignOn().subscribe() },5000);
-        // }
+            })
+            // setTimeout(function () { that.singleSignOn().subscribe() },5000);
+        }
     }
 
     public get currentUserValue(): User {

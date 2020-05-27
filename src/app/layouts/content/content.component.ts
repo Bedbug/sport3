@@ -65,9 +65,10 @@ export class ContentComponent implements OnInit {
            
       let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
       
-      if (parsedFirst != null) {
+      if (parsedFirst != null && onBoardingConfiguration) {
         this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
       }else{
+        this.onBoardService.Hide();
         $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow');
       }
