@@ -11,7 +11,7 @@
             <!-- <button (click)="joinContest()" [disabled]="joiningContest" *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
           <span translate>Join</span> {{contestDetails?.subscriptionPrice}}<i class="coin"></i></button> -->
             <button (click)="joinContest()" [disabled]="joiningContest"
-              *ngIf="!contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
+              *ngIf="contestDetails && !contestDetails?.isSubscribed || !isLoggedIn" class="btn btn-sportimo col-12">
               <div *ngIf="contestDetails?.subscriptionPrice && contestDetails?.subscriptionPrice>0"><span
                   translate>Join</span> {{parseNumbers(contestDetails?.subscriptionPrice)}}<i class="coin"></i></div>
               <div *ngIf="!contestDetails?.subscriptionPrice || contestDetails?.subscriptionPrice==0"><span
