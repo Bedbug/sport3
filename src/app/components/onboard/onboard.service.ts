@@ -35,6 +35,7 @@ export class OnBoardService {
     ],
     landingPage:{
       background:"",
+      singleSlideText: null,
       terms:"localizedText",
       slidesShow:[
         {

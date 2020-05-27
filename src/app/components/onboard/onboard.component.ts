@@ -62,6 +62,7 @@ export class OnboardComponent implements OnInit {
     ],
     landingPage: {
       background: "",
+      singleSlideText:null,
       terms: "localizedText",
       slidesShow: [
         {
