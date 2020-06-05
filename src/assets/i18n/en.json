@@ -179,14 +179,17 @@
 	"Yesterday's Top Scorers": "Last Matches Top Scorers",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You:": "You:",
 	"Your chances:": "Your chances: ",
+	"_action": "",
 	"activation time:": "activation time:",
 	"availableCards": "Available Cards",
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
 	"availablePowerups": "Available Powerups",
 	"availablePowerupsText": "These are the remaining available Powerups (Double Up and Extend Play) you can play during this match",
+	"card-activating": "Activating",
+	"card-activating-preset": "Activating in: {{value}}'",
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
 	"correct": "correct",
@@ -207,20 +210,37 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "",
 	"matchFreePlay": "Free to Play",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pts": " pts",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "<b>Welcome back!</b><br>Enter your PIN to keep playing.",
+	"susbcription_message_ACTIVEFREEPERIOD": "<b>Welcome back!</b><br>Re-Subscribe and keep playing for Free.",
+	"susbcription_message_ACTIVEFREEPERIOD_action": "Re-Subscribe",
 	"susbcription_message_ACTIVE_action": "PLAY",
-	"susbcription_message_ACTIVEFREEPERIOD":"<b>Welcome back!</b><br>Re-Subscribe and keep playing for Free.",
-	"susbcription_message_ACTIVEFREEPERIOD_action": "Re-Subscribe",	
 	"susbcription_message_ENTER": "Enter {{value}}",
 	"susbcription_message_UNKNOWN": "<b>Welcome to {{value}}!<br>Join the fun.</b>",
 	"susbcription_message_UNKNOWN_action": "Play for FREE",
 	"susbcription_message_UNSUB": "<b>Welcome back!</b><br>Re-Subscribe and keep playing.",
-	"susbcription_message_UNSUB_action": "Re-Subscribe",
 	"susbcription_message_UNSUBWITHCOINS": "<b>Welcome back!</b><br>Re-Subscribe or keep playing with your existing coins.",
 	"susbcription_message_UNSUBWITHCOINS_action": "Re-Subscribe",
-	
+	"susbcription_message_UNSUB_action": "Re-Subscribe",
 	"tip": {
 		"1": "Tap here to play your cards!",
 		"2": "Tap to play a 'Goal' card"

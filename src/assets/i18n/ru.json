@@ -179,14 +179,17 @@
 	"Yesterday's Top Scorers": "Топ бомбардиров последних матчей",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\n          play cards": "Чтобы разыграть карты, вам необходимо иметь активную подписку",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You:": "Вы:",
 	"Your chances:": "Ваши баллы: ",
+	"_action": "",
 	"activation time:": "Время активации:",
 	"availableCards": "Доступные карты",
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
 	"availablePowerups": "Доступные усилители",
 	"availablePowerupsText": "Это имеющиеся у вас Усилители (Удвоение и Продление), которые вы можете разыграть в течение этого матча",
+	"card-activating": "",
+	"card-activating-preset": "",
 	"coinsToPlay": "Играть за {{value}} монет",
 	"contest_loc_key": "Турнир",
 	"correct": "верно",
@@ -207,6 +210,24 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "",
 	"matchFreePlay": "Играть бесплатно",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pts": " очк",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "",

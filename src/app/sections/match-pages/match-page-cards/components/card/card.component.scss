@@ -1,6 +1,7 @@
 @import "src/variables.scss";
 
 .gamecard {
+  position: relative;
   height: 80px;
   width: 100%;
   background-color: #000000;
@@ -106,7 +107,7 @@
 
 .not-active .details,
 .not-active .info {
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .details {
@@ -188,3 +189,44 @@
 .lost .progress {
   display: none;
 }
+
+.activating{
+  display: none;
+  color: white;
+    position: absolute;
+    display: none;
+    right: 100px;
+    bottom: 0px;
+}
+
+.activating p{
+ margin-bottom: 0;
+}
+
+.not-active .activating{
+  display: block;
+}
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}

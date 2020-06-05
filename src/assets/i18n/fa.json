@@ -179,14 +179,17 @@
 	"Yesterday's Top Scorers": "بهترین گلزنان دیروز",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You:": "شما:",
 	"Your chances:": "شانس‌های شما: ",
+	"_action": "",
 	"activation time:": "زمان فعالسازی",
 	"availableCards": "",
 	"availableCardsText": "",
 	"availablePowerups": "",
 	"availablePowerupsText": "",
+	"card-activating": "",
+	"card-activating-preset": "",
 	"coinsToPlay": "",
 	"contest_loc_key": "مسابقه",
 	"correct": "صحیح",
@@ -207,6 +210,24 @@
 	"joinMatchNoCoins": "",
 	"kazzach": "",
 	"matchFreePlay": "",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pts": "امتیاز",
 	"russian": "",
 	"susbcription_message_ACTIVE": "",

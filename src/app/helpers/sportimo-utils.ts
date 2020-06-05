@@ -109,7 +109,7 @@ export class SportimoUtils {
     }
   }
 
-  parseDate(date: string, jalali: boolean, format: string = 'D/MM/YYYY', jalaliFormat:string = 'jD jMM jYYYY') {
+  parseDate(date: string, jalali: boolean, format: string = 'D/MM/YY', jalaliFormat:string = 'jD jMM jYY') {
     // console.log(date);
     if (!date)
       return "";
