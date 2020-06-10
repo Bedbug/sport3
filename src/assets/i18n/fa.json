@@ -20,8 +20,6 @@
 	"Card_lost_text": "کارت-ازبین رفته-متن",
 	"Card_won": "",
 	"Card_won_text": "کارت-برنده-متن",
-	"Cards Played:": "کارت‌های بازی‌شده :",
-	"Cards won:": "کارت‌های برنده‌شده:",
 	"Career Statistics": "آمار کلی",
 	"Contests": "مسابقه‌ها",
 	"Continue": "ادامه",
@@ -47,7 +45,6 @@
 	"Fouls suffered": "خطاهای انجام‌شده",
 	"GD": "تفاضل",
 	"GK": "دورازه‌بان",
-	"Games Played:": "بازی‌های انجام شده:",
 	"Games played": "بازی‌های انجام شده",
 	"Get": "دریافت",
 	"Get PIN": "دریافت کد",
@@ -62,7 +59,6 @@
 	"Info": "اطلاعات",
 	"Initiate Demo Play": "آغاز دموی بازی",
 	"Initiate Disclaimer": "سلب مسوولیت",
-	"Instant Cards Played:": "کارت‌های آنی بازی‌شده",
 	"Interceptions": "جلوگیری",
 	"Join": "ورود",
 	"Join Contest": "ورود به مسابقه",
@@ -74,7 +70,6 @@
 	"L": "ل",
 	"LIVE": "زنده",
 	"Language": "زبان",
-	"Last 5 games": "آخرین ۵ باری",
 	"Last Match": "آخرین بازی",
 	"Leaders": "بیشترین امتیازها",
 	"Live": "زنده",
@@ -98,8 +93,6 @@
 	"Now": "اکنون",
 	"Offside": "آفساید",
 	"Offsides": "آفساید‌ها",
-	"Other Players:": "دیگر بازیگران:",
-	"Overall Cards Played:": "کل کارت‌های بازی‌شده",
 	"Overtime_First_Half_Ends": "پایان وقت‌‌های اضافه نیمه اول",
 	"Overtime_First_Half_Starts": "آغاز وقت‌های اضافه نیمه اول",
 	"Overtime_Second_Half_Ends": "پایان وفت‌های اضافه نیمه دوم",
@@ -124,7 +117,6 @@
 	"Please enter your new password": "",
 	"Please insert the 4-digit PIN code sent to your mobile number": "کد یکبار مصرف چهاررقمی خود را وارد کنید",
 	"Points": "امتیاز‌ها",
-	"Points/game:": "امتیاز/بازی:",
 	"Pregame": "",
 	"Privacy Policy": "سیاست حفظ حریم خصوصی",
 	"Prize": "حایزه",
@@ -180,8 +172,7 @@
 	"Yesterday's Top Scorers": "بهترین گلزنان دیروز",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\n          play cards": "",
-	"You:": "شما:",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "شانس‌های شما: ",
 	"_action": "",
 	"availableCards": "",
@@ -192,7 +183,6 @@
 	"card-activating-preset": "",
 	"coinsToPlay": "",
 	"contest_loc_key": "مسابقه",
-	"correct": "صحیح",
 	"english": "English",
 	"enterMobilePhone": "",
 	"errors": {
@@ -224,7 +214,10 @@
 		"4061": "",
 		"4062": "",
 		"10001": "بازی پایان یافته است",
-		"10002": "کارت منقضی شده است"
+		"10002": "کارت منقضی شده است",
+		"10005": "",
+		"10006": "",
+		"10007": ""
 	},
 	"farsi": "فارسی",
 	"grandprize_loc_key": "جایزه بزرگ",
@@ -232,6 +225,24 @@
 	"joinMatchNoCoins": "",
 	"kazzach": "",
 	"matchFreePlay": "",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pts": "امتیاز",
 	"russian": "",
 	"susbcription_message_ACTIVE": "",

@@ -29,7 +29,7 @@
 
       </div>
 
-      <div class="winner-card-body" *ngIf="stats && stats.user.stats">
+      <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
         <div class="profile-stats">
           <div class="profile-stat-title" translate>Games Played:</div>
           <div class="profile-stat-value">{{stats?.user.stats.matchesPlayed}}</div>
@@ -49,14 +49,11 @@
             </ngx-charts-bar-vertical>
           </div>
           <div class="chart-footer" translate>Last 5 games</div>
-
-          <!-- <div class="col-8 prize-info">1st Prize, UEFA Champions LEgaue</div>
-            <div class="col-4 prize-date text-right">28/06/2018</div> -->
         </div>
-      </div>
+      </div> -->
 
       <!-- Overall Cards -->
-      <div class="winner-card-body" *ngIf="stats && stats.user.stats">
+      <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
         <div class="polarchart-header"><span translate>Overall Cards Played: </span>{{stats?.user.stats.overallCardsPlayed}} </div>
         <div class="polarchart-container">
           <canvas baseChart [options]="ChartOprions" height="180px" width="180px" [data]="OveralltChartData" [labels]="OverallChartLabels" [chartType]="doughnutChartType"
@@ -73,10 +70,10 @@
               <div class="player-chart-label"><div class="title" translate>Other Players:</div><div class="text">{{this.data.overall.all}}% <span translate>correct</span></div></div>
             </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Instant Cards -->
-      <div class="winner-card-body" *ngIf="stats && stats.user.stats">
+      <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
           <div class="polarchart-header"><span translate>Instant Cards Played: </span>{{stats?.user.stats.instantCardsPlayed}} </div>
           <div class="polarchart-container">
             <canvas baseChart [options]="ChartOprions" height="180px" width="180px" [data]="InstantChartData" [labels]="OverallChartLabels" [chartType]="doughnutChartType"
@@ -93,7 +90,7 @@
                 <div class="player-chart-label"><div class="title" translate>Other Players:</div><div class="text">{{this.data.instant.all}}% <span translate>correct</span></div></div>
               </div>
           </div>
-        </div>
+        </div> -->
     </div>
   </div>
 </div>

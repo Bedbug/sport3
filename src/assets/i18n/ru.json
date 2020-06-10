@@ -20,8 +20,6 @@
 	"Card_lost_text": "Карта не сыграла",
 	"Card_won": "Карта сыграла",
 	"Card_won_text": "Карта сыграла",
-	"Cards Played:": "Карт сыграно:",
-	"Cards won:": "Выигравшие карты:",
 	"Career Statistics": "Статистика карьеры",
 	"Contests": "Турниры",
 	"Continue": "Продолжить",
@@ -47,7 +45,6 @@
 	"Fouls suffered": "Получено фолов",
 	"GD": "РМ",
 	"GK": "ГК",
-	"Games Played:": "Игр сыграно:",
 	"Games played": "Игры",
 	"Get": "Получить",
 	"Get PIN": "Получить ПИН",
@@ -62,7 +59,6 @@
 	"Info": "Инфо",
 	"Initiate Demo Play": "Запустить демо игру",
 	"Initiate Disclaimer": "Эта опция позволит вам воспроизвести матч в 10 быстрее обычного в целях демонстрации. Однако в виду недоступности событий/живой трансляции матча, вы не сможете разыгрывать карты LIVE в обычном режиме, то есть карты LIVE не буду засчитаны.",
-	"Instant Cards Played:": "Мгновенных карт сыграно:",
 	"Interceptions": "Перехваты",
 	"Join": "Участвовать",
 	"Join Contest": "Участвовать в Турнире",
@@ -74,7 +70,6 @@
 	"L": "П",
 	"LIVE": "LIVE",
 	"Language": "Язык",
-	"Last 5 games": "Последние 5 игр",
 	"Last Match": "Последний матч",
 	"Leaders": "Лидеры",
 	"Live": "Live",
@@ -98,8 +93,6 @@
 	"Now": "Сейчас",
 	"Offside": "Офсайд",
 	"Offsides": "Офсайды",
-	"Other Players:": "Другие Игроки:",
-	"Overall Cards Played:": "Всего Карт разыграно:",
 	"Overtime_First_Half_Ends": "Конец первой части овертайма",
 	"Overtime_First_Half_Starts": "Начало первой части овертайма",
 	"Overtime_Second_Half_Ends": "Конец второй части овертайма",
@@ -124,7 +117,6 @@
 	"Please enter your new password": "Пожалуйста, введите новый пароль",
 	"Please insert the 4-digit PIN code sent to your mobile number": "Пожалуйста, введите 4-значный ПИН-код, отправленный на ваш телефон",
 	"Points": "Очки",
-	"Points/game:": "Очков за игру в среднем:",
 	"Pregame": "Предыгра",
 	"Privacy Policy": "Политика конфиденциальности",
 	"Prize": "Приз ",
@@ -180,8 +172,7 @@
 	"Yesterday's Top Scorers": "Топ бомбардиров последних матчей",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\n          play cards": "",
-	"You:": "Вы:",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "Ваши баллы: ",
 	"_action": "",
 	"availableCards": "Доступные карты",
@@ -192,7 +183,6 @@
 	"card-activating-preset": "",
 	"coinsToPlay": "Играть за {{value}} монет",
 	"contest_loc_key": "Турнир",
-	"correct": "верно",
 	"english": "English",
 	"enterMobilePhone": "",
 	"errors": {
@@ -224,7 +214,10 @@
 		"4061": "",
 		"4062": "",
 		"10001": "Этот матч закончился.",
-		"10002": "Эта карта истекла."
+		"10002": "Эта карта истекла.",
+		"10005": "",
+		"10006": "",
+		"10007": ""
 	},
 	"farsi": "فارسی",
 	"grandprize_loc_key": "Главный приз",
@@ -232,6 +225,24 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "",
 	"matchFreePlay": "Играть бесплатно",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pts": " очк",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "",

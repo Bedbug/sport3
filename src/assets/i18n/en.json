@@ -20,8 +20,6 @@
 	"Card_lost_text": "You just lost a card.",
 	"Card_won": "Card won",
 	"Card_won_text": "You just won a card.",
-	"Cards Played:": "Cards Played:",
-	"Cards won:": "Cards won:",
 	"Career Statistics": "Career Statistics",
 	"Contests": "Contests",
 	"Continue": "Continue",
@@ -47,7 +45,6 @@
 	"Fouls suffered": "Fouls suffered",
 	"GD": "GD",
 	"GK": "GK",
-	"Games Played:": "Games Played:",
 	"Games played": "Games played",
 	"Get": "Get",
 	"Get PIN": "Get PIN",
@@ -62,7 +59,6 @@
 	"Info": "Info",
 	"Initiate Demo Play": "Initiate Demo Play",
 	"Initiate Disclaimer": "This feature will enable you to replay the match ten times faster than normal, for demonstration purposes. But due to the lack of real-time events/playback of match, you will not be able to play the Live cards normally, ie the live cards will not be able to be settled.",
-	"Instant Cards Played:": "Instant Cards Played:",
 	"Interceptions": "Interceptions",
 	"Join": "Join",
 	"Join Contest": "Join Contest",
@@ -74,7 +70,6 @@
 	"L": "L",
 	"LIVE": "LIVE",
 	"Language": "Language",
-	"Last 5 games": "Last 5 games",
 	"Last Match": "Last Match",
 	"Leaders": "Leaders",
 	"Live": "Play Live",
@@ -98,8 +93,6 @@
 	"Now": "Now",
 	"Offside": "Offside",
 	"Offsides": "Offsides",
-	"Other Players:": "Other Players:",
-	"Overall Cards Played:": "Overall Cards Played:",
 	"Overtime_First_Half_Ends": "Overtime First Half Ends",
 	"Overtime_First_Half_Starts": "Overtime First Half Starts",
 	"Overtime_Second_Half_Ends": "Overtime Second Half Ends",
@@ -124,7 +117,6 @@
 	"Please enter your new password": "Please enter your new password",
 	"Please insert the 4-digit PIN code sent to your mobile number": "Please insert the 4-digit PIN code sent to your mobile number",
 	"Points": "Points",
-	"Points/game:": "Points/game:",
 	"Pregame": "Pre-game",
 	"Privacy Policy": "Privacy Policy",
 	"Prize": "Prize ",
@@ -180,8 +172,7 @@
 	"Yesterday's Top Scorers": "Last Matches Top Scorers",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\n          play cards": "",
-	"You:": "You:",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "Your chances: ",
 	"_action": "",
 	"availableCards": "Available Cards",
@@ -192,7 +183,6 @@
 	"card-activating-preset": "Activating in: {{value}}'",
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
-	"correct": "correct",
 	"english": "english",
 	"enterMobilePhone": "Enter mobile phone",
 	"errors": {
@@ -224,7 +214,10 @@
 		"4061": "This user has played already the allowed number of special Gamecards",
 		"4062": "Not enough time to activate this Double Points power-up card",
 		"10001": "This match has finished.",
-		"10002": "This card has expired."
+		"10002": "This card has expired.",
+		"10005": "This power up is already active",
+		"10006": "",
+		"10007": "No more power ups available"
 	},
 	"farsi": "فارسی",
 	"grandprize_loc_key": "Grand Prize",
@@ -232,6 +225,24 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "",
 	"matchFreePlay": "Free to Play",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pts": " pts",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "<b>Welcome back!</b><br>Enter your PIN to keep playing.",
