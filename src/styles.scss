@@ -17,6 +17,12 @@
   overflow:hidden;
 }
 
+@media (min-width: 992px){
+.background-container {  
+    background-color: rgba(0,0,0,0.3);
+}
+}
+
 .scorllable-area{
   width: 100%;
   height: calc(100vh - 93px);    
