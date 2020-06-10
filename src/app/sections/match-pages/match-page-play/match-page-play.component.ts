@@ -236,14 +236,17 @@ return;
       .subscribe(playedCard => {
         this.isSubmitingCard = false;
         
+        if(playedCard!=null){
         // Reload available to play cards
         this.playCard();
-        
         this.closeModal();        
         localStorage.setItem("hasplayedcard","true");
-
+        }
       }
-        , error => console.log('Error'))
+        , error => {
+          console.log('Error');
+          this.isSubmitingCard = false;
+        })
   }
 
   parseNumbers(text:string){

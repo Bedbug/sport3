@@ -4,6 +4,7 @@
 	"About Sportimo": "About",
 	"Achievements": "Achievements",
 	"Activate powerups:": "Activate powerups:",
+	"Activation timestamp:": "",
 	"Add to favorites": "Add to My Teams",
 	"All": "All",
 	"Already a member?": "Already a member? ",
@@ -179,11 +180,10 @@
 	"Yesterday's Top Scorers": "Last Matches Top Scorers",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"You:": "You:",
 	"Your chances:": "Your chances: ",
 	"_action": "",
-	"activation time:": "activation time:",
 	"availableCards": "Available Cards",
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
 	"availablePowerups": "Available Powerups",
@@ -201,6 +201,28 @@
 		"102": "You have to be subscribed to the match in order to view.",
 		"103": "This is not a scheduled Demo match.",
 		"104": "No user found with these credentials.",
+		"4000": "Body is lacking of the gamecardDefinitionId property",
+		"4001": "Body is lacking of the creationTime property or it is later than NOW in UTC",
+		"4002": "The references gamecardDefinitionId document contains options, but no optionId property for the selected option is included in the Body",
+		"4003": "Body is lacking of the minute property for a definition of type 'PresetInstant'",
+		"4004": "The minute property in the body for a definition of type 'PresetInstant' should be between 0 and 90",
+		"4040": "The referenced tournament id is not found",
+		"4041": "The referenced client id is not found",
+		"4042": "The gamecard definition id (gamecardDefinitionId in the body) does not correspond to an existing gamecard definition",
+		"4043": "The contest match id (matchId) is not found",
+		"4044": "The contest match id (matchId) does not reference a valid match",
+		"4050": "The referenced gamecardDefinitionId document is not in an active state",
+		"4051": "The creationTime in the body is before the creationTime in the gamecardDefinitionId document",
+		"4052": "You have reached the limit of allowed gamecards played in this match",
+		"4053": "There is at least another user Gamecard of the same referenced gamecardDefinitionId in an active state",
+		"4054": "A PresetInstant game card cannot be played at or earlier than the active match time",
+		"4055": "The referenced match is completed. No more gamecards can be played past the match's completion.",
+		"4056": "The gamecardDefinitionId document's status is not in an active state",
+		"4057": "The gamecardDefinitionId document's maxUserInstances have been reached already, no more cards of the same type can be played by this user",
+		"4058": "Instant cards of the same type cannot be played in the same timeframe.",
+		"4060": "Cannot add double time in an Overall type of gamecard",
+		"4061": "This user has played already the allowed number of special Gamecards",
+		"4062": "Not enough time to activate this Double Points power-up card",
 		"10001": "This match has finished.",
 		"10002": "This card has expired."
 	},
@@ -210,24 +232,6 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "",
 	"matchFreePlay": "Free to Play",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": " pts",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "<b>Welcome back!</b><br>Enter your PIN to keep playing.",

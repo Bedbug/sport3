@@ -25,19 +25,19 @@ export class ErrorInterceptor implements HttpInterceptor {
                 if (event instanceof HttpResponse) {
                     // do stuff with response if you want
                     if (event.body.errorCode) {
+                        console.log(event.body.errorCode);
                         // console.log(errorCodes[event.body.errorCode][this.translate.currentLang]);
                         this.errorDisplay.showError(event.body.errorCode);
                         // this.toastr.show(errorCodes[event.body.errorCode][this.translate.currentLang],event.body.errorCode);
                     }
                 }
-            }, (err => {
-                
+            }, (err => {                               
                 // if ([401, 403].indexOf(err.status) !== -1) {
                 //     // auto logout if 401 Unauthorized or 403 Forbidden response returned from api
                 //     this.authenticationService.logout();
                 //     location.reload(true);
                 // }
-
+                this.errorDisplay.showError(err.error.errorCode);
                 const error = err.statusText; //err.error.message ||
                 return throwError(error);
             })));

@@ -4,6 +4,7 @@
 	"About Sportimo": "درباره پا به توپ",
 	"Achievements": "افتخارات",
 	"Activate powerups:": "فعال سازی جایزه ها:",
+	"Activation timestamp:": "",
 	"Add to favorites": "اضافه کردن به علاقه‌مندی ها",
 	"All": "همه",
 	"Already a member?": "عضو هستید؟ ",
@@ -179,11 +180,10 @@
 	"Yesterday's Top Scorers": "بهترین گلزنان دیروز",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"You:": "شما:",
 	"Your chances:": "شانس‌های شما: ",
 	"_action": "",
-	"activation time:": "زمان فعالسازی",
 	"availableCards": "",
 	"availableCardsText": "",
 	"availablePowerups": "",
@@ -201,6 +201,28 @@
 		"102": "برای مشاهده‌ی بازی‌ها باید وارد مسابقه شوید",
 		"103": "این بک بازی‌ آزمایشی نیست",
 		"104": "کاربری به این نام یافت نشد",
+		"4000": "",
+		"4001": "",
+		"4002": "",
+		"4003": "",
+		"4004": "",
+		"4040": "",
+		"4041": "",
+		"4042": "",
+		"4043": "",
+		"4044": "",
+		"4050": "",
+		"4051": "",
+		"4052": "",
+		"4053": "",
+		"4054": "",
+		"4055": "",
+		"4056": "",
+		"4057": "",
+		"4058": "",
+		"4060": "",
+		"4061": "",
+		"4062": "",
 		"10001": "بازی پایان یافته است",
 		"10002": "کارت منقضی شده است"
 	},
@@ -210,24 +232,6 @@
 	"joinMatchNoCoins": "",
 	"kazzach": "",
 	"matchFreePlay": "",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": "امتیاز",
 	"russian": "",
 	"susbcription_message_ACTIVE": "",

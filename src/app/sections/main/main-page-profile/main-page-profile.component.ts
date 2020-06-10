@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label, SingleDataSet, Color } from 'ng2-charts'
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main-page-profile',
@@ -15,7 +15,11 @@ import { Router } from '@angular/router';
 })
 export class MainPageProfileComponent implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService, private sportimoService: SportimoService, private router: Router) { }
+  constructor(
+    private authenticationService: AuthenticationService, 
+    private sportimoService: SportimoService, 
+    private router: Router,
+    private route:ActivatedRoute,) { }
 
   user: User;
   ngUnsubscribe = new Subject();
@@ -107,7 +111,9 @@ export class MainPageProfileComponent implements OnInit {
   }
 
   openAvatarSelection() {
-    this.router.navigate(['/main/avatars']);
+    console.log(this.route.parent);
+    
+    this.router.navigate(['avatars'],{relativeTo:this.route.parent});
   }
 
   ngOnDestroy() {

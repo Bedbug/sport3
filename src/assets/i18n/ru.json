@@ -4,6 +4,7 @@
 	"About Sportimo": "О приложении",
 	"Achievements": "Достижения",
 	"Activate powerups:": "Активировать усилители:",
+	"Activation timestamp:": "",
 	"Add to favorites": "Добавить в мои команды",
 	"All": "Все",
 	"Already a member?": "Уже зарегистрированы? ",
@@ -179,11 +180,10 @@
 	"Yesterday's Top Scorers": "Топ бомбардиров последних матчей",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"You:": "Вы:",
 	"Your chances:": "Ваши баллы: ",
 	"_action": "",
-	"activation time:": "Время активации:",
 	"availableCards": "Доступные карты",
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
 	"availablePowerups": "Доступные усилители",
@@ -201,6 +201,28 @@
 		"102": "Вам нужно войти в Турнир, стобы посмотреть матчи.",
 		"103": "Это не запланированный Демо матч.",
 		"104": "Не найдено пользователя с такими данными.",
+		"4000": "",
+		"4001": "",
+		"4002": "",
+		"4003": "",
+		"4004": "",
+		"4040": "",
+		"4041": "",
+		"4042": "",
+		"4043": "",
+		"4044": "",
+		"4050": "",
+		"4051": "",
+		"4052": "",
+		"4053": "",
+		"4054": "",
+		"4055": "",
+		"4056": "",
+		"4057": "",
+		"4058": "",
+		"4060": "",
+		"4061": "",
+		"4062": "",
 		"10001": "Этот матч закончился.",
 		"10002": "Эта карта истекла."
 	},
@@ -210,24 +232,6 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "",
 	"matchFreePlay": "Играть бесплатно",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": " очк",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "",

@@ -321,9 +321,14 @@ export class SportimoService {
     cardSelections.segment = this.currentLiveMatch.value.matchData.state;
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecards`, cardSelections)
       .pipe(map(response => {
+        if(!response.error){
         this.currentLiveMatch.getValue().playedCards.push(response.userGamecard);
         this.currentLiveMatch.next(this.currentLiveMatch.value);
         return response.userGamecard;
+        }
+        else
+        return null;
+        
       }))
   }
   /*
