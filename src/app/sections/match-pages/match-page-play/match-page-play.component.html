@@ -212,7 +212,7 @@
               <p class="title" translate>Activate powerups:</p>
               <div class="power-container">
                 <div class="col-6 powerup isClickable"
-                  (click)="!isSubmitingCard && availableSpecialPlays >0 && cardSelections.isDoublePoints=!cardSelections.isDoublePoints"
+                  (click)="!isSubmitingCard && toggleDoublePoints(cardSelections)"
                   [class.active-power]="cardSelections.isDoublePoints">
                   <span translate>Double Points</span>
                   <div class="power-button double-points">
@@ -223,7 +223,7 @@
                 </div>
 
                 <div *ngIf="selectedCard?.duration > 0" class="col-6 powerup isClickable"
-                  (click)="!isSubmitingCard && availableSpecialPlays > 0 && cardSelections.isDoubleTime=!cardSelections.isDoubleTime"
+                  (click)="!isSubmitingCard && toggleDoubleTime(cardSelections)"
                   [class.active-power]="cardSelections.isDoubleTime">
                   <span translate>Double Time</span>
                   <div class="power-button double-time">

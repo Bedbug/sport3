@@ -62,6 +62,7 @@ export class MatchPagePlayComponent implements OnInit {
   hasJoinedContest: string;
   showPlayCardsPop: boolean;
   userScore: number;
+  tempPowersUsed: number = 0;
 
   constructor(
     private route: ActivatedRoute, 
@@ -133,7 +134,29 @@ export class MatchPagePlayComponent implements OnInit {
     var doublePointsUsed = this.liveMatch.playedCards.filter(x => x.isDoublePoints).length;
     var doubleTimeUsed = this.liveMatch.playedCards.filter(x => x.isDoubleTime).length;
     var specialsUsed = doublePointsUsed + doubleTimeUsed;
-    return this.liveMatch.matchData.settings.gameCards.specials - specialsUsed;
+    return this.liveMatch.matchData.settings.gameCards.specials - specialsUsed - this.tempPowersUsed;
+  }
+
+  toggleDoublePoints(cardSelections){
+    console.log(this.availableSpecialPlays, cardSelections.isDoublePoints);
+    
+    if(this.availableSpecialPlays > 0 && !cardSelections.isDoublePoints){
+      cardSelections.isDoublePoints = true;
+      this.tempPowersUsed = 1;
+    }else if(cardSelections.isDoublePoints){
+      cardSelections.isDoublePoints = false;
+      this.tempPowersUsed = 0;
+    }
+  }
+
+  toggleDoubleTime(cardSelections){
+    if(this.availableSpecialPlays > 0 && !cardSelections.isDoubleTime){
+      cardSelections.isDoubleTime = true;
+      this.tempPowersUsed = 1;
+    }else if(cardSelections.isDoubleTime){
+      cardSelections.isDoubleTime = false;
+      this.tempPowersUsed = 0;
+    }
   }
 
   get wonCards() {
@@ -230,6 +253,7 @@ return;
   }
 
   submitCard() {
+    this.tempPowersUsed = 0;
     this.isSubmitingCard = true;
     this.cardSelections.minute = this.selectedTime;
     this.sportimoService.submitUserCard(this.cardSelections)
