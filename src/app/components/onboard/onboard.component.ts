@@ -100,21 +100,20 @@ export class OnboardComponent implements OnInit {
 
     //   if(parsedFirst == 1){
     this.onBoardService.Hide();
-    //   }           
-    // } else {      
+    //   }
+    // } else {
     //   this.onBoardService.Show();
     // }
 
     // Get value from Service
     this.onBoardService.onboardModalIsActive.subscribe(x => {
-      console.log(x);
-      
+
       if (x) {
         this.defaults = this.onBoardService.defaults;
         this.appName = this.onBoardService.appName;
 
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
-          console.log(x);
+          // console.log(x);
         })
 
         this.Authenticated = false;
@@ -122,9 +121,9 @@ export class OnboardComponent implements OnInit {
         this.LandingPage = true;
         var this_m = this;
         // if (this.defaults.sequence[0] == "S")
-        
+
         this_m.Onboarding = this_m.defaults.sequence[0] == "S";
-            this_m.LandingPage = this_m.defaults.sequence[0] != "S"; 
+            this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
         let bgElement = $('.landing-background');
         bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
@@ -132,21 +131,21 @@ export class OnboardComponent implements OnInit {
 
         // Remove the loading screen
         // $('.loader-wrapper').fadeOut('slow');
-        // $('.loader-wrapper').remove('slow');  
+        // $('.loader-wrapper').remove('slow');
         var releaseTimout;
         Pace.on('done', function() {
-          console.log("done");
+          // console.log("done");
           clearTimeout(releaseTimout);
           releaseTimout = setTimeout(function(){
-            
+
               $('.loader-wrapper').fadeOut('slow');
-          $('.loader-wrapper').remove('slow'); }, 500);      
+          $('.loader-wrapper').remove('slow'); }, 500);
         });
 
         // Limit to 6 secs
-        setTimeout(function(){ 
+        setTimeout(function(){
                 $('.loader-wrapper').fadeOut('slow');
-        $('.loader-wrapper').remove('slow'); }, 7000);   
+        $('.loader-wrapper').remove('slow'); }, 7000);
       }else{
         this.Authenticated  = true;
       }
@@ -171,7 +170,7 @@ export class OnboardComponent implements OnInit {
     localStorage.setItem("isFirstGame", "1");
     this.Onboarding = false;
     if (this.defaults.sequence[0] == "S")
-      this.LandingPage = true;         
+      this.LandingPage = true;
   }
 
   closeLandingPage() {
@@ -223,7 +222,7 @@ export class OnboardComponent implements OnInit {
             this.Authenticated = true;
             if (this.defaults.sequence[0] == "L")
               this.Onboarding = true;
-            
+
               // User Registered - We can stop the metrics
               this.sportimoService.onboardingMetricsStop("").subscribe(x => {
                 console.log(x);

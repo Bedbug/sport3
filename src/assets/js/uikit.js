@@ -9212,7 +9212,7 @@
 
                 handler: function (e) {
 
-                    console.log(!this.draggable,!isTouch(e) && hasTextNodesOnly(e.target),e.button>0,this.length<2)
+                    // console.log(!this.draggable,!isTouch(e) && hasTextNodesOnly(e.target),e.button>0,this.length<2)
                     if (!this.draggable
                         || !isTouch(e) && hasTextNodesOnly(e.target)
                         || e.button > 0
@@ -9222,7 +9222,7 @@
                     }
 
                     this.start(e);
-                    console.log('down');
+                    // console.log('down');
                 }
 
             },
@@ -9281,7 +9281,7 @@
                 this.unbindMove = function () {
                     off();
                     this$1.unbindMove = null;
-                    console.log('unbind');
+                    // console.log('unbind');
                 };
                 on(window, 'scroll', this.unbindMove);
                 on(document, pointerUp, this.end, true);

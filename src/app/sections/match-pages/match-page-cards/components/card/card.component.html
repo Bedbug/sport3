@@ -3,14 +3,14 @@
   <div class="gamecard" [class.not-active]="cardData.status == 0 && cardData.cardType!='Overall'">
     <div class="activating" *ngIf="cardData.cardType!='PresetInstant'"><p class="loading" translate>card-activating</p></div>
     <div class="activating" *ngIf="cardData.status == 0 && cardData.cardType=='PresetInstant'"><p translate  [translateParams]="{value: cardData.minute}">card-activating-preset</p></div>
-    <div class="details">
+    <div class="details" (click)="showCardDetails()">
       <div class="icon">
         <div class="card-icon" [ngClass]="sportUtils.getIconBySprite(cardData?.image.sprite)"></div>
       </div>
       <div class="texts">
         <p class="event-name">{{cardData?.title[translate.currentLang]}}</p>
         <p class="event-team">{{getFormatedOption(cardData.text[translate.currentLang])}}</p>
-        <p *ngIf="cardData.status > 0" class="event-time"><span translate>activation time:</span> {{cardData.activationTime | date:"hh:mm:ss"}}</p>
+        <p *ngIf="cardData.status > 0 && showEventTime" class="event-time"><span translate>Activation timestamp:</span> {{cardData.activationTime | date:"hh:mm:ss"}}</p>
       </div>
     </div>
     <div class="info">

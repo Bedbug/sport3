@@ -77,7 +77,7 @@ export class MatchPageCardsComponent implements OnInit {
     this.sportimoService.getCurrentLiveMatchData()
     .pipe(takeUntil(this.ngUnsubscribe))
     .subscribe(x => {
-      console.log("Live Match Data Updated!");
+      // console.log("Live Match Data Updated!");
       
       this.liveMatch = x;
       this.userScore = this.sportimoService.getMatchScore();

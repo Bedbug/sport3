@@ -41,7 +41,7 @@
                   <li class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
                     [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)">
 
-                    <div *ngIf="event.type!='Substitution'" class="container">
+                    <div *ngIf="event.type!='Substitution'" class="container" (click)="showCardDetails(event._id)">
                       <div class="row">
                         <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
                           {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
@@ -61,7 +61,7 @@
                           <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
                         </div>
                       </div>
-                      <div *ngIf="Utils.shouldShow(event.type,1)" class="event-time">{{event.created | date:"hh:mm:ss"}}
+                      <div *ngIf="Utils.shouldShow(event.type,1) && showEventTime==event._id" class="event-time">Timestamp: {{event.created | date:"hh:mm:ss"}}
                       </div>
                     </div>
 

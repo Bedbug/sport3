@@ -84,6 +84,16 @@ export class MatchPageInfoComponent implements OnInit {
     // return this.liveMatch.matchData.timeline.map(x=> x.events.map(x=> x)).slice().reverse();
   }
 
+  showEventTime = null;
+
+  showCardDetails(id:string){
+    this.showEventTime = id;
+    setTimeout(()=>{
+      this.showEventTime = null;
+    },5000);
+  }
+
+
   getKitByTeam(team: string) {
     if (!this.liveMatch || !team)
       return "";

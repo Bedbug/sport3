@@ -69,8 +69,6 @@ export class CardComponent implements OnInit {
   constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
 
   ngOnInit() {
-    console.log("Inits");
-
     this.pointsTimeOut = setTimeout(() => {
       // this.cardData.status = 0;
       // this.cardData.activationTime = moment().utc().add('30', 's').toDate();
@@ -92,6 +90,15 @@ export class CardComponent implements OnInit {
 
     // if (this.cardData.status != 2)
     //   this.calculatePointsAndTimers();
+  }
+
+  showEventTime = false;
+
+  showCardDetails(){
+    this.showEventTime = true;
+    setTimeout(()=>{
+      this.showEventTime = false;
+    },5000);
   }
 
   calculatePointsAndTimers() {

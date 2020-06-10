@@ -193,7 +193,7 @@ export class SportimoService {
       return this.http.get<Contest>(
         `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}`)
         .pipe(map(contest => {
-          console.log("DEBUG: Requesting direct contest details");
+          // console.log("DEBUG: Requesting direct contest details");
           contest.isUserDetails = true;
           this.updateCachedContests(contest);
           return contest;
@@ -468,6 +468,7 @@ export class SportimoService {
         return match;
       }));
   }
+  segmentTimes = [0,1,45,45,90,90];
   advanceTimelineSegment(data: any) {
     if (data.data.segment.timed)
       console.log("[SPORTIMO SERVICE][TIMER]: We START counting match time");
@@ -478,6 +479,7 @@ export class SportimoService {
 
     this.currentMatch.matchData.state++;
     this.currentMatch.matchData.timeline.push(data.data.segment);
+    this.currentMatch.matchData.time = this.segmentTimes[this.currentMatch.matchData.state];
     this.currentLiveMatch.next(this.currentMatch);
     console.log("[SPORTIMO SERVICE]: Addvanced Match state to: " + this.currentMatch.matchData.state);
   }
