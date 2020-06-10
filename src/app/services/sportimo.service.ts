@@ -39,7 +39,7 @@ export class SportimoService {
 
   private defaultConfiguration = { appName: { "en": "Sportimo", "ar": "", "fa": "" }, availableLanguages: ["ar", "en", "ru"], defaultLanguage: "en", displayNews: true, theme: "beeline" }
 
-  private currentLiveMatch: BehaviorSubject<LiveMatch>;
+  public currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;
   private grandPrizes: BehaviorSubject<GrandPrize[]>;
   private currentMatchId;
@@ -48,6 +48,7 @@ export class SportimoService {
 
   private socket;
   langIsRTL: boolean = false;
+  matchReloading: boolean;
 
 
 
@@ -465,13 +466,28 @@ export class SportimoService {
       this.currentLiveMatch.value.playedCards.findIndex(el => el.id === data.data.id)], data.data)
     this.currentLiveMatch.next(this.currentLiveMatch.value);
   }
+
+  // getMatchDataForUser(contestId: string, contestMatchId: string) {
+  //   this.currentContestId = contestId;
+  //   this.currentMatchId = contestMatchId;
+  //   return this.http.get<LiveMatch>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${contestId}/match/${contestMatchId}/user`)
+  //     .pipe(map(match => {
+  //       this.currentLiveMatch.next(match);
+  //       return match;
+  //     }));
+  // }
+
   reloadMatch(data: any) {
     console.log("[SPORTIMO SERVICE]: Reloading match");
+    this.matchReloading = true;
     this.http.get<LiveMatch>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/user`)
-      .pipe(map(match => {
-        this.currentLiveMatch.next(match);
+      .pipe(map(match => {        
+        this.currentLiveMatch.next(match);   
+        console.log("matcherelaoding:false");
+        
+        this.matchReloading = false;   
         return match;
-      }));
+      })).subscribe();
   }
   segmentTimes = [0,1,45,45,90,90];
   advanceTimelineSegment(data: any) {

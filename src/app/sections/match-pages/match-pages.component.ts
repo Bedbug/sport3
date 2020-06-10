@@ -83,16 +83,17 @@ export class MatchPagesComponent implements OnInit {
 
           // Initiating Socket Connection and subscription to stream
           this.stream = this.sportimoService.getStream().subscribe(data => {
+            if(this.sportimoService.matchReloading)
+                        return;
             let event: any = data;
-
+            console.log("skipped match reloading");
+            
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
 
             const isCards: any = this.state.routerState.snapshot.url.match(/cards/i);
 
-            if (!isCards && (event.type == "Card_lost" || event.type == "Card_won")) {
-
-              console.log(event.data.status == 2 && event.data.pointsAwarded > 0);
+            if (!isCards && (event.type == "Card_lost" || event.type == "Card_won")) {           
 
               this.cardToastService.Show({
                 type: "card-result",

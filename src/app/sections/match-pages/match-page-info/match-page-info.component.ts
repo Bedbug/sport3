@@ -67,9 +67,16 @@ export class MatchPageInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sportimoService.getCurrentLiveMatchData().pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
+    this.sportimoService.currentLiveMatch.pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
+     
+      
       if (match) {
+        
         this.liveMatch = match;
+        // console.log("--- Here we update the live match");
+        
+        // console.log(this.liveMatch.matchData.timeline[1]);
+        
       }
     })
   }
@@ -78,7 +85,12 @@ export class MatchPageInfoComponent implements OnInit {
     return type.match(/Starts|Ends/i)
   }
   get timelineEvents() {
+    // console.log("--- Here we update the order");
+        
+    // console.log(this.liveMatch.matchData.timeline[1]);
     var xarray = this.liveMatch.matchData.timeline.map(x => x.events);
+   
+    
     var flattenReversed = [].concat(...xarray).reverse();
     return flattenReversed;
     // return this.liveMatch.matchData.timeline.map(x=> x.events.map(x=> x)).slice().reverse();
