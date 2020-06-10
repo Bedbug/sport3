@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { HostListener,Component, OnInit } from '@angular/core';
 import { slideInAnimation } from 'src/app/animations/route-animations';
 import { ActivatedRoute, UrlSegment, RouterStateSnapshot, Router } from '@angular/router';
 import { LiveMatch } from 'src/app/models/live-match';
@@ -59,7 +59,21 @@ export class MatchPagesComponent implements OnInit {
     _("Card_lost");
     _("Card_won");
     _("Card_PresetInstant_activated_text");
+  
   }
+
+  @HostListener('window:focus', ['$event'])
+  onFocus(event: any): void {
+    console.log("Focused");
+    this.sportimoService.reloadMatch(null)
+  }
+
+  @HostListener('window:blur', ['$event'])
+  onBlur(event: any): void {
+    console.log("Blurred");
+  };
+
+  
 
   ngOnInit() {
 
@@ -127,10 +141,21 @@ export class MatchPagesComponent implements OnInit {
           });
         });
 
+     
+        
+        // if (/*@cc_on!@*/false) { // check for Internet Explorer
+        //   document.onfocusin = onFocus;
+        //   document.onfocusout = onBlur;
+        // } else {
+          // window.onfocus = this.onFocus(this.sportimoService);
+          // window.onblur = this.onBlur;
+        // }
       // this.demoplay = this.sportimoService.playDemo();
     })
   }
 
+  
+    
   get homeScore() {
     if (!LiveMatch)
       return 0;
@@ -168,6 +193,9 @@ export class MatchPagesComponent implements OnInit {
 
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+
+    window.onfocus = null;
+    window.onblur = null;
   }
 
   parseNumbers(text: string) {
