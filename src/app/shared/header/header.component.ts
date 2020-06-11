@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { SportimoService } from 'src/app/services/sportimo.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 declare var $: any;
 
@@ -26,13 +27,16 @@ export class HeaderComponent implements OnInit {
   showLoginForm = false;
   currentUser: User;
   Utils: SportimoUtils = new SportimoUtils();
+  useWallet: boolean = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private sportimoService:SportimoService,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    public translate:TranslateService) {
+    public translate:TranslateService,
+    private configService:ConfigService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);
@@ -59,12 +63,14 @@ export class HeaderComponent implements OnInit {
 
     this.sportimoService.configuration.subscribe(data=>{
       this.appname = data.appName;
+      this.useWallet = !data.disableWallet;
     })
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  
   onSubmit() {
     this.submitted = true;
 
