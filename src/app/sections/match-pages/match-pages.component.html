@@ -20,8 +20,10 @@
             <div *ngIf="liveMatch.matchData.state> 0" class="col-12 p-0 score">{{parseNumbers(homeScore.toString())}} -
               {{parseNumbers(awayScore.toString())}}</div>
             <div *ngIf="liveMatch.matchData.state == 0" class="col-12 p-0 match-versus"><strong>-</strong></div>
-            <div *ngIf="liveMatch.matchData.state>0" class="time col-12 p-0">
+            <div *ngIf="liveMatch.matchData.state == 1 || liveMatch.matchData.state == 3 || liveMatch.matchData.state == 5" class="time col-12 p-0">
               {{parseNumbers(liveMatch.matchData.time)}}'</div>
+              <div *ngIf="liveMatch.matchData.state == 2 || liveMatch.matchData.state == 4 || liveMatch.matchData.state == 6" class="time col-12 p-0">
+                {{getStatusText(liveMatch.matchData.state)}}</div>
           </div>
           <div class="col-5 p-l-0 text-left team-name">
             <div class="row p-l-15" style="margin-right: 0">

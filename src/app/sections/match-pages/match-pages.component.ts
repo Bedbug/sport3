@@ -90,10 +90,20 @@ export class MatchPagesComponent implements OnInit {
         }
       });
 
+      this.sportimoService.currentLiveMatch.pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {           
+        if (match) {          
+          this.liveMatch = match;
+          console.log("The current time of the segment is: "+ this.liveMatch.matchData.time);
+          
+        }
+      })
+      
+
+
       // Retrieve the Live Match data from the service
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
         subscribe(result => {
-          this.liveMatch = result;
+        
 
           // Initiating Socket Connection and subscription to stream
           this.stream = this.sportimoService.getStream().subscribe(data => {
@@ -154,7 +164,13 @@ export class MatchPagesComponent implements OnInit {
     })
   }
 
-  
+  getStatusText(status){
+    if(!status)
+    return "";
+    
+    return this.translate.instant(this.Utils.getStatusText(status));
+  }
+
     
   get homeScore() {
     if (!LiveMatch)

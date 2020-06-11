@@ -39,6 +39,8 @@ export class CardComponent implements OnInit {
 
   pointsTimeOut: any;
 
+  pauseTimeout:any;
+
   getFormatedOption(text: string) {
     const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
     const away_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.away_team.name['en'];
@@ -75,8 +77,6 @@ export class CardComponent implements OnInit {
 
 
       if (this.cardData && this.cardData.status != 2) {
-        console.log("This is one");
-
         this.calculatePointsAndTimers();
       }
     });
@@ -94,22 +94,27 @@ export class CardComponent implements OnInit {
 
   showEventTime = false;
 
-  showCardDetails(){
+  showCardDetails() {
     this.showEventTime = true;
-    setTimeout(()=>{
+    setTimeout(() => {
       this.showEventTime = false;
-    },5000);
+    }, 5000);
   }
 
   calculatePointsAndTimers() {
 
-    console.log(this.cardData.id + " | " + this.cardData.status);
+    // console.log(this.cardData.id + " | " + this.cardData.status);
+    if (!this.cardData)
+      return;
 
     if (this.cardData.status == 2) {
       clearTimeout(this.pointsTimeOut);
       return;
     }
 
+    // if(this.cardData.status == 3){
+    //   setTimeout(this.calculatePointsAndTimers,5000);
+    // }
 
     // We need to deduct what timers are active
     if (this.cardData.status == 0) {
@@ -130,8 +135,7 @@ export class CardComponent implements OnInit {
               if (x == this.activationCount + 1) {
                 this.activationTimer.unsubscribe();
                 this.cardData.status = 1;
-                this.activationScale = null;
-                console.log("This is two");
+                this.activationScale = null;              
                 this.calculatePointsAndTimers();
               }
             })
@@ -139,52 +143,88 @@ export class CardComponent implements OnInit {
       }
     }
 
-    if (this.cardData.status == 1 && this.cardData.cardType != "Overall") {
+    if ((this.cardData.status == 1 || this.cardData.status == 3) && this.cardData.cardType != "Overall") {
       // This card is activated
-
-
       let start = moment(this.cardData.activationTime).utc();
       let end = moment(this.cardData.terminationTime).utc();
       let now = moment().utc();
 
-      let allDiff = moment.duration(end.diff(start)).asSeconds();
-      let nowDiff = moment.duration(end.diff(now)).asSeconds();
-      let traveledDiff = allDiff - nowDiff;
+      if (this.cardData.status == 3) {
+        now = moment(this.cardData.pauseTime).utc();
+      }
+
+      let realDuration = moment.duration(end.diff(start)).asSeconds();
+      
+      if(this.cardData.pauseTime && this.cardData.resumeTime)
+      realDuration = moment.duration(moment.utc(this.cardData.pauseTime).diff(start)).asSeconds() +  moment.duration(end.diff(moment.utc(this.cardData.resumeTime))).asSeconds();
+
+      let remainingDuration = moment.duration(end.diff(now)).asSeconds();
+
+      let elapsedDuration = realDuration - remainingDuration;
 
       this.terminationCount = Math.round(moment.duration(end.diff(now)).asSeconds());
 
+      // If card is paused just hold the score and bar at the pause incident
+      if (this.cardData.status == 3) {
+        const point_spread = this.cardData.startPoints - this.cardData.endPoints;
+        const points_step = point_spread / (this.cardData.duration / 1000);
 
-      this.terminationTimer = timer(1000, 1000).pipe(
-        take(this.terminationCount + 1)).subscribe(x => {
+        this.currentPoints = Math.round((points_step * (this.terminationCount)) + this.cardData.endPoints);
+        this.cardTimerScale = 100 - ((elapsedDuration / realDuration) * 100);
+      
+        //Repeat every second in case  the card status changes
+       this.pauseTimeout = setTimeout(()=>this.calculatePointsAndTimers(), 1000);
+      }
 
-          if (this.cardData.status == 2) {
-            this.terminationTimer.unsubscribe();
-            console.log(this.cardData.pointsAwarded);
+      if (this.cardData.status == 1)
+        this.terminationTimer = timer(1000, 1000).pipe(
+          take(this.terminationCount + 1)).subscribe(x => {
 
-            this.currentPoints = this.cardData.pointsAwarded;
-            return;
-          }
+            if (this.cardData.status == 2) {
+              this.terminationTimer.unsubscribe();
+              this.currentPoints = this.cardData.pointsAwarded;
+              return;
+            }
 
-          if (moment(this.cardData.terminationTime).utc() > end) {
-            console.log("We have a change in time");
-            this.terminationTimer.unsubscribe();
-            this.calculatePointsAndTimers();
-            return;
-          }
-          
-          const point_spread = this.cardData.startPoints - this.cardData.endPoints;
-          const points_step = point_spread / (this.cardData.duration / 1000);
+            // If the termination time is moved forward -> recalculate card
+            if (moment(this.cardData.terminationTime).utc() > end) {
+              console.log("We have a change in time");
+              this.terminationTimer.unsubscribe();
+              this.calculatePointsAndTimers();
+              return;
+            }
 
-          this.currentPoints = Math.round((points_step * (this.terminationCount - x)) + this.cardData.endPoints);
-          this.cardTimerScale = 100 - (((traveledDiff + x) / allDiff) * 100); //100 - (100 * (x / this.terminationCount));
-          console.log(x+":x | "+this.terminationCount+" | "+ this.cardTimerScale);
-          if (this.cardTimerScale < 0.1) {
-            this.cardData.status = 2;
-            console.log("Timer Unsubscribed");
-            this.terminationTimer.unsubscribe();
-          }
-        });
+            let timed = this.sportimoService.currentMatch.matchData.timeline[this.sportimoService.currentMatch.matchData.state].timed;
+           
+            // If we are an a segment that time is not running ignore progress until we resume
+            if (!timed) {
+              console.log("We have a change in segment");
+              this.terminationTimer.unsubscribe();
+              this.cardData.status = 3;
+              this.cardData.pauseTime = moment().toDate();
+              console.log("Pausing Card");
+              
+              this.calculatePointsAndTimers();
+              return;
+            }
+    
+            
+            const point_spread = this.cardData.startPoints - this.cardData.endPoints;
+            const points_step = point_spread / (this.cardData.duration / 1000);
+
+            this.currentPoints = Math.round((points_step * (this.terminationCount - x)) + this.cardData.endPoints);
+            this.cardTimerScale = 100 - (((elapsedDuration + x) / realDuration) * 100); //100 - (100 * (x / this.terminationCount));
+            // console.log(elapsedDuration);
+            // console.log(realDuration);
+           
+            if (this.cardTimerScale < 0.1) {
+              this.cardData.status = 2;       
+              this.terminationTimer.unsubscribe();
+            }
+          });
     }
+
+
 
   }
 
@@ -263,6 +303,9 @@ export class CardComponent implements OnInit {
 
     if (this.specialDPTimer)
       this.specialDPTimer.unsubscribe();
+
+      if(this.pauseTimeout)
+      clearTimeout(this.pauseTimeout);
   }
 
 

@@ -450,7 +450,7 @@ export class SportimoService {
       this.advanceTimelineSegment(data);
     } else if (data.type == "Match_Reload") {
       this.reloadMatch(data);
-    } else if (data.type == "Card_resumed" || data.type == "Card_Special_activated" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {
+    } else if (data.type == "Card_paused" || data.type == "Card_resumed" || data.type == "Card_Special_activated" || data.type == "Card_lost" || data.type == "Card_won" || data.type == "Card_PresetInstant_activated") {
       this.updateCardStatus(data);
     } else if (data.type == "Match_full_time") {
       this.finalizeMatch(data);
@@ -489,7 +489,7 @@ export class SportimoService {
         return match;
       })).subscribe();
   }
-  segmentTimes = [0,1,45,45,90,90];
+
   advanceTimelineSegment(data: any) {
     if (data.data.segment.timed)
       console.log("[SPORTIMO SERVICE][TIMER]: We START counting match time");
@@ -500,7 +500,7 @@ export class SportimoService {
 
     this.currentMatch.matchData.state++;
     this.currentMatch.matchData.timeline.push(data.data.segment);
-    this.currentMatch.matchData.time = this.segmentTimes[this.currentMatch.matchData.state];
+    this.currentMatch.matchData.time = data.data.segment.sport_start_time;
     this.currentLiveMatch.next(this.currentMatch);
     console.log("[SPORTIMO SERVICE]: Addvanced Match state to: " + this.currentMatch.matchData.state);
   }

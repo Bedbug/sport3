@@ -48,13 +48,13 @@ export class SportimoUtils {
   matchStatues = {
     0: "Pregame",
     1: "LIVE",
-    2: "LIVE",
+    2: "HalfTime",
     3: "LIVE",
     4: "MatchEnded",
     5:  "LIVE",
-    6:  "LIVE",
+    6:  "HalfTime",
     7:  "LIVE",
-    8:  "LIVE",
+    8:  "MatchEnded",
   }
 
   translateMappings() {
@@ -77,6 +77,7 @@ export class SportimoUtils {
     _("Overtime_Second_Half_Starts");
     _("Overtime_Second_Half_Ends");
     _("MatchEnded");
+    _("HalfTime");
     _("Pregame");
   }
 
