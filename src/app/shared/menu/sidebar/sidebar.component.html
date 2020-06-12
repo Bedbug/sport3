@@ -151,12 +151,12 @@
             <span translate>kazzach</span>
         </a>
     </li>
-    <li>
+    <li *ngIf="isLoggedIn">
         <!-- Authenticate -->
         <a href="javascript:void(0)" class="sidebar-header" (click)="toggleUserStatus()">
             <i class="menu-icon icn-logout text-center"></i>
             <span *ngIf="isLoggedIn" translate>Logout</span>
-            <span *ngIf="!isLoggedIn" translate>Login</span>
+            <!-- <span *ngIf="!isLoggedIn" translate>Login</span> -->
         </a>
     </li>
 </ul>

@@ -108,6 +108,10 @@ export class SidebarComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.isLoggedIn = false;
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.onSameUrlNavigation = 'reload';
+    window.open("app/"+this.config.getClient(),"_self");
+    // this.router.navigate(["app/"+this.config.getClient()]);
 }
 
 switchLanguage(lang:string){
