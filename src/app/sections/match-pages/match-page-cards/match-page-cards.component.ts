@@ -145,7 +145,7 @@ export class MatchPageCardsComponent implements OnInit {
 
   get pendingCards() {
     if (this.liveMatch && this.liveMatch.playedCards)
-      return this.liveMatch.playedCards.filter(x => x.status == 0 || x.status == 1);
+      return this.liveMatch.playedCards.filter(x => x.status == 0 || x.status == 1 || x.status == 3);
     return [];
   }
 
