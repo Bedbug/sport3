@@ -196,8 +196,8 @@ export class OnboardComponent implements OnInit {
             this.subState = "UNSUBWITHCOINS";
           if (this.subState == "ACTIVE" && response.user.inFreePeriod)
             this.subState = "ACTIVEFREEPERIOD";
-            if (this.subState == "FREE")
-            this.subState = "ACTIVEFREEPERIOD";
+            // if (this.subState == "FREE")
+            // this.subState = "ACTIVEFREEPERIOD";
           this.closeLandingPage();
         }
         this.isSubmitting = false;
