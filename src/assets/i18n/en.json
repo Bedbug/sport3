@@ -4,7 +4,7 @@
 	"About Sportimo": "About",
 	"Achievements": "Achievements",
 	"Activate powerups:": "Activate powerups:",
-	"Activation timestamp:": "",
+	"Activation timestamp:": "Activation time",
 	"Add to favorites": "Add to My Teams",
 	"All": "All",
 	"Already a member?": "Already a member? ",
@@ -222,10 +222,10 @@
 		"10007": "No more power ups available"
 	},
 	"farsi": "فارسی",
-	"grandprize_loc_key": "Grand Prize",
+	"grandprize_loc_key": "Monthly Prize",
 	"joinMatchInfo": "You need {{value}} coins to join this match.",
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
-	"kazzach": "",
+	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Free to Play",
 	"null": {
 		"0": {
