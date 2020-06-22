@@ -166,7 +166,7 @@
         <div *ngIf="subState == 'UNSUBWITHCOINS'" [class.grey]="isSubmitting || pinForm.controls.pin.errors"
           class="enter-button" (click)="onPinSubmit(true)"
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
-        <div class="resend-pin-button" (click)="ResendPin()">Resend PIN</div>       
+        <div class="resend-pin-button" (click)="ResendPin()" translate>Resend PIN</div>       
       </form>
       <div class="notice" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
