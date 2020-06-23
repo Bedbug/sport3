@@ -45,16 +45,17 @@ export class ContestPageMatchesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.contestId = params.get("contestId");
       this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => {
-        this.presentMatches = matches;
-        //         .sort(function(a, b) {       
-        //           console.log(b.match.start, a.match.start);
-        // ;        return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
-        //     });
+        this.presentMatches = matches
+                .sort(function(a, b) {                      
+                return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
+            });
       });
       var that = this;
       this.dataReload = setInterval(function(){that.reload();},20000);
 
-      this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches);
+      this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches  .sort(function(a, b) {               
+      return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
+  }));
     });
 
     this.sportimoService.cachedContests.pipe(takeUntil(this.ngUnsubscribe))
