@@ -9,9 +9,9 @@
         <div class="card-icon" [ngClass]="sportUtils.getIconBySprite(cardData?.image.sprite)"></div>
       </div>
       <div class="texts">
-        <p class="event-name">{{cardData?.title[translate.currentLang]}}</p>
+        <p class="event-name">{{cardData?.minute}}' {{cardData?.title[translate.currentLang]}}</p>
         <p class="event-team">{{getFormatedOption(cardData.text[translate.currentLang])}}</p>
-        <p>{{cardData.status}}</p>
+       
         <p *ngIf="cardData.status > 0 && showEventTime" class="event-time"><span translate>Activation timestamp:</span> {{cardData.activationTime | date:"hh:mm:ss"}}</p>
       </div>
     </div>
