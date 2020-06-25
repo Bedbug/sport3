@@ -7,7 +7,7 @@ export class Contest {
     participations?: number;
     winners?: number;
     titleText?: object;
-    smallInfoText?: object;
+    smallInfoText?: object;    
     infoText?: object;
     detailText?: object;
     startFromDate?: Date;
@@ -15,7 +15,7 @@ export class Contest {
     state?: string;
     subscriptionPrice?: number;
     discountText?: string;
-    leaderboardDefinition?: string;
+    leaderboardDefinition?: any;
     isSubscribed?: boolean;
     created?: Date;
     showParticipations?: boolean;
