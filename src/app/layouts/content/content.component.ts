@@ -62,10 +62,12 @@ export class ContentComponent implements OnInit {
 
      
       let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
-           
+      let signonData = JSON.parse(localStorage.getItem('signon'));
+
       let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
+  
       
-      if (parsedFirst != null && onBoardingConfiguration) {
+      if (!signonData && onBoardingConfiguration) {
         this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
       }else{
         this.onBoardService.Hide();

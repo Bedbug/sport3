@@ -172,7 +172,7 @@ export class OnboardComponent implements OnInit {
     });
 
     this.userForm = this.formBuilder.group({
-      username: [this.user.username, Validators.required]
+      username: ['', Validators.required]
     });
 
     // this.isFirstGame = true;

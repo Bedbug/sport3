@@ -116,10 +116,10 @@ export class ContestInfoHeaderComponent implements OnInit {
     return this.Utils.parseDate(date,this.translate.currentLang == 'fa',"DD/MM/YY", "jDD/jMM/jYY");
   }
 
-  parseNumbers(text:string){
-    if(text)
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
-    else
-    return "";
+  parseNumbers(text:string){    
+    // if(text)
+      return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+    // else
+    // return "-";
   }
 }

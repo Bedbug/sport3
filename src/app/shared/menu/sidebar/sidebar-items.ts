@@ -25,18 +25,18 @@ export const MENUITEMS: Menu[] = [
         { path: '', title: '', type: 'authentication' }      
     ]
   },
-  {
-    path: '/pages/stater-kit', title: 'Top Picks', authenticate:true, icon: 'menu-icon icn-toppicks text-center', type: 'toppicks'
-  },
+  // {
+  //   path: '/pages/stater-kit', title: 'Top Picks', authenticate:true, icon: 'menu-icon icn-toppicks text-center', type: 'toppicks'
+  // },
   {
     path: '/main/contests', title: 'Contests', authenticate:true, icon: 'menu-icon icn-contests', type: 'link'
   },
-  {
-    path: '/main/winners', title: 'Winners', authenticate:true, icon: 'menu-icon icn-winners', type: 'link'
-  },
-  {
-    path: '/main/standings', title: 'Standings', authenticate:true, icon: 'menu-icon icn-standings', type: 'link'
-  },
+  // {
+  //   path: '/main/winners', title: 'Winners', authenticate:true, icon: 'menu-icon icn-winners', type: 'link'
+  // },
+  // {
+  //   path: '/main/standings', title: 'Standings', authenticate:true, icon: 'menu-icon icn-standings', type: 'link'
+  // },
   // {
   //   path: '/main/settings', title: 'Settings', icon: 'menu-icon icn-gear', type: 'link'
   // },
