@@ -114,9 +114,9 @@ export class AuthenticationService {
     }
 
     updateUsername(username:string){
-        let putData = JSON.stringify({
+        let putData = {
             username: username
-        });
+        };
         return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
             .pipe(map(response => {
                 // Save the signin data for future use

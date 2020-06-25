@@ -21,6 +21,8 @@
 	"Card_won": "Карта ойнады",
 	"Card_won_text": "Карта ойнады",
 	"Career Statistics": "Мансап статистикасы",
+	"Confirm": "",
+	"Congratulations! You are in the game!": "",
 	"Contests": "Турнирлер",
 	"Continue": "Жалғастыру",
 	"Corner": "Бұрыштама",
@@ -137,6 +139,7 @@
 	"Settings": "Баптау",
 	"Shot_on_Goal": "Қақпаға соққы",
 	"Shots on Target": "Қақпаға соққылар",
+	"Skip for now": "",
 	"Sportimo Winners": "Жеңімпаздар",
 	"Standings": "Рейтинг",
 	"Starting lineup": "Бастапқы құрам",
@@ -168,14 +171,17 @@
 	"Winners": "Жеңімпаздар",
 	"Winning": "Winning",
 	"Won": "Жеңді",
+	"Write down your username": "",
 	"Yellow": "Сары",
 	"Yellow cards": "Сары карталар",
 	"Yesterday's Games": "Соңғы матчтар",
 	"Yesterday's Top Scorers": "Соңғы матчтардың ең үздік шабуылшылары",
+	"You can always edit your username at your Profile tab": "",
 	"You can change your Username anytime from your Profile": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You have insufficient coins to join": "Кіру үшін, сіздің тиындарыңыз жеткіліксіз",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"Your chances:": "Сіздің нәтижеңіз:",
+	"Your points:": "",
 	"_action": "",
 	"availableCards": "Қолжетімді карталар",
 	"availableCardsText": "Бұл осы матч бойы ойнатыла алатын сізде бар карталар(Негізгі жəне Live карталары)",
@@ -228,24 +234,6 @@
 	"joinMatchNoCoins": " Қатысу үшін, сіздің тиындарыңыз жеткіліксіз. Қосымша тиындар алғыңыз келе ме?",
 	"kazzach": "",
 	"matchFreePlay": "Тегін ойнау",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": " ұпайлар",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "<b>Қош келдіңіздер!</b><br>ПИН-ді еңгізіп, ойынды жалғастыра беріңіз.",

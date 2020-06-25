@@ -21,6 +21,8 @@
 	"Card_won": "",
 	"Card_won_text": "کارت-برنده-متن",
 	"Career Statistics": "آمار کلی",
+	"Confirm": "",
+	"Congratulations! You are in the game!": "",
 	"Contests": "مسابقه‌ها",
 	"Continue": "ادامه",
 	"Corner": "کرنر",
@@ -137,6 +139,7 @@
 	"Settings": "تنظیمات",
 	"Shot_on_Goal": "شوت -به- گل",
 	"Shots on Target": "شوت ب دروازه",
+	"Skip for now": "",
 	"Sportimo Winners": "برندگان پا به توپ",
 	"Standings": "جدول امتیاز",
 	"Starting lineup": "ترکیب اولیه",
@@ -168,14 +171,17 @@
 	"Winners": "برندگان",
 	"Winning": "در حال برنده‌شدن",
 	"Won": "برنده",
+	"Write down your username": "",
 	"Yellow": "زرد",
 	"Yellow cards": "کارت‌های زرد",
 	"Yesterday's Games": "بازی های دیروز",
 	"Yesterday's Top Scorers": "بهترین گلزنان دیروز",
+	"You can always edit your username at your Profile tab": "",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"Your chances:": "شانس‌های شما: ",
+	"Your points:": "",
 	"_action": "",
 	"availableCards": "",
 	"availableCardsText": "",
@@ -228,24 +234,6 @@
 	"joinMatchNoCoins": "",
 	"kazzach": "",
 	"matchFreePlay": "",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": "امتیاز",
 	"russian": "",
 	"susbcription_message_ACTIVE": "",

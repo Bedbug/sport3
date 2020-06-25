@@ -21,6 +21,8 @@
 	"Card_won": "Карта сыграла",
 	"Card_won_text": "Карта сыграла",
 	"Career Statistics": "Статистика карьеры",
+	"Confirm": "",
+	"Congratulations! You are in the game!": "",
 	"Contests": "Турниры",
 	"Continue": "Продолжить",
 	"Corner": "Угловой",
@@ -137,6 +139,7 @@
 	"Settings": "Настройки",
 	"Shot_on_Goal": "Удар по воротам",
 	"Shots on Target": "Удары по воротам",
+	"Skip for now": "",
 	"Sportimo Winners": "Победители",
 	"Standings": "Рейтинг",
 	"Starting lineup": "Стартовый состав",
@@ -168,14 +171,17 @@
 	"Winners": "Победители",
 	"Winning": "Победные",
 	"Won": "Выиграно",
+	"Write down your username": "",
 	"Yellow": "Желтая",
 	"Yellow cards": "Желтые карточки",
 	"Yesterday's Games": "Последние матчи",
 	"Yesterday's Top Scorers": "Топ бомбардиров последних матчей",
+	"You can always edit your username at your Profile tab": "",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\r\n          play cards": "Вам необходимо пополнить счет и обновить подписку.",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"Your chances:": "Ваш результат: ",
+	"Your points:": "",
 	"_action": "",
 	"availableCards": "Доступные карты",
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
@@ -228,24 +234,6 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Играть бесплатно",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": " очк",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "<b>Добро пожаловать!</b><br>Введите ПИН и продолжайте играть.",

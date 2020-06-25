@@ -21,6 +21,8 @@
 	"Card_won": "Card won",
 	"Card_won_text": "You just won a card.",
 	"Career Statistics": "Career Statistics",
+	"Confirm": "Confirm",
+	"Congratulations! You are in the game!": "Congratulations! You are in the game!",
 	"Contests": "Contests",
 	"Continue": "Continue",
 	"Corner": "Corner",
@@ -137,6 +139,7 @@
 	"Settings": "Settings",
 	"Shot_on_Goal": "Shot on Goal",
 	"Shots on Target": "Shots on Target",
+	"Skip for now": "Skip for now",
 	"Sportimo Winners": "Winners",
 	"Standings": "Standings",
 	"Starting lineup": "Starting lineup",
@@ -168,15 +171,18 @@
 	"Winners": "Winners",
 	"Winning": "Winning",
 	"Won": "Won",
+	"Write down your username": "Write down your username",
 	"Yellow": "Yellow",
 	"Yellow cards": "Yellow cards",
 	"Yesterday's Games": "Last Matches",
 	"Yesterday's Top Scorers": "Last Matches Top Scorers",
+	"You can always edit your username at your Profile tab": "You can always edit your username at your Profile tab",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "You need to have an active subscription in order to\n          play cards",
 	"Your chances:": "Your chances: ",
-	"_action": "",
+	"Your points:": "Your points:",
+	"_action": "_action",
 	"availableCards": "Available Cards",
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
 	"availablePowerups": "Available Powerups",
@@ -228,24 +234,6 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Free to Play",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pts": " pts",
 	"russian": "Русский",
 	"susbcription_message_ACTIVE": "<b>Welcome back!</b><br>Enter your PIN to keep playing.",
