@@ -16,7 +16,7 @@
             placeholder="Username">
         </div>
         <div *ngIf="username.dirty">
-          <button [disabled]="isSubmitting" style="height: 31px;" (click)="updateName(username)"
+          <button [disabled]="isSubmitting" style="height: 31px;" (click)="onUsernameUpdate()"
             class="btn btn-sportimo login-form-button">
             <div class="loader-label" [class.btn-active]="isSubmitting">
               <span class="button-label" translate>Update</span>

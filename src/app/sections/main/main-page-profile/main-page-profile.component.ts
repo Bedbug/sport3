@@ -121,4 +121,17 @@ export class MainPageProfileComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
+  onUsernameUpdate(){
+       
+    this.authenticationService.updateUsername(this.user.username)
+    .subscribe(
+      response => {
+        
+        if (response && response.success) {
+        };
+      });      
+
+  }
+
+
 }

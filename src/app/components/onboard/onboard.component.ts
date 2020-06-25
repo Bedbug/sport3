@@ -6,6 +6,9 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ConfigService } from 'src/app/services/config.service';
+import { User } from 'src/app/models/user';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 declare var Pace: any;
 
@@ -20,6 +23,7 @@ export class OnboardComponent implements OnInit {
   LandingPage = false;
   PinVerify = false;
   Authenticated = false;
+  UsernameUpdate = false;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -76,12 +80,15 @@ export class OnboardComponent implements OnInit {
 
   appName: any;
   msisdnForm: FormGroup;
+  userForm: FormGroup;
   pinForm: FormGroup;
   incorrectPin: boolean;
   isSubmitting: boolean;
   submitted: boolean;
   subState: any;
   firstLoad: boolean = true;
+  user: User;
+  ngUnsubscribe = new Subject();
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -104,6 +111,9 @@ export class OnboardComponent implements OnInit {
     // } else {
     //   this.onBoardService.Show();
     // }
+    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+      this.user = user;           
+    });
 
     // Get value from Service
     this.onBoardService.onboardModalIsActive.subscribe(x => {
@@ -123,7 +133,7 @@ export class OnboardComponent implements OnInit {
         // if (this.defaults.sequence[0] == "S")
 
         this_m.Onboarding = this_m.defaults.sequence[0] == "S";
-            this_m.LandingPage = this_m.defaults.sequence[0] != "S";
+        this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
         let bgElement = $('.landing-background');
         bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
@@ -159,6 +169,10 @@ export class OnboardComponent implements OnInit {
     // Pin Verification Form
     this.pinForm = this.formBuilder.group({
       pin: ['', Validators.required]
+    });
+
+    this.userForm = this.formBuilder.group({
+      username: [this.user.username, Validators.required]
     });
 
     // this.isFirstGame = true;
@@ -217,13 +231,20 @@ export class OnboardComponent implements OnInit {
       .subscribe(
         response => {
           if (response && response.success) {
-            console.log(response);
+            // console.log(response);
             this.incorrectPin = false;
             this.isSubmitting = false;
             this.PinVerify = false;
             this.Authenticated = true;
             if (this.defaults.sequence[0] == "L")
-              this.Onboarding = true;
+              this.Onboarding = true;             
+                           
+              if(this.subState == "UNKNOWN")
+             {
+              // console.log(this.subState);
+                this.UsernameUpdate = true;
+                this.Authenticated = false;
+            }
 
               // User Registered - We can stop the metrics
               this.sportimoService.onboardingMetricsStop("").subscribe(x => {
@@ -237,8 +258,32 @@ export class OnboardComponent implements OnInit {
         });
   }
 
+  onUsernameUpdate(){
+    if (this.userForm.controls.username.errors) {
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.authenticationService.updateUsername(this.userForm.controls.username.value)
+    .subscribe(
+      response => {
+        this.isSubmitting = false;
+        this.Authenticated = true;
+        if (response && response.success) {
+        };
+      });
+      this.UsernameUpdate = false;
+
+  }
+
   ResendPin() {
     console.log("TODO:Resending Pin");
   }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
 }
 

@@ -113,6 +113,27 @@ export class AuthenticationService {
             }));
     }
 
+    updateUsername(username:string){
+        let putData = JSON.stringify({
+            username: username
+        });
+        return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
+            .pipe(map(response => {
+                // Save the signin data for future use
+                // console.log(response);
+                if (response != null && response.success) {                  
+                    this.currentUserSubject.value.username = username;                 
+                    this.currentUserSubject.next(this.currentUserSubject.value);
+                    // if (response.user && response.user.token) {
+                    //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+                    //     // localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));                                                
+                    //     // this.currentUserSubject.next(response.user);
+                    // }
+                }
+                return response;
+            }));
+    }
+
     registerMSISDN(msisdn: string) {
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/msisdn`, { msisdn: msisdn })
             .pipe(map(response => {
