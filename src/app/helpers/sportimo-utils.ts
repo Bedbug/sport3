@@ -139,7 +139,9 @@ export class SportimoUtils {
       });
     }
     else
-      return text;
+     {
+        return text;
+      }
   }
 
 }
