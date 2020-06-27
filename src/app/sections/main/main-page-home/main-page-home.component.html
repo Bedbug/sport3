@@ -33,7 +33,7 @@
                                 <div class="matches-list-scrollarea">
                                     <div>
                                         <div class="match-item isClickable" (click)="openContest(upcomingMatch.tournament._id)" *ngFor="let upcomingMatch of getUpcoming; let i = index">
-                                            <div class="match-contest-name"><strong>Contest: </strong>{{ upcomingMatch.tournament.titleText[translate.currentLang]}}</div>
+                                            <div class="match-contest-name"><strong translate>Contest: </strong>{{ upcomingMatch.tournament.titleText[translate.currentLang]}}</div>
                                             <div class="match-details">
                                                 <div class="home-team-name">{{upcomingMatch.match.home_team.name[translate.currentLang]}}</div>
                                                 <div class="team-kit text-center"><img
@@ -57,7 +57,7 @@
                                 <div class="matches-list-scrollarea">
                                     <div >
                                         <div class="match-item" *ngFor="let liveMatch of getLive; let i = index">
-                                            <div class="match-contest-name"><strong>Contest: </strong>{{liveMatch.tournament.titleText[translate.currentLang]}}</div>
+                                            <div class="match-contest-name"><strong translate>Contest: </strong>{{liveMatch.tournament.titleText[translate.currentLang]}}</div>
                                             <div class="match-details">
                                                 <div class="home-team-name">{{liveMatch.match.home_team.name[translate.currentLang]}}</div>
                                                 <div class="team-kit text-center"><img
