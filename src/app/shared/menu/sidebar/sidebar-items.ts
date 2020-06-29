@@ -41,7 +41,7 @@ export const MENUITEMS: Menu[] = [
   //   path: '/main/settings', title: 'Settings', icon: 'menu-icon icn-gear', type: 'link'
   // },
   {
-    title: 'About Sportimo', icon: 'menu-icon icn-about', type: 'sub', children: [
+    title: 'About Sportimo', icon: 'menu-icon icn-about', type: 'open-sub', children: [
         // { path: '/base/accordion', title: 'How to Play', type: 'link' },
         // { path: '/base/alert', title: 'Support', type: 'link' },
         { path: 'http://sportimo.com/en/terms/', title: 'Terms & Conditions', type: 'extTabLink'},

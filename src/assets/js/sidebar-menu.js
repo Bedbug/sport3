@@ -1,12 +1,16 @@
 "use strict";
 $.sidebarMenu = function(menu) {
   var animationSpeed = 300,
-      subMenuSelector = '.sidebar-submenu';
+      subMenuSelector = '.sidebar-submenu',
+      permenteSate = '.always-open';
   $(menu).on('click', 'li a', function(e) {
     var $this = $(this);
     var checkElement = $this.next();
     if (checkElement.is(subMenuSelector) && checkElement.is(':visible')) {
-      console.log(checkElement);
+      
+      if(checkElement.parent("li").is(permenteSate))
+      return;
+      
       checkElement.slideUp(animationSpeed, function() {
         checkElement.removeClass('menu-open');
       });
