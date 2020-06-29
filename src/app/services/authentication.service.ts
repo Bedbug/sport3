@@ -74,10 +74,11 @@ export class AuthenticationService {
       User registration
     ----------------------------------------------------------------------------------- */
 
-    blaiseSignin(msisdn: string) {
+    blaiseSignin(msisdn: string, lang:string) {
         let postData = {
             msisdn: msisdn.toString(),
-            client: this.Config.getClient()
+            client: this.Config.getClient(),
+            language: lang
         }
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/signin`, postData)
             .pipe(map(response => {
