@@ -283,8 +283,23 @@ export class OnboardComponent implements OnInit {
 
   }
 
+  pinSent = false;
+
   ResendPin() {
-    console.log("TODO:Resending Pin");
+    this.isSubmitting = true;
+    this.authenticationService.resendPin(this.translate.currentLang)
+    .subscribe(
+      response => {
+        if(response && response.success){
+          this.pinSent = true;
+          let that = this;
+          setTimeout(()=>{
+            that.pinSent = false;
+          },7000);
+        }
+
+        this.isSubmitting = false;
+      });
   }
 
   ngOnDestroy() {

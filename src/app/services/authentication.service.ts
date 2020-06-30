@@ -114,6 +114,26 @@ export class AuthenticationService {
             }));
     }
 
+    resendPin(lang: string) {
+        let postData = JSON.parse(localStorage.getItem('signon')); 
+
+        postData.language = lang;
+
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/pin-resend`, postData)
+            .pipe(map(response => {
+                // Save the signin data for future use
+                // if (response != null && response.success) {
+                //     localStorage.setItem('signon', JSON.stringify({ pin: pin, msisdn: postData.msisdn, client: postData.client }));
+                //     if (response.user && response.user.token) {
+                //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //         localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
+                //         this.currentUserSubject.next(response.user);
+                //     }
+                // }
+                return response;
+            }));
+    }
+
     updateUsername(username:string){
         let putData = {
             username: username
