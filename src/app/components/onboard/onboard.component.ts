@@ -250,12 +250,19 @@ export class OnboardComponent implements OnInit {
               this.sportimoService.onboardingMetricsStop("").subscribe(x => {
                 console.log(x);
               })
+          }else{
+            this.incorrectPin = true;
+            this.isSubmitting = false;
           }
         },
         error => {
           this.incorrectPin = true;
           this.isSubmitting = false;
         });
+  }
+
+  openTerms(){
+    window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
   }
 
   onUsernameUpdate(){

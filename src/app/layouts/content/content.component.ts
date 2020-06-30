@@ -67,7 +67,7 @@ export class ContentComponent implements OnInit {
       let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
   
       
-      if (!signonData && onBoardingConfiguration) {
+      if ((!signonData || !signonData.pin) && onBoardingConfiguration) {
         this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
       }else{
         this.onBoardService.Hide();

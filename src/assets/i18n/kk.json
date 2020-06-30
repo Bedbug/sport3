@@ -202,6 +202,7 @@
 		"102": "Матчтарды қарау үшін, Турнирге кіру керек.",
 		"103": "Бұл жоспарланбаған Демо матч.",
 		"104": "Мұндай мəліметтері бар қолданушы табылмады",
+		"1002": "",
 		"4000": "Body is lacking of the gamecardDefinitionId property",
 		"4001": "Body is lacking of the creationTime property or it is later than NOW inUTC",
 		"4002": "The references gamecardDefinitionId document contains options, but no optionId property for the selected option is included in the Body",

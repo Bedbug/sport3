@@ -108,7 +108,7 @@
             </div>
           </button>
         </form>
-        <div class="notice-msisdn" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
+        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
       </div>
     </div>
   </div>
@@ -168,7 +168,7 @@
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
         <div class="resend-pin-button" (click)="ResendPin()" translate>Resend PIN</div>       
       </form>
-      <div class="notice" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      <div (click)="openTerms()" class="notice isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>
@@ -228,7 +228,7 @@
         <div class="resend-pin-button" style="margin-top:10px" (click)="UsernameUpdate=false;Authenticated = true;" translate>Skip for now</div>
         <div style="font-size:10px;" translate>You can always edit your username at your Profile tab</div>       
       </form>
-      <div class="notice" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      <div (click)="openTerms()" class="notice isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>

@@ -21,7 +21,7 @@ export class ErrorDisplayService {
   // }).subscribe(translation => {
   //   console.log(translation);
   // });
-
+    
     this.toastr.show(this.translate.instant('errors.'+errorCode), "");//errorCode
   }
 
@@ -34,6 +34,9 @@ export class ErrorDisplayService {
     _('errors.102'); // "You must have joined the contest in order to view matches"
     _('errors.103'); // "This is not a scheduled Demo match"
     _('errors.104');
+
+    _('errors.1002');
+
     _('errors.10002'); // "The card has already closed."
     _('errors.10001'); // "The card has already closed."
     _('errors.10005');
