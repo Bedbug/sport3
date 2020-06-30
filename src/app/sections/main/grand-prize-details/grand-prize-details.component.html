@@ -9,8 +9,10 @@
           <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
         </div>
         <div class="chances" >     
-          <div class="text-white user-chances"> <span translate>Your chances:</span>
-            {{userChances || 0}}</div>
+          <div *ngIf="prize?.prizeDistribution =='Draw'" class="text-white user-chances"> <span translate>Your chances:</span>
+            {{parseNumbers(userChances) || parseNumbers(0)}}</div>
+            <div *ngIf="prize?.prizeDistribution !='Draw'" class="text-white  user-chances"> <span
+              translate>Your points:</span> <span> {{parseNumbers(userChances) || parseNumbers(0) || 0}}</span></div>
         </div>
       </div>
         <div (click)="close()" class="close-button">X</div>

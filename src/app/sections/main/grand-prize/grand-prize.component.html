@@ -42,9 +42,11 @@
                   </div>
                 </div>
                 <div class="grand-prize-user-details">
-                  <div class="user-chances">
+                  <div *ngIf="prize?.prizeDistribution =='Draw'" class="user-chances">
                     <span translate>Your chances:</span> {{parseNumbers(userChances) || parseNumbers(0)}}
                   </div>
+                  <div *ngIf="prize?.prizeDistribution !='Draw'" class="user-chances"> <span
+                    translate>Your points:</span> {{parseNumbers(userChances) || parseNumbers(0)}}</div>
                   <!-- <div class="details-link" translate>View Details</div> -->
                 </div>
               </div>
