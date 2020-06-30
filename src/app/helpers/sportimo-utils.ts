@@ -131,7 +131,7 @@ export class SportimoUtils {
 
   parseNumbers(text: string, persian: boolean) {    
     if (text === undefined)
-      return 0;
+      return "0";
     if (persian) {
       var id = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
       return text.toString().replace(/[0-9]/g, function (w) {
