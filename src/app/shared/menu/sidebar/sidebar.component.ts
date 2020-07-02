@@ -9,6 +9,8 @@ import { ToppickService } from 'src/app/components/toppick/toppick.service';
 import { debug } from 'util';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ConfigService } from 'src/app/services/config.service';
+import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
+import { TermsPopupComponent } from 'src/app/components/terms-popup/terms-popup.component';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class SidebarComponent implements OnInit {
     public translate:TranslateService,
     private toppickService: ToppickService,
     private sportimoService: SportimoService,
-    private config:ConfigService
+    private config:ConfigService,
+    private ViewModalOverlay: PrizeViewOverlayService
     ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -93,6 +96,10 @@ export class SidebarComponent implements OnInit {
 
   openTopPick(){
     this.toppickService.Show();    
+  }
+
+  openTerms(){
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent,{});
   }
 
   showRoute(path:string){  

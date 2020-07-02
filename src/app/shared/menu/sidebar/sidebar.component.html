@@ -108,6 +108,12 @@
                         *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
                     <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
                 </a>
+                <a href="javascript:void(0)" (click)="openTerms(); closeSidebar()"
+                *ngIf="childrenItem.type === 'terms'">
+                <span [translate]="childrenItem.title"></span><span class="badge badge-{{childrenItem.badgeType}}"
+                    *ngIf="childrenItem.badgeType">{{childrenItem.badgeValue}}</span>
+                <i class="fa fa-angle-right pull-right" *ngIf="childrenItem.children"></i>
+            </a>
                 <!-- 3rd Level Menu -->
                 <ul class="sidebar-submenu" *ngIf="childrenItem.children">
                     <li *ngFor="let childrenSubItem of childrenItem.children">

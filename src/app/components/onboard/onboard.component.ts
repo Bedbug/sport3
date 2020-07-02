@@ -9,6 +9,8 @@ import { ConfigService } from 'src/app/services/config.service';
 import { User } from 'src/app/models/user';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
+import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 
 declare var Pace: any;
 
@@ -97,6 +99,7 @@ export class OnboardComponent implements OnInit {
     public translate: TranslateService,
     private sportimoService: SportimoService,
     public config: ConfigService,
+    private ViewModalOverlay: PrizeViewOverlayService
   ) { }
 
 
@@ -264,7 +267,8 @@ export class OnboardComponent implements OnInit {
   }
 
   openTerms(){
-    window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
+    // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent,{});
   }
 
   onUsernameUpdate(){
