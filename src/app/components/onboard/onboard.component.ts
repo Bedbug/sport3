@@ -212,6 +212,8 @@ export class OnboardComponent implements OnInit {
             this.subState = "ACTIVEFREEPERIOD";
             if (this.subState == "FREE")
             this.subState = "ACTIVEFREEPERIOD";
+            if (this.subState == "INACTIVE")
+            this.subState = "UNKNOWN";
           this.closeLandingPage();
         }
         this.isSubmitting = false;
