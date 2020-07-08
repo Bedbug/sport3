@@ -41,6 +41,7 @@ import { ModalPowersInfoComponent } from './sections/match-pages/match-page-card
 import { MatchSubscribeComponent } from './sections/contest-pages/match-subscribe/match-subscribe.component';
 import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { TermsPopupComponent } from './components/terms-popup/terms-popup.component';
+import { CardInfoPopupComponent } from './components/card-info-popup/card-info-popup.component';
 
 
 // AoT requires an exported function for factories
@@ -68,7 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResetComponent,
    ModalPowersInfoComponent,
    MatchSubscribeComponent,
-   TermsPopupComponent
+   TermsPopupComponent,
+   CardInfoPopupComponent
   ],
   imports: [
     OverlayModule,
@@ -96,7 +98,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [
     TranslateModule
   ],
-  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent, MatchSubscribeComponent, TermsPopupComponent],
+  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent, MatchSubscribeComponent, TermsPopupComponent,CardInfoPopupComponent],
   providers: [
     ConfigService,
     ConfigModule.init(),

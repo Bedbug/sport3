@@ -7,6 +7,8 @@ import moment from 'moment-mini';
 import { timer } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { CardInfoPopupComponent } from 'src/app/components/card-info-popup/card-info-popup.component';
+import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 
 @Component({
   selector: 'app-card',
@@ -68,7 +70,7 @@ export class CardComponent implements OnInit {
   // return this.cardData.startPoints;
   // }
 
-  constructor(private sportimoService: SportimoService, public translate: TranslateService) { }
+  constructor(private sportimoService: SportimoService, public translate: TranslateService, private ViewModalOverlay: PrizeViewOverlayService) { }
 
   ngOnInit() {
     this.pointsTimeOut = setTimeout(() => {
@@ -95,10 +97,12 @@ export class CardComponent implements OnInit {
   showEventTime = false;
 
   showCardDetails() {
-    this.showEventTime = true;
-    setTimeout(() => {
-      this.showEventTime = false;
-    }, 5000);
+    // this.showEventTime = true;
+    // setTimeout(() => {
+    //   this.showEventTime = false;
+    // }, 5000);
+          this.ViewModalOverlay.open<CardInfoPopupComponent>(CardInfoPopupComponent,{data:this.cardData});
+    
   }
 
   calculatePointsAndTimers() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { Contest } from 'src/app/models/contest';
@@ -22,6 +22,8 @@ export class ContestInfoHeaderComponent implements OnInit {
   user: User;
   isJoinRequesting: boolean;
   Utils: SportimoUtils = new SportimoUtils();
+  @Input() showContestDetails:boolean = true;
+  @Input() showBackButon:boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,

@@ -42,8 +42,9 @@
 }
 
 .matches-list-scrollarea{
+  padding-top: 10px;
   overflow-y: auto;
-  height: calc(100vh - 240px);
+  height: calc(100vh - 210px);
   -webkit-overflow-scrolling: touch;
 }
 

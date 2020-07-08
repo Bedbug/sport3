@@ -1,0 +1,42 @@
+<div class="modal-card">
+  <!-- (click)="preventDefault($event)" -->
+  <div class="popup-card-header">
+    <div class="info-header">
+      <div class="info-header-top">
+        
+          <div style="width:30px;height:30px;" class="card-icon"
+            [ngClass]="sportUtils.getIconBySprite(cardData?.image.sprite)"></div>
+        
+        <div class="type">{{cardData?.title[translate.currentLang]}}</div>
+      </div>
+      <div (click)="close()" class="modal-exit pull-right">X</div>
+    </div>
+
+
+
+    <div class="header-subtext">{{getFormatedOption(cardData.text[translate.currentLang])}}</div>
+    <div class="header-subtext" *ngIf="cardData.isDoublePoints">Double Points Power Up used</div>
+    <div class="header-subtext" *ngIf="cardData.isDoubleTime">Double Time Power Up used</div>
+    <div class="card-won" *ngIf="cardData.status == 2 && cardData.wonTime">Won</div>
+    <div class="card-lost" *ngIf="cardData.status == 2 && !cardData.wonTime">Lost</div>
+
+
+  </div>
+  <div class="modal-card-body">
+    <div class="card-data-title">Played Card at:</div>
+    <div>
+    <div class="card-data"> 
+      <div style="width: 20px; height: 30px;"  class="power-icon icn-stopwatch">
+    </div>
+    <div  class="card-data-text">{{cardData?.minute}}'</div>
+  </div>
+</div>
+    <div  class="card-data-title">Server Activation time:</div>
+    <div class="card-data">{{cardData.activationTime | date:"hh:mm:ss"}}</div>
+    <div *ngIf="!cardData.wonTime" class="card-data-title">Win event did not occur between:</div>
+    <div *ngIf="!cardData.wonTime" class="card-data">{{cardData.activationTime | date:"hh:mm:ss"}} - {{cardData.terminationTime | date:"hh:mm:ss"}}</div>
+    <div *ngIf="cardData.wonTime" class="card-data-title">Win event occured at:</div>
+    <div *ngIf="cardData.wonTime" class="card-data">{{cardData.wonTime | date:"hh:mm:ss"}}</div>
+  </div>
+  <div class="popup-card-header" style="height:15px;"></div>
+</div>

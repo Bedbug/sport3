@@ -4,7 +4,8 @@
       <div class="" style="margin-left: 0; margin-right: 0;">
         <div class="row">
           <div (click)="gotoContest()" class="col font-weight-bold text-white isClickable">
-            {{contestDetails?.titleText[translate.currentLang]}}
+          
+            <div *ngIf="showBackButon" style="width: 15px; height: 19px; margin: 0 2px 0 -5px;"class="sub-icon float-left icn-arrow-back"></div> {{contestDetails?.titleText[translate.currentLang]}}
             <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
           </div>
           <div class="col" style="min-height:33px; line-height: 33px">
@@ -23,8 +24,8 @@
                   translate>Your points:</span> {{parseNumbers(contestDetails?.user_chances) || parseNumbers(0)}}</div>
           </div>
         </div>
-        <div class="sportimo-divider"></div>
-        <div class="contest-info-container">
+        <div class="sportimo-divider"></div>              
+        <div class="contest-info-container" *ngIf="showContestDetails == true">
           <div class="contest-info-row">
             <div translate class="contest-info-cell font-weight-bold">Matches</div>
             <div translate *ngIf="contestDetails?.showParticipations" class="contest-info-cell font-weight-bold">
