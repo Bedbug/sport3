@@ -98,7 +98,7 @@ export class AuthenticationService {
     blaiseVerify(pin: string, noSubscription: boolean) {
         let postData = JSON.parse(localStorage.getItem('signon'));
         postData.pin = pin;
-        postData.noSubscription = noSubscription;
+        postData.sSub = noSubscription;
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/verify`, postData)
             .pipe(map(response => {
                 // Save the signin data for future use
