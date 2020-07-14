@@ -195,12 +195,15 @@
 }
 
 .input-area{
-    border-right: 1px solid white;
-    padding: 0px;
-    padding-right: 10px;
-    margin-right: 10px;
-    height: 20px;
-    line-height: 20px;
+  background: transparent;
+  color: white;
+  border: 0;
+  border-right: 1px solid white;
+  padding: 0px;
+  padding-right: 10px;
+  margin-right: 10px;
+  height: 20px;
+  line-height: 20px;
 }
 
 .form-control-plaintext

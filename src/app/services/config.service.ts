@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigService {
 
     
-    private _config: Object
+    public _config: Object
     private _env: string;
     private _client:string;
 

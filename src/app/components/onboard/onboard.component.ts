@@ -21,6 +21,7 @@ declare var Pace: any;
 })
 export class OnboardComponent implements OnInit {
 
+  areaCodes = [];
   Onboarding = false;
   LandingPage = false;
   PinVerify = false;
@@ -133,6 +134,10 @@ export class OnboardComponent implements OnInit {
         this.Onboarding = true;
         this.LandingPage = true;
         var this_m = this;
+
+        this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];
+        console.log(this.areaCodes);
+        
         // if (this.defaults.sequence[0] == "S")
 
         this_m.Onboarding = this_m.defaults.sequence[0] == "S";
@@ -166,7 +171,8 @@ export class OnboardComponent implements OnInit {
     });
 
     this.msisdnForm = this.formBuilder.group({
-      msisdn: ['', Validators.required]
+      msisdn: ['', Validators.required],
+      area: ['']
     });
 
     // Pin Verification Form

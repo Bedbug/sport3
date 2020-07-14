@@ -93,7 +93,10 @@
         </div>
         <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
           <div class="input-box">
-            <div class="input-area">+7</div>
+            <div *ngIf="areaCodes.length < 2" class="input-area">+7</div>
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area">                        
+              <option *ngFor="let areaCode of areaCodes">{{areaCode}}</option>
+            </select>
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
               autocorrect="off" autocapitalize="none"
               placeholder="{{ 'enterMobilePhone' | translate }}" required>
