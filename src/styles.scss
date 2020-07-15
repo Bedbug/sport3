@@ -407,8 +407,48 @@ body .page-wrapper .page-main-header {
 
 .app-navbar a:hover,
 .mobile-app-navbar a:hover,
-.universal-app-navbar a:hover {
+.universal-app-navbar a:hover,
+.vertical-app-navbar a:hover {
   background-color: $theme-navbar-color-active;
+}
+
+.vertical-app-navbar{
+  position: relative;
+  width: 100%;
+  flex-flow: column;
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: center;
+  // justify-content: space-between;
+  // padding: .5rem 1rem;
+}
+
+.vertical-app-navbar a {
+  display: flex;
+    align-items: center;
+    height: 70px;
+    flex-direction: row;
+    font-size: 18px;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-bottom: 3px solid transparent;
+}
+
+.vertical-app-navbar .footer-icon {
+  width: 40px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.vertical-app-navbar a.active {  
+  // border-bottom: solid 3px $theme-color;
+  color: $theme-color;
+  animation-name: flipInX;
+  animation-duration: 0.5s;
+  background-color: #22344d;
 }
 
 .mobile-app-navbar a,.universal-app-navbar a {
@@ -432,6 +472,13 @@ body .page-wrapper .page-main-header {
   height: 25px;
   margin-bottom: 3px;
 }
+.vertical-app-navbar [class^="icn-"] {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
 .app-navbar .footer-icon {
   width: 40px;
   height: 25px;
@@ -867,7 +914,7 @@ body .page-wrapper .page-main-header {
   animation-duration: 0.5s;
 }
 
-.mobile-app-navbar a.active, .universal-app-navbar a.active {  
+ .mobile-app-navbar a.active, .universal-app-navbar a.active {  
   border-bottom: solid 3px $theme-color;
   color: $theme-color;
   animation-name: flipInX;

@@ -2,16 +2,18 @@
 <app-login></app-login>
 <app-register></app-register>
 <div class="page-main-header">
-    <div class="main-header-left">
-        <div class="logo-wrapper">
-            <a [routerLink]="'./main/contests'">
-                <div class="app-logo"></div>                
-            </a>
-            <a [routerLink]="'main/contests'" class="app-name" >{{appname[translate.currentLang]}}</a>
-        </div>
-    </div>
-    <div class="main-header-right row">
-        <!-- <div class="mobile-sidebar" id="mobile-sidebar">
+    <div class="container">
+        <div class="row" style="justify-content: space-between;">
+            <div class="main-header-left">
+                <div class="logo-wrapper">
+                    <a [routerLink]="'./main/contests'">
+                        <div class="app-logo"></div>
+                    </a>
+                    <a [routerLink]="'main/contests'" class="app-name">{{appname[translate.currentLang]}}</a>
+                </div>
+            </div>
+            <div class="main-header-right">
+                <!-- <div class="mobile-sidebar" id="mobile-sidebar">
             <div class="media-body text-right switch-sm">
                 <label class="switch">
                     <input type="checkbox" id="sidebar-toggle" checked>
@@ -19,9 +21,9 @@
                 </label>
             </div>
         </div> -->
-        <div class="nav-right col">
-            <!-- LOGIN HEADER -->
-            <!-- <ul class="nav-menus" *ngIf="!isLoggedIn">
+                <div class="nav-right col">
+                    <!-- LOGIN HEADER -->
+                    <!-- <ul class="nav-menus" *ngIf="!isLoggedIn">
                  <li>
                         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-inline sportimo-form">
                             <div class="form-group">
@@ -50,8 +52,8 @@
     
                     </li>
             </ul> -->
-<!-- HEADER LOGGED IN -->
-            <!-- <ul class="nav-menus"  *ngIf="isLoggedIn">
+                    <!-- HEADER LOGGED IN -->
+                    <!-- <ul class="nav-menus"  *ngIf="isLoggedIn">
                  <li>
                     <form class="form-inline search-form">
                         <div class="form-group">
@@ -188,10 +190,13 @@
                     </ul>
                 </li>
             </ul> -->
-            <div *ngIf="currentUser && useWallet" class="user-wallet">{{parseNumbers(currentUser.wallet)}}<i class="coin"></i></div>
-            <div class="mobile-toggle">
-                    <div class="icn-burger" style="height: 24px;width: 30px;"></div>
-                <!-- <i class="icon-menu"></i> -->
+                    <div *ngIf="currentUser && useWallet" class="user-wallet">{{parseNumbers(currentUser.wallet)}}<i
+                            class="coin"></i></div>
+                    <div class="mobile-toggle">
+                        <div class="icn-burger" style="height: 24px;width: 30px;"></div>
+                        <!-- <i class="icon-menu"></i> -->
+                    </div>
+                </div>
             </div>
         </div>
     </div>
