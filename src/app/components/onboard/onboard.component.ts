@@ -211,9 +211,9 @@ export class OnboardComponent implements OnInit {
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
-    console.log(this.msisdnForm.controls.area.value);
+   
     let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0]):"";
-    let msisdnValue = areaCode+this.msisdnForm.controls.msisdn.value;
+    let msisdnValue = this.msisdnForm.controls.msisdn.value!='03'?areaCode:'' + this.msisdnForm.controls.msisdn.value;
     console.log(msisdnValue) ;
     this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
       .subscribe(response => {
