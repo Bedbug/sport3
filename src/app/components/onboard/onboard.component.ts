@@ -22,6 +22,7 @@ declare var Pace: any;
 export class OnboardComponent implements OnInit {
 
   areaCodes = [];
+  nrSelect = '';
   Onboarding = false;
   LandingPage = false;
   PinVerify = false;
@@ -135,9 +136,8 @@ export class OnboardComponent implements OnInit {
         this.LandingPage = true;
         var this_m = this;
 
-        this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];
-        console.log(this.areaCodes);
-        
+        this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
+        this.nrSelect = this.areaCodes.length>0?this.areaCodes[0]:'';
         // if (this.defaults.sequence[0] == "S")
 
         this_m.Onboarding = this_m.defaults.sequence[0] == "S";
@@ -172,7 +172,7 @@ export class OnboardComponent implements OnInit {
 
     this.msisdnForm = this.formBuilder.group({
       msisdn: ['', Validators.required],
-      area: ['']
+      area: [this.areaCodes[0]?this.areaCodes[0]:'' ]
     });
 
     // Pin Verification Form
@@ -211,7 +211,11 @@ export class OnboardComponent implements OnInit {
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
-    this.authenticationService.blaiseSignin(this.msisdnForm.controls.msisdn.value, this.translate.currentLang)
+    console.log(this.msisdnForm.controls.area.value);
+    let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0]):"";
+    let msisdnValue = areaCode+this.msisdnForm.controls.msisdn.value;
+    console.log(msisdnValue) ;
+    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
       .subscribe(response => {
         if (response && response.success) {
           this.subState = response.state;

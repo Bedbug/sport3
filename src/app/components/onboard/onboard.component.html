@@ -94,7 +94,7 @@
         <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
           <div class="input-box">
             <div *ngIf="areaCodes.length < 2" class="input-area">+7</div>
-            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area">                        
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>                        
               <option *ngFor="let areaCode of areaCodes">{{areaCode}}</option>
             </select>
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
