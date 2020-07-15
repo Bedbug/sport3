@@ -29,6 +29,8 @@
     display: flex;
 }
 
+
+
 .slideText {
     // position: absolute;
     // bottom: 5%;
@@ -193,6 +195,16 @@
     padding: 10px;
     color: white;
 }
+
+select option {
+  position: absolute;
+  background-color: black;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
 
 .input-area{
   background: transparent;
