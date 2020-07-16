@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
-
+import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 
 @Component({
   selector: 'app-main-page-standings',
@@ -22,6 +22,14 @@ export class MainPageStandingsComponent implements OnInit {
     Team: 2,
     Player: 3
   }
+
+  translateMappings() {
+    _("Goalkeeper");
+    _("Defender");
+    _("Midfielder");
+    _("Forward");
+  }
+
 
   currentStandings: any;
   currentPlayer: any;

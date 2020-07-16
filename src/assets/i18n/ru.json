@@ -32,6 +32,7 @@
 	"D": "Н",
 	"DEF": "ЗАЩ",
 	"Days": "Дни",
+	"Defender": "",
 	"Double Points": "Двойные очки",
 	"Double Time": "Двойное время",
 	"Drag slider to set the time that the card will be activated": "Перетаскивайте ползунок чтобы установить время активации карты",
@@ -42,6 +43,7 @@
 	"FW": "НАП",
 	"First_Half_Ends": "Конец первого тайма",
 	"First_Half_Starts": "Начало первого тайма",
+	"Forward": "",
 	"Foul": "Фол",
 	"Fouls": "Фолы",
 	"Fouls commited": "Совершено фолов",
@@ -52,6 +54,7 @@
 	"Get": "Получить",
 	"Get PIN": "Получить ПИН",
 	"Goal": "Гол",
+	"Goalkeeper": "",
 	"Goals": "Голы",
 	"Grand prize": "Приз",
 	"HalfTime": "Тайм",
@@ -89,6 +92,7 @@
 	"Matches": "Матчи",
 	"Matches played": "Матчей сыграно",
 	"Messages": "Сообщения",
+	"Midfielder": "",
 	"Minutes": "Минуты",
 	"My Account": "Мой аккаунт",
 	"My Cards": "Мои Карты",
@@ -125,6 +129,7 @@
 	"Pregame": "Предыгра",
 	"Privacy Policy": "Политика конфиденциальности",
 	"Prize": "Приз ",
+	"PrizeIndex": "",
 	"Prizes": "Призы",
 	"Profile": "Профиль",
 	"Pts": "Очк",
@@ -181,7 +186,7 @@
 	"You can always edit your username at your Profile tab": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\n          play cards": "Вам необходимо пополнить счет и обновить подписку.",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "Ваш результат: ",
 	"Your points:": "Ваш результат: ",
 	"_action": "",
@@ -237,6 +242,24 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Участвовать",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pin_sent": "Растау коды дұрыс емес. Өтінеміз, тағы бір рет көріңіз",
 	"pts": " очк",
 	"russian": "Русский",

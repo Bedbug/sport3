@@ -32,6 +32,7 @@
 	"D": "Н",
 	"DEF": "Қорғау",
 	"Days": "Күндер",
+	"Defender": "",
 	"Double Points": "Қос ұпайлар",
 	"Double Time": "Қос уақыт",
 	"Drag slider to set the time that the card will be activated": "Картаның активация уақытын орнату үшін сырғытпаны көшіріңіз",
@@ -42,6 +43,7 @@
 	"FW": "Шабуыл",
 	"First_Half_Ends": "Бірінші таймның соңы",
 	"First_Half_Starts": "Бірінші таймның басы",
+	"Forward": "",
 	"Foul": "Ереже бұзу",
 	"Fouls": "Ереже бұзушылықтар",
 	"Fouls commited": "ереже бұзу жасалды",
@@ -52,6 +54,7 @@
 	"Get": "Алу",
 	"Get PIN": "ПИН алу",
 	"Goal": "Гол",
+	"Goalkeeper": "",
 	"Goals": "Голдар",
 	"Grand prize": "Ұтыс",
 	"HalfTime": "Тайм",
@@ -89,6 +92,7 @@
 	"Matches": "Матчтар",
 	"Matches played": "Матчтар ойналды",
 	"Messages": "Хабарламалар",
+	"Midfielder": "",
 	"Minutes": "Минуттар",
 	"My Account": "Менің аккаунтым",
 	"My Cards": "Карталарым",
@@ -125,6 +129,7 @@
 	"Pregame": "Ойын алды",
 	"Privacy Policy": "Құпиялық саясаты",
 	"Prize": "Жүлде",
+	"PrizeIndex": "",
 	"Prizes": "Жүлделер",
 	"Profile": "Профиль",
 	"Pts": "Ұпай",
@@ -181,7 +186,7 @@
 	"You can always edit your username at your Profile tab": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You can change your Username anytime from your Profile": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You have insufficient coins to join": "Кіру үшін, сіздің тиындарыңыз жеткіліксіз",
-	"You need to have an active subscription in order to\n          play cards": "Карта ойнау үшін, сізге жазылу қажет",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
 	"_action": "",
@@ -237,6 +242,24 @@
 	"joinMatchNoCoins": " Қатысу үшін, сіздің тиындарыңыз жеткіліксіз. Қосымша тиындар алғыңыз келе ме?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Тегін ойнау",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pin_sent": "Пароль сізге қайта жіберілді",
 	"pts": " ұпай",
 	"russian": "Русский",

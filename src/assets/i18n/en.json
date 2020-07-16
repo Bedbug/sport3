@@ -32,6 +32,7 @@
 	"D": "D",
 	"DEF": "DEF",
 	"Days": "Days",
+	"Defender": "Defender",
 	"Double Points": "Double Points",
 	"Double Time": "Double Time",
 	"Drag slider to set the time that the card will be activated": "Drag slider to set the time that the card will be activated",
@@ -42,6 +43,7 @@
 	"FW": "FW",
 	"First_Half_Ends": "First Half Ends",
 	"First_Half_Starts": "First Half Starts",
+	"Forward": "Forward",
 	"Foul": "Foul",
 	"Fouls": "Fouls",
 	"Fouls commited": "Fouls commited",
@@ -52,6 +54,7 @@
 	"Get": "Get",
 	"Get PIN": "Get PIN",
 	"Goal": "Goal",
+	"Goalkeeper": "Goalkeeper",
 	"Goals": "Goals",
 	"Grand prize": "Grand prize",
 	"HalfTime": "Half Time",
@@ -89,6 +92,7 @@
 	"Matches": "Matches",
 	"Matches played": "Matches played",
 	"Messages": "Messages",
+	"Midfielder": "Midfielder",
 	"Minutes": "Minutes",
 	"My Account": "My Account",
 	"My Cards": "My Cards",
@@ -125,6 +129,7 @@
 	"Pregame": "Pre-game",
 	"Privacy Policy": "Privacy Policy",
 	"Prize": "Prize ",
+	"PrizeIndex": "Prize: {{value}}",
 	"Prizes": "Prizes",
 	"Profile": "Profile",
 	"Pts": "Pts",
@@ -181,7 +186,7 @@
 	"You can always edit your username at your Profile tab": "You can always edit your username at your Profile tab",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\n          play cards": "You need to have an active subscription in order to\n          play cards",
+	"You need to have an active subscription in order to\r\n          play cards": "You need to have an active subscription in order to\r\n          play cards",
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
 	"_action": "_action",
@@ -237,6 +242,24 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Free to Play",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",
 	"russian": "Русский",

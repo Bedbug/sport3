@@ -32,6 +32,7 @@
 	"D": "د",
 	"DEF": "دفاع",
 	"Days": "روزها",
+	"Defender": "",
 	"Double Points": "امتیاز دو برابر",
 	"Double Time": "زمان دو برابر",
 	"Drag slider to set the time that the card will be activated": "برای مشخص شدن زمان فعال شدن کارت اسلایدر را به راست بکشید",
@@ -42,6 +43,7 @@
 	"FW": "حمله",
 	"First_Half_Ends": "پایان نیمه اول",
 	"First_Half_Starts": "آغاز نیمه اول",
+	"Forward": "",
 	"Foul": "خطا",
 	"Fouls": "خطا‌ها",
 	"Fouls commited": "خطلاهای مرتکب‌شده",
@@ -52,6 +54,7 @@
 	"Get": "دریافت",
 	"Get PIN": "دریافت کد",
 	"Goal": "گل",
+	"Goalkeeper": "",
 	"Goals": "گل‌ها",
 	"Grand prize": "جایزه‌ی اصلی",
 	"HalfTime": "",
@@ -89,6 +92,7 @@
 	"Matches": "مسابقه‌ها",
 	"Matches played": "مسابقه‌های بازی‌شده",
 	"Messages": "پیام‌ها",
+	"Midfielder": "",
 	"Minutes": "دقایق",
 	"My Account": "حساب من",
 	"My Cards": "کارت های من",
@@ -125,6 +129,7 @@
 	"Pregame": "",
 	"Privacy Policy": "سیاست حفظ حریم خصوصی",
 	"Prize": "حایزه",
+	"PrizeIndex": "",
 	"Prizes": "جوایز",
 	"Profile": "پروفایل",
 	"Pts": "امتیاز",
@@ -181,7 +186,7 @@
 	"You can always edit your username at your Profile tab": "",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "شانس‌های شما: ",
 	"Your points:": "",
 	"_action": "",
@@ -237,6 +242,24 @@
 	"joinMatchNoCoins": "",
 	"kazzach": "",
 	"matchFreePlay": "",
+	"null": {
+		"0": {
+			"/assets/images/sportimo/icon-winners": {
+				"active": {
+					"svg": ""
+				}
+			},
+			"/assets/images/sportimo/toppicks/icon1": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon2": {
+				"svg": ""
+			},
+			"/assets/images/sportimo/toppicks/icon3": {
+				"svg": ""
+			}
+		}
+	},
 	"pin_sent": "",
 	"pts": "امتیاز",
 	"russian": "",
