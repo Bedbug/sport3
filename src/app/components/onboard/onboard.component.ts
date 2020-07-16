@@ -213,8 +213,8 @@ export class OnboardComponent implements OnInit {
     this.isSubmitting = true;
    
     let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0]):"";
-    let msisdnValue = this.msisdnForm.controls.msisdn.value!='03'?areaCode:'' + this.msisdnForm.controls.msisdn.value;
-    console.log(msisdnValue) ;
+    let msisdnValue = (this.msisdnForm.controls.msisdn.value!='03'?areaCode:'') + this.msisdnForm.controls.msisdn.value;
+    console.log(this.msisdnForm.controls.msisdn.value) ;
     this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
       .subscribe(response => {
         if (response && response.success) {
