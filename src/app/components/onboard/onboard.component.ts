@@ -135,11 +135,18 @@ export class OnboardComponent implements OnInit {
         this.Onboarding = true;
         this.LandingPage = true;
         var this_m = this;
-
-        this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
-        this.nrSelect = this.areaCodes.length>0?this.areaCodes[0]:'';
-        // if (this.defaults.sequence[0] == "S")
-
+        
+        let returnedAreaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];
+        this.areaCodes = returnedAreaCodes.map(a=>{
+          let b = a.split(":");
+          return {code:b[0],area:b[1]};
+        })
+        console.log(this.areaCodes);
+        
+        // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
+        this.nrSelect = this.areaCodes.length>0?this.areaCodes[0].area:'';
+        // if (this.defaults.sequence[0] == "S")       
+        
         this_m.Onboarding = this_m.defaults.sequence[0] == "S";
         this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
@@ -172,7 +179,7 @@ export class OnboardComponent implements OnInit {
 
     this.msisdnForm = this.formBuilder.group({
       msisdn: ['', Validators.required],
-      area: [this.areaCodes[0]?this.areaCodes[0]:'' ]
+      area: [this.areaCodes[0]?this.areaCodes[0].area:'' ]
     });
 
     // Pin Verification Form
@@ -212,9 +219,9 @@ export class OnboardComponent implements OnInit {
   onMSISDNSubmit() {
     this.isSubmitting = true;
    
-    let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0]):"";
+    let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0].area):"";
     let msisdnValue = (this.msisdnForm.controls.msisdn.value!='03'?areaCode:'') + this.msisdnForm.controls.msisdn.value;
-    console.log(this.msisdnForm.controls.msisdn.value) ;
+    console.log(msisdnValue) ;
     this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
       .subscribe(response => {
         if (response && response.success) {
@@ -232,6 +239,16 @@ export class OnboardComponent implements OnInit {
         this.isSubmitting = false;
       });
 
+  }
+
+  getCountryCode(value){
+     let ret = this.areaCodes.find(codes=>{    
+      return codes.area == value;
+    });
+    if(ret)
+    return ret.code.toLowerCase();
+
+    return '';
   }
 
   onPinSubmit(noSubscription: boolean) {

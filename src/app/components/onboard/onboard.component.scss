@@ -212,10 +212,15 @@ select option {
   border: 0;
   border-right: 1px solid white;
   padding: 0px;
-  padding-right: 10px;
+  padding-right: 0;
   margin-right: 10px;
   height: 20px;
   line-height: 20px;
+}
+
+.flag-icon{
+  width: 30px;
+  margin-right: 5px;
 }
 
 .form-control-plaintext

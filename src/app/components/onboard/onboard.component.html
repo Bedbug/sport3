@@ -91,11 +91,12 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
+        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">      
           <div class="input-box">
-            <div *ngIf="areaCodes.length < 2" class="input-area">+7</div>
+            <span class="flag-icon flag-icon-squared" [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value)"></span>
+            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
             <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>                        
-              <option *ngFor="let areaCode of areaCodes">{{areaCode}}</option>
+              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
             </select>
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
               autocorrect="off" autocapitalize="none"
