@@ -93,6 +93,7 @@ export class OnboardComponent implements OnInit {
   firstLoad: boolean = true;
   user: User;
   ngUnsubscribe = new Subject();
+  blacklisted = 0;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -234,6 +235,10 @@ export class OnboardComponent implements OnInit {
             this.subState = "ACTIVEFREEPERIOD";
             if (this.subState == "INACTIVE")
             this.subState = "UNKNOWN";
+            if (this.subState == "BLACKLISTED")
+           { this.subState = "UNKNOWN";
+          this.blacklisted = 1;}
+            
           this.closeLandingPage();
         }
         this.isSubmitting = false;
@@ -258,6 +263,12 @@ export class OnboardComponent implements OnInit {
     }
 
     this.isSubmitting = true;
+
+    if(this.blacklisted > 0){
+      this.blacklisted = 2;
+      this.isSubmitting = false;
+      return;
+    }
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(

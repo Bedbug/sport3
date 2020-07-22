@@ -149,6 +149,9 @@
             <div *ngIf="incorrectPin" class="problem-info">
               <div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span>
             </div>
+            <div *ngIf="blacklisted > 1" class="problem-info">
+              <div class="icn-info-alt"></div> <span translate>Account suspended. Contact Support.</span>
+            </div>
           </div>
         </div>
         <div class="login-form-buttons">
