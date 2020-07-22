@@ -1,6 +1,40 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
 @import "src/variables.scss";
 
+.components-container{
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.desktop-nav-bar {
+    width: 550px;
+    background-color: $theme-navbar-color;
+    display: flex;
+    align-items: stretch;
+}
+
+@media (max-width: 991px) {
+    .desktop-nav-bar {
+        display: none;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .components-container{
+       max-width: 960px;
+  }
+}
+
+  @media (min-width: 1200px) {
+    .components-container{
+       max-width: 1140px;
+     
+  }
+ 
+}
+
 // App Conditions
 @if $showContestInfoOnMatches == true {
   app-contest-info-header {

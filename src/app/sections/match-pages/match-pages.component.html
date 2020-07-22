@@ -1,74 +1,117 @@
 <span class="page-background-black">
-  <app-contest-info-header showContestDetails = false showBackButon = true></app-contest-info-header>
+  <app-contest-info-header showContestDetails=false showBackButon=true></app-contest-info-header>
   <!-- Router Page Placement -->
   <div class="page-wrapper">
-    <div class="match-header-wrapper">
-      <div class="match-header" *ngIf="liveMatch" [@enterAnimation]>
-        <div class="row">
-          <div class="col-5 p-r-0 text-right team-name">
-            <div class="row p-r-15">
-              <div class="col" style="padding-right: 5px">
-                {{liveMatch?.matchData.home_team.name[translate.currentLang]}}
-              </div>
-              <div style="max-width:25px; padding-left:0">
-                <img class="img-fluid"
-                  src="{{liveMatch?.matchData.home_team.logo || './assets/images/sportimo/default-kit.png'}}" alt="">
-              </div>
+    <div class="components-container">
+      <!-- Desktop Side Nav bar -->
+      <div class="desktop-nav-bar">
+        <nav class="vertical-app-navbar">
+          <!-- <div class="container">
+            <div style="width:100%">
+              <div class="row"> -->
+                <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
+                  <span translate>Match Info</span>
+                </a>
+    
+                <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#"
+                  (click)="hasClickedPlay=true" popover="{{translate.instant('tip.1')}}"  placement="bottom" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
+                  containerClass="popover">
+                  <!-- <span popover="{{translate.instant('tip.1')}}"  placement="bottom" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
+                    containerClass="popover"></span> -->
+                  <div class=""><img src="assets/images/sportimo/icon-cards-footer.svg" class="footer-icon" /></div>
+                  <span translate>Play</span>
+                </a>
+    
+                <a *ngIf="contestId" [routerLink]="['cards']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-my-cards-footer.svg" class="footer-icon" /></div>
+                  <span translate>My Cards</span>
+                </a>
+    
+                <a *ngIf="contestId" [routerLink]="['leaders']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
+                  <span translate>Leaders</span>
+                </a>
+          <!-- </div>
             </div>
-          </div>
-          <div class="col row text-center">
-            <div *ngIf="liveMatch.matchData.state> 0" class="col-12 p-0 score">{{parseNumbers(homeScore.toString())}} -
-              {{parseNumbers(awayScore.toString())}}</div>
-            <div *ngIf="liveMatch.matchData.state == 0" class="col-12 p-0 match-versus"><strong>-</strong></div>
-            <div *ngIf="liveMatch.matchData.state == 1 || liveMatch.matchData.state == 3 || liveMatch.matchData.state == 5" class="time col-12 p-0">
-              {{parseNumbers(liveMatch.matchData.time)}}'</div>
-              <div *ngIf="liveMatch.matchData.state == 2 || liveMatch.matchData.state == 4 || liveMatch.matchData.state == 6" class="time col-12 p-0">
-                {{getStatusText(liveMatch.matchData.state)}}</div>
-          </div>
-          <div class="col-5 p-l-0 text-left team-name">
-            <div class="row p-l-15" style="margin-right: 0">
-              <div style="max-width: 25px; padding-right: 0">
-                <img class="img-fluid"
-                  src="{{liveMatch?.matchData.away_team.logo || './assets/images/sportimo/default-kit.png'}}" alt="">
+          </div> -->
+        </nav>
+      </div>
+      <div style="width: 100%;">
+        <div class="match-header-wrapper">
+          <div class="match-header" *ngIf="liveMatch" [@enterAnimation]>
+            <div class="row">
+              <div class="col-5 p-r-0 text-right team-name">
+                <div class="row p-r-15">
+                  <div class="col" style="padding-right: 5px">
+                    {{liveMatch?.matchData.home_team.name[translate.currentLang]}}
+                  </div>
+                  <div style="max-width:25px; padding-left:0">
+                    <img class="img-fluid"
+                      src="{{liveMatch?.matchData.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                      alt="">
+                  </div>
+                </div>
               </div>
-              <div class="col" style="padding-left: 5px"> {{liveMatch?.matchData.away_team.name[translate.currentLang]}}
+              <div class="col row text-center">
+                <div *ngIf="liveMatch.matchData.state> 0" class="col-12 p-0 score">
+                  {{parseNumbers(homeScore.toString())}}
+                  -
+                  {{parseNumbers(awayScore.toString())}}</div>
+                <div *ngIf="liveMatch.matchData.state == 0" class="col-12 p-0 match-versus"><strong>-</strong></div>
+                <div
+                  *ngIf="liveMatch.matchData.state == 1 || liveMatch.matchData.state == 3 || liveMatch.matchData.state == 5"
+                  class="time col-12 p-0">
+                  {{parseNumbers(liveMatch.matchData.time)}}'</div>
+                <div
+                  *ngIf="liveMatch.matchData.state == 2 || liveMatch.matchData.state == 4 || liveMatch.matchData.state == 6"
+                  class="time col-12 p-0">
+                  {{getStatusText(liveMatch.matchData.state)}}</div>
+              </div>
+              <div class="col-5 p-l-0 text-left team-name">
+                <div class="row p-l-15" style="margin-right: 0">
+                  <div style="max-width: 25px; padding-right: 0">
+                    <img class="img-fluid"
+                      src="{{liveMatch?.matchData.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                      alt="">
+                  </div>
+                  <div class="col" style="padding-left: 5px">
+                    {{liveMatch?.matchData.away_team.name[translate.currentLang]}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <!-- <div [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']"> -->
+          <router-outlet #o="outlet"></router-outlet>
+        <!-- </div> -->
       </div>
     </div>
-    <div [@routeAnimations]="o && o.activatedRouteData 
-      && o.activatedRouteData['animation']">
-      <router-outlet #o="outlet"></router-outlet>
-    </div>
     <!-- Contest Navbar -->
-    <nav class="navbar fixed-bottom universal-app-navbar">
+    <nav class="navbar fixed-bottom mobile-app-navbar">
       <div class="container">
         <div style="width: 100%;">
           <div class="row">
-            <a *ngIf="contestId" [routerLink]="['info']"
-              routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
               <span translate>Match Info</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['play']"
-              routerLinkActive="active" href="#" (click)="hasClickedPlay=true">
+            <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#"
+              (click)="hasClickedPlay=true">
               <span popover="{{translate.instant('tip.1')}}" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
                 containerClass="popover"></span>
               <div class=""><img src="assets/images/sportimo/icon-cards-footer.svg" class="footer-icon" /></div>
               <span translate>Play</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['cards']"
-              routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['cards']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-my-cards-footer.svg" class="footer-icon" /></div>
               <span translate>My Cards</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['leaders']"
-              routerLinkActive="active" href="#">
+            <a *ngIf="contestId" [routerLink]="['leaders']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
               <span translate>Leaders</span>
             </a>
