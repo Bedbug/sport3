@@ -51,8 +51,7 @@ export class MatchPagesComponent implements OnInit {
     private state: Router,
     public translate: TranslateService,
     private authenticationService: AuthenticationService,
-    private cardToastService: CardToastService
-
+    private cardToastService: CardToastService,
   ) {
     _("Card_lost_text");
     _("Card_won_text");
@@ -163,6 +162,8 @@ export class MatchPagesComponent implements OnInit {
       // this.demoplay = this.sportimoService.playDemo();
     })
   }
+
+ 
 
   getStatusText(status){
     if(!status)

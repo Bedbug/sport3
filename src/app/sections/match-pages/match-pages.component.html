@@ -9,29 +9,29 @@
           <!-- <div class="container">
             <div style="width:100%">
               <div class="row"> -->
-                <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
-                  <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
-                  <span translate>Match Info</span>
-                </a>
-    
-                <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#"
-                  (click)="hasClickedPlay=true" popover="{{translate.instant('tip.1')}}"  placement="bottom" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
-                  containerClass="popover">
-                  <!-- <span popover="{{translate.instant('tip.1')}}"  placement="bottom" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
+          <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
+            <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
+            <span translate>Match Info</span>
+          </a>
+
+          <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#" (click)="hasClickedPlay=true"
+            popover="{{translate.instant('tip.1')}}" placement="bottom" triggers=""
+            [isOpen]="showPlayCardsPop && !hasClickedPlay" containerClass="popover">
+            <!-- <span popover="{{translate.instant('tip.1')}}"  placement="bottom" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
                     containerClass="popover"></span> -->
-                  <div class=""><img src="assets/images/sportimo/icon-cards-footer.svg" class="footer-icon" /></div>
-                  <span translate>Play</span>
-                </a>
-    
-                <a *ngIf="contestId" [routerLink]="['cards']" routerLinkActive="active" href="#">
-                  <div class=""><img src="assets/images/sportimo/icon-my-cards-footer.svg" class="footer-icon" /></div>
-                  <span translate>My Cards</span>
-                </a>
-    
-                <a *ngIf="contestId" [routerLink]="['leaders']" routerLinkActive="active" href="#">
-                  <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
-                  <span translate>Leaders</span>
-                </a>
+            <div class=""><img src="assets/images/sportimo/icon-cards-footer.svg" class="footer-icon" /></div>
+            <span translate>Play</span>
+          </a>
+
+          <a *ngIf="contestId" [routerLink]="['cards']" routerLinkActive="active" href="#">
+            <div class=""><img src="assets/images/sportimo/icon-my-cards-footer.svg" class="footer-icon" /></div>
+            <span translate>My Cards</span>
+          </a>
+
+          <a *ngIf="contestId" [routerLink]="['leaders']" routerLinkActive="active" href="#">
+            <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
+            <span translate>Leaders</span>
+          </a>
           <!-- </div>
             </div>
           </div> -->
@@ -84,7 +84,7 @@
           </div>
         </div>
         <!-- <div [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']"> -->
-          <router-outlet #o="outlet"></router-outlet>
+        <router-outlet #o="outlet"></router-outlet>
         <!-- </div> -->
       </div>
     </div>
@@ -95,7 +95,7 @@
           <div class="row">
             <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
-              <span translate>Match Info</span>
+              <span translate>How to Play</span>
             </a>
 
             <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#"
@@ -119,5 +119,7 @@
         </div>
       </div>
     </nav>
+    <!-- Terms footer -->
+    <app-terms-footer></app-terms-footer>
   </div>
 </span>

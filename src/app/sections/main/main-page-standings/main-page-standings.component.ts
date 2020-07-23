@@ -91,7 +91,7 @@ export class MainPageStandingsComponent implements OnInit {
           this.sportimoService.getTeam(teamId).subscribe(x => {
             this.currentTeam = x;
             this.stats = this.currentTeam.stats.find(x=>x.competition == leagueId);
-            console.log(this.stats);
+            // console.log(this.stats);
             // Check for favorite team
             this.isFavoriteTeam = false;
             if (this.authenticationService.currentUserValue)
@@ -129,7 +129,7 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   showPlayer(playerId: string) {
-    this.router.navigate([], { queryParams: { playerId: playerId } });
+    // this.router.navigate([], { queryParams: { playerId: playerId } });
   }
 
   get getGK() {
