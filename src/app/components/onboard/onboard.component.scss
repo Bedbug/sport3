@@ -112,7 +112,7 @@
 .landing-card-content{
   display: flex;
     flex-direction: column;
-    justify-content: center;
+    // justify-content: center;
     position: relative;
     height: 100%;
 }
@@ -130,14 +130,15 @@
 
 .slide-prize-header{
   width: 100%;
-  // margin: 20px auto;
-    font-size: 25px;
   font-size: 25px;
-    // font-weight: 700;
-    // line-height: 25px;    
-    margin-bottom: 10px;
-    
-    // height: 130px;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-end;
+  justify-content: center;
+  line-height: 30px;
+  height: 74px;
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
 .slide-prize-container{
