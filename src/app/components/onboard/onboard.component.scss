@@ -1,7 +1,7 @@
 @import "src/variables.scss";
 
 .modal-card {
-    margin-top: 0px;
+    margin-top: 0 !important;
     width: 100%;
     z-index: 1032;
     transform: translate(-50%, -50%);
@@ -102,7 +102,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 40px;
+    // top: 40px;
+    padding-top: 40px;
     height: 100%;
     margin: auto;
     background-color: #4b320440;
@@ -112,13 +113,13 @@
 .landing-card-content{
   display: flex;
     flex-direction: column;
-    // justify-content: center;
+    justify-content: space-between;
     position: relative;
     height: 100%;
 }
 
 .carousel-indicators-container{
-  height: 50px;
+  height: 20px;
   position: relative;
 }
 
@@ -155,6 +156,7 @@
 
 .carousel-indicators{
   bottom: 0;
+  margin-bottom: 5px;
 }
 
 .slide-prize-text{
