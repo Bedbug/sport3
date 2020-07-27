@@ -1,4 +1,19 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
 @import "src/variables.scss";
+
+.components-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.desktop-nav-bar {
+  width: 550px;
+  background-color: $theme-navbar-color;
+  display: flex;
+  align-items: stretch;
+}
 
 // .background {
 //   display: block;
@@ -66,6 +81,19 @@
 
 .winner-card {
   margin-bottom: 0;
+}
+
+.winner-card-header-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border-bottom: 1px solid #000000;
+  padding: 15px;
 }
 
 .winner-card-header {
@@ -137,7 +165,7 @@
   padding-left: 10px;
 }
 
-.polarchart-header{
+.polarchart-header {
   width: 100% !important;
   text-align: center;
   padding: 5px;
@@ -154,7 +182,7 @@
   justify-content: space-around;
 }
 
-.polarchart-info{
+.polarchart-info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -165,17 +193,17 @@
   height: 25px;
   background-color: RGBA(171, 236, 120, 1);
   border-radius: 50%;
-  margin: 10px
+  margin: 10px;
 }
 .all-chart-color {
   width: 25px;
   height: 25px;
   background-color: RGBA(255, 52, 88, 0.9);
   border-radius: 50%;
-  margin: 10px
+  margin: 10px;
 }
 
-.player-info{
+.player-info {
   display: flex;
 }
 
@@ -188,6 +216,79 @@
   margin: 10px;
 }
 
-.player-chart-label .title{
+.player-chart-label .title {
   color: $theme-color;
+}
+
+.stat-card {
+  border-top: 1px inset rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #000000;
+  background-color: RGBA(22, 31, 43, 0.8);
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-number {
+  color: #ffffff;
+  text-align: center;
+}
+
+.stat-text {
+  color: $theme-color;
+  text-align: center;
+}
+
+.stat-subcard {
+  border-top: 1px inset rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #000000;
+  background-color: RGBA(22, 31, 43, 0.9);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.stat-icon {
+  flex-grow: 1;
+  flex-basis: 33%;
+}
+
+.stat-text-1 {
+  flex-grow: 1;
+  flex-basis: 33%;
+}
+
+.stat-text-2 {
+  flex-grow: 2;
+  flex-basis: 77%;
+}
+
+.team-stat {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .desktop-nav-bar {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .components-container {
+    max-width: 960px;
+  }
+  .winner-card-header-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .components-container {
+    max-width: 1140px;
+  }
 }
