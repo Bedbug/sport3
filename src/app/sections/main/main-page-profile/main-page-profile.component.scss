@@ -64,19 +64,17 @@
 
 .input-control input {
   display: block;
-  width: 100%;
+  width: 260px;
+  margin: auto;
   padding: 3px 10px;
-  // padding-bottom: 0.375rem;
-  margin-bottom: 0;
+  margin-bottom: 15px;
   line-height: 1.5;
   color: #ffffff;
-  font-size: 16px;
-  font-weight: bold;
   background-color: #000000;
   border: solid transparent;
   border-width: 1px 0;
-  max-height: 31px;
-  // height: 31px;
+  border-radius: 5px;
+  height: 38px;
 }
 
 .winner-card {
@@ -87,6 +85,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
   color: #ffffff;
@@ -111,15 +110,15 @@
 
 .winner-card-body {
   border-top: 1px inset rgba(255, 255, 255, 0.1);
-  background-color: RGBA(22, 31, 43, 0.8);
-  padding: 13px;
+  // background-color: RGBA(22, 31, 43, 0.8);
+  padding: 40px 15px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.winner-card-body > div {
-  width: 50%;
-}
+// .winner-card-body > div {
+//   width: 50%;
+// }
 
 .chart-container {
   height: 100px;
@@ -270,6 +269,50 @@
   width: 100%;
   align-items: center;
   justify-content: center;
+}
+
+.avatar-select-info{
+  color: #ffffff;
+  text-align: center;
+}
+.avatars-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-width: 380px;
+    margin: auto;
+}
+
+.avatar-container{
+  width: 100px;
+  height: 102px;
+  margin-bottom: 19px;
+}
+
+.avatar-container.selected{
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+
+.avatars-close{
+  color: white;
+  font-weight: 700;
+  position: absolute;
+  right: 20px;
+}
+
+.avatars-header{
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  font-size: 20px;
+  font-weight: 700;
+  align-items: center;
+  background-color: #3f4856;
+}
+
+.background-container {  
+  background-color: rgba(0,0,0,0.3);
 }
 
 @media (max-width: 991px) {

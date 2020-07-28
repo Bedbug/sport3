@@ -44,6 +44,27 @@ export class MainPageProfileComponent implements OnInit {
 
   stats: any;
 
+  // Avatars
+  avatarsShowing = false;
+
+  avatars: string[] =[
+    './assets/images/sportimo/avatars/avatar1.png',
+    './assets/images/sportimo/avatars/avatar2.png',
+    './assets/images/sportimo/avatars/avatar3.png',
+    './assets/images/sportimo/avatars/avatar4.png',
+    './assets/images/sportimo/avatars/avatar5.png',
+    './assets/images/sportimo/avatars/avatar6.png',
+    './assets/images/sportimo/avatars/avatar7.png',
+    './assets/images/sportimo/avatars/avatar8.png',
+    './assets/images/sportimo/avatars/avatar9.png',
+    './assets/images/sportimo/avatars/avatar10.png',
+    './assets/images/sportimo/avatars/avatar11.png',
+    './assets/images/sportimo/avatars/avatar12.png',
+    './assets/images/sportimo/avatars/avatar13.png',
+    './assets/images/sportimo/avatars/avatar14.png',
+    './assets/images/sportimo/avatars/avatar15.png',
+  ]
+
   // Pie charts
   public OverallChartLabels: Label[] = ['You', 'All players'];
   public OveralltChartData: SingleDataSet = [
@@ -110,10 +131,13 @@ export class MainPageProfileComponent implements OnInit {
     });
   }
 
-  openAvatarSelection() {
-    console.log(this.route.parent);
-    
-    this.router.navigate(['avatars'],{relativeTo:this.route.parent});
+  openAvatarSelection() {  
+    this.avatarsShowing = true;
+    // this.router.navigate(['avatars'],{relativeTo:this.route.parent});
+  }
+
+  closeAvatarsSelection(){
+    this.avatarsShowing = false;
   }
 
   ngOnDestroy() {
@@ -131,6 +155,10 @@ export class MainPageProfileComponent implements OnInit {
         };
       });      
 
+  }
+
+  selectAvatar(avatarUrl:string){
+    this.authenticationService.updateAvatar(avatarUrl).subscribe();
   }
 
 
