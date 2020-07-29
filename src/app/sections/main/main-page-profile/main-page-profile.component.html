@@ -11,12 +11,13 @@
               <div class="background-ring isClickable" (click)="openAvatarSelection()">
                 <img class="rounded-circle" [src]="user.picture" alt="">
               </div>
-              <div>Username</div>
+              <!-- <div>Username</div> -->
               <!-- <div class="input-icon">
                 <div class="icn-user"></div>
               </div> -->
 
               <div class="input-control">
+                <div style="padding-left: 33px;" translate>Username</div>
                 <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
                   class="form-control-plaintext" placeholder="Username">
               </div>
@@ -40,10 +41,10 @@
 
       <div style="width: 100%;">
         <div class="main-pages-scrollarea background-container">
-          <div *ngIf="user" class="winner-card" >
+          <div *ngIf="user" class="winner-card">
             <div *ngIf="!avatarsShowing" class="winner-card-header-mobile">
               <div class="background-ring isClickable" (click)="openAvatarSelection()">
-                <img class="rounded-circle" [src]="user.picture" alt="">
+                <img class="rounded-circle" [src]="user.picture || '/assets/images/sportimo/default_avatar.svg'" alt="">
               </div>
 
               <!-- <div class="input-icon">
@@ -68,91 +69,114 @@
             </div>
 
             <!-- STATS -->
-            <div *ngIf="!avatarsShowing" class="container p-t-15">
-              <div class="stat-card" style="margin-bottom: 5px;">
-                <div class="team-stat">
-                  <div class="icn-contest" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 50px; font-weight: 700">{{stats?.stats.gamesPlayed}}
-                    </div>
-                    <div class="stat-text" style="font-size: 17px; font-weight: 700" translate>Games played</div>
-                  </div>
+            <div class="stats-container"   *ngIf="!avatarsShowing">
+              <!-- Matches Played -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_matchesplayed.svg" alt="">
                 </div>
-                <div class="team-stat">
-                  <div class="icn-goal" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 50px; font-weight: 700">{{stats?.stats.Goal}}</div>
-                    <div class="stat-text" style="font-size: 17px; font-weight: 700" translate>Total goals</div>
+                <div class="stat-data">
+                  <div class="stat-header">Mathches Played</div>
+                  <div class="stat-value">{{stats.user.stats.matchesPlayed}}</div>
+                </div>
+              </div>
+
+              <!-- Cards Played -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_cardsplayed.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header">Cards Played</div>
+                  <div class="stat-value">{{stats.user.stats.cardsPlayed}}</div>
+                </div>
+                <div class="stat-data no-min-width stats-border-left">
+                  <div class="stat-header">Live</div>
+                  <div class="stat-value">{{stats.user.stats.presetinstantCardsPlayed + stats.user.stats.instantCardsPlayed}}</div>
+                </div>
+                <div class="stat-data no-min-width">
+                  <div class="stat-header">90'</div>
+                  <div class="stat-value">{{stats.user.stats.overallCardsPlayed}}</div>
+                </div>
+              </div>
+
+              <!-- Favorite Card -->
+
+              <!-- Highest Score -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_highest_score.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header">Highest Score</div>
+                  <div class="stat-value"> {{stats?.user.rankingStats.bestScore}} pts</div>
+                </div>
+                <div class="stat-data stats-border-left">
+                  <div class="stat-match">                   
+                      <div class="match-details">
+                        <div class="stat-team">
+                          <div class="team-kit text-center"><img
+                              src="{{stats?.user.rankingStats.bestScoreMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                              alt=""></div>
+                          <div class="team-name">
+                            {{stats?.user.rankingStats.bestScoreMatch.home_team.name[translate.currentLang]}}
+                          </div>
+                        </div>
+                        <div class="score">
+                          3 - 1
+                        </div>
+                        <div class="stat-team">
+                          <div class="team-kit text-center"><img
+                              src="{{stats?.user.rankingStats.bestScoreMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                              alt=""></div>
+                          <div class="team-name">
+                            {{stats?.user.rankingStats.bestScoreMatch.home_team.name[translate.currentLang]}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestScoreMatch.start)}}</div>                   
                   </div>
                 </div>
               </div>
 
-              <div class="stat-card" style="margin-bottom: 5px;">
-                <div class="team-stat">
-                  <div class="icn-shot" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 50px; font-weight: 700">{{stats?.stats.Shot_On_Goal}}
-                    </div>
-                    <div class="stat-text" style="font-size: 17px; font-weight: 700" translate>Shots on Target</div>
+              <!-- Highest Rank -->
+              <!-- Highest Score -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_highest_rank.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header">Highest Rank</div>
+                  <div class="stat-value"># {{stats?.user.rankingStats.bestRank}}</div>
+                </div>
+                <div class="stat-data stats-border-left" *ngIf="stats?.user.rankingStats.bestRankMatch">
+                  <div class="stat-match">                   
+                      <div class="match-details">
+                        <div class="stat-team">
+                          <div class="team-kit text-center"><img
+                              src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                              alt=""></div>
+                          <div class="team-name">
+                            {{stats?.user.rankingStats.bestRankMatch.home_team.name[translate.currentLang]}}
+                          </div>
+                        </div>
+                        <div class="score">
+                          3 - 1
+                        </div>
+                        <div class="stat-team">
+                          <div class="team-kit text-center"><img
+                              src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                              alt=""></div>
+                          <div class="team-name">
+                            {{stats?.user.rankingStats.bestRankMatch.home_team.name[translate.currentLang]}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestRankMatch.start)}}</div>              
                   </div>
                 </div>
-                <div class="team-stat">
-                  <div class="icn-cross" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 50px; font-weight: 700">{{stats?.stats.Crosses}}</div>
-                    <div class="stat-text" style="font-size: 17px; font-weight: 700" translate>Crosses</div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="stat-card" style="margin-bottom: 5px;">
-                <div class="team-stat">
-                  <div class="icn-corner" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">{{stats?.stats.Corner}}</div>
-                    <div class="stat-text" style="font-size: 12px" translate>Corners</div>
-                  </div>
-                </div>
-                <div class="team-stat">
-                  <div class="icn-offside" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">{{stats?.stats.Offside}}</div>
-                    <div class="stat-text" style="font-size: 12px" translate>Offsides</div>
-                  </div>
-                </div>
-                <div class="team-stat">
-                  <div class="icn-penalty" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">{{stats?.stats.Penalty}}</div>
-                    <div class="stat-text" style="font-size: 12px" translate>Penalties</div>
-                  </div>
-                </div>
               </div>
-
-              <div class="stat-card" style="margin-bottom: 5px;">
-                <div class="team-stat">
-                  <div class="icn-foul" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">{{stats?.stats.Foul}}</div>
-                    <div class="stat-text" style="font-size: 12px" translate>Fouls</div>
-                  </div>
-                </div>
-                <div class="team-stat">
-                  <div class="icn-yellow" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">{{stats?.stats.Yellow}}</div>
-                    <div class="stat-text" style="font-size: 12px" translate>Yellow cards</div>
-                  </div>
-                </div>
-                <div class="team-stat">
-                  <div class="icn-red" style="height: 40px;width: 60px"></div>
-                  <div>
-                    <div class="stat-number" style="font-size: 37px">{{stats?.stats.Red}}</div>
-                    <div class="stat-text" style="font-size: 12px" translate>Red cards</div>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
             <!-- AVATARS -->
@@ -163,16 +187,19 @@
               </div>
               <div class="winner-card-body">
                 <div class="avatars-list">
-                  <div class="avatar-container" [class.selected]="avatar===user?.picture" [class.isClickable]="avatar!=user?.picture" *ngFor="let avatar of avatars" (click)="selectAvatar(avatar)">
+                  <div class="avatar-container" [class.selected]="avatar===user?.picture"
+                    [class.isClickable]="avatar!=user?.picture" *ngFor="let avatar of avatars"
+                    (click)="selectAvatar(avatar)">
                     <div class="background-ring">
-                      <img class="rounded-circle" [src]="avatar" alt="" >
+                      <img class="selected-image" src="/assets/images/sportimo/avatar_selected_indicator.svg" alt="">
+                      <img class="rounded-circle" [src]="avatar" alt="">
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-           
-           
+
+
 
             <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
             <div class="profile-stats">

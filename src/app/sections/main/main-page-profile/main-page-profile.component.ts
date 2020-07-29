@@ -7,6 +7,8 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label, SingleDataSet, Color } from 'ng2-charts'
 import { Router, ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-main-page-profile',
@@ -19,11 +21,13 @@ export class MainPageProfileComponent implements OnInit {
     private authenticationService: AuthenticationService, 
     private sportimoService: SportimoService, 
     private router: Router,
-    private route:ActivatedRoute,) { }
+    private route:ActivatedRoute,
+    private translate:TranslateService
+    ) { }
 
   user: User;
   ngUnsubscribe = new Subject();
-
+  Utils: SportimoUtils = new SportimoUtils();
   single: any[] = [];
   multi: any[];
   view: any[] = null;//[100, 400];
@@ -101,6 +105,9 @@ export class MainPageProfileComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
+
+      if(this.user.picture == null)
+      this.user.picture = '/assets/images/sportimo/default_avatar.svg';
       // console.table(this.user);
     });
 
@@ -155,6 +162,10 @@ export class MainPageProfileComponent implements OnInit {
         };
       });      
 
+  }
+
+  parseDateDay(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM/YY','jDD/jMM/jYY');
   }
 
   selectAvatar(avatarUrl:string){

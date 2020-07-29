@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="137px" height="138px" viewBox="0 0 137 138" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>default_avatar</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#C1BFCB" offset="0%"></stop>
+            <stop stop-color="#726F85" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="default_avatar" transform="translate(0.000000, 0.666667)">
+            <circle id="Oval" fill="url(#linearGradient-1)" cx="68.3333333" cy="68.3333333" r="68.3333333"></circle>
+            <g id="noun_User_3139631" transform="translate(31.060606, 31.060606)" fill="#000000" fill-rule="nonzero">
+                <g id="Group">
+                    <path d="M37.2727273,0 C26.5504359,0 17.615193,9.27577826 17.615193,20.6717344 C17.615193,32.0676906 26.5504359,41.0784466 37.2727273,41.0784466 C48.2503113,41.0784466 57.1855542,32.0676906 57.1855542,20.6717344 C57.1855542,9.27577826 48.2503113,0 37.2727273,0 Z" id="Path"></path>
+                    <path d="M6.63760897,77.6515152 L68.1631382,77.6515152 C72.5031133,77.6515152 75.8219178,72.8811149 74.0348692,68.3757369 C71.7372354,61.750181 67.1419676,56.184714 61.5255293,52.2093805 C56.1643836,48.234047 49.7820672,46.1138691 42.633873,46.1138691 L32.1668742,46.1138691 C25.01868,46.1138691 18.6363636,48.234047 13.0199253,52.2093805 C7.65877958,56.184714 3.06351183,61.750181 0.765877958,68.3757369 C-1.02117061,72.8811149 2.04234122,77.6515152 6.63760897,77.6515152 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

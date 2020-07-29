@@ -32,18 +32,21 @@
 }
 
 .background-ring {
-  background: url("~src/assets/images/sportimo/profile-ring.png") no-repeat center center;
+  // background: url(profile-ring.png) no-repeat center center;
   background-size: contain;
-  width: 100%;
-  height: 100px;
+  background-color: #1a1c25cc;
+  border-radius: 50%;
+  width: 95px;
+  height: 95px;
   text-align: center;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .background-ring img {
-  width: 84px;
-  height: 84px;
-  margin-top: 7px;
+  width: 85px;
+  height: 85px;
+  margin-top: 5px;
 }
 .input-icon {
   background-color: #000000;
@@ -283,16 +286,18 @@
     margin: auto;
 }
 
+
+
 .avatar-container{
-  width: 100px;
-  height: 102px;
+  width: 101px;
+  height: 101px;
   margin-bottom: 19px;
 }
 
-.avatar-container.selected{
-  border: 3px solid #fff;
-  border-radius: 50%;
-}
+// .avatar-container.selected{
+//   border: 3px solid #3efb97;
+//   border-radius: 50%;
+// }
 
 .avatars-close{
   color: white;
@@ -315,9 +320,125 @@
   background-color: rgba(0,0,0,0.3);
 }
 
+.selected-image{
+  display: none;
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute !important;
+  right: 3px !important;
+  top: 0px !important;
+}
+
+.selected .selected-image{
+display: block;
+}
+
+.selected .background-ring{
+  background-color: #3efb97;
+}
+
+.stats-container{
+display: flex;
+flex-direction: column;
+padding: 20px;
+}
+
+.stats-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 150px;
+}
+
+.stats-border-bottom{
+border-bottom: 3px solid #00000050;
+}
+
+.stats-border-left{
+  border-left: 3px solid #00000050;
+  }
+
+.stat-icon{
+  width: 80px;
+  height: 80px;
+  // margin-right: 20px;
+}
+
+.stat-data{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  min-width: 160px;
+}
+
+.no-min-width{
+  min-width: auto;
+}
+
+.stat-header{
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stat-value{
+  color: $theme-color;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+.team-kit img{
+  height: 30px;
+  width: 30px;
+  margin-bottom: 5px;
+}
+
+.score{
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.team-name{
+  font-size: 11px;
+  color: white;
+}
+
+.match-details{
+  display: flex;
+  flex-direction: row;
+}
+
+.stat-match{
+  text-align: center;
+  color: $theme-color;
+}
+
+.stat-match-date{
+  font-size: 11px;
+}
+
 @media (max-width: 991px) {
   .desktop-nav-bar {
     display: none;
+  }
+
+  .stat-value{   
+    font-size: 20px;    
+  }
+
+  .stat-data{
+    min-width: 0;
+    padding-left: 5px;
+  }
+
+  .score{
+    font-size: 14px;
+  }
+
+  .stats-container{
+    padding: 0;
   }
 }
 
