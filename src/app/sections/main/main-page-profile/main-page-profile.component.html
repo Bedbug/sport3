@@ -69,15 +69,15 @@
             </div>
 
             <!-- STATS -->
-            <div class="stats-container"   *ngIf="!avatarsShowing">
+            <div class="stats-container" *ngIf="!avatarsShowing && stats">
               <!-- Matches Played -->
               <div class="stats-row stats-border-bottom">
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_matchesplayed.svg" alt="">
                 </div>
                 <div class="stat-data">
-                  <div class="stat-header">Mathches Played</div>
-                  <div class="stat-value">{{stats.user.stats.matchesPlayed}}</div>
+                  <div class="stat-header" translate>Matches played</div>
+                  <div class="stat-value">{{stats?.user?.stats.matchesPlayed}}</div>
                 </div>
               </div>
 
@@ -87,15 +87,16 @@
                   <img class="stat-icon" src="/assets/images/sportimo/profile_cardsplayed.svg" alt="">
                 </div>
                 <div class="stat-data">
-                  <div class="stat-header">Cards Played</div>
+                  <div class="stat-header" translate>Cards played</div>
                   <div class="stat-value">{{stats.user.stats.cardsPlayed}}</div>
                 </div>
                 <div class="stat-data no-min-width stats-border-left">
-                  <div class="stat-header">Live</div>
-                  <div class="stat-value">{{stats.user.stats.presetinstantCardsPlayed + stats.user.stats.instantCardsPlayed}}</div>
+                  <div class="stat-header" translate>card-live</div>
+                  <div class="stat-value">
+                    {{stats.user.stats.presetinstantCardsPlayed + stats.user.stats.instantCardsPlayed}}</div>
                 </div>
                 <div class="stat-data no-min-width">
-                  <div class="stat-header">90'</div>
+                  <div class="stat-header" translate>card-90</div>
                   <div class="stat-value">{{stats.user.stats.overallCardsPlayed}}</div>
                 </div>
               </div>
@@ -103,76 +104,76 @@
               <!-- Favorite Card -->
 
               <!-- Highest Score -->
-              <div class="stats-row stats-border-bottom">
+              <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestScoreMatch">
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_highest_score.svg" alt="">
                 </div>
                 <div class="stat-data">
-                  <div class="stat-header">Highest Score</div>
+                  <div class="stat-header" translate>Highest Score</div>
                   <div class="stat-value"> {{stats?.user.rankingStats.bestScore}} pts</div>
                 </div>
                 <div class="stat-data stats-border-left">
-                  <div class="stat-match">                   
-                      <div class="match-details">
-                        <div class="stat-team">
-                          <div class="team-kit text-center"><img
-                              src="{{stats?.user.rankingStats.bestScoreMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                              alt=""></div>
-                          <div class="team-name">
-                            {{stats?.user.rankingStats.bestScoreMatch.home_team.name[translate.currentLang]}}
-                          </div>
-                        </div>
-                        <div class="score">
-                          3 - 1
-                        </div>
-                        <div class="stat-team">
-                          <div class="team-kit text-center"><img
-                              src="{{stats?.user.rankingStats.bestScoreMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                              alt=""></div>
-                          <div class="team-name">
-                            {{stats?.user.rankingStats.bestScoreMatch.home_team.name[translate.currentLang]}}
-                          </div>
+                  <div class="stat-match">
+                    <div class="match-details">
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestScoreMatch?.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestScoreMatch?.home_team.name[translate.currentLang]}}
                         </div>
                       </div>
-                      <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestScoreMatch.start)}}</div>                   
+                      <div class="score">
+                        3 - 1
+                      </div>
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestScoreMatch?.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestScoreMatch?.home_team.name[translate.currentLang]}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestScoreMatch?.start)}}</div>
                   </div>
                 </div>
               </div>
 
               <!-- Highest Rank -->
               <!-- Highest Score -->
-              <div class="stats-row stats-border-bottom">
+              <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestRank">
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_highest_rank.svg" alt="">
                 </div>
                 <div class="stat-data">
-                  <div class="stat-header">Highest Rank</div>
-                  <div class="stat-value"># {{stats?.user.rankingStats.bestRank}}</div>
+                  <div class="stat-header" translate>Highest Rank</div>
+                  <div class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
                 </div>
                 <div class="stat-data stats-border-left" *ngIf="stats?.user.rankingStats.bestRankMatch">
-                  <div class="stat-match">                   
-                      <div class="match-details">
-                        <div class="stat-team">
-                          <div class="team-kit text-center"><img
-                              src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                              alt=""></div>
-                          <div class="team-name">
-                            {{stats?.user.rankingStats.bestRankMatch.home_team.name[translate.currentLang]}}
-                          </div>
-                        </div>
-                        <div class="score">
-                          3 - 1
-                        </div>
-                        <div class="stat-team">
-                          <div class="team-kit text-center"><img
-                              src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                              alt=""></div>
-                          <div class="team-name">
-                            {{stats?.user.rankingStats.bestRankMatch.home_team.name[translate.currentLang]}}
-                          </div>
+                  <div class="stat-match">
+                    <div class="match-details">
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestRankMatch.home_team.name[translate.currentLang]}}
                         </div>
                       </div>
-                      <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestRankMatch.start)}}</div>              
+                      <div class="score">
+                        3 - 1
+                      </div>
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestRankMatch.home_team.name[translate.currentLang]}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestRankMatch.start)}}</div>
                   </div>
                 </div>
 

@@ -1,7 +1,13 @@
 {
 	", starting from:": ", starting from:",
+	"2020 All Rights Reserved": "2020 All Rights Reserved",
 	"90'": "Play 90'",
 	"About Sportimo": "About",
+	"Account suspended": {
+		" Contact Support": {
+			"0": ""
+		}
+	},
 	"Achievements": "Achievements",
 	"Activate powerups:": "Activate powerups:",
 	"Activation timestamp:": "Activation time",
@@ -20,6 +26,7 @@
 	"Card_lost_text": "You just lost a card.",
 	"Card_won": "Card won",
 	"Card_won_text": "You just won a card.",
+	"Cards played": "",
 	"Career Statistics": "Career Statistics",
 	"Confirm": "Confirm",
 	"Congratulations! You are in the game!": "Congratulations! You are in the game!",
@@ -40,6 +47,7 @@
 	"Ends:": "Ends:",
 	"Enter PIN": "Enter PIN",
 	"Enter mobile phone": "Enter mobile phone",
+	"FAQ": "FAQ",
 	"FW": "FW",
 	"First_Half_Ends": "First Half Ends",
 	"First_Half_Starts": "First Half Starts",
@@ -60,6 +68,8 @@
 	"HalfTime": "Half Time",
 	"Headers": "Headers",
 	"Height": "Height",
+	"Highest Rank": "Highest Rank",
+	"Highest Score": "Highest Score",
 	"Hours": "Hours",
 	"How to Play": "How to Play",
 	"Incorrect PIN code": "Incorrect PIN code",
@@ -186,7 +196,7 @@
 	"You can always edit your username at your Profile tab": "You can always edit your username at your Profile tab",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\r\n          play cards": "You need to have an active subscription in order to\r\n          play cards",
+	"You need to have an active subscription in order to\n          play cards": "You need to have an active subscription in order to\n          play cards",
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
 	"_action": "_action",
@@ -194,8 +204,10 @@
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
 	"availablePowerups": "Available Powerups",
 	"availablePowerupsText": "These are the remaining available Powerups (Double Up and Extend Play) you can play during this match",
+	"card-90": "",
 	"card-activating": "Activating",
 	"card-activating-preset": "Activating in: {{value}}'",
+	"card-live": "",
 	"card-paused": "Paused",
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
@@ -242,24 +254,6 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Free to Play",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",
 	"russian": "Русский",

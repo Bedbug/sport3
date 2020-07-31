@@ -1,7 +1,13 @@
 {
 	", starting from:": "شروع از",
+	"2020 All Rights Reserved": "",
 	"90'": "نود",
 	"About Sportimo": "درباره پا به توپ",
+	"Account suspended": {
+		" Contact Support": {
+			"0": ""
+		}
+	},
 	"Achievements": "افتخارات",
 	"Activate powerups:": "فعال سازی جایزه ها:",
 	"Activation timestamp:": "",
@@ -20,6 +26,7 @@
 	"Card_lost_text": "کارت-ازبین رفته-متن",
 	"Card_won": "",
 	"Card_won_text": "کارت-برنده-متن",
+	"Cards played": "",
 	"Career Statistics": "آمار کلی",
 	"Confirm": "",
 	"Congratulations! You are in the game!": "",
@@ -40,6 +47,7 @@
 	"Ends:": "تمام شد",
 	"Enter PIN": "پین را وارد کنید",
 	"Enter mobile phone": "شماره موبایل را وارد کنید",
+	"FAQ": "",
 	"FW": "حمله",
 	"First_Half_Ends": "پایان نیمه اول",
 	"First_Half_Starts": "آغاز نیمه اول",
@@ -60,6 +68,8 @@
 	"HalfTime": "",
 	"Headers": "سرتیتر",
 	"Height": "قد",
+	"Highest Rank": "",
+	"Highest Score": "",
 	"Hours": "ساعت‌ها",
 	"How to Play": "چگونه بازی کنید",
 	"Incorrect PIN code": "کد وارد شده نا معتبر است",
@@ -186,7 +196,7 @@
 	"You can always edit your username at your Profile tab": "",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"Your chances:": "شانس‌های شما: ",
 	"Your points:": "",
 	"_action": "",
@@ -194,8 +204,10 @@
 	"availableCardsText": "",
 	"availablePowerups": "",
 	"availablePowerupsText": "",
+	"card-90": "",
 	"card-activating": "",
 	"card-activating-preset": "",
+	"card-live": "",
 	"card-paused": "",
 	"coinsToPlay": "",
 	"contest_loc_key": "مسابقه",
@@ -242,24 +254,6 @@
 	"joinMatchNoCoins": "",
 	"kazzach": "",
 	"matchFreePlay": "",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pin_sent": "",
 	"pts": "امتیاز",
 	"russian": "",

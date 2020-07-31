@@ -1,7 +1,13 @@
 {
 	", starting from:": ", начиная с: ",
+	"2020 All Rights Reserved": "",
 	"90'": "Основное время",
 	"About Sportimo": "Об игре",
+	"Account suspended": {
+		" Contact Support": {
+			"0": ""
+		}
+	},
 	"Achievements": "Достижения",
 	"Activate powerups:": "Активировать усилители:",
 	"Activation timestamp:": "Минута активации",
@@ -20,6 +26,7 @@
 	"Card_lost_text": "Карта не сыграла",
 	"Card_won": "Карта сыграла",
 	"Card_won_text": "Карта сыграла",
+	"Cards played": "",
 	"Career Statistics": "Статистика карьеры",
 	"Confirm": "Подтвердить",
 	"Congratulations! You are in the game!": "Вы участвуете в игре Sportimo!",
@@ -40,6 +47,7 @@
 	"Ends:": "Кончается:",
 	"Enter PIN": "Введите ПИН",
 	"Enter mobile phone": "Введите мобильный номер",
+	"FAQ": "",
 	"FW": "НАП",
 	"First_Half_Ends": "Конец первого тайма",
 	"First_Half_Starts": "Начало первого тайма",
@@ -60,6 +68,8 @@
 	"HalfTime": "Тайм",
 	"Headers": "Заголовки",
 	"Height": "Рост",
+	"Highest Rank": "",
+	"Highest Score": "",
 	"Hours": "Часы",
 	"How to Play": "Как играть",
 	"Incorrect PIN code": "Неверный ПИН-код",
@@ -186,7 +196,7 @@
 	"You can always edit your username at your Profile tab": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\r\n          play cards": "",
+	"You need to have an active subscription in order to\n          play cards": "",
 	"Your chances:": "Ваш результат: ",
 	"Your points:": "Ваш результат: ",
 	"_action": "",
@@ -194,8 +204,10 @@
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
 	"availablePowerups": "Доступные усилители",
 	"availablePowerupsText": "Это имеющиеся у вас Усилители (Удвоение и Продление), которые вы можете разыграть в течение этого матча",
+	"card-90": "",
 	"card-activating": "Активируется",
 	"card-activating-preset": "Минута активации: {{value}}'",
+	"card-live": "",
 	"card-paused": "На паузе",
 	"coinsToPlay": "Играть за {{value}} монет",
 	"contest_loc_key": "Турнир",
@@ -242,24 +254,6 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Участвовать",
-	"null": {
-		"0": {
-			"/assets/images/sportimo/icon-winners": {
-				"active": {
-					"svg": ""
-				}
-			},
-			"/assets/images/sportimo/toppicks/icon1": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon2": {
-				"svg": ""
-			},
-			"/assets/images/sportimo/toppicks/icon3": {
-				"svg": ""
-			}
-		}
-	},
 	"pin_sent": "Растау коды дұрыс емес. Өтінеміз, тағы бір рет көріңіз",
 	"pts": " очк",
 	"russian": "Русский",
