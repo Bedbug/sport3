@@ -7,7 +7,7 @@
       <div class="desktop-nav-bar">
         <nav class="vertical-app-navbar">
           <div *ngIf="user" class="winner-card" style="height: 100%;">
-            <div class="winner-card-header" style="height: 100%; align-content: flex-start;">
+            <div class="winner-card-header" style="height: 100%; align-content: flex-start; box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.35);">
               <div class="background-ring isClickable" (click)="openAvatarSelection()">
                 <img class="rounded-circle" [src]="user.picture" alt="">
                 <!-- <img  src="assets/images/sportimo/profile_name_edit.svg"> -->
@@ -19,10 +19,10 @@
 
               <div class="input-control">
                 <div style="padding-left: 33px;" translate>Username</div>
-                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap;">
+                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap; align-items: center;">
                 <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
                   class="form-control-plaintext" placeholder="Username" style="margin-right: 12px;">
-                  <img  src="assets/images/sportimo/profile_name_edit.svg">
+                  <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
                 </div>
               </div>
 
@@ -56,10 +56,10 @@
               </div> -->
              
               <div class="input-control">
-                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap;">
+                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap; align-items: center;">
                   <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
                     class="form-control-plaintext" placeholder="Username" style="margin-right: 10px;">
-                    <img  src="assets/images/sportimo/profile_name_edit.svg">
+                    <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
                   </div>
               </div>
               <div *ngIf="username.dirty">
