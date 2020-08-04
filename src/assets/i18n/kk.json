@@ -3,11 +3,7 @@
 	"2020 All Rights Reserved": "",
 	"90'": "Негізгі уақыт",
 	"About Sportimo": "Ойын туралы",
-	"Account suspended": {
-		" Contact Support": {
-			"0": ""
-		}
-	},
+	"Account Suspended": "",
 	"Achievements": "Жетістіктер",
 	"Activate powerups:": "Күшейткіштерді белсенді қылу:",
 	"Activation timestamp:": "Активация уақыты",
@@ -49,6 +45,7 @@
 	"Enter mobile phone": "Ұялы телефон нөміріңізді еңгізіңіз",
 	"FAQ": "",
 	"FW": "Шабуыл",
+	"Favorite Card": "",
 	"First_Half_Ends": "Бірінші таймның соңы",
 	"First_Half_Starts": "Бірінші таймның басы",
 	"Forward": "Шабуылшы",
@@ -196,7 +193,7 @@
 	"You can always edit your username at your Profile tab": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You can change your Username anytime from your Profile": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You have insufficient coins to join": "Кіру үшін, сіздің тиындарыңыз жеткіліксіз",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
 	"_action": "",

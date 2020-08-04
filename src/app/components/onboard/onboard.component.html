@@ -60,11 +60,11 @@
           <div class="carousel-inner">
             <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
               [class.active]="i==0">
-              <div style="max-width:35vh;margin: auto;">
+              <div style="width: 278px;  margin: auto;">
                 
                 <div *ngIf="!defaults.landingPage.singleSlideText?.en" class="slide-prize-header text-center" [innerHTML]="slide.header[translate.currentLang]"></div>
-                <img class="d-block" [src]="slide.image" alt="First slide" style="width: 100%;">
-                <div class="slide-prize-container">
+                <img class="d-block" [src]="slide.image" alt="First slide" style="width: 35vh;max-width: 100%;margin: auto;">
+                <div class="slide-prize-container" style="max-width: 50vh;">
                   <img class="slide-prize-image" src="/assets/images/sportimo/onboard/header_withblurs.png" alt="">
                   <div class="slide-prize-text" [innerHTML]="slide.prizeText[translate.currentLang]"></div>
                 </div>
@@ -112,8 +112,9 @@
               </div>
             </div>
           </button>
+         
         </form>
-        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
+        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
       </div>
     </div>
   </div>
@@ -151,7 +152,7 @@
               <div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span>
             </div>
             <div *ngIf="blacklisted > 1" class="problem-info">
-              <div class="icn-info-alt"></div> <span translate>Account suspended. Contact Support.</span>
+              <div class="icn-info-alt"></div> <span translate>Account Suspended</span>
             </div>
           </div>
         </div>

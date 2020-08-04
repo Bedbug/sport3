@@ -9,6 +9,7 @@ import { Label, SingleDataSet, Color } from 'ng2-charts'
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-main-page-profile',
@@ -119,6 +120,10 @@ export class MainPageProfileComponent implements OnInit {
           count++;
           return { name: "Game " + count, value: each };
         })
+
+        // Find the most used card
+        this.stats.favoriteCard = _.maxBy(Object.keys(x.cardStats), o => x.cardStats[o]);        
+        
 
       if (x && x.user && x.user.stats) {
         this.data.overall.you = (100 * (x.user.stats.overallCardsWon / x.user.stats.overallCardsPlayed)).toFixed(2);

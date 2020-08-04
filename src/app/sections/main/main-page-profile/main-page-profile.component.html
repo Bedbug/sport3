@@ -10,6 +10,7 @@
             <div class="winner-card-header" style="height: 100%; align-content: flex-start;">
               <div class="background-ring isClickable" (click)="openAvatarSelection()">
                 <img class="rounded-circle" [src]="user.picture" alt="">
+                <!-- <img  src="assets/images/sportimo/profile_name_edit.svg"> -->
               </div>
               <!-- <div>Username</div> -->
               <!-- <div class="input-icon">
@@ -18,12 +19,15 @@
 
               <div class="input-control">
                 <div style="padding-left: 33px;" translate>Username</div>
+                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap;">
                 <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
-                  class="form-control-plaintext" placeholder="Username">
+                  class="form-control-plaintext" placeholder="Username" style="margin-right: 12px;">
+                  <img  src="assets/images/sportimo/profile_name_edit.svg">
+                </div>
               </div>
 
               <div>
-                <button [disabled]="isSubmitting || !username.dirty" style="height: 31px;" (click)="onUsernameUpdate()"
+                <button [disabled]="isSubmitting || !username.dirty" style="height: 31px;margin-top: 20px;" (click)="onUsernameUpdate()"
                   class="btn btn-sportimo login-form-button">
                   <div class="loader-label" [class.btn-active]="isSubmitting">
                     <span class="button-label" translate>Update</span>
@@ -50,12 +54,16 @@
               <!-- <div class="input-icon">
                 <div class="icn-user"></div>
               </div> -->
+             
               <div class="input-control">
-                <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
-                  class="form-control-plaintext" placeholder="Username">
+                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap;">
+                  <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
+                    class="form-control-plaintext" placeholder="Username" style="margin-right: 10px;">
+                    <img  src="assets/images/sportimo/profile_name_edit.svg">
+                  </div>
               </div>
               <div *ngIf="username.dirty">
-                <button [disabled]="isSubmitting" style="height: 31px;" (click)="onUsernameUpdate()"
+                <button [disabled]="isSubmitting" style="height: 31px; margin-top: 10px;" (click)="onUsernameUpdate()"
                   class="btn btn-sportimo login-form-button">
                   <div class="loader-label" [class.btn-active]="isSubmitting">
                     <span class="button-label" translate>Update</span>
@@ -102,7 +110,15 @@
               </div>
 
               <!-- Favorite Card -->
-
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_cardsplayed.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header" translate>Favorite Card</div>
+                  <div class="stat-value">{{translate.instant(stats.favoriteCard)}}</div>
+                </div>               
+              </div>
               <!-- Highest Score -->
               <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestScoreMatch">
                 <div>

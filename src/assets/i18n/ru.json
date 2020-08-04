@@ -3,11 +3,7 @@
 	"2020 All Rights Reserved": "",
 	"90'": "Основное время",
 	"About Sportimo": "Об игре",
-	"Account suspended": {
-		" Contact Support": {
-			"0": ""
-		}
-	},
+	"Account Suspended": "",
 	"Achievements": "Достижения",
 	"Activate powerups:": "Активировать усилители:",
 	"Activation timestamp:": "Минута активации",
@@ -49,6 +45,7 @@
 	"Enter mobile phone": "Введите мобильный номер",
 	"FAQ": "",
 	"FW": "НАП",
+	"Favorite Card": "",
 	"First_Half_Ends": "Конец первого тайма",
 	"First_Half_Starts": "Начало первого тайма",
 	"Forward": "Нападающий",
@@ -196,7 +193,7 @@
 	"You can always edit your username at your Profile tab": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"Your chances:": "Ваш результат: ",
 	"Your points:": "Ваш результат: ",
 	"_action": "",
