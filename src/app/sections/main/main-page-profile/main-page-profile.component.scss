@@ -340,7 +340,7 @@ display: block;
 .stats-container{
 display: flex;
 flex-direction: column;
-padding: 20px;
+padding: 10px 20px 50px;
 }
 
 .stats-row{
@@ -361,7 +361,15 @@ border-bottom: 3px solid #00000050;
 .stat-icon{
   width: 80px;
   height: 80px;
-  // margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+}
+
+.stat-icon-colored{
+  filter: brightness(0) saturate(100%) invert(80%) sepia(18%) saturate(4109%) hue-rotate(358deg) brightness(100%) contrast(105%);
 }
 
 .stat-data{
@@ -451,7 +459,7 @@ border-bottom: 3px solid #00000050;
   }
 
   .stat-header{
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 

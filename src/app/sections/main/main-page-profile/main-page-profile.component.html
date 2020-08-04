@@ -112,11 +112,14 @@
               <!-- Favorite Card -->
               <div class="stats-row stats-border-bottom">
                 <div>
-                  <img class="stat-icon" src="/assets/images/sportimo/profile_cardsplayed.svg" alt="">
+                  <!-- <img class="stat-icon" [src]="Utils.getIconBySprite(availablePlaycard?.image.sprite" alt=""> -->
+                  <div class="stat-icon">
+                    <div [ngClass]="Utils.getIconBySprite(stats?.user.favoriteCard?.image.sprite)"  style="width: 60%; height: 100%;"></div>
+                  </div>
                 </div>
                 <div class="stat-data">
                   <div class="stat-header" translate>Favorite Card</div>
-                  <div class="stat-value">{{translate.instant(stats.favoriteCard)}}</div>
+                  <div class="stat-value"> {{stats?.user.favoriteCard.title[translate.currentLang]}}</div>
                 </div>               
               </div>
               <!-- Highest Score -->
