@@ -1,15 +1,26 @@
 @import "src/variables.scss";
 
-.modal-card {
+.modal-card2 {
     margin-top: 0 !important;
     width: 100%;
-    z-index: 1032;
-    transform: translate(-50%, -50%);
+    z-index: 1032;    
     height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+
+.modal-card {
+  margin-top: 0 !important;
+  width: 100%;
+  z-index: 1032;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 
 .modal-card-body {
     width: 100%;

@@ -2,7 +2,7 @@
 
 <!-- ON-BOARDING -->
 <div *ngIf="Onboarding">
-  <div class="modal-card">
+  <div class="modal-card2">
     <div class="modal-card-body text-center" style="padding: 0;">
       <div class="slideshow-container"
         uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true; finite:true;"
@@ -13,7 +13,7 @@
             <li *ngFor="let slide of defaults.slides; let i = index">
                <!-- style="text-align: center;"> -->
               <div
-                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;"
+                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: cover;background-position: center;"
                 [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + ')'}">
               </div>
               <div class="slideText">
@@ -43,7 +43,7 @@
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
 <div [hidden]="!LandingPage">
-  <div class="modal-card">
+  <div class="modal-card2">
     <div class="landing-card">
       <div class="landing-card-content text-center text-white">
      
@@ -122,7 +122,7 @@
 </div>
 
 <!-- PIN VERIFICATION -->
-<div id="pinForm" *ngIf="PinVerify" class="modal-card">
+<div id="pinForm" *ngIf="PinVerify" class="modal-card2">
 
   <!-- <div class="modal-card-header"> -->
   <!-- <div (click)="cancel()" class="modal-exit pull-right">X</div> -->
@@ -186,7 +186,7 @@
 </div>
 
 <!-- UPDATE USERNAME -->
-<div id="pinForm" *ngIf="UsernameUpdate" class="modal-card">
+<div id="pinForm" *ngIf="UsernameUpdate" class="modal-card2">
 
   <!-- <div class="modal-card-header"> -->
   <!-- <div (click)="cancel()" class="modal-exit pull-right">X</div> -->
