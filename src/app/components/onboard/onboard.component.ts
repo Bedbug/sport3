@@ -142,7 +142,7 @@ export class OnboardComponent implements OnInit {
           let b = a.split(":");
           return {code:b[0],area:b[1]};
         })
-        console.log(this.areaCodes);
+        
         
         // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
         this.nrSelect = this.areaCodes.length>0?this.areaCodes[0].area:'';
