@@ -44,6 +44,7 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+
 // @include media-breakpoint-down(sm) {
   @media (max-width: 768px) {
 .scorllable-area{
@@ -984,6 +985,11 @@ body .page-wrapper .page-main-header {
     float: none;
     display: block;
   }
+
+  .cdk-global-overlay-wrapper{
+    transform: scale(0.8);
+  }
+  
 }
 
 @media (max-width: 991px) {

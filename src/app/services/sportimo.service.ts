@@ -633,4 +633,17 @@ export class SportimoService {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/messages`);
   }
 
+  /*-----------------------------------------------------------------------------------
+     On Demand
+   ----------------------------------------------------------------------------------- */
+  buyProduct(defaultProduct: any) {
+    const postData = {
+      productId:defaultProduct._id
+    };
+     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/purchase`, postData)
+       .pipe(map(result => {       
+         return result;
+       }))
+  }
+
 }

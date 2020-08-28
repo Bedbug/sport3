@@ -10,6 +10,7 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ErrorDisplayService } from 'src/app/services/error-display.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-match-subscribe',
@@ -24,7 +25,9 @@ export class MatchSubscribeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   Utils: SportimoUtils = new SportimoUtils();
   routeCache: any;
-  
+  defaultProduct: any;
+  onDemandResponse: boolean = false;
+
   constructor(
     private authenticationService: AuthenticationService,
     private router: Router,
@@ -33,6 +36,7 @@ export class MatchSubscribeComponent implements OnInit {
     public translate: TranslateService,
     private errorDisplay: ErrorDisplayService,
     public dialogRef: FilePreviewOverlayRef,
+    private configuration:ConfigService,
     @Inject(FILE_PREVIEW_DIALOG_DATA) public data: any
   ) { }
 
@@ -47,6 +51,12 @@ export class MatchSubscribeComponent implements OnInit {
       this.isLoggedIn = user != null;
       this.user = user;
     });
+
+    let inAppConfiguration = this.sportimoService.getConfigurationFor("inappProducts");
+    console.log(inAppConfiguration);
+    
+    if(inAppConfiguration.length>0)
+    this.defaultProduct =inAppConfiguration[0];
   }
 
   ngOnDestroy() {
@@ -80,8 +90,16 @@ export class MatchSubscribeComponent implements OnInit {
   }
 
   getCoins(){
-    console.log("Get Coins");
-    
+    console.log("Get Coins: "+ this.defaultProduct.payout);
+    this.isJoinRequesting = true;
+    this.sportimoService.buyProduct(this.defaultProduct).subscribe(response=>{
+      console.log(response.state);
+      this.isJoinRequesting = false;
+      // Open the ondemand response modal
+      this.onDemandResponse = true;
+      // Start polling for user'wallet updates;
+      this.authenticationService.startUserPolling();
+    });
   }
 
   close() {
