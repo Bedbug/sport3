@@ -9,6 +9,21 @@
     top: 0;
     left: 0;
 }
+.on-board-slide{
+  width:100%;
+   height:100%; 
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .on-board-slide{
+    width:800px;   
+    margin: auto;
+  }
+}
 
 .modal-card {
   margin-top: 0 !important;

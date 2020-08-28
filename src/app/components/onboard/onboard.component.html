@@ -13,7 +13,7 @@
             <li *ngFor="let slide of defaults.slides; let i = index">
                <!-- style="text-align: center;"> -->
               <div
-                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: cover;background-position: center;"
+                class="on-board-slide"          
                 [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + ')'}">
               </div>
               <div class="slideText">
