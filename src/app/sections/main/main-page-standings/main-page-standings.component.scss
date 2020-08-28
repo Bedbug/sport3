@@ -55,10 +55,21 @@
   color: #ffffff;
 }
 
+
+.leagues-scrollarea {
+  width: 100%;
+  height: calc(100vh - 140px);
+  height: calc((var(--vh, 1vh) * 100) - 140px);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0;
+}
+
 // Standings
 .standings-scrollarea {
   width: 100%;
   height: calc(100vh - 180px);  
+  height: calc((var(--vh, 1vh) * 100) - 180px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
@@ -66,6 +77,7 @@
 
 .players-scrollarea {
   height: calc(100vh - 220px);
+  height: calc((var(--vh, 1vh) * 100) - 220px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;

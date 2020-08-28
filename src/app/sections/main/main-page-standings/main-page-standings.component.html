@@ -21,7 +21,7 @@
     <div *ngIf="currentView == 3" class="main-pages-header" style="width:100%">
       {{currentPlayer?.name[translate.currentLang]}}</div>
     <!-- Leagues -->
-    <div class="main-pages-scrollarea container p-t-15" *ngIf="currentView == 0">
+    <div class="leagues-scrollarea container p-t-15" *ngIf="currentView == 0">
       <div *ngFor="let league of leagues">
         <div class="league-item isClickable" (click)="showStantings(league.competition._id)">
           <div class="img"><img src="{{league?.competition.logo}}" alt=""></div>

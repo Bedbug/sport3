@@ -92,7 +92,7 @@
           <div [class.active-points]="cardSelections?.isDoublePoints">
             <span *ngIf="data.cardType!='Overall'" class="pts" translate>upto</span> 
             <span
-              class="points">{{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>
+              class="points"> {{cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints}}</span>
             <span class="pts" translate> pts</span>
           </div>
         </div>
