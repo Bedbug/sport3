@@ -10,6 +10,7 @@ import moment from 'moment-mini';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+   
 
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
@@ -250,24 +251,22 @@ export class AuthenticationService {
 
             if (this.pollingTimeLeft > 0) {
                 this.pollingTimeLeft--;
-            } else {
-                console.log("Making request");
+            } else {               
                 this.pollingTimeLeft = this.pollingTime;
                 this.http.get<any>(`${this.Config.getApi("ROOT")}/user`)
                     .subscribe(response => {
                         // console.log(response);
                         let updated = false;
-                        if (this.currentUserSubject.value.wallet != response.wallet) {
-                            console.log("Updated wallet");
-                            this.currentUserSubject.value.wallet = response.wallet;
+                        if (this.currentUserSubject.value.wallet != response.wallet) {                    
+                            this.currentUserSubject.value.wallet = response.wallet;                          
                             updated = true;
                         }
-                        if (this.currentUserSubject.value.unread != response.unread) {
-                            console.log("Updated inbox");
+                        if (this.currentUserSubject.value.unread != response.unread) {                            
                             this.currentUserSubject.value.unread = response.unread;
                             updated = true;
                         }
                         if (updated) {
+                            this.currentUserSubject.value.unread = 1;
                             this.currentUserSubject.next(this.currentUserSubject.value);
                             this.stopPolling();
                         }
@@ -280,5 +279,10 @@ export class AuthenticationService {
     stopPolling() {
         clearInterval(this.pollingInterval);
     }
+
+    markInboxRead() {
+        this.currentUserSubject.value.unread = 0;
+        this.currentUserSubject.next(this.currentUserSubject.value);
+      }
 
 }

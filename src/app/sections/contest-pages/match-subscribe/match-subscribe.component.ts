@@ -52,9 +52,7 @@ export class MatchSubscribeComponent implements OnInit {
       this.user = user;
     });
 
-    let inAppConfiguration = this.sportimoService.getConfigurationFor("inappProducts");
-    console.log(inAppConfiguration);
-    
+    let inAppConfiguration = this.sportimoService.getConfigurationFor("inappProducts");   
     if(inAppConfiguration.length>0)
     this.defaultProduct =inAppConfiguration[0];
   }
@@ -89,11 +87,9 @@ export class MatchSubscribeComponent implements OnInit {
 
   }
 
-  getCoins(){
-    console.log("Get Coins: "+ this.defaultProduct.payout);
+  getCoins(){   
     this.isJoinRequesting = true;
-    this.sportimoService.buyProduct(this.defaultProduct).subscribe(response=>{
-      console.log(response.state);
+    this.sportimoService.buyProduct(this.defaultProduct).subscribe(response=>{    
       this.isJoinRequesting = false;
       // Open the ondemand response modal
       this.onDemandResponse = true;

@@ -75,7 +75,7 @@ export class OnboardComponent implements OnInit {
       slidesShow: [
         {
           header: "localizedText",
-          image: "imageUrl",
+          image: "",
           prizeText: "localizedText"
         }
       ]

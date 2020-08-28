@@ -194,6 +194,14 @@
                             class="coin"></i></div>
                     <div class="mobile-toggle">
                         <div class="icn-burger" style="height: 24px;width: 30px;"></div>
+                        <span *ngIf="currentUser && currentUser?.unread>0" style="position: absolute;
+                        top: 6px;
+                        right: 10px;
+                        font-size: 10px;
+                        border-radius: 10px;
+                        background-color: #ff0000;
+                        line-height: 5px;
+                    " class="badge badge-danger ng-star-inserted">{{currentUser.unread}}</span>
                         <!-- <i class="icon-menu"></i> -->
                     </div>
                 </div>

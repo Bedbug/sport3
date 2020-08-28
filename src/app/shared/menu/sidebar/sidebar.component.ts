@@ -69,7 +69,8 @@ export class SidebarComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(user=>{
       this.isLoggedIn = user!=null;
       if(user)
-        this.unread = this.authenticationService.currentUserValue.unread;      
+        this.unread = this.authenticationService.currentUserValue.unread;                    
+        
     });
   }
 
@@ -102,8 +103,7 @@ export class SidebarComponent implements OnInit {
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent,{});
   }
 
-  showRoute(path:string){  
-    console.log("app/"+this.config.getClient()+path);
+  showRoute(path:string){      
     this.router.navigateByUrl("app/"+this.config.getClient()+path);
   }
 
