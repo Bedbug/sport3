@@ -260,4 +260,9 @@
   .background{
     top: 50px;
   }
+
+  .standings-scrollarea {
+  height: calc(100vh - 235px);
+  height: calc((var(--vh, 1vh) * 100) - 235px);
+  }
 }
