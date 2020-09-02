@@ -23,6 +23,12 @@
 }
 }
 
+@media only screen and (max-width: 991px){
+.page-wrapper .page-body-wrapper .page-body{
+  padding: 0 !important;
+}
+}
+
 .scorllable-area{
   width: 100%;
   height: calc(100vh - 93px);    
@@ -59,6 +65,12 @@
 
 .main-pages-scrollarea {  
   height: calc((var(--vh, 1vh) * 100) - 144px );  
+}
+
+@media only screen and (max-width: 575px){
+.page-wrapper .page-body-wrapper .card-prize {
+  margin-bottom: 15px;
+}
 }
 
 
@@ -145,7 +157,7 @@
 
 
 .scroll-area{
-  overflow-y: auto;
+  overflow-y: scroll;
   height: calc(100vh - 221px);
   height: calc((var(--vh, 1vh) * 100) - 221px);
   -webkit-overflow-scrolling: touch;
@@ -154,7 +166,7 @@
 
 .leaders-scrollable-group {
   height: calc(100vh - 259px);
-  overflow-y: auto;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
   height: calc((var(--vh, 1vh) * 100) - 259px);
   width: 100%;
@@ -326,6 +338,7 @@ body .page-wrapper .page-main-header {
   background: $theme-header-color;
   box-shadow: none; //0px 0px 1px 1px rgba(255, 255, 255, 0.7);
   z-index: 1033;
+  position: absolute !important;
 }
 
 .sportimo-form input {
@@ -998,6 +1011,12 @@ body .page-wrapper .page-main-header {
   }
 }
 
+@include media-breakpoint-down(μδ) {
+  .app-navbar {
+    display: none;
+  }
+}
+
 @include media-breakpoint-down(sm) {
   .app-navbar {
     display: none;
@@ -1169,7 +1188,7 @@ body .page-wrapper .page-main-header {
 .grand-prize .card-body {
   // padding: 0 !important;
   height: 230px;
-   transition: height 0.3s;
+  //  transition: height 0.3s;
 }
 
 .prize-wrapper {

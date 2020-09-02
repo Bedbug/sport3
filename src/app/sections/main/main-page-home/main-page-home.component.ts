@@ -115,12 +115,12 @@ this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
   checkScroll() {
     let a = $(".scorllable-area");
    
-    // console.log(a.scrollTop());
+    console.log(a.scrollTop());
     let scroll = a.scrollTop();
 
-    if(scroll>5)
+    if(scroll>100)
     $(".grand-prize").addClass('mini');
-    else if(scroll<=5)
+    else if(scroll<=100 && scroll>=0)
     $(".grand-prize").removeClass('mini');
     // if(b.length == 0 || a.length ==0) return;
     

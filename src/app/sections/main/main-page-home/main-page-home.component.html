@@ -1,89 +1,109 @@
+<!-- <div>
+    <div class="scroll" style="height:400px;   overflow-y: scroll;">
+        
+        <div class="container-fluid" style="width: 100%; height:230px; background-color: aqua; margin-bottom: 5px;"></div>
+        <app-grand-prize></app-grand-prize>              
+    </div>
+</div> -->
 <div class="home-container">
     <div class="scorllable-area" (scroll)="checkScroll()">
-    <app-grand-prize></app-grand-prize>
-    <div class="container-fluid fade show">
-        <div class="row">
-            <div class="col-lg-7 col-md-12">
-                <app-contests-list></app-contests-list>
-            </div>
-            <div class="matches-list col-lg-5 col-md-12" [@fadein]="matchesListVisible">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="matches-list-container">
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item active">
-                                    <a class="nav-link active" selected="true" id="upcoming-tab" data-toggle="tab"
-                                        href="#upcoming" role="tab" aria-controls="upcoming" aria-selected="true">
-                                        <div translate>Upcoming</div>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="live-tab" data-toggle="tab" href="#live" role="tab"
-                                        aria-controls="live" aria-selected="false">
-                                        <div translate>Live</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-body text-center img">
-                        <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="upcoming" role="tabpanel"
-                                aria-labelledby="upcoming-tab">
-                                <div class="matches-list-scrollarea">
-                                    <div>
-                                        <div class="match-item isClickable" (click)="openContest(upcomingMatch.tournament._id)" *ngFor="let upcomingMatch of getUpcoming; let i = index">
-                                            <div class="match-contest-name"><strong translate>Contest: </strong>{{ upcomingMatch.tournament.titleText[translate.currentLang]}}</div>
-                                            <div class="match-details">
-                                                <div class="home-team-name">{{upcomingMatch.match.home_team.name[translate.currentLang]}}</div>
-                                                <div class="team-kit text-center"><img
-                                                        src="{{upcomingMatch.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                                                        alt=""></div>
-                                                <div class="time">
-                                                    <div class="hour">{{parseDateTime(upcomingMatch.match.start)}}</div>
-                                                    <div class="date">{{parseDateDay(upcomingMatch.match.start)}}</div>
-                                                </div>
-                                                <div class="team-kit text-center"><img
-                                                        src="{{upcomingMatch.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                                                        alt=""></div>
-                                                <div class="away-team-name">{{upcomingMatch.match.away_team.name[translate.currentLang]}}</div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
+        <app-grand-prize></app-grand-prize>
+        <div class="container-fluid fade show">
+            <div class="row">
+                <div class="col-lg-7 col-md-12">
+                    <app-contests-list></app-contests-list>
+                </div>
+                <div class="matches-list col-lg-5 col-md-12" [@fadein]="matchesListVisible">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="matches-list-container">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item active">
+                                        <a class="nav-link active" selected="true" id="upcoming-tab" data-toggle="tab"
+                                            href="#upcoming" role="tab" aria-controls="upcoming" aria-selected="true">
+                                            <div translate>Upcoming</div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="live-tab" data-toggle="tab" href="#live" role="tab"
+                                            aria-controls="live" aria-selected="false">
+                                            <div translate>Live</div>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="tab-pane fade show" id="live" role="tabpanel" aria-labelledby="live-tab">
-                                <div class="matches-list-scrollarea">
-                                    <div >
-                                        <div class="match-item" *ngFor="let liveMatch of getLive; let i = index">
-                                            <div class="match-contest-name"><strong translate>Contest: </strong>{{liveMatch.tournament.titleText[translate.currentLang]}}</div>
-                                            <div class="match-details">
-                                                <div class="home-team-name">{{liveMatch.match.home_team.name[translate.currentLang]}}</div>
-                                                <div class="team-kit text-center"><img
-                                                        src="{{liveMatch.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                                                        alt=""></div>
-                                                <div class="time">
-                                                    <div class="hour">{{parseNumbers(liveMatch?.match.home_score)}} - {{parseNumbers(liveMatch?.match.away_score)}}</div>
-                                                    <div class="date">{{parseNumbers(liveMatch?.match.time)}}'</div>
+                        </div>
+                        <div class="card-body text-center img">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="upcoming" role="tabpanel"
+                                    aria-labelledby="upcoming-tab">
+                                    <div class="matches-list-scrollarea">
+                                        <div>
+                                            <div class="match-item isClickable"
+                                                (click)="openContest(upcomingMatch.tournament._id)"
+                                                *ngFor="let upcomingMatch of getUpcoming; let i = index">
+                                                <div class="match-contest-name"><strong translate>Contest:
+                                                    </strong>{{ upcomingMatch.tournament.titleText[translate.currentLang]}}
                                                 </div>
-                                                <div class="team-kit text-center"><img
-                                                        src="{{liveMatch.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
-                                                        alt=""></div>
-                                                <div class="away-team-name">{{liveMatch.match.away_team.name[translate.currentLang]}}</div>
+                                                <div class="match-details">
+                                                    <div class="home-team-name">
+                                                        {{upcomingMatch.match.home_team.name[translate.currentLang]}}
+                                                    </div>
+                                                    <div class="team-kit text-center"><img
+                                                            src="{{upcomingMatch.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                                                            alt=""></div>
+                                                    <div class="time">
+                                                        <div class="hour">{{parseDateTime(upcomingMatch.match.start)}}
+                                                        </div>
+                                                        <div class="date">{{parseDateDay(upcomingMatch.match.start)}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="team-kit text-center"><img
+                                                            src="{{upcomingMatch.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                                                            alt=""></div>
+                                                    <div class="away-team-name">
+                                                        {{upcomingMatch.match.away_team.name[translate.currentLang]}}
+                                                    </div>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade show" id="live" role="tabpanel" aria-labelledby="live-tab">
+                                    <div class="matches-list-scrollarea">
+                                        <div>
+                                            <div class="match-item" *ngFor="let liveMatch of getLive; let i = index">
+                                                <div class="match-contest-name"><strong translate>Contest:
+                                                    </strong>{{liveMatch.tournament.titleText[translate.currentLang]}}
+                                                </div>
+                                                <div class="match-details">
+                                                    <div class="home-team-name">
+                                                        {{liveMatch.match.home_team.name[translate.currentLang]}}</div>
+                                                    <div class="team-kit text-center"><img
+                                                            src="{{liveMatch.match.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                                                            alt=""></div>
+                                                    <div class="time">
+                                                        <div class="hour">{{parseNumbers(liveMatch?.match.home_score)}}
+                                                            - {{parseNumbers(liveMatch?.match.away_score)}}</div>
+                                                        <div class="date">{{parseNumbers(liveMatch?.match.time)}}'</div>
+                                                    </div>
+                                                    <div class="team-kit text-center"><img
+                                                            src="{{liveMatch.match.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                                                            alt=""></div>
+                                                    <div class="away-team-name">
+                                                        {{liveMatch.match.away_team.name[translate.currentLang]}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>   
 </div>
 <!--Page Body Ends-->

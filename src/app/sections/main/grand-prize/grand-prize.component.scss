@@ -1,13 +1,14 @@
 @import "src/variables.scss";
 @import "~bootstrap/scss/bootstrap-grid.scss";
 
-.container-fluid{
+.container-fluid {
   min-height: 240px;
 }
 
 .prize-wrapper {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   font-weight: bold;
   text-align: center;
   background-position: left top;
@@ -24,27 +25,25 @@
 }
 
 // ok
-.grand-prize .card-body{
+.grand-prize .card-body {
   padding-top: 0;
   padding-bottom: 0;
 }
 
 // ok
-.grand-prize-header{
-  color:$theme-color;
+.grand-prize-header {
+  color: $theme-color;
   padding: 10px 0;
   flex: 1 1 100%;
   order: 0;
 }
 
-.max-size{
-  display:none;
+.max-size {
+  display: none;
 }
 
-
-
 // ok
-.grand-prize-header h4{
+.grand-prize-header h4 {
   font-weight: 700;
   margin-bottom: 0;
 }
@@ -67,15 +66,24 @@
 //ok
 .grand-prize-image {
   // background-color: aqua;
-  min-width: $grandPrizeLeftColumnMinWidth;
-  min-height: $grandPrizeTopRowMinHeight;
-  max-height: 150px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-  order: 1;
-  transition: width 0.3s;
+  // min-width: $grandPrizeLeftColumnMinWidth;
+  // min-height: $grandPrizeTopRowMinHeight;
+  // max-height: 150px;
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: right;
+  // order: 1;
+  // transition: width 0.3s;
+  min-width: 50%;
+min-height: 90px;
+max-height: 150px;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: right;
+order: 1;
+transition: width 0.3s;
 }
+
 
 
 //ok
@@ -141,9 +149,9 @@
 //   padding: 10px 0 0 10px;
 // }
 
-@include media-breakpoint-up(sm){
-  .grand-prize-header{   
-    flex: 1 0 auto;  
+@include media-breakpoint-up(sm) {
+  .grand-prize-header {
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -151,10 +159,11 @@
     justify-content: center;
   }
   .grand-prize-image {
-    flex: 1 0 auto; 
+    flex: 2 0 auto;
     background-position: center;
     min-width: auto;
     max-height: 150px;
+    height: 150px;
   }
 
   .grand-prize-counter {
@@ -164,81 +173,83 @@
     min-width: auto;
   }
 
-  .grand-prize-user-details {   
+  .grand-prize-user-details {
     align-items: center;
   }
-  .prize-wrapper{
+  .prize-wrapper {
     flex-flow: row nowrap;
   }
-  .max-size{
+  .max-size {
     display: block;
   }
 
-  .min-size{
+  .min-size {
     display: none;
   }
 }
-.grand-prize.mini{
+.grand-prize.mini {
   position: fixed;
   z-index: 1000;
 }
-.mini {
-  .grand-prize-text{
-    display: none !important;
-  }
 
-  .grand-prize-header span{
-    display: none;
-  }
+@include media-breakpoint-down(sm) {
+  .mini {
+    .grand-prize-text {
+      display: none !important;
+    }
 
-  .grand-prize-header h4{
-    font-size: 18px;
-  }
+    .grand-prize-header span {
+      display: none;
+    }
 
-  .card-body 
-  {
-    height: 100px !important;
-   padding-top: 12px;
-  }
-  .grand-prize-header{   
-    flex: 1 0 auto;  
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    // height: 200px;
-    justify-content: center;
-    min-width: 33%;
-  }
-  .grand-prize-image {
-    flex: 1 0 auto; 
-    background-position: center;
-    min-width: auto;
-    width: 90px;
-  }
+    .grand-prize-header h4 {
+      font-size: 18px;
+    }
 
-  .grand-prize-counter {
-    flex: 1 0 auto;
-    align-items: flex-end;
-    justify-content: center;
-    min-width: auto;
-  }
+    .card-body {
+      height: 100px !important;
+      padding-top: 12px;
+    }
+    .grand-prize-header {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      // height: 200px;
+      justify-content: center;
+      min-width: 33%;
+    }
+    .grand-prize-image {
+      flex: 1 0 auto;
+      background-position: center;
+      min-width: auto;
+      width: 90px;
+    }
 
-  .counter-container-new {
-    width: 120px;    
-}
+    .grand-prize-counter {
+      flex: 1 0 auto;
+      align-items: flex-end;
+      justify-content: center;
+      min-width: auto;
+    }
 
-  .grand-prize-user-details {   
-    align-items: center;
-    font-size: 12px;
-  }
-  .prize-wrapper{
-    flex-flow: row nowrap;
-  }
-  .max-size{
-    display: block;
-  }
+    .counter-container-new {
+      width: 120px;
+    }
 
-  .min-size{
-    display: none;
+    .grand-prize-user-details {
+      align-items: center;
+      font-size: 12px;
+    }
+    .prize-wrapper {
+      flex-flow: row nowrap;
+    }
+    .max-size {
+      display: block;
+    }
+
+    .min-size {
+      display: none;
+    }
   }
 }
