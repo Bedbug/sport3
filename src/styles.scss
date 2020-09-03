@@ -1011,7 +1011,7 @@ body .page-wrapper .page-main-header {
   }
 }
 
-@include media-breakpoint-down(μδ) {
+@include media-breakpoint-down(md) {
   .app-navbar {
     display: none;
   }
