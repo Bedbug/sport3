@@ -34,7 +34,7 @@
             <div translate class="contest-info-cell font-weight-bold">Duration</div>
           </div>
           <div class="contest-info-row">
-            <div class="contest-info-cell">{{parseNumbers(contestDetails?.matches)}}</div>
+            <div class="contest-info-cell">{{parseNumbers(contestDetails?.matches || 0)}}</div>
             <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations">
               {{parseNumbers(contestDetails?.participations)}}</div>
             <div class="contest-info-cell">{{parseNumbers(contestDetails?.winners)}}</div>

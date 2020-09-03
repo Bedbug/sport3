@@ -119,7 +119,8 @@ export class ContestInfoHeaderComponent implements OnInit {
   }
 
   parseNumbers(text:string){    
-    // if(text)
+    if(!text)
+    text = "0";
       return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
     // else
     // return "-";

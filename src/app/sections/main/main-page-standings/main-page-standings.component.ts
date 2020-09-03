@@ -167,6 +167,10 @@ export class MainPageStandingsComponent implements OnInit {
     return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
+  parseDate(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','D-MM-YYYY', 'jD-jMM-jYYYY');
+  }
+
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();    

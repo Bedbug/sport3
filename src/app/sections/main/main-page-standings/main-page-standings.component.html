@@ -129,9 +129,9 @@
                         <div class="col-4" translate>Born</div>
                       </div>
                       <div class="row player-data">
-                        <div class="col-4">{{player.personalData.height?.centimeters}}</div>
-                        <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-                        <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.height?.centimeters)}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.weight?.kilograms)}}</div>
+                        <div class="col-4">{{parseDate(player.personalData.birth?.birthDate.full)}}</div>
                       </div>
                     </div>
                   </div>
@@ -154,9 +154,9 @@
                         <div class="col-4" translate>Born</div>
                       </div>
                       <div class="row player-data">
-                        <div class="col-4">{{player.personalData.height?.centimeters}}</div>
-                        <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-                        <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.height?.centimeters)}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.weight?.kilograms)}}</div>
+                        <div class="col-4">{{parseDate(player.personalData.birth?.birthDate.full)}}</div>
                       </div>
                     </div>
                   </div>
@@ -179,9 +179,9 @@
                         <div class="col-4" translate>Born</div>
                       </div>
                       <div class="row player-data">
-                        <div class="col-4">{{player.personalData.height?.centimeters}}</div>
-                        <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-                        <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.height?.centimeters)}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.weight?.kilograms)}}</div>
+                        <div class="col-4">{{parseDate(player.personalData.birth?.birthDate.full)}}</div>
                       </div>
                     </div>
                   </div>
@@ -204,9 +204,9 @@
                         <div class="col-4" translate>Born</div>
                       </div>
                       <div class="row player-data">
-                        <div class="col-4">{{player.personalData.height?.centimeters}}</div>
-                        <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-                        <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.height?.centimeters)}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.weight?.kilograms)}}</div>
+                        <div class="col-4">{{parseDate(player.personalData.birth?.birthDate.full)}}</div>
                       </div>
                     </div>
                   </div>
@@ -229,9 +229,9 @@
                         <div class="col-4" translate>Born</div>
                       </div>
                       <div class="row player-data">
-                        <div class="col-4">{{player.personalData.height?.centimeters}}</div>
-                        <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-                        <div class="col-4">{{player.personalData.birth?.birthDate.full}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.height?.centimeters)}}</div>
+                        <div class="col-4">{{parseNumbers(player.personalData.weight?.kilograms)}}</div>
+                        <div class="col-4">{{parseDate(player.personalData.birth?.birthDate.full)}}</div>
                       </div>
                     </div>
                   </div>
@@ -343,9 +343,9 @@
             <div class="col-4" translate>Born</div>
           </div>
           <div class="row player-data">
-            <div class="col-4">{{player.personalData.height?.centimeters}}</div>
-                        <div class="col-4">{{player.personalData.weight?.kilograms}}</div>
-            <div class="col-4">{{currentPlayer?.personalData.birth?.birthDate.full}}</div>
+            <div class="col-4">{{parseNumbers(currentPlayer.personalData.height?.centimeters)}}</div>
+            <div class="col-4">{{parseNumbers(currentPlayer.personalData.weight?.kilograms)}}</div>
+            <div class="col-4">{{parseDate(currentPlayer.personalData.birth?.birthDate.full)}}</div>            
           </div>
         </div>
       </div>
@@ -371,11 +371,11 @@
           <div translate class="stat-text" style="font-size: 12px" translate>Passes</div>
         </div>
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.assistsTotal}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.assistsTotal)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Assists</div>
         </div>
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.touchesInterceptions}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.touchesInterceptions)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Interceptions</div>
         </div>
       </div>
@@ -383,21 +383,21 @@
       <div class="stat-card">
         <div class="stat-icon icn-goal" style="height: 60px"></div>
         <div class="stat-text-2">
-          <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.goalsTotal}}</div>
+          <div class="stat-number" style="font-size: 37px">{{parseNumbers(currentPlayer?.stats.career.goalsTotal)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Total goals</div>
         </div>
       </div>
       <div class="stat-subcard" style="margin-bottom: 5px;">
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsKicked}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.goalsKicked)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Kicked</div>
         </div>
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsHeaded}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.goalsHeaded)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Headers</div>
         </div>
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.goalsGameWinning}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.goalsGameWinning)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Winning</div>
         </div>
       </div>
@@ -405,21 +405,21 @@
       <div class="stat-card">
         <div class="icn-foul stat-icon" style="height: 60px"></div>
         <div class="stat-text-1">
-          <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.foulsSuffered}}</div>
+          <div class="stat-number" style="font-size: 37px">{{parseNumbers(currentPlayer?.stats.career.foulsSuffered)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Fouls suffered</div>
         </div>
         <div class="stat-text-1">
-          <div class="stat-number" style="font-size: 37px">{{currentPlayer?.stats.career.foulsCommitted}}</div>
+          <div class="stat-number" style="font-size: 37px">{{parseNumbers(currentPlayer?.stats.career.foulsCommitted)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Fouls commited</div>
         </div>
       </div>
       <div class="stat-subcard" style="margin-bottom: 5px;">
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.yellowCards}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.yellowCards)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Yellow cards</div>
         </div>
         <div>
-          <div class="stat-number" style="font-size: 20px">{{currentPlayer?.stats.career.redCards}}</div>
+          <div class="stat-number" style="font-size: 20px">{{parseNumbers(currentPlayer?.stats.career.redCards)}}</div>
           <div translate class="stat-text" style="font-size: 12px" translate>Red Cards</div>
         </div>
       </div>
