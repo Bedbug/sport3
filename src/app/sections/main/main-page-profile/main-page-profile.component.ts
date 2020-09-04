@@ -120,9 +120,11 @@ export class MainPageProfileComponent implements OnInit {
           count++;
           return { name: "Game " + count, value: each };
         })
-
+        
+        
         // Find the most used card
-        this.stats.favoriteCard = _.maxBy(Object.keys(x.cardStats), o => x.cardStats[o]);        
+        if(x.cardStats)
+        this.stats.favoriteCard = _.maxBy(Object.keys(x.cardStats), o => x.cardStats[o]) || null;        
         
 
       if (x && x.user && x.user.stats) {
