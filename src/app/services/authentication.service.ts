@@ -282,7 +282,7 @@ export class AuthenticationService {
     checkUserStatus() {
         this.http.get<any>(`${this.Config.getApi("ROOT")}/user`)
                     .subscribe(response => {
-                        console.log(response);
+                        // console.log(response);
                         let updated = false;
                         if (this.currentUserSubject.value.wallet != response.wallet) {                    
                             this.currentUserSubject.value.wallet = response.wallet;                          
