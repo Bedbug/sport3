@@ -269,7 +269,7 @@ export class AuthenticationService {
                             updated = true;
                         }
                         if (updated) {
-                            this.currentUserSubject.value.unread = 1;
+                            // this.currentUserSubject.value.unread = 1;
                             this.currentUserSubject.next(this.currentUserSubject.value);
                             this.stopPolling();
                         }
@@ -277,6 +277,27 @@ export class AuthenticationService {
                     });
             }
         }, 1000)
+    }
+
+    checkUserStatus() {
+        this.http.get<any>(`${this.Config.getApi("ROOT")}/user`)
+                    .subscribe(response => {
+                        console.log(response);
+                        let updated = false;
+                        if (this.currentUserSubject.value.wallet != response.wallet) {                    
+                            this.currentUserSubject.value.wallet = response.wallet;                          
+                            updated = true;
+                        }
+                        if (this.currentUserSubject.value.unread != response.unread) {                            
+                            this.currentUserSubject.value.unread = response.unread;
+                            updated = true;
+                        }
+                        if (updated) {
+                            // this.currentUserSubject.value.unread = 1;
+                            this.currentUserSubject.next(this.currentUserSubject.value);                           
+                        }
+
+                    });
     }
 
     stopPolling() {

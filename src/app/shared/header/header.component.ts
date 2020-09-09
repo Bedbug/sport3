@@ -65,6 +65,15 @@ export class HeaderComponent implements OnInit {
       this.appname = data.appName;
       this.useWallet = !data.disableWallet;
     })
+
+    this.checkUserStatus();
+  }
+
+  checkUserStatus() {
+    setTimeout(()=>{
+      this.authenticationService.checkUserStatus();
+      this.checkUserStatus();
+    },30000)
   }
 
   // convenience getter for easy access to form fields

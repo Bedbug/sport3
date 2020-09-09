@@ -123,7 +123,7 @@ export class CardComponent implements OnInit {
     // We need to deduct what timers are active
     if (this.cardData.status == 0) {
       // The card has not activated yet
-      if (this.cardData.cardType == "Instant") {
+      if (this.cardData.cardType == "Instant" || this.cardData.cardType == "Overall") {
         // It's the only type that needs activation timer
         let end = moment(this.cardData.activationTime).utc();
         let now = moment().utc();
