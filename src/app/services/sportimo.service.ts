@@ -394,6 +394,13 @@ export class SportimoService {
   getStream() {
     let observable = new Observable(observer => {
       this.socket = io(this.Config.getApi('SOCKET'), { transports: ['websocket', 'polling'] });
+
+      // on reconnection, reset the transports option, as the Websocket
+      // connection may have failed (caused by proxy, firewall, browser, ...)
+      this.socket.on('reconnect_attempt', () => {
+        this.socket.io.opts.transports = ['polling', 'websocket'];
+      });
+
       this.socket.on('message', (data) => {
         observer.next(data);
         this.parseSocket(data);
