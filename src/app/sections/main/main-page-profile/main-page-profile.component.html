@@ -167,7 +167,8 @@
                 </div>
                 <div class="stat-data">
                   <div class="stat-header" translate>Highest Rank</div>
-                  <div class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
+                  <div *ngIf="stats?.user.rankingStats?.bestRank && stats?.user.rankingStats?.bestRank>0 && stats?.user.rankingStats?.bestRank <9999" class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
+                  <div *ngIf="!stats?.user.rankingStats?.bestRank || stats?.user.rankingStats?.bestRank==0 || stats?.user.rankingStats?.bestRank  == 9999" class="stat-value">-</div>
                 </div>
                 <div class="stat-data stats-border-left" *ngIf="stats?.user.rankingStats.bestRankMatch">
                   <div class="stat-match">
