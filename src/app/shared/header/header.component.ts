@@ -71,7 +71,8 @@ export class HeaderComponent implements OnInit {
 
   checkUserStatus() {
     setTimeout(()=>{
-      this.authenticationService.checkUserStatus();
+      if(this.authenticationService.currentUserValue.token)
+        this.authenticationService.checkUserStatus();
       this.checkUserStatus();
     },30000)
   }
