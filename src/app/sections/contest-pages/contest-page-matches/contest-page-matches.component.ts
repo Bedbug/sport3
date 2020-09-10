@@ -60,8 +60,7 @@ export class ContestPageMatchesComponent implements OnInit {
 
     this.sportimoService.cachedContests.pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((allContests) => {
-        if (allContests && allContests.length > 0 && this.contestId) {
-          console.log("DEBUG: Check for update on contest status");
+        if (allContests && allContests.length > 0 && this.contestId) {        
           this.contestDetails = allContests.find(x => x._id == this.contestId);
           if (this.contestDetails)
             this.hasJoined = this.contestDetails.isSubscribed || false;
@@ -73,8 +72,7 @@ export class ContestPageMatchesComponent implements OnInit {
           // Set a timeout in order to avoid async calls and duplicates
           // setTimeout(()=>{
           if (!this.hasJoined && !this.hasShownModal && (this.contestDetails.isUserDetails || !this.authenticationService.currentUserValue)) {
-            this.hasShownModal = true;
-            console.log("DEBUG: Will show modal for first time contest player.");
+            this.hasShownModal = true;           
             this.prizeViewOverlay.open<ContestInfoComponent>(ContestInfoComponent, { data: this.contestDetails });
           }
           // },3000)

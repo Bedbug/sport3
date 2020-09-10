@@ -147,9 +147,7 @@ export class ContestsListComponent implements OnInit {
     // this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
-  ContestClicked(contestId) {
-    console.log(this.route);
-    
+  ContestClicked(contestId) {        
     this.router.navigate(['../contest', contestId, 'matches'],{relativeTo:this.route.parent});
   }
 }

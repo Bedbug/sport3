@@ -13,25 +13,32 @@
     Sportimo Styles
 
 ----------------------------------------------------------------------------------- */
-.body.modal-open{
-  overflow:hidden;
+.body.modal-open {
+  overflow: hidden;
 }
 
-@media (min-width: 992px){
-.background-container {  
-    background-color: rgba(0,0,0,0.3);
-}
+@media (min-width: 992px) {
+  .background-container {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
-.scorllable-area{
+@media only screen and (max-width: 991px) {
+  .page-wrapper .page-body-wrapper .page-body {
+    padding: 0 !important;
+  }
+}
+
+.scorllable-area {
   width: 100%;
-  height: calc(100vh - 93px);    
-  overflow: auto;
+  height: calc(100vh - 93px);
+  overflow-x: hidden;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 0;    
+  margin: 0;
 }
 
-.background{
+.background {
   display: block;
   position: absolute;
   left: 0;
@@ -43,119 +50,133 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-// @include media-breakpoint-down(sm) {
-  @media (max-width: 768px) {
-.scorllable-area{
-  width: 100%;
-  height: calc(100vh - 93px);  
-  height: calc((var(--vh, 1vh) * 100) - 93px);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0;    
-}
-
-.main-pages-scrollarea {  
-  height: calc((var(--vh, 1vh) * 100) - 144px );  
-}
-
-
-.leaders-scrollable-group{
-  height: calc(100vh - 218px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: calc((var(--vh, 1vh) * 100) - 218px);
-  width: 100%;
-}
-.matches-list-scrollarea{
-  overflow-y: auto;
-  height: calc(100vh - 240px);
-  height: calc((var(--vh, 1vh) * 100) - 240px);
-  -webkit-overflow-scrolling: touch;
-}
-.contest-list-scrollable-area{
-  width: 100%;
-  height: calc(100vh - 369px);  
-  height: calc((var(--vh, 1vh) * 100) - 410px);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0;    
-}
-.matches-list-scrollarea{
-  width: 100%;
-  height: calc(100vh - 493px);  
-  height: calc((var(--vh, 1vh) * 100) - 493px);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0;    
-}
-
-// Standings
-.standings-scrollarea {
-  width: 100%;
-  height: calc(100vh - 180px);
-  height: calc((var(--vh, 1vh) * 100) - 180px);
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0 0;
-}
-
-.players-scrollarea {
-  height: calc(100vh - 220px);
-  height: calc((var(--vh, 1vh) * 100) - 220px );
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 0 0;
-  // padding-top: 15px;
-}
 .card-scroll-list {
   overflow-y: auto;
-  height: calc(100vh - 239px);
-  height: calc((var(--vh, 1vh) * 100) - 239px);
+  height: calc(100vh - 326px);
+  height: calc((var(--vh, 1vh) * 100) - 326px);
   -webkit-overflow-scrolling: touch;
 }
 
-@if $showContestInfoOnMatches == true {
-  .card-scroll-list {
-    overflow-y: auto;
-    height: calc(100vh - 326px);
-    height: calc((var(--vh, 1vh) * 100) - 326px);
-    -webkit-overflow-scrolling: touch;
+
+@media only screen and (max-width: 575px) {
+  .page-wrapper .page-body-wrapper .card-prize {
+    margin-bottom: 15px;
   }
 }
 
-// .card-scroll-list {
-//   overflow-y: auto;
-//   height: calc(100vh - 239px);
-//   height: calc((var(--vh, 1vh) * 100) - 239px);
-//   -webkit-overflow-scrolling: touch;
-// }
-
-// @if $showContestInfoOnMatches == true {
-//   .card-scroll-list {
-//     overflow-y: auto;
-//     height: calc(100vh - 326px);
-//     height: calc((var(--vh, 1vh) * 100) - 326px);
-//     -webkit-overflow-scrolling: touch;
-//   }
-// }
+// @include media-breakpoint-down(sm) {
+@media (max-width: 768px) {
+  .scorllable-area {
+    width: 100%;
+    height: calc(100vh - 93px);
+    height: calc((var(--vh, 1vh) * 100) - 93px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+  }
 
 
+  .main-pages-scrollarea {
+    height: calc((var(--vh, 1vh) * 100) - 144px);
+  }
 
-.scroll-area{
-  overflow-y: auto;
-  height: calc(100vh - 221px);
-  height: calc((var(--vh, 1vh) * 100) - 221px);
-  -webkit-overflow-scrolling: touch;
-  width: 100%;
-}
+  .leaders-scrollable-group {
+    height: calc(100vh - 218px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    height: calc((var(--vh, 1vh) * 100) - 218px);
+    width: 100%;
+  }
+  .matches-list-scrollarea {
+    overflow-y: auto;
+    height: calc(100vh - 240px);
+    height: calc((var(--vh, 1vh) * 100) - 240px);
+    -webkit-overflow-scrolling: touch;
+  }
+  .contest-list-scrollable-area {
+    width: 100%;
+    height: calc(100vh - 369px);
+    height: calc((var(--vh, 1vh) * 100) - 410px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+  }
+  .matches-list-scrollarea {
+    width: 100%;
+    height: calc(100vh - 493px);
+    height: calc((var(--vh, 1vh) * 100) - 493px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+  }
 
-.leaders-scrollable-group {
-  height: calc(100vh - 259px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: calc((var(--vh, 1vh) * 100) - 259px);
-  width: 100%;
-}
+  // Standings
+  .standings-scrollarea {
+    width: 100%;
+    height: calc(100vh - 180px);
+    height: calc((var(--vh, 1vh) * 100) - 180px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 0;
+  }
+
+  .players-scrollarea {
+    height: calc(100vh - 220px);
+    height: calc((var(--vh, 1vh) * 100) - 220px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 0;
+    // padding-top: 15px;
+  }
+
+  .card-scroll-list {
+    overflow-y: auto;
+    height: calc(100vh - 288px);
+    height: calc((var(--vh, 1vh) * 100) - 288px);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // @if $showContestInfoOnMatches == true {
+  //   .card-scroll-list {
+  //     overflow-y: auto;
+  //     height: calc(100vh - 326px);
+  //     height: calc((var(--vh, 1vh) * 100) - 326px);
+  //     -webkit-overflow-scrolling: touch;
+  //   }
+  // }
+
+  // .card-scroll-list {
+  //   overflow-y: auto;
+  //   height: calc(100vh - 239px);
+  //   height: calc((var(--vh, 1vh) * 100) - 239px);
+  //   -webkit-overflow-scrolling: touch;
+  // }
+
+  // @if $showContestInfoOnMatches == true {
+  //   .card-scroll-list {
+  //     overflow-y: auto;
+  //     height: calc(100vh - 326px);
+  //     height: calc((var(--vh, 1vh) * 100) - 326px);
+  //     -webkit-overflow-scrolling: touch;
+  //   }
+  // }
+
+  .scroll-area {
+    overflow-y: scroll;
+    height: calc(100vh - 221px);
+    height: calc((var(--vh, 1vh) * 100) - 221px);
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+
+  .leaders-scrollable-group {
+    height: calc(100vh - 259px);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: calc((var(--vh, 1vh) * 100) - 259px);
+    width: 100%;
+  }
 }
 
 .page-wrapper .page-main-header .main-header-left .logo-wrapper .app-logo {
@@ -164,7 +185,7 @@
   background-repeat: no-repeat;
   background-position: center;
   height: 30px;
-  width: 30px
+  width: 30px;
 }
 
 // .page-wrapper{
@@ -172,11 +193,11 @@
 //   margin: auto;
 // }
 
-.mobile-toggle{
+.mobile-toggle {
   color: $theme-header-text-color;
 }
 
-.modal-open .scorllable-area{
+.modal-open .scorllable-area {
   overflow: hidden;
   -webkit-overflow-scrolling: auto;
 }
@@ -205,7 +226,6 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
   transition: 0.5s;
-  
 }
 
 .hidden {
@@ -299,7 +319,7 @@ body {
 
 .btn-sportimo {
   background: $theme-color;
-  background: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1) 100%);
+  background: linear-gradient(180deg, rgba(246, 230, 64, 1) 0%, rgba(255, 166, 2, 1) 100%);
   border: 0px;
   border-radius: 5px;
   padding: 5px 20px;
@@ -319,10 +339,15 @@ body {
   background-image: linear-gradient(-180deg, #eaeaea 0%, #cfcfcf 96%);
 }
 
+// .page-body-wrapper{
+//   position: absolute;
+// }
+
 body .page-wrapper .page-main-header {
   background: $theme-header-color;
   box-shadow: none; //0px 0px 1px 1px rgba(255, 255, 255, 0.7);
   z-index: 1033;
+  // position: absolute !important;
 }
 
 .sportimo-form input {
@@ -364,7 +389,8 @@ body .page-wrapper .page-main-header {
   animation-duration: 0.5s;
 }
 
-.mobile-app-navbar, .universal-app-navbar{
+.mobile-app-navbar,
+.universal-app-navbar {
   background: $theme-navbar-color;
   height: 51px;
   padding: 0;
@@ -373,7 +399,6 @@ body .page-wrapper .page-main-header {
   // animation-duration: 0.5s;
   // transform: translate(0, 50px);
 }
-
 
 .app-navbar .app-nav-item {
   /* line-height: 40px; */
@@ -385,12 +410,12 @@ body .page-wrapper .page-main-header {
 .app-navbar a {
   float: left;
   text-align: center;
-  padding: 12px 12px 8px 12px;
+  padding: 12px 30px 8px 12px;
   color: white;
   text-decoration: none;
   font-size: 15px;
   display: flex;
-    align-items: center;
+  align-items: center;
 }
 
 // .mobile-app-navbar a {
@@ -407,16 +432,57 @@ body .page-wrapper .page-main-header {
 
 .app-navbar a:hover,
 .mobile-app-navbar a:hover,
-.universal-app-navbar a:hover {
+.universal-app-navbar a:hover,
+.vertical-app-navbar a:hover {
   background-color: $theme-navbar-color-active;
 }
 
-.mobile-app-navbar a,.universal-app-navbar a {
+.vertical-app-navbar {
+  position: relative;
+  width: 100%;
+  flex-flow: column;
+  display: flex;
+  flex-wrap: wrap;
+  // align-items: center;
+  // justify-content: space-between;
+  // padding: .5rem 1rem;
+}
+
+.vertical-app-navbar a {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  flex-direction: row;
+  font-size: 18px;
+  text-align: center;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-bottom: 3px solid transparent;
+}
+
+.vertical-app-navbar .footer-icon {
+  width: 40px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.vertical-app-navbar a.active {
+  // border-bottom: solid 3px $theme-color;
+  color: $theme-color;
+  animation-name: flipInX;
+  animation-duration: 0.5s;
+  background-color: #22344d;
+}
+
+.mobile-app-navbar a,
+.universal-app-navbar a {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 51px;
-  flex:1;
+  flex: 1;
   flex-direction: column;
   font-size: 10px;
   text-align: center;
@@ -427,11 +493,19 @@ body .page-wrapper .page-main-header {
   padding: 0;
   border-bottom: 3px solid transparent;
 }
-.mobile-app-navbar [class^="icn-"], .universal-app-navbar [class^="icn-"] {
+.mobile-app-navbar [class^="icn-"],
+.universal-app-navbar [class^="icn-"] {
   width: 60px;
   height: 25px;
   margin-bottom: 3px;
 }
+.vertical-app-navbar [class^="icn-"] {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+
 .app-navbar .footer-icon {
   width: 40px;
   height: 25px;
@@ -442,6 +516,13 @@ body .page-wrapper .page-main-header {
   width: 40px;
   height: 25px;
   margin-right: 10px;
+}
+
+.icn-arrow-back {
+  background: url("~src/assets/images/sportimo/arrow_back.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
 }
 
 .icn-arrow-out {
@@ -486,15 +567,14 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-
-.active .footer-icon{
-  filter: $theme-icons-active
+.active .footer-icon {
+  filter: $theme-icons-active;
 }
 
-.footer-icon{
+.footer-icon {
   width: auto;
-    height: 25px;
-  filter: $theme-icons
+  height: 25px;
+  filter: $theme-icons;
 }
 
 .icn-news {
@@ -505,13 +585,11 @@ body .page-wrapper .page-main-header {
 }
 
 .icn-language {
-  
   background: url("~src/assets/images/sportimo/icon-language.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
   background-size: contain;
 }
-
 
 .icn-logout {
   background: url("~src/assets/images/sportimo/icon-logout.svg") no-repeat center center;
@@ -527,8 +605,7 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-
-.icn-burger{
+.icn-burger {
   background: url("~src/assets/images/sportimo/icon-burger.svg") no-repeat center center;
   display: block;
   text-indent: -9999px;
@@ -552,14 +629,14 @@ body .page-wrapper .page-main-header {
 .icn-check {
   background: url("~src/assets/images/sportimo/icon-check.svg") no-repeat center center;
   display: inline-block;
-    text-indent: -9999px;
-    background-size: contain;
-    width: 18px;
-    height: 18px;
-    /* padding: 0 13px; */
-    margin: 0 5px;
-    top: 2px;
-    position: relative;
+  text-indent: -9999px;
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+  /* padding: 0 13px; */
+  margin: 0 5px;
+  top: 2px;
+  position: relative;
 }
 
 .icn-cards {
@@ -575,7 +652,6 @@ body .page-wrapper .page-main-header {
   text-indent: -9999px;
   background-size: contain;
 }
-
 
 .icn-mycards {
   background: url("~src/assets/images/sportimo/icon-cardsstack.svg") no-repeat center center;
@@ -619,7 +695,7 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
-.powers-info{
+.powers-info {
   width: 20px;
   height: 20px;
   position: absolute;
@@ -853,6 +929,46 @@ body .page-wrapper .page-main-header {
 
 /* Current/active navbar link */
 
+.terms-footer {
+  height: 51px;
+  padding: 0;
+  background-color: $theme-header-color;
+}
+
+.terms-footer a {
+  display: flex;
+  align-items: center;
+  height: 51px;
+  flex-direction: row;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px;
+  color: white !important;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-bottom: 3px solid transparent;
+  margin-right: 40px;
+}
+
+.terms-footer a:last-child {
+  justify-content: flex-end;
+  flex-grow: 1;
+  margin-right: 0;
+}
+
+.black-to-white {
+  -webkit-filter: invert(86%) sepia(100%) saturate(0%) hue-rotate(275deg) brightness(109%) contrast(102%) !important;
+  filter: invert(86%) sepia(100%) saturate(0%) hue-rotate(275deg) brightness(109%) contrast(102%) !important;
+}
+
+.terms-footer .footer-icon {
+  width: 30px;
+  height: 25px;
+  margin-right: 5px;
+  filter: none;
+}
+
 .app-navbar a.active {
   border-bottom: solid 5px $theme-color;
   color: $theme-color;
@@ -860,7 +976,8 @@ body .page-wrapper .page-main-header {
   animation-duration: 0.5s;
 }
 
-.mobile-app-navbar a.active, .universal-app-navbar a.active {  
+.mobile-app-navbar a.active,
+.universal-app-navbar a.active {
   border-bottom: solid 3px $theme-color;
   color: $theme-color;
   animation-name: flipInX;
@@ -868,16 +985,16 @@ body .page-wrapper .page-main-header {
   background-color: #22344d;
 }
 
-.popover{
-  background-color: #FFC107;
+.popover {
+  background-color: #ffc107;
   font-weight: bold;
   text-align: center;
   z-index: auto;
 }
 
-.popover>.arrow:after {
-  border-top-color: #FFC107;
-  border-bottom-color: #FFC107;
+.popover > .arrow:after {
+  border-top-color: #ffc107;
+  border-bottom-color: #ffc107;
 }
 /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
 
@@ -886,9 +1003,23 @@ body .page-wrapper .page-main-header {
     float: none;
     display: block;
   }
+
+  .cdk-global-overlay-wrapper {
+    transform: scale(0.8);
+  }
 }
 
+@media (max-width: 991px) {
+  .terms-footer {
+    display: none;
+  }
+}
 
+@include media-breakpoint-down(md) {
+  .app-navbar {
+    display: none;
+  }
+}
 
 @include media-breakpoint-down(sm) {
   .app-navbar {
@@ -908,20 +1039,19 @@ body .page-wrapper .page-main-header {
   .main-header-left img {
     height: 35px !important;
   }
-  
 }
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
   .mobile-app-navbar {
     display: none;
   }
 
   // .scorllable-area{
   //   width: 100%;
-  //   height: calc(100vh - 100px);  
+  //   height: calc(100vh - 100px);
   //   height: calc((var(--vh, 1vh) * 100) - 100px);
   //   overflow: auto;
   //   -webkit-overflow-scrolling: touch;
-  //   margin: 0;    
+  //   margin: 0;
   // }
 
   ::ng-deep .cdk-overlay-pane {
@@ -971,19 +1101,27 @@ body .page-wrapper .page-main-header {
   line-height: 50px;
 }
 
+// .main-pages-scrollarea {
+//   height: calc(100vh - 144px);
+//   overflow: auto;
+//   -webkit-overflow-scrolling: touch;
+//   margin: 0 0;
+//   // padding-top: 15px;
+// }
 .main-pages-scrollarea {
-  height: calc(100vh - 144px);  
+  width: 100%;
+  height: calc(100vh - 140px);
+  height: calc((var(--vh, 1vh) * 100) - 140px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
-  // padding-top: 15px;
 }
 
 /**=====================
      02. Contests
 ==========================**/
 
-.contest-pages-scrollarea{
+.contest-pages-scrollarea {
   overflow-y: auto;
   height: calc(100vh - 180px);
   height: calc((var(--vh, 1vh) * 100) - 180px);
@@ -1013,7 +1151,7 @@ body .page-wrapper .page-main-header {
   font-weight: bold;
 }
 
-.contest-duration{
+.contest-duration {
   align-self: center;
 }
 
@@ -1042,7 +1180,7 @@ body .page-wrapper .page-main-header {
   // margin-top: 10px;
   // min-height: 125px;
   padding-bottom: 15px;
-    padding-top: 15px;
+  padding-top: 15px;
   // display: table-cell;
   // vertical-align: middle;
 }
@@ -1051,7 +1189,7 @@ body .page-wrapper .page-main-header {
   position: absolute;
   width: 100%;
   bottom: 5px;
-  text-align: left ;
+  text-align: left;
   margin-left: -15px;
   padding-left: 15px;
 }
@@ -1061,7 +1199,7 @@ body .page-wrapper .page-main-header {
 .grand-prize .card-body {
   // padding: 0 !important;
   height: 230px;
-   transition: height 0.3s;
+  //  transition: height 0.3s;
 }
 
 .prize-wrapper {
@@ -1166,12 +1304,11 @@ body .page-wrapper .page-main-header {
 .page-wrapper .page-body-wrapper .page-sidebar {
   background: #212a34;
   // box-shadow: -6px 0px 5px -3px rgba(0, 0, 0, 0.75);
- 
-    // width: 0%;
-    // top: 42px;
-    // height: calc(100vh - 42px); 
-    z-index: 9000;
- 
+
+  // width: 0%;
+  // top: 42px;
+  // height: calc(100vh - 42px);
+  z-index: 9000;
 }
 
 .menu-icon {
@@ -1258,13 +1395,13 @@ body .page-wrapper .page-main-header {
 }
 
 .modal-card {
-  margin-top:21px;
+  margin-top: 21px;
   width: 327px;
   z-index: 1032; /* Sit on top */
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);  
+  transform: translate(-50%, -50%);
 }
 
 .modal-card-header {
@@ -1282,7 +1419,7 @@ body .page-wrapper .page-main-header {
 .modal-card-body {
   width: 100%;
   // height: 550px;
-  padding-bottom: 15px;
+  padding: 15px 10px;
   color: #ffffff;
   background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
 }
@@ -1295,19 +1432,25 @@ body .page-wrapper .page-main-header {
 }
 
 @font-face {
-  font-family: 'IranSans';
+  font-family: "IranSans";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url('./assets/fonts/iran-sans/IRANSans.ttf'); 
+  src: url("./assets/fonts/iran-sans/IRANSans.ttf");
 }
 
 @font-face {
-  font-family: 'IranSans';
+  font-family: "IranSans";
   font-style: normal;
   font-weight: 700;
   font-display: block;
-  src: url('./assets/fonts/iran-sans/IRANSans_Bold.ttf');
+  src: url("./assets/fonts/iran-sans/IRANSans_Bold.ttf");
+}
+
+@include media-breakpoint-up(lg) {
+  .modal-card {
+    width: 460px;
+  }
 }
 
 /* cyrillic-ext */
@@ -1441,17 +1584,17 @@ body .page-wrapper .page-main-header {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background:rgba(0,0,0,0); 
+  background: rgba(0, 0, 0, 0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffffffa9; 
+  background: #ffffffa9;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
@@ -1465,7 +1608,6 @@ body .page-wrapper .page-main-header {
   position: fixed;
   z-index: 1040;
 }
-
 
 ::ng-deep .cdk-overlay-pane {
   width: 80%;

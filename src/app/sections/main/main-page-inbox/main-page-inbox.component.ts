@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import moment from 'moment-mini';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-main-page-inbox',
@@ -10,13 +11,18 @@ import moment from 'moment-mini';
 })
 export class MainPageInboxComponent implements OnInit {
 
-  constructor(public translate: TranslateService, private sportimoService: SportimoService) {
+  constructor(
+    public translate: TranslateService, 
+    private sportimoService: SportimoService,
+    private authenticationService:AuthenticationService
+    ) {
 
   }
 
   messages: any;
 
   ngOnInit() {
+    this.authenticationService.markInboxRead();
     this.sportimoService.getMessages().subscribe(x => {
       let last_check = localStorage.getItem('last_inbox_check');
       if (x != null)

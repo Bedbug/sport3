@@ -2,17 +2,19 @@
 
 <!-- ON-BOARDING -->
 <div *ngIf="Onboarding">
-  <div class="modal-card">
-    <div class="modal-card-body text-center">
+  <div class="modal-card2">
+    <div class="modal-card-body text-center" style="padding: 0;">
       <div class="slideshow-container"
         uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true; finite:true;"
-        style="height: 100%; margin: 7px;">
+        style="height: 100%;  width: 100%;">
+        <!-- margin: 7px; -->
         <div class="uk-position-relative" style="height: inherit;">
           <ul class="uk-slideshow-items" style="height: inherit;">
-            <li *ngFor="let slide of defaults.slides; let i = index"> style="text-align: center;">
+            <li *ngFor="let slide of defaults.slides; let i = index">
+               <!-- style="text-align: center;"> -->
               <div
-                style="width:100%; height:100%; background: url(assets/images/sportimo/onboard/1b.jpg);background-repeat: no-repeat;background-size: contain;background-position: center;"
-                [ngStyle]="{'background-image': 'url(assets/images/sportimo/onboard/' + (slide?.image || 'assets/images/sportimo/onboard/1b.jpg') + ')'}">
+                class="on-board-slide"          
+                [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + ')'}">
               </div>
               <div class="slideText">
                 <h3 style="font-weight: bold;font-size: 25px;"> {{slide.title[translate.currentLang]}}</h3>
@@ -41,7 +43,7 @@
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
 <div [hidden]="!LandingPage">
-  <div class="modal-card">
+  <div class="modal-card2">
     <div class="landing-card">
       <div class="landing-card-content text-center text-white">
      
@@ -59,11 +61,11 @@
           <div class="carousel-inner">
             <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
               [class.active]="i==0">
-              <div style="max-width:230px;margin: auto;">
+              <div style="width: 278px;  margin: auto;">
                 
                 <div *ngIf="!defaults.landingPage.singleSlideText?.en" class="slide-prize-header text-center" [innerHTML]="slide.header[translate.currentLang]"></div>
-                <img class="d-block w-100" [src]="slide.image" alt="First slide">
-                <div class="slide-prize-container">
+                <img *ngIf="slide.image" class="d-block" [src]="slide?.image" alt="First slide" style="width: 30vh;max-width: 100%;margin: auto;">
+                <div class="slide-prize-container" style="max-width: 50vh;">
                   <img class="slide-prize-image" src="/assets/images/sportimo/onboard/header_withblurs.png" alt="">
                   <div class="slide-prize-text" [innerHTML]="slide.prizeText[translate.currentLang]"></div>
                 </div>
@@ -91,9 +93,13 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
+        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">    
           <div class="input-box">
-            <div class="input-area">+7</div>
+            <span class="flag-icon flag-icon-squared" [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
+            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>                        
+              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
+            </select>
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
               autocorrect="off" autocapitalize="none"
               placeholder="{{ 'enterMobilePhone' | translate }}" required>
@@ -107,22 +113,23 @@
               </div>
             </div>
           </button>
+         
         </form>
-        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
+        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- PIN VERIFICATION -->
-<div id="pinForm" *ngIf="PinVerify" class="modal-card">
+<div id="pinForm" *ngIf="PinVerify" class="modal-card2">
 
   <!-- <div class="modal-card-header"> -->
   <!-- <div (click)="cancel()" class="modal-exit pull-right">X</div> -->
   <!-- </div> -->
   <div class="pin-card-body text-center">
     <div class="login-form-body">
-      <div class="debug" style="max-height: 50px;">{{subState}}</div>
+      <!-- <div class="debug" style="max-height: 50px;">{{subState}}</div> -->
       <div class="pin-title">
         <h1 [innerHTML]="'susbcription_message_'+subState | translate:{value:appName[translate.currentLang]}"></h1>
         <!-- <h1 *ngIf = "subState == 'UNSUB'" translate>Subscribe to Play</h1>
@@ -144,6 +151,9 @@
             </div>
             <div *ngIf="incorrectPin" class="problem-info">
               <div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span>
+            </div>
+            <div *ngIf="blacklisted > 1" class="problem-info">
+              <div class="icn-info-alt"></div> <span translate>Account Suspended</span>
             </div>
           </div>
         </div>
@@ -169,14 +179,14 @@
         <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>   
         <div *ngIf="pinSent"  [innerHTML]="'pin_sent' | translate"></div>      
       </form>
-      <div (click)="openTerms()" class="notice isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>
 </div>
 
 <!-- UPDATE USERNAME -->
-<div id="pinForm" *ngIf="UsernameUpdate" class="modal-card">
+<div id="pinForm" *ngIf="UsernameUpdate" class="modal-card2">
 
   <!-- <div class="modal-card-header"> -->
   <!-- <div (click)="cancel()" class="modal-exit pull-right">X</div> -->
@@ -229,7 +239,7 @@
         <div class="resend-pin-button" style="margin-top:10px" (click)="UsernameUpdate=false;Authenticated = true;" translate>Skip for now</div>
         <div style="font-size:10px;" translate>You can always edit your username at your Profile tab</div>       
       </form>
-      <div (click)="openTerms()" class="notice isClickable" style="font-size: 13px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>

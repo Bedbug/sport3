@@ -105,19 +105,19 @@
   animation-duration: 0.5s;
 }
 
-.card-scroll-list {
-  overflow-y: auto;
-  height: calc(100vh - 239px);  
-  -webkit-overflow-scrolling: touch;
-}
+// .card-scroll-list {
+//   overflow-y: auto;
+//   height: calc(100vh - 239px);  
+//   -webkit-overflow-scrolling: touch;
+// }
 
-@if $showContestInfoOnMatches == true {
-  .card-scroll-list {
-    overflow-y: auto;
-    height: calc(100vh - 326px);    
-    -webkit-overflow-scrolling: touch;
-  }
-}
+// @if $showContestInfoOnMatches == true {
+//   .card-scroll-list {
+//     overflow-y: auto;
+//     height: calc(100vh - 326px);    
+//     -webkit-overflow-scrolling: touch;
+//   }
+// }
 
 // PLAY CARD
 .playcard {

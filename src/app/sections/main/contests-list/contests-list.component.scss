@@ -42,6 +42,7 @@ color: #000;
   // background-color: aqua;
   min-width: $grandPrizeLeftColumnMinWidth;
   min-height: $grandPrizeTopRowMinHeight;
+  max-height: 150px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -95,7 +96,7 @@ color: #000;
 
 .contest-list-scrollable-area{
   width: 100%;
-  height: calc(100vh - 410px);    
+  height: calc(100vh - 391px);    
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0;    
@@ -103,6 +104,7 @@ color: #000;
 
 .contest-item-container{
   padding-right: 0px;
+  margin-bottom: 15px;
 }
 
 .btn-sportimo{

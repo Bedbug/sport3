@@ -9,6 +9,8 @@ import { ConfigService } from 'src/app/services/config.service';
 import { User } from 'src/app/models/user';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
+import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 
 declare var Pace: any;
 
@@ -19,6 +21,8 @@ declare var Pace: any;
 })
 export class OnboardComponent implements OnInit {
 
+  areaCodes = [];
+  nrSelect = '';
   Onboarding = false;
   LandingPage = false;
   PinVerify = false;
@@ -71,7 +75,7 @@ export class OnboardComponent implements OnInit {
       slidesShow: [
         {
           header: "localizedText",
-          image: "imageUrl",
+          image: "",
           prizeText: "localizedText"
         }
       ]
@@ -89,6 +93,7 @@ export class OnboardComponent implements OnInit {
   firstLoad: boolean = true;
   user: User;
   ngUnsubscribe = new Subject();
+  blacklisted = 0;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -97,6 +102,7 @@ export class OnboardComponent implements OnInit {
     public translate: TranslateService,
     private sportimoService: SportimoService,
     public config: ConfigService,
+    private ViewModalOverlay: PrizeViewOverlayService
   ) { }
 
 
@@ -130,8 +136,18 @@ export class OnboardComponent implements OnInit {
         this.Onboarding = true;
         this.LandingPage = true;
         var this_m = this;
-        // if (this.defaults.sequence[0] == "S")
-
+        
+        let returnedAreaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];
+        this.areaCodes = returnedAreaCodes.map(a=>{
+          let b = a.split(":");
+          return {code:b[0],area:b[1]};
+        })
+        
+        
+        // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
+        this.nrSelect = this.areaCodes.length>0?this.areaCodes[0].area:'';
+        // if (this.defaults.sequence[0] == "S")       
+        
         this_m.Onboarding = this_m.defaults.sequence[0] == "S";
         this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
@@ -163,7 +179,8 @@ export class OnboardComponent implements OnInit {
     });
 
     this.msisdnForm = this.formBuilder.group({
-      msisdn: ['', Validators.required]
+      msisdn: ['', Validators.required],
+      area: [this.areaCodes[0]?this.areaCodes[0].area:'' ]
     });
 
     // Pin Verification Form
@@ -202,7 +219,11 @@ export class OnboardComponent implements OnInit {
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
-    this.authenticationService.blaiseSignin(this.msisdnForm.controls.msisdn.value, this.translate.currentLang)
+   
+    let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0].area):"";
+    let msisdnValue = (this.msisdnForm.controls.msisdn.value!='03'?areaCode:'') + this.msisdnForm.controls.msisdn.value;
+    console.log(msisdnValue) ;
+    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
       .subscribe(response => {
         if (response && response.success) {
           this.subState = response.state;
@@ -212,11 +233,27 @@ export class OnboardComponent implements OnInit {
             this.subState = "ACTIVEFREEPERIOD";
             if (this.subState == "FREE")
             this.subState = "ACTIVEFREEPERIOD";
+            if (this.subState == "INACTIVE")
+            this.subState = "UNKNOWN";
+            if (this.subState == "BLACKLISTED")
+           { this.subState = "UNKNOWN";
+          this.blacklisted = 1;}
+            
           this.closeLandingPage();
         }
         this.isSubmitting = false;
       });
 
+  }
+
+  getCountryCode(value){
+     let ret = this.areaCodes.find(codes=>{    
+      return codes.area == value;
+    });
+    if(ret)
+    return ret.code.toLowerCase();
+
+    return '';
   }
 
   onPinSubmit(noSubscription: boolean) {
@@ -226,6 +263,12 @@ export class OnboardComponent implements OnInit {
     }
 
     this.isSubmitting = true;
+
+    if(this.blacklisted > 0){
+      this.blacklisted = 2;
+      this.isSubmitting = false;
+      return;
+    }
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
@@ -262,7 +305,8 @@ export class OnboardComponent implements OnInit {
   }
 
   openTerms(){
-    window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
+    // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent,{});
   }
 
   onUsernameUpdate(){

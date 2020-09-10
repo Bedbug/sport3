@@ -1,9 +1,8 @@
-<div class="container">
+<div class="container background-container">
   <div class="row">
     <div class="card">
       <div class="card-body user-info">
-        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to
-          play cards</div>
+        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to play cards</div>
         <div class="container">
           <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
             <div class="col-12">
@@ -254,7 +253,7 @@
                 </div></button> -->
                 </li>
                 <li>
-                  <button [disabled]="isSubmitingCard" (click)="cancelAll()" class="btn btn-default">Cancel</button>
+                  <button [disabled]="isSubmitingCard" (click)="cancelAll()" class="btn btn-default" translate>Cancel</button>
                 </li>
               </ul>
             </div>

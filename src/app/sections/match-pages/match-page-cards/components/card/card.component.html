@@ -1,6 +1,7 @@
 <!-- <div *ngIf="cardData.status == 0 && cardData.cardType!='Overall'" class="activation-info">Card will be activated at 67'</div> -->
 <div *ngIf="cardData" style="max-height: 79px" [class.lost]="cardData.status == 2 && cardData.pointsAwarded == 0" [class.playing]="cardData.status == 1 || cardData.status == 0 || cardData.status == 3" [class.won]="cardData.status == 2 && cardData.pointsAwarded > 0">
-  <div class="gamecard" [class.not-active]="(cardData.status == 0 || cardData.status == 3) && cardData.cardType!='Overall'">
+  <div class="gamecard" [class.not-active]="(cardData.status == 0 || cardData.status == 3)">
+    <!-- <div class="gamecard" [class.not-active]="(cardData.status == 0 || cardData.status == 3) && cardData.cardType!='Overall'"> -->
     <div class="activating" *ngIf="cardData.cardType!='PresetInstant' && cardData.status == 1"><p class="loading" translate>card-activating</p></div>
     <div class="activating" *ngIf="cardData.status == 3"><p translate>card-paused</p></div>
     <div class="activating" *ngIf="cardData.status == 0 && cardData.cardType=='PresetInstant'"><p translate  [translateParams]="{value: cardData.minute}">card-activating-preset</p></div>

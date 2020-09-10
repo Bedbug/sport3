@@ -1,9 +1,8 @@
-<div class="container">
+<div class="container background-container">
   <div class="row">
     <div class="card">
       <div class="card-body user-info">
-        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to
-          play cards.</div>
+        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to play cards</div>
         <div class="container">
           <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
             <div class="col-12">
@@ -290,7 +289,7 @@
                 <div [class.active-points]="cardSelections?.isDoublePoints">
                   <span *ngIf="selectedCard?.cardType!='Overall'" class="pts" translate>upto</span> 
                   <span
-                    class="points">{{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
+                    class="points"> {{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
                   <span class="pts" translate> pts</span>
                 </div>
               </div>

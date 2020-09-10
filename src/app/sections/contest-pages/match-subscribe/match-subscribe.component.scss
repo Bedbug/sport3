@@ -71,13 +71,39 @@
   padding: 15px;
 }
 
-.user-balance{
-    padding: 10px;
-    font-size: 15px;
-    line-height: 15px;
-}
 
 .vip .modal-card-header {
     background: linear-gradient(180deg, rgba(246, 230, 64, 1) 0%, rgba(255, 166, 2, 1) 100%);
     color: black;
   }
+
+  .modal-card{
+    margin-top: 0;
+  }
+
+  .modal-card-header{
+    justify-items: flex-end;
+  }
+
+  .modal-title{
+    margin-right: auto;
+  }
+
+  
+.user-balance{
+  // padding: 10px;
+  // font-size: 15px;
+  // line-height: 15px;
+  margin-right: 15px;
+}
+
+.demand-response-img{
+  width: 220px;
+  padding: 20px;
+  margin: auto;
+}
+
+.demand-response-text{
+  font-size: 16px;
+  padding: 20px;
+}

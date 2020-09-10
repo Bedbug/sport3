@@ -104,19 +104,19 @@
   animation-duration: 0.5s;
 }
 
-.card-scroll-list {
-  overflow-y: auto;
-  height: calc(100vh - 239px);  
-  -webkit-overflow-scrolling: touch;
-}
+// .card-scroll-list {
+//   overflow-y: auto;
+//   height: calc(100vh - 239px);
+//   -webkit-overflow-scrolling: touch;
+// }
 
-@if $showContestInfoOnMatches == true {
-  .card-scroll-list {
-    overflow-y: auto;
-    height: calc(100vh - 326px);    
-    -webkit-overflow-scrolling: touch;
-  }
-}
+// @if $showContestInfoOnMatches == true {
+//   .card-scroll-list {
+//     overflow-y: auto;
+//     height: calc(100vh - 326px);
+//     -webkit-overflow-scrolling: touch;
+//   }
+// }
 
 // PLAY CARD
 .playcard {
@@ -178,12 +178,24 @@
   background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 }
 
+
 .modal-playcard-center {
   z-index: 1032; /* Sit on top */
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 500px) {
+  .modal-playcard-center {
+    z-index: 1032;
+    transform: scale(0.9);
+    /* display: flex; */
+    position: fixed;
+    top: 0px;
+    left: calc(50% - 155px);
+  }
 }
 
 .top-drawer {

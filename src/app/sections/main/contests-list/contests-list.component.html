@@ -54,7 +54,7 @@
       </div>
     </div> -->
     <div class="col-sm-12 p-0 contest-list-item" *ngFor="let prize of prizes; let i = index">
-      <div class="card contest-item-container" tab-index="0" (click)="showPrizeDetails(prize?._id)">
+      <div class=" contest-item-container" tab-index="0" (click)="showPrizeDetails(prize?._id)">
         <!-- <div class="card-header contest-header">
           <div class="row">
             <span class="contest-name col">{{prize.titleText[translate.currentLang]}}</span>
@@ -112,7 +112,7 @@
 
   <div [@staggerAnimation]="contests?.length">
     <div class="col-sm-12 p-0 contest-list-item" *ngFor="let contest of contests; let i = index">
-      <div class="card contest-item-container" tab-index="0" (click)="ContestClicked(contest?._id)">
+      <div class=" contest-item-container" tab-index="0" (click)="ContestClicked(contest?._id)">
         <div class="card-header contest-header">
 
           <div class="contest-name col">{{contest.titleText[translate.currentLang]}}</div>

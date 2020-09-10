@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../services/authentication.service'
 import { TranslateService } from '@ngx-translate/core';
 import { ErrorDisplayService } from '../services/error-display.service';
+import { ConfigService } from '../services/config.service';
 
 const errorCodes = {
     10002: { 'en': "The card has already closed." }
@@ -17,7 +18,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         private authenticationService: AuthenticationService, 
         // private toastr: ToastrService, 
         // public translate: TranslateService, 
-        private errorDisplay:ErrorDisplayService) { }
+        private errorDisplay:ErrorDisplayService,
+        private config:ConfigService,) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request)
@@ -29,6 +31,12 @@ export class ErrorInterceptor implements HttpInterceptor {
                         // console.log(errorCodes[event.body.errorCode][this.translate.currentLang]);
                         this.errorDisplay.showError(event.body.errorCode);
                         // this.toastr.show(errorCodes[event.body.errorCode][this.translate.currentLang],event.body.errorCode);
+
+                        // Blacklisted account forced loggout
+                        if(event.body.errorCode =="1012"){
+                            this.authenticationService.logout();
+                            window.open("app/"+this.config.getClient(),"_self");
+                        }
                     }
                 }
             }, (err => {                               

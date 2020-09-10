@@ -1,96 +1,308 @@
 <div class="background"></div>
-<div class="" style="position: relative">
-  <div class="main-pages-header" translate>Profile</div>
-  <div class="main-pages-scrollarea">
-    <div *ngIf="user" class="winner-card">
-      <div class="winner-card-header">
-        <div class="background-ring isClickable" (click)="openAvatarSelection()">
-          <img class="rounded-circle" [src]="user.picture" alt="">
-        </div>
+<div class="container background-container" style="position: relative">
+  <div class="row">
+    <div class="main-pages-header" translate>Profile</div>
+    <div class="components-container">
 
-        <div class="input-icon">
-          <div class="icn-user"></div>
-        </div>
-        <div  class="input-control">
-          <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text" class="form-control-plaintext"
-            placeholder="Username">
-        </div>
-        <div *ngIf="username.dirty">
-          <button [disabled]="isSubmitting" style="height: 31px;" (click)="onUsernameUpdate()"
-            class="btn btn-sportimo login-form-button">
-            <div class="loader-label" [class.btn-active]="isSubmitting">
-              <span class="button-label" translate>Update</span>
-              <div class="fadeInLoader">
-                <span class="rotate dotted button-loader"></span>
+      <div class="desktop-nav-bar">
+        <nav class="vertical-app-navbar">
+          <div *ngIf="user" class="winner-card" style="height: 100%;">
+            <div class="winner-card-header" style="height: 100%; align-content: flex-start; box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.35);">
+              <div class="background-ring isClickable" (click)="openAvatarSelection()">
+                <img class="rounded-circle" [src]="user.picture" alt="">
+                <!-- <img  src="assets/images/sportimo/profile_name_edit.svg"> -->
               </div>
-            </div>
-          </button>
-        </div>
+              <!-- <div>Username</div> -->
+              <!-- <div class="input-icon">
+                <div class="icn-user"></div>
+              </div> -->
 
+              <div class="input-control">
+                <div style="padding-left: 33px;" translate>Username</div>
+                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap; align-items: center;">
+                <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
+                  class="form-control-plaintext" placeholder="Username" style="margin-right: 12px;">
+                  <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
+                </div>
+              </div>
+
+              <div>
+                <button [disabled]="isSubmitting || !username.dirty" style="height: 31px;margin-top: 20px;" (click)="onUsernameUpdate()"
+                  class="btn btn-sportimo login-form-button">
+                  <div class="loader-label" [class.btn-active]="isSubmitting">
+                    <span class="button-label" translate>Update</span>
+                    <div class="fadeInLoader">
+                      <span class="rotate dotted button-loader"></span>
+                    </div>
+                  </div>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </nav>
       </div>
 
-      <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
-        <div class="profile-stats">
-          <div class="profile-stat-title" translate>Games Played:</div>
-          <div class="profile-stat-value">{{stats?.user.stats.matchesPlayed}}</div>
-          <div class="profile-stat-title" translate>Points/game:</div>
-          <div class="profile-stat-value">{{stats?.pointsPerGame}}</div>
-          <div class="profile-stat-title" translate>Cards Played:</div>
-          <div class="profile-stat-value">{{stats?.user.stats.cardsPlayed}}</div>
-          <div class="profile-stat-title" translate>Cards won:</div>
-          <div class="profile-stat-value">{{stats?.user.stats.cardsWon}}</div>
-        </div>
-        <div style="text-align: center; color: #ffffff">
-          <div class="chart-container">
-            <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
-              [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]=true
-              [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="Hello" [yAxisLabel]="yAxisLabel" [roundEdges]=false
-              (select)="onSelect($event)">
-            </ngx-charts-bar-vertical>
-          </div>
-          <div class="chart-footer" translate>Last 5 games</div>
-        </div>
-      </div> -->
-
-      <!-- Overall Cards -->
-      <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
-        <div class="polarchart-header"><span translate>Overall Cards Played: </span>{{stats?.user.stats.overallCardsPlayed}} </div>
-        <div class="polarchart-container">
-          <canvas baseChart [options]="ChartOprions" height="180px" width="180px" [data]="OveralltChartData" [labels]="OverallChartLabels" [chartType]="doughnutChartType"
-            [legend]=false [colors]="ChartColors">
-          </canvas>
-        </div>
-        <div class="polarchart-info">
-          <div class="player-info">
-            <div class="player-chart-color"></div>
-            <div class="player-chart-label"><div class="title" translate>You:</div><div class="text">{{this.data.overall.you}}% <span translate>correct</span></div></div>
-          </div>
-          <div class="player-info">
-              <div class="all-chart-color"></div>
-              <div class="player-chart-label"><div class="title" translate>Other Players:</div><div class="text">{{this.data.overall.all}}% <span translate>correct</span></div></div>
-            </div>
-        </div>
-      </div> -->
-
-      <!-- Instant Cards -->
-      <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
-          <div class="polarchart-header"><span translate>Instant Cards Played: </span>{{stats?.user.stats.instantCardsPlayed}} </div>
-          <div class="polarchart-container">
-            <canvas baseChart [options]="ChartOprions" height="180px" width="180px" [data]="InstantChartData" [labels]="OverallChartLabels" [chartType]="doughnutChartType"
-              [legend]=false [colors]="ChartColors">
-            </canvas>
-          </div>
-          <div class="polarchart-info">
-            <div class="player-info">
-              <div class="player-chart-color"></div>
-              <div class="player-chart-label"><div class="title" translate>You:</div><div class="text">{{this.data.instant.you}}% <span translate>correct</span></div></div>
-            </div>
-            <div class="player-info">
-                <div class="all-chart-color"></div>
-                <div class="player-chart-label"><div class="title" translate>Other Players:</div><div class="text">{{this.data.instant.all}}% <span translate>correct</span></div></div>
+      <div style="width: 100%;">
+        <div class="main-pages-scrollarea background-container">
+          <div *ngIf="user" class="winner-card">
+            <div *ngIf="!avatarsShowing" class="winner-card-header-mobile">
+              <div class="background-ring isClickable" (click)="openAvatarSelection()">
+                <img class="rounded-circle" [src]="user.picture || '/assets/images/sportimo/default_avatar.svg'" alt="">
               </div>
+
+              <!-- <div class="input-icon">
+                <div class="icn-user"></div>
+              </div> -->
+             
+              <div class="input-control">
+                <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap; align-items: center;">
+                  <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
+                    class="form-control-plaintext" placeholder="Username" style="margin-right: 10px;">
+                    <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
+                  </div>
+              </div>
+              <div *ngIf="username.dirty">
+                <button [disabled]="isSubmitting" style="height: 31px; margin-top: 10px;" (click)="onUsernameUpdate()"
+                  class="btn btn-sportimo login-form-button">
+                  <div class="loader-label" [class.btn-active]="isSubmitting">
+                    <span class="button-label" translate>Update</span>
+                    <div class="fadeInLoader">
+                      <span class="rotate dotted button-loader"></span>
+                    </div>
+                  </div>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- STATS -->
+            <div class="stats-container" *ngIf="!avatarsShowing && stats">
+              <!-- Matches Played -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_matchesplayed.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header" translate>Matches played</div>
+                  <div class="stat-value">{{stats?.user?.stats?.matchesPlayed || 0}}</div>
+                </div>
+              </div>
+
+              <!-- Cards Played -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_cardsplayed.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header" translate>Cards played</div>
+                  <div class="stat-value">{{stats.user.stats?.cardsPlayed || 0}}</div>
+                </div>
+                <div class="stat-data no-min-width stats-border-left">
+                  <div class="stat-header" translate>card-live</div>
+                  <div class="stat-value">
+                    {{(stats.user.stats?.presetinstantCardsPlayed || 0) + (stats.user.stats?.instantCardsPlayed || 0)}}</div>
+                </div>
+                <div class="stat-data no-min-width">
+                  <div class="stat-header" translate>card-90</div>
+                  <div class="stat-value">{{stats.user.stats?.overallCardsPlayed || 0}}</div>
+                </div>
+              </div>
+
+              <!-- Favorite Card -->
+              <div class="stats-row stats-border-bottom">
+                <div>
+                  <!-- <img class="stat-icon" [src]="Utils.getIconBySprite(availablePlaycard?.image.sprite" alt=""> -->
+                  <div class="stat-icon">
+                    <div [ngClass]="Utils.getIconBySprite(stats?.user.favoriteCard?.image.sprite)"  style="width: 60%; height: 100%;"></div>
+                  </div>
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header" translate>Favorite Card</div>
+                  <div class="stat-value"> {{stats?.user.favoriteCard?.title[translate.currentLang] || "-"}}</div>
+                </div>               
+              </div>
+              <!-- Highest Score -->
+              <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestScoreMatch">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_highest_score.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header" translate>Highest Score</div>
+                  <div class="stat-value"> {{stats?.user.rankingStats.bestScore}} pts</div>
+                </div>
+                <div class="stat-data stats-border-left">
+                  <div class="stat-match">
+                    <div class="match-details">
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestScoreMatch?.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestScoreMatch?.home_team.name[translate.currentLang]}}
+                        </div>
+                      </div>
+                      <div class="score">
+                        {{stats?.user.rankingStats.bestScoreMatch?.home_score}} - {{stats?.user.rankingStats.bestScoreMatch.away_score}}
+                      </div>
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestScoreMatch?.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestScoreMatch?.away_team.name[translate.currentLang]}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestScoreMatch?.start)}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Highest Rank -->
+              <!-- Highest Score -->
+              <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestRank">
+                <div>
+                  <img class="stat-icon" src="/assets/images/sportimo/profile_highest_rank.svg" alt="">
+                </div>
+                <div class="stat-data">
+                  <div class="stat-header" translate>Highest Rank</div>
+                  <div class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
+                </div>
+                <div class="stat-data stats-border-left" *ngIf="stats?.user.rankingStats.bestRankMatch">
+                  <div class="stat-match">
+                    <div class="match-details">
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestRankMatch.home_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestRankMatch?.home_team.name[translate.currentLang]}}
+                        </div>
+                      </div>
+                      <div class="score">
+                        {{stats?.user.rankingStats.bestRankMatch?.home_score}} - {{stats?.user.rankingStats.bestRankMatch?.away_score}}
+                      </div>
+                      <div class="stat-team">
+                        <div class="team-kit text-center"><img
+                            src="{{stats?.user.rankingStats.bestRankMatch.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
+                            alt=""></div>
+                        <div class="team-name">
+                          {{stats?.user.rankingStats.bestRankMatch?.away_team.name[translate.currentLang]}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestRankMatch?.start)}}</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- AVATARS -->
+            <div *ngIf="avatarsShowing">
+              <div class="avatars-header">
+                <div class="avatar-select-info" translate>Select Avatar</div>
+                <div (click)="closeAvatarsSelection()" class="avatars-close">X</div>
+              </div>
+              <div class="winner-card-body">
+                <div class="avatars-list">
+                  <div class="avatar-container" [class.selected]="avatar===user?.picture"
+                    [class.isClickable]="avatar!=user?.picture" *ngFor="let avatar of avatars"
+                    (click)="selectAvatar(avatar)">
+                    <div class="background-ring">
+                      <img class="selected-image" src="/assets/images/sportimo/avatar_selected_indicator.svg" alt="">
+                      <img class="rounded-circle" [src]="avatar" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
+            <div class="profile-stats">
+              <div class="profile-stat-title" translate>Games Played:</div>
+              <div class="profile-stat-value">{{stats?.user.stats.matchesPlayed}}</div>
+              <div class="profile-stat-title" translate>Points/game:</div>
+              <div class="profile-stat-value">{{stats?.pointsPerGame}}</div>
+              <div class="profile-stat-title" translate>Cards Played:</div>
+              <div class="profile-stat-value">{{stats?.user.stats.cardsPlayed}}</div>
+              <div class="profile-stat-title" translate>Cards won:</div>
+              <div class="profile-stat-value">{{stats?.user.stats.cardsWon}}</div>
+            </div>
+            <div style="text-align: center; color: #ffffff">
+              <div class="chart-container">
+                <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+                  [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]=true
+                  [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="Hello" [yAxisLabel]="yAxisLabel" [roundEdges]=false
+                  (select)="onSelect($event)">
+                </ngx-charts-bar-vertical>
+              </div>
+              <div class="chart-footer" translate>Last 5 games</div>
+            </div>
+          </div> -->
+
+            <!-- Overall Cards -->
+            <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
+            <div class="polarchart-header"><span translate>Overall Cards Played:
+              </span>{{stats?.user.stats.overallCardsPlayed}} </div>
+            <div class="polarchart-container">
+              <canvas baseChart [options]="ChartOprions" height="180px" width="180px" [data]="OveralltChartData"
+                [labels]="OverallChartLabels" [chartType]="doughnutChartType" [legend]=false [colors]="ChartColors">
+              </canvas>
+            </div>
+            <div class="polarchart-info">
+              <div class="player-info">
+                <div class="player-chart-color"></div>
+                <div class="player-chart-label">
+                  <div class="title" translate>You:</div>
+                  <div class="text">{{this.data.overall.you}}% <span translate>correct</span></div>
+                </div>
+              </div>
+              <div class="player-info">
+                <div class="all-chart-color"></div>
+                <div class="player-chart-label">
+                  <div class="title" translate>Other Players:</div>
+                  <div class="text">{{this.data.overall.all}}% <span translate>correct</span></div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+            <!-- Instant Cards -->
+            <!-- <div class="winner-card-body" *ngIf="stats && stats.user.stats">
+            <div class="polarchart-header"><span translate>Instant Cards Played:
+              </span>{{stats?.user.stats.instantCardsPlayed}} </div>
+            <div class="polarchart-container">
+              <canvas baseChart [options]="ChartOprions" height="180px" width="180px" [data]="InstantChartData"
+                [labels]="OverallChartLabels" [chartType]="doughnutChartType" [legend]=false [colors]="ChartColors">
+              </canvas>
+            </div>
+            <div class="polarchart-info">
+              <div class="player-info">
+                <div class="player-chart-color"></div>
+                <div class="player-chart-label">
+                  <div class="title" translate>You:</div>
+                  <div class="text">{{this.data.instant.you}}% <span translate>correct</span></div>
+                </div>
+              </div>
+              <div class="player-info">
+                <div class="all-chart-color"></div>
+                <div class="player-chart-label">
+                  <div class="title" translate>Other Players:</div>
+                  <div class="text">{{this.data.instant.all}}% <span translate>correct</span></div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+
+
           </div>
-        </div> -->
+        </div>
+      </div>
     </div>
   </div>
 </div>

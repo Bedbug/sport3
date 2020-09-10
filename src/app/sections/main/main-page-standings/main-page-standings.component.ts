@@ -6,7 +6,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
-
+import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 
 @Component({
   selector: 'app-main-page-standings',
@@ -22,6 +22,14 @@ export class MainPageStandingsComponent implements OnInit {
     Team: 2,
     Player: 3
   }
+
+  translateMappings() {
+    _("Goalkeeper");
+    _("Defender");
+    _("Midfielder");
+    _("Forward");
+  }
+
 
   currentStandings: any;
   currentPlayer: any;
@@ -83,7 +91,7 @@ export class MainPageStandingsComponent implements OnInit {
           this.sportimoService.getTeam(teamId).subscribe(x => {
             this.currentTeam = x;
             this.stats = this.currentTeam.stats.find(x=>x.competition == leagueId);
-            console.log(this.stats);
+            // console.log(this.stats);
             // Check for favorite team
             this.isFavoriteTeam = false;
             if (this.authenticationService.currentUserValue)
@@ -121,7 +129,7 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   showPlayer(playerId: string) {
-    this.router.navigate([], { queryParams: { playerId: playerId } });
+    // this.router.navigate([], { queryParams: { playerId: playerId } });
   }
 
   get getGK() {
@@ -157,6 +165,10 @@ export class MainPageStandingsComponent implements OnInit {
 
   parseNumbers(text:string){
     return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  }
+
+  parseDate(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','D-MM-YYYY', 'jD-jMM-jYYYY');
   }
 
   ngOnDestroy() {

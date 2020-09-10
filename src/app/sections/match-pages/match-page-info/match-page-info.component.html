@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container background-container">
   <div class="row">
     <div *ngIf="liveMatch" [@enterAnimation] style="width: 100%;">
       <div class="scroll-area">
@@ -8,7 +8,7 @@
             <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
               <span translate>The match hasn't started yet</span>
               <br><br>
-              <button [disabled]="startedDemo" (click)="openModal(template)" class="btn btn-sportimo"
+              <button [disabled]="startedDemo" (click)="openModal(template)" class="btn btn-sportimo" *ngIf="liveMatch.matchData.demo"
                 style="width: 100%">
                 <div class="loader-label" [class.btn-active]="startingDemo">
                   <span *ngIf="startedDemo" translate class="button-label">The match will begin shortly</span>
@@ -19,7 +19,7 @@
                 </div>
               </button>
               <br><br>
-              <p style="text-align:left" translate>Initiate Disclaimer</p>
+              <p *ngIf="liveMatch.matchData.demo" style="text-align:left" translate>Initiate Disclaimer</p>
               <br>
               <pre *ngIf="message" class="card card-block card-header">{{message}}</pre>
               <ng-template #template>

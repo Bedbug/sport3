@@ -1,7 +1,10 @@
-<div class="modal-card" [class.vip]="contestMatch?.vipText"> 
+<div class="modal-card" [class.vip]="contestMatch?.vipText" *ngIf="!onDemandResponse">
   <!-- (click)="preventDefault($event)" -->
   <div class="modal-card-header">
     <div class="modal-title" translate>Join Match</div>
+    <div class="user-balance">
+      <span translate>Balance</span> {{user?.wallet}}<i class="coin"></i>
+    </div>
     <div (click)="close()" class="modal-exit pull-right">X</div>
   </div>
   <div class="modal-card-body text-center">
@@ -29,9 +32,11 @@
     </div>
     <div class="match-details">
       <div class="match-time">{{parseDate(contestMatch?.match.start)}}</div>
-      <div *ngIf="contestMatch?.vipText" class="match-text-vip" ><span translate>vipMatchAwards</span><br>{{contestMatch?.vipText[translate.currentLang]}}</div>
+      <div *ngIf="contestMatch?.vipText" class="match-text-vip"><span
+          translate>vipMatchAwards</span><br>{{contestMatch?.vipText[translate.currentLang]}}</div>
       <div class="match-text" translate [translateParams]="{value: contestMatch?.subscriptionPrice}">joinMatchInfo</div>
-      <div *ngIf="contestMatch?.subscriptionPrice > user?.wallet" class="match-text-nocoins" translate>joinMatchNoCoins</div>
+      <div *ngIf="contestMatch?.subscriptionPrice > user?.wallet" class="match-text-nocoins" translate>joinMatchNoCoins
+      </div>
     </div>
     <!-- <div class="join-modal-header" translate>Join Contest</div>
     <div class="join-modal-contest">{{contestDetails?.titleText[translate.currentLang]}}</div>
@@ -48,33 +53,33 @@
 
     <div class="bottom-buttons">
       <ul class="finalize">
-        <li>
+        <!-- <li>
           <div class="user-balance">
           <span translate>Balance</span> {{user?.wallet}}<i class="coin"></i>
         </div>
-        </li>
+        </li> -->
         <li>
           <button *ngIf="contestMatch?.subscriptionPrice <= user?.wallet" [disabled]="isJoinRequesting"
             (click)="requestJoin()" class="btn btn-sportimo">
             <div class="loader-label" [class.btn-active]="isJoinRequesting">
-             
+
               <span class="button-label">
                 <div *ngIf="contestMatch?.subscriptionPrice && contestMatch?.subscriptionPrice>0"><span
                     translate>Join</span> {{parseNumbers(contestMatch?.subscriptionPrice)}}<i class="coin"></i>
                 </div>
-                <div *ngIf="!contestMatch?.subscriptionPrice || contestMatch?.subscriptionPrice==0"><span
-                    translate>Join For Free</span></div>
+                <div *ngIf="!contestMatch?.subscriptionPrice || contestMatch?.subscriptionPrice==0"><span translate>Join
+                    For Free</span></div>
               </span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
             </div>
           </button>
-          <button *ngIf="contestMatch?.subscriptionPrice > user.wallet" [disabled]="isJoinRequesting"
+          <button *ngIf="contestMatch?.subscriptionPrice > user.wallet && defaultProduct" [disabled]="isJoinRequesting"
             (click)="getCoins()" class="btn btn-sportimo">
             <div class="loader-label" [class.btn-active]="isJoinRequesting">
               <span class="button-label"> <span translate>Get</span>
-                {{parseNumbers(contestDetails?.subscriptionPrice)}} <i _ngcontent-vii-c2="" class="coin"></i></span>
+                {{parseNumbers(defaultProduct.payout)}}<i _ngcontent-vii-c2="" class="coin"></i></span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
@@ -86,7 +91,20 @@
         </li>
       </ul>
     </div>
+  </div>
+</div>
 
 
+<div class="modal-card" [class.vip]="contestMatch?.vipText" *ngIf="onDemandResponse">
+  <!-- (click)="preventDefault($event)" -->
+  <div class="modal-card-header">
+    <div class="modal-title"></div>
+    <div (click)="close()" class="modal-exit pull-right">X</div>
+  </div>
+  <div class="modal-card-body text-center">
+    <div class="demand-response">
+      <img src="/assets/images/sportimo/coins.png" alt="" class="demand-response-img">
+      <div class="demand-response-text" translate>onDemandResponseText</div>
+    </div>
   </div>
 </div>

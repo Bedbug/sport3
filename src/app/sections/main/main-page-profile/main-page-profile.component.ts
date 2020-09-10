@@ -7,6 +7,9 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ChartType, ChartOptions } from 'chart.js';
 import { Label, SingleDataSet, Color } from 'ng2-charts'
 import { Router, ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-main-page-profile',
@@ -19,11 +22,13 @@ export class MainPageProfileComponent implements OnInit {
     private authenticationService: AuthenticationService, 
     private sportimoService: SportimoService, 
     private router: Router,
-    private route:ActivatedRoute,) { }
+    private route:ActivatedRoute,
+    private translate:TranslateService
+    ) { }
 
   user: User;
   ngUnsubscribe = new Subject();
-
+  Utils: SportimoUtils = new SportimoUtils();
   single: any[] = [];
   multi: any[];
   view: any[] = null;//[100, 400];
@@ -43,6 +48,27 @@ export class MainPageProfileComponent implements OnInit {
   };
 
   stats: any;
+
+  // Avatars
+  avatarsShowing = false;
+
+  avatars: string[] =[
+    './assets/images/sportimo/avatars/avatar1.png',
+    './assets/images/sportimo/avatars/avatar2.png',
+    './assets/images/sportimo/avatars/avatar3.png',
+    './assets/images/sportimo/avatars/avatar4.png',
+    './assets/images/sportimo/avatars/avatar5.png',
+    './assets/images/sportimo/avatars/avatar6.png',
+    './assets/images/sportimo/avatars/avatar7.png',
+    './assets/images/sportimo/avatars/avatar8.png',
+    './assets/images/sportimo/avatars/avatar9.png',
+    './assets/images/sportimo/avatars/avatar10.png',
+    './assets/images/sportimo/avatars/avatar11.png',
+    './assets/images/sportimo/avatars/avatar12.png',
+    './assets/images/sportimo/avatars/avatar13.png',
+    './assets/images/sportimo/avatars/avatar14.png',
+    './assets/images/sportimo/avatars/avatar15.png',
+  ]
 
   // Pie charts
   public OverallChartLabels: Label[] = ['You', 'All players'];
@@ -80,6 +106,9 @@ export class MainPageProfileComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
+
+      if(this.user.picture == null)
+      this.user.picture = '/assets/images/sportimo/default_avatar.svg';
       // console.table(this.user);
     });
 
@@ -91,6 +120,12 @@ export class MainPageProfileComponent implements OnInit {
           count++;
           return { name: "Game " + count, value: each };
         })
+        
+        
+        // Find the most used card
+        if(x.cardStats)
+        this.stats.favoriteCard = _.maxBy(Object.keys(x.cardStats), o => x.cardStats[o]) || null;        
+        
 
       if (x && x.user && x.user.stats) {
         this.data.overall.you = (100 * (x.user.stats.overallCardsWon / x.user.stats.overallCardsPlayed)).toFixed(2);
@@ -110,10 +145,13 @@ export class MainPageProfileComponent implements OnInit {
     });
   }
 
-  openAvatarSelection() {
-    console.log(this.route.parent);
-    
-    this.router.navigate(['avatars'],{relativeTo:this.route.parent});
+  openAvatarSelection() {  
+    this.avatarsShowing = true;
+    // this.router.navigate(['avatars'],{relativeTo:this.route.parent});
+  }
+
+  closeAvatarsSelection(){
+    this.avatarsShowing = false;
   }
 
   ngOnDestroy() {
@@ -131,6 +169,14 @@ export class MainPageProfileComponent implements OnInit {
         };
       });      
 
+  }
+
+  parseDateDay(date:string){
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM/YY','jDD/jMM/jYY');
+  }
+
+  selectAvatar(avatarUrl:string){
+    this.authenticationService.updateAvatar(avatarUrl).subscribe();
   }
 
 

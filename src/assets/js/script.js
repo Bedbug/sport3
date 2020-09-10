@@ -19,6 +19,22 @@ $(document).ready(function(){
     // });
 });
 
+// $('input').on('focus', function(e) {
+//   e.preventDefault(); e.stopPropagation();
+//   window.scrollTo(0,0); //the second 0 marks the Y scroll pos. Setting this to i.e. 100 will push the screen up by 100px. 
+// });
+
+$( window ).resize(function() {
+  console.log( "<div>Handler for .resize() called.</div>" );
+  this.calculateHeight();
+});
+
+function calculateHeight(){
+  vh = window.innerHeight * 0.01;
+  // Then we set the value in the --vh custom property to the root of the document
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
 // let defferedPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
   // Stash the event so it can be triggered later.

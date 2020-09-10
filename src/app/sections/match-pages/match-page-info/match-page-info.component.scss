@@ -1,6 +1,7 @@
 .scroll-area{
-    overflow-y: auto;
-    height: calc(100vh - 221px);    
+    overflow-y: scroll;
+    height: calc(100vh - 185px);    
+    height: calc((var(--vh, 1vh) * 100) - 185px);
     -webkit-overflow-scrolling: touch;
     width: 100%;
 }

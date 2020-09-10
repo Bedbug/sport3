@@ -1,19 +1,19 @@
 
 <div class="navbar app-navbar">
-  <div class="container" style="justify-content: space-evenly">
-    <a routerLink="contests" routerLinkActive="active" href="#" class="row">
+  <div class="container" style="justify-content: flex-start; padding: 0;">
+    <a routerLink="contests" routerLinkActive="active" href="#" >
       <div class=""><img src="assets/images/sportimo/icon-contests.svg" class="footer-icon"/></div>
       <span translate>Contests</span></a>
-    <a routerLink="winners" routerLinkActive="active" href="#" class="row">
+    <a routerLink="winners" routerLinkActive="active" href="#">
       <div class=""><img src="assets/images/sportimo/icon-winners.svg" class="footer-icon"/></div>
       <span translate>Winners</span></a>
-    <a routerLink="achievements" routerLinkActive="active" href="#" class="row">
+    <a routerLink="achievements" routerLinkActive="active" href="#" >
       <div class=""><img src="assets/images/sportimo/icon-achievements.svg" class="footer-icon"/></div>
       <span translate>Achievements</span></a>
-    <a routerLink="standings" routerLinkActive="active" href="#" class="row">
+    <a routerLink="standings" routerLinkActive="active" href="#" >
       <div class=""><img src="assets/images/sportimo/icon-standings.svg" class="footer-icon"/></div>
       <span translate>Standings</span></a>
-    <a *ngIf="hasNews"  routerLink="news" routerLinkActive="active" href="#" class="row">
+    <a *ngIf="hasNews"  routerLink="news" routerLinkActive="active" href="#">
       <div class=""><img src="assets/images/sportimo/icon-news.svg" class="footer-icon"/></div>
       <span translate>News</span></a>
     <!-- <a *ngIf="hasNews" routerLink="/main/news" routerLinkActive="active" href="#"><div class="icn-news"></div><span translate>News</span></a> -->
@@ -43,3 +43,5 @@
     <div class=""><img src="assets/images/sportimo/icon-news.svg" class="footer-icon"/></div>
     <span translate>News</span></a>
 </nav>
+<!-- Terms footer -->
+<app-terms-footer></app-terms-footer>

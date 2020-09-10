@@ -65,6 +65,7 @@
       <div *ngIf="currentTeam.lastmatch" class="match-info">
         <div class="match-info-header" translate>Last Match</div>
         <div class="team-side isClickable" (click)="showStandingsTeam(currentTeam.lastmatch.home._id)">
+          
             <div class="kit">
               <img alt="" class="img-fluid" src="{{currentTeam.lastmatch.home.logo || './assets/images/sportimo/default-kit.png'}}">
             </div>
@@ -83,8 +84,10 @@
       </div>
   
       <div *ngIf="currentTeam.topscorer" class="top-player">
-          <div class="player-card isClickable" (click)="showStandingsPlayer(currentTeam.topscorer._id)">
-              <div class="player-card-header">
+          <!-- <div class="player-card isClickable" (click)="showStandingsPlayer(currentTeam.topscorer._id)"> -->
+          <div class="player-card">
+              
+            <div class="player-card-header">
                 <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
                 <div translate>Top Scorer</div>          
               </div>
@@ -102,8 +105,10 @@
       </div>
   
       <div *ngIf="currentTeam.topassister" class="top-player">
-          <div class="player-card isClickable" (click)="showStandingsPlayer(currentTeam.topscorer._id)">
-              <div class="player-card-header">
+          <!-- <div class="player-card isClickable" (click)="showStandingsPlayer(currentTeam.topscorer._id)"> -->
+          <div class="player-card">
+             
+            <div class="player-card-header">
                 <!-- <img class="rounded-circle" src="assets/images/user/1.jpg" alt="#"> -->
                 <div translate>Top Assister</div>          
               </div>

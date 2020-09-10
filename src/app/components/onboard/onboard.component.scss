@@ -1,15 +1,41 @@
 @import "src/variables.scss";
 
-.modal-card {
-    margin-top: 0px;
+.modal-card2 {
+    margin-top: 0 !important;
     width: 100%;
-    z-index: 1032;
-    transform: translate(-50%, -50%);
+    z-index: 1032;    
     height: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+.on-board-slide{
+  width:100%;
+   height:100%; 
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .on-board-slide{
+    width:800px;   
+    margin: auto;
+  }
+}
+
+.modal-card {
+  margin-top: 0 !important;
+  width: 100%;
+  z-index: 1032;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 
 .modal-card-body {
     width: 100%;
@@ -21,13 +47,15 @@
 
 .pin-card-body {
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 40px;
     color: #ffffff;
     background-image: linear-gradient(-180deg, #16365bcf, #08131fcf);
     height: 100%;
     margin-top: 40px;
     display: flex;
 }
+
+
 
 .slideText {
     // position: absolute;
@@ -100,7 +128,8 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 40px;
+    // top: 40px;
+    padding-top: 40px;
     height: 100%;
     margin: auto;
     background-color: #4b320440;
@@ -110,13 +139,13 @@
 .landing-card-content{
   display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     position: relative;
     height: 100%;
 }
 
 .carousel-indicators-container{
-  height: 50px;
+  height: 20px;
   position: relative;
 }
 
@@ -128,14 +157,14 @@
 
 .slide-prize-header{
   width: 100%;
-  // margin: 20px auto;
-    font-size: 25px;
-  font-size: 25px;
-    // font-weight: 700;
-    // line-height: 25px;    
-    margin-bottom: 10px;
-    
-    // height: 130px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  line-height: 21px;
+  min-height: 48px;
+  font-size: 21px;
+  font-weight: 700;
+  padding-top: 5px;
 }
 
 .slide-prize-container{
@@ -152,6 +181,7 @@
 
 .carousel-indicators{
   bottom: 0;
+  margin-bottom: 5px;
 }
 
 .slide-prize-text{
@@ -165,7 +195,7 @@
     bottom: 0;
     text-align: center;
     width: 80%;
-    font-size: 19px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 25px;
     display: flex;
@@ -182,25 +212,44 @@
 // }
 
 .input-box{
-    background-color: rgba(0, 0, 0, 0.8);
-    width: 270px;  
-    margin: auto;
-    height: 45px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 270px;
+  margin: auto;
+  height: 39px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
 }
 
+select option {
+  position: absolute;
+  background-color: black;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+
 .input-area{
-    border-right: 1px solid white;
-    padding: 0px;
-    padding-right: 10px;
-    margin-right: 10px;
-    height: 20px;
-    line-height: 20px;
+  background: transparent;
+  color: white;
+  border: 0;
+  border-right: 1px solid white;
+  padding: 0px;
+  padding-right: 0;
+  margin-right: 10px;
+  height: 20px;
+  line-height: 20px;
+  min-width: 40px;
+}
+
+.flag-icon{
+  width: 30px;
+  margin-right: 5px;
 }
 
 .form-control-plaintext
@@ -215,7 +264,7 @@
 }
 
 .pin-title{
-    padding: 30px;
+    padding: 15px;
     min-height: 185px;
     display: flex;
     align-items: center;
@@ -300,8 +349,15 @@
     align-items: center;
     height: 50px;
     flex-wrap: wrap;
-    margin-top: 30px;
+    padding: 4px;
+    // margin-top: 30px;
   }
+
+  .btn-sportimo {
+    width: 270px;
+    height: 43px;
+    font-size: 20px;
+}
 
   .notice-msisdn {
     width: 100%;
@@ -313,8 +369,9 @@
     font-size: 15px;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    // height: 50px;
     flex-wrap: wrap;
+    padding: 5px;
     // margin-top: 30px;
   }
   

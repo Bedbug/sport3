@@ -2,14 +2,45 @@
   <div class="page-wrapper">
     <app-contest-info-header></app-contest-info-header>
     <!-- Router Page Placement -->
-    <div [@routeAnimations]="o && o.activatedRouteData 
-      && o.activatedRouteData['animation']">
-      <!-- <div class="contest-pages-scrollarea"> -->
-      <router-outlet #o="outlet"></router-outlet>
-      <!-- </div> -->
+    <div class="components-container">
+      <!-- Desktop Side Nav bar -->
+      <div class="desktop-nav-bar">
+        <nav class="vertical-app-navbar">
+          <!-- <div class="container">
+            <div style="width:100%">
+              <div class="row"> -->
+                <a *ngIf="contestId" [routerLink]="['matches']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
+                  <span translate>Matches</span>
+                </a>
+                <a *ngIf="contestId" [routerLink]="['leaders']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-leaders.svg" class="footer-icon" /></div>
+                  <span translate>Leaders</span>
+                </a>
+                <a *ngIf="contestId" [routerLink]="['prizes']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-prize.svg" class="footer-icon" /></div>
+                  <span translate>Prizes</span>
+                </a>
+                <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
+                  <div class=""><img src="assets/images/sportimo/icon-info.svg" class="footer-icon" /></div>
+                  <span translate>Info</span>
+                </a>
+              <!-- </div>
+            </div>
+          </div> -->
+        </nav>
+
+      </div>
+      <!-- <div [@routeAnimations]="o && o.activatedRouteData 
+      && o.activatedRouteData['animation']" style="width: 100%;"> -->
+      <div  style="width: 100%;">
+        <!-- <div class="contest-pages-scrollarea"> -->
+        <router-outlet #o="outlet"></router-outlet>
+        <!-- </div> -->
+      </div>
     </div>
     <!-- Contest Navbar -->
-    <nav class="navbar fixed-bottom universal-app-navbar">
+    <nav class="navbar fixed-bottom mobile-app-navbar">
       <div class="container">
         <div style="width:100%">
           <div class="row">
@@ -33,5 +64,7 @@
         </div>
       </div>
     </nav>
+    <!-- Terms footer -->
+    <app-terms-footer></app-terms-footer>
   </div>
 </span>

@@ -31,18 +31,17 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/app/scss/uikit/components/_import.scss",
               "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
-              "src/assets/css/ion.rangeSlider.skinHTML5.css",             
+              "src/assets/css/ion.rangeSlider.skinHTML5.css",
               "src/assets/app.scss",
               "src/style_base.scss",
               "src/assets/css/responsive.css",
               "src/styles.scss",
-              "src/rtl.scss",     
-              "src/themes.scss",       
+              "src/rtl.scss",
+              "src/themes.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-             
               "src/assets/js/uikit.js",
               "node_modules/uikit/dist/js/uikit-icons.min.js",
               "src/assets/js/popper.min.js",
@@ -162,5 +161,8 @@
       }
     }
   },
-  "defaultProject": "sportimo"
+  "defaultProject": "sportimo",
+  "cli": {
+    "analytics": "be2fa975-8a5a-41b6-bcf3-998274a23874"
+  }
 }

@@ -9,9 +9,9 @@
           <!-- <br> {{contestDetails?.startFromDate | date:"dd/MM"}} - {{contestDetails?.endToDate | date:"dd/MM"}} -->
         </div>
         <div class="chances" >     
-          <div *ngIf="prize?.prizeDistribution =='Draw'" class="text-white user-chances"> <span translate>Your chances:</span>
+          <div *ngIf="prize?.prizeDistribution =='draw'" class="text-white user-chances"> <span translate>Your chances:</span>
             {{parseNumbers(userChances) || parseNumbers(0)}}</div>
-            <div *ngIf="prize?.prizeDistribution !='Draw'" class="text-white  user-chances"> <span
+            <div *ngIf="prize?.prizeDistribution !='draw'" class="text-white  user-chances"> <span
               translate>Your points:</span> <span> {{parseNumbers(userChances) || parseNumbers(0) || 0}}</span></div>
         </div>
       </div>
@@ -38,7 +38,7 @@
         </a>
       </li>
 
-      <li *ngIf="prize?.prizeDistribution !='Draw'" class="nav-item">
+      <li *ngIf="prize?.prizeDistribution !='draw'" class="nav-item">
         <a class="nav-link" id="Leaderboard-tab" data-toggle="tab" href="#Leaderboard" role="tab" aria-controls="Leaderboard"
           aria-selected="false">
           <div translate>Leaders</div>
