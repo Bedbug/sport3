@@ -377,6 +377,7 @@ border-bottom: 3px solid #00000050;
   flex-direction: column;
   padding: 10px 15px;
   min-width: 160px;
+  // width: 135px;
 }
 
 .no-min-width{
@@ -411,6 +412,8 @@ border-bottom: 3px solid #00000050;
 .team-name{
   font-size: 11px;
   color: white;
+  width: 90%;
+    margin: auto;
 }
 
 .match-details{
@@ -421,6 +424,10 @@ border-bottom: 3px solid #00000050;
 .stat-match{
   text-align: center;
   color: $theme-color;
+}
+
+.stat-team{
+  width: 50%;
 }
 
 .stat-match-date{
