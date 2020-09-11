@@ -94,11 +94,11 @@
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_cardsplayed.svg" alt="">
                 </div>
-                <div class="stat-data">
+                <div class="stat-data-highs">
                   <div class="stat-header" translate>Cards played</div>
                   <div class="stat-value">{{stats.user.stats?.cardsPlayed || 0}}</div>
                 </div>
-                <div class="stat-data no-min-width stats-border-left">
+                <div class="stat-data no-min-width stats-border-left" style="padding-left:30px;">
                   <div class="stat-header" translate>card-live</div>
                   <div class="stat-value">
                     {{(stats.user.stats?.presetinstantCardsPlayed || 0) + (stats.user.stats?.instantCardsPlayed || 0)}}</div>
@@ -127,7 +127,7 @@
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_highest_score.svg" alt="">
                 </div>
-                <div class="stat-data"  style="min-width: 100px;">
+                <div class="stat-data-highs" >
                   <div class="stat-header" translate>Highest Score</div>
                   <div class="stat-value"> {{stats?.user.rankingStats.bestScore}} pts</div>
                 </div>
@@ -166,7 +166,7 @@
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_highest_rank.svg" alt="">
                 </div>
-                <div class="stat-data" style="min-width: 100px;">
+                <div class="stat-data-highs">
                   <div class="stat-header" translate>Highest Rank</div>
                   <div *ngIf="stats?.user.rankingStats?.bestRank && stats?.user.rankingStats?.bestRank>0 && stats?.user.rankingStats?.bestRank <9999" class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
                   <div *ngIf="!stats?.user.rankingStats?.bestRank || stats?.user.rankingStats?.bestRank==0 || stats?.user.rankingStats?.bestRank  == 9999" class="stat-value">-</div>
