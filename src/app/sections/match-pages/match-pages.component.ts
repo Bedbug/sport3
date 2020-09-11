@@ -140,12 +140,12 @@ export class MatchPagesComponent implements OnInit {
 
 
               }
-              if (event.type == "Advance_Segment") {
-                this.cardToastService.Show({
-                  type: "advance_segment",
-                  event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
-                });
-              }
+              // if (event.type == "Advance_Segment") {
+              //   this.cardToastService.Show({
+              //     type: "advance_segment",
+              //     event: this.translate.instant(event.data.sportSegmenInfo.name['en']),
+              //   });
+              // }
             }
           });
         });
