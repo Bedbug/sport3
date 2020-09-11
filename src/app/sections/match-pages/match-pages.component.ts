@@ -101,9 +101,10 @@ export class MatchPagesComponent implements OnInit {
 
       // Retrieve the Live Match data from the service
       this.sportimoService.getMatchDataForUser(this.contestId, this.contestMatchId).
-        subscribe(result => {
-        
+        subscribe(result => {        
 
+          console.log("Initiating Stream sequence");
+          
           // Initiating Socket Connection and subscription to stream
           this.stream = this.sportimoService.getStream().subscribe(data => {
             if(this.sportimoService.matchReloading)
