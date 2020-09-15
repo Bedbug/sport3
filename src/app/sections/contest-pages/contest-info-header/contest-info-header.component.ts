@@ -59,6 +59,16 @@ export class ContestInfoHeaderComponent implements OnInit {
             this.contestDetails = result;            
           });
     });
+
+    this.sportimoService.contestPointsUpdate.pipe(takeUntil(this.ngUnsubscribe)).subscribe((points)=>{
+      // console.log(points);
+      this.contestDetails.user_chances += points;
+    });
+
+    this.sportimoService.contestPointsSet.pipe(takeUntil(this.ngUnsubscribe)).subscribe((points)=>{
+      // console.log(points);
+      this.contestDetails.user_chances = points;
+    });
   }
 
   ngOnDestroy() {

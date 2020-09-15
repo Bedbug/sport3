@@ -20,4 +20,5 @@ export class Contest {
     created?: Date;
     showParticipations?: boolean;
     isUserDetails?: boolean;
+    user_chances?: number;
 }

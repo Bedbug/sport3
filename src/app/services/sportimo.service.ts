@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { Contest } from '../models/contest';
-import { Observable, BehaviorSubject, timer, of } from 'rxjs';
+import { Observable, BehaviorSubject, timer, of, Subject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { GrandPrize } from '../models/grand-prize';
 import { ContestMatch } from '../models/contest-match';
@@ -45,6 +45,10 @@ export class SportimoService {
   private currentMatchId;
   private currentContestId;
   public configuration: BehaviorSubject<any>;
+  
+  // Used to update header point when user is in match
+  public contestPointsUpdate = new Subject<number>();
+  public contestPointsSet = new Subject<number>();
 
   private socket;
   langIsRTL: boolean = false;
@@ -413,7 +417,7 @@ export class SportimoService {
 
       this.socket.on('message', (data) => {
         console.log("Sockets: Message: ");
-        console.log(data);
+        // console.log(data);
         
         observer.next(data);
         this.parseSocket(data);
@@ -484,10 +488,15 @@ export class SportimoService {
 
   }
   updateCardStatus(data: any) {
+    // console.log(data);
     Object.assign(this.currentLiveMatch.value.playedCards[
       this.currentLiveMatch.value.playedCards.findIndex(el => el.id === data.data.id)], data.data)
     this.currentLiveMatch.next(this.currentLiveMatch.value);
+
+    if(data.type == "Card_won")
+      this.contestPointsUpdate.next(data.data.pointsAwarded);
   }
+
 
   // getMatchDataForUser(contestId: string, contestMatchId: string) {
   //   this.currentContestId = contestId;
@@ -504,12 +513,14 @@ export class SportimoService {
     this.matchReloading = true;
     this.http.get<LiveMatch>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/user`)
       .pipe(map(match => {        
-        this.currentLiveMatch.next(match);   
-        console.log("matcherelaoding:false");
-        
-        this.matchReloading = false;   
+        this.currentLiveMatch.next(match);                   
+        this.matchReloading = false;           
         return match;
       })).subscribe();
+
+      this.getContestDetails(this.currentContestId).subscribe(details=>{
+        this.contestPointsSet.next(details.user_chances);
+      })
   }
 
   advanceTimelineSegment(data: any) {

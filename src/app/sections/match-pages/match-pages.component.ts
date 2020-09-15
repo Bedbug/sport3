@@ -92,7 +92,7 @@ export class MatchPagesComponent implements OnInit {
       this.sportimoService.currentLiveMatch.pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {           
         if (match) {          
           this.liveMatch = match;
-          console.log("The current time of the segment is: "+ this.liveMatch.matchData.time);
+          // console.log("The current time of the segment is: "+ this.liveMatch.matchData.time);
           
         }
       })
@@ -110,7 +110,7 @@ export class MatchPagesComponent implements OnInit {
             if(this.sportimoService.matchReloading)
                         return;
             let event: any = data;
-            console.log("skipped match reloading");
+            // console.log("skipped match reloading");
             
             // Check if current route view is info. No need to show Toast if it is
             const isInfo: any = this.state.routerState.snapshot.url.match(/info/i);
