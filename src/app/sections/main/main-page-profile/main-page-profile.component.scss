@@ -347,7 +347,7 @@ padding: 10px 20px 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 150px;
+  min-height: 150px;
 }
 
 .stats-border-bottom{
@@ -377,6 +377,8 @@ border-bottom: 3px solid #00000050;
   flex-direction: column;
   padding: 10px 15px;
   min-width: 160px;
+  margin: 10px 0 10px;
+  // width: 135px;
 }
 
 .no-min-width{
@@ -395,6 +397,10 @@ border-bottom: 3px solid #00000050;
   font-weight: 700;
 }
 
+.stat-data-highs{
+  width: 100px;
+  min-width: 100px;
+}
 
 .team-kit img{
   height: 30px;
@@ -411,6 +417,8 @@ border-bottom: 3px solid #00000050;
 .team-name{
   font-size: 11px;
   color: white;
+  width: 90%;
+    margin: auto;
 }
 
 .match-details{
@@ -421,6 +429,10 @@ border-bottom: 3px solid #00000050;
 .stat-match{
   text-align: center;
   color: $theme-color;
+}
+
+.stat-team{
+  width: 50%;
 }
 
 .stat-match-date{
@@ -438,8 +450,10 @@ border-bottom: 3px solid #00000050;
 
   .stat-data{
     min-width: 0;
-    padding-left: 5px;
+    // padding-left: 5px;
   }
+
+
 
   .score{
     font-size: 14px;
@@ -456,6 +470,11 @@ border-bottom: 3px solid #00000050;
   }
   .winner-card-header-mobile {
     display: none;
+  }
+
+  .stat-data-highs{
+    width: 130px;
+    min-width: 130px;
   }
 
   .stat-header{
