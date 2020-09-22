@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var Pace: any;
 
@@ -106,6 +106,7 @@ export class OnboardComponent implements OnInit {
     private sportimoService: SportimoService,
     public config: ConfigService,
     private route: ActivatedRoute,
+    private router: Router,
     private ViewModalOverlay: PrizeViewOverlayService
   ) { }
 
@@ -138,7 +139,7 @@ export class OnboardComponent implements OnInit {
 
 
         this.route.queryParamMap.subscribe(queryParams => {
-          this.UniqueLink = queryParams.get("unique");
+          this.UniqueLink = queryParams.get("uniqueLink");
 
           // Handle Unique Link process
           if (this.UniqueLink) {
@@ -248,8 +249,10 @@ export class OnboardComponent implements OnInit {
 
     let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
-    console.log(msisdnValue);
-    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
+    let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
+     console.log(path);
+     
+    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
       .subscribe(response => {
         if (response && response.success) {
           this.subState = response.state;

@@ -1124,6 +1124,13 @@ body .page-wrapper .page-main-header {
   margin: 0 0;
 }
 
+@media (min-width: 992px){
+  .main-pages-scrollarea {
+  height: calc(100vh - 200px);
+  height: calc((var(--vh, 1vh) * 100) - 200px);
+  }
+}
+
 /**=====================
      02. Contests
 ==========================**/

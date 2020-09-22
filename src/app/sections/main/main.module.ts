@@ -17,7 +17,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
 import { MainPageNewsComponent } from './main-page-news/main-page-news.component';
 import { SafeHTMLPipe } from 'src/app/pipes/safe-html.pipe';
-import { OnboardComponent } from 'src/app/components/onboard/onboard.component';
+
 
 @NgModule({
   declarations: [

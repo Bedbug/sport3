@@ -75,10 +75,11 @@ export class AuthenticationService {
       User registration
     ----------------------------------------------------------------------------------- */
 
-    blaiseSignin(msisdn: string, lang: string) {
+    blaiseSignin(msisdn: string, lang: string, path: string) {
         let postData = {
             msisdn: msisdn.toString(),
             client: this.Config.getClient(),
+            path: path,
             language: lang
         }
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/signin`, postData)
@@ -94,6 +95,43 @@ export class AuthenticationService {
                 // }
                 return response;
             }));
+    }
+
+    ulinkVerify(msisdnCode: string, lang: string) {
+        let postData = {
+            msisdnCode: msisdnCode,
+            client: this.Config.getClient(),
+            language: lang
+        }
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/ulink-signin`, postData)
+        .pipe(map(response => {
+            // Save the signin data for future use
+            if (response != null && response.success)
+                localStorage.setItem('signon', JSON.stringify({ msisdn: response.msisdn, client: postData.client }));
+
+            return response;
+        }));
+    }
+
+    ulinkSend(msisdn: string, lang: string){
+        let postData = {
+            msisdn: msisdn.toString(),
+            client: this.Config.getClient(),
+            language: lang
+        }
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/sendUlink`, postData)
+        .pipe(map(response => {
+            // Save the signin data for future use
+            // if (response != null && response.success)
+            //     localStorage.setItem('signon', JSON.stringify({ msisdn: postData.msisdn, client: postData.client }));
+
+            // if (response.user && response.user.token) {
+            //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //     localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
+            //     this.currentUserSubject.next(response.user);
+            // }
+            return response;
+        }));
     }
 
     blaiseVerify(pin: string, noSubscription: boolean) {
@@ -114,6 +152,8 @@ export class AuthenticationService {
                 return response;
             }));
     }
+
+   
 
     resendPin(lang: string) {
         let postData = JSON.parse(localStorage.getItem('signon'));

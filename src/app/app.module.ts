@@ -43,7 +43,7 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { TermsPopupComponent } from './components/terms-popup/terms-popup.component';
 import { CardInfoPopupComponent } from './components/card-info-popup/card-info-popup.component';
 import { TermsFooterComponent } from './components/terms-footer/terms-footer.component';
-
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -93,6 +93,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    RoundProgressModule,
     ModalModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ToastModule.forRoot(),
