@@ -114,7 +114,7 @@
                 <div>
                   <!-- <img class="stat-icon" [src]="Utils.getIconBySprite(availablePlaycard?.image.sprite" alt=""> -->
                   <div class="stat-icon">
-                    <div [ngClass]="Utils.getIconBySprite(stats?.user.favoriteCard?.image.sprite)"  style="width: 60%; height: 100%;"></div>
+                    <div [ngClass]="Utils.getIconBySprite(stats?.user.favoriteCard?.image.sprite) || 'icn-stack'"  style="width: 60%; height: 100%;"></div>
                   </div>
                 </div>
                 <div class="stat-data">

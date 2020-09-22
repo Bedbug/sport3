@@ -103,18 +103,22 @@
     <div class="modal-card-body text-center" style="padding: 0;">
       <div class="slideshow-container"
         uk-slideshow="animation: swipe; autoplay: false; autoplay-interval: 1000; pause-on-hover: false; draggable: true; finite:true;"
-        style="height: 100%;  width: 100%;">
+        style="height: 100%;  width: 100%; background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;" [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/default.bg.jpg)'}" >
         <!-- margin: 7px; -->
         <div class="uk-position-relative" style="height: inherit;">
           <ul class="uk-slideshow-items" style="height: inherit;">
             <li *ngFor="let slide of defaults.slides; let i = index">
               <!-- style="text-align: center;"> -->
               <div class="on-board-slide"
-                [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + ')'}">
+                [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image.replace('jpg', 'png') + ')'}">
               </div>
               <div class="slideText">
-                <h3 style="font-weight: bold;font-size: 25px;"> {{slide.title[translate.currentLang]}}</h3>
-                <h4 style="font-size: 20px;">{{slide.text[translate.currentLang]}}</h4>
+                <div style="max-width: 80%; margin: 0 auto;">
+                  <h3 style="font-weight: bold"> {{slide.title[translate.currentLang]}}</h3>
+                  <h4>{{slide.text[translate.currentLang]}}</h4>
+                </div>
                 <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
                   <a href="#" uk-slideshow-item="next"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
@@ -125,11 +129,11 @@
             </li>
           </ul>
           <!-- NAVIGATION -->
-          <ul class="uk-slideshow-nav uk-dotnav uk-flex-center " style="margin-top: 19px;"></ul>
+          <!-- <ul class="uk-slideshow-nav uk-dotnav uk-flex-center " style="margin-top: 19px;"></ul>
           <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
             uk-slideshow-item="previous"></a>
           <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
-            uk-slideshow-item="next"></a>
+            uk-slideshow-item="next"></a> -->
         </div>
       </div>
     </div>
