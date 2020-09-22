@@ -11,6 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
+import { ActivatedRoute } from '@angular/router';
 
 declare var Pace: any;
 
@@ -28,6 +29,8 @@ export class OnboardComponent implements OnInit {
   PinVerify = false;
   Authenticated = false;
   UsernameUpdate = false;
+  UniqueLink = null;
+  UniqueLinkState = 1
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -70,7 +73,7 @@ export class OnboardComponent implements OnInit {
     ],
     landingPage: {
       background: "",
-      singleSlideText:null,
+      singleSlideText: null,
       terms: "localizedText",
       slidesShow: [
         {
@@ -102,6 +105,7 @@ export class OnboardComponent implements OnInit {
     public translate: TranslateService,
     private sportimoService: SportimoService,
     public config: ConfigService,
+    private route: ActivatedRoute,
     private ViewModalOverlay: PrizeViewOverlayService
   ) { }
 
@@ -118,7 +122,7 @@ export class OnboardComponent implements OnInit {
     //   this.onBoardService.Show();
     // }
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
-      this.user = user;           
+      this.user = user;
     });
 
     // Get value from Service
@@ -132,55 +136,77 @@ export class OnboardComponent implements OnInit {
           // console.log(x);
         })
 
-        this.Authenticated = false;
-        this.Onboarding = true;
-        this.LandingPage = true;
-        var this_m = this;
-        
-        let returnedAreaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];
-        this.areaCodes = returnedAreaCodes.map(a=>{
-          let b = a.split(":");
-          return {code:b[0],area:b[1]};
-        })
-        
-        
-        // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
-        this.nrSelect = this.areaCodes.length>0?this.areaCodes[0].area:'';
-        // if (this.defaults.sequence[0] == "S")       
-        
-        this_m.Onboarding = this_m.defaults.sequence[0] == "S";
-        this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
-        let bgElement = $('.landing-background');
-        bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
-        bgElement.css("background-size", `cover`)
+        this.route.queryParamMap.subscribe(queryParams => {
+          this.UniqueLink = queryParams.get("unique");
+
+          // Handle Unique Link process
+          if (this.UniqueLink) {
+            console.log("Unique Link flow");
+            this.UniqueLinkState = 4;
+            this.Authenticated = false;
+            this.Onboarding = false;
+            this.LandingPage = false;
+          }
+          // Else handle regular process
+          else {
+            console.log("Reqular flow");
+            this.Authenticated = false;
+            this.Onboarding = true;
+            this.LandingPage = true;
+
+            var this_m = this;
+
+            let returnedAreaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];
+            this.areaCodes = returnedAreaCodes.map(a => {
+              let b = a.split(":");
+              return { code: b[0], area: b[1] };
+            })
+
+
+            // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
+            this.nrSelect = this.areaCodes.length > 0 ? this.areaCodes[0].area : '';
+            // if (this.defaults.sequence[0] == "S")       
+
+            this_m.Onboarding = this_m.defaults.sequence[0] == "S";
+            this_m.LandingPage = this_m.defaults.sequence[0] != "S";
+
+            let bgElement = $('.landing-background');
+            bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
+            bgElement.css("background-size", `cover`)
+          }
+        });
+
+
+
 
         // Remove the loading screen
         // $('.loader-wrapper').fadeOut('slow');
         // $('.loader-wrapper').remove('slow');
         var releaseTimout;
-        Pace.on('done', function() {
+        Pace.on('done', function () {
           // console.log("done");
           clearTimeout(releaseTimout);
-          releaseTimout = setTimeout(function(){
-
-              $('.loader-wrapper').fadeOut('slow');
-          $('.loader-wrapper').remove('slow'); }, 500);
+          releaseTimout = setTimeout(function () {
+            $('.loader-wrapper').fadeOut('slow');
+            $('.loader-wrapper').remove('slow');
+          }, 500);
         });
 
         // Limit to 6 secs
-        setTimeout(function(){
-                $('.loader-wrapper').fadeOut('slow');
-        $('.loader-wrapper').remove('slow'); }, 7000);
-      }else{
-        this.Authenticated  = true;
+        setTimeout(function () {
+          $('.loader-wrapper').fadeOut('slow');
+          $('.loader-wrapper').remove('slow');
+        }, 7000);
+      } else {
+        this.Authenticated = true;
       }
 
     });
 
     this.msisdnForm = this.formBuilder.group({
       msisdn: ['', Validators.required],
-      area: [this.areaCodes[0]?this.areaCodes[0].area:'' ]
+      area: [this.areaCodes[0] ? this.areaCodes[0].area : '']
     });
 
     // Pin Verification Form
@@ -219,10 +245,10 @@ export class OnboardComponent implements OnInit {
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
-   
-    let areaCode = this.areaCodes.length>0?(this.areaCodes.length>1? this.msisdnForm.controls.area.value:this.areaCodes[0].area):"";
-    let msisdnValue = (this.msisdnForm.controls.msisdn.value!='03'?areaCode:'') + this.msisdnForm.controls.msisdn.value;
-    console.log(msisdnValue) ;
+
+    let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
+    let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
+    console.log(msisdnValue);
     this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang)
       .subscribe(response => {
         if (response && response.success) {
@@ -231,14 +257,15 @@ export class OnboardComponent implements OnInit {
             this.subState = "UNSUBWITHCOINS";
           if (this.subState == "ACTIVE" && response.user.inFreePeriod)
             this.subState = "ACTIVEFREEPERIOD";
-            if (this.subState == "FREE")
+          if (this.subState == "FREE")
             this.subState = "ACTIVEFREEPERIOD";
-            if (this.subState == "INACTIVE")
+          if (this.subState == "INACTIVE")
             this.subState = "UNKNOWN";
-            if (this.subState == "BLACKLISTED")
-           { this.subState = "UNKNOWN";
-          this.blacklisted = 1;}
-            
+          if (this.subState == "BLACKLISTED") {
+            this.subState = "UNKNOWN";
+            this.blacklisted = 1;
+          }
+
           this.closeLandingPage();
         }
         this.isSubmitting = false;
@@ -246,12 +273,12 @@ export class OnboardComponent implements OnInit {
 
   }
 
-  getCountryCode(value){
-     let ret = this.areaCodes.find(codes=>{    
+  getCountryCode(value) {
+    let ret = this.areaCodes.find(codes => {
       return codes.area == value;
     });
-    if(ret)
-    return ret.code.toLowerCase();
+    if (ret)
+      return ret.code.toLowerCase();
 
     return '';
   }
@@ -264,7 +291,7 @@ export class OnboardComponent implements OnInit {
 
     this.isSubmitting = true;
 
-    if(this.blacklisted > 0){
+    if (this.blacklisted > 0) {
       this.blacklisted = 2;
       this.isSubmitting = false;
       return;
@@ -280,20 +307,19 @@ export class OnboardComponent implements OnInit {
             this.PinVerify = false;
             this.Authenticated = true;
             if (this.defaults.sequence[0] == "L")
-              this.Onboarding = true;             
-                           
-              if(this.subState == "UNKNOWN")
-             {
+              this.Onboarding = true;
+
+            if (this.subState == "UNKNOWN") {
               // console.log(this.subState);
-                this.UsernameUpdate = true;
-                this.Authenticated = false;
+              this.UsernameUpdate = true;
+              this.Authenticated = false;
             }
 
-              // User Registered - We can stop the metrics
-              this.sportimoService.onboardingMetricsStop("").subscribe(x => {
-                console.log(x);
-              })
-          }else{
+            // User Registered - We can stop the metrics
+            this.sportimoService.onboardingMetricsStop("").subscribe(x => {
+              console.log(x);
+            })
+          } else {
             this.incorrectPin = true;
             this.isSubmitting = false;
           }
@@ -304,26 +330,26 @@ export class OnboardComponent implements OnInit {
         });
   }
 
-  openTerms(){
+  openTerms() {
     // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
-    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent,{});
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
-  onUsernameUpdate(){
+  onUsernameUpdate() {
     if (this.userForm.controls.username.errors) {
       return;
     }
 
     this.isSubmitting = true;
     this.authenticationService.updateUsername(this.userForm.controls.username.value)
-    .subscribe(
-      response => {
-        this.isSubmitting = false;
-        this.Authenticated = true;
-        if (response && response.success) {
-        };
-      });
-      this.UsernameUpdate = false;
+      .subscribe(
+        response => {
+          this.isSubmitting = false;
+          this.Authenticated = true;
+          if (response && response.success) {
+          };
+        });
+    this.UsernameUpdate = false;
 
   }
 
@@ -332,18 +358,18 @@ export class OnboardComponent implements OnInit {
   ResendPin() {
     this.isSubmitting = true;
     this.authenticationService.resendPin(this.translate.currentLang)
-    .subscribe(
-      response => {
-        if(response && response.success){
-          this.pinSent = true;
-          let that = this;
-          setTimeout(()=>{
-            that.pinSent = false;
-          },7000);
-        }
+      .subscribe(
+        response => {
+          if (response && response.success) {
+            this.pinSent = true;
+            let that = this;
+            setTimeout(() => {
+              that.pinSent = false;
+            }, 7000);
+          }
 
-        this.isSubmitting = false;
-      });
+          this.isSubmitting = false;
+        });
   }
 
   ngOnDestroy() {

@@ -1,7 +1,104 @@
-<div class="modal-background" *ngIf="!Authenticated"></div>
+<!-- Unique Link -->
+<div class="modal-background" *ngIf="!UniqueLink"></div>
+<div *ngIf="UniqueLink" id="UniqueLink">
+  <div class="modal-card2">
+    <div class="modal-card-body text-center" style="padding: 0;" *ngIf="UniqueLinkState == 1">
+      <!-- Verifying -->
+      <div class="landing-card">
+        <div class="landing-card-content text-center text-white" style="align-items: center; justify-content: center;">
+          <div class="unique-loader"></div>
+          <div style="padding: 20px;">Verifying Unique Link</div>
+        </div>
+      </div>
+    </div>
+    <!-- User Unsubscribed -->
+    <div class="pin-card-body text-center" *ngIf="UniqueLinkState == 2 || UniqueLinkState == 3">
+      <div class="login-form-body">
+        <!-- <div class="debug" style="max-height: 50px;">{{subState}}</div> -->
+        <div class="pin-title">
+          <h1 [innerHTML]="'susbcription_message_UNSUB' | translate:{value:appName[translate.currentLang]}"></h1>
+          <!-- <h1 *ngIf = "subState == 'UNSUB'" translate>Subscribe to Play</h1>
+          <h1 *ngIf = "subState == 'Active'" translate>Subscribe to Play</h1>
+          <h1 *ngIf = "subState == 'UnSubCoins'" translate>Subscribe to Play</h1> -->
+        </div>
+
+        <form [formGroup]="pinForm" (ngSubmit)="onPinSubmit(false)" class="sportimo-form">
+          <div class="login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div>
+          <div class="login-form-content">
+            <div class="form-group text-center">
+              <!-- <label class="">Username/Email</label> -->
+              <input id="pinInput" type="text" formControlName="pin" maxlength="4" minlength="4"
+                class="form-control-plaintext input-box" autocorrect="off" autocapitalize="none"
+                [ngClass]="{ 'is-invalid': submitted && pinForm.controls.pin.errors }"
+                placeholder="{{ 'Enter PIN' | translate }}" required>
+              <div *ngIf="submitted && pinForm.controls.pin.errors" class="invalid-feedback">
+                <div *ngIf="pinForm.controls.pin.errors.required">PIN is required</div>
+              </div>
+              <div *ngIf="incorrectPin" class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Incorrect PIN code</span>
+              </div>
+              <div *ngIf="blacklisted > 1" class="problem-info">
+                <div class="icn-info-alt"></div> <span translate>Account Suspended</span>
+              </div>
+            </div>
+          </div>
+          <div class="login-form-buttons">
+            <div class="form-group">
+              <!-- <button [disabled]="isSubmitting || pinForm.controls.pin.errors" type="submit" class="btn btn-sportimo login-form-button"> -->
+              <button [disabled]="isSubmitting || pinForm.controls.pin.errors" type="submit"
+                class="btn btn-sportimo login-form-button">
+                <div class="loader-label" [class.btn-active]="isSubmitting">
+                  <span class="button-label"
+                    [innerHTML]="'susbcription_message_UNSUB_action' | translate:{value:appName[translate.currentLang]}"></span>
+                  <div class="fadeInLoader">
+                    <span class="rotate dotted button-loader"></span>
+                  </div>
+                </div>
+              </button>
+            </div>
+            <!-- <button [disabled]="isSubmiting" (click)="cancelAll()" class="btn btn-default">Cancel</button> -->
+          </div>
+          <div *ngIf="UniqueLinkState == 3" [class.grey]="isSubmitting || pinForm.controls.pin.errors"
+            class="enter-button" (click)="onPinSubmit(true)"
+            [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
+          <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
+          <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
+        </form>
+        <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
+          [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+        </div>
+      </div>
+    </div>
+
+    <!-- User Blacklisted -->
+    <div class="pin-card-body text-center" *ngIf="UniqueLinkState == 4">
+      <div class="login-form-body">
+        <!-- <div class="debug" style="max-height: 50px;">{{subState}}</div> -->
+        <div class="pin-title">
+          <h1>You are Blacklisted</h1>
+          <!-- <h1 [innerHTML]="'susbcription_message_UNSUB' | translate:{value:appName[translate.currentLang]}"></h1> -->
+          <!-- <h1 *ngIf = "subState == 'UNSUB'" translate>Subscribe to Play</h1>
+          <h1 *ngIf = "subState == 'Active'" translate>Subscribe to Play</h1>
+          <h1 *ngIf = "subState == 'UnSubCoins'" translate>Subscribe to Play</h1> -->
+        </div>
+       
+        <!-- <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
+          [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 <!-- ON-BOARDING -->
-<div *ngIf="Onboarding">
+<div class="modal-background" *ngIf="!Authenticated"></div>
+<div *ngIf="Onboarding" id="OnBoarding">
   <div class="modal-card2">
     <div class="modal-card-body text-center" style="padding: 0;">
       <div class="slideshow-container"
@@ -11,9 +108,8 @@
         <div class="uk-position-relative" style="height: inherit;">
           <ul class="uk-slideshow-items" style="height: inherit;">
             <li *ngFor="let slide of defaults.slides; let i = index">
-               <!-- style="text-align: center;"> -->
-              <div
-                class="on-board-slide"          
+              <!-- style="text-align: center;"> -->
+              <div class="on-board-slide"
                 [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + ')'}">
               </div>
               <div class="slideText">
@@ -42,29 +138,30 @@
 
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
-<div [hidden]="!LandingPage">
+<div [hidden]="!LandingPage" id="Authentication">
   <div class="modal-card2">
     <div class="landing-card">
       <div class="landing-card-content text-center text-white">
-     
-        <div *ngIf="defaults.landingPage.singleSlideText?.en" 
-        style="display: flex;
+
+        <div *ngIf="defaults.landingPage.singleSlideText?.en" style="display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         height: auto;
-    margin-bottom: 25px;"
-     class="slide-prize-header text-center" [innerHTML]="defaults.landingPage.singleSlideText[translate.currentLang]"></div>
+    margin-bottom: 25px;" class="slide-prize-header text-center"
+          [innerHTML]="defaults.landingPage.singleSlideText[translate.currentLang]"></div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-         
+
           <div class="carousel-inner">
             <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
               [class.active]="i==0">
               <div style="width: 278px;  margin: auto;">
-                
-                <div *ngIf="!defaults.landingPage.singleSlideText?.en" class="slide-prize-header text-center" [innerHTML]="slide.header[translate.currentLang]"></div>
-                <img *ngIf="slide.image" class="d-block" [src]="slide?.image" alt="First slide" style="width: 30vh;max-width: 100%;margin: auto;">
+
+                <div *ngIf="!defaults.landingPage.singleSlideText?.en" class="slide-prize-header text-center"
+                  [innerHTML]="slide.header[translate.currentLang]"></div>
+                <img *ngIf="slide.image" class="d-block" [src]="slide?.image" alt="First slide"
+                  style="width: 30vh;max-width: 100%;margin: auto;">
                 <div class="slide-prize-container" style="max-width: 50vh;">
                   <img class="slide-prize-image" src="/assets/images/sportimo/onboard/header_withblurs.png" alt="">
                   <div class="slide-prize-text" [innerHTML]="slide.prizeText[translate.currentLang]"></div>
@@ -93,16 +190,16 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">    
+        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
           <div class="input-box">
-            <span class="flag-icon flag-icon-squared" [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
+            <span class="flag-icon flag-icon-squared"
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
             <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
-            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>                        
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
               <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
             </select>
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
-              autocorrect="off" autocapitalize="none"
-              placeholder="{{ 'enterMobilePhone' | translate }}" required>
+              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
           </div>
           <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors" type="submit"
             class="btn btn-sportimo login-form-button">
@@ -113,9 +210,10 @@
               </div>
             </div>
           </button>
-         
+
         </form>
-        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
+        <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px"
+          [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
       </div>
     </div>
   </div>
@@ -136,7 +234,7 @@
       <h1 *ngIf = "subState == 'Active'" translate>Subscribe to Play</h1>
       <h1 *ngIf = "subState == 'UnSubCoins'" translate>Subscribe to Play</h1> -->
       </div>
-      
+
       <form [formGroup]="pinForm" (ngSubmit)="onPinSubmit(false)" class="sportimo-form">
         <div class="login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div>
         <div class="login-form-content">
@@ -176,10 +274,11 @@
         <div *ngIf="subState == 'UNSUBWITHCOINS'" [class.grey]="isSubmitting || pinForm.controls.pin.errors"
           class="enter-button" (click)="onPinSubmit(true)"
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
-        <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>   
-        <div *ngIf="pinSent"  [innerHTML]="'pin_sent' | translate"></div>      
+        <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
+        <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
       </form>
-      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
+        [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>
@@ -192,14 +291,14 @@
   <!-- <div (click)="cancel()" class="modal-exit pull-right">X</div> -->
   <!-- </div> -->
   <div class="pin-card-body text-center">
-    <div class="login-form-body">    
+    <div class="login-form-body">
       <div class="pin-title">
         <h1 translate>Congratulations! You are in the game!</h1>
         <!-- <h1 *ngIf = "subState == 'UNSUB'" translate>Subscribe to Play</h1>
       <h1 *ngIf = "subState == 'Active'" translate>Subscribe to Play</h1>
       <h1 *ngIf = "subState == 'UnSubCoins'" translate>Subscribe to Play</h1> -->
       </div>
-      
+
       <form [formGroup]="userForm" (ngSubmit)="onUsernameUpdate()" class="sportimo-form">
         <div class="login-form-info" translate>Write down your username</div>
         <div class="login-form-content">
@@ -223,8 +322,7 @@
             <button [disabled]="isSubmitting || userForm.controls.username.errors" type="submit"
               class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
-                <span class="button-label"
-                  [innerHTML]="'Confirm' | translate"></span>
+                <span class="button-label" [innerHTML]="'Confirm' | translate"></span>
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>
@@ -236,10 +334,12 @@
         <div *ngIf="subState == 'UNSUBWITHCOINS'" [class.grey]="isSubmitting || pinForm.controls.pin.errors"
           class="enter-button" (click)="onPinSubmit(true)"
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
-        <div class="resend-pin-button" style="margin-top:10px" (click)="UsernameUpdate=false;Authenticated = true;" translate>Skip for now</div>
-        <div style="font-size:10px;" translate>You can always edit your username at your Profile tab</div>       
+        <div class="resend-pin-button" style="margin-top:10px" (click)="UsernameUpdate=false;Authenticated = true;"
+          translate>Skip for now</div>
+        <div style="font-size:10px;" translate>You can always edit your username at your Profile tab</div>
       </form>
-      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
+        [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
   </div>

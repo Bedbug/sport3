@@ -35,7 +35,7 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
 
     this.sportimoService.getClientConfiguration().subscribe(data => {
-            
+
       let selected_language = localStorage.getItem('language');
       // this language will be used as a fallback when a translation isn't found in the current language
       this.translate.setDefaultLang('en');
@@ -60,20 +60,32 @@ export class ContentComponent implements OnInit {
       });
       this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
 
-     
+
+      // Handle Unique Link
+      this.route.queryParamMap.subscribe(queryParams => {
+        let unique = queryParams.get("unique");
+        if (unique != null) {
+          localStorage.removeItem("isFirstGame");
+          localStorage.removeItem("signon");
+        }
+      })
+
+
       let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
       let signonData = JSON.parse(localStorage.getItem('signon'));
 
       let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
-  
-      
+
+
       if ((!signonData || !signonData.pin) && onBoardingConfiguration) {
         this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
-      }else{
+      } else {
         this.onBoardService.Hide();
         $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow');
       }
+
+
     });
 
   }
