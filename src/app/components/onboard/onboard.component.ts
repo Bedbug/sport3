@@ -7,7 +7,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ConfigService } from 'src/app/services/config.service';
 import { User } from 'src/app/models/user';
-import { takeUntil } from 'rxjs/operators';
+import { first, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
@@ -138,9 +138,11 @@ export class OnboardComponent implements OnInit {
         })
 
 
-        this.route.queryParamMap.subscribe(queryParams => {
+        let paramsSubscription = this.route.queryParamMap.pipe(first()).subscribe(queryParams => {
           this.UniqueLink = queryParams.get("uniqueLink");
-
+          
+          // if(paramsSubscription)
+          // paramsSubscription.unsubscribe();
           // Handle Unique Link process
           if (this.UniqueLink) {
             console.log("Unique Link flow");
