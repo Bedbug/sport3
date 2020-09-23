@@ -27,9 +27,9 @@
         <div class="sportimo-divider"></div>              
         <div class="contest-info-container" *ngIf="showContestDetails == true">
           <div class="contest-info-row">
-            <div translate class="contest-info-cell font-weight-bold">Matches</div>
+            <div  class="contest-info-cell font-weight-bold">Matches</div>
             <div translate *ngIf="contestDetails?.showParticipations" class="contest-info-cell font-weight-bold">
-              Participations</div>
+              <span translate>Participations</span> </div>
             <div translate class="contest-info-cell font-weight-bold">Winners</div>
             <div translate class="contest-info-cell font-weight-bold">Duration</div>
           </div>
