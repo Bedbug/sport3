@@ -97,7 +97,7 @@ this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
   }
 
   parseDateTime(date:string){
-    return this.Utils.parseDate(date,this.translate.currentLang=='fa','HH:mm', 'jHH:jmm');
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa','HH:mm', 'HH:mm');
   }
 
   parseDateDay(date:string){
