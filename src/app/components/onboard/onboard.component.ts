@@ -98,6 +98,9 @@ export class OnboardComponent implements OnInit {
   ngUnsubscribe = new Subject();
   blacklisted = 0;
 
+  appCountries = [];
+  appOperators = [];
+
   constructor(
     private authenticationService: AuthenticationService,
     private formBuilder: FormBuilder,
@@ -133,10 +136,12 @@ export class OnboardComponent implements OnInit {
         this.defaults = this.onBoardService.defaults;
         this.appName = this.onBoardService.appName;
 
+        // Handle operators and countries
+        this.appOperators = this.sportimoService.getConfigurationFor("operators") || [];
+
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
         })
-
 
         let paramsSubscription = this.route.queryParamMap.pipe(first()).subscribe(queryParams => {
           this.UniqueLink = queryParams.get("uniqueLink");

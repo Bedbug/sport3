@@ -143,6 +143,7 @@
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
 <div [hidden]="!LandingPage" id="Authentication">
+  <!-- Landing Slides -->
   <div class="modal-card2">
     <div class="landing-card">
       <div class="landing-card-content text-center text-white">
@@ -194,7 +195,10 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form">
+
+        <!-- REGISTRATION FORM - ONE OPERATOR -->
+        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form" *ngIf="appOperators.length == 1">
+          One Operator
           <div class="input-box">
             <span class="flag-icon flag-icon-squared"
               [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
@@ -214,8 +218,58 @@
               </div>
             </div>
           </button>
-
         </form>
+        <!-- END: REGISTRATION FORM - ONE OPERATOR -->
+
+         <!-- REGISTRATION FORM - MULTI OPERATORS -->
+         <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form" *ngIf="appOperators.length > 1">
+           Multiple Operators
+           <!-- Country -->
+           <div class="input-box">
+            <span class="flag-icon flag-icon-squared"
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
+            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
+              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
+            </select>
+            <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
+              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+          </div>
+          <!-- Operators -->
+          <div class="input-box">
+            <span class="flag-icon flag-icon-squared"
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
+            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
+              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
+            </select>
+            <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
+              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+          </div>
+          <div class="input-box">
+            <span class="flag-icon flag-icon-squared"
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
+            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
+            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
+              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
+            </select>
+            <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
+              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+          </div>
+          
+          <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors" type="submit"
+            class="btn btn-sportimo login-form-button">
+            <div class="loader-label" [class.btn-active]="isSubmitting">
+              <span class="button-label" translate>Play</span>
+              <div class="fadeInLoader">
+                <span class="rotate dotted button-loader"></span>
+              </div>
+            </div>
+          </button>
+        </form>
+        <!-- END: REGISTRATION FORM - MULTI OPERATORS -->
+
+
         <div (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px"
           [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
       </div>
