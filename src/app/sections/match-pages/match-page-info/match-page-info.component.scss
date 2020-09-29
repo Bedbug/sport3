@@ -34,6 +34,19 @@
 //     flex-direction: column;
 // }
 
+.var-tag{
+    background-color: red;
+    min-width: 103px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px;
+    position: absolute;
+    line-height: 15px;
+    right: 2px;
+    bottom: 2px;
+}
+
 .event-time{
     position: absolute;
     left: 12px;

@@ -38,11 +38,13 @@
                 <ul class="section">
 
                   <!-- ALL CARDS -->
-                  <li class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
-                    [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)">
-
+                  <li 
+                  [style.display]="(event.status == 'active' || event.status == 'var'|| !event.status)?'block':'none'"
+                  class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
+                    [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)" >
+                  
                     <div *ngIf="event.type!='Substitution'" class="container" (click)="showCardDetails(event._id)">
-                      <div class="row">
+                      <div class="row" [style.opacity]="event.status=='var'?0.3:1">                     
                         <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
                           {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
                         </div>
@@ -63,6 +65,7 @@
                       </div>
                       <div *ngIf="Utils.shouldShow(event.type,1) && showEventTime==event._id" class="event-time">Timestamp: {{event.created | date:"hh:mm:ss"}}
                       </div>
+                      <div *ngIf="event.status=='var'" class="var-tag" translate>VAR - Canceled</div>
                     </div>
 
 

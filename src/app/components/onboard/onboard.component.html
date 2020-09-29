@@ -116,7 +116,7 @@
                 [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + '.png)'}">
               </div>
               <div class="slideText">
-                <div style="max-width: 80%; margin: 0 auto;">
+                <div style="max-width: 90%; margin: 0 auto;">
                   <h3 style="font-weight: bold"> {{slide.title[translate.currentLang]}}</h3>
                   <h4>{{slide.text[translate.currentLang]}}</h4>
                 </div>
@@ -199,8 +199,7 @@
 
         <!-- REGISTRATION FORM - ONE OPERATOR -->
         <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form"
-          *ngIf="appOperators.length == 1">
-          One Operator
+          *ngIf="appOperators.length == 0">
           <div class="input-box">
             <span class="flag-icon flag-icon-squared"
               [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
@@ -225,15 +224,19 @@
 
         <!-- REGISTRATION FORM - MULTI OPERATORS -->
         <form [formGroup]="multiOperatorForm" (ngSubmit)="onMultiOperatorSelect()" class="sportimo-form"
-          *ngIf="appOperators.length > 1">
+          *ngIf="appOperators.length > 0">
           <!-- Country -->
           <div *ngIf="filteredOperators.length==0">
-            <span>Select your Country</span>
+            <!-- <span>Select your Country</span> -->
             <div class="input-box">
+              <!-- Text -->
+              <div translate style="position:absolute; text-align: center; padding-top: 5px; width: 150px; pointer-events: none;" [style.visibility]="!multiOperatorForm.controls.area.value?'visible':'hidden'">
+                Select Country
+              </div>
               <!-- <div *ngIf="availableCountries.length < 2" class="input-area2">{{nrSelect}}</div> -->
-              <select #countrySelect *ngIf="availableCountries.length > 0" class="input-area2" formControlName="country"
-                (change)='selectedCountry(countrySelect.value)'>
-                <option disabled selected value> Country </option>
+              <select #countrySelect *ngIf="availableCountries.length > 0"
+                class="input-area2" formControlName="country" (change)='selectedCountry(countrySelect.value)'>
+                <!-- <option disabled>Select Country </option> -->
                 <option [ngValue]="available" *ngFor="let available of availableCountries">
                   <span class="flag-icon flag-icon-squared"
                     [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(multiOperatorForm.controls.area.value?multiOperatorForm.controls.area.value:this.availableCountries[0]?.area)"></span>
@@ -247,15 +250,23 @@
           <!-- Operators -->
           <div
             *ngIf="(filteredOperators.length>0 && !this.multiOperatorForm.controls.operator.value) || (this.multiOperatorForm.controls.operator.value && multiOperatorForm.controls.operator.value.redirectUrl)">
-            <span>Select your Operator</span>
+            <!-- <span>Select your Operator</span> -->
             <div class="input-box">
-
+              <div translate style="position:absolute; text-align: center; padding-top: 5px; width: 150px; pointer-events: none;" [style.visibility]="!multiOperatorForm.controls.operator.value?'visible':'hidden'">
+                Select Operator
+              </div>
+              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
+                class="isClickable" (click)="multiOperatorBack()">
+                <div class="sub-icon float-left icn-arrow-back ng-star-inserted"
+                  style="position: relative; left: -40px; width: 25px; height: 25px; margin: 0 2px 0 -5px;"></div>
+              </div>
               <!-- <span class="flag-icon flag-icon-squared"
               [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(multiOperatorForm.controls.area.value?multiOperatorForm.controls.area.value:this.availableCountries[0]?.area)"></span> -->
               <!-- <div *ngIf="filteredOperators.length < 2" class="input-area2">{{nrSelect}}</div> -->
-              <select #operatorSelect *ngIf="filteredOperators.length > 1" class="input-area2"
+              <select #operatorSelect *ngIf="filteredOperators.length > 0" class="input-area2"
                 formControlName="operator" (change)='selectedOperator(operatorSelect.value)'>
-                <option disabled selected value> Operator </option>
+                <!-- <option disabled>Select Operator </option> -->
+                <!-- <option disabled>Select Operator </option> -->
                 <option [ngValue]="operator" *ngFor="let operator of filteredOperators">
                   {{operator.operatorName[translate.currentLang]}}</option>
               </select>
@@ -266,12 +277,16 @@
           </div>
           <!-- MSISDN -->
           <div
-            *ngIf="this.multiOperatorForm.controls.operator.value && !this.multiOperatorForm.controls.operator.value.redirectUrl">
-            <span>Drop your MSISDN</span>
+            *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.validationProcess && !this.multiOperatorForm.controls.operator.value.redirectUrl">
+            <!-- <span>Drop your MSISDN</span> -->
             <div class="input-box">
-
+              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
+                class="isClickable" (click)="multiOperatorBack()">
+                <div class="sub-icon float-left icn-arrow-back ng-star-inserted"
+                  style="position: relative; left: -40px; width: 25px; height: 25px; margin: 0 2px 0 -5px;"></div>
+              </div>
               <span class="flag-icon flag-icon-squared"
-                [className]="'flag-icon flag-icon-squared flag-icon-'+ this.multiOperatorForm.controls.country.value.code.toLowerCase()"></span>
+                [className]="'flag-icon flag-icon-squared flag-icon-'+ this.multiOperatorForm.controls.country.value.code?.toLowerCase()"></span>
               <div class="input-area">{{this.multiOperatorForm.controls.country.value.area}}</div>
               <!-- <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
               <option *ngFor="let areaCode of availableCountries">{{areaCode.area}}</option>
@@ -291,7 +306,7 @@
           </div>
 
           <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button"
-          *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.redirectUrl">
+            *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.redirectUrl">
             <div class="loader-label" [class.btn-active]="isSubmitting">
               <span class="button-label" translate>Join</span>
               <div class="fadeInLoader">
@@ -299,8 +314,6 @@
               </div>
             </div>
           </button>
-          <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
-            class="resend-pin-button isClickable" (click)="multiOperatorBack()" translate>Back</div>
         </form>
         <!-- END: REGISTRATION FORM - MULTI OPERATORS -->
 

@@ -275,6 +275,11 @@ export class OnboardComponent implements OnInit {
   multiOperatorBack(){
     this.multiOperatorForm.reset();
     this.filteredOperators = [];
+    // $('#countrySelect #default').set
+    // $('#countrySelect option:nth-child(1)').val();
+
+    $('#countrySelect option').first().attr("selected","selected");
+    
     // if(this.multiOperatorForm.controls.operator)
     // this.multiOperatorForm.controls.operator = null;
     // else if(this.multiOperatorForm.controls.country)

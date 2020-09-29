@@ -45,7 +45,7 @@ export class SportimoService {
   private currentMatchId;
   private currentContestId;
   public configuration: BehaviorSubject<any>;
-  
+
   // Used to update header point when user is in match
   public contestPointsUpdate = new Subject<number>();
   public contestPointsSet = new Subject<number>();
@@ -334,14 +334,14 @@ export class SportimoService {
     cardSelections.segment = this.currentLiveMatch.value.matchData.state;
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecards`, cardSelections)
       .pipe(map(response => {
-        if(!response.error){
-        this.currentLiveMatch.getValue().playedCards.push(response.userGamecard);
-        this.currentLiveMatch.next(this.currentLiveMatch.value);
-        return response.userGamecard;
+        if (!response.error) {
+          this.currentLiveMatch.getValue().playedCards.push(response.userGamecard);
+          this.currentLiveMatch.next(this.currentLiveMatch.value);
+          return response.userGamecard;
         }
         else
-        return null;
-        
+          return null;
+
       }))
   }
   /*
@@ -370,15 +370,15 @@ export class SportimoService {
       return 0;
   }
 
-/*-----------------------------------------------------------------------------------
-   METRICS
- ----------------------------------------------------------------------------------- */
- private sequenceId: string;
- private correlatorId: string;
+  /*-----------------------------------------------------------------------------------
+     METRICS
+   ----------------------------------------------------------------------------------- */
+  private sequenceId: string;
+  private correlatorId: string;
 
- onboardingMetricsStart(sequenceId:string) {
-   const postData = {client:this.Config.getClient(),sequence:sequenceId};
-   
+  onboardingMetricsStart(sequenceId: string) {
+    const postData = { client: this.Config.getClient(), sequence: sequenceId };
+
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/start`, postData)
       .pipe(map(result => {
         this.correlatorId = result.correlator;
@@ -387,18 +387,18 @@ export class SportimoService {
       }))
   }
 
-  onboardingMetricsStop(msisdn:string) {
+  onboardingMetricsStop(msisdn: string) {
     const postData = {
-      client:this.Config.getClient(),
+      client: this.Config.getClient(),
       sequence: this.sequenceId,
       correlator: this.correlatorId,
       msisdn: msisdn
     };
-     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/stop`, postData)
-       .pipe(map(result => {       
-         return result;
-       }))
-   }
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/stop`, postData)
+      .pipe(map(result => {
+        return result;
+      }))
+  }
 
   /*-----------------------------------------------------------------------------------
    SOCKETS
@@ -411,14 +411,14 @@ export class SportimoService {
       // connection may have failed (caused by proxy, firewall, browser, ...)
       this.socket.on('reconnect_attempt', () => {
         console.log("Sockets: Reconnect Attempt");
-        
+
         this.socket.io.opts.transports = ['polling', 'websocket'];
       });
 
       this.socket.on('message', (data) => {
         console.log("Sockets: Message: ");
         // console.log(data);
-        
+
         observer.next(data);
         this.parseSocket(data);
       });
@@ -493,7 +493,7 @@ export class SportimoService {
       this.currentLiveMatch.value.playedCards.findIndex(el => el.id === data.data.id)], data.data)
     this.currentLiveMatch.next(this.currentLiveMatch.value);
 
-    if(data.type == "Card_won")
+    if (data.type == "Card_won")
       this.contestPointsUpdate.next(data.data.pointsAwarded);
   }
 
@@ -509,18 +509,21 @@ export class SportimoService {
   // }
 
   reloadMatch(data: any) {
+
+    if (this.currentLiveMatch.value.matchData.completed)
+      return;
     console.log("[SPORTIMO SERVICE]: Reloading match");
     this.matchReloading = true;
     this.http.get<LiveMatch>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/user`)
-      .pipe(map(match => {        
-        this.currentLiveMatch.next(match);                   
-        this.matchReloading = false;           
+      .pipe(map(match => {
+        this.currentLiveMatch.next(match);
+        this.matchReloading = false;
         return match;
       })).subscribe();
 
-      this.getContestDetails(this.currentContestId).subscribe(details=>{
-        this.contestPointsSet.next(details.user_chances);
-      })
+    this.getContestDetails(this.currentContestId).subscribe(details => {
+      this.contestPointsSet.next(details.user_chances);
+    })
   }
 
   advanceTimelineSegment(data: any) {
@@ -665,12 +668,12 @@ export class SportimoService {
    ----------------------------------------------------------------------------------- */
   buyProduct(defaultProduct: any) {
     const postData = {
-      productId:defaultProduct._id
+      productId: defaultProduct._id
     };
-     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/purchase`, postData)
-       .pipe(map(result => {       
-         return result;
-       }))
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/purchase`, postData)
+      .pipe(map(result => {
+        return result;
+      }))
   }
 
 }
