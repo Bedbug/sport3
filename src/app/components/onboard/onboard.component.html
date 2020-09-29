@@ -197,7 +197,7 @@
         </div>
 
         <!-- REGISTRATION FORM - ONE OPERATOR -->
-        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form" *ngIf="appOperators.length < 1">
+        <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form" *ngIf="appOperators.length == 1">
           One Operator
           <div class="input-box">
             <span class="flag-icon flag-icon-squared"
@@ -222,42 +222,45 @@
         <!-- END: REGISTRATION FORM - ONE OPERATOR -->
 
          <!-- REGISTRATION FORM - MULTI OPERATORS -->
-         <form [formGroup]="msisdnForm" (ngSubmit)="onMSISDNSubmit()" class="sportimo-form" *ngIf="appOperators.length > 0">
-           Multiple Operators
+       <form [formGroup]="multiOperatorForm" (ngSubmit)="onMultiOperatorSelect()" class="sportimo-form" *ngIf="appOperators.length > 1">         
            <!-- Country -->
-           <div class="input-box">
+           <div class="input-box" *ngIf="filteredOperators.length==0">
             <span class="flag-icon flag-icon-squared"
-              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
-            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
-            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
-              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(multiOperatorForm.controls.area.value?multiOperatorForm.controls.area.value:this.availableCountries[0]?.area)"></span>
+            <div *ngIf="availableCountries.length < 2" class="input-area2">{{nrSelect}}</div>
+            <select #countrySelect *ngIf="availableCountries.length > 1" class="input-area2" formControlName="country" (change)='selectedCountry(countrySelect.value)'>
+              <option disabled selected value> ---- </option>
+              <option [ngValue]="available" *ngFor="let available of availableCountries" translate>{{available.code}}</option>
             </select>
-            <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
-              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+            <!-- <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
+              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required> -->
           </div>
           <!-- Operators -->
-          <div class="input-box">
-            <span class="flag-icon flag-icon-squared"
-              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
-            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
-            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
-              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
+         
+          <div class="input-box" *ngIf="(filteredOperators.length>0 && !this.multiOperatorForm.controls.operator.value) || (this.multiOperatorForm.controls.operator.value && multiOperatorForm.controls.operator.value.redirectUrl)">
+            <!-- <span class="flag-icon flag-icon-squared"
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(multiOperatorForm.controls.area.value?multiOperatorForm.controls.area.value:this.availableCountries[0]?.area)"></span> -->
+            <div *ngIf="filteredOperators.length < 2" class="input-area2">{{nrSelect}}</div>
+            <select #operatorSelect *ngIf="filteredOperators.length > 1" class="input-area2" formControlName="operator" (change)='selectedOperator(operatorSelect.value)'>
+              <option [ngValue]="operator" *ngFor="let operator of filteredOperators">{{operator.operatorName[translate.currentLang]}}</option>
             </select>
-            <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
-              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+
+            <!-- <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
+              autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required> -->
           </div>
-          <div class="input-box">
+          <!-- MSISDN -->
+          <div class="input-box" *ngIf="this.multiOperatorForm.controls.operator.value && !this.multiOperatorForm.controls.operator.value.redirectUrl">
             <span class="flag-icon flag-icon-squared"
-              [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(msisdnForm.controls.area.value?msisdnForm.controls.area.value:this.areaCodes[0]?.area)"></span>
-            <div *ngIf="areaCodes.length < 2" class="input-area">{{nrSelect}}</div>
-            <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
-              <option *ngFor="let areaCode of areaCodes">{{areaCode.area}}</option>
-            </select>
+              [className]="'flag-icon flag-icon-squared flag-icon-'+ this.multiOperatorForm.controls.country.value.code.toLowerCase()"></span>
+            <div class="input-area">{{this.multiOperatorForm.controls.country.value.area}}</div>
+            <!-- <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
+              <option *ngFor="let areaCode of availableCountries">{{areaCode.area}}</option>
+            </select> -->
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
               autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
           </div>
           
-          <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors" type="submit"
+          <button [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value" type="submit"
             class="btn btn-sportimo login-form-button">
             <div class="loader-label" [class.btn-active]="isSubmitting">
               <span class="button-label" translate>Play</span>
@@ -266,6 +269,7 @@
               </div>
             </div>
           </button>
+          <div style="padding-top: 5px;" *ngIf="filteredOperators.length>0" class="resend-pin-button isClickable" (click)="multiOperatorBack()" translate>Back</div>
         </form>
         <!-- END: REGISTRATION FORM - MULTI OPERATORS -->
 
