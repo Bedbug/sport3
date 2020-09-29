@@ -143,7 +143,7 @@ export class OnboardComponent implements OnInit {
 
         // Handle operators and countries
         this.appOperators = this.sportimoService.getConfigurationFor("operators") || [];
-        this.availableCountries = [...new Set(this.appOperators.map(item => item.countryCodes))].map(a => {
+        this.availableCountries = [...Array.from(new Set(this.appOperators.map(item => item.countryCodes)))].map(a => {
           let b = a.split(":");
           return { code: b[0], area: b[1], key:a };
         });
