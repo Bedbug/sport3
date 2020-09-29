@@ -26,6 +26,7 @@
 	"Confirm": "تایید",
 	"Congratulations! You are in the game!": "تبریک!شما در بازی هستید",
 	"Contest": "مسابقه",
+	"Contest:": "",
 	"Contests": "مسابقه‌ها",
 	"Continue": "ادامه",
 	"Corner": "کرنر",
@@ -53,6 +54,7 @@
 	"Fouls suffered": "خطاهای انجام‌شده",
 	"GD": "تفاضل",
 	"GK": "دورازه‌بان",
+	"GR": "",
 	"Games played": "بازی‌های انجام شده",
 	"Get": "دریافت",
 	"Get PIN": "دریافت کد",
@@ -78,6 +80,7 @@
 	"Join For Free": "رایگان عضو شوید",
 	"Join Match": "ورود به بازی",
 	"Joined": "واردشدید",
+	"KZ": "",
 	"Key_get_card_points": "کلید-دریافت-کارت-امتیاز",
 	"Key_increase_time": "کلید-افزایش-زمان",
 	"Kicked": "اخراج",
@@ -272,5 +275,8 @@
 	"upto": "تا",
 	"vipMatch": "مسابقه خواص",
 	"vipMatchAwards": "جایزه مسابقه خواص",
-	"x2": "دو برابر"
+	"x2": "دو برابر",
+	"{{available": {
+		"code}}": ""
+	}
 }

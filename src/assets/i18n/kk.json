@@ -26,6 +26,7 @@
 	"Confirm": "Растау",
 	"Congratulations! You are in the game!": "Сіз Sportimo ойынына қатысудасыз!",
 	"Contest": "Турнир",
+	"Contest:": "",
 	"Contests": "Басты",
 	"Continue": "Жалғастыру",
 	"Corner": "Бұрыштама",
@@ -53,6 +54,7 @@
 	"Fouls suffered": "ереже бұзу берілді",
 	"GD": "РМ",
 	"GK": "ГК",
+	"GR": "",
 	"Games played": "Ойындар",
 	"Get": "Алу",
 	"Get PIN": "ПИН алу",
@@ -78,6 +80,7 @@
 	"Join For Free": "Тегін қатысу",
 	"Join Match": "Қатысу",
 	"Joined": "Қатысудасыз",
+	"KZ": "",
 	"Key_get_card_points": "{{value}} ұпай алу",
 	"Key_increase_time": "Уақытты {{value}} дейін ұзарту",
 	"Kicked": "Соққылар",
@@ -272,5 +275,8 @@
 	"upto": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Осы VIP Матчқа арналған марапаттар:",
-	"x2": "x2"
+	"x2": "x2",
+	"{{available": {
+		"code}}": ""
+	}
 }

@@ -31,6 +31,8 @@ export class OnboardComponent implements OnInit {
   UsernameUpdate = false;
   UniqueLink = null;
   UniqueLinkState = 1
+  availableCountries: any;
+  filteredOperators: any[];
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -44,6 +46,8 @@ export class OnboardComponent implements OnInit {
     _("susbcription_message_ACTIVE");
     _("susbcription_message_ACTIVE_action");
     _("susbcription_message_ENTER");
+    _("GR");
+    _("KZ");
   }
 
   public defaults = {
@@ -86,6 +90,7 @@ export class OnboardComponent implements OnInit {
   }
 
   appName: any;
+  multiOperatorForm: FormGroup;
   msisdnForm: FormGroup;
   userForm: FormGroup;
   pinForm: FormGroup;
@@ -138,7 +143,13 @@ export class OnboardComponent implements OnInit {
 
         // Handle operators and countries
         this.appOperators = this.sportimoService.getConfigurationFor("operators") || [];
-
+        this.availableCountries = [...new Set(this.appOperators.map(item => item.countryCodes))].map(a => {
+          let b = a.split(":");
+          return { code: b[0], area: b[1], key:a };
+        });
+        console.log(this.availableCountries);
+        this.filteredOperators = [];
+        
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
         })
@@ -212,6 +223,14 @@ export class OnboardComponent implements OnInit {
 
     });
 
+    this.multiOperatorForm = this.formBuilder.group({
+      country:['',Validators.required],
+      operator: ['', Validators.required],
+      msisdn: '',
+      area: ['']
+      
+    });
+
     this.msisdnForm = this.formBuilder.group({
       msisdn: ['', Validators.required],
       area: [this.areaCodes[0] ? this.areaCodes[0].area : '']
@@ -250,6 +269,23 @@ export class OnboardComponent implements OnInit {
   }
 
   nextSlide() { }
+
+  onMultiOperatorSelect(){
+    this.isSubmitting = true;
+  }
+
+  selectedCountry(data){
+    console.log(this.multiOperatorForm.controls.country.value);    
+    this.filteredOperators = this.appOperators.filter((operator)=>{
+      return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
+    })
+    console.log(this.filteredOperators); 
+  };
+
+  selectedOperator(data){
+    console.log(this.multiOperatorForm.controls.operator.value.redirectUrl);
+    
+  }
 
   onMSISDNSubmit() {
     this.isSubmitting = true;

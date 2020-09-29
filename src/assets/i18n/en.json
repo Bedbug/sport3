@@ -26,6 +26,7 @@
 	"Confirm": "Confirm",
 	"Congratulations! You are in the game!": "Congratulations! You are in the game!",
 	"Contest": "Contest",
+	"Contest:": "",
 	"Contests": "Contests",
 	"Continue": "Continue",
 	"Corner": "Corner",
@@ -53,6 +54,7 @@
 	"Fouls suffered": "Fouls suffered",
 	"GD": "GD",
 	"GK": "GK",
+	"GR": "Greece",
 	"Games played": "Games played",
 	"Get": "Get",
 	"Get PIN": "Get PIN",
@@ -78,6 +80,7 @@
 	"Join For Free": "Join For Free",
 	"Join Match": "Join Match",
 	"Joined": "Joined",
+	"KZ": "Kazakhstan",
 	"Key_get_card_points": "Get {{value}} pts",
 	"Key_increase_time": "Increase time range to {{value}}",
 	"Kicked": "Kicked",
@@ -272,5 +275,8 @@
 	"upto": "Up to ",
 	"vipMatch": "VIP Match:",
 	"vipMatchAwards": "This VIP match awards:",
-	"x2": "x2"
+	"x2": "x2",
+	"{{available": {
+		"code}}": ""
+	}
 }

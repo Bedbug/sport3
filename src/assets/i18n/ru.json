@@ -26,6 +26,7 @@
 	"Confirm": "Подтвердить",
 	"Congratulations! You are in the game!": "Вы участвуете в игре Sportimo!",
 	"Contest": "Турнир",
+	"Contest:": "",
 	"Contests": "Главная",
 	"Continue": "Продолжить",
 	"Corner": "Угловой",
@@ -53,6 +54,7 @@
 	"Fouls suffered": "Получено фолов",
 	"GD": "РМ",
 	"GK": "ГК",
+	"GR": "",
 	"Games played": "Игры",
 	"Get": "Получить",
 	"Get PIN": "Получить ПИН",
@@ -78,6 +80,7 @@
 	"Join For Free": "Участвовать",
 	"Join Match": "Участвовать",
 	"Joined": "Вы участвуете",
+	"KZ": "",
 	"Key_get_card_points": "Получить {{value}} очк",
 	"Key_increase_time": "Увеличить время до {{value}}",
 	"Kicked": "Ударов",
@@ -272,5 +275,8 @@
 	"upto": "до  ",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Награды за этот VIP Матч:",
-	"x2": "x2"
+	"x2": "x2",
+	"{{available": {
+		"code}}": ""
+	}
 }
