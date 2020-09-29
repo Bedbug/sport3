@@ -270,8 +270,15 @@ export class OnboardComponent implements OnInit {
 
   nextSlide() { }
 
-  onMultiOperatorSelect(){
-    this.isSubmitting = true;
+  
+
+  multiOperatorBack(){
+    this.multiOperatorForm.reset();
+    this.filteredOperators = [];
+    // if(this.multiOperatorForm.controls.operator)
+    // this.multiOperatorForm.controls.operator = null;
+    // else if(this.multiOperatorForm.controls.country)
+    // this.multiOperatorForm.controls.country = null;
   }
 
   selectedCountry(data){
@@ -286,6 +293,21 @@ export class OnboardComponent implements OnInit {
     console.log(this.multiOperatorForm.controls.operator.value.redirectUrl);
     
   }
+
+  onMultiOperatorSelect(){
+    this.isSubmitting = true;
+    if(this.multiOperatorForm.controls.operator.value.redirectUrl)
+    {
+      console.log(this.multiOperatorForm.controls.operator.value.redirectUrl);
+      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl;
+    }
+    else{
+      console.log('blaise flow');
+      
+    }
+    
+  }
+
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
