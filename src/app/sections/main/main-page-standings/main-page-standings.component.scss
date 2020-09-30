@@ -76,12 +76,18 @@
 }
 
 .players-scrollarea {
-  height: calc(100vh - 220px);
-  height: calc((var(--vh, 1vh) * 100) - 220px);
+  height: calc(100vh - 203px);
+  height: calc((var(--vh, 1vh) * 100) - 203px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
+  padding-top: 30px;
   // padding-top: 15px;
+}
+
+.no-stats.players-scrollarea {
+  height: calc(100vh - 173px);
+  height: calc((var(--vh, 1vh) * 100) - 173px);
 }
 
 .standings-table {
@@ -133,6 +139,7 @@
   background: rgba(0, 0, 0, 0.58);
   height: 30px;
   justify-content: space-evenly;
+  margin-bottom: 0;
 }
 
 .nav-item {
@@ -264,5 +271,15 @@
   .standings-scrollarea {
   height: calc(100vh - 235px);
   height: calc((var(--vh, 1vh) * 100) - 235px);
+  }
+
+  .players-scrollarea{
+    height: calc(100vh - 260px);
+    height: calc((var(--vh, 1vh) * 100) - 260px);
+  }
+
+  .no-stats.players-scrollarea{
+    height: calc(100vh - 231px);
+    height: calc((var(--vh, 1vh) * 100) - 231px);
   }
 }

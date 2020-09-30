@@ -27,6 +27,7 @@ export class MainPageMyteamsComponent implements OnInit {
   isLoading: boolean;
   favoriteTeams: any;
   currentUser: boolean;
+  showTeamStats: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +39,10 @@ export class MainPageMyteamsComponent implements OnInit {
 
   count = 0;
   ngOnInit() {
+
+this.showTeamStats = this.sportimoService.getConfigurationFor("showTeamStats");
+console.log(this.showTeamStats);
+
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.currentUser = user != null;
@@ -95,6 +100,9 @@ export class MainPageMyteamsComponent implements OnInit {
   }
 
   showTeam(fav: any) {
+    if(!this.showTeamStats)
+    return;
+    
     this.currentTeam = null;
     this.isLoading = true;
     this.currentView = this.MyTeamsViews['Team'];

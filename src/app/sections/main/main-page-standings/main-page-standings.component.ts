@@ -22,6 +22,7 @@ export class MainPageStandingsComponent implements OnInit {
     Team: 2,
     Player: 3
   }
+  showTeamStats: any;
 
   translateMappings() {
     _("Goalkeeper");
@@ -54,7 +55,10 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+    
+    this.showTeamStats = this.sportimoService.getConfigurationFor("showTeamStats");
+    console.log(this.showTeamStats);
+    
     this.sportimoService.getStandingsLeagues().subscribe(leagues =>{         
       this.leagues = leagues;
     })
