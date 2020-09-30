@@ -31,6 +31,7 @@ export class OnboardComponent implements OnInit {
   UsernameUpdate = false;
   UniqueLink = null;
   UniqueLinkState = 1
+  UniqueLinkTextKey = 'verifyingLink';
   availableCountries: any;
   filteredOperators: any[];
 
@@ -145,24 +146,29 @@ export class OnboardComponent implements OnInit {
         this.appOperators = this.sportimoService.getConfigurationFor("operators") || [];
         this.availableCountries = [...Array.from(new Set(this.appOperators.map(item => item.countryCodes)))].map(a => {
           let b = a.split(":");
-          return { code: b[0], area: b[1], key:a };
+          return { code: b[0], area: b[1], key: a };
         });
         console.log(this.availableCountries);
         this.filteredOperators = [];
-        
+
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
         })
 
         let paramsSubscription = this.route.queryParamMap.pipe(first()).subscribe(queryParams => {
           this.UniqueLink = queryParams.get("uniqueLink");
-          
+
           // if(paramsSubscription)
           // paramsSubscription.unsubscribe();
           // Handle Unique Link process
           if (this.UniqueLink) {
             console.log("Unique Link flow");
-            this.UniqueLinkState = 4;
+            this.UniqueLinkState = 1;
+
+            // Check to see if we are redirected from subscription landing page
+            if (this.UniqueLink == 'redirect')
+              this.UniqueLinkState = 5;
+
             this.Authenticated = false;
             this.Onboarding = false;
             this.LandingPage = false;
@@ -224,11 +230,11 @@ export class OnboardComponent implements OnInit {
     });
 
     this.multiOperatorForm = this.formBuilder.group({
-      country:['',Validators.required],
+      country: ['', Validators.required],
       operator: ['', Validators.required],
       msisdn: '',
       area: ['']
-      
+
     });
 
     this.msisdnForm = this.formBuilder.group({
@@ -270,47 +276,49 @@ export class OnboardComponent implements OnInit {
 
   nextSlide() { }
 
-  
 
-  multiOperatorBack(){
+
+  multiOperatorBack() {
     this.multiOperatorForm.reset();
     this.filteredOperators = [];
     // $('#countrySelect #default').set
     // $('#countrySelect option:nth-child(1)').val();
 
-    $('#countrySelect option').first().attr("selected","selected");
-    
+    $('#countrySelect option').first().attr("selected", "selected");
+
     // if(this.multiOperatorForm.controls.operator)
     // this.multiOperatorForm.controls.operator = null;
     // else if(this.multiOperatorForm.controls.country)
     // this.multiOperatorForm.controls.country = null;
   }
 
-  selectedCountry(data){
-    console.log(this.multiOperatorForm.controls.country.value);    
-    this.filteredOperators = this.appOperators.filter((operator)=>{
+  selectedCountry(data) {
+    console.log(this.multiOperatorForm.controls.country.value);
+    this.filteredOperators = this.appOperators.filter((operator) => {
       return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
     })
-    console.log(this.filteredOperators); 
+    console.log(this.filteredOperators);
   };
 
-  selectedOperator(data){
+  selectedOperator(data) {
     console.log(this.multiOperatorForm.controls.operator.value.redirectUrl);
-    
+
   }
 
-  onMultiOperatorSelect(){
+  onMultiOperatorSelect() {
     this.isSubmitting = true;
-    if(this.multiOperatorForm.controls.operator.value.redirectUrl)
-    {
-      console.log(this.multiOperatorForm.controls.operator.value.redirectUrl);
-      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl;
+    if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
+      // + this.router.url.substr(0, this.router.url.indexOf("main"))
+      let URI = encodeURIComponent(window.location.origin + this.router.url+ "&uniqueLink=redirect");
+      console.log(URI);
+
+      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl + '&IURL=' + URI;
     }
-    else{
+    else {
       console.log('blaise flow');
-      
+
     }
-    
+
   }
 
 
@@ -320,8 +328,8 @@ export class OnboardComponent implements OnInit {
     let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-     console.log(path);
-     
+    console.log(path);
+
     this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
       .subscribe(response => {
         if (response && response.success) {
