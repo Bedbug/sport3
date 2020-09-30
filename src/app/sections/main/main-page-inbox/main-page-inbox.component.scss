@@ -80,3 +80,9 @@
   font-size: 12px;
   letter-spacing: 0;
 }
+
+@media (min-width: 768px) {
+  .background {
+    top: 50px;
+  }
+}
