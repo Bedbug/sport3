@@ -55,18 +55,23 @@ export class MainPageStandingsComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-    this.showTeamStats = this.sportimoService.getConfigurationFor("showTeamStats");
-    console.log(this.showTeamStats);
-    
+        
+    // Get the state for showing Stats
+    this.sportimoService.configuration.pipe(takeUntil(this.ngUnsubscribe)).subscribe(data=> {      
+      this.showTeamStats = data.showTeamStas;
+    });
+
+    // Get the Standings from the service
     this.sportimoService.getStandingsLeagues().subscribe(leagues =>{         
       this.leagues = leagues;
     })
 
+    // Subscribe to the user's authentication status
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isLoggedIn = user != null;
     });
 
+    // Routes Handling
     this.route.queryParamMap.subscribe(params => {
 
       this.currentPlayer = null;

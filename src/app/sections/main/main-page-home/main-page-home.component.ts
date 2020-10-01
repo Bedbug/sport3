@@ -114,8 +114,7 @@ this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
 
   checkScroll() {
     let a = $(".scorllable-area");
-   
-    console.log(a.scrollTop());
+       
     let scroll = a.scrollTop();
 
     if(scroll>100)

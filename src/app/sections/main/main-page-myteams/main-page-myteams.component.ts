@@ -40,9 +40,9 @@ export class MainPageMyteamsComponent implements OnInit {
   count = 0;
   ngOnInit() {
 
-this.showTeamStats = this.sportimoService.getConfigurationFor("showTeamStats");
-console.log(this.showTeamStats);
-
+    this.sportimoService.configuration.pipe(takeUntil(this.ngUnsubscribe)).subscribe(data=> {
+      this.showTeamStats = data.showTeamStats;      
+    });    
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.currentUser = user != null;
