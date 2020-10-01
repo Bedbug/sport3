@@ -1132,7 +1132,8 @@ body .page-wrapper .page-main-header {
   width: 100%;
   height: calc(100vh - 140px);
   height: calc((var(--vh, 1vh) * 100) - 140px);
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
 }
