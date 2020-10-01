@@ -162,7 +162,7 @@ export class OnboardComponent implements OnInit {
           // paramsSubscription.unsubscribe();
           // Handle Unique Link process
           if (this.UniqueLink) {
-            console.log("Unique Link flow");
+            console.log("Unique Link / Operator Redirection Flow");
             this.UniqueLinkState = 1;
 
             // Check to see if we are redirected from subscription landing page
@@ -308,14 +308,44 @@ export class OnboardComponent implements OnInit {
   onMultiOperatorSelect() {
     this.isSubmitting = true;
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
-      // + this.router.url.substr(0, this.router.url.indexOf("main"))
-      let URI = encodeURIComponent(window.location.origin + this.router.url+ "&uniqueLink=redirect");
+      
+      // redirect param is important. It is used in order to handle redirection from operator
+      let URI = encodeURIComponent(window.location.origin + this.router.url+ "?uniqueLink=redirect");
       console.log(URI);
 
       window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl + '&IURL=' + URI;
     }
     else {
-      console.log('blaise flow');
+      console.log('Blaise Flow');
+      console.log(this.multiOperatorForm.controls.country.value.area);
+      
+      let areaCode = this.multiOperatorForm.controls.country.value.area;
+    let msisdnValue =  this.multiOperatorForm.controls.msisdn.value;
+    // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
+    let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
+    console.log(path);
+
+    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
+      .subscribe(response => {
+        if (response && response.success) {
+          this.subState = response.state;
+          if (this.subState == "UNSUB" && response.user.wallet > 0)
+            this.subState = "UNSUBWITHCOINS";
+          if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+            this.subState = "ACTIVEFREEPERIOD";
+          if (this.subState == "FREE")
+            this.subState = "ACTIVEFREEPERIOD";
+          if (this.subState == "INACTIVE")
+            this.subState = "UNKNOWN";
+          if (this.subState == "BLACKLISTED") {
+            this.subState = "UNKNOWN";
+            this.blacklisted = 1;
+          }
+
+          this.closeLandingPage();
+        }
+        this.isSubmitting = false;
+      });
 
     }
 
