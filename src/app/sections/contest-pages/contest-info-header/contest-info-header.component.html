@@ -38,7 +38,7 @@
             <div class="contest-info-cell" *ngIf="contestDetails?.showParticipations">
               {{parseNumbers(contestDetails?.participations)}}</div>
             <div class="contest-info-cell">{{parseNumbers(contestDetails?.winners)}}</div>
-            <div class="contest-info-cell ">
+            <div class="contest-info-cell rtl-flip">
               {{parseDate(contestDetails?.startFromDate)}} - {{parseDate(contestDetails?.endToDate)}}</div>
           </div>
         </div>
