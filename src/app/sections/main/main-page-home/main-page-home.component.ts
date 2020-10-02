@@ -105,6 +105,8 @@ this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
   }
 
   parseNumbers(text:string){
+    if(!text)
+    text = "0";
     return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 

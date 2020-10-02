@@ -108,6 +108,8 @@ export class HeaderComponent implements OnInit {
   }
 
   parseNumbers(text:string){
+    if(!text)
+    text = "0";
     return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 

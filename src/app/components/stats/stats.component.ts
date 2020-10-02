@@ -50,10 +50,13 @@ export class StatsComponent implements OnInit {
     if (teamObject)
       return this.parseNumbers(teamObject[stat]) || this.parseNumbers("0");
     else
-      return this.parseNumbers(0);
+      return this.parseNumbers("0");
   }
 
-  parseNumbers(text:any){
+  parseNumbers(text:string){
+    // console.log(text);
+    if(!text)
+    text = "0";
     return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
   }
 
