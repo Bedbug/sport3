@@ -37,11 +37,12 @@ import * as io from 'socket.io-client';
 })
 export class SportimoService {
 
+
   private defaultConfiguration = {
-    appName: { "en": "Sportimo", "ar": "", "fa": "" }, 
-    availableLanguages: ["ar", "en", "ru"], 
-    defaultLanguage: "en", 
-    displayNews: true, 
+    appName: { "en": "Sportimo", "ar": "", "fa": "" },
+    availableLanguages: ["ar", "en", "ru"],
+    defaultLanguage: "en",
+    displayNews: true,
     theme: "beeline",
     showTeamStats: false
   }
@@ -60,6 +61,7 @@ export class SportimoService {
   private socket;
   langIsRTL: boolean = false;
   matchReloading: boolean;
+  UTMParams: any;
 
 
 
@@ -681,6 +683,20 @@ export class SportimoService {
       .pipe(map(result => {
         return result;
       }))
+  }
+
+  /*-----------------------------------------------------------------------------------
+     UTM Params
+   ----------------------------------------------------------------------------------- */
+  setUTMParams(utm_campaign: string, utm_source: string, utm_medium: string, utm_term: string, utm_content: string, utm_id: string) {
+    this.UTMParams = {
+      utm_campaign: utm_campaign,
+      utm_source: utm_source,
+      utm_medium: utm_medium,
+      utm_term: utm_term,
+      utm_content: utm_content,
+      utm_id: utm_id,
+    }
   }
 
 }

@@ -167,7 +167,9 @@ export class OnboardComponent implements OnInit {
 
             // Check to see if we are redirected from subscription landing page
             if (this.UniqueLink == 'redirect')
-              this.UniqueLinkState = 5;
+             { 
+               this.UniqueLinkState = 5;
+              }
 
             this.Authenticated = false;
             this.Onboarding = false;
@@ -429,7 +431,12 @@ export class OnboardComponent implements OnInit {
             // User Registered - We can stop the metrics
             this.sportimoService.onboardingMetricsStop("").subscribe(x => {
               console.log(x);
-            })
+            });
+
+            // If we have UTM Params forward them to Blaise
+            if(this.sportimoService.UTMParams){
+              
+            }
           } else {
             this.incorrectPin = true;
             this.isSubmitting = false;
