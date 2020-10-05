@@ -163,11 +163,16 @@ export class OnboardComponent implements OnInit {
           // Handle Unique Link process
           if (this.UniqueLink) {
             console.log("Unique Link / Operator Redirection Flow");
-            this.UniqueLinkState = 1;
 
             // Check to see if we are redirected from subscription landing page
             if (this.UniqueLink == 'redirect')
-              this.UniqueLinkState = 5;
+             { this.UniqueLinkState = 5;
+            }else{
+              this.UniqueLinkState = 1;
+              this.authenticationService.ulinkVerify(this.UniqueLink, "en").subscribe(response=>{
+
+              });
+            }
 
             this.Authenticated = false;
             this.Onboarding = false;
