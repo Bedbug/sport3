@@ -200,14 +200,8 @@ export class OnboardComponent implements OnInit {
                         this.blacklisted = 1;
                       }
             
-                      
-            this.incorrectPin = false;
-            this.isSubmitting = false;
-            this.PinVerify = false;
-            this.Authenticated = true;
-
-            console.log(this.subState);
-                      console.log(this.PinVerify);
+                      this.UniqueLink = null;
+           
 
                       // this.closeLandingPage();
                     
