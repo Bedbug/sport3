@@ -164,19 +164,61 @@ export class OnboardComponent implements OnInit {
           if (this.UniqueLink) {
             console.log("Unique Link / Operator Redirection Flow");
 
+            this.Authenticated = false;
+            this.Onboarding = false;
+            this.LandingPage = false;
+
             // Check to see if we are redirected from subscription landing page
             if (this.UniqueLink == 'redirect')
              { this.UniqueLinkState = 5;
             }else{
-              this.UniqueLinkState = 1;
+              this.UniqueLinkState = 2;
+              
+              // this.authenticationService.logout();
+
               this.authenticationService.ulinkVerify(this.UniqueLink, "en").subscribe(response=>{
 
+                  if(response && response.success){
+                    console.log("Ulink");
+                    
+                    this.UniqueLinkState = 0;
+                    this.Authenticated = true;
+                   
+                      this.subState = response.state;
+                      if (this.subState == "UNSUB" && response.user.wallet > 0)
+                        this.subState = "UNSUBWITHCOINS";
+                      if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+                        {this.subState = "ACTIVEFREEPERIOD";
+                      this.PinVerify = false;}
+                      if (this.subState == "FREE")
+                        {this.subState = "ACTIVEFREEPERIOD";
+                      this.PinVerify = false;}
+                      if (this.subState == "INACTIVE")
+                        this.subState = "UNKNOWN";
+                      if (this.subState == "BLACKLISTED") {
+                        this.subState = "UNKNOWN";
+                        this.blacklisted = 1;
+                      }
+            
+                      
+            this.incorrectPin = false;
+            this.isSubmitting = false;
+            this.PinVerify = false;
+            this.Authenticated = true;
+
+            console.log(this.subState);
+                      console.log(this.PinVerify);
+
+                      // this.closeLandingPage();
+                    
+                    // this.isSubmitting = false;
+
+
+                  }
               });
             }
 
-            this.Authenticated = false;
-            this.Onboarding = false;
-            this.LandingPage = false;
+            
           }
           // Else handle regular process
           else {

@@ -63,9 +63,9 @@ export class ContentComponent implements OnInit {
 
       // Handle Unique Link
       this.route.queryParamMap.subscribe(queryParams => {
-        let unique = queryParams.get("unique");
+        let unique = queryParams.get("uniqueLink");
         if (unique != null) {
-          localStorage.removeItem("isFirstGame");
+          // localStorage.removeItem("isFirstGame");
           localStorage.removeItem("signon");
         }
       })
