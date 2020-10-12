@@ -39,7 +39,7 @@
 
                   <!-- ALL CARDS -->
                   <li 
-                  [style.display]="(event.status == 'active' || event.status == 'var'|| !event.status)?'block':'none'"
+                  [style.display]="(event.status == 'active' || event.status == 'var'|| !event.status ) && event.type!='Own_Goal'?'block':'none'"
                   class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
                     [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)" >
                   
@@ -52,7 +52,7 @@
                           <div [ngClass]="Utils.getIconByType(event.type)"></div>
                         </div>
                         <div class="col">
-                          <p class="type">{{translate.instant(event.type)}}</p>
+                          <p class="type">{{translate.instant(event.type)}} <span class="own-goal" *ngIf="event.own" translate>Own_Goal</span></p>
                           <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
                             <div>
                               {{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]|| event.players[0].name['en']:'')}}

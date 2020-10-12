@@ -174,6 +174,52 @@ export class OnboardComponent implements OnInit {
             this.Authenticated = false;
             this.Onboarding = false;
             this.LandingPage = false;
+
+            // Check to see if we are redirected from subscription landing page
+            if (this.UniqueLink == 'redirect')
+             { this.UniqueLinkState = 5;
+            }else{
+              this.UniqueLinkState = 2;
+              
+              // this.authenticationService.logout();
+
+              this.authenticationService.ulinkVerify(this.UniqueLink, "en").subscribe(response=>{
+
+                  if(response && response.success){
+                    console.log("Ulink");
+                    
+                    this.UniqueLinkState = 0;
+                    this.Authenticated = true;
+                   
+                      this.subState = response.state;
+                      if (this.subState == "UNSUB" && response.user.wallet > 0)
+                        this.subState = "UNSUBWITHCOINS";
+                      if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+                        {this.subState = "ACTIVEFREEPERIOD";
+                      this.PinVerify = false;}
+                      if (this.subState == "FREE")
+                        {this.subState = "ACTIVEFREEPERIOD";
+                      this.PinVerify = false;}
+                      if (this.subState == "INACTIVE")
+                        this.subState = "UNKNOWN";
+                      if (this.subState == "BLACKLISTED") {
+                        this.subState = "UNKNOWN";
+                        this.blacklisted = 1;
+                      }
+            
+                      this.UniqueLink = null;
+           
+
+                      // this.closeLandingPage();
+                    
+                    // this.isSubmitting = false;
+
+
+                  }
+              });
+            }
+
+            
           }
           // Else handle regular process
           else {

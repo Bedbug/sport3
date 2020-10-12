@@ -89,9 +89,20 @@ export class MatchPageInfoComponent implements OnInit {
         
     // console.log(this.liveMatch.matchData.timeline[1]);
     var xarray = this.liveMatch.matchData.timeline.map(x => x.events);
-   
-    
+    let own_goal = 0;
+    xarray.forEach(element => {
+      element.forEach(event => {
+        if(own_goal==1 && event.type == 'Goal'){
+          own_goal = 0;
+          event.own = true;
+        }        
+        if(event.type =="Own_Goal")
+        own_goal = 1;      
+      });          
+    });
+
     var flattenReversed = [].concat(...xarray).reverse();
+
     return flattenReversed;
     // return this.liveMatch.matchData.timeline.map(x=> x.events.map(x=> x)).slice().reverse();
   }

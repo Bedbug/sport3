@@ -63,13 +63,10 @@ export class ContentComponent implements OnInit {
 
       // Handle URL PARAMS
       this.route.queryParamMap.subscribe(queryParams => {
-
         // Unique Link Reset
         let unique = queryParams.get("uniqueLink");
-        if (unique != null) {
-          // localStorage.removeItem("isFirstGame");
           localStorage.removeItem("signon");
-        }
+       
 
         // UTM Params
         if(queryParams.get("utm_source"))
@@ -85,6 +82,7 @@ export class ContentComponent implements OnInit {
 
             console.log(this.sportimoService.UTMParams)
         }
+      
 
       })
 
