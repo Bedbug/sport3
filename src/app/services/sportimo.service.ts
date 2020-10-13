@@ -699,4 +699,22 @@ export class SportimoService {
     }
   }
 
+  sendUTMParams(msisdn: string){
+    let postData = {
+      msisdn: msisdn.toString(),
+      client: this.Config.getClient(),
+      utm_campaign: this.UTMParams.utm_campaign,
+      utm_source: this.UTMParams.utm_source,
+      utm_medium: this.UTMParams.utm_medium,
+      utm_term: this.UTMParams.utm_term,
+      utm_content: this.UTMParams.utm_content,
+      utm_id: this.UTMParams.utm_id,
+
+  }
+  return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/utm-notify`, postData)
+      .pipe(map(response => {
+          return response;
+      }));
+  }
+
 }

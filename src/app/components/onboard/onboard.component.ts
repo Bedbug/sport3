@@ -166,10 +166,10 @@ export class OnboardComponent implements OnInit {
             this.UniqueLinkState = 1;
 
             // Check to see if we are redirected from subscription landing page
-            if (this.UniqueLink == 'redirect')
-             { 
-               this.UniqueLinkState = 5;
-              }
+            // if (this.UniqueLink == 'redirect')
+            //  { 
+            //    this.UniqueLinkState = 5;
+            //   }
 
             this.Authenticated = false;
             this.Onboarding = false;
@@ -177,7 +177,12 @@ export class OnboardComponent implements OnInit {
 
             // Check to see if we are redirected from subscription landing page
             if (this.UniqueLink == 'redirect')
-             { this.UniqueLinkState = 5;
+             { 
+               this.UniqueLinkState = 5;
+               let CGMSISDN = queryParams.get("CGMSISDN");
+               let CGStatus = queryParams.get("CGStatus");
+               console.log(CGMSISDN, CGStatus);
+              //  this.authenticationService.
             }else{
               this.UniqueLinkState = 2;
               
@@ -358,7 +363,7 @@ export class OnboardComponent implements OnInit {
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
       
       // redirect param is important. It is used in order to handle redirection from operator
-      let URI = encodeURIComponent(window.location.origin + this.router.url+ "?uniqueLink=redirect");
+      let URI = encodeURIComponent(window.location.origin + this.router.url) //+ "?uniqueLink=redirect");
       console.log(URI);
 
       window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl + '&IURL=' + URI;

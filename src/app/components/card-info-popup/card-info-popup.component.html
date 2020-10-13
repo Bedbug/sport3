@@ -23,7 +23,7 @@
 
   </div>
   <div class="modal-card-body">
-    <div class="card-data-title">Played Card at:</div>
+    <div class="card-data-title" translate>Played Card at:</div>
     <div>
     <div class="card-data"> 
       <div style="width: 20px; height: 30px;"  class="power-icon icn-stopwatch">
@@ -31,11 +31,11 @@
     <div  class="card-data-text">{{cardData?.minute}}'</div>
   </div>
 </div>
-    <div  class="card-data-title">Server Activation time:</div>
+    <div  class="card-data-title" translate>Server Activation time:</div>
     <div class="card-data">{{cardData.activationTime | date:"hh:mm:ss"}}</div>
-    <div *ngIf="!cardData.wonTime" class="card-data-title">Win event did not occur between:</div>
+    <div *ngIf="!cardData.wonTime" class="card-data-title" translate>Win event did not occur between:</div>
     <div *ngIf="!cardData.wonTime" class="card-data">{{cardData.activationTime | date:"hh:mm:ss"}} - {{cardData.terminationTime | date:"hh:mm:ss"}}</div>
-    <div *ngIf="cardData.wonTime" class="card-data-title">Win event occured at:</div>
+    <div *ngIf="cardData.wonTime" class="card-data-title" translate>Win event occured at:</div>
     <div *ngIf="cardData.wonTime" class="card-data">{{cardData.wonTime | date:"hh:mm:ss"}}</div>
   </div>
   <div class="popup-card-header" style="height:15px;"></div>
