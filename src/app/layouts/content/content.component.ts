@@ -65,6 +65,8 @@ export class ContentComponent implements OnInit {
       this.route.queryParamMap.subscribe(queryParams => {
         // Unique Link Reset
         let unique = queryParams.get("uniqueLink");
+
+        if(unique)
           localStorage.removeItem("signon");
        
 
