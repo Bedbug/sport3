@@ -63,7 +63,7 @@
                           <img class="img-fluid" src="{{getKitByTeam(event.team)}}" alt="">
                         </div>
                       </div>
-                      <div *ngIf="Utils.shouldShow(event.type,1) && showEventTime==event._id" class="event-time">Timestamp: {{event.created | date:"hh:mm:ss"}}
+                      <div *ngIf="Utils.shouldShow(event.type,1) && showEventTime==event._id" class="event-time"><span translate>Timestamp</span> {{event.created | date:"hh:mm:ss"}}
                       </div>
                       <div *ngIf="event.status=='var'" class="var-tag" translate>VAR - Canceled</div>
                     </div>

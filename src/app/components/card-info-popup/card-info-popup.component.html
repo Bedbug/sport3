@@ -15,10 +15,10 @@
 
 
     <div class="header-subtext">{{getFormatedOption(cardData.text[translate.currentLang])}}</div>
-    <div class="header-subtext" *ngIf="cardData.isDoublePoints">Double Points Power Up used</div>
-    <div class="header-subtext" *ngIf="cardData.isDoubleTime">Double Time Power Up used</div>
-    <div class="card-won" *ngIf="cardData.status == 2 && cardData.wonTime">Won</div>
-    <div class="card-lost" *ngIf="cardData.status == 2 && !cardData.wonTime">Lost</div>
+    <div class="header-subtext" *ngIf="cardData.isDoublePoints" translate>Double Points Power Up used</div>
+    <div class="header-subtext" *ngIf="cardData.isDoubleTime" translate>Double Time Power Up used</div>
+    <div class="card-won" *ngIf="cardData.status == 2 && cardData.wonTime" translate>Won</div>
+    <div class="card-lost" *ngIf="cardData.status == 2 && !cardData.wonTime" translate>Lost</div>
 
 
   </div>
