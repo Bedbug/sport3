@@ -363,10 +363,10 @@ export class OnboardComponent implements OnInit {
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
       
       // redirect param is important. It is used in order to handle redirection from operator
-      let URI = encodeURIComponent(window.location.origin + this.router.url) //+ "?uniqueLink=redirect");
+      let URI = encodeURIComponent(window.location.origin + this.router.url + "?uniqueLink=redirect");
       console.log(URI);
 
-      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl + '&IURL=' + URI;
+      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]",URI);
     }
     else {
       console.log('Blaise Flow');
