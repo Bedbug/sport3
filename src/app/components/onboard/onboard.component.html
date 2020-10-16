@@ -2,13 +2,14 @@
 <!-- <div class="modal-background" *ngIf="!UniqueLink"></div> -->
 <div *ngIf="UniqueLink" id="UniqueLink">
   <div class="modal-card2">
-    <div class="modal-card-body text-center" style="padding: 0;" *ngIf="UniqueLinkState == 1 || UniqueLinkState == 5">
+    <div class="modal-card-body text-center" style="padding: 0;" *ngIf="UniqueLinkState == 1 || UniqueLinkState == 5 || UniqueLinkState == 6">
       <!-- Verifying -->
       <div class="landing-card">
         <div class="landing-card-content text-center text-white" style="align-items: center; justify-content: center;">
-          <div class="unique-loader"></div>
+          <div *ngIf="UniqueLinkState<6" class="unique-loader"></div>
           <div *ngIf="UniqueLinkState==1" style="padding: 20px;" translate>verifying_unique</div>
           <div *ngIf="UniqueLinkState==5" style="padding: 20px;" translate>verifying_process</div>
+          <div *ngIf="UniqueLinkState==6" style="padding: 20px;" translate>something_wrong_retry</div>
         </div>
       </div>
     </div>

@@ -267,6 +267,7 @@
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",
 	"russian": "Русский",
+	"something_wrong_retry": "Something went wrong. Please retry.",
 	"susbcription_message_ACTIVE": "<b>Welcome back!</b><br>Enter your PIN to keep playing.",
 	"susbcription_message_ACTIVEFREEPERIOD": "<b>Welcome back!</b><br>Re-Subscribe and keep playing for Free.",
 	"susbcription_message_ACTIVEFREEPERIOD_action": "Re-Subscribe",

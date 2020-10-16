@@ -176,55 +176,91 @@ export class OnboardComponent implements OnInit {
             this.LandingPage = false;
 
             // Check to see if we are redirected from subscription landing page
-            if (this.UniqueLink == 'redirect')
-             { 
-               this.UniqueLinkState = 5;
-               let CGMSISDN = queryParams.get("CGMSISDN");
-               let CGStatus = queryParams.get("CGStatus");
-               console.log(CGMSISDN, CGStatus);
-              //  this.authenticationService.
-            }else{
-              this.UniqueLinkState = 2;
-              
-              // this.authenticationService.logout();
+            if (this.UniqueLink == 'redirect') {
 
-              this.authenticationService.ulinkVerify(this.UniqueLink, "en").subscribe(response=>{
+              let CGMSISDN = queryParams.get("CGMSISDN");
+              let CGStatus = queryParams.get("CGStatus");
+              console.log(CGMSISDN, CGStatus);
 
-                  if(response && response.success){
-                    console.log("Ulink");
-                    
+              if (CGStatus == "0" || CGStatus == "5") {
+                this.UniqueLinkState = 5;
+                this.authenticationService.redirectSignin(CGMSISDN, "en").subscribe(response => {
+
+                  if (response && response.success) {                  
+
                     this.UniqueLinkState = 0;
                     this.Authenticated = true;
-                   
-                      this.subState = response.state;
-                      if (this.subState == "UNSUB" && response.user.wallet > 0)
-                        this.subState = "UNSUBWITHCOINS";
-                      if (this.subState == "ACTIVE" && response.user.inFreePeriod)
-                        {this.subState = "ACTIVEFREEPERIOD";
-                      this.PinVerify = false;}
-                      if (this.subState == "FREE")
-                        {this.subState = "ACTIVEFREEPERIOD";
-                      this.PinVerify = false;}
-                      if (this.subState == "INACTIVE")
-                        this.subState = "UNKNOWN";
-                      if (this.subState == "BLACKLISTED") {
-                        this.subState = "UNKNOWN";
-                        this.blacklisted = 1;
-                      }
-            
-                      this.UniqueLink = null;
-           
 
-                      // this.closeLandingPage();
-                    
-                    // this.isSubmitting = false;
+                    this.subState = response.state;
+                    if (this.subState == "UNSUB" && response.user.wallet > 0)
+                      this.subState = "UNSUBWITHCOINS";
+                    if (this.subState == "ACTIVE" && response.user.inFreePeriod) {
+                      this.subState = "ACTIVEFREEPERIOD";
+                      this.PinVerify = false;
+                    }
+                    if (this.subState == "FREE") {
+                      this.subState = "ACTIVEFREEPERIOD";
+                      this.PinVerify = false;
+                    }
+                    if (this.subState == "INACTIVE")
+                      this.subState = "UNKNOWN";
+                    if (this.subState == "BLACKLISTED") {
+                      this.subState = "UNKNOWN";
+                      this.blacklisted = 1;
+                    }
 
-
+                    this.UniqueLink = null;
                   }
+                });
+              }else{
+                this.UniqueLinkState = 6;
+              }
+
+              //  this.authenticationService.
+            } else {
+              this.UniqueLinkState = 2;
+
+              // this.authenticationService.logout();
+
+              this.authenticationService.ulinkVerify(this.UniqueLink, "en").subscribe(response => {
+
+                if (response && response.success) {
+                  console.log("Ulink");
+
+                  this.UniqueLinkState = 0;
+                  this.Authenticated = true;
+
+                  this.subState = response.state;
+                  if (this.subState == "UNSUB" && response.user.wallet > 0)
+                    this.subState = "UNSUBWITHCOINS";
+                  if (this.subState == "ACTIVE" && response.user.inFreePeriod) {
+                    this.subState = "ACTIVEFREEPERIOD";
+                    this.PinVerify = false;
+                  }
+                  if (this.subState == "FREE") {
+                    this.subState = "ACTIVEFREEPERIOD";
+                    this.PinVerify = false;
+                  }
+                  if (this.subState == "INACTIVE")
+                    this.subState = "UNKNOWN";
+                  if (this.subState == "BLACKLISTED") {
+                    this.subState = "UNKNOWN";
+                    this.blacklisted = 1;
+                  }
+
+                  this.UniqueLink = null;
+
+
+                  // this.closeLandingPage();
+
+                  // this.isSubmitting = false;
+
+
+                }
               });
             }
 
-            
+
           }
           // Else handle regular process
           else {
@@ -361,44 +397,44 @@ export class OnboardComponent implements OnInit {
   onMultiOperatorSelect() {
     this.isSubmitting = true;
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
-      
+
       // redirect param is important. It is used in order to handle redirection from operator
       let URI = encodeURIComponent(window.location.origin + this.router.url + "?uniqueLink=redirect");
       console.log(URI);
 
-      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]",URI);
+      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]", URI);
     }
     else {
       console.log('Blaise Flow');
       console.log(this.multiOperatorForm.controls.country.value.area);
-      
+
       let areaCode = this.multiOperatorForm.controls.country.value.area;
-    let msisdnValue =  this.multiOperatorForm.controls.msisdn.value;
-    // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
-    let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-    console.log(path);
+      let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
+      // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
+      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
+      console.log(path);
 
-    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
-      .subscribe(response => {
-        if (response && response.success) {
-          this.subState = response.state;
-          if (this.subState == "UNSUB" && response.user.wallet > 0)
-            this.subState = "UNSUBWITHCOINS";
-          if (this.subState == "ACTIVE" && response.user.inFreePeriod)
-            this.subState = "ACTIVEFREEPERIOD";
-          if (this.subState == "FREE")
-            this.subState = "ACTIVEFREEPERIOD";
-          if (this.subState == "INACTIVE")
-            this.subState = "UNKNOWN";
-          if (this.subState == "BLACKLISTED") {
-            this.subState = "UNKNOWN";
-            this.blacklisted = 1;
+      this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
+        .subscribe(response => {
+          if (response && response.success) {
+            this.subState = response.state;
+            if (this.subState == "UNSUB" && response.user.wallet > 0)
+              this.subState = "UNSUBWITHCOINS";
+            if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+              this.subState = "ACTIVEFREEPERIOD";
+            if (this.subState == "FREE")
+              this.subState = "ACTIVEFREEPERIOD";
+            if (this.subState == "INACTIVE")
+              this.subState = "UNKNOWN";
+            if (this.subState == "BLACKLISTED") {
+              this.subState = "UNKNOWN";
+              this.blacklisted = 1;
+            }
+
+            this.closeLandingPage();
           }
-
-          this.closeLandingPage();
-        }
-        this.isSubmitting = false;
-      });
+          this.isSubmitting = false;
+        });
 
     }
 
@@ -485,8 +521,8 @@ export class OnboardComponent implements OnInit {
             });
 
             // If we have UTM Params forward them to Blaise
-            if(this.sportimoService.UTMParams){
-              
+            if (this.sportimoService.UTMParams) {
+
             }
           } else {
             this.incorrectPin = true;

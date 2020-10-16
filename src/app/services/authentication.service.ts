@@ -120,6 +120,29 @@ export class AuthenticationService {
         }));
     }
 
+    redirectSignin(msisdnCode: string, lang: string) {
+        let postData = {
+            msisdnCode: msisdnCode,
+            client: this.Config.getClient(),
+            language: lang
+        }
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/redirect-signin`, postData)
+        .pipe(map(response => {
+            // Save the signin data for future use
+            if (response != null && response.success)
+                {
+                    localStorage.setItem('signon', JSON.stringify({ msisdn: response.msisdn, client: postData.client }));
+                    if (response.user && response.user.token) {
+                        // store user details and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
+                        this.currentUserSubject.next(response.user);
+                    }
+                }
+
+            return response;
+        }));
+    }
+
     ulinkSend(msisdn: string, lang: string){
         let postData = {
             msisdn: msisdn.toString(),
