@@ -120,9 +120,9 @@ export class AuthenticationService {
         }));
     }
 
-    redirectSignin(msisdnCode: string, lang: string) {
+    redirectSignin(msisdn: string, lang: string) {
         let postData = {
-            msisdnCode: msisdnCode,
+            msisdn: msisdn,
             client: this.Config.getClient(),
             language: lang
         }
