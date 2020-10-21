@@ -33,7 +33,7 @@ import { CardToastComponent } from './components/card-toast/card-toast.component
 import { GrandPrizeDetailsComponent } from './sections/main/grand-prize-details/grand-prize-details.component';
 import { ContestInfoComponent } from './sections/contest-pages/contest-info/contest-info.component';
 import { OnboardComponent } from './components/onboard/onboard.component';
-import {NgxPopperModule} from 'ngx-popper';
+import { NgxPopperModule } from 'ngx-popper';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ResetComponent } from './reset/reset.component';
 import { MainPageNewsComponent } from './sections/main/main-page-news/main-page-news.component';
@@ -43,7 +43,7 @@ import { SafeHTMLPipe } from './pipes/safe-html.pipe';
 import { TermsPopupComponent } from './components/terms-popup/terms-popup.component';
 import { CardInfoPopupComponent } from './components/card-info-popup/card-info-popup.component';
 import { TermsFooterComponent } from './components/terms-footer/terms-footer.component';
-
+import { GoogleTagManagerModule, GoogleTagManagerService } from 'angular-google-tag-manager';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -68,11 +68,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContestInfoComponent,
     OnboardComponent,
     ResetComponent,
-   ModalPowersInfoComponent,
-   MatchSubscribeComponent,
-   TermsPopupComponent,
-   CardInfoPopupComponent,
-   TermsFooterComponent
+    ModalPowersInfoComponent,
+    MatchSubscribeComponent,
+    TermsPopupComponent,
+    CardInfoPopupComponent,
+    TermsFooterComponent
   ],
   imports: [
     OverlayModule,
@@ -93,6 +93,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    // GoogleTagManagerModule.forRoot({
+    //   id: 'GTM-W8FBCL4',
+    // }),
     ModalModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ToastModule.forRoot(),
@@ -100,12 +103,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [
     TranslateModule
   ],
-  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent, MatchSubscribeComponent, TermsPopupComponent,CardInfoPopupComponent],
+  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent, MatchSubscribeComponent, TermsPopupComponent, CardInfoPopupComponent],
   providers: [
     ConfigService,
     ConfigModule.init(),
+    GoogleTagManagerService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: 'googleTagManagerId', useValue: 'GTM-W8FBCL4' },
     fakeBackendProvider
   ],
   bootstrap: [AppComponent]
