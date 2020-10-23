@@ -210,6 +210,9 @@ export class OnboardComponent implements OnInit {
                     }
 
                     this.UniqueLink = null;
+
+                    if(this.sportimoService.UTMParams)
+                    this.sportimoService.sendUTMParams(CGMSISDN).subscribe();
                   }
                 });
               }else{
@@ -399,7 +402,16 @@ export class OnboardComponent implements OnInit {
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
 
       // redirect param is important. It is used in order to handle redirection from operator
-      let URI = encodeURIComponent(window.location.origin + this.router.url + "?uniqueLink=redirect");
+      let uriString = window.location.origin + this.router.url + "?uniqueLink=redirect";
+      if(this.sportimoService.UTMParams)
+      uriString +=  "&utm_campaign="+ this.sportimoService.UTMParams.utm_campaign +
+      "&utm_source="+ this.sportimoService.UTMParams.utm_source +
+      "&utm_medium="+ this.sportimoService.UTMParams.utm_medium +
+      "&utm_term="+ this.sportimoService.UTMParams.utm_term +
+      "&utm_content="+ this.sportimoService.UTMParams.utm_content +
+      "&utm_id="+ this.sportimoService.UTMParams.utm_id;
+     
+      let URI = encodeURIComponent(uriString);
       console.log(URI);
 
       window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]", URI);
