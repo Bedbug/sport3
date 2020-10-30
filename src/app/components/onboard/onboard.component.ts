@@ -392,9 +392,10 @@ export class OnboardComponent implements OnInit {
     console.log(this.filteredOperators);
   };
 
-  selectedOperator(data) {
-    console.log(this.multiOperatorForm.controls.operator.value.redirectUrl);
+  currentOperator: any;
 
+  selectedOperator(data) {            
+    this.currentOperator = this.multiOperatorForm.controls.operator.value;    
   }
 
   onMultiOperatorSelect() {
@@ -423,10 +424,9 @@ export class OnboardComponent implements OnInit {
       let areaCode = this.multiOperatorForm.controls.country.value.area;
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
-      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-      console.log(path);
+      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));    
 
-      this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
+      this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator?this.currentOperator.operatorCode:null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
             this.subState = response.state;
@@ -461,7 +461,7 @@ export class OnboardComponent implements OnInit {
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
     console.log(path);
 
-    this.authenticationService.blaiseSignin(msisdnValue, this.translate.currentLang, path)
+    this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator?this.currentOperator.operatorCode:null, this.translate.currentLang, path)
       .subscribe(response => {
         if (response && response.success) {
           this.subState = response.state;
