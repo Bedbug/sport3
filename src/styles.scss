@@ -184,9 +184,9 @@
   background-image: $theme-header-logo;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: left center;
   height: 30px;
-  width: 30px;
+  width: 200px;
 }
 
 // .page-wrapper{
@@ -1702,7 +1702,7 @@ body .page-wrapper .page-main-header {
 }
 
 .leaders-table-user-up {
-  top: 164px;
+  top: 155px;
   display: table;
 }
 

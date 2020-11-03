@@ -75,10 +75,11 @@ export class AuthenticationService {
       User registration
     ----------------------------------------------------------------------------------- */
 
-    blaiseSignin(msisdn: string, lang: string, path: string) {
+    blaiseSignin(msisdn: string, operatorCode: string, lang: string, path: string) {
         let postData = {
             msisdn: msisdn.toString(),
             client: this.Config.getClient(),
+            operatorCode: operatorCode,
             path: path,
             language: lang
         }
