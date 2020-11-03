@@ -371,6 +371,7 @@ export class OnboardComponent implements OnInit {
 
 
   multiOperatorBack() {
+    this.currentOperator = null;
     this.multiOperatorForm.reset();
     this.filteredOperators = [];
     // $('#countrySelect #default').set
@@ -550,6 +551,11 @@ export class OnboardComponent implements OnInit {
   openTerms() {
     // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
+  }
+
+  openTermsLink(termsLink:string) {
+    window.open(termsLink,"_blank"); 
+    // this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
   onUsernameUpdate() {
