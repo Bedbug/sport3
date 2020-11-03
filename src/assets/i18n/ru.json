@@ -209,6 +209,7 @@
 	"Your chances:": "Ваш результат: ",
 	"Your points:": "Ваш результат: ",
 	"_action": "",
+	"arabic": "",
 	"availableCards": "Доступные карты",
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
 	"availablePowerups": "Доступные усилители",
@@ -288,8 +289,5 @@
 	"verifying_unique": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Награды за этот VIP Матч:",
-	"x2": "x2",
-	"{{available": {
-		"code}}": ""
-	}
+	"x2": "x2"
 }

@@ -209,6 +209,7 @@
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
 	"_action": "",
+	"arabic": "",
 	"availableCards": "Қолжетімді карталар",
 	"availableCardsText": "Бұл осы матч бойы ойнатыла алатын сізде бар карталар (Негізгі жəне Live карталары)",
 	"availablePowerups": "Қолжетімді күшейткіштер",
@@ -288,8 +289,5 @@
 	"verifying_unique": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Осы VIP Матчқа арналған марапаттар:",
-	"x2": "x2",
-	"{{available": {
-		"code}}": ""
-	}
+	"x2": "x2"
 }

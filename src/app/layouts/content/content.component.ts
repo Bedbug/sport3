@@ -15,7 +15,7 @@ export class ContentComponent implements OnInit {
 
   public isRTL: boolean;
 
-  RTL_languages = ["fa"];
+  RTL_languages = ["fa","ar"];
 
   constructor
     (
@@ -57,6 +57,8 @@ export class ContentComponent implements OnInit {
 
         localStorage.setItem('language', this.translate.currentLang);
         this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
+        console.log(this.translate.currentLang);
+        
       });
       this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
 

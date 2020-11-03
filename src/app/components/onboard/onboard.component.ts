@@ -534,7 +534,7 @@ export class OnboardComponent implements OnInit {
 
             // If we have UTM Params forward them to Blaise
             if (this.sportimoService.UTMParams) {
-
+              this.sportimoService.sendUTMParams(response.user.msisdn).subscribe();
             }
           } else {
             this.incorrectPin = true;

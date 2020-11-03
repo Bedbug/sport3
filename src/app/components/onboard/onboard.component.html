@@ -243,7 +243,7 @@
                 <option [ngValue]="available" *ngFor="let available of availableCountries">
                   <span class="flag-icon flag-icon-squared"
                     [className]="'flag-icon flag-icon-squared flag-icon-'+ getCountryCode(multiOperatorForm.controls.area.value?multiOperatorForm.controls.area.value:this.availableCountries[0]?.area)"></span>
-                  <span translate>{{available.code}}</span>
+                  <span [translate]="available.code"></span>
                 </option>
               </select>
               <!-- <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"

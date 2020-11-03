@@ -209,6 +209,7 @@
 	"Your chances:": "شانس‌های شما: ",
 	"Your points:": "امیتازهای شما",
 	"_action": "حرکت",
+	"arabic": "",
 	"availableCards": "کارتهای فعال",
 	"availableCardsText": "متن کارتهای فعال",
 	"availablePowerups": "قدرتهای فعال",
@@ -288,8 +289,5 @@
 	"verifying_unique": "راستی آزمایی",
 	"vipMatch": "مسابقه خواص",
 	"vipMatchAwards": "جایزه مسابقه خواص",
-	"x2": "دو برابر",
-	"{{available": {
-		"code}}": ""
-	}
+	"x2": "دو برابر"
 }
