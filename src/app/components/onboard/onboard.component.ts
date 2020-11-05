@@ -558,8 +558,8 @@ export class OnboardComponent implements OnInit {
   }
 
   openTermsLink(termsLink:string) {
-    window.open(termsLink,"_blank"); 
-    // this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
+    // window.open(termsLink,"_blank"); 
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
   onUsernameUpdate() {
