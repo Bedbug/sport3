@@ -49,6 +49,10 @@ export class OnboardComponent implements OnInit {
     _("susbcription_message_ENTER");
     _("GR");
     _("KZ");
+    _("SA");
+    _("AE");
+    _("KW");
+    _("EG");
   }
 
   public defaults = {
@@ -371,6 +375,7 @@ export class OnboardComponent implements OnInit {
 
 
   multiOperatorBack() {
+    this.currentOperator = null;
     this.multiOperatorForm.reset();
     this.filteredOperators = [];
     // $('#countrySelect #default').set
@@ -419,14 +424,14 @@ export class OnboardComponent implements OnInit {
     }
     else {
       console.log('Blaise Flow');
-      console.log(this.multiOperatorForm.controls.country.value.area);
+      // console.log(this.multiOperatorForm.controls.country.value.area);
 
       let areaCode = this.multiOperatorForm.controls.country.value.area;
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));    
 
-      this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator?this.currentOperator.operatorCode:null, this.translate.currentLang, path)
+      this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator?this.currentOperator.operatorCode:null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
             this.subState = response.state;
@@ -550,6 +555,11 @@ export class OnboardComponent implements OnInit {
   openTerms() {
     // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
+  }
+
+  openTermsLink(termsLink:string) {
+    window.open(termsLink,"_blank"); 
+    // this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
   onUsernameUpdate() {
