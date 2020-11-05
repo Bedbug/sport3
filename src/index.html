@@ -28,7 +28,7 @@
     .landscape-warning {
       background-color:#212a34;
       width: 100%;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       color: white;
@@ -100,7 +100,7 @@
       document.getElementById('landscape').style.display = 'none';
     }
     else if (window.orientation == 90) {
-      document.getElementById('landscape').style.display = '';
+      document.getElementById('landscape').style.display = 'flex';
     }
   }
 
@@ -111,7 +111,7 @@
       document.getElementById('landscape').style.display = 'none';
     }
     else if (window.orientation == 90) {
-      document.getElementById('landscape').style.display = '';
+      document.getElementById('landscape').style.display = 'flex';
     }
   }, false);
 </script>
