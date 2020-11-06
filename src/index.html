@@ -23,8 +23,28 @@
 
   <title>Sportimo 3 - The way to watch football</title>
   <base href="/">
-  
 
+  <style>
+    .landscape-warning {
+      background-color:#212a34;
+      width: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      bottom: 0;
+    }
+
+    .landscape-warning img{
+      filter: invert();
+      transform: rotate(-90deg);
+      width: 200px;
+      height: auto;
+    }
+  </style>
   <!-- <script src="./assets/js/lottie.js"></script> -->
 
 
@@ -32,7 +52,7 @@
   <meta name="theme-color" content="#1976d2">
 </head>
 
-<body style="overflow: hidden;background-color: black;min-height: 568px;">  
+<body style="overflow: hidden;background-color: black;min-height: 568px;">
   <div class="mobile-container">
     <!-- Loader starts -->
     <div class="loader-wrapper">
@@ -56,8 +76,44 @@
 
     <!-- Loader ends -->
     <app-root></app-root>
+
+    <div id="landscape" class="landscape-warning">
+      <img src="./assets/images/sportimo/icon-horizontal.png" alt="">
+      <!-- <br>
+      Please rotate your device. -->
+    </div>
   </div>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
+
+
+<script type="text/javascript">
+  // Detect whether device supports orientationchange event, otherwise fall back to
+  // the resize event.
+  var supportsOrientationChange = "onorientationchange" in window,
+    orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+
+  if (supportsOrientationChange) {
+    console.log(window.orientation);
+    if (window.orientation == 0) {
+      document.getElementById('landscape').style.display = 'none';
+    }
+    else if (window.orientation == 90) {
+      document.getElementById('landscape').style.display = 'flex';
+    }
+  }
+
+
+  window.addEventListener(orientationEvent, function () {
+    console.log(window.orientation);
+    if (window.orientation == 0) {
+      document.getElementById('landscape').style.display = 'none';
+    }
+    else if (window.orientation == 90) {
+      document.getElementById('landscape').style.display = 'flex';
+    }
+  }, false);
+</script>
 
 </html>

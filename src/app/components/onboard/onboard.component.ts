@@ -420,7 +420,7 @@ export class OnboardComponent implements OnInit {
       let URI = encodeURIComponent(uriString);
       console.log(URI);
 
-      window.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]", URI);
+      window.top.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]", URI);
     }
     else {
       console.log('Blaise Flow');
@@ -558,8 +558,8 @@ export class OnboardComponent implements OnInit {
   }
 
   openTermsLink(termsLink:string) {
-    window.open(termsLink,"_blank"); 
-    // this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
+    // window.open(termsLink,"_blank"); 
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
   onUsernameUpdate() {
