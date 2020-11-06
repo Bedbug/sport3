@@ -212,7 +212,7 @@
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
 	"_action": "_action",
-	"arabic": "",
+	"arabic": "عربى",
 	"availableCards": "Available Cards",
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
 	"availablePowerups": "Available Powerups",
@@ -224,7 +224,7 @@
 	"card-paused": "Paused",
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
-	"english": "english",
+	"english": "English",
 	"enterMobilePhone": "Enter mobile phone",
 	"errors": {
 		"100": "You must be logged in to access this page.",
