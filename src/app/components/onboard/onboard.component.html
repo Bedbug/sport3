@@ -322,7 +322,7 @@
 
         <div *ngIf="appOperators.length == 0" (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px"
           [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
-          <div *ngIf="appOperators.length > 0 && currentOperator" (click)="openTermsLink(currentOperator.termsLink)" class="notice-msisdn isClickable" style="font-size: 10px"
+          <div *ngIf="appOperators.length > 0 && currentOperator && currentOperator.termsText" (click)="openTermsLink(currentOperator.termsLink)" class="notice-msisdn isClickable" style="font-size: 10px"
             [innerHTML]="currentOperator.termsText[translate.currentLang]"></div>
       </div>
       
