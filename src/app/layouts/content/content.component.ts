@@ -57,7 +57,7 @@ export class ContentComponent implements OnInit {
 
         localStorage.setItem('language', this.translate.currentLang);
         this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
-        console.log(this.translate.currentLang);
+        // console.log(this.translate.currentLang);
         
       });
       this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;

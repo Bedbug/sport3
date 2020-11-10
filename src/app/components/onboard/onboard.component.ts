@@ -152,7 +152,7 @@ export class OnboardComponent implements OnInit {
           let b = a.split(":");
           return { code: b[0], area: b[1], key: a };
         });
-        console.log(this.availableCountries);
+        // console.log(this.availableCountries);
         this.filteredOperators = [];
 
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
@@ -166,7 +166,7 @@ export class OnboardComponent implements OnInit {
           // paramsSubscription.unsubscribe();
           // Handle Unique Link process
           if (this.UniqueLink) {
-            console.log("Unique Link / Operator Redirection Flow");
+            console.log("[FLOW: Unique Link / Operator Redirection]");
             this.UniqueLinkState = 1;
 
             // Check to see if we are redirected from subscription landing page
@@ -184,13 +184,13 @@ export class OnboardComponent implements OnInit {
 
               let CGMSISDN = queryParams.get("CGMSISDN");
               let CGStatus = queryParams.get("CGStatus");
-              console.log(CGMSISDN, CGStatus);
+              // console.log(CGMSISDN, CGStatus);
 
               if (CGStatus == "0" || CGStatus == "5") {
                 this.UniqueLinkState = 5;
                 this.authenticationService.redirectSignin(CGMSISDN, "en").subscribe(response => {
 
-                  if (response && response.success) {                  
+                  if (response && response.success) {
 
                     this.UniqueLinkState = 0;
                     this.Authenticated = true;
@@ -215,11 +215,11 @@ export class OnboardComponent implements OnInit {
 
                     this.UniqueLink = null;
 
-                    if(this.sportimoService.UTMParams)
-                    this.sportimoService.sendUTMParams(CGMSISDN).subscribe();
+                    if (this.sportimoService.UTMParams)
+                      this.sportimoService.sendUTMParams(CGMSISDN).subscribe();
                   }
                 });
-              }else{
+              } else {
                 this.UniqueLinkState = 6;
               }
 
@@ -271,7 +271,7 @@ export class OnboardComponent implements OnInit {
           }
           // Else handle regular process
           else {
-            console.log("Reqular flow");
+            console.log("[FLOW: Reqular]");
             this.Authenticated = false;
             this.Onboarding = true;
             this.LandingPage = true;
@@ -390,17 +390,17 @@ export class OnboardComponent implements OnInit {
   }
 
   selectedCountry(data) {
-    console.log(this.multiOperatorForm.controls.country.value);
+    // console.log(this.multiOperatorForm.controls.country.value);
     this.filteredOperators = this.appOperators.filter((operator) => {
       return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
     })
-    console.log(this.filteredOperators);
+    // console.log(this.filteredOperators);
   };
 
   currentOperator: any;
 
-  selectedOperator(data) {            
-    this.currentOperator = this.multiOperatorForm.controls.operator.value;    
+  selectedOperator(data) {
+    this.currentOperator = this.multiOperatorForm.controls.operator.value;
   }
 
   onMultiOperatorSelect() {
@@ -409,29 +409,48 @@ export class OnboardComponent implements OnInit {
 
       // redirect param is important. It is used in order to handle redirection from operator
       let uriString = window.location.origin + this.router.url + "?uniqueLink=redirect";
-      if(this.sportimoService.UTMParams)
-      uriString +=  "&utm_campaign="+ this.sportimoService.UTMParams.utm_campaign +
-      "&utm_source="+ this.sportimoService.UTMParams.utm_source +
-      "&utm_medium="+ this.sportimoService.UTMParams.utm_medium +
-      "&utm_term="+ this.sportimoService.UTMParams.utm_term +
-      "&utm_content="+ this.sportimoService.UTMParams.utm_content +
-      "&utm_id="+ this.sportimoService.UTMParams.utm_id;
-     
-      let URI = encodeURIComponent(uriString);
-      console.log(URI);
+      if (this.sportimoService.UTMParams)
+        uriString += "&utm_campaign=" + this.sportimoService.UTMParams.utm_campaign +
+          "&utm_source=" + this.sportimoService.UTMParams.utm_source +
+          "&utm_medium=" + this.sportimoService.UTMParams.utm_medium +
+          "&utm_term=" + this.sportimoService.UTMParams.utm_term +
+          "&utm_content=" + this.sportimoService.UTMParams.utm_content +
+          "&utm_id=" + this.sportimoService.UTMParams.utm_id;
 
-      window.top.location.href = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]", URI);
+      let URI = encodeURIComponent(uriString);
+      // console.log(URI);
+      let formatedRedirectURL: string = this.multiOperatorForm.controls.operator.value.redirectUrl.toString().replace("[url]", URI);
+      // console.log(formatedRedirectURL);
+
+      // Format pages redirection based on selected language
+      let indexStart = formatedRedirectURL.indexOf("pages") - 1;
+      let indexEnd = formatedRedirectURL.indexOf("}") + 1;
+      let pages = formatedRedirectURL.substring(indexStart, indexEnd);
+      // console.log(pages);
+
+      if (pages.length > 0) {
+        let pagesObject = JSON.parse("{" + pages + "}");
+        let selectedPage = pagesObject.pages[this.translate.currentLang];
+
+        if (selectedPage)
+          formatedRedirectURL = formatedRedirectURL.replace(pages, selectedPage);
+        else
+          formatedRedirectURL = formatedRedirectURL.replace(pages, pagesObject.pages["default"]);
+        // console.log(formatedRedirectURL);              
+      }
+
+      window.top.location.href = formatedRedirectURL
     }
     else {
-      console.log('Blaise Flow');
+      console.log('[FLOW: Blaise]');
       // console.log(this.multiOperatorForm.controls.country.value.area);
 
       let areaCode = this.multiOperatorForm.controls.country.value.area;
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
-      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));    
+      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
 
-      this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator?this.currentOperator.operatorCode:null, this.translate.currentLang, path)
+      this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
             this.subState = response.state;
@@ -466,7 +485,7 @@ export class OnboardComponent implements OnInit {
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
     console.log(path);
 
-    this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator?this.currentOperator.operatorCode:null, this.translate.currentLang, path)
+    this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
         if (response && response.success) {
           this.subState = response.state;
@@ -557,7 +576,7 @@ export class OnboardComponent implements OnInit {
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
-  openTermsLink(termsLink:string) {
+  openTermsLink(termsLink: string) {
     // window.open(termsLink,"_blank"); 
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
