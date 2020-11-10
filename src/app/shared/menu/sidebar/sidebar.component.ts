@@ -60,7 +60,8 @@ export class SidebarComponent implements OnInit {
         _('Privacy Policy'); 
         _('Language'); 
         _('english'); 
-        _('farsi'); 
+        _('farsi');
+        _('french');
   }
 
   ngOnInit() {

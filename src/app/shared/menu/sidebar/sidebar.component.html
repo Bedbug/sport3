@@ -171,6 +171,11 @@
             <span translate>arabic</span>
         </a>
     </li>
+    <li *ngIf="hasLanguage('fr')">
+        <a href="javascript:void(0)" class="" [class.active]="translate.currentLang=='fr'" style="padding:7px 60px" (click)="switchLanguage('ar')">
+            <span translate>french</span>
+        </a>
+    </li>
     <li *ngIf="isLoggedIn">
         <!-- Authenticate -->
         <a href="javascript:void(0)" class="sidebar-header" (click)="toggleUserStatus()">
