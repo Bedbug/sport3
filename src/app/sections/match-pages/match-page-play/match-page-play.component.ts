@@ -74,6 +74,9 @@ export class MatchPagePlayComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    localStorage.setItem("hasClickedPlay","true");
+    
     this.route.paramMap.subscribe(params => {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
@@ -86,7 +89,7 @@ export class MatchPagePlayComponent implements OnInit {
       this.userScore = this.sportimoService.getMatchScore();
     });
     
-    this.hasJoinedContest = localStorage.getItem("hasplayedcard");
+    this.hasJoinedContest = localStorage.getItem("hasClickedCard");
       this.showPlayCardsPop = !this.hasJoinedContest;
 
     this.authenticationService.currentUser
@@ -202,7 +205,7 @@ export class MatchPagePlayComponent implements OnInit {
   openPlayModal(card: any) {
 if(this.isLoadingCards)
 return;
-
+    localStorage.setItem("hasClickedCard","true");
     if(!this.liveMatch.matchData.completed){
     this.selectedCard = card;
     this.selectedTime = this.getMinimumTime();
@@ -264,7 +267,7 @@ return;
         // Reload available to play cards
         this.playCard();
         this.closeModal();        
-        localStorage.setItem("hasplayedcard","true");
+       
         }
       }
         , error => {

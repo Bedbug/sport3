@@ -44,6 +44,7 @@ export class MatchPagesComponent implements OnInit {
   ngUnsubscribe = new Subject();
   showPlayCardsPop = false;
   hasJoinedContest: string;
+  hasClickedPlay: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -80,7 +81,7 @@ export class MatchPagesComponent implements OnInit {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
 
-      this.hasJoinedContest = localStorage.getItem("hasplayedcard");
+      this.hasJoinedContest = localStorage.getItem("hasClickedPlay");
       this.showPlayCardsPop = !this.hasJoinedContest;
 
       this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
@@ -164,7 +165,10 @@ export class MatchPagesComponent implements OnInit {
     })
   }
 
- 
+ clcikedPlay(){
+   this.hasClickedPlay = true;
+   localStorage.setItem("hasClickedPlay","true");
+ }
 
   getStatusText(status){
     if(!status)

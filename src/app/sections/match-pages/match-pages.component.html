@@ -14,8 +14,8 @@
             <span translate>Match Info</span>
           </a>
 
-          <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#" (click)="hasClickedPlay=true"
-            popover="{{translate.instant('tip.1')}}" placement="bottom" triggers=""
+          <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#" (click)="hasClickedPlay = true"
+            [popover]="translate.instant('tip.1')" placement="bottom" triggers=""
             [isOpen]="showPlayCardsPop && !hasClickedPlay" containerClass="popover">
             <!-- <span popover="{{translate.instant('tip.1')}}"  placement="bottom" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
                     containerClass="popover"></span> -->
@@ -99,8 +99,8 @@
             </a>
 
             <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#"
-              (click)="hasClickedPlay=true">
-              <span popover="{{translate.instant('tip.1')}}" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
+              (click)="hasClickedPlay = true">
+              <span [popover]="translate.instant('tip.1')" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
                 containerClass="popover"></span>
               <div class=""><img src="assets/images/sportimo/icon-cards-footer.svg" class="footer-icon" /></div>
               <span translate>Play</span>
