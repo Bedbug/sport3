@@ -564,7 +564,7 @@ export class OnboardComponent implements OnInit {
 
             // User Registered - We can stop the metrics
             this.sportimoService.onboardingMetricsStop("").subscribe(x => {
-              console.log(x);
+              // console.log(x);
             });
 
             // If we have UTM Params forward them to Blaise

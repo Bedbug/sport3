@@ -25,7 +25,7 @@ $(document).ready(function(){
 // });
 
 $( window ).resize(function() {
-  console.log( "<div>Handler for .resize() called.</div>" );
+  // console.log( "<div>Handler for .resize() called.</div>" );
   this.calculateHeight();
 });
 

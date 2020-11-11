@@ -64,13 +64,13 @@ export class MatchPagesComponent implements OnInit {
 
   @HostListener('window:focus', ['$event'])
   onFocus(event: any): void {
-    console.log("Focused");
+    // console.log("Focused");
     this.sportimoService.reloadMatch(null)
   }
 
   @HostListener('window:blur', ['$event'])
   onBlur(event: any): void {
-    console.log("Blurred");
+    // console.log("Blurred");
   };
 
   
