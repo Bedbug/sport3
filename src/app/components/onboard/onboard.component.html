@@ -233,8 +233,8 @@
             <!-- <span>Select your Country</span> -->
             <div class="input-box">
               <!-- Text -->
-              <div translate style="position:absolute; text-align: center; padding-top: 5px; width: 150px; pointer-events: none;" [style.visibility]="!multiOperatorForm.controls.area.value?'visible':'hidden'">
-                Select Country
+              <div style="position:absolute; text-align: center; padding-top: 5px; width: 150px; pointer-events: none;" [style.visibility]="!multiOperatorForm.controls.area.value?'visible':'hidden'">
+                <span translate>Select Country</span>
               </div>
               <!-- <div *ngIf="availableCountries.length < 2" class="input-area2">{{nrSelect}}</div> -->
               <select #countrySelect *ngIf="availableCountries.length > 0"
@@ -255,8 +255,8 @@
             *ngIf="(filteredOperators.length>0 && !this.multiOperatorForm.controls.operator.value) || (this.multiOperatorForm.controls.operator.value && multiOperatorForm.controls.operator.value.redirectUrl)">
             <!-- <span>Select your Operator</span> -->
             <div class="input-box">
-              <div translate style="position:absolute; text-align: center; padding-top: 5px; width: 150px; pointer-events: none;" [style.visibility]="!multiOperatorForm.controls.operator.value?'visible':'hidden'">
-                Select Operator
+              <div style="position:absolute; text-align: center; padding-top: 5px; width: 150px; pointer-events: none;" [style.visibility]="!multiOperatorForm.controls.operator.value?'visible':'hidden'">
+               <span translate>Select Operator</span>
               </div>
               <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
                 class="isClickable" (click)="multiOperatorBack()">

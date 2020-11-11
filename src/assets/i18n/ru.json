@@ -243,6 +243,7 @@
 		"4042": "The gamecard definition id (gamecardDefinitionId in the body) does not correspond to an existing gamecard definition",
 		"4043": "The contest match id (matchId) is not found",
 		"4044": "The contest match id (matchId) does not reference a valid match",
+		"4045": "",
 		"4050": "The referenced gamecardDefinitionId document is not in an active state",
 		"4051": "The creationTime in the body is before the creationTime in the gamecardDefinitionId document",
 		"4052": "You have reached the limit of allowed gamecards played in this match",

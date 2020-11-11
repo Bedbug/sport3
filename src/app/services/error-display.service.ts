@@ -54,6 +54,7 @@ export class ErrorDisplayService {
     _('errors.4042');
     _('errors.4043');
     _('errors.4044');
+    _('errors.4045');
 
     _('errors.4050');
     _('errors.4051');
