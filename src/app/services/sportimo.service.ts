@@ -489,7 +489,15 @@ export class SportimoService {
       this.updateCardStatus(data);
     } else if (data.type == "Match_full_time") {
       this.finalizeMatch(data);
+    } else if (data.type == "Bet_State"){
+      this.setBetState(data.data);
     }
+  }
+
+  setBetState(data: any) {   
+    this.currentLiveMatch.value.matchData.noBet = data.noBet;    
+    this.currentLiveMatch.next(this.currentLiveMatch.value);
+    console.log("[SPORTIMO SERVICE]: Current match Bet State set to:" + !this.currentLiveMatch.value.matchData.noBet); 
   }
 
   finalizeMatch(data: any) {

@@ -6,5 +6,5 @@ export class LiveMatch{
 	userScore:number;
 	prize_eligible?: boolean;
 	matchData: Match;
-	playedCards:PlayCard[];
+	playedCards:PlayCard[];  
 }

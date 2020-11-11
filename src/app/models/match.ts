@@ -27,4 +27,5 @@ export class Match {
     timeline: any[];
     updatedAt: Date;
     visiblein: string[];
+    noBet?: boolean;
 }

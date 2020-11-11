@@ -20,15 +20,15 @@ import { ModalPowersInfoComponent } from '../match-page-cards/components/modal-p
   animations: [
     trigger(
       'fadein', [
-        transition(':enter', [
-          style({ opacity: 0 }),
-          animate('300ms', style({ opacity: 1 }))
-        ]),
-        // transition(':leave', [
-        //   style({ opacity: 1}),
-        //   animate('500ms', style({opacity: 0}))
-        // ])
-      ]
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 }))
+      ]),
+      // transition(':leave', [
+      //   style({ opacity: 1}),
+      //   animate('500ms', style({opacity: 0}))
+      // ])
+    ]
     )
   ]
 })
@@ -63,46 +63,53 @@ export class MatchPagePlayComponent implements OnInit {
   showPlayCardsPop: boolean;
   userScore: number;
   tempPowersUsed: number = 0;
+  prevBetState: boolean;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private sportimoService: SportimoService,
-     public translate: TranslateService, 
-     private authenticationService:AuthenticationService,
-     private ViewModalOverlay: PrizeViewOverlayService,
-     private errorService: ErrorDisplayService) {
+    public translate: TranslateService,
+    private authenticationService: AuthenticationService,
+    private ViewModalOverlay: PrizeViewOverlayService,
+    private errorService: ErrorDisplayService) {
   }
 
   ngOnInit() {
 
-    localStorage.setItem("hasClickedPlay","true");
-    
+    localStorage.setItem("hasClickedPlay", "true");
+
     this.route.paramMap.subscribe(params => {
       this.contestMatchId = params.get("contestMatchId");
       this.contestId = params.get("contestId");
     })
 
     this.sportimoService.getCurrentLiveMatchData()
-    .pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe(x => {
-      this.liveMatch = x;
-      this.userScore = this.sportimoService.getMatchScore();
-    });
-    
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(x => {
+        this.liveMatch = x;
+        this.userScore = this.sportimoService.getMatchScore();
+
+        // Moved Here in order to update cards if there is a change in Bet State
+        if (this.liveMatch && this.prevBetState != this.liveMatch.matchData.noBet) {
+          this.playCard();
+          this.prevBetState = this.liveMatch.matchData.noBet
+        }
+      });
+
     this.hasJoinedContest = localStorage.getItem("hasClickedCard");
-      this.showPlayCardsPop = !this.hasJoinedContest;
+    this.showPlayCardsPop = !this.hasJoinedContest;
 
     this.authenticationService.currentUser
-    .pipe(takeUntil(this.ngUnsubscribe))
-    .subscribe(user => {
-  
-      if (user != null) {
-        // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
-        this.subscribed = this.authenticationService.isSubscribed;
-      }
-    })
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(user => {
 
-    this.playCard();
+        if (user != null) {
+          // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
+          this.subscribed = this.authenticationService.isSubscribed;
+        }
+      })
+
+    // this.playCard();
   }
 
   ngOnDestroy() {
@@ -110,10 +117,10 @@ export class MatchPagePlayComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  openPowersInfo(){
-    this.ViewModalOverlay.open<ModalPowersInfoComponent>(ModalPowersInfoComponent,{data:null});
+  openPowersInfo() {
+    this.ViewModalOverlay.open<ModalPowersInfoComponent>(ModalPowersInfoComponent, { data: null });
     // this.router.navigate(['main/grand-prize/', prizeid]);
-}
+  }
 
   playCard() {
     this.isPlayingCard = true;
@@ -125,38 +132,38 @@ export class MatchPagePlayComponent implements OnInit {
     })
   }
 
-  get availableCardPlays(){
-    if(!this.liveMatch)
-    return "";
+  get availableCardPlays() {
+    if (!this.liveMatch)
+      return "";
     return this.liveMatch.matchData.settings.gameCards.totalcards - this.liveMatch.playedCards.length;
   }
 
-  get availableSpecialPlays(){
-    if(!this.liveMatch)
-    return "";
+  get availableSpecialPlays() {
+    if (!this.liveMatch)
+      return "";
     var doublePointsUsed = this.liveMatch.playedCards.filter(x => x.isDoublePoints).length;
     var doubleTimeUsed = this.liveMatch.playedCards.filter(x => x.isDoubleTime).length;
     var specialsUsed = doublePointsUsed + doubleTimeUsed;
     return this.liveMatch.matchData.settings.gameCards.specials - specialsUsed - this.tempPowersUsed;
   }
 
-  toggleDoublePoints(cardSelections){
+  toggleDoublePoints(cardSelections) {
     console.log(this.availableSpecialPlays, cardSelections.isDoublePoints);
-    
-    if(this.availableSpecialPlays > 0 && !cardSelections.isDoublePoints){
+
+    if (this.availableSpecialPlays > 0 && !cardSelections.isDoublePoints) {
       cardSelections.isDoublePoints = true;
       this.tempPowersUsed = 1;
-    }else if(cardSelections.isDoublePoints){
+    } else if (cardSelections.isDoublePoints) {
       cardSelections.isDoublePoints = false;
       this.tempPowersUsed = 0;
     }
   }
 
-  toggleDoubleTime(cardSelections){
-    if(this.availableSpecialPlays > 0 && !cardSelections.isDoubleTime){
+  toggleDoubleTime(cardSelections) {
+    if (this.availableSpecialPlays > 0 && !cardSelections.isDoubleTime) {
       cardSelections.isDoubleTime = true;
       this.tempPowersUsed = 1;
-    }else if(cardSelections.isDoubleTime){
+    } else if (cardSelections.isDoubleTime) {
       cardSelections.isDoubleTime = false;
       this.tempPowersUsed = 0;
     }
@@ -170,7 +177,7 @@ export class MatchPagePlayComponent implements OnInit {
 
   get lostCards() {
     if (this.liveMatch && this.liveMatch.playedCards)
-      return this.liveMatch.playedCards.filter(x => x.status == 2  && (x.pointsAwarded == 0 || !x.pointsAwarded));// && !x.pointsAwarded);
+      return this.liveMatch.playedCards.filter(x => x.status == 2 && (x.pointsAwarded == 0 || !x.pointsAwarded));// && !x.pointsAwarded);
     return [];
   }
 
@@ -185,7 +192,7 @@ export class MatchPagePlayComponent implements OnInit {
   get SelectedTime() {
     if (!this.sportimoService.currentMatch)
       return 0;
-      
+
     if (this.selectedTime == this.minTimeValue && this.sportimoService.currentMatch.matchData.state > 0)
       return this.translate.instant("Now");
     else
@@ -203,15 +210,15 @@ export class MatchPagePlayComponent implements OnInit {
   }
 
   openPlayModal(card: any) {
-if(this.isLoadingCards)
-return;
-    localStorage.setItem("hasClickedCard","true");
-    if(!this.liveMatch.matchData.completed){
-    this.selectedCard = card;
-    this.selectedTime = this.getMinimumTime();
-    this.playCardModal = true;
-    this.hasClickedPlay = true;
-    }else{
+    if (this.isLoadingCards)
+      return;
+    localStorage.setItem("hasClickedCard", "true");
+    if (!this.liveMatch.matchData.completed) {
+      this.selectedCard = card;
+      this.selectedTime = this.getMinimumTime();
+      this.playCardModal = true;
+      this.hasClickedPlay = true;
+    } else {
       this.errorService.showError("10001");
     }
   }
@@ -262,12 +269,12 @@ return;
     this.sportimoService.submitUserCard(this.cardSelections)
       .subscribe(playedCard => {
         this.isSubmitingCard = false;
-        
-        if(playedCard!=null){
-        // Reload available to play cards
-        this.playCard();
-        this.closeModal();        
-       
+
+        if (playedCard != null) {
+          // Reload available to play cards
+          this.playCard();
+          this.closeModal();
+
         }
       }
         , error => {
@@ -276,11 +283,11 @@ return;
         })
   }
 
-  parseNumbers(text:string){
-    if(text)
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  parseNumbers(text: string) {
+    if (text)
+      return this.Utils.parseNumbers(text, this.translate.currentLang == 'fa');
     else
-    return "";
+      return "";
   }
 
 
