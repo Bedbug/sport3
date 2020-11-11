@@ -128,7 +128,12 @@ export class OnboardComponent implements OnInit {
     // Get Value From local
     // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
     // if (parsedFirst != null){
-
+      // console.log(document.referrer);
+      // console.log(window.location);
+      // console.log(window.location.origin);
+      
+     
+    
     //   if(parsedFirst == 1){
     this.onBoardService.Hide();
     //   }
@@ -406,9 +411,15 @@ export class OnboardComponent implements OnInit {
   onMultiOperatorSelect() {
     this.isSubmitting = true;
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
-
+     
       // redirect param is important. It is used in order to handle redirection from operator
-      let uriString = window.location.origin + this.router.url + "?uniqueLink=redirect";
+      // let uriString = window.location.origin + this.router.url + "?uniqueLink=redirect";
+       // Fix for iframed apps
+       let uriString = (window.location != window.parent.location)
+      ? document.referrer + "?uniqueLink=redirect"
+      : window.location.origin + this.router.url + "?uniqueLink=redirect";
+
+
       if (this.sportimoService.UTMParams)
         uriString += "&utm_campaign=" + this.sportimoService.UTMParams.utm_campaign +
           "&utm_source=" + this.sportimoService.UTMParams.utm_source +
