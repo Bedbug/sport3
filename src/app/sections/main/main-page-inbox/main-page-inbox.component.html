@@ -10,7 +10,7 @@
       </div>
       <div class="message-card-main">
         <div class="title">{{message.title[translate.currentLang]}}</div>
-        <div class="date">{{message.created | date:"dd/MM/yyyy hh:mm"}}</div>
+        <div class="date">{{parseDate(message.created)}}</div>
         <div class="text formated-text" [innerHTML] ="message.msg[translate.currentLang]"></div>
       </div>
     </div>

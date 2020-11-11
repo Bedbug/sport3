@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import moment from 'moment-mini';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 
 @Component({
   selector: 'app-main-page-inbox',
@@ -20,7 +21,8 @@ export class MainPageInboxComponent implements OnInit {
   }
 
   messages: any;
-
+  Utils: SportimoUtils = new SportimoUtils();
+  
   ngOnInit() {
     this.authenticationService.markInboxRead();
     this.sportimoService.getMessages().subscribe(x => {
@@ -36,5 +38,9 @@ export class MainPageInboxComponent implements OnInit {
   ngOnDestroy() {
     localStorage.setItem('last_inbox_check', moment().utc().format());
   }
+
+  parseDate(date:string){    
+    return this.Utils.parseDate(date,this.translate.currentLang=='fa', 'D/MM/YY HH:mm', 'jD/jMM/jYY hh:mm');
+}
 
 }

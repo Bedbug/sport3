@@ -68,6 +68,20 @@
     flex-direction: row-reverse;
   }
 
+  // -- INBOX -- //
+  .messsage-card{
+    flex-direction: row-reverse;   
+  }
+  .message-card-main .title{
+    text-align: right;
+  }
+  .message-card-main .date{
+    text-align: right;
+  }
+  .message-card-main .text{
+    text-align: right;
+  }
+
   // -- SUBSCRIPTION NOTICE -- //
   .subscribe-notice-container {
     text-align: right;
