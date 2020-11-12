@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/services/config.service';
 import { config } from 'rxjs';
 import { OnBoardService } from 'src/app/components/onboard/onboard.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-content',
@@ -23,7 +24,8 @@ export class ContentComponent implements OnInit {
       private route: ActivatedRoute,
       private sportimoService: SportimoService,
       private onBoardService: OnBoardService,
-      private configService: ConfigService) {
+      private configService: ConfigService,
+      private authService:AuthenticationService) {
     // Assign Client based on url
     let client = this.route.snapshot.paramMap.get("cid");
     if (client && client != "0")
@@ -91,21 +93,20 @@ export class ContentComponent implements OnInit {
       })
 
 
-      let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
-      let signonData = JSON.parse(localStorage.getItem('signon'));
+      // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
+      // let signonData = JSON.parse(localStorage.getItem('signon'));
 
       let onBoardingConfiguration = this.sportimoService.getConfigurationFor("onBoardingSequence");
 
 
-      if ((!signonData || !signonData.pin) && onBoardingConfiguration) {
+      // if ((!signonData || !signonData.pin) &&
+      if(onBoardingConfiguration && !this.authService.currentUserValue) {
         this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
       } else {
         this.onBoardService.Hide();
         $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow');
       }
-
-
     });
 
   }
