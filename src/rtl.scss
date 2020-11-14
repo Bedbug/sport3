@@ -12,7 +12,13 @@
   //   ul {
   //     text-align: right;
   //   }
+  .input-area2{
+    direction:rtl;
+  }
 
+  .back-icon{
+    left:280px !important;
+  }
   // -- SIDEBAR -- //
   .page-body-wrapper .page-sidebar {
     left: 0;
@@ -46,6 +52,7 @@
     text-align: right;
     padding-left: 0px;
     padding-right: 15px;
+    direction: rtl;
   }
 
   // -- HEADER -- //
@@ -230,6 +237,7 @@
 
   .formated-text {
     direction: rtl;
+    text-align: right;
   }
 
   .achievement-item .progress-text-ltr {

@@ -33,20 +33,25 @@
                 <div class="counter-body col-sm-12">
                   <div class="row">
                     <div class="col p-0">
-                      {{countdown.days<10?parseNumbers("0"+countdown.days):parseNumbers(countdown.days)}}</div>
+                      {{countdown.days<10?parseNumbers("0"+countdown.days):parseNumbers(countdown.days)}}
+                    </div>
                     <div class="col p-0">
-                      {{countdown.hours<10?parseNumbers("0"+countdown.hours):parseNumbers(countdown.hours)}}</div>
+                      {{countdown.hours<10?parseNumbers("0"+countdown.hours):parseNumbers(countdown.hours)}}
+                    </div>
                     <div class="col p-0">
                       {{countdown.minutes<10?parseNumbers("0"+countdown.minutes):parseNumbers(countdown.minutes)}}
                     </div>
                   </div>
                 </div>
                 <div class="grand-prize-user-details">
-                  <div *ngIf="prize?.prizeDistribution =='draw'" class="user-chances">
-                    <span translate>Your chances:</span> {{parseNumbers(userChances) || parseNumbers(0)}}
+                  <div *ngIf="prize?.prizeDistribution =='draw'" class="user-chances col">
+                    <strong translate>Your chances:</strong> 
+                    <span> {{parseNumbers(userChances) || parseNumbers(0)}} </span>
                   </div>
-                  <div *ngIf="prize?.prizeDistribution !='draw'" class="user-chances"> <span
-                    translate>Your points:</span> {{parseNumbers(userChances) || parseNumbers(0)}}</div>
+                  <div *ngIf="prize?.prizeDistribution !='draw'" class="user-chances col"> 
+                    <strong translate>Your points:</strong> 
+                    <span> {{parseNumbers(userChances) || parseNumbers(0)}} </span>
+                  </div>
                   <!-- <div class="details-link" translate>View Details</div> -->
                 </div>
               </div>

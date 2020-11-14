@@ -16,7 +16,7 @@ export class ContentComponent implements OnInit {
 
   public isRTL: boolean;
 
-  RTL_languages = ["fa","ar"];
+  RTL_languages = ["fa", "ar"];
 
   constructor
     (
@@ -25,7 +25,7 @@ export class ContentComponent implements OnInit {
       private sportimoService: SportimoService,
       private onBoardService: OnBoardService,
       private configService: ConfigService,
-      private authService:AuthenticationService) {
+      private authService: AuthenticationService) {
     // Assign Client based on url
     let client = this.route.snapshot.paramMap.get("cid");
     if (client && client != "0")
@@ -60,9 +60,16 @@ export class ContentComponent implements OnInit {
         localStorage.setItem('language', this.translate.currentLang);
         this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
         // console.log(this.translate.currentLang);
-        
+        if (this.isRTL)
+          $('body').addClass('rtl');
+        else
+          $('body').removeClass('rtl');
       });
       this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
+      if (this.isRTL)
+        $('body').addClass('rtl');
+      else
+        $('body').removeClass('rtl');
 
 
       // Handle URL PARAMS
@@ -70,13 +77,12 @@ export class ContentComponent implements OnInit {
         // Unique Link Reset
         let unique = queryParams.get("uniqueLink");
 
-        if(unique)
+        if (unique)
           localStorage.removeItem("signon");
-       
+
 
         // UTM Params
-        if(queryParams.get("utm_source"))
-        {
+        if (queryParams.get("utm_source")) {
           this.sportimoService.setUTMParams(
             queryParams.get("utm_campaign"),
             queryParams.get("utm_source"),
@@ -84,11 +90,11 @@ export class ContentComponent implements OnInit {
             queryParams.get("utm_term"),
             queryParams.get("utm_content"),
             queryParams.get("utm_id")
-            );
+          );
 
-            console.log(this.sportimoService.UTMParams)
+          console.log(this.sportimoService.UTMParams)
         }
-      
+
 
       })
 
@@ -100,7 +106,7 @@ export class ContentComponent implements OnInit {
 
 
       // if ((!signonData || !signonData.pin) &&
-      if(onBoardingConfiguration && !this.authService.currentUserValue) {
+      if (onBoardingConfiguration && !this.authService.currentUserValue) {
         this.onBoardService.Show(onBoardingConfiguration, this.sportimoService.getConfigurationFor("appName"));
       } else {
         this.onBoardService.Hide();

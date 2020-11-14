@@ -257,9 +257,17 @@ select option {
   width: 100%;
 }
 
+.select-info{
+  position:absolute; text-align: center; padding-top: 5px; width: 250px; pointer-events: none;
+}
+
 .flag-icon{
   width: 30px;
   margin-right: 5px;
+}
+
+.back-icon{
+  position: relative; left: -40px; width: 25px; height: 25px; margin: 0 2px 0 -5px;
 }
 
 .form-control-plaintext
