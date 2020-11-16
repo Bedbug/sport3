@@ -270,6 +270,8 @@
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Free to Play",
+	"network_offline": "connection issues - try again",
+	"network_restored": "connection restored",
 	"onDemandResponseText": "Thank you for your purchase attempt. You will be notified soon about the transaction result.",
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",

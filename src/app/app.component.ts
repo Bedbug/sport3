@@ -5,7 +5,7 @@ import { CardToastService } from './components/card-toast/card-toast.service';
 import { SportimoService } from './services/sportimo.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
-import { from } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,7 @@ import { from } from 'rxjs';
 export class AppComponent {
 
   public appTheme = "";
+
 
   constructor(
     translate: TranslateService,
@@ -70,6 +71,7 @@ export class AppComponent {
 
   ngOnInit() {
 
+
     // this.cardToastService.Show({
     //   time: "14'",
     //   event: "offside",
@@ -88,4 +90,6 @@ export class AppComponent {
     //   teamKit: "nothing"
     // });
   }
+
+
 }

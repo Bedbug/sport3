@@ -270,6 +270,8 @@
 	"joinMatchNoCoins": "به سکه های بازی ملحق شوید",
 	"kazzach": "",
 	"matchFreePlay": "بازی رایگان",
+	"network_offline": "",
+	"network_restored": "",
 	"onDemandResponseText": "",
 	"pin_sent": "پین-ارسال شد",
 	"pts": "امتیاز",

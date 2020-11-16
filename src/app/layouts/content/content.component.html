@@ -1,6 +1,8 @@
 <!--page-wrapper Start-->
 <div class="page-wrapper" [ngClass]="[appTheme]" [class.rtl]="isRTL" >
-	<app-header></app-header>
+    <app-header></app-header>
+    <div *ngIf="!connectionStatus" class="connection-status" translate>network_offline</div>
+    <div *ngIf="connectionRestored" class="connection-restored" translate>network_restored</div>
 	<!--Page Body Start-->
     <div class="page-body-wrapper sidebar-close">
     	<div class="page-sidebar custom-scrollbar">

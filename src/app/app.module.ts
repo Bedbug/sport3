@@ -44,6 +44,7 @@ import { TermsPopupComponent } from './components/terms-popup/terms-popup.compon
 import { CardInfoPopupComponent } from './components/card-info-popup/card-info-popup.component';
 import { TermsFooterComponent } from './components/terms-footer/terms-footer.component';
 import { GoogleTagManagerModule, GoogleTagManagerService } from 'angular-google-tag-manager';
+import { OfflineInterceptor } from './helpers/offline.interceptor';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -108,6 +109,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConfigService,
     ConfigModule.init(),
     GoogleTagManagerService,
+    { provide: HTTP_INTERCEPTORS, useClass: OfflineInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: 'googleTagManagerId', useValue: 'GTM-W8FBCL4' },

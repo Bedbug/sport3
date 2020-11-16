@@ -270,6 +270,8 @@
 	"joinMatchNoCoins": "Vous n'avez pas assez de pièces pour participer. Souhaitez-vous acheter les pièces supplémentaires maintenant",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Libre de jouer",
+	"network_offline": "",
+	"network_restored": "",
 	"onDemandResponseText": "Merci pour votre tentative d'achat. Vous serez bientôt informé sur le résultat de la transaction",
 	"pin_sent": "<fort>PIN envoyé!</fort> Veuillez allouer 2 minutes d'attente pour le recevoir",
 	"pts": " pts",

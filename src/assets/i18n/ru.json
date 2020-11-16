@@ -270,6 +270,8 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Участвовать",
+	"network_offline": "",
+	"network_restored": "",
 	"onDemandResponseText": "",
 	"pin_sent": "Вам повторно отправлен пароль",
 	"pts": " очк",

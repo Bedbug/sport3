@@ -6,6 +6,7 @@ import { ConfigService } from 'src/app/services/config.service';
 import { config } from 'rxjs';
 import { OnBoardService } from 'src/app/components/onboard/onboard.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { from, fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -14,8 +15,13 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class ContentComponent implements OnInit {
 
-  public isRTL: boolean;
+  onlineEvent: Observable<Event>;
+  offlineEvent: Observable<Event>;
+  connectionStatus: boolean = true;
+  connectionRestored: boolean = false;
+  subscriptions: Subscription[] = [];
 
+  public isRTL: boolean;
   RTL_languages = ["fa", "ar"];
 
   constructor
@@ -35,6 +41,22 @@ export class ContentComponent implements OnInit {
   public appTheme = "";
 
   ngOnInit() {
+
+    this.onlineEvent = fromEvent(window, 'online');
+    this.offlineEvent = fromEvent(window, 'offline');
+
+    this.subscriptions.push(this.onlineEvent.subscribe(e => {
+      this.connectionStatus = true;      
+      this.connectionRestored = true;
+      setTimeout(()=>{
+        this.connectionRestored = false;
+      },3000);
+    }));
+
+    this.subscriptions.push(this.offlineEvent.subscribe(e => {
+      this.connectionStatus = false;      
+    }));
+
 
     this.sportimoService.getClientConfiguration().subscribe(data => {
 
@@ -115,6 +137,13 @@ export class ContentComponent implements OnInit {
       }
     });
 
+  }
+
+  ngOnDestroy(): void {
+    /**
+    * Unsubscribe all subscriptions to avoid memory leak
+    */
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
 }

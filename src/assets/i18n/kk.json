@@ -270,6 +270,8 @@
 	"joinMatchNoCoins": " Қатысу үшін, сіздің тиындарыңыз жеткіліксіз. Қосымша тиындар алғыңыз келе ме?",
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Тегін ойнау",
+	"network_offline": "",
+	"network_restored": "",
 	"onDemandResponseText": "",
 	"pin_sent": "Пароль сізге қайта жіберілді",
 	"pts": " ұпай",

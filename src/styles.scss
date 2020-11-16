@@ -1712,3 +1712,27 @@ body .page-wrapper .page-main-header {
   bottom: 0;
   display: table;
 }
+
+.connection-status{
+  position: fixed;
+    height: 30px;
+    background-color: red;
+    z-index: 9999;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.connection-restored{
+  position: fixed;
+    height: 30px;
+    background-color: green;
+    z-index: 9999;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    line-height: 30px;
+}
