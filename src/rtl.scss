@@ -12,12 +12,36 @@
   //   ul {
   //     text-align: right;
   //   }
+
+  // -- LANDING PAGE -- //
+  .slide-prize-header{
+    direction: rtl;
+    text-align: right !important;
+  }
+
   .input-area2{
     direction:rtl;
   }
 
+  .select-info{
+    direction: rtl;
+  text-align: right !important;
+  }
+
+  .notice-msisdn{
+    direction: rtl;
+    text-align: right !important;
+  }
+
   .back-icon{
     left:280px !important;
+    transform: rotate(180deg);
+  }
+
+  // -- ΗΟΜΕ -- //
+  .contest-details-text{
+    direction: rtl;
+    text-align: right;
   }
   // -- SIDEBAR -- //
   .page-body-wrapper .page-sidebar {
