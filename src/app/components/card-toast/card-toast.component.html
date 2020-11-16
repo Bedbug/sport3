@@ -11,7 +11,7 @@
       <p class="type">{{data.event}}</p>
     </div>
     <div class="team-logo" *ngIf="data.teamKit">
-      <img class="img-fluid" src="{{data.teamKit}}" alt="">
+      <img class="img-fluid" src="{{data.teamKit || './assets/images/sportimo/default-kit.png'}}" alt="">
     </div>
     
 </div>

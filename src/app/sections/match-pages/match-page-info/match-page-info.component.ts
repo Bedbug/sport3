@@ -120,7 +120,7 @@ export class MatchPageInfoComponent implements OnInit {
   getKitByTeam(team: string) {
     if (!this.liveMatch || !team)
       return "";
-    return this.liveMatch.matchData[team].logo;
+    return this.liveMatch.matchData[team].logo || './assets/images/sportimo/default-kit.png';
   }
 
   ngOnDestroy() {
