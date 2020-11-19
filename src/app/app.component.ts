@@ -6,6 +6,7 @@ import { SportimoService } from './services/sportimo.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 import { CookieService } from 'ngx-cookie-service';
+import { log } from 'console';
 
 
 @Component({
@@ -30,13 +31,18 @@ export class AppComponent {
 
     this.router.events.forEach(item => {
       // console.log(item);
-      
+
       if (item instanceof NavigationEnd) {
         const client = this.configService.getClient();
         const appName = this.sportimoService.getConfigurationFor('appName').en;
         let page = "";
-      
-        if (item.url.indexOf(client) !== -1) { page = item.url.substring(item.url.indexOf(client) + client.length); }
+
+        if (item.url.indexOf(client) !== -1) {
+          // console.log(item.url.indexOf('?'));
+          page = item.url.substring(item.url.indexOf(client) + client.length);
+          if (page.indexOf('?') !== -1)
+            page = page.substring(0, page.indexOf('?'));
+        }
         else
           page = item.url.substring(item.url.indexOf('/0/') + 2);
 
@@ -49,10 +55,11 @@ export class AppComponent {
         };
 
         var d = new Date();
-        d.setTime(d.getTime() + (30*60*1000));
-        var expires = "expires="+ d.toUTCString();
+        d.setTime(d.getTime() + (30 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
 
-        this.cookieservice.set('session',page, d, "/");
+        // console.log(page);
+        this.cookieservice.set('session', page, d, "/");
         // parent.postMessage('session', page);
 
         this.gtmService.pushTag(gtmTag);
