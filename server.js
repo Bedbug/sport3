@@ -12,11 +12,14 @@ const _environment = process.env.ENVIRONMENT;
 
 const replace = require('replace-in-file');
 
+
+console.log("SERVER: Setting changes for Environment: " + _environment);
+
 if (_environment === 'production') {    
 	// Replace production.json API endpoints with development env ones if the _environment is not set to production
 	
 	const options = {
-	  files: ['dist/sportimo/assets/config/production.json'],
+	  files: ['dist/sportimo/assets/config/development.json'],
 	  to: ['"ROOT":"https://clientserver-3.herokuapp-prod.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
 	  from: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
 	  countMatches: true,
@@ -46,7 +49,7 @@ else {
 	// Replace production.json API endpoints with development env ones if the _environment is not set to production
 	
 	const options = {
-	  files: ['dist/sportimo/assets/config/production.json'],
+	  files: ['dist/sportimo/assets/config/development.json'],
 	  to: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
 	  from: ['"ROOT":"https://clientserver-3-prod.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
 	  countMatches: true,
