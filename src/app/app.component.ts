@@ -58,7 +58,7 @@ export class AppComponent {
 
         // console.log(page);
         this.cookieservice.set('session', page, d, "/");
-        // parent.postMessage('session', page);
+        parent.postMessage(page, "*");
 
         this.gtmService.pushTag(gtmTag);
       }
