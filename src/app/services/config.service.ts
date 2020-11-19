@@ -20,6 +20,7 @@ export class ConfigService {
     load() {
         return new Promise((resolve, reject) => {
             this._env = 'development';
+            
             if (environment.production)
                 this._env = 'production';
 

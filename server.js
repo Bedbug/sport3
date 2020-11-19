@@ -12,6 +12,9 @@ const _environment = process.env.ENVIRONMENT;
 
 const replace = require('replace-in-file');
 
+
+console.log("SERVER: Setting changes for Environment: " + _environment);
+
 if (_environment === 'production') {    
 	// Replace production.json API endpoints with development env ones if the _environment is not set to production
 	
