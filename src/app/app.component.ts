@@ -6,8 +6,6 @@ import { SportimoService } from './services/sportimo.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 import { CookieService } from 'ngx-cookie-service';
-import { log } from 'console';
-
 
 @Component({
   selector: 'app-root',
