@@ -5,6 +5,7 @@ import { CardToastService } from './components/card-toast/card-toast.service';
 import { SportimoService } from './services/sportimo.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -23,16 +24,18 @@ export class AppComponent {
     private sportimoService: SportimoService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private gtmService: GoogleTagManagerService
+    private gtmService: GoogleTagManagerService,
+    private cookieservice: CookieService
   ) {
 
     this.router.events.forEach(item => {
-
+      // console.log(item);
+      
       if (item instanceof NavigationEnd) {
         const client = this.configService.getClient();
         const appName = this.sportimoService.getConfigurationFor('appName').en;
         let page = "";
-
+      
         if (item.url.indexOf(client) !== -1) { page = item.url.substring(item.url.indexOf(client) + client.length); }
         else
           page = item.url.substring(item.url.indexOf('/0/') + 2);
@@ -44,6 +47,14 @@ export class AppComponent {
           pageRoute: item.url,
           page: page
         };
+
+        var d = new Date();
+        d.setTime(d.getTime() + (30*60*1000));
+        var expires = "expires="+ d.toUTCString();
+
+        this.cookieservice.set('session',page, d, "/");
+        // parent.postMessage('session', page);
+
         this.gtmService.pushTag(gtmTag);
       }
 

@@ -1,4 +1,5 @@
 import { NgModule, Injectable } from '@angular/core';
+import { CookieService} from 'ngx-cookie-service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -113,6 +114,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: 'googleTagManagerId', useValue: 'GTM-W8FBCL4' },
+    CookieService,
     fakeBackendProvider
   ],
   bootstrap: [AppComponent]
