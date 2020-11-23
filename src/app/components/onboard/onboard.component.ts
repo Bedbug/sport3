@@ -425,7 +425,7 @@ export class OnboardComponent implements OnInit {
      
      
       // Clear url parameters present
-      uriString = uriString.substring(0,uriString.indexOf('?'));
+      uriString = uriString.substring(0,uriString.indexOf('?')!==-1?uriString.length:uriString.indexOf('?'));
       // Add redirection flag
       uriString += "?uniqueLink=redirect";      
 
