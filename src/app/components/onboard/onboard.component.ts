@@ -419,6 +419,10 @@ export class OnboardComponent implements OnInit {
       ? document.referrer
       : window.location.origin + this.router.url;
       
+      console.log(document.referrer);
+     console.log(window.location.origin);
+     console.log(this.router.url);
+     
      
       // Clear url parameters present
       uriString = uriString.substring(0,uriString.indexOf('?'));
