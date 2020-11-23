@@ -33,7 +33,7 @@
         </a>
           <!-- [routerLink]="!menuItem.type ? null : [menuItem.path]"  -->
         <!-- Link -->
-        <a 
+        <a href="javascript:void(0)"
         (click)="showRoute(menuItem.path); closeSidebar()"
             routerLinkActive="active-option" class="sidebar-header" *ngIf="menuItem.type === 'link'">
             <i [class]="menuItem.icon"></i><span><span [translate]="menuItem.title"></span> <span
@@ -85,7 +85,7 @@
                 </a>
                 <!-- [routerLink]="!childrenItem.type ? null : [childrenItem.path]" -->
                 <!-- Link -->
-                <a    (click)="showRoute(childrenItem.path); closeSidebar()" [routerLink]="!childrenItem.type ? null : [childrenItem.path]"
+                <a  href="javascript:void(0)"  (click)="showRoute(childrenItem.path); closeSidebar()" [routerLink]="!childrenItem.type ? null : [childrenItem.path]"
                     *ngIf="childrenItem.type === 'link'" routerLinkActive="active-option"
                     [routerLinkActiveOptions]="{exact: true}">
                     <span [translate]="childrenItem.title"></span><span

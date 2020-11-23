@@ -161,7 +161,7 @@
                 popover="{{translate.instant('tip.2')}}" triggers=""
                 [isOpen]="showPlayCardsPop && !hasClickedPlay && availablePlaycard?.title[translate.currentLang]=='Goal'"
                 containerClass="popover" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}"
-                (click)="subscribed && openPlayModal(availablePlaycard)" class="playcard">
+                (click)="subscribed && openPlayModal(availablePlaycard)" class="isClickable playcard">
                 <div class="icon">
                   <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
                 </div>
@@ -184,7 +184,7 @@
             <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked" translate>cards-locked_message</div>
             <div *ngFor="let availablePlaycard of availableCards">
               <div *ngIf="availablePlaycard?.cardType=='Overall'" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}"
-                (click)="subscribed && openPlayModal(availablePlaycard)" class="playcard">
+                (click)="subscribed && openPlayModal(availablePlaycard)" class="isClickable playcard">
                 <div class="icon">
                   <div [ngClass]="Utils.getIconBySprite(availablePlaycard?.image.sprite)"></div>
                 </div>
@@ -240,7 +240,7 @@
             </div>
             <div class="bottom-buttons">
               <ul class="options" *ngIf="!optionSelected" [@fadein]>
-                <li (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
+                <li class="isClickable" (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
                   <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
                   <p><strong>{{parseNumbers(option.startPoints)}}</strong> <span translate>pts</span></p>
                 </li>
