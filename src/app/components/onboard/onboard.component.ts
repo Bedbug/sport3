@@ -416,10 +416,17 @@ export class OnboardComponent implements OnInit {
       // let uriString = window.location.origin + this.router.url + "?uniqueLink=redirect";
        // Fix for iframed apps
        let uriString = (window.location != window.parent.location)
-      ? document.referrer + "?uniqueLink=redirect"
-      : window.location.origin + this.router.url + "?uniqueLink=redirect";
+      ? document.referrer
+      : window.location.origin + this.router.url;
+      
+     
+      // Clear url parameters present
+      uriString = uriString.substring(0,uriString.indexOf('?'));
+      // Add redirection flag
+      uriString += "?uniqueLink=redirect";      
 
-
+     
+      
       if (this.sportimoService.UTMParams)
         uriString += "&utm_campaign=" + this.sportimoService.UTMParams.utm_campaign +
           "&utm_source=" + this.sportimoService.UTMParams.utm_source +
@@ -449,8 +456,8 @@ export class OnboardComponent implements OnInit {
           formatedRedirectURL = formatedRedirectURL.replace(pages, pagesObject.pages["default"]);
         // console.log(formatedRedirectURL);              
       }
-
-      window.top.location.href = formatedRedirectURL
+console.log(formatedRedirectURL);
+      // window.top.location.href = formatedRedirectURL
     }
     else {
       console.log('[FLOW: Blaise]');
