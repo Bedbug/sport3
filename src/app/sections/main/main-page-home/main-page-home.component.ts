@@ -18,10 +18,10 @@ import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-d
   animations: [
     trigger(
       'fadein', [
-        state('true', style({ opacity: 1 })),
-        state('false', style({ opacity: 0 })),
-        transition('false <=> true', animate(500))
-      ]),
+      state('true', style({ opacity: 1 })),
+      state('false', style({ opacity: 0 })),
+      transition('false <=> true', animate(500))
+    ]),
   ]
 })
 export class MainPageHomeComponent implements OnInit {
@@ -32,51 +32,53 @@ export class MainPageHomeComponent implements OnInit {
   message = '';
   private lastInserted: number[] = [];
   matchesListVisible = false;
-  upcomingMatches:any[];
+  upcomingMatches: any[];
 
   Utils: SportimoUtils = new SportimoUtils();
 
   constructor(
-    private routeParams: ActivatedRoute, 
-    private config: ConfigService, 
+    private routeParams: ActivatedRoute,
+    private config: ConfigService,
     private toastr: ToastrService,
-    private sportimoService:SportimoService,
+    private sportimoService: SportimoService,
     public translate: TranslateService,
     private router: Router,
-   
-    ) {
+    private route:ActivatedRoute
+  ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
 
   ngOnInit() {
     this.matchesListVisible = false;
     // setTimeout(()=>{this.matchesListVisible = true},1000);
-    this.sportimoService.getHomeMatches().subscribe(data=>{
+    this.sportimoService.getHomeMatches().subscribe(data => {
       // console.log(data);
       this.upcomingMatches = data;
       this.matchesListVisible = true
     })
   }
 
-  get getUpcoming () {
-    if(!this.upcomingMatches)
-    return null;
+  get getUpcoming() {
+    if (!this.upcomingMatches)
+      return null;
 
-    return this.upcomingMatches.filter(x=>x.match.state == 0);
-  }
-  
-  get getLive () {
-    if(!this.upcomingMatches)
-    return null;
-
-    return this.upcomingMatches.filter(x=>x.match.state > 0);
+    return this.upcomingMatches.filter(x => x.match.state == 0);
   }
 
-  openContest(contestId: string){
-console.log(contestId);
-console.log(this.config.getClient());
+  get getLive() {
+    if (!this.upcomingMatches)
+      return null;
 
-this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
+    return this.upcomingMatches.filter(x => x.match.state > 0);
+  }
+
+  openContest(contestId: string, matchId: string) {
+    console.log(contestId);
+    console.log(this.config.getClient());
+
+    // this.router.navigate([this.config.getClient(), 'contest', contestId, 'matches']);
+    // this.router.navigate(['contest', contestId, 'matches']);
+    this.router.navigate(['../contest', contestId, 'match',matchId,'info'],{relativeTo:this.route.parent});
   }
 
   openNotyf(title: string, message: string, error: boolean) {
@@ -96,35 +98,35 @@ this.router.navigate([this.config.getClient(),'contest', contestId, 'matches']);
     return inserted;
   }
 
-  parseDateTime(date:string){
-    return this.Utils.parseDate(date,this.translate.currentLang=='fa','HH:mm', 'HH:mm');
+  parseDateTime(date: string) {
+    return this.Utils.parseDate(date, this.translate.currentLang == 'fa', 'HH:mm', 'HH:mm');
   }
 
-  parseDateDay(date:string){
-    return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM','jDD/jMM');
+  parseDateDay(date: string) {
+    return this.Utils.parseDate(date, this.translate.currentLang == 'fa', 'DD/MM', 'jDD/jMM');
   }
 
-  parseNumbers(text:string){
-    if(!text)
-    text = "0";
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  parseNumbers(text: string) {
+    if (!text)
+      text = "0";
+    return this.Utils.parseNumbers(text, this.translate.currentLang == 'fa');
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.checkScroll();
   }
 
   checkScroll() {
     let a = $(".scorllable-area");
-       
+
     let scroll = a.scrollTop();
 
-    if(scroll>100)
-    $(".grand-prize").addClass('mini');
-    else if(scroll<=100 && scroll>=0)
-    $(".grand-prize").removeClass('mini');
+    if (scroll > 100)
+      $(".grand-prize").addClass('mini');
+    else if (scroll <= 100 && scroll >= 0)
+      $(".grand-prize").removeClass('mini');
     // if(b.length == 0 || a.length ==0) return;
-    
+
     // if (b.position().top < a.position().top) {
     //   $(".leaders-table-user").addClass('leaders-table-user-up');
     // } else {

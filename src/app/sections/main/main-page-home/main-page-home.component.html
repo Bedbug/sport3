@@ -42,7 +42,7 @@
                                         <div class="matches-list-scrollarea">
                                             <div>
                                                 <div class="match-item isClickable"
-                                                    (click)="openContest(upcomingMatch.tournament._id)"
+                                                    (click)="openContest(upcomingMatch.tournament._id, upcomingMatch._id)"
                                                     *ngFor="let upcomingMatch of getUpcoming; let i = index">
                                                     <div class="match-contest-name">
                                                         <span style ="font-weight: bold;" translate>Contest</span>: {{ upcomingMatch.tournament.titleText[translate.currentLang]}}                                                        
