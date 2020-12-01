@@ -67,7 +67,7 @@ export class ContentComponent implements OnInit {
       // the lang to use, if the lang isn't available, it will use the current loader to get them
       this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
 
-      this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
+      this.appTheme = "green";// this.sportimoService.getConfigurationFor("theme") || "default";
 
       // Change the app background
       if (this.sportimoService.getConfigurationFor("appBackgroundUrl"))
