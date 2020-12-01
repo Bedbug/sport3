@@ -480,8 +480,8 @@ export class OnboardComponent implements OnInit {
             this.subState = response.state;
             if (this.subState == "UNSUB" && response.user.wallet > 0)
               this.subState = "UNSUBWITHCOINS";
-            if (this.subState == "ACTIVE" && response.user.inFreePeriod)
-              this.subState = "ACTIVEFREEPERIOD";
+            // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+            //   this.subState = "ACTIVEFREEPERIOD";
             if (this.subState == "FREE")
               this.subState = "ACTIVEFREEPERIOD";
             if (this.subState == "INACTIVE")

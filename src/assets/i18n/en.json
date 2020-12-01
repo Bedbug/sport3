@@ -222,13 +222,8 @@
 	"card-activating-preset": "Activating in: {{value}}'",
 	"card-live": "Live",
 	"card-paused": "Paused",
-<<<<<<< HEAD
-	"cards-locked_message": "The game is locked and you can't play cards at the moment.",
-	"cards-locked_title": "MATCH PAUSED",
-=======
 	"cards-locked_message": "You will be able to play again soon",
 	"cards-locked_title": "The match is paused by the referee",
->>>>>>> 03f8122ad5f9a02238d2d5fb79ffafa5a2cd4faf
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
 	"english": "English",
@@ -279,13 +274,8 @@
 	"matchFreePlay": "Free to Play",
 	"network_offline": "connection issues - try again",
 	"network_restored": "connection restored",
-<<<<<<< HEAD
-	"no-cards_message": "It seems you have used all your cards!",
-	"no-cards_title": "OUT OF CARDS",
-=======
 	"no-cards_message": "Football action never ends. Join another match and keep playing!",
 	"no-cards_title": "Thank you for playing all your cards!",
->>>>>>> 03f8122ad5f9a02238d2d5fb79ffafa5a2cd4faf
 	"onDemandResponseText": "Thank you for your purchase attempt. You will be notified soon about the transaction result.",
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",
