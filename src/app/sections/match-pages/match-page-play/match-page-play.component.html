@@ -2,7 +2,8 @@
   <div class="row">
     <div class="card">
       <div class="card-body user-info">
-        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to play cards</div>
+        <div *ngIf="!subscribed" class="subscription-info" translate>You need to have an active subscription in order to
+          play cards</div>
         <div class="container">
           <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
             <div class="col-12">
@@ -109,7 +110,15 @@
 
     <div *ngIf='isPlayingCard' class="cards-list-container">
       <div #stickyMenu [class.sticky]="sticky">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <div *ngIf="availableCardPlays == 0" class="cards-locked">
+          <div class="cards-locked-title" translate>no-cards_title</div>
+          <div class="no-cards-count">                
+            <img src="./assets/images/sportimo/cards.svg" alt="">
+            <div class="no-cards-num">{{parseNumbers("0")}}</div>
+          </div>
+          <div class="cards-locked-info" translate>no-cards_message</div>
+        </div>
+        <ul *ngIf="availableCardPlays > 0" class="nav nav-tabs" id="myTab" role="tablist">
           <!-- <li class="nav-item">
         <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
           aria-selected="true">
@@ -130,7 +139,7 @@
           </li>
         </ul>
       </div>
-      <div class="tab-content" id="myTabContent">
+      <div *ngIf="availableCardPlays > 0" class="tab-content" id="myTabContent">
         <!-- <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
       <div class="card-scroll-list"> -->
         <!-- <app-playcard *ngFor="let availablePlaycard of availableCards" [data]="availablePlaycard"></app-playcard> -->
@@ -155,7 +164,13 @@
     </div> -->
         <div class="tab-pane fade show active" id="live" role="tabpanel" aria-labelledby="live-tab">
           <div class="card-scroll-list">
-            <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked" translate>cards-locked_message</div>
+            <!-- <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked" translate>cards-locked_message</div> -->
+            <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked">
+              <div class="cards-locked-title" translate>cards-locked_title</div>
+              <img src="./assets/images/sportimo/pause.svg" alt="">
+              <div class="cards-locked-info" translate>cards-locked_message</div>
+            </div>
+           
             <div *ngFor="let availablePlaycard of availableCards">
               <div *ngIf="availablePlaycard?.cardType!='Overall'" placement="bottom" adaptivePosition="false"
                 popover="{{translate.instant('tip.2')}}" triggers=""
@@ -181,7 +196,12 @@
         </div>
         <div class="tab-pane fade" id="ninenty" role="tabpanel" aria-labelledby="ninenty-tab">
           <div class="card-scroll-list">
-            <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked" translate>cards-locked_message</div>
+            <!-- <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked" translate>cards-locked_message</div> -->
+            <div *ngIf="liveMatch?.matchData?.noBet" class="cards-locked">
+              <div class="cards-locked-title" translate>cards-locked_title</div>
+              <img src="./assets/images/sportimo/pause.svg" alt="">
+              <div class="cards-locked-info" translate>cards-locked_message</div>
+            </div>
             <div *ngFor="let availablePlaycard of availableCards">
               <div *ngIf="availablePlaycard?.cardType=='Overall'" [ngStyle]="{'opacity':(!subscribed?'0.5':'1')}"
                 (click)="subscribed && openPlayModal(availablePlaycard)" class="isClickable playcard">
@@ -212,8 +232,7 @@
             <div class="top-buttons">
               <p class="title" translate>Activate powerups:</p>
               <div class="power-container">
-                <div class="col-6 powerup isClickable"
-                  (click)="!isSubmitingCard && toggleDoublePoints(cardSelections)"
+                <div class="col-6 powerup isClickable" (click)="!isSubmitingCard && toggleDoublePoints(cardSelections)"
                   [class.active-power]="cardSelections.isDoublePoints">
                   <span translate>Double Points</span>
                   <div class="power-button double-points">
@@ -240,7 +259,8 @@
             </div>
             <div class="bottom-buttons">
               <ul class="options" *ngIf="!optionSelected" [@fadein]>
-                <li class="isClickable" (click)="optionSelect(option.optionId)" *ngFor="let option of selectedCard?.options">
+                <li class="isClickable" (click)="optionSelect(option.optionId)"
+                  *ngFor="let option of selectedCard?.options">
                   <p><strong>{{getFormatedOption(option.text[translate.currentLang])}}</strong></p>
                   <p><strong>{{parseNumbers(option.startPoints)}}</strong> <span translate>pts</span></p>
                 </li>
@@ -289,9 +309,9 @@
                 <div translate>By:</div>
                 <div class="team-name">{{getFormatedOption(optionSelected.text[translate.currentLang])}}</div>
                 <div [class.active-points]="cardSelections?.isDoublePoints">
-                  <span *ngIf="selectedCard?.cardType!='Overall'" class="pts" translate>upto</span> 
-                  <span
-                    class="points"> {{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
+                  <span *ngIf="selectedCard?.cardType!='Overall'" class="pts" translate>upto</span>
+                  <span class="points">
+                    {{parseNumbers(cardSelections.isDoublePoints?optionSelected.startPoints*2:optionSelected.startPoints)}}</span>
                   <span class="pts" translate> pts</span>
                 </div>
               </div>

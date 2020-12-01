@@ -105,12 +105,41 @@
 }
 
 .cards-locked{
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   color: #fff;
   line-height: 30px;
-  height:  30px;
+  height: 250px;
   font-weight: 700;
-  background-color: red;
+  background-color: #000000b3;
+}
+
+.cards-locked-title{
+  margin-top: 20px;
+  margin-bottom: -10px;
+  font-size: 18px;
+}
+
+.cards-locked-info{
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 17px;
+  width: 230px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.no-cards-count{
+  display: flex;
+    align-items: center;
+}
+
+.no-cards-num{
+  font-size: 50px;
+  padding-top: 5px;
+  margin-left: -5px;
 }
 
 // .card-scroll-list {
