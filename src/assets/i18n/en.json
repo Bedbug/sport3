@@ -78,7 +78,7 @@
 	"Initiate Disclaimer": "This feature will enable you to replay the match ten times faster than normal, for demonstration purposes. But due to the lack of real-time events/playback of match, you will not be able to play the Live cards normally, ie the live cards will not be able to be settled.",
 	"Interceptions": "Interceptions",
 	"Join": "Join",
-	"Join\r\n                    For Free": "",
+	"Join\n                    For Free": "",
 	"Join Contest": "Join Contest",
 	"Join For Free": "Join For Free",
 	"Join Match": "Join Match",
@@ -162,7 +162,7 @@
 	"Select Operator": "Select Operator",
 	"Server Activation time:": "Server Activation time:",
 	"Settings": "Settings",
-	"Shot_on_Goal": "Shot on Goal",
+	"Shot_on_Goal": "Shot on Target",
 	"Shots on Target": "Shots on Target",
 	"Skip for now": "Skip for now",
 	"Sportimo Winners": "Winners",
@@ -208,7 +208,6 @@
 	"You can always edit your username at your Profile tab": "You can always edit your username at your Profile tab",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "You need to have an active subscription in order to play cards",
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
@@ -223,8 +222,13 @@
 	"card-activating-preset": "Activating in: {{value}}'",
 	"card-live": "Live",
 	"card-paused": "Paused",
+<<<<<<< HEAD
 	"cards-locked_message": "The game is locked and you can't play cards at the moment.",
 	"cards-locked_title": "MATCH PAUSED",
+=======
+	"cards-locked_message": "You will be able to play again soon",
+	"cards-locked_title": "The match is paused by the referee",
+>>>>>>> 03f8122ad5f9a02238d2d5fb79ffafa5a2cd4faf
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
 	"english": "English",
@@ -235,7 +239,8 @@
 		"102": "You have to be subscribed to the match in order to view.",
 		"103": "This is not a scheduled Demo match.",
 		"104": "No user found with these credentials.",
-		"1002": "Wrong PIN. Please, try again.",
+		"1002": "A pin was sent in your mobile device",
+		"1007": "Wrong PIN. Please, try again.",
 		"4000": "Body is lacking of the gamecardDefinitionId property",
 		"4001": "Body is lacking of the creationTime property or it is later than NOW in UTC",
 		"4002": "The references gamecardDefinitionId document contains options, but no optionId property for the selected option is included in the Body",
@@ -274,8 +279,13 @@
 	"matchFreePlay": "Free to Play",
 	"network_offline": "connection issues - try again",
 	"network_restored": "connection restored",
+<<<<<<< HEAD
 	"no-cards_message": "It seems you have used all your cards!",
 	"no-cards_title": "OUT OF CARDS",
+=======
+	"no-cards_message": "Football action never ends. Join another match and keep playing!",
+	"no-cards_title": "Thank you for playing all your cards!",
+>>>>>>> 03f8122ad5f9a02238d2d5fb79ffafa5a2cd4faf
 	"onDemandResponseText": "Thank you for your purchase attempt. You will be notified soon about the transaction result.",
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",

@@ -36,6 +36,7 @@ export class ErrorDisplayService {
     _('errors.104');
 
     _('errors.1002');
+    _('errors.1007');
 
     _('errors.10002'); // "The card has already closed."
     _('errors.10001'); // "The card has already closed."

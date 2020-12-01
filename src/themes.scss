@@ -49,3 +49,70 @@ $theme-gradient: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1
   }
 
 }
+
+
+.green {
+$green-color: #396257;
+  $theme-color: #396257;
+$theme-gradient: linear-gradient(180deg, #8FBD55 0%, #396257 100%);
+
+  .active .footer-icon{
+    filter: invert(0%) sepia(0%) saturate(7%) hue-rotate(147deg) brightness(110%) contrast(100%);
+  }
+
+  .grand-prize-header{
+    color:#000 !important;
+  }
+
+  .grand-prize-user-details{
+    color:#000 !important;
+  }
+  
+  .mobile-app-navbar, .universal-app-navbar{
+    background-color: #000;
+  }
+
+  .app-navbar{
+    background-color: #000;
+  }
+
+  .app-navbar a.active {
+    border-bottom: solid 5px #000;
+    color: #000;    
+    background: $theme-gradient;
+  }
+
+  .mobile-app-navbar a.active, .universal-app-navbar a.active {  
+    border-bottom: solid 3px #000;
+    color: #000;    
+    background: $theme-gradient;
+  }
+
+  .leaders-user{
+    background: $theme-gradient;
+  }
+
+  .card .card-header{
+    background-color: black !important;
+  }
+
+  .page-main-header{
+    background: white !important;
+    color: $green-color;
+  }
+
+  .icn-burger{
+    filter: invert(32%) sepia(25%) saturate(561%) hue-rotate(113deg) brightness(40%) contrast(90%);
+  }
+
+  .user-wallet{
+    color: $theme-color;
+  }
+
+  .btn-sportimo{
+    background: $theme-gradient;
+    color: white;
+  }
+
+}
+
