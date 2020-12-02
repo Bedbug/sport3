@@ -14,6 +14,7 @@
   background-position: left top;
   background-size: contain;
   background-repeat: no-repeat;
+  width: 100%;
 }
 
 // ok
@@ -28,6 +29,8 @@
 .grand-prize .card-body {
   padding-top: 0;
   padding-bottom: 0;
+  width: 100%;
+  display: flex;
 }
 
 // ok
@@ -181,7 +184,7 @@ transition: width 0.3s;
     align-items: center;
   }
   .prize-wrapper {
-    flex-flow: row nowrap;
+    flex-flow: row nowrap;    
   }
   .max-size {
     display: block;
