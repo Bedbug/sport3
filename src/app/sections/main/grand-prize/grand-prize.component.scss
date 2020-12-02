@@ -132,6 +132,10 @@ transition: width 0.3s;
   padding-top: 10px;
 }
 
+.user-chances{
+  padding: 0;
+}
+
 // .user-chances {
 //   font-family: $theme-font;
 //   font-weight: 700;
@@ -195,6 +199,10 @@ transition: width 0.3s;
 @include media-breakpoint-down(sm) {
   .mini {
     .grand-prize-text {
+      display: none !important;
+    }
+
+    .grand-prize-header{
       display: none !important;
     }
 
