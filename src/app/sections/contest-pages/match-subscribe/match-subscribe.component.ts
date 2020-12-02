@@ -25,8 +25,10 @@ export class MatchSubscribeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   Utils: SportimoUtils = new SportimoUtils();
   routeCache: any;
+  routePath: any;
   defaultProduct: any;
   onDemandResponse: boolean = false;
+  currentOperator: any;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -36,7 +38,7 @@ export class MatchSubscribeComponent implements OnInit {
     public translate: TranslateService,
     private errorDisplay: ErrorDisplayService,
     public dialogRef: FilePreviewOverlayRef,
-    private configuration:ConfigService,
+    private configuration: ConfigService,
     @Inject(FILE_PREVIEW_DIALOG_DATA) public data: any
   ) { }
 
@@ -44,22 +46,30 @@ export class MatchSubscribeComponent implements OnInit {
 
   ngOnInit() {
     // if(this.data)
-    // console.log(this.data);
+    // console.log(this.data);    
     this.contestMatch = this.data.match;
     this.routeCache = this.data.route;
+    this.routePath = this.data.routePath;
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isLoggedIn = user != null;
       this.user = user;
+      this.currentOperator = this.sportimoService.getConfigurationFor("operators").find(x => x.operatorCode == this.user.operatorId)
     });
 
-    let inAppConfiguration = this.sportimoService.getConfigurationFor("inappProducts");   
-    if(inAppConfiguration.length>0)
-    this.defaultProduct =inAppConfiguration[0];
+    let inAppConfiguration = this.sportimoService.getConfigurationFor("inappProducts");
+    if (inAppConfiguration.length > 0)
+      this.defaultProduct = inAppConfiguration[0];
+
+
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  get hasInApp() {
+    return this.currentOperator && this.currentOperator.webOnDemand;
   }
 
   requestJoin() {
@@ -68,18 +78,21 @@ export class MatchSubscribeComponent implements OnInit {
       this.errorDisplay.showError('101');
     else {
       // console.log("This");
-      
+
       // console.log(this.routeCache);
-      
+
       // this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.routeCache});
       // return;
       this.isJoinRequesting = true;
-      this.sportimoService.joinMatch(this.contestMatch.tournament, this.contestMatch._id).subscribe(x => {
-        this.isJoinRequesting = false; 
+      this.sportimoService.joinMatch(this.contestMatch.tournament._id || this.contestMatch.tournament, this.contestMatch._id).subscribe(x => {
+        this.isJoinRequesting = false;
 
         if (x.match) {
           this.authenticationService.pay(this.contestMatch.subscriptionPrice);
-          this.router.navigate(['match',this.contestMatch._id,'info'],{relativeTo:this.routeCache});
+          if (this.routePath)
+            this.router.navigate(this.routePath, { relativeTo: this.routeCache });
+          else
+            this.router.navigate(['match', this.contestMatch._id, 'info'], { relativeTo: this.routeCache });
           this.close();
         }
       });
@@ -87,9 +100,9 @@ export class MatchSubscribeComponent implements OnInit {
 
   }
 
-  getCoins(){   
+  getCoins() {
     this.isJoinRequesting = true;
-    this.sportimoService.buyProduct(this.defaultProduct).subscribe(response=>{    
+    this.sportimoService.buyProduct(this.defaultProduct).subscribe(response => {
       this.isJoinRequesting = false;
       // Open the ondemand response modal
       this.onDemandResponse = true;

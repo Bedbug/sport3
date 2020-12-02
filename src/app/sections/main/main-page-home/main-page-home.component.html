@@ -41,8 +41,10 @@
                                         aria-labelledby="upcoming-tab">
                                         <div class="matches-list-scrollarea">
                                             <div>
+                                                <!-- (click)="openContest(upcomingMatch.tournament._id, upcomingMatch._id)" -->
                                                 <div class="match-item isClickable"
-                                                    (click)="openContest(upcomingMatch.tournament._id, upcomingMatch._id)"
+                                                    
+                                                    (click)="openUpcomingMatch(upcomingMatch)"
                                                     *ngFor="let upcomingMatch of getUpcoming; let i = index">
                                                     <div class="match-contest-name">
                                                         <span style ="font-weight: bold;" translate>Contest</span>: {{ upcomingMatch.tournament.titleText[translate.currentLang]}}                                                        

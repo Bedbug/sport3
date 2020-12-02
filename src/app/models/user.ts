@@ -24,4 +24,5 @@ export class User {
     subscriptionEnd?: Date;
     wallet?: number;
     favTeams?: any;
+    operatorId?: any;
 }

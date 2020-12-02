@@ -77,6 +77,10 @@ $theme-gradient: linear-gradient(180deg, #8dc63f 0%, #668a3f 100%);
     background-color: $green-color2;
   }
 
+  .navbar.fixed-bottom.terms-footer{
+    background-color: $green-color2;
+  }
+
   .app-navbar a.active {
     border-bottom: solid 5px $green-color;
     color:  white;    
@@ -120,6 +124,8 @@ $theme-gradient: linear-gradient(180deg, #8dc63f 0%, #668a3f 100%);
     background: $theme-gradient;
     color: white;
   }
+
+  
 
 }
 

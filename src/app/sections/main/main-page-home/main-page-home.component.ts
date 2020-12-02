@@ -9,6 +9,8 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
+import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
+import { MatchSubscribeComponent } from '../../contest-pages/match-subscribe/match-subscribe.component';
 
 
 @Component({
@@ -43,7 +45,8 @@ export class MainPageHomeComponent implements OnInit {
     private sportimoService: SportimoService,
     public translate: TranslateService,
     private router: Router,
-    private route:ActivatedRoute
+    private route: ActivatedRoute,
+    private ViewModalOverlay: PrizeViewOverlayService
   ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -73,12 +76,37 @@ export class MainPageHomeComponent implements OnInit {
   }
 
   openContest(contestId: string, matchId: string) {
-    console.log(contestId);
-    console.log(this.config.getClient());
-
     // this.router.navigate([this.config.getClient(), 'contest', contestId, 'matches']);
     // this.router.navigate(['contest', contestId, 'matches']);
-    this.router.navigate(['../contest', contestId, 'match',matchId,'info'],{relativeTo:this.route.parent});
+    this.router.navigate(['../contest', contestId, 'match', matchId, 'info'], { relativeTo: this.route.parent });
+  }
+
+  openUpcomingMatch(upcomingMatch: any) {
+    console.log(upcomingMatch);
+    if (upcomingMatch.tournament.isSubscribed) {
+      console.log("Already subscribed");
+      // Handle Match subscription      
+      if(upcomingMatch.match.isSubscribed)
+      this.router.navigate(['../contest', upcomingMatch.tournament._id, 'match', upcomingMatch._id, 'info'], { relativeTo: this.route.parent });
+      else
+      this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent, {
+        data: {
+          match: upcomingMatch,
+          route: this.route.parent,
+          routePath: ['../contest', upcomingMatch.tournament._id, 'match', upcomingMatch._id, 'info']
+        }
+      });
+    } else {
+      // Handle contest subscription first
+      console.log("We need to subscribe to contest first");
+
+      this.sportimoService.joinContest(upcomingMatch.tournament._id).subscribe(x => {
+        console.log(x)
+        upcomingMatch.tournament.isSubscribed = true;
+        // Reflow
+        this.openUpcomingMatch(upcomingMatch);
+      });
+    }
   }
 
   openNotyf(title: string, message: string, error: boolean) {

@@ -46,6 +46,8 @@ export class OnboardComponent implements OnInit {
     _("susbcription_message_ACTIVEFREEPERIOD_action");
     _("susbcription_message_ACTIVE");
     _("susbcription_message_ACTIVE_action");
+    _("susbcription_message_INACTIVE");
+    _("susbcription_message_INACTIVE_action");
     _("susbcription_message_ENTER");
     _("GR");
     _("KZ");
@@ -477,6 +479,7 @@ export class OnboardComponent implements OnInit {
       this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
+            
             this.subState = response.state;
             if (this.subState == "UNSUB" && response.user.wallet > 0)
               this.subState = "UNSUBWITHCOINS";
@@ -484,8 +487,8 @@ export class OnboardComponent implements OnInit {
             //   this.subState = "ACTIVEFREEPERIOD";
             if (this.subState == "FREE")
               this.subState = "ACTIVEFREEPERIOD";
-            if (this.subState == "INACTIVE")
-              this.subState = "UNKNOWN";
+            // if (this.subState == "INACTIVE")
+            //   this.subState = "UNKNOWN";
             if (this.subState == "BLACKLISTED") {
               this.subState = "UNKNOWN";
               this.blacklisted = 1;
@@ -515,12 +518,13 @@ export class OnboardComponent implements OnInit {
           this.subState = response.state;
           if (this.subState == "UNSUB" && response.user.wallet > 0)
             this.subState = "UNSUBWITHCOINS";
-          if (this.subState == "ACTIVE" && response.user.inFreePeriod)
-            this.subState = "ACTIVEFREEPERIOD";
+            // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+          // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+          //   this.subState = "ACTIVEFREEPERIOD";
           if (this.subState == "FREE")
             this.subState = "ACTIVEFREEPERIOD";
-          if (this.subState == "INACTIVE")
-            this.subState = "UNKNOWN";
+          // if (this.subState == "INACTIVE")
+          //   this.subState = "UNKNOWN";
           if (this.subState == "BLACKLISTED") {
             this.subState = "UNKNOWN";
             this.blacklisted = 1;

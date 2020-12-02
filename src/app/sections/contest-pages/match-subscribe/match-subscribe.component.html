@@ -35,8 +35,9 @@
       <div *ngIf="contestMatch?.vipText" class="match-text-vip"><span
           translate>vipMatchAwards</span><br>{{contestMatch?.vipText[translate.currentLang]}}</div>
       <div class="match-text" translate [translateParams]="{value: contestMatch?.subscriptionPrice}">joinMatchInfo</div>
-      <div *ngIf="contestMatch?.subscriptionPrice > user?.wallet" class="match-text-nocoins" translate>joinMatchNoCoins
-      </div>
+      <div *ngIf="contestMatch?.subscriptionPrice > user?.wallet && hasInApp" class="match-text-nocoins" translate>joinMatchNoCoins</div>
+      <div *ngIf="contestMatch?.subscriptionPrice > user?.wallet && !hasInApp" class="match-text-nocoins" translate>joinMatchNoCoinsNoInApp</div>
+      
     </div>
     <!-- <div class="join-modal-header" translate>Join Contest</div>
     <div class="join-modal-contest">{{contestDetails?.titleText[translate.currentLang]}}</div>
@@ -59,27 +60,37 @@
         </div>
         </li> -->
         <li>
+          <!-- Flow: User has enough coins to Join -->
           <button *ngIf="contestMatch?.subscriptionPrice <= user?.wallet" [disabled]="isJoinRequesting"
             (click)="requestJoin()" class="btn btn-sportimo">
             <div class="loader-label" [class.btn-active]="isJoinRequesting">
-
               <span class="button-label">
                 <div *ngIf="contestMatch?.subscriptionPrice && contestMatch?.subscriptionPrice>0"><span
                     translate>Join</span> {{parseNumbers(contestMatch?.subscriptionPrice)}}<i class="coin"></i>
                 </div>
-                <div *ngIf="!contestMatch?.subscriptionPrice || contestMatch?.subscriptionPrice==0"><span translate>Join
-                    For Free</span></div>
+                <div *ngIf="!contestMatch?.subscriptionPrice || contestMatch?.subscriptionPrice==0"><span translate>Join For Free</span></div>
               </span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
             </div>
           </button>
-          <button *ngIf="contestMatch?.subscriptionPrice > user.wallet && defaultProduct" [disabled]="isJoinRequesting"
+          <!-- Flow: User has not enough coins to Join and operator permits In-App purchases -->
+          <button *ngIf="contestMatch?.subscriptionPrice > user.wallet && defaultProduct && hasInApp" [disabled]="isJoinRequesting"
             (click)="getCoins()" class="btn btn-sportimo">
             <div class="loader-label" [class.btn-active]="isJoinRequesting">
               <span class="button-label"> <span translate>Get</span>
                 {{parseNumbers(defaultProduct.payout)}}<i _ngcontent-vii-c2="" class="coin"></i></span>
+              <div class="fadeInLoader">
+                <span class="rotate dotted button-loader"></span>
+              </div>
+            </div>
+          </button>
+          <!-- Flow: User has not enough coins to Join and operator does not permit In-App purchases -->
+          <button *ngIf="contestMatch?.subscriptionPrice > user.wallet && !hasInApp" [disabled]="true"
+            (click)="getCoins()" class="btn btn-sportimo">
+            <div class="loader-label" [class.btn-active]="isJoinRequesting">
+              <span class="button-label"> <span translate>Join</span></span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
