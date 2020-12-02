@@ -6,6 +6,7 @@ import { SportimoService } from './services/sportimo.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ export class AppComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private gtmService: GoogleTagManagerService,
-    private cookieservice: CookieService
+    private cookieservice: CookieService,
+    private authenticationService: AuthenticationService
   ) {
 
     this.router.events.forEach(item => {
@@ -57,8 +59,10 @@ export class AppComponent {
         var expires = "expires=" + d.toUTCString();
 
         // console.log(page);
-        this.cookieservice.set('session', page, d, "/");
-        parent.postMessage(page, "*");
+        this.cookieservice.set('session', page, d, "/");        
+        
+        if(this.authenticationService.currentUserValue)
+         { parent.postMessage(page, "*");}
 
         this.gtmService.pushTag(gtmTag);
       }
