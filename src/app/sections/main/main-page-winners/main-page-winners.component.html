@@ -1,21 +1,34 @@
 <div class="background"></div>
 <div class="container background-container">
-<div class="row" style="position: relative">
-  <div class="main-pages-header" translate>Sportimo Winners</div>
-  <div class="main-pages-scrollarea container p-t-15">
-    <div class="winner-card" *ngFor="let winner of winners" >
-      <div class="winner-card-header col-12">
-        <img *ngIf="winner.user?.picture" class="rounded-circle" src="{{winner.user?.picture}}" alt="#">
-        <div>{{winner.user?.username}}</div>
-      </div>
-      <div class="winner-card-body">
-        <div class="winner-prize">{{winner.prizeName[translate.currentLang]}}</div>
-        <div class="row">
-          <div class="col-8 prize-info"><span translate>Rank</span> {{winner.prizeRank}}, {{winner.contestName[translate.currentLang]}} - {{translate.instant(winner.winnerPrizeSource)}}</div>
-          <div class="col-4 prize-date text-right">{{parseDate(winner.awardDate)}}</div>
+  <div class="row" style="position: relative">
+    <div class="main-pages-header" translate>Sportimo Winners</div>
+    <div class="main-pages-scrollarea container p-t-15">
+      <div *ngIf="winners.length >0">
+        <div class="winner-card" *ngFor="let winner of winners">
+          <div class="winner-card-header col-12">
+            <img *ngIf="winner.user?.picture" class="rounded-circle" src="{{winner.user?.picture}}" alt="#">
+            <div>{{winner.user?.username}}</div>
+          </div>
+          <div class="winner-card-body">
+            <div class="winner-prize">{{winner.prizeName[translate.currentLang]}}</div>
+            <div class="row">
+              <div class="col-8 prize-info"><span translate>Rank</span> {{winner.prizeRank}},
+                {{winner.contestName[translate.currentLang]}} - {{translate.instant(winner.winnerPrizeSource)}}</div>
+              <div class="col-4 prize-date text-right">{{parseDate(winner.awardDate)}}</div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="nowinners-card"  *ngIf="winners.length == 0">
+        <div class="nowinners-header" translate>no-winners_title</div>
+        <div class="nowinners-body">
+          <!-- <div class="nowinners-title" translate>no-cards_title</div> -->
+          <div class="nowinners-img">
+            <img src="./assets/images/sportimo/winnerscup.svg" alt="">         
+          </div>
+          <div class="nowinners-info" translate>no-winners_message</div>
+        </div>
+      </div>
+     
     </div>
   </div>
-</div>
-</div>
