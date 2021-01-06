@@ -17,6 +17,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
 import { MainPageNewsComponent } from './main-page-news/main-page-news.component';
 import { SafeHTMLPipe } from 'src/app/pipes/safe-html.pipe';
+import { MainPageFAQComponent } from './main-page-faq/main-page-faq.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SafeHTMLPipe } from 'src/app/pipes/safe-html.pipe';
     MainPageInboxComponent,
     MainPageAvatarsComponent,
     MainPageNewsComponent,
+    MainPageFAQComponent,
     // OnboardComponent,
     SafeHTMLPipe
 ],

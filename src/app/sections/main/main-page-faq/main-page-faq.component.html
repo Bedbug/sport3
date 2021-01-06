@@ -1,0 +1,30 @@
+<div class="background"></div>
+<div class="container background-container">
+<div class="row" style="position: relative">
+  <div class="main-pages-header" translate>faq_title</div>
+  <div class="tags-container">
+    <div class="tags-header" translate>faq_header</div>
+    <div class="tags-root">
+      <div *ngFor = "let tag of tags" class="tag isClickable" (click) ="toggleTag(tag.category)" [class.active]="tag.category == selectedTag" >{{tag.categoryTitle[translate.currentLang]}}</div>
+      <!-- <div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div> -->
+    </div>
+    
+  </div>
+  <div class="main-tags-scrollarea container">
+    <div class="question" *ngFor = "let faq of filteredData">
+      <div class="question-text">{{faq.question[translate.currentLang]}}</div>
+      <div class="icn-arrow"></div>
+    </div>
+    <!-- <div class="messsage-card" [class.unread]="!message.read"  *ngFor="let message of messages">
+      <div class="message-card-side">
+        <div class="icn-mail"></div>
+        <div class="dot">•</div>
+      </div>
+      <div class="message-card-main">
+        <div class="title">{{message.title[translate.currentLang]}}</div>
+        <div class="date">{{parseDate(message.created)}}</div>
+        <div class="text formated-text" [innerHTML] ="message.msg[translate.currentLang]"></div>
+      </div>
+    </div> -->
+  </div>
+</div>

@@ -527,6 +527,14 @@ body .page-wrapper .page-main-header {
   background-size: contain;
 }
 
+.icn-arrow {
+  background: url("~src/assets/images/sportimo/arrow.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+}
+
+
 .icn-arrow-out {
   background: url("~src/assets/images/sportimo/arrow-out.svg") no-repeat center center;
   display: block;
@@ -1139,11 +1147,27 @@ body .page-wrapper .page-main-header {
   margin: 0 0;
 }
 
+.main-tags-scrollarea {
+  width: 100%;
+  height: calc(100vh - 140px);
+  height: calc((var(--vh, 1vh) * 100) - 300px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0;
+}
+
+
 @media (min-width: 992px){
   .main-pages-scrollarea {
   height: calc(100vh - 200px);
   height: calc((var(--vh, 1vh) * 100) - 200px);
   }
+
+  .main-tags-scrollarea {
+    height: calc(100vh - 200px);
+    height: calc((var(--vh, 1vh) * 100) - 200px);
+    }
 }
 
 /**=====================

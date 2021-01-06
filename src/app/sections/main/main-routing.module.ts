@@ -9,6 +9,7 @@ import { MainPageProfileComponent } from './main-page-profile/main-page-profile.
 import { MainPageInboxComponent } from './main-page-inbox/main-page-inbox.component';
 import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.component';
 import { MainPageNewsComponent } from './main-page-news/main-page-news.component';
+import { MainPageFAQComponent } from './main-page-faq/main-page-faq.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: MainPageProfileComponent
+      },
+      {
+        path: 'faq',
+        component: MainPageFAQComponent
       },
       {
         path: 'inbox',
