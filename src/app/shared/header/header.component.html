@@ -192,7 +192,7 @@
             </ul> -->
                     <div *ngIf="currentUser && useWallet" class="user-wallet">{{parseNumbers(currentUser.wallet)}}<i
                             class="coin"></i></div>
-                    <div class="mobile-toggle">
+                    <div class="mobile-toggle isClickable">
                         <div class="icn-burger" style="height: 24px;width: 30px;"></div>
                         <span *ngIf="currentUser && currentUser?.unread>0" style="position: absolute;
                         top: 0px;

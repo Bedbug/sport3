@@ -5,7 +5,7 @@
     <div class="user-balance">
       <span translate>Balance</span> {{user?.wallet}}<i class="coin"></i>
     </div>
-    <div (click)="close()" class="modal-exit pull-right">X</div>
+    <div (click)="close()" class="modal-exit pull-right isClickable">X</div>
   </div>
   <div class="modal-card-body text-center">
 
@@ -110,7 +110,7 @@
   <!-- (click)="preventDefault($event)" -->
   <div class="modal-card-header">
     <div class="modal-title"></div>
-    <div (click)="close()" class="modal-exit pull-right">X</div>
+    <div (click)="close()" class="modal-exit pull-right isClickable">X</div>
   </div>
   <div class="modal-card-body text-center">
     <div class="demand-response">

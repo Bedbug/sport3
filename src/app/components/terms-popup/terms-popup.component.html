@@ -2,7 +2,7 @@
   <!-- (click)="preventDefault($event)" -->
   <div class="modal-card-header">
     <div class="modal-title" translate>Terms & Conditions</div>
-    <div (click)="close()" class="modal-exit pull-right">X</div>
+    <div (click)="close()" class="modal-exit pull-right isClickable">X</div>
   </div>
   <div class="modal-card-body text-center">
     <div *ngIf="terms" [innerHTML]="terms[translate.currentLang]"></div>

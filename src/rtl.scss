@@ -264,6 +264,20 @@
     text-align: right;
   }
 
+  .grand-prize-formated-text{
+    direction: rtl;
+    text-align: left;
+  }
+
+  @media (max-width: 991px) {
+    
+      .grand-prize-formated-text{
+        direction: rtl;
+        text-align: right;
+      }
+    
+  }
+
   .achievement-item .progress-text-ltr {
     display: none !important;
   }

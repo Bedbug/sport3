@@ -2,7 +2,7 @@
 <div class="row" style="position: relative">
   <div class="card" style="margin-bottom: 0; width: 100%">
     <div class="card-body">
-      <div class="row">
+      <div class="row contest-info-header">
         <div class="prize-top-header">
         <div class="prize-name font-weight-bold text-white isClickable" [innerHTML]="prize?.titleText[translate.currentLang]||'_Name Missing'">
         
@@ -15,7 +15,7 @@
               translate>Your points:</span> <span> {{parseNumbers(userChances) || parseNumbers(0) || 0}}</span></div>
         </div>
       </div>
-        <div (click)="close()" class="close-button">X</div>
+        <div (click)="close()" class="close-button isClickable">X</div>
       </div>
       <div class="sportimo-divider"></div>
     </div>
@@ -73,7 +73,7 @@
             <div class="col p-0">{{countdown.minutes<10?"0"+countdown.minutes:countdown.minutes}}</div>
           </div>
 
-          <div class="p-15 text-white formated-text">
+          <div class="p-20 text-white formated-text">
             <div *ngIf="prize?.detailText" [innerHTML]="prize?.detailText[translate.currentLang]"></div>
           </div>
 

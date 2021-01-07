@@ -293,7 +293,7 @@
 	"susbcription_message_ENTER": "{{value}} أدخل",
 	"susbcription_message_INACTIVE": "<b>!أهلا برجوعك</b><br>.أدخل رمز المرور لمواصلة اللعب",
 	"susbcription_message_INACTIVE_action": "العب",
-	"susbcription_message_UNKNOWN": "<b> !{{value}} أهلا بك في<br>.انضم واستمتع</b>",
+	"susbcription_message_UNKNOWN": "<b>! أهلا بك في {{value}} <br>.انضم واستمتع</b>",
 	"susbcription_message_UNKNOWN_action": "العب مجانا",
 	"susbcription_message_UNSUB": "<b>!أهلا برجوعك</b><br>.اشترك مجددا واستمر في اللعب",
 	"susbcription_message_UNSUBWITHCOINS": "<b>!أهلا برجوعك</b><br>.قم بإعادة الاشتراك أو العب بعملاتك الحالية",
