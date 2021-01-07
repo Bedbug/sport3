@@ -58,11 +58,16 @@ export class ContentComponent implements OnInit {
     }));
 
 
+    this.translate.setDefaultLang('en');
+    let selected_language = localStorage.getItem('language');
+    this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
+    console.log("Setting language");
+    
     this.sportimoService.getClientConfiguration().subscribe(data => {
 
-      let selected_language = localStorage.getItem('language');
+      
       // this language will be used as a fallback when a translation isn't found in the current language
-      this.translate.setDefaultLang('en');
+     
       // translate.getTranslation('en').subscribe(() => {});
       // the lang to use, if the lang isn't available, it will use the current loader to get them
       this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));

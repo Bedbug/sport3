@@ -54,6 +54,7 @@ export class SidebarComponent implements OnInit {
         _('Standings');
         _('Settings');
         _('About Sportimo');
+        _('FAQ');
         _('How to Play');
         _('Support');
         _('Terms & Conditions');

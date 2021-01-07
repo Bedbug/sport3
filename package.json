@@ -71,7 +71,7 @@
     "ngx-socket-io": "^2.1.1",
     "ngx-toastr": "^9.2.0",
     "ngx-translate-extract": "^1.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.0",
     "path": "^0.12.7",
     "popper.js": "^1.15.0",
     "replace-in-file": "^4.3.1",

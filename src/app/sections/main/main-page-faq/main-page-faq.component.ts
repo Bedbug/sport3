@@ -1,7 +1,8 @@
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import * as _ from 'lodash';
+import Typewriter from 'src/assets/js/t-writer.js'
 
 @Component({
   selector: 'app-main-page-faq',
@@ -27,7 +28,7 @@ import * as _ from 'lodash';
     )
   ]
 })
-export class MainPageFAQComponent implements OnInit {
+export class MainPageFAQComponent implements OnInit, AfterViewInit {
 
   tags = [];
   filteredData = [];
@@ -144,11 +145,17 @@ export class MainPageFAQComponent implements OnInit {
     }
   ]
   animate: boolean;
+  headerCharactersLength:number;
+
+  translateMappings() {
+    _("faq_header");
+  }
 
   constructor(   public translate: TranslateService) { }
 
   ngOnInit() {
-    // this.tags = [...new Set(this.data.map(item => {item.category,item.categoryTitle}))];
+    // this.tags = [...new Set(this.data.map(item => {item.category,item.categoryTitle}))];  
+
     this.tags = _.uniqBy(this.data, "category");
     this.filteredData = this.data;
     console.log(this.tags);    
@@ -163,6 +170,38 @@ export class MainPageFAQComponent implements OnInit {
 
     this.FilterData();
     this.animate = !this.animate;
+  }
+
+  ngAfterViewInit(){
+    const target = document.querySelector('.tw');
+        
+    const writer = new Typewriter(target, {  
+      loop: false,
+      typeColor: '#fff',
+      cursorColor: '#fff',
+      typeSpeed: 60,
+    })
+
+    this.translate.stream('faq_header').subscribe((res: string) => {
+      // console.log("Now:"+res);
+      if(res === 'faq_header')
+      return;      
+            
+      writer.clearQueue();
+
+      writer            
+      .type(res)      
+      .rest(3500)
+      .removeCursor()    
+      .start();
+
+      // writer.clearQueue();
+
+      // this.headerCharactersLength = res.length;
+      //=> 'hello world'
+  }); 
+      
+   
   }
 
   FilterData() {
