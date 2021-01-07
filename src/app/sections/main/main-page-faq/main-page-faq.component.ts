@@ -33,6 +33,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
   tags = [];
   filteredData = [];
   selectedTag = null;
+  selectedFaq = null;
   data = [
     {
       category: "Cards",
