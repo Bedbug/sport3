@@ -207,7 +207,7 @@
 	"You can always edit your username at your Profile tab": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You can change your Username anytime from your Profile": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You have insufficient coins to join": "Кіру үшін, сіздің тиындарыңыз жеткіліксіз",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "",
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
@@ -265,6 +265,8 @@
 		"10006": "",
 		"10007": "Сізде басқа қолжетімді күшейткіштер жоқ."
 	},
+	"faq_header": "",
+	"faq_title": "",
 	"farsi": "فارسی",
 	"french": "",
 	"grandprize_loc_key": "Ай сайынғы ұтыс",

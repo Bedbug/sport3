@@ -5,14 +5,19 @@
     padding: 5px 20px 20px;
 }
 
+.main-answer-scrollarea {
+    background-color: #00000066;
+    padding: 20px 20px;
+}
+
 .tags-container {
     // height: 150px;
     width: 100%;
     background-color: #3f4856;
     background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
-    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
 }
 
 .tags-root {
@@ -24,15 +29,32 @@
     flex-wrap: wrap;
 }
 
-.tags-header {
-    margin-top: 10px;
+.answer-header{
+    width: 100%;
+    background-color: #3f4856;
+    background-image: linear-gradient(-180deg, #3f4856 0%, #28313d 100%);
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    margin: auto;
+    display: flex;
+    padding: 20px 20px;   
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #fff;
+    font-weight: 700;
+}
+
+.tags-header {    
     color: #fff;
     width: 100%;
     text-align: center;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 35px;
+    padding: 10px;
     // background-color: black;
 }
+
 
 .tag {
     color: $theme-color;
@@ -69,18 +91,40 @@
     align-items: center;
     justify-content: space-between;
 
-    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.35);
 }
 
 .question-text {
     max-width: 90%;
 }
 
+.question-text-header {
+    max-width: 90%;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.answer-text{
+    color: #fff;
+    font-weight: 100;
+}
+
 .icn-arrow {
+    width: 15px;
+    height: 15px;    
+    // filter: sepia(16%) saturate(3954%) hue-rotate(358deg) brightness(101%) contrast(106%);
+}
+
+.icn-arrow-flipped{
     width: 15px;
     height: 15px;
     transform: rotateZ(180deg);
-    // filter: sepia(16%) saturate(3954%) hue-rotate(358deg) brightness(101%) contrast(106%);
 }
+
+@media (min-width: 768px) {
+    .background {
+      top: 50px;
+    }
+  }

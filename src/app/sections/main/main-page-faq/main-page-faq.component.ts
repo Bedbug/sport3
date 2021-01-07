@@ -1,3 +1,4 @@
+import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as _ from 'lodash';
@@ -5,13 +6,32 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-main-page-faq',
   templateUrl: './main-page-faq.component.html',
-  styleUrls: ['./main-page-faq.component.scss']
+  styleUrls: ['./main-page-faq.component.scss'],
+  animations: [
+    trigger(
+      'staggerAnimation', [
+        transition('* => *', [
+          query(':enter', style({ opacity: 0 }), { optional: true }),
+          query(
+            ':enter',
+            stagger(
+              '100ms', [
+                animate('200ms', style({ opacity: 1 }))
+              ]), { optional: true })
+              ,
+          // query(':leave', 
+          //   animate('100ms', style({ opacity: 0 }))
+          // )
+        ]),
+      ]
+    )
+  ]
 })
 export class MainPageFAQComponent implements OnInit {
 
   tags = [];
   filteredData = [];
-  selectedTag = "Coins";
+  selectedTag = null;
   data = [
     {
       category: "Cards",
@@ -19,7 +39,7 @@ export class MainPageFAQComponent implements OnInit {
         en:"Cards"
       },
       question:{
-        en:"How do I join a contest?"
+        en:"[Cards] How do I join a contest?"
       },
       answer: {
         en:"<b> this is the begining</b>"
@@ -31,7 +51,31 @@ export class MainPageFAQComponent implements OnInit {
         en:"Coins"
       },
       question:{
-        en:"This is a really large question that shou exceed a single line. So here it is. How do I join a contest?"
+        en:"[Coins] This is a really large question that shou exceed a single line. So here it is. How do I join a contest?"
+      },
+      answer: {
+        en:"<b> this is the begining</b>"
+      }
+    },
+    {
+      category: "Coins",
+      categoryTitle:{
+        en:"Coins"
+      },
+      question:{
+        en:"[Coins] This is a really large question that shou exceed a single line. So here it is. How do I join a contest?"
+      },
+      answer: {
+        en:"<b> this is the begining</b>"
+      }
+    },
+    {
+      category: "Coins",
+      categoryTitle:{
+        en:"Coins"
+      },
+      question:{
+        en:"[Coins] This is a really large question that shou exceed a single line. So here it is. How do I join a contest?"
       },
       answer: {
         en:"<b> this is the begining</b>"
@@ -43,7 +87,31 @@ export class MainPageFAQComponent implements OnInit {
         en:"Matches"
       },
       question:{
-        en:"How do I join a contest?"
+        en:"[Matches] How do I join a contest?"
+      },
+      answer: {
+        en:"<b> this is the begining</b>"
+      }
+    },
+    {
+      category: "Matches",
+      categoryTitle:{
+        en:"Matches"
+      },
+      question:{
+        en:"[Matches] How do I join a contest?"
+      },
+      answer: {
+        en:"<b> this is the begining</b>"
+      }
+    },
+    {
+      category: "Matches",
+      categoryTitle:{
+        en:"Matches"
+      },
+      question:{
+        en:"[Matches] How do I join a contest?"
       },
       answer: {
         en:"<b> this is the begining</b>"
@@ -55,7 +123,7 @@ export class MainPageFAQComponent implements OnInit {
         en:"Gameplay"
       },
       question:{
-        en:"How do I join a contest?"
+        en:"[Gameplay] How do I join a contest?"
       },
       answer: {
         en:"<b> this is the begining</b>"
@@ -68,19 +136,20 @@ export class MainPageFAQComponent implements OnInit {
         en:"Prizes"
       },
       question:{
-        en:"How do I join a contest?"
+        en:"[Prizes] How do I join a contest?"
       },
       answer: {
         en:"<b> this is the begining</b>"
       }
     }
   ]
+  animate: boolean;
 
   constructor(   public translate: TranslateService) { }
 
   ngOnInit() {
     // this.tags = [...new Set(this.data.map(item => {item.category,item.categoryTitle}))];
-    this.tags = _.uniq(this.data, "category");
+    this.tags = _.uniqBy(this.data, "category");
     this.filteredData = this.data;
     console.log(this.tags);    
   }
@@ -92,6 +161,16 @@ export class MainPageFAQComponent implements OnInit {
       this.selectedTag = tag;
     }
 
+    this.FilterData();
+    this.animate = !this.animate;
+  }
+
+  FilterData() {
+    if(this.selectedTag){
+      this.filteredData = _.filter(this.data, {'category': this.selectedTag});
+    }else{
+      this.filteredData = this.data;
+    }
   }
 
 }

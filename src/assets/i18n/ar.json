@@ -207,7 +207,7 @@
 	"You can always edit your username at your Profile tab": "يمكنك دائما تعديل اسم المستخدم الخاص بك في صفحتك الشخصية",
 	"You can change your Username anytime from your Profile": "يمكنك دائما تغيير اسم المستخدم الخاص بك في صفحتك الشخصية",
 	"You have insufficient coins to join": "لا يوجد لديك عملات كافية للانضمام",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "يجب أن يكون اشتراكك فعال لتتمكن من لعب البطاقات",
 	"Your chances:": "فرصك: ",
 	"Your points:": "نقاطك:",
@@ -265,6 +265,8 @@
 		"10006": "",
 		"10007": "متاحة Power ups لا يوجد "
 	},
+	"faq_header": "",
+	"faq_title": "",
 	"farsi": "فارسی",
 	"french": "French",
 	"grandprize_loc_key": "الجائزة الشهرية",

@@ -207,7 +207,7 @@
 	"You can always edit your username at your Profile tab": "You can always edit your username at your Profile tab",
 	"You can change your Username anytime from your Profile": "You can change your Username anytime from your Profile",
 	"You have insufficient coins to join": "You have insufficient coins to join",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "You need to have an active subscription in order to play cards",
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
@@ -265,6 +265,8 @@
 		"10006": "",
 		"10007": "No more power ups available"
 	},
+	"faq_header": "What would you like to know about?",
+	"faq_title": "Frequently Asked Questions",
 	"farsi": "فارسی",
 	"french": "French",
 	"grandprize_loc_key": "Monthly Prize",

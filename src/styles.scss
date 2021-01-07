@@ -57,7 +57,6 @@
   -webkit-overflow-scrolling: touch;
 }
 
-
 @media only screen and (max-width: 575px) {
   .page-wrapper .page-body-wrapper .card-prize {
     margin-bottom: 15px;
@@ -75,7 +74,6 @@
     -webkit-overflow-scrolling: touch;
     margin: 0;
   }
-
 
   .main-pages-scrollarea {
     height: calc((var(--vh, 1vh) * 100) - 144px);
@@ -110,7 +108,6 @@
     -webkit-overflow-scrolling: touch;
     margin: 0;
   }
-
 
   // Standings
   .standings-scrollarea {
@@ -533,7 +530,6 @@ body .page-wrapper .page-main-header {
   text-indent: -9999px;
   background-size: contain;
 }
-
 
 .icn-arrow-out {
   background: url("~src/assets/images/sportimo/arrow-out.svg") no-repeat center center;
@@ -1014,7 +1010,6 @@ body .page-wrapper .page-main-header {
   border-bottom-color: #ffc107;
 }
 
-
 .match-contest-name {
   color: white;
   background-color: #21255dba;
@@ -1023,7 +1018,6 @@ body .page-wrapper .page-main-header {
   text-align: left;
   padding-left: 15px;
 }
-
 
 /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
 
@@ -1157,17 +1151,31 @@ body .page-wrapper .page-main-header {
   margin: 0 0;
 }
 
+.main-answer-scrollarea {
+  width: 100%;
+  height: calc(100vh - 140px);
+  height: calc((var(--vh, 1vh) * 100) - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 0;
+}
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .main-pages-scrollarea {
-  height: calc(100vh - 200px);
-  height: calc((var(--vh, 1vh) * 100) - 200px);
+    height: calc(100vh - 200px);
+    height: calc((var(--vh, 1vh) * 100) - 200px);
   }
 
   .main-tags-scrollarea {
     height: calc(100vh - 200px);
     height: calc((var(--vh, 1vh) * 100) - 200px);
-    }
+  }
+
+  .main-answer-scrollarea {
+    height: calc(100vh - 200px);
+    height: calc((var(--vh, 1vh) * 100) - 200px);
+  }
 }
 
 /**=====================
@@ -1670,7 +1678,7 @@ body .page-wrapper .page-main-header {
 .leaders-table {
   display: table;
   width: 100%;
-  background-color: #2A323D;    
+  background-color: #2a323d;
 }
 .leaders-header {
   display: table-row;
@@ -1737,26 +1745,26 @@ body .page-wrapper .page-main-header {
   display: table;
 }
 
-.connection-status{
+.connection-status {
   position: fixed;
-    height: 30px;
-    background-color: red;
-    z-index: 9999;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-weight: 700;
-    line-height: 30px;
+  height: 30px;
+  background-color: red;
+  z-index: 9999;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  line-height: 30px;
 }
 
-.connection-restored{
+.connection-restored {
   position: fixed;
-    height: 30px;
-    background-color: green;
-    z-index: 9999;
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-weight: 700;
-    line-height: 30px;
+  height: 30px;
+  background-color: green;
+  z-index: 9999;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  line-height: 30px;
 }

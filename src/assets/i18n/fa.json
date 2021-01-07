@@ -207,7 +207,7 @@
 	"You can always edit your username at your Profile tab": "نام کاربری را در نمایه خود می توانید تغییر دهید",
 	"You can change your Username anytime from your Profile": "می توانید نام کاربری خود را در هر زمان از نمایه خود تغییر دهید",
 	"You have insufficient coins to join": "شما اعتبار کافی ندارید",
-	"You need to have an active subscription in order to\n          play cards": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "برای بازی کردن ، باید اشتراک فعال داشته باشید",
 	"Your chances:": "شانس‌های شما: ",
 	"Your points:": "امیتازهای شما",
@@ -265,6 +265,8 @@
 		"10006": "",
 		"10007": ""
 	},
+	"faq_header": "",
+	"faq_title": "",
 	"farsi": "فارسی",
 	"french": "",
 	"grandprize_loc_key": "جایزه بزرگ",

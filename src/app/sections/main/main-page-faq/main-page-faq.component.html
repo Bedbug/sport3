@@ -1,30 +1,35 @@
 <div class="background"></div>
 <div class="container background-container">
-<div class="row" style="position: relative">
-  <div class="main-pages-header" translate>faq_title</div>
-  <div class="tags-container">
-    <div class="tags-header" translate>faq_header</div>
-    <div class="tags-root">
-      <div *ngFor = "let tag of tags" class="tag isClickable" (click) ="toggleTag(tag.category)" [class.active]="tag.category == selectedTag" >{{tag.categoryTitle[translate.currentLang]}}</div>
-      <!-- <div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div> -->
-    </div>
-    
-  </div>
-  <div class="main-tags-scrollarea container">
-    <div class="question" *ngFor = "let faq of filteredData">
-      <div class="question-text">{{faq.question[translate.currentLang]}}</div>
-      <div class="icn-arrow"></div>
-    </div>
-    <!-- <div class="messsage-card" [class.unread]="!message.read"  *ngFor="let message of messages">
-      <div class="message-card-side">
-        <div class="icn-mail"></div>
-        <div class="dot">•</div>
+  <div class="row" style="position: relative">
+    <div class="main-pages-header" translate>faq_title</div>
+
+    <!-- QUESTIONS LIST -->
+    <div id="Questions-List" *ngIf="!selectedFaq" style="width: 100%;">
+      <div class="tags-container">
+        <div class="tags-header" translate>faq_header</div>
+        <div class="tags-root">
+          <div *ngFor="let tag of tags" class="tag isClickable" (click)="toggleTag(tag.category)"
+            [class.active]="tag.category == selectedTag">{{tag.categoryTitle[translate.currentLang]}}</div>
+          <!-- <div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div><div class="tag">Test</div> -->
+        </div>
+
       </div>
-      <div class="message-card-main">
-        <div class="title">{{message.title[translate.currentLang]}}</div>
-        <div class="date">{{parseDate(message.created)}}</div>
-        <div class="text formated-text" [innerHTML] ="message.msg[translate.currentLang]"></div>
+      <div class="main-tags-scrollarea container" [@staggerAnimation]="animate">
+        <div (click)="selectedFaq = faq" class="question isClickable" *ngFor="let faq of filteredData">
+          <div class="question-text">{{faq.question[translate.currentLang]}}</div>
+          <div class="icn-arrow icn-arrow-flipped"></div>
+        </div>
       </div>
-    </div> -->
+    </div>
+
+    <!-- ANSWER -->
+    <div id="Answer" *ngIf="selectedFaq" style="width: 100%;">
+      <div (click)="selectedFaq = null" class="answer-header isClickable">
+        <div class="icn-arrow"></div>
+        <div class="question-text-header">{{selectedFaq.question[translate.currentLang]}}</div>       
+      </div>
+      <div class="main-answer-scrollarea container" [@staggerAnimation]="animate">
+      <div [innerHTML]="selectedFaq.answer[translate.currentLang]" class="answer-text"></div>
+      </div>
+    </div>
   </div>
-</div>
