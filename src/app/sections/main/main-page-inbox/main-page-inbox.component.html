@@ -13,6 +13,14 @@
         <div class="date">{{parseDate(message.created)}}</div>
         <div class="text formated-text" [innerHTML] ="message.msg[translate.currentLang]"></div>
       </div>
+      <div (click) = "deleteMessage(message)" class="delete-button isClickable">
+        <div *ngIf="!message.isDeleting" class="icn-trash"></div>
+        <div *ngIf="message.isDeleting" class="loader-label" [class.btn-active]="true">                            
+          <div class="fadeInLoader">
+            <span class="rotate dotted button-loader"></span>
+          </div>
+        </div>         
+      </div>
     </div>
   </div>
 </div>

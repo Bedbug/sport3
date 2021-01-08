@@ -48,6 +48,26 @@
   opacity: 0.3;
 }
 
+.delete-button{
+  width: 65px;
+  height: 45px;
+  border: 2px solid #dc3545;
+  border-radius: 10px;
+  align-self: center;  
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-button [class^="icn-"] {
+  width: 25px;
+  height: 25px;  
+}
+
+.button-loader{
+  border-color: #dc3545;
+}
+
 .unread .message-card-side {
   opacity: 1;
 }

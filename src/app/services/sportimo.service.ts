@@ -36,6 +36,7 @@ import * as io from 'socket.io-client';
   providedIn: 'root'
 })
 export class SportimoService {
+ 
 
 
   private defaultConfiguration = {
@@ -678,6 +679,10 @@ export class SportimoService {
    ----------------------------------------------------------------------------------- */
   getMessages() {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/messages`);
+  }
+
+  deleteMessage(messageId: string) {
+    return this.http.delete<any>(`${this.Config.getApi("ROOT")}/users/${this.authenticationService.currentUserValue._id}/messages/${messageId}`);
   }
 
   /*-----------------------------------------------------------------------------------

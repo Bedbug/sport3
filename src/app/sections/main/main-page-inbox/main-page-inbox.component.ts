@@ -4,6 +4,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import moment from 'moment-mini';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-main-page-inbox',
@@ -33,6 +34,18 @@ export class MainPageInboxComponent implements OnInit {
         });
       this.messages = x;
     })
+  }
+
+  deleteMessage(message:any){
+    message.isDeleting = true;    
+    this.sportimoService.deleteMessage(message._id).subscribe(x=>{
+      console.log(x);
+      message.isDeleting = false;
+      _.remove(this.messages, (n)=>{
+        return n._id == message._id;
+       })  
+    })
+    
   }
 
   ngOnDestroy() {

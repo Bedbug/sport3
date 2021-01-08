@@ -176,6 +176,10 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
           
     this.translate.stream('faq_header').subscribe((res: string) => {
+
+      if(res === 'faq_header')
+      return;      
+            
       const target = document.querySelector('.tw');
     
       const writer = new Typewriter(target, {  
@@ -185,11 +189,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
         typeSpeed: 60,
       })    
 
-      // 
 
-      if(res === 'faq_header')
-      return;      
-            
       writer.clearQueue();
 
       writer          
