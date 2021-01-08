@@ -41,7 +41,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
         en:"Cards"
       },
       question:{
-        en:"[Cards] How do I join a contest?"
+        en:"How do I join a contest?"
       },
       answer: {
         en:"<b> this is the begining</b>"
@@ -174,28 +174,32 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(){
-    const target = document.querySelector('.tw');
-        
-    const writer = new Typewriter(target, {  
-      loop: false,
-      typeColor: '#fff',
-      cursorColor: '#fff',
-      typeSpeed: 60,
-    })
-
+          
     this.translate.stream('faq_header').subscribe((res: string) => {
-      // console.log("Now:"+res);
+      const target = document.querySelector('.tw');
+    
+      const writer = new Typewriter(target, {  
+        loop: false,
+        typeColor: '#fff',
+        cursorColor: '#fff',
+        typeSpeed: 60,
+      })    
+
+      // 
+
       if(res === 'faq_header')
       return;      
             
       writer.clearQueue();
 
-      writer            
+      writer          
+      .remove(10)  
       .type(res)      
       .rest(3500)
       .removeCursor()    
       .start();
 
+      target.removeChild(target.firstChild);
       // writer.clearQueue();
 
       // this.headerCharactersLength = res.length;

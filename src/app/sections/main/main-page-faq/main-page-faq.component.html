@@ -4,7 +4,7 @@
     <div class="main-pages-header" translate>faq_title</div>
 
     <!-- QUESTIONS LIST -->
-    <div id="Questions-List" *ngIf="!selectedFaq" style="width: 100%;">
+    <div id="Questions-List" [hidden]="selectedFaq" style="width: 100%;">
       <div class="tags-container">
         <div class="tags-header tw"></div>
         <div class="tags-root">
