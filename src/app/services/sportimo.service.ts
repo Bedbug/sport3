@@ -36,8 +36,6 @@ import * as io from 'socket.io-client';
   providedIn: 'root'
 })
 export class SportimoService {
- 
-
 
   private defaultConfiguration = {
     appName: { "en": "Sportimo", "ar": "", "fa": "" },
@@ -135,6 +133,10 @@ export class SportimoService {
   getHomeMatches() {
     // http://localhost:3030/client-api/v1/data/client/5be2bfc7135a3e1e2d4a637f/top-picks/matches/upcoming
     return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/matches/front-page`);
+  }
+
+  getFAQs() {
+    return this.http.get<any[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/faq`);
   }
 
   /*-----------------------------------------------------------------------------------

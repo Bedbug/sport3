@@ -2,6 +2,8 @@ import { trigger, transition, query, style, stagger, animate } from '@angular/an
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
 import * as _ from 'lodash';
+import { ignoreElements } from 'rxjs/operators';
+import { SportimoService } from 'src/app/services/sportimo.service';
 import Typewriter from 'src/assets/js/t-writer.js'
 
 @Component({
@@ -152,14 +154,19 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
     _("faq_header");
   }
 
-  constructor(   public translate: TranslateService) { }
+  constructor(
+    public translate: TranslateService,
+    public sportimoService: SportimoService) { }
 
   ngOnInit() {
     // this.tags = [...new Set(this.data.map(item => {item.category,item.categoryTitle}))];  
-
-    this.tags = _.uniqBy(this.data, "category");
-    this.filteredData = this.data;
-    console.log(this.tags);    
+    this.sportimoService.getFAQs().subscribe((data)=>{
+      this.data = data;
+      this.tags = _.uniqBy(this.data, "category");
+      this.filteredData = this.data;
+      console.log(this.tags); 
+    })
+       
   }
 
   toggleTag(tag:string){
@@ -179,9 +186,15 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
 
       if(res === 'faq_header')
       return;      
-            
+           
+      
+      console.log(res);
+      
       const target = document.querySelector('.tw');
-    
+
+      if(target.childElementCount>0)
+      target.removeChild(target.firstChild);
+
       const writer = new Typewriter(target, {  
         loop: false,
         typeColor: '#fff',
@@ -199,7 +212,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
       .removeCursor()    
       .start();
 
-      target.removeChild(target.firstChild);
+      // 
       // writer.clearQueue();
 
       // this.headerCharactersLength = res.length;
