@@ -12,6 +12,7 @@ import { Subject } from 'rxjs';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 declare var Pace: any;
 
@@ -34,6 +35,7 @@ export class OnboardComponent implements OnInit {
   UniqueLinkTextKey = 'verifyingLink';
   availableCountries: any;
   filteredOperators: any[];
+  
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -122,7 +124,8 @@ export class OnboardComponent implements OnInit {
     public config: ConfigService,
     private route: ActivatedRoute,
     private router: Router,
-    private ViewModalOverlay: PrizeViewOverlayService
+    private ViewModalOverlay: PrizeViewOverlayService,
+    private gtmService: GoogleTagManagerService
   ) { }
 
 
@@ -197,6 +200,7 @@ export class OnboardComponent implements OnInit {
                 this.UniqueLinkState = 5;
                 this.authenticationService.redirectSignin(CGMSISDN, "en").subscribe(response => {
 
+               
                   if (response && response.success) {
 
                     this.UniqueLinkState = 0;
@@ -224,6 +228,11 @@ export class OnboardComponent implements OnInit {
 
                     if (this.sportimoService.UTMParams)
                       this.sportimoService.sendUTMParams(CGMSISDN).subscribe();
+
+                      
+            if(!response.user.firstLoginCompleted){
+              this.sendThankYouPageEvent();              
+            }
                   }
                 });
               } else {
@@ -264,7 +273,11 @@ export class OnboardComponent implements OnInit {
 
                   this.UniqueLink = null;
 
-
+                  
+            if(!response.user.firstLoginCompleted){
+              this.sendThankYouPageEvent();              
+            }
+                  
                   // this.closeLandingPage();
 
                   // this.isSubmitting = false;
@@ -563,7 +576,8 @@ export class OnboardComponent implements OnInit {
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
-        response => {
+        response => {         
+          
           if (response && response.success) {
             // console.log(response);
             this.incorrectPin = false;
@@ -588,6 +602,10 @@ export class OnboardComponent implements OnInit {
             if (this.sportimoService.UTMParams) {
               this.sportimoService.sendUTMParams(response.user.msisdn).subscribe();
             }
+
+            if(!response.user.firstLoginCompleted){
+              this.sendThankYouPageEvent();              
+            }
           } else {
             this.incorrectPin = true;
             this.isSubmitting = false;
@@ -598,6 +616,20 @@ export class OnboardComponent implements OnInit {
           this.isSubmitting = false;
         });
   }
+
+  sendThankYouPageEvent() {
+    const client = this.config.getClient();
+    const appName = this.sportimoService.getConfigurationFor('appName').en;
+    const gtmTag = {
+      event: 'page',
+      appName: appName,
+      clientId: client,
+      pageRoute: "main/thankyou",
+      page: "main/thankyou"
+    };
+    this.gtmService.pushTag(gtmTag);
+  }
+  
 
   openTerms() {
     // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
