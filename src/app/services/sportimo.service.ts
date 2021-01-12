@@ -390,7 +390,8 @@ export class SportimoService {
 
   onboardingMetricsStart(sequenceId: string) {
     const postData = { client: this.Config.getClient(), sequence: sequenceId };
-
+    console.log(sequenceId);
+    
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/start`, postData)
       .pipe(map(result => {
         this.correlatorId = result.correlator;

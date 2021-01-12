@@ -165,6 +165,7 @@ export class OnboardComponent implements OnInit {
         // console.log(this.availableCountries);
         this.filteredOperators = [];
 
+        
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
         })
@@ -594,7 +595,7 @@ export class OnboardComponent implements OnInit {
             }
 
             // User Registered - We can stop the metrics
-            this.sportimoService.onboardingMetricsStop("").subscribe(x => {
+            this.sportimoService.onboardingMetricsStop(response.user.msisdn).subscribe(x => {
               // console.log(x);
             });
 
