@@ -29,7 +29,7 @@
         <div class="question-text-header">{{selectedFaq.question[translate.currentLang]}}</div>       
       </div>
       <div class="main-answer-scrollarea container" [@staggerAnimation]="animate">
-      <div [innerHTML]="selectedFaq.answer[translate.currentLang]" class="answer-text"></div>
+      <div [innerHTML]="selectedFaq.answer[translate.currentLang] | safeHTML " class="answer-text"></div>
       </div>
     </div>
   </div>

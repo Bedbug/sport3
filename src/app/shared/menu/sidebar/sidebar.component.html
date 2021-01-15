@@ -67,7 +67,7 @@
         </a>
         <!-- 2nd Level Menu -->
         <ul class="sidebar-submenu" *ngIf="menuItem.children">
-            <li *ngFor="let childrenItem of menuItem.children">
+            <li *ngFor="let childrenItem of menuItem.children"  [class.disabled]="childrenItem.authenticate && !isLoggedIn">
                 <!-- languageLink -->
                 <a href="javascript:void(0)" (click)="switchLanguage(childrenItem.path)"
                     *ngIf="childrenItem.type === 'languageLink'">
@@ -121,7 +121,7 @@
                         <a [routerLink]="!childrenSubItem.type ? null : [childrenSubItem.path]"
                             *ngIf="childrenSubItem.type === 'link'" routerLinkActive="active-option"
                             [routerLinkActiveOptions]="{exact: true}">
-                            <i class="fa fa-angle-right"></i>{{childrenSubItem.title}} <span
+                            <i class="fa fa-angle-right"></i>{{childrenSubItem.title}} test: {{childrenSubItem.authenticate}} <span
                                 class="badge badge-{{childrenSubItem.badgeType}}"
                                 *ngIf="childrenSubItem.badgeType">{{childrenSubItem.badgeValue}}</span>
                         </a>
