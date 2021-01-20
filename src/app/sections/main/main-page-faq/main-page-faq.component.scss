@@ -1,5 +1,7 @@
 @import "src/variables.scss";
 
+
+
 .main-tags-scrollarea {
     background-color: #00000066;
     padding: 5px 20px 20px;
@@ -109,8 +111,14 @@
 }
 
 .answer-text{
-    color: #fff;
+    color: rgb(255, 255, 255);
     font-weight: 100;
+}
+
+
+.answer-text ::ng-deep ul{
+    padding-left: 20px;
+    list-style-type: disc !important;
 }
 
 .icn-arrow {

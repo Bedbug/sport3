@@ -17,6 +17,11 @@
   overflow: hidden;
 }
 
+b,
+strong {
+  font-weight: bold !important; // Add the correct font weight in Chrome, Edge, and Safari
+}
+
 @media (min-width: 992px) {
   .background-container {
     background-color: rgba(0, 0, 0, 0.3);
