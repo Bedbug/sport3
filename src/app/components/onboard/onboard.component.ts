@@ -14,6 +14,8 @@ import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
+
+
 declare var Pace: any;
 
 @Component({
@@ -35,7 +37,8 @@ export class OnboardComponent implements OnInit {
   UniqueLinkTextKey = 'verifyingLink';
   availableCountries: any;
   filteredOperators: any[];
-  
+  msisdnError = false;
+  errorMsg="";
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -105,6 +108,7 @@ export class OnboardComponent implements OnInit {
   pinForm: FormGroup;
   incorrectPin: boolean;
   isSubmitting: boolean;
+  isSubmitOpen: boolean;
   submitted: boolean;
   subState: any;
   firstLoad: boolean = true;
@@ -140,6 +144,7 @@ export class OnboardComponent implements OnInit {
      
     
     //   if(parsedFirst == 1){
+      this.isSubmitOpen = false;
     this.onBoardService.Hide();
     //   }
     // } else {
@@ -517,17 +522,71 @@ export class OnboardComponent implements OnInit {
 
   }
 
+  
+
+  multiOnChange() {
+    let areaCode = this.multiOperatorForm.controls.country.value.area;
+    let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
+    
+    // Remove all spaces str.replace(/\s/g, '');
+    msisdnValue =  msisdnValue.replace(/\s/g, '');
+    var res = msisdnValue.substring(0, areaCode.length);
+    console.log("msisdn Length:" +msisdnValue.length);
+    // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
+    // CHECK IF COUNTRY CODE IS INSERTED
+    if(areaCode == res){
+      this.msisdnError = true;
+      this.errorMsg = "Please remove country code!";
+      this.isSubmitOpen = false;
+      return;
+    }
+    if(msisdnValue.length == 0) {
+      this.msisdnError = false;
+      this.isSubmitOpen = false;
+      return;
+    }
+    // CHECK IF ALL NUMBERS
+    var numbers = /^[0-9]+$/;
+    if(msisdnValue.match(numbers)){
+      // console.log("All Numbers!")
+    }else{
+      // console.log("Not all numbers!")
+      this.msisdnError = true;
+      this.errorMsg = "Please remove any letters or characters!";
+      this.isSubmitOpen = false;
+      return;
+    }
+    // Check length
+    if(msisdnValue.length >10){
+      this.msisdnError = true;
+      this.errorMsg = "The number seems to be too long!";
+      this.isSubmitOpen = false;
+      return;
+    }
+    if(msisdnValue.length < 10 && msisdnValue.length != 3 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
+      this.msisdnError = true;
+      this.errorMsg = "The number seems to be too small!";
+      this.isSubmitOpen = false;
+      return;
+    }
+    this.msisdnError = false;
+    this.isSubmitOpen = true;
+  }
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
+    
 
     let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
+    console.log("area code: "+ areaCode);
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
+    console.log("msisdn Value: "+ msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
     console.log(path);
 
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
+        console.log("Authenticate");
         if (response && response.success) {
           this.subState = response.state;
           if (this.subState == "UNSUB" && response.user.wallet > 0)

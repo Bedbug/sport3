@@ -283,6 +283,16 @@
   color: $theme-color;
   font-style: italic;
 }
+.problem-info2 {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  line-height: 15px;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #fff;
+  font-style: italic;
+}
 
 body {
   // color: rgba(255, 255, 255, 0.7);
@@ -708,7 +718,15 @@ body .page-wrapper .page-main-header {
   text-indent: -9999px;
   background-size: contain;
 }
-
+.icn-info-white {
+  background: url("~src/assets/images/sportimo/icon-info-white.svg") no-repeat center center;
+  display: block;
+  text-indent: -9999px;
+  background-size: contain;
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
 .powers-info {
   width: 20px;
   height: 20px;

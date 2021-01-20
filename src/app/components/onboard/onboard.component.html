@@ -283,6 +283,10 @@
           <div
             *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.validationProcess && !this.multiOperatorForm.controls.operator.value.redirectUrl">
             <!-- <span>Drop your MSISDN</span> -->
+            <div  *ngIf="this.msisdnError" class="problem-info2">
+              <div class="icn-info-white"></div> <span  translate>{{this.errorMsg}}</span>
+            </div>
+            
             <div class="input-box">
               <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
                 class="isClickable" (click)="multiOperatorBack()">
@@ -294,18 +298,22 @@
               <!-- <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
               <option *ngFor="let areaCode of availableCountries">{{areaCode.area}}</option>
             </select> -->
-              <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
+              <input type="text" (ngModelChange)="multiOnChange()" ng-model="msisdnInput" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
                 autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+                
             </div>
-            <button [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value" type="submit"
+            
+            <button [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value || !this.isSubmitOpen" type="submit"
               class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
-                <span class="button-label" translate>Play</span>
+                <span  class="button-label"  translate>Play</span>
+                
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>
               </div>
             </button>
+            
           </div>
 
           <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button"
