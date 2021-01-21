@@ -57,6 +57,11 @@ export class MainPageHomeComponent implements OnInit {
     this.sportimoService.getHomeMatches().subscribe(data => {
       // console.log(data);
       this.upcomingMatches = data;
+      // this.upcomingMatches.reverse();
+      // console.table(this.upcomingMatches);
+      // console.table(this.upcomingMatches[0].match);
+      this.upcomingMatches.sort((a, b) => (a.match.start > b.match.start) ? 1 : -1);
+      // console.table(this.upcomingMatches);
       this.matchesListVisible = true
     })
   }
