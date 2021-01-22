@@ -13,7 +13,7 @@ import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overla
 import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
-
+import UIkit from 'uikit';
 
 
 declare var Pace: any;
@@ -39,6 +39,8 @@ export class OnboardComponent implements OnInit {
   filteredOperators: any[];
   msisdnError = false;
   errorMsg="";
+  slideCount:number = 0;
+  onBoardOpenBtn = false;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -62,6 +64,7 @@ export class OnboardComponent implements OnInit {
     _("EG");
   }
 
+  
   public defaults = {
     name: "",
     sequence: ["S", "L"],
@@ -115,7 +118,7 @@ export class OnboardComponent implements OnInit {
   user: User;
   ngUnsubscribe = new Subject();
   blacklisted = 0;
-
+  slideshow;
   appCountries = [];
   appOperators = [];
 
@@ -140,9 +143,27 @@ export class OnboardComponent implements OnInit {
       // console.log(document.referrer);
       // console.log(window.location);
       // console.log(window.location.origin);
-      
-     
+      // this.slideshow = UIkit.getComponent(document.querySelector('[uk-slideshow]'));
+
+      var slideshow = UIkit.slideshow(".uk-slideshow");
+      console.log(slideshow);
+
+      UIkit.util.on(slideshow, 'show', function() {
+  
+        console.log("fired!!!");
+      });
     
+
+
+
+
+
+
+
+
+
+
+      
     //   if(parsedFirst == 1){
       this.isSubmitOpen = false;
     this.onBoardService.Hide();
@@ -377,6 +398,13 @@ export class OnboardComponent implements OnInit {
     // localStorage.setItem(key, 'New Value');
   }
 
+  
+  getSlideIndex(){
+    this.slideCount = UIkit.getComponent(document.querySelector('[uk-slideshow]'), 'slideshow').index;
+    console.log (this.slideCount);
+    if (this.slideCount == 1)
+    this.onBoardOpenBtn = true
+  }
 
   closeOnBoarding() {
     localStorage.setItem("isFirstGame", "1");
