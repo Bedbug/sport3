@@ -265,6 +265,12 @@
 		"10006": "",
 		"10007": "No more power ups available"
 	},
+	"msisdnChecks": {
+		"100": "Please remove country code!",
+		"101": "Please remove any letters or characters!",
+		"102": "The number seems to be too long!",
+		"103": "The number seems to be too small!"
+	},
 	"faq_header": "What would you like to know about?",
 	"faq_title": "Frequently Asked Questions",
 	"farsi": "فارسی",

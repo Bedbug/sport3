@@ -564,7 +564,9 @@ export class OnboardComponent implements OnInit {
     // CHECK IF COUNTRY CODE IS INSERTED
     if(areaCode == res){
       this.msisdnError = true;
-      this.errorMsg = "Please remove country code!";
+
+      // this.errorMsg = "Please remove country code!";
+      this.errorMsg = "msisdnChecks.100";
       this.isSubmitOpen = false;
       return;
     }
@@ -580,20 +582,23 @@ export class OnboardComponent implements OnInit {
     }else{
       // console.log("Not all numbers!")
       this.msisdnError = true;
-      this.errorMsg = "Please remove any letters or characters!";
+      // this.errorMsg = "Please remove any letters or characters!";
+      this.errorMsg = "msisdnChecks.101";
       this.isSubmitOpen = false;
       return;
     }
     // Check length
     if(msisdnValue.length >10){
       this.msisdnError = true;
-      this.errorMsg = "The number seems to be too long!";
+      // this.errorMsg = "The number seems to be too long!";
+      this.errorMsg = "msisdnChecks.102";
       this.isSubmitOpen = false;
       return;
     }
     if(msisdnValue.length < 10 && msisdnValue.length != 3 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
       this.msisdnError = true;
-      this.errorMsg = "The number seems to be too small!";
+      // this.errorMsg = "The number seems to be too small!";
+      this.errorMsg = "msisdnChecks.103";
       this.isSubmitOpen = false;
       return;
     }
