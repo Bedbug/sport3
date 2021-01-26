@@ -11,6 +11,9 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { GrandPrizeDetailsComponent } from '../grand-prize-details/grand-prize-details.component';
 import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
 import { MatchSubscribeComponent } from '../../contest-pages/match-subscribe/match-subscribe.component';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -35,7 +38,8 @@ export class MainPageHomeComponent implements OnInit {
   private lastInserted: number[] = [];
   matchesListVisible = false;
   upcomingMatches: any[];
-
+  ngUnsubscribe = new Subject();
+  isAuthenticated = false;
   Utils: SportimoUtils = new SportimoUtils();
 
   constructor(
@@ -46,7 +50,8 @@ export class MainPageHomeComponent implements OnInit {
     public translate: TranslateService,
     private router: Router,
     private route: ActivatedRoute,
-    private ViewModalOverlay: PrizeViewOverlayService
+    private ViewModalOverlay: PrizeViewOverlayService,
+    private authenticationService:AuthenticationService
   ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -54,6 +59,11 @@ export class MainPageHomeComponent implements OnInit {
   ngOnInit() {
     this.matchesListVisible = false;
     // setTimeout(()=>{this.matchesListVisible = true},1000);
+
+    this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+      this.isAuthenticated = user!=null;
+    })
+
     this.sportimoService.getHomeMatches().subscribe(data => {
       // console.log(data);
       this.upcomingMatches = data;
@@ -64,6 +74,11 @@ export class MainPageHomeComponent implements OnInit {
       // console.table(this.upcomingMatches);
       this.matchesListVisible = true
     })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   get getUpcoming() {
