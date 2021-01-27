@@ -10,7 +10,7 @@ import moment from 'moment-mini';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-   
+
 
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
@@ -105,10 +105,9 @@ export class AuthenticationService {
             language: lang
         }
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/ulink-signin`, postData)
-        .pipe(map(response => {
-            // Save the signin data for future use
-            if (response != null && response.success)
-                {
+            .pipe(map(response => {
+                // Save the signin data for future use
+                if (response != null && response.success) {
                     localStorage.setItem('signon', JSON.stringify({ msisdn: response.msisdn, client: postData.client }));
                     if (response.user && response.user.token) {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -117,8 +116,8 @@ export class AuthenticationService {
                     }
                 }
 
-            return response;
-        }));
+                return response;
+            }));
     }
 
     redirectSignin(msisdn: string, lang: string) {
@@ -128,10 +127,9 @@ export class AuthenticationService {
             language: lang
         }
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/redirect-signin`, postData)
-        .pipe(map(response => {
-            // Save the signin data for future use
-            if (response != null && response.success)
-                {
+            .pipe(map(response => {
+                // Save the signin data for future use
+                if (response != null && response.success) {
                     localStorage.setItem('signon', JSON.stringify({ msisdn: response.msisdn, client: postData.client }));
                     if (response.user && response.user.token) {
                         // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -140,29 +138,29 @@ export class AuthenticationService {
                     }
                 }
 
-            return response;
-        }));
+                return response;
+            }));
     }
 
-    ulinkSend(msisdn: string, lang: string){
+    ulinkSend(msisdn: string, lang: string) {
         let postData = {
             msisdn: msisdn.toString(),
             client: this.Config.getClient(),
             language: lang
         }
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/sendUlink`, postData)
-        .pipe(map(response => {
-            // Save the signin data for future use
-            // if (response != null && response.success)
-            //     localStorage.setItem('signon', JSON.stringify({ msisdn: postData.msisdn, client: postData.client }));
+            .pipe(map(response => {
+                // Save the signin data for future use
+                // if (response != null && response.success)
+                //     localStorage.setItem('signon', JSON.stringify({ msisdn: postData.msisdn, client: postData.client }));
 
-            // if (response.user && response.user.token) {
-            //     // store user details and jwt token in local storage to keep user logged in between page refreshes
-            //     localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
-            //     this.currentUserSubject.next(response.user);
-            // }
-            return response;
-        }));
+                // if (response.user && response.user.token) {
+                //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+                //     localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
+                //     this.currentUserSubject.next(response.user);
+                // }
+                return response;
+            }));
     }
 
     blaiseVerify(pin: string, noSubscription: boolean) {
@@ -184,7 +182,7 @@ export class AuthenticationService {
             }));
     }
 
-   
+
 
     resendPin(lang: string) {
         let postData = JSON.parse(localStorage.getItem('signon'));
@@ -306,9 +304,9 @@ export class AuthenticationService {
 
     get isSubscribed() {
         // console.log(moment().utc().toDate(),moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate(),moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate())        
-       if(!this.currentUserSubject.value.subscriptionEnd)
-       return false;
-        
+        if (!this.currentUserSubject.value.subscriptionEnd)
+            return false;
+
         return moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate();
     }
 
@@ -325,17 +323,17 @@ export class AuthenticationService {
 
             if (this.pollingTimeLeft > 0) {
                 this.pollingTimeLeft--;
-            } else {               
+            } else {
                 this.pollingTimeLeft = this.pollingTime;
                 this.http.get<any>(`${this.Config.getApi("ROOT")}/user`)
                     .subscribe(response => {
                         // console.log(response);
                         let updated = false;
-                        if (this.currentUserSubject.value.wallet != response.wallet) {                    
-                            this.currentUserSubject.value.wallet = response.wallet;                          
+                        if (this.currentUserSubject.value.wallet != response.wallet) {
+                            this.currentUserSubject.value.wallet = response.wallet;
                             updated = true;
                         }
-                        if (this.currentUserSubject.value.unread != response.unread) {                            
+                        if (this.currentUserSubject.value.unread != response.unread) {
                             this.currentUserSubject.value.unread = response.unread;
                             updated = true;
                         }
@@ -352,23 +350,23 @@ export class AuthenticationService {
 
     checkUserStatus() {
         this.http.get<any>(`${this.Config.getApi("ROOT")}/user`)
-                    .subscribe(response => {
-                        // console.log(response);
-                        let updated = false;
-                        if (this.currentUserSubject.value.wallet != response.wallet) {                    
-                            this.currentUserSubject.value.wallet = response.wallet;                          
-                            updated = true;
-                        }
-                        if (this.currentUserSubject.value.unread != response.unread) {                            
-                            this.currentUserSubject.value.unread = response.unread;
-                            updated = true;
-                        }
-                        if (updated) {
-                            // this.currentUserSubject.value.unread = 1;
-                            this.currentUserSubject.next(this.currentUserSubject.value);                           
-                        }
+            .subscribe(response => {
+                // console.log(response);
+                let updated = false;
+                if (this.currentUserSubject.value.wallet != response.wallet) {
+                    this.currentUserSubject.value.wallet = response.wallet;
+                    updated = true;
+                }
+                if (this.currentUserSubject.value.unread != response.unread) {
+                    this.currentUserSubject.value.unread = response.unread;
+                    updated = true;
+                }
+                if (updated) {
+                    // this.currentUserSubject.value.unread = 1;
+                    this.currentUserSubject.next(this.currentUserSubject.value);
+                }
 
-                    });
+            });
     }
 
     stopPolling() {
@@ -378,6 +376,6 @@ export class AuthenticationService {
     markInboxRead() {
         this.currentUserSubject.value.unread = 0;
         this.currentUserSubject.next(this.currentUserSubject.value);
-      }
+    }
 
 }
