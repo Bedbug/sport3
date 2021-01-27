@@ -12,9 +12,8 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CardToastService } from 'src/app/components/card-toast/card-toast.service';
-import { debug } from 'util';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
-import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 
 @Component({
   selector: 'app-match-pages',

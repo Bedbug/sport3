@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ContestsListComponent } from './contests-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -14,7 +14,7 @@ describe('ContestsListComponent', () => {
   let component: ContestsListComponent;
   let fixture: ComponentFixture<ContestsListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ContestsListComponent ],
       imports: [RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],

@@ -6,7 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
-import { debug } from 'util';
 import { Router } from '@angular/router';
 import { PrizeViewOverlayService } from '../prize-view-overlay/prize-view-overlay.service';
 import { FilePreviewOverlayRef } from '../prize-view-overlay/prize-preview-overlay-ref';

@@ -9,7 +9,7 @@ import { ContestMatch } from '../models/contest-match';
 import { LiveMatch } from '../models/live-match';
 import { AuthenticationService } from './authentication.service';
 // import { Socket } from 'ngx-socket-io';
-import * as io from 'socket.io-client';
+import {io} from 'socket.io-client';
 
 // import demo from 'src/assets/json/demo.json';
 
@@ -418,13 +418,15 @@ export class SportimoService {
  ----------------------------------------------------------------------------------- */
   getStream() {
     let observable = new Observable(observer => {
+      // console.log(this.Config.getApi('SOCKET'));
+      
       this.socket = io(this.Config.getApi('SOCKET'), { transports: ['websocket', 'polling'] });
+      // this.socket = io("localhost:3031", { transports: ['websocket', 'polling'] });
 
       // on reconnection, reset the transports option, as the Websocket
       // connection may have failed (caused by proxy, firewall, browser, ...)
       this.socket.on('reconnect_attempt', () => {
         console.log("Sockets: Reconnect Attempt");
-
         this.socket.io.opts.transports = ['polling', 'websocket'];
       });
 

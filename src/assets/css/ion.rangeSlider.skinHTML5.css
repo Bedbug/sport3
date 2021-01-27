@@ -8,128 +8,130 @@
 // Skin details */
 
 .irs {
-    height: 55px;
+    height: 55px !important;
 }
 .irs-with-grid {
-    height: 75px;
+    height: 75px !important;
 }
 .irs-line {
-    height: 10px; top: 33px;
-    background: #EEE;
-    background: linear-gradient(to bottom, #DDD -50%, #FFF 150%); /* W3C */
-    border: 1px solid #CCC;
-    border-radius: 16px;
-    -moz-border-radius: 16px;
+    height: 10px !important; 
+    top: 33px !important;
+    background: #EEE !important;
+    background: linear-gradient(to bottom, #DDD -50%, #FFF 150%) !important; /* W3C */
+    border: 1px solid #CCC !important;
+    border-radius: 16px !important;
+    -moz-border-radius: 16px !important;
 }
     .irs-line-left {
-        height: 8px;
+        height: 8px !important;
     }
     .irs-line-mid {
-        height: 8px;
+        height: 8px !important;
     }
     .irs-line-right {
-        height: 8px;
+        height: 8px !important;
     }
 
 .irs-bar {
-    height: 10px; top: 33px;
+    height: 10px !important; top: 33px !important;
     /* border-top: 1px solid #428bca;
     border-bottom: 1px solid #428bca;
     background: #428bca;
     background: linear-gradient(to top, rgba(66,139,202,1) 0%,rgba(127,195,232,1) 100%); W3C */
-    border-top: 1px solid #c19503;
-    border-bottom: 1px solid #FFC303;
-    background: #ffc300;
-    background: linear-gradient(to top, #FFC303 0%,#c19503 100%);
-    margin-left: -1px;
+    border-top: 1px solid #c19503 !important;
+    border-bottom: 1px solid #FFC303 !important;
+    background: #ffc300 !important;
+    background: linear-gradient(to top, #FFC303 0%,#c19503 100%) !important;
+    margin-left: -1px !important;
 }
     .irs-bar-edge {
-        height: 10px; top: 33px;
-        width: 14px;
+        height: 10px !important; 
+        top: 33px !important;
+        width: 14px !important;
         /* border: 1px solid #428bca;
         border-right: 0;
         background: #428bca;
         background: linear-gradient(to top, rgba(66,139,202,1) 0%,rgba(127,195,232,1) 100%); W3C */
-        border-top: 1px solid #c19503;
-    border-bottom: 1px solid #FFC303;
-    background: #ffc300;
-    background: linear-gradient(to top, #FFC303 0%,#c19503 100%);
-        border-radius: 16px 0 0 16px;
-        -moz-border-radius: 16px 0 0 16px;
+        border-top: 1px solid #c19503 !important;
+    border-bottom: 1px solid #FFC303 !important;
+    background: #ffc300 !important;
+    background: linear-gradient(to top, #FFC303 0%,#c19503 100%) !important;
+        border-radius: 16px 0 0 16px !important;
+        -moz-border-radius: 16px 0 0 16px !important;
     }
 
 .irs-shadow {
-    height: 3px;
-    top: 37px;
-    background: #000;
-    opacity: 0.3;
-    border-radius: 5px;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-    -moz-border-radius: 5px;
+    height: 3px !important;
+    top: 37px !important;
+    background: #000 !important;
+    opacity: 0.3 !important;
+    border-radius: 5px !important;
+    border-bottom: 1px solid rgba(255,255,255,0.5) !important;
+    -moz-border-radius: 5px !important;
     /* border-top: 1px inset rgba(0,0,0,1); */
 }
 .lt-ie9 .irs-shadow {
-    filter: alpha(opacity=30);
+    filter: alpha(opacity=30) !important;
 }
 
 .irs-slider {
-    top: 25px;
-    width: 27px; height: 27px;
-    border: 1px solid #AAA;
-    background: #DDD;
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(220,220,220,1) 20%,rgba(255,255,255,1) 100%); /* W3C */
-    border-radius: 27px;
-    -moz-border-radius: 27px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    top: 25px !important;
+    width: 27px !important; height: 27px !important;
+    border: 1px solid #AAA !important;
+    background: #DDD !important;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(220,220,220,1) 20%,rgba(255,255,255,1) 100%) !important; /* W3C */
+    border-radius: 27px !important;
+    -moz-border-radius: 27px !important;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.3) !important;
     cursor: pointer;
 }
 
 .irs-slider.state_hover, .irs-slider:hover {
-    background: #FFF;
+    background: #FFF !important;
 }
 
 .irs-min, .irs-max {
     color: #ffffff !important;
-    font-size: 12px; line-height: 1.333;
-    text-shadow: none;
-    top: 0;
-    padding: 1px 5px;
-    background: rgba(0,0,0,0.1);
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+    font-size: 12px !important; line-height: 1.333 !important;
+    text-shadow: none !important;
+    top: 0 !important;
+    padding: 1px 5px !important;
+    background: rgba(0,0,0,0.1) !important;
+    border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
 }
 
 .lt-ie9 .irs-min, .lt-ie9 .irs-max {
-    background: #ccc;
+    background: #ccc !important;
 }
 
 .irs-from, .irs-to, .irs-single {
-    color: #000;
-    font-size: 14px; line-height: 1.333;
-    text-shadow: none;
-    padding: 1px 5px;
-    background: #ffc300;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
+    color: #000 !important;
+    font-size: 14px !important; line-height: 1.333 !important;
+    text-shadow: none !important;
+    padding: 1px 5px !important;
+    background: #ffc300 !important;
+    border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
 }
 .lt-ie9 .irs-from, .lt-ie9 .irs-to, .lt-ie9 .irs-single {
-    background: #999;
+    background: #999 !important;
 }
 
 .irs-grid {
-    height: 27px;
+    height: 27px !important;
 }
 .irs-grid-pol {
-    opacity: 0.5;
-    background: #ffc300;
+    opacity: 0.5 !important;
+    background: #a09c90 !important;
 }
 .irs-grid-pol.small {
-    background: #999;
+    background: #999 !important;
 }
 
 .irs-grid-text {
-    bottom: 5px;
-    color: #99a4ac;
+    bottom: 5px !important;
+    color: #99a4ac !important;
 }
 
 .irs-disabled {

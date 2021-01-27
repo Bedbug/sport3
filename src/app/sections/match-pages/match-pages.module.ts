@@ -9,7 +9,7 @@ import { CardComponent } from './match-page-cards/components/card/card.component
 // import { PlaycardComponent } from './match-page-cards/components/playcard/playcard.component';
 import { ReversePipe } from 'src/app/pipes/reverse.pipe';
 import { TranslateModule } from '@ngx-translate/core';
-import { IonRangeSliderModule } from "ng2-ion-range-slider";
+import { IonRangeSliderModule } from "src/app/components/ion-range-slider";
 import { MatchPagePlayComponent } from './match-page-play/match-page-play.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ModalPowersInfoComponent } from './match-page-cards/components/modal-powers-info/modal-powers-info.component';

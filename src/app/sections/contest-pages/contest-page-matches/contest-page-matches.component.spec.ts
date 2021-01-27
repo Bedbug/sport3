@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ContestPageMatchesComponent } from './contest-page-matches.component';
 import { MatchesListComponent } from 'src/app/sections/contest-pages/matches-list/matches-list.component';
@@ -15,7 +15,7 @@ describe('ContestPageMatchesComponent', () => {
   let component: ContestPageMatchesComponent;
   let fixture: ComponentFixture<ContestPageMatchesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ContestPageMatchesComponent, MatchesListComponent, MatchesListItemComponent ],
       imports: [ RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],

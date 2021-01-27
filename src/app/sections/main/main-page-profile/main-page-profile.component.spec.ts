@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MainPageProfileComponent } from './main-page-profile.component';
 import { SportimoService } from 'src/app/services/sportimo.service';
@@ -13,7 +13,7 @@ describe('MainPageProfileComponent', () => {
   let component: MainPageProfileComponent;
   let fixture: ComponentFixture<MainPageProfileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [MainPageProfileComponent],
       imports: [RouterTestingModule, FormsModule, ReactiveFormsModule],

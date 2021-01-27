@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ describe('LoginComponent', () => {
   let authenticationService: AuthenticationService;
   let httpClientSpy: { post: jasmine.Spy, get: jasmine.Spy };
   
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
       imports: [FormsModule,ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],

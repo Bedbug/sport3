@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ContestInfoHeaderComponent } from './contest-info-header.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -14,7 +14,7 @@ describe('ContestInfoHeaderComponent', () => {
   let component: ContestInfoHeaderComponent;
   let fixture: ComponentFixture<ContestInfoHeaderComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ContestInfoHeaderComponent ],
       imports: [ToastrModule.forRoot(),HttpClientTestingModule, RouterTestingModule],

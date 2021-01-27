@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MainPageAchievementsComponent } from './main-page-achievements.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -13,7 +13,7 @@ describe('MainPageAchievementsComponent', () => {
   let component: MainPageAchievementsComponent;
   let fixture: ComponentFixture<MainPageAchievementsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [MainPageAchievementsComponent],
       imports: [HttpClientTestingModule, BrowserAnimationsModule],

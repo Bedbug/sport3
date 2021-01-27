@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SubscribeNoticeComponent } from './subscribe-notice.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -9,7 +9,7 @@ describe('SubscribeNoticeComponent', () => {
   let component: SubscribeNoticeComponent;
   let fixture: ComponentFixture<SubscribeNoticeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [SubscribeNoticeComponent],
       imports: [HttpClientTestingModule],

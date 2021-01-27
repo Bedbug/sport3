@@ -4,7 +4,7 @@ import { OnBoardService } from './onboard.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { ConfigService } from 'src/app/services/config.service';
 import { User } from 'src/app/models/user';
 import { first, takeUntil } from 'rxjs/operators';

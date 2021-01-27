@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MatchesListItemComponent } from './matches-list-item.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -17,7 +17,7 @@ describe('MatchListItemComponent', () => {
   let fixture: ComponentFixture<MatchesListItemComponent>;
   
   let isClickable: boolean = false;
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     
     TestBed.configureTestingModule({
       declarations: [ MatchesListItemComponent ],

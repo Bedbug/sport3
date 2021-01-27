@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { GrandPrizeComponent } from './grand-prize.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -13,7 +13,7 @@ describe('GrandPrizeComponent', () => {
   let component: GrandPrizeComponent;
   let fixture: ComponentFixture<GrandPrizeComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [GrandPrizeComponent],
       imports: [RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MainPageInboxComponent } from './main-page-inbox.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,7 +11,7 @@ describe('MainPageInboxComponent', () => {
   let component: MainPageInboxComponent;
   let fixture: ComponentFixture<MainPageInboxComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MainPageInboxComponent ],
       imports: [HttpClientTestingModule],

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ContestPagesComponent } from './contest-pages.component';
 import { ContestInfoHeaderComponent } from './contest-info-header/contest-info-header.component';
@@ -102,7 +102,7 @@ describe('ContestPagesComponent', () => {
   // imports:[ToastrModule.forRoot()],
   
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ContestPagesComponent, ContestInfoHeaderComponent],
       imports: [ToastrModule.forRoot(),RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],

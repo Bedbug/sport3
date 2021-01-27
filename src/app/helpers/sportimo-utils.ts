@@ -1,4 +1,4 @@
-import { _ } from "@biesbjerg/ngx-translate-extract/dist/utils/utils";
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 // import moment from "jalali-moment";
 import moment from 'moment-jalaali';
 // import 'moment/min/locales';

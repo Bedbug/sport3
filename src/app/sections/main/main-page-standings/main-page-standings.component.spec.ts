@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MainPageStandingsComponent } from './main-page-standings.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -13,7 +13,7 @@ describe('MainPageStandingsComponent', () => {
   let component: MainPageStandingsComponent;
   let fixture: ComponentFixture<MainPageStandingsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MainPageStandingsComponent ],
       imports: [HttpClientTestingModule, RouterTestingModule],

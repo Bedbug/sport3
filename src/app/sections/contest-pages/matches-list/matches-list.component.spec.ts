@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MatchesListComponent } from './matches-list.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -10,7 +10,7 @@ describe('MatchesListComponent', () => {
   let component: MatchesListComponent;
   let fixture: ComponentFixture<MatchesListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MatchesListComponent, MatchesListItemComponent ],
       imports:[BrowserAnimationsModule],

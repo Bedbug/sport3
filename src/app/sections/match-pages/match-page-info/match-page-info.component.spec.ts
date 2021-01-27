@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MatchPageInfoComponent } from './match-page-info.component';
 import { StatsComponent } from 'src/app/components/stats/stats.component';
@@ -11,7 +11,7 @@ describe('MatchPageInfoComponent', () => {
   let component: MatchPageInfoComponent;
   let fixture: ComponentFixture<MatchPageInfoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MatchPageInfoComponent, StatsComponent ],
       providers: [

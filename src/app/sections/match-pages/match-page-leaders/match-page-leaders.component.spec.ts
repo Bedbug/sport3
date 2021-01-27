@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MatchPageLeadersComponent } from './match-page-leaders.component';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -15,7 +15,7 @@ describe('MatchPageLeadersComponent', () => {
   let component: MatchPageLeadersComponent;
   let fixture: ComponentFixture<MatchPageLeadersComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MatchPageLeadersComponent ],
       imports: [ RouterTestingModule, HttpClientTestingModule, BrowserAnimationsModule],

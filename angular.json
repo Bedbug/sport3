@@ -10,13 +10,14 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss"
+          "style": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/sportimo",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -32,7 +33,7 @@
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/app/scss/uikit/components/_import.scss",
-              "node_modules/ion-rangeslider/css/ion.rangeSlider.css",
+              "src/assets/js/ion-rangeslider/css/ion.rangeSlider.css",
               "src/assets/css/ion.rangeSlider.skinHTML5.css",
               "src/assets/app.scss",
               "src/style_base.scss",
@@ -48,7 +49,7 @@
               "node_modules/uikit/dist/js/uikit-icons.min.js",
               "src/assets/js/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/ion-rangeslider/js/ion.rangeSlider.min.js"
+              "src/assets/js/ion-rangeslider/js/ion.rangeSlider.min.js"
             ]
           },
           "configurations": {
@@ -62,7 +63,6 @@
               "optimization": true,
               "outputHashing": "bundles",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
@@ -73,6 +73,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
               "serviceWorker": true,

@@ -3,13 +3,13 @@ import { ContestMatch } from 'src/app/models/contest-match';
 import moment from 'moment-mini';
 import { trigger, transition, stagger, animate, style, query } from '@angular/animations';
 import { TranslateService } from '@ngx-translate/core';
-import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { takeUntil } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { debug } from 'util';
+
 
 @Component({
   selector: 'app-matches-list',
