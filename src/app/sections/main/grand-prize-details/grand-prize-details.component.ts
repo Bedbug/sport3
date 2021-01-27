@@ -71,8 +71,7 @@ export class GrandPrizeDetailsComponent implements OnInit {
         };
 
         if (this.prize.prizeDistribution != "draw")
-            this.sportimoService.getPrizeLeaders(this.prizeID).subscribe(leaders => {   
-              console.log(leaders.leaderboard);
+            this.sportimoService.getPrizeLeaders(this.prizeID).subscribe(leaders => {                 
                    
               this.cellArray = leaders.leaderboard;
 
@@ -122,7 +121,6 @@ export class GrandPrizeDetailsComponent implements OnInit {
 
   startCountdownTimer() {
     // / Set the date we're counting down to
-    console.log(this.prize.endToDate);
 
     var countDownDate = new Date(this.prize.endToDate).getTime();
     var that = this;

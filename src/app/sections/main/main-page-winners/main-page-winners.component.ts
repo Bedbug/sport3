@@ -10,7 +10,7 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 })
 export class MainPageWinnersComponent implements OnInit {
   
-  winners: any;
+  winners: any = [];
   Utils: SportimoUtils = new SportimoUtils();
 
   constructor(

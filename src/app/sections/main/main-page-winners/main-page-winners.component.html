@@ -3,7 +3,7 @@
   <div class="row" style="position: relative">
     <div class="main-pages-header" translate>Sportimo Winners</div>
     <div class="main-pages-scrollarea container p-t-15">
-      <div *ngIf="winners.length >0">
+      <div *ngIf="winners && winners.length >0">
         <div class="winner-card" *ngFor="let winner of winners">
           <div class="winner-card-header col-12">
             <img *ngIf="winner.user?.picture" class="rounded-circle" src="{{winner.user?.picture}}" alt="#">

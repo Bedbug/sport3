@@ -426,12 +426,12 @@ export class SportimoService {
       // on reconnection, reset the transports option, as the Websocket
       // connection may have failed (caused by proxy, firewall, browser, ...)
       this.socket.on('reconnect_attempt', () => {
-        console.log("Sockets: Reconnect Attempt");
+        console.log("[Sockets] Reconnect Attempt");
         this.socket.io.opts.transports = ['polling', 'websocket'];
       });
 
       this.socket.on('message', (data) => {
-        console.log("Sockets: Message: ");
+        // console.log("Sockets: Message: ");
         // console.log(data);
 
         observer.next(data);
@@ -439,12 +439,12 @@ export class SportimoService {
       });
 
       this.socket.on('welcome', (data) => {
-        console.log("Sockets: Welcome");
+        console.log("[Sockets] Welcome");
         this.registerUserToStream();
       })
 
       this.socket.on('registered', (data) => {
-        console.log("Sockets: Match Registered");
+        // console.log("Sockets: Match Registered");
         this.subscribeToMatchStream();
       });
 
@@ -619,7 +619,7 @@ export class SportimoService {
   }
 
   registerUserToStream() {
-    console.log("Sockets: Requesting registration to stream");
+    // console.log("Sockets: Requesting registration to stream");
     this.socket.emit('register', {
       uid: this.authenticationService.currentUserValue._id,
       uname: this.authenticationService.currentUserValue.username,
@@ -628,7 +628,7 @@ export class SportimoService {
   }
 
   subscribeToMatchStream() {
-    console.log("Sockets: Requesting subsription to match");
+    // console.log("Sockets: Requesting subsription to match");
     this.socket.emit('subscribe', { room: this.currentLiveMatch.value.matchData._id });
   }
 

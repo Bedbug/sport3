@@ -32,8 +32,7 @@ export class ContestPageLeadersComponent implements OnInit {
         .subscribe(result => {
           this.contestDetails = result;
           if (this.contestDetails)
-            this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {   
-              console.log(leaders.leaderboard);
+            this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {                 
                    
               this.cellArray = leaders.leaderboard;
               
