@@ -43,7 +43,6 @@ export class ContentComponent implements OnInit {
   public appTheme = "";
 
   ngOnInit() {
-    console.log("Init!");
   // play tween animations of texts
   this.loaderTextAnim();
 
@@ -66,7 +65,6 @@ export class ContentComponent implements OnInit {
     this.translate.setDefaultLang('en');
     let selected_language = localStorage.getItem('language');
     this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
-    console.log("Setting language");
     
     this.sportimoService.getClientConfiguration().subscribe(data => {
 
@@ -149,7 +147,6 @@ export class ContentComponent implements OnInit {
 
   public loaderTextAnim() {
     const anim = this._gsapService;
-    console.log("Starting animation!");
     
     var fromTime = 0;
     var alphaToTime = 1.5

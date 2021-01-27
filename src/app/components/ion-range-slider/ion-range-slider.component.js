@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 // var jQuery = require("node_modules/jquery/dist/jquery.min.js");
 require("src/assets/js/ion-rangeslider");
-console.log(jQuery.fn);
+
 var IonRangeSliderComponent = (function () {
     function IonRangeSliderComponent(el) {
         this.onStart = new core_1.EventEmitter();
@@ -46,7 +46,7 @@ var IonRangeSliderComponent = (function () {
     };
     IonRangeSliderComponent.prototype.initSlider = function () {
         var that = this;
-        console.log(jQuery.fn);
+        
         jQuery(this.inputElem).ionRangeSlider({
             min: that.min,
             max: that.max,

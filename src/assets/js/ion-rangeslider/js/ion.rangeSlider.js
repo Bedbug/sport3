@@ -13,15 +13,15 @@
 ;(function(factory) {
     
     if ((typeof jQuery === 'undefined' || !jQuery) && typeof define === "function" && define.amd) {
-        console.log(jQuery.fn);
+        
         define(["jquery"], function (jQuery) {
             return factory(jQuery, document, window, navigator);
         });
     } else if ((typeof jQuery === 'undefined' || !jQuery) && typeof exports === "object") {
-        console.log(jQuery.fn);
+        
         factory(require("jquery"), document, window, navigator);
     } else {
-        console.log(jQuery.fn);
+        
         factory(jQuery, document, window, navigator);       
     }
     
@@ -2417,9 +2417,6 @@
             }
         });       
     };
-
-    console.log($.fn);
-
 
 
     // =================================================================================================================

@@ -151,7 +151,6 @@ export class OnboardComponent implements OnInit {
       // this.slideshow = UIkit.getComponent(document.querySelector('[uk-slideshow]'));
 
       var slideshow = UIkit.slideshow(".uk-slideshow");
-      console.log(slideshow);
 
       UIkit.util.on(slideshow, 'show', function() {
   
