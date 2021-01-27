@@ -14,7 +14,6 @@ export class GsapService {
     gsap.from(element, {
       duration: tym,
       rotation: rot,
-      // transformOrigin: "left 50%",
       ease: Back.easeInOut,
       delay: dlay,
     });

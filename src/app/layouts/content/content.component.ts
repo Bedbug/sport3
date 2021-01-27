@@ -7,6 +7,7 @@ import { config } from 'rxjs';
 import { OnBoardService } from 'src/app/components/onboard/onboard.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { from, fromEvent, Observable, Subscription } from 'rxjs';
+import { GsapService } from "src/app/services/gsap.service";
 
 @Component({
   selector: 'app-content',
@@ -31,6 +32,7 @@ export class ContentComponent implements OnInit {
       private sportimoService: SportimoService,
       private onBoardService: OnBoardService,
       private configService: ConfigService,
+      private _gsapService: GsapService,
       private authService: AuthenticationService) {
     // Assign Client based on url
     let client = this.route.snapshot.paramMap.get("cid");
@@ -41,6 +43,9 @@ export class ContentComponent implements OnInit {
   public appTheme = "";
 
   ngOnInit() {
+    console.log("Init!");
+  // play tween animations of texts
+  this.loaderTextAnim();
 
     this.onlineEvent = fromEvent(window, 'online');
     this.offlineEvent = fromEvent(window, 'offline');
@@ -124,8 +129,6 @@ export class ContentComponent implements OnInit {
 
 
       })
-
-
       // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
       // let signonData = JSON.parse(localStorage.getItem('signon'));
 
@@ -144,6 +147,50 @@ export class ContentComponent implements OnInit {
 
   }
 
+  public loaderTextAnim() {
+    const anim = this._gsapService;
+    console.log("Starting animation!");
+    
+    var fromTime = 0;
+    var alphaToTime = 1.5
+
+    // Slide Orange to the left
+    const text01 = ".animTextL1";
+    const text02 = ".animTextR1";
+    const text03 = ".animTextL2";
+    const text04 = ".animTextR2";
+    const text05 = ".animTextL3";
+    const text06 = ".animTextR3";
+    // Text 01
+    anim.fFrom(text01, 1, -(window.innerWidth/3), 0, fromTime);
+    anim.aTo(text01, 1, 1, fromTime);
+    anim.fFrom(text02, 1, +(window.innerWidth/3), 0, fromTime);
+    anim.aTo(text02, 1, 1, fromTime);
+    anim.aTo(text01, 0.5, 0, alphaToTime);
+    anim.aTo(text02, 0.5, 0, alphaToTime);
+    // Text 02
+    fromTime += 1.5;
+    alphaToTime += 1.5;
+    anim.fFrom(text03, 1, -(window.innerWidth/3), 0, fromTime);
+    anim.aTo(text03, 1, 1, fromTime);
+    anim.fFrom(text04, 1, +(window.innerWidth/3), 0,fromTime);
+    anim.aTo(text04, 1, 1, fromTime);
+    anim.aTo(text03, 0.5, 0, alphaToTime);
+    anim.aTo(text04, 0.5, 0, alphaToTime);
+    // Text 03
+    fromTime += 1.5;
+    alphaToTime += 1.5;
+    anim.fFrom(text05, 1, -(window.innerWidth/3), 0,fromTime);
+    anim.aTo(text05, 1, 1, fromTime);
+    anim.fFrom(text06, 1, +(window.innerWidth/3), 0, fromTime);
+    anim.aTo(text06, 1, 1, fromTime);
+    anim.aTo(text05, 0.5, 0, alphaToTime);
+    anim.aTo(text06, 0.5, 0, alphaToTime);
+
+    setTimeout(() => {
+      this.loaderTextAnim();
+    }, 7500);
+  }
   ngOnDestroy(): void {
     /**
     * Unsubscribe all subscriptions to avoid memory leak

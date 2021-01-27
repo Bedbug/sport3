@@ -6,7 +6,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { _ } from '@biesbjerg/ngx-translate-extract/dist/utils/utils';
 import { ConfigService } from 'src/app/services/config.service';
-import { GsapService } from "src/app/services/gsap.service";
+// import { GsapService } from "src/app/services/gsap.service";
 import { User } from 'src/app/models/user';
 import { first, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
@@ -134,13 +134,13 @@ export class OnboardComponent implements OnInit {
     private router: Router,
     private ViewModalOverlay: PrizeViewOverlayService,
     private gtmService: GoogleTagManagerService,
-    private _gsapService: GsapService
+    // private _gsapService: GsapService
   ) { }
 
 
   ngOnInit() {
     // play tween animations of texts
-    this.loaderTextAnim();
+    // this.loaderTextAnim();
 
     // Get Value From local
     // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
@@ -393,49 +393,49 @@ export class OnboardComponent implements OnInit {
     // localStorage.setItem(key, 'New Value');
   }
 
-  public loaderTextAnim() {
-    const anim = this._gsapService;
+  // public loaderTextAnim() {
+  //   const anim = this._gsapService;
 
-    var fromTime = 1;
-    var alphaToTime = 2.5
+  //   var fromTime = 1;
+  //   var alphaToTime = 2.5
 
-    // Slide Orange to the left
-    const text01 = ".animTextL1";
-    const text02 = ".animTextR1";
-    const text03 = ".animTextL2";
-    const text04 = ".animTextR2";
-    const text05 = ".animTextL3";
-    const text06 = ".animTextR3";
-    // Text 01
-    anim.fFrom(text01, 1, -(window.innerWidth/3), 0, fromTime);
-    anim.aTo(text01, 1, 1, fromTime);
-    anim.fFrom(text02, 1, +(window.innerWidth/3), 0, fromTime);
-    anim.aTo(text02, 1, 1, fromTime);
-    anim.aTo(text01, 0.5, 0, alphaToTime);
-    anim.aTo(text02, 0.5, 0, alphaToTime);
-    // Text 02
-    fromTime += 1.5;
-    alphaToTime += 1.5;
-    anim.fFrom(text03, 1, -(window.innerWidth/3), 0, fromTime);
-    anim.aTo(text03, 1, 1, fromTime);
-    anim.fFrom(text04, 1, +(window.innerWidth/3), 0,fromTime);
-    anim.aTo(text04, 1, 1, fromTime);
-    anim.aTo(text03, 0.5, 0, alphaToTime);
-    anim.aTo(text04, 0.5, 0, alphaToTime);
-    // Text 03
-    fromTime += 1.5;
-    alphaToTime += 1.5;
-    anim.fFrom(text05, 1, -(window.innerWidth/3), 0,fromTime);
-    anim.aTo(text05, 1, 1, fromTime);
-    anim.fFrom(text06, 1, +(window.innerWidth/3), 0, fromTime);
-    anim.aTo(text06, 1, 1, fromTime);
-    anim.aTo(text05, 0.5, 0, alphaToTime);
-    anim.aTo(text06, 0.5, 0, alphaToTime);
+  //   // Slide Orange to the left
+  //   const text01 = ".animTextL1";
+  //   const text02 = ".animTextR1";
+  //   const text03 = ".animTextL2";
+  //   const text04 = ".animTextR2";
+  //   const text05 = ".animTextL3";
+  //   const text06 = ".animTextR3";
+  //   // Text 01
+  //   anim.fFrom(text01, 1, -(window.innerWidth/3), 0, fromTime);
+  //   anim.aTo(text01, 1, 1, fromTime);
+  //   anim.fFrom(text02, 1, +(window.innerWidth/3), 0, fromTime);
+  //   anim.aTo(text02, 1, 1, fromTime);
+  //   anim.aTo(text01, 0.5, 0, alphaToTime);
+  //   anim.aTo(text02, 0.5, 0, alphaToTime);
+  //   // Text 02
+  //   fromTime += 1.5;
+  //   alphaToTime += 1.5;
+  //   anim.fFrom(text03, 1, -(window.innerWidth/3), 0, fromTime);
+  //   anim.aTo(text03, 1, 1, fromTime);
+  //   anim.fFrom(text04, 1, +(window.innerWidth/3), 0,fromTime);
+  //   anim.aTo(text04, 1, 1, fromTime);
+  //   anim.aTo(text03, 0.5, 0, alphaToTime);
+  //   anim.aTo(text04, 0.5, 0, alphaToTime);
+  //   // Text 03
+  //   fromTime += 1.5;
+  //   alphaToTime += 1.5;
+  //   anim.fFrom(text05, 1, -(window.innerWidth/3), 0,fromTime);
+  //   anim.aTo(text05, 1, 1, fromTime);
+  //   anim.fFrom(text06, 1, +(window.innerWidth/3), 0, fromTime);
+  //   anim.aTo(text06, 1, 1, fromTime);
+  //   anim.aTo(text05, 0.5, 0, alphaToTime);
+  //   anim.aTo(text06, 0.5, 0, alphaToTime);
 
-    setTimeout(() => {
-      this.loaderTextAnim();
-    }, 7500);
-  }
+  //   setTimeout(() => {
+  //     this.loaderTextAnim();
+  //   }, 7500);
+  // }
 
   getSlideIndex(){
     this.slideCount = UIkit.getComponent(document.querySelector('[uk-slideshow]'), 'slideshow').index;
