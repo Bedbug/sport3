@@ -34,7 +34,6 @@ import { CardToastComponent } from './components/card-toast/card-toast.component
 import { GrandPrizeDetailsComponent } from './sections/main/grand-prize-details/grand-prize-details.component';
 import { ContestInfoComponent } from './sections/contest-pages/contest-info/contest-info.component';
 import { OnboardComponent } from './components/onboard/onboard.component';
-import { NgxPopperModule } from 'ngx-popper';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ResetComponent } from './reset/reset.component';
 import { MainPageNewsComponent } from './sections/main/main-page-news/main-page-news.component';
@@ -83,7 +82,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     AppRoutingModule,
     HttpClientModule,
-    // NgxPopperModule.forRoot({}),
     PopoverModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,

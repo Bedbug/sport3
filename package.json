@@ -65,7 +65,6 @@
     "ngx-dropzone-wrapper": "^10.0.1",
     "ngx-perfect-scrollbar": "^10.1.0",
     "ngx-pipes": "^2.7.5",
-    "ngx-popper": "^7.0.0",
     "ngx-socket-io": "^3.2.0",
     "ngx-toastr": "^13.2.0",
     "ngx-translate-extract": "^1.0.0",
