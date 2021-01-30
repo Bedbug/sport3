@@ -46,6 +46,7 @@ import { TermsFooterComponent } from './components/terms-footer/terms-footer.com
 import { GoogleTagManagerModule, GoogleTagManagerService } from 'angular-google-tag-manager';
 import { OfflineInterceptor } from './helpers/offline.interceptor';
 
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -74,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TermsPopupComponent,
     CardInfoPopupComponent,
     TermsFooterComponent
+    
   ],
   imports: [
     OverlayModule,

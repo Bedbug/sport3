@@ -42,6 +42,7 @@ export class OnboardComponent implements OnInit {
   errorMsg="";
   slideCount:number = 0;
   onBoardOpenBtn = false;
+  dailybonus:number = 0;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -63,9 +64,19 @@ export class OnboardComponent implements OnInit {
     _("AE");
     _("KW");
     _("EG");
+    _("msisdnChecks.100");
+    _("msisdnChecks.101");
+    _("msisdnChecks.102");
+    _("msisdnChecks.103");
   }
 
-  
+  // "msisdnChecks": {
+	// 	"100": "Please remove country code!",
+	// 	"101": "Please remove any letters or characters!",
+	// 	"102": "The number seems to be too long!",
+	// 	"103": "The number seems to be too small!"
+	// },
+  // You have earned {{dailybonus}} bonus coins! Keep playing daily to win more!
   public defaults = {
     name: "",
     sequence: ["S", "L"],
@@ -139,6 +150,7 @@ export class OnboardComponent implements OnInit {
 
 
   ngOnInit() {
+    // this.showDailyBonusModal();
     // play tween animations of texts
     // this.loaderTextAnim();
 
@@ -151,6 +163,7 @@ export class OnboardComponent implements OnInit {
       // this.slideshow = UIkit.getComponent(document.querySelector('[uk-slideshow]'));
 
       var slideshow = UIkit.slideshow(".uk-slideshow");
+      console.log(slideshow);
 
       UIkit.util.on(slideshow, 'show', function() {
   
@@ -312,6 +325,7 @@ export class OnboardComponent implements OnInit {
           // Else handle regular process
           else {
             console.log("[FLOW: Reqular]");
+
             this.Authenticated = false;
             this.Onboarding = true;
             this.LandingPage = true;
@@ -358,7 +372,7 @@ export class OnboardComponent implements OnInit {
         setTimeout(function () {
           $('.loader-wrapper').fadeOut('slow');
           $('.loader-wrapper').remove('slow');
-        }, 17000);
+        }, 7000);
 
       } else {
         this.Authenticated = true;
@@ -716,6 +730,12 @@ export class OnboardComponent implements OnInit {
             this.Authenticated = true;
             if (this.defaults.sequence[0] == "L")
               this.Onboarding = true;
+              else{
+                // Do The Daily Bonus Check
+                console.log("Show Daily Bonus!");
+                
+                this.showDailyBonusModal();
+              }
 
             if (this.subState == "UNKNOWN") {
               // console.log(this.subState);
@@ -736,6 +756,9 @@ export class OnboardComponent implements OnInit {
             if(!response.user.firstLoginCompleted){
               this.sendThankYouPageEvent();              
             }
+
+            
+
           } else {
             this.incorrectPin = true;
             this.isSubmitting = false;
@@ -760,10 +783,32 @@ export class OnboardComponent implements OnInit {
     this.gtmService.pushTag(gtmTag);
   }
   
+  showDailyBonusModal() {
+    this.dailybonus = this.user.loyaltyCoins;
+    console.log("Loyalty Bonus: "+ this.dailybonus);
+    this.dailybonus = 1;
+    if(this.dailybonus > 0){
+      var dailymodal = UIkit.modal("#dailyModal", { escClose: false, bgClose: false });
+      dailymodal.show();
+    
+    }
+  }
+
+  collectCoin(){
+    // Collect Loyalty
+    this.authenticationService.collectLoyalty().subscribe(user => {
+      this.user = user;
+    });
+    //Close Modal
+    let modal = UIkit.modal("#dailyModal", { escClose: false, bgClose: false });
+      modal.hide();
+  }
 
   openTerms() {
     // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
+    console.log("Openning terms!");
+    // this.ViewModalOverlay.open<DailyBonusComponent>(DailyBonusComponent, {});
   }
 
   openTermsLink(termsLink: string) {

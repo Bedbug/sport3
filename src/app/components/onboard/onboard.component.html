@@ -251,6 +251,7 @@
               <div class="select-info"  [style.visibility]="!multiOperatorForm.controls.area.value?'visible':'hidden'">
                 <span translate>Select Country</span>
               </div>
+            
               <!-- <div *ngIf="availableCountries.length < 2" class="input-area2">{{nrSelect}}</div> -->
               <select #countrySelect *ngIf="availableCountries.length > 0"
                 class="input-area2" formControlName="country" (change)='selectedCountry(countrySelect.value)'>
@@ -475,5 +476,28 @@
         [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
     </div>
+  </div>
+</div>
+
+<!-- DAILY BONUS -->
+<div id="dailyModal" class="uk-flex-top" uk-modal >
+  <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical animate__animated animate__bounceInDown">
+    <div class="center-top">
+      <img class="svg-shadow" src="/assets/images/sportimo/dailybonus/dailybonus_header.svg" alt="">
+      <div class="centered text-top" style="width:100%" translate>Daily Bonus</div>
+    </div>
+    <br><br>
+    <h4 class="infotext" translate [translateParams]="{value:dailybonus}">dailybonus_text</h4>
+    <br>
+    <div class="centered center-top">
+      <img class="" style="width:100%" src="/assets/images/sportimo/dailybonus/coin_fixed_dimensions.png" alt="">
+      <!-- <div class="centered text-top">Daily Bonus</div> -->
+    </div>
+    
+    <div class="center-bottom" (click)="collectCoin()">
+      <img class="svg-shadow" src="/assets/images/sportimo/dailybonus/dailybonus_claimbutton.svg" alt="">
+      <div class="centered text-bottom" translate>Collect</div>
+    </div>
+    
   </div>
 </div>

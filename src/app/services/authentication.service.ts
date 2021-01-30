@@ -297,6 +297,14 @@ export class AuthenticationService {
         this.currentUserSubject.next(this.currentUserSubject.value);
     }
 
+    collectLoyalty() {
+
+        return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/loyalty`, {})
+            .pipe(map(response => {
+                return response;
+            }));
+    }
+
     addDemoOneWeekSubscription() {
         this.currentUserSubject.value.subscriptionEnd = moment().utc().add(6, 'd').toDate();
         this.currentUserSubject.next(this.currentUserSubject.value);

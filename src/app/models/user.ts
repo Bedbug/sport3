@@ -23,6 +23,7 @@ export class User {
     subscription?: string;
     subscriptionEnd?: Date;
     wallet?: number;
+    loyaltyCoins?:number;
     favTeams?: any;
     operatorId?: any;
 }

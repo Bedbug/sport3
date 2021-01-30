@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="222px" height="65px" viewBox="0 0 222 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>dailybonus_header</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFE382" offset="0%"></stop>
+            <stop stop-color="#EDA73E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,0 L210,0 C216.627417,-1.21743675e-15 222,5.372583 222,12 L222,43.1304094 C222,49.2995251 217.322437,54.4635423 211.183393,55.0719161 L112.183393,64.8827269 C111.396392,64.9607179 110.603608,64.9607179 109.816607,64.8827269 L10.8166074,55.0719161 C4.67756271,54.4635423 7.86092614e-15,49.2995251 0,43.1304094 L0,12 C-8.11624501e-16,5.372583 5.372583,1.21743675e-15 12,0 Z" id="dailybonus_header" fill="url(#linearGradient-1)"></path>
+    </g>
+</svg>
