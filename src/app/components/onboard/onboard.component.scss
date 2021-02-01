@@ -501,18 +501,18 @@ select option {
     // max-width: calc(100% - 0.01px) !important;
     // background: #fff;
     opacity: 0;
-    transform: translateY(-100px);
+    transform: translateY(-400px);
     transition: 0.3s linear;
     transition-property: opacity, transform;
     border-radius: 15px;
     background-image: linear-gradient(to top, #102030, #304558 100%);
-    min-height: 70%;
+    min-height: 65%;
     box-shadow: 0px 6px 11px 4px #0000008f;
     max-width: 400px;
 }
 .uk-open > .uk-modal-dialog {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(100);
 }
 .uk-modal-container .uk-modal-dialog {
   width: 1200px;
@@ -649,4 +649,13 @@ select option {
     width: 85%;
     text-align: center;
     font-size: 18px;
+}
+.sponsored{
+  position: absolute;
+    top: -91px;
+    width: 85%;
+    text-align: center;
+}
+.sponsImg{
+  height:35px;
 }

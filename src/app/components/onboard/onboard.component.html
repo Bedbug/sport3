@@ -482,6 +482,13 @@
 <!-- DAILY BONUS -->
 <div id="dailyModal" class="uk-flex-top" uk-modal >
   <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical animate__animated animate__bounceInDown">
+  
+    <!-- <img class="svg-shadow" src="/assets/images/sportimo/dailybonus/dailybonus_header.svg" alt=""> -->
+  
+    <div class="sponsored">
+      <span *ngIf="loyaltyText" style="color: white;text-align: center;font-size: 14px;">{{loyaltyText[translate.currentLang]}}</span><br>
+      <img class="sponsImg" src='{{ loyaltyImg }}' alt="">
+    </div>
     <div class="center-top">
       <img class="svg-shadow" src="/assets/images/sportimo/dailybonus/dailybonus_header.svg" alt="">
       <div class="centered text-top" style="width:100%" translate>Daily Bonus</div>
@@ -490,7 +497,7 @@
     <h4 class="infotext" translate [translateParams]="{value:dailybonus}">dailybonus_text</h4>
     <br>
     <div class="centered center-top">
-      <img class="" style="width:100%" src="/assets/images/sportimo/dailybonus/coin_fixed_dimensions.png" alt="">
+      <img class="" style="width:80%" src="/assets/images/sportimo/dailybonus/coin_fixed_dimensions.png" alt="">
       <!-- <div class="centered text-top">Daily Bonus</div> -->
     </div>
     

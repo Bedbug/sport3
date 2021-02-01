@@ -43,6 +43,8 @@ export class OnboardComponent implements OnInit {
   slideCount:number = 0;
   onBoardOpenBtn = false;
   dailybonus:number = 0;
+  loyaltyImg:any;
+  loyaltyText:any;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -610,7 +612,7 @@ export class OnboardComponent implements OnInit {
     // Remove all spaces str.replace(/\s/g, '');
     msisdnValue =  msisdnValue.replace(/\s/g, '');
     var res = msisdnValue.substring(0, areaCode.length);
-    console.log("msisdn Length:" +msisdnValue.length);
+    // console.log("msisdn Length:" +msisdnValue.length);
     // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
     // CHECK IF COUNTRY CODE IS INSERTED
     if(areaCode == res){
@@ -639,20 +641,20 @@ export class OnboardComponent implements OnInit {
       return;
     }
     // Check length
-    if(msisdnValue.length >10){
-      this.msisdnError = true;
-      // this.errorMsg = "The number seems to be too long!";
-      this.errorMsg = "msisdnChecks.102";
-      this.isSubmitOpen = false;
-      return;
-    }
-    if(msisdnValue.length < 10 && msisdnValue.length != 3 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
-      this.msisdnError = true;
-      // this.errorMsg = "The number seems to be too small!";
-      this.errorMsg = "msisdnChecks.103";
-      this.isSubmitOpen = false;
-      return;
-    }
+    // if(msisdnValue.length >10){
+    //   this.msisdnError = true;
+    //   // this.errorMsg = "The number seems to be too long!";
+    //   this.errorMsg = "msisdnChecks.102";
+    //   this.isSubmitOpen = false;
+    //   return;
+    // }
+    // if(msisdnValue.length < 10 && msisdnValue.length != 3 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
+    //   this.msisdnError = true;
+    //   // this.errorMsg = "The number seems to be too small!";
+    //   this.errorMsg = "msisdnChecks.103";
+    //   this.isSubmitOpen = false;
+    //   return;
+    // }
     this.msisdnError = false;
     this.isSubmitOpen = true;
   }
@@ -784,8 +786,14 @@ export class OnboardComponent implements OnInit {
   }
   
   showDailyBonusModal() {
+    this.loyaltyImg = this.sportimoService.getConfigurationFor('userLoyaltySponsorImageUrl');
+    this.loyaltyText = this.sportimoService.getConfigurationFor('userLoyaltySponsorText');
+    console.log(this.loyaltyImg);
+    console.log(this.loyaltyText);
+
     this.dailybonus = this.user.loyaltyCoins;
     console.log("Loyalty Bonus: "+ this.dailybonus);
+    // Testing
     this.dailybonus = 1;
     if(this.dailybonus > 0){
       var dailymodal = UIkit.modal("#dailyModal", { escClose: false, bgClose: false });
