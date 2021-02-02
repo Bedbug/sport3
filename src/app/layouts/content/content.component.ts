@@ -167,6 +167,10 @@ export class ContentComponent implements OnInit {
         // Close Texts
         console.log("Closed Loader!");
         // this.loaderOpened = false;
+        // Close Texts
+        var myobj = document.getElementById("LoaderTexts");
+        if(myobj)
+          myobj.remove();
       }
     });
 
@@ -197,6 +201,9 @@ export class ContentComponent implements OnInit {
       //=> 'hello world'
   });
 
+      var myobj = document.getElementById("LoaderTexts");
+        if(!myobj)
+          return;
     // this.textleft = this.translate. "slidetextl.10"+this.textcount;
     // this.textRight = "slidetextr.10"+this.textcount;
     // Slide Orange to the left
