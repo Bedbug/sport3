@@ -2919,7 +2919,35 @@ table thead .border-bottom-warning th, table tbody .border-bottom-warning th, ta
 /**=====================
      04. Loader CSS Start
 ==========================**/
-
+.loader-texts{
+  // height: 100%;
+  // width: 100%;
+  position: relative;
+  // top: 50%;
+  // left: 50%;
+}
+.animTextL1{
+  // margin: 0 auto; 
+  z-index: 2001; 
+  opacity: 0; 
+  font-size: 20px; 
+  color: white; 
+  font-weight: bold; 
+  position: relative;
+  top: 55%;
+  text-align: center;
+}
+.animTextR1{
+  // margin: 0 auto;
+  z-index: 2001; 
+  opacity: 0; 
+  font-size: 20px; 
+  color: white; 
+  font-weight:lighter; 
+  position: relative;
+  top: 59%;
+  text-align: center;
+}
 .loader-wrapper {
   height: 100%;
   width: 100%;

@@ -8,6 +8,7 @@ import { OnBoardService } from 'src/app/components/onboard/onboard.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { from, fromEvent, Observable, Subscription } from 'rxjs';
 import { GsapService } from "src/app/services/gsap.service";
+import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 
 @Component({
   selector: 'app-content',
@@ -21,6 +22,27 @@ export class ContentComponent implements OnInit {
   connectionStatus: boolean = true;
   connectionRestored: boolean = false;
   subscriptions: Subscription[] = [];
+  loaderOpened = false;
+
+  translateMappings() {
+    _("slidetextl.100");
+    _("slidetextr.100");
+    _("slidetextl.101");
+    _("slidetextr.101");
+    _("slidetextl.102");
+    _("slidetextr.102");
+    _("slidetextl.103");
+    _("slidetextr.103");
+    _("slidetextl.104");
+    _("slidetextr.104");
+    _("slidetextl.105");
+    _("slidetextr.105");
+    _("slidetextl.106");
+    _("slidetextr.106");
+    _("slidetextl.107");
+    _("slidetextr.107");
+  }
+
 
   public isRTL: boolean;
   RTL_languages = ["fa", "ar"];
@@ -44,7 +66,7 @@ export class ContentComponent implements OnInit {
 
   ngOnInit() {
   // play tween animations of texts
-  this.loaderTextAnim();
+ 
 
     this.onlineEvent = fromEvent(window, 'online');
     this.offlineEvent = fromEvent(window, 'offline');
@@ -66,6 +88,8 @@ export class ContentComponent implements OnInit {
     let selected_language = localStorage.getItem('language');
     this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
     
+    
+
     this.sportimoService.getClientConfiguration().subscribe(data => {
 
       
@@ -74,7 +98,7 @@ export class ContentComponent implements OnInit {
       // translate.getTranslation('en').subscribe(() => {});
       // the lang to use, if the lang isn't available, it will use the current loader to get them
       this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
-
+      this.loaderTextAnim();
       this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
 
       // Change the app background
@@ -140,24 +164,46 @@ export class ContentComponent implements OnInit {
         this.onBoardService.Hide();
         $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow');
+        // Close Texts
+        console.log("Closed Loader!");
+        // this.loaderOpened = false;
       }
     });
 
   }
+  textcount:any = -1;
+  textleft:any = "";
+  textRight:any = "";
+  
 
   public loaderTextAnim() {
     const anim = this._gsapService;
-    
-    var fromTime = 0;
-    var alphaToTime = 1.5
+    this.loaderOpened = true;
 
+    var fromTime = 0;
+    var alphaToTime = 1.5;
+    this.textcount++;
+    if( this.textcount == 8 )
+      return;
+      this.textleft = "slidetextl";
+      this.textRight = "slidetextr"
+
+    this.translate.get("slidetextl.10" + this.textcount).subscribe((res: string) => {
+      this.textleft = res;
+      //=> 'hello world'
+    });
+    this.translate.get("slidetextr.10" + this.textcount).subscribe((res: string) => {
+      this.textRight = res;
+      //=> 'hello world'
+  });
+
+    // this.textleft = this.translate. "slidetextl.10"+this.textcount;
+    // this.textRight = "slidetextr.10"+this.textcount;
     // Slide Orange to the left
     const text01 = ".animTextL1";
     const text02 = ".animTextR1";
-    const text03 = ".animTextL2";
-    const text04 = ".animTextR2";
-    const text05 = ".animTextL3";
-    const text06 = ".animTextR3";
+    
+    
     // Text 01
     anim.fFrom(text01, 1, -(window.innerWidth/3), 0, fromTime);
     anim.aTo(text01, 1, 1, fromTime);
@@ -165,28 +211,10 @@ export class ContentComponent implements OnInit {
     anim.aTo(text02, 1, 1, fromTime);
     anim.aTo(text01, 0.5, 0, alphaToTime);
     anim.aTo(text02, 0.5, 0, alphaToTime);
-    // Text 02
-    fromTime += 1.5;
-    alphaToTime += 1.5;
-    anim.fFrom(text03, 1, -(window.innerWidth/3), 0, fromTime);
-    anim.aTo(text03, 1, 1, fromTime);
-    anim.fFrom(text04, 1, +(window.innerWidth/3), 0,fromTime);
-    anim.aTo(text04, 1, 1, fromTime);
-    anim.aTo(text03, 0.5, 0, alphaToTime);
-    anim.aTo(text04, 0.5, 0, alphaToTime);
-    // Text 03
-    fromTime += 1.5;
-    alphaToTime += 1.5;
-    anim.fFrom(text05, 1, -(window.innerWidth/3), 0,fromTime);
-    anim.aTo(text05, 1, 1, fromTime);
-    anim.fFrom(text06, 1, +(window.innerWidth/3), 0, fromTime);
-    anim.aTo(text06, 1, 1, fromTime);
-    anim.aTo(text05, 0.5, 0, alphaToTime);
-    anim.aTo(text06, 0.5, 0, alphaToTime);
-
+    
     setTimeout(() => {
       this.loaderTextAnim();
-    }, 7500);
+    }, 2500);
   }
   ngOnDestroy(): void {
     /**

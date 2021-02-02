@@ -120,12 +120,17 @@
                   <h3 style="font-weight: bold"> {{slide.title[translate.currentLang]}}</h3>
                   <h4>{{slide.text[translate.currentLang]}}</h4>
                 </div>
-                <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
+                <!-- <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
                   <a href="#" uk-slideshow-item="next" *ngIf="slideCount == 3"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
-                </button>
+                </button> -->
                 
                
               </div>
+              <div *ngIf="i < defaults.slides.length-1" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" >
+                <button  [disabled]="loading" uk-slideshow-item="next" class="btn btn-slide" style="margin-bottom: 20px;">
+                  <a><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
+                </button>
+                </div>
               <div *ngIf="i == defaults.slides.length-1" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" >
                 <button  [disabled]="loading" type="submit" class="btn btn-slide" style="margin-bottom: 20px;">
                   <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
@@ -137,8 +142,8 @@
             
           </ul>
           
-          <a class="uk-position-center-left uk-slidenav-large uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-          <a class="uk-position-center-right uk-slidenav-large uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+          <!-- <a class="uk-position-center-left uk-slidenav-large uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+          <a class="uk-position-center-right uk-slidenav-large uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a> -->
           <!-- NAVIGATION -->
           <!-- <ul class="uk-slideshow-nav uk-dotnav uk-flex-center " style="margin-top: 19px;"></ul>
           <button *ngIf="onBoardOpenBtn" [disabled]="loading" type="submit" class="btn btn-slide uk-position-center" style="top:90%">

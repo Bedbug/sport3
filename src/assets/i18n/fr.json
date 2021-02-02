@@ -293,6 +293,26 @@
 	"pin_sent": "<fort>PIN envoyé!</fort> Veuillez allouer 2 minutes d'attente pour le recevoir",
 	"pts": " pts",
 	"russian": "Русский",
+	"slidetextl": {
+		"100": "",
+		"101": "",
+		"102": "",
+		"103": "",
+		"104": "",
+		"105": "",
+		"106": "",
+		"107": ""
+	},
+	"slidetextr": {
+		"100": "",
+		"101": "",
+		"102": "",
+		"103": "",
+		"104": "",
+		"105": "",
+		"106": "",
+		"107": ""
+	},
 	"something_wrong_retry": "Un problème est survenu. Veuillez réessayer",
 	"susbcription_message_ACTIVE": "<b>Bienvenue à nouveau!</b><br>Entrez votre code PIN pour continuer à jouer.",
 	"susbcription_message_ACTIVEFREEPERIOD": "<b>Bienvenue à nouveau!</b><br>Réabonnez-vous et continuez à jouer Gratuitement.",
