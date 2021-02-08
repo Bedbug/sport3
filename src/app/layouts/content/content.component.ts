@@ -221,7 +221,7 @@ export class ContentComponent implements OnInit {
     
     setTimeout(() => {
       this.loaderTextAnim();
-    }, 2500);
+    }, 3500);
   }
   ngOnDestroy(): void {
     /**

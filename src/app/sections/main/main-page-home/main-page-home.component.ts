@@ -14,7 +14,7 @@ import { MatchSubscribeComponent } from '../../contest-pages/match-subscribe/mat
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
+import UIkit from 'uikit';
 
 @Component({
   selector: 'app-page',
@@ -41,6 +41,9 @@ export class MainPageHomeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   isAuthenticated = false;
   Utils: SportimoUtils = new SportimoUtils();
+  loyaltyImg:any;
+  loyaltyText:any;
+  dailybonus:number = 10;
 
   constructor(
     private routeParams: ActivatedRoute,
@@ -62,6 +65,12 @@ export class MainPageHomeComponent implements OnInit {
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isAuthenticated = user!=null;
+    
+      if(this.isAuthenticated && user.loyaltyCoins > 0){
+        console.log("Check Bonus!");
+        this.showDailyBonusModal(user.loyaltyCoins);
+      }
+      
     })
 
     this.sportimoService.getHomeMatches().subscribe(data => {
@@ -186,6 +195,37 @@ export class MainPageHomeComponent implements OnInit {
     // } else {
     //   $(".leaders-table-user").removeClass('leaders-table-user-down');
     // }
+  }
+
+  showDailyBonusModal(value:number) {
+    // console.log("Loyalty Bonus from Auth: "+ this.authenticationService.hasDailyBonus);
+    this.loyaltyImg = this.sportimoService.getConfigurationFor('userLoyaltySponsorImageUrl');
+    this.loyaltyText = this.sportimoService.getConfigurationFor('userLoyaltySponsorText');
+    
+      this.dailybonus = value;
+
+      console.log("dailybonus property: "+ this.dailybonus);
+      
+      var dailymodal = UIkit.modal("#dailyModal2", { escClose: false, bgClose: false });
+      // dailymodal.show();
+      var that = this;
+      setTimeout(() => {
+        dailymodal.show();
+        console.log(that);
+        
+      }, 2000);
+    
+    
+  }
+
+  collectCoin(){
+    // Collect Loyalty
+    this.authenticationService.collectLoyalty().subscribe(user => {
+
+    });
+    //Close Modal
+    let modal = UIkit.modal("#dailyModal2", { escClose: false, bgClose: false });
+      modal.hide();
   }
 
 }

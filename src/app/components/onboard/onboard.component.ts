@@ -67,6 +67,7 @@ export class OnboardComponent implements OnInit {
     _("AE");
     _("KW");
     _("EG");
+    _("LY");
     _("msisdnChecks.100");
     _("msisdnChecks.101");
     _("msisdnChecks.102");
@@ -179,6 +180,7 @@ export class OnboardComponent implements OnInit {
     // }
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
+
     });
 
     // Get value from Service
@@ -637,6 +639,7 @@ export class OnboardComponent implements OnInit {
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
         console.log("Authenticate");
+        console.log(response);
         if (response && response.success) {
           this.subState = response.state;
           if (this.subState == "UNSUB" && response.user.wallet > 0)
@@ -654,6 +657,8 @@ export class OnboardComponent implements OnInit {
           }
 
           this.closeLandingPage();
+          // Do Daily bonus check
+          // this.showDailyBonusModal();
         }
         this.isSubmitting = false;
       });
@@ -698,9 +703,8 @@ export class OnboardComponent implements OnInit {
               this.Onboarding = true;
               else{
                 // Do The Daily Bonus Check
-                console.log("Show Daily Bonus!");
-                
-                this.showDailyBonusModal();
+                // console.log("Show Daily Bonus!");
+                // this.showDailyBonusModal();
               }
 
             if (this.subState == "UNKNOWN") {
@@ -750,15 +754,15 @@ export class OnboardComponent implements OnInit {
   }
   
   showDailyBonusModal() {
+    console.log("Loyalty Bonus: "+ this.dailybonus);
     this.loyaltyImg = this.sportimoService.getConfigurationFor('userLoyaltySponsorImageUrl');
     this.loyaltyText = this.sportimoService.getConfigurationFor('userLoyaltySponsorText');
-    console.log(this.loyaltyImg);
-    console.log(this.loyaltyText);
-
+    // console.log(this.loyaltyImg);
+    // console.log(this.loyaltyText);
     this.dailybonus = this.user.loyaltyCoins;
-    console.log("Loyalty Bonus: "+ this.dailybonus);
+    
     // Testing
-    this.dailybonus = 1;
+    // this.dailybonus = 1;
     if(this.dailybonus > 0){
       var dailymodal = UIkit.modal("#dailyModal", { escClose: false, bgClose: false });
       dailymodal.show();

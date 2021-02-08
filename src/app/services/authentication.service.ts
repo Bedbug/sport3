@@ -11,7 +11,6 @@ import moment from 'moment-mini';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
-
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     lo: any;
@@ -47,6 +46,8 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
+                    console.log(user.loyaltyCoins);
+                    
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ _id: user._id, token: user.token }));
                     this.currentUserSubject.next(user);
@@ -301,6 +302,8 @@ export class AuthenticationService {
 
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/loyalty`, {})
             .pipe(map(response => {
+                this.currentUserSubject.value.loyaltyCoins = 0;
+                this.currentUserSubject.next(this.currentUserSubject.value);
                 return response;
             }));
     }

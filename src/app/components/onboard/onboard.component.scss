@@ -506,7 +506,8 @@ select option {
     transition-property: opacity, transform;
     border-radius: 15px;
     background-image: linear-gradient(to top, #102030, #304558 100%);
-    min-height: 65%;
+    max-height: 575px;
+    height: 65%;
     box-shadow: 0px 6px 11px 4px #0000008f;
     max-width: 400px;
 }
