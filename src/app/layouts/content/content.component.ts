@@ -184,8 +184,8 @@ export class ContentComponent implements OnInit {
     const anim = this._gsapService;
     this.loaderOpened = true;
 
-    var fromTime = 0;
-    var alphaToTime = 1.5;
+    var fromTime = 1;
+    var alphaToTime = 2.5;
     this.textcount++;
     if( this.textcount == 8 )
       return;
