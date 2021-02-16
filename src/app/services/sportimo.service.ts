@@ -344,6 +344,8 @@ export class SportimoService {
     cardSelections.matchid = this.currentLiveMatch.value._id;
     cardSelections.contestId = this.currentContestId;
     cardSelections.segment = this.currentLiveMatch.value.matchData.state;
+    console.log(this.currentLiveMatch.value.matchData.state);
+    
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecards`, cardSelections)
       .pipe(map(response => {
         if (!response.error) {

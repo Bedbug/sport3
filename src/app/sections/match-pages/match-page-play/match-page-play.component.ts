@@ -206,6 +206,10 @@ export class MatchPagePlayComponent implements OnInit {
     this.minTimeValue = this.sportimoService.currentMatch.matchData.time; //this.sportimoService.currentMatch.matchData.time;   
     if (this.minTimeValue == null || this.minTimeValue == 0) this.minTimeValue = 1;
     if (this.fromTimeValue < this.minTimeValue) this.fromTimeValue = this.minTimeValue;
+    if(this.sportimoService.currentMatch.matchData.state == 2)
+    this.minTimeValue = this.fromTimeValue = 45;
+    if(this.sportimoService.currentMatch.matchData.state == 4)
+    this.minTimeValue = this.fromTimeValue = 90;
     return this.minTimeValue;
   }
 
