@@ -249,7 +249,7 @@
         <form [formGroup]="multiOperatorForm" (ngSubmit)="onMultiOperatorSelect()" class="sportimo-form"
           *ngIf="appOperators.length > 0">
           <!-- Country -->
-          <div *ngIf="filteredOperators.length==0">
+          <div *ngIf="filteredOperators.length == 0">
             <!-- <span>Select your Country</span> -->
             <div class="input-box">
               <!-- Text -->
@@ -280,7 +280,7 @@
               <div class="select-info"  [style.visibility]="!multiOperatorForm.controls.operator.value?'visible':'hidden'">
                <span translate>Select Operator</span>
               </div>
-              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
+              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0 && availableCountries.length != 1?'visible':'hidden'"
                 class="isClickable" (click)="multiOperatorBack()">
                 <div class="sub-icon back-icon float-left icn-arrow-back ng-star-inserted"></div>
               </div>
@@ -309,7 +309,7 @@
             </div>
             
             <div class="input-box">
-              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0?'visible':'hidden'"
+              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>1 || availableCountries.length != 1?'visible':'hidden'"
                 class="isClickable" (click)="multiOperatorBack()">
                 <div class="sub-icon back-icon float-left icn-arrow-back ng-star-inserted"></div>
               </div>

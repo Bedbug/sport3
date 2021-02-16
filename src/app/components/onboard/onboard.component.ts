@@ -196,9 +196,17 @@ export class OnboardComponent implements OnInit {
           let b = a.split(":");
           return { code: b[0], area: b[1], key: a };
         });
+        
+
         // console.log(this.availableCountries);
         this.filteredOperators = [];
 
+        if(this.availableCountries.length == 1){
+          console.log("Only one country available. Proceed to operators");
+          // this.multiOperatorForm.controls.country = this.availableCountries[0];
+          this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);          
+          this.selectedCountry(this.multiOperatorForm.controls.country.value);
+        }
         
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
@@ -456,6 +464,13 @@ export class OnboardComponent implements OnInit {
 
     $('#countrySelect option').first().attr("selected", "selected");
 
+    if(this.availableCountries.length == 1){
+      console.log("Only one country available. Proceed to operators");
+      // this.multiOperatorForm.controls.country = this.availableCountries[0];
+      this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);          
+      this.selectedCountry(this.multiOperatorForm.controls.country.value);
+    }
+
     // if(this.multiOperatorForm.controls.operator)
     // this.multiOperatorForm.controls.operator = null;
     // else if(this.multiOperatorForm.controls.country)
@@ -467,7 +482,13 @@ export class OnboardComponent implements OnInit {
     this.filteredOperators = this.appOperators.filter((operator) => {
       return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
     })
-    // console.log(this.filteredOperators);
+      console.log(this.filteredOperators);
+
+    if(this.filteredOperators.length == 1){
+      this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
+      this.selectedOperator(this.filteredOperators[0]);
+    }
+    console.log(this.filteredOperators);
   };
 
   currentOperator: any;
@@ -541,7 +562,7 @@ export class OnboardComponent implements OnInit {
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-
+      console.log(this.currentOperator);
       this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
@@ -572,6 +593,9 @@ export class OnboardComponent implements OnInit {
   
 
   multiOnChange() {
+    if(!this.multiOperatorForm.controls.country.value)
+    return;
+    
     let areaCode = this.multiOperatorForm.controls.country.value.area;
     let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
     
