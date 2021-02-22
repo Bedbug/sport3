@@ -26,6 +26,7 @@ declare var Pace: any;
 })
 export class OnboardComponent implements OnInit {
 
+  closeBtns: boolean = false;
   areaCodes = [];
   nrSelect = '';
   Onboarding = false;
@@ -39,13 +40,13 @@ export class OnboardComponent implements OnInit {
   availableCountries: any;
   filteredOperators: any[];
   msisdnError = false;
-  errorMsg="";
-  slideCount:number = 0;
+  errorMsg = "";
+  slideCount: number = 0;
   onBoardOpenBtn = false;
-  dailybonus:number = 0;
-  loyaltyImg:any;
-  loyaltyText:any;
-  loaderOpened:any;
+  dailybonus: number = 0;
+  loyaltyImg: any;
+  loyaltyText: any;
+  loaderOpened: any;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -75,11 +76,11 @@ export class OnboardComponent implements OnInit {
   }
 
   // "msisdnChecks": {
-	// 	"100": "Please remove country code!",
-	// 	"101": "Please remove any letters or characters!",
-	// 	"102": "The number seems to be too long!",
-	// 	"103": "The number seems to be too small!"
-	// },
+  // 	"100": "Please remove country code!",
+  // 	"101": "Please remove any letters or characters!",
+  // 	"102": "The number seems to be too long!",
+  // 	"103": "The number seems to be too small!"
+  // },
   // You have earned {{dailybonus}} bonus coins! Keep playing daily to win more!
   public defaults = {
     name: "",
@@ -150,29 +151,32 @@ export class OnboardComponent implements OnInit {
     private ViewModalOverlay: PrizeViewOverlayService,
     private gtmService: GoogleTagManagerService,
     // private _gsapService: GsapService
-  ) { }
+  ) {
+
+   }
 
 
   ngOnInit() {
-    
+
     // Get Value From local
     // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
     // if (parsedFirst != null){
-      // console.log(document.referrer);
-      // console.log(window.location);
-      // console.log(window.location.origin);
-      // this.slideshow = UIkit.getComponent(document.querySelector('[uk-slideshow]'));
+    // console.log(document.referrer);
+    // console.log(window.location);
+    // console.log(window.location.origin);
+    // this.slideshow = UIkit.getComponent(document.querySelector('[uk-slideshow]'));
 
-      var slideshow = UIkit.slideshow(".uk-slideshow");
-      console.log(slideshow);
+    var slideshow = UIkit.slideshow(".uk-slideshow");
+    console.log(slideshow);
 
-      UIkit.util.on(slideshow, 'show', function() {
-  
-        console.log("fired!!!");
-      });
+    UIkit.util.on(slideshow, 'show', function () {
+      console.log("fired!!!");
+    });
+
+    
 
     //   if(parsedFirst == 1){
-      this.isSubmitOpen = false;
+    this.isSubmitOpen = false;
     this.onBoardService.Hide();
     //   }
     // } else {
@@ -196,18 +200,18 @@ export class OnboardComponent implements OnInit {
           let b = a.split(":");
           return { code: b[0], area: b[1], key: a };
         });
-        
+
 
         // console.log(this.availableCountries);
         this.filteredOperators = [];
 
-        if(this.availableCountries.length == 1){
+        if (this.availableCountries.length == 1) {
           console.log("Only one country available. Proceed to operators");
           // this.multiOperatorForm.controls.country = this.availableCountries[0];
-          this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);          
+          this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);
           this.selectedCountry(this.multiOperatorForm.controls.country.value);
         }
-        
+
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
         })
@@ -243,7 +247,7 @@ export class OnboardComponent implements OnInit {
                 this.UniqueLinkState = 5;
                 this.authenticationService.redirectSignin(CGMSISDN, "en").subscribe(response => {
 
-               
+
                   if (response && response.success) {
 
                     this.UniqueLinkState = 0;
@@ -272,10 +276,10 @@ export class OnboardComponent implements OnInit {
                     if (this.sportimoService.UTMParams)
                       this.sportimoService.sendUTMParams(CGMSISDN).subscribe();
 
-                      
-            if(!response.user.firstLoginCompleted){
-              this.sendThankYouPageEvent();              
-            }
+
+                    if (!response.user.firstLoginCompleted) {
+                      this.sendThankYouPageEvent();
+                    }
                   }
                 });
               } else {
@@ -316,11 +320,11 @@ export class OnboardComponent implements OnInit {
 
                   this.UniqueLink = null;
 
-                  
-            if(!response.user.firstLoginCompleted){
-              this.sendThankYouPageEvent();              
-            }
-                  
+
+                  if (!response.user.firstLoginCompleted) {
+                    this.sendThankYouPageEvent();
+                  }
+
                   // this.closeLandingPage();
 
                   // this.isSubmitting = false;
@@ -377,7 +381,7 @@ export class OnboardComponent implements OnInit {
             $('.loader-wrapper').remove('slow');
             // Close Texts
             var myobj = document.getElementById("LoaderTexts");
-            if(myobj)
+            if (myobj)
               myobj.remove();
           }, 500);
         });
@@ -388,8 +392,8 @@ export class OnboardComponent implements OnInit {
           $('.loader-wrapper').remove('slow');
           // Close Texts
           var myobj = document.getElementById("LoaderTexts");
-            if(myobj)
-              myobj.remove();
+          if (myobj)
+            myobj.remove();
         }, 7000);
 
       } else {
@@ -424,13 +428,27 @@ export class OnboardComponent implements OnInit {
     // localStorage.setItem(key, 'New Value');
   }
 
-  
+  hideBtn(){
+    var nextBtn = document.getElementById("nextBtn");
+    console.log(nextBtn);
+    var endBtn = document.getElementById("nextBtn");
+    console.log("endBtn");
+    this.closeBtns = true;
 
-  getSlideIndex(){
+    var slideshow = UIkit.slideshow(".uk-slideshow");
+    slideshow.draggable = false;
+
+    setTimeout(() => {
+      slideshow.draggable = true;
+      this.closeBtns = false;
+    }, 500);
+  }
+
+  getSlideIndex() {
     this.slideCount = UIkit.getComponent(document.querySelector('[uk-slideshow]'), 'slideshow').index;
-    console.log (this.slideCount);
+    console.log(this.slideCount);
     if (this.slideCount == 1)
-    this.onBoardOpenBtn = true
+      this.onBoardOpenBtn = true
   }
 
   closeOnBoarding() {
@@ -464,10 +482,10 @@ export class OnboardComponent implements OnInit {
 
     $('#countrySelect option').first().attr("selected", "selected");
 
-    if(this.availableCountries.length == 1){
+    if (this.availableCountries.length == 1) {
       console.log("Only one country available. Proceed to operators");
       // this.multiOperatorForm.controls.country = this.availableCountries[0];
-      this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);          
+      this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);
       this.selectedCountry(this.multiOperatorForm.controls.country.value);
     }
 
@@ -482,9 +500,9 @@ export class OnboardComponent implements OnInit {
     this.filteredOperators = this.appOperators.filter((operator) => {
       return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
     })
-      console.log(this.filteredOperators);
+    console.log(this.filteredOperators);
 
-    if(this.filteredOperators.length == 1){
+    if (this.filteredOperators.length == 1) {
       this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
       this.selectedOperator(this.filteredOperators[0]);
     }
@@ -500,28 +518,28 @@ export class OnboardComponent implements OnInit {
   onMultiOperatorSelect() {
     this.isSubmitting = true;
     if (this.multiOperatorForm.controls.operator.value.redirectUrl) {
-     
+
       // redirect param is important. It is used in order to handle redirection from operator
       // let uriString = window.location.origin + this.router.url + "?uniqueLink=redirect";
-       // Fix for iframed apps
-       let uriString = (window.location != window.parent.location)
-      ? document.referrer
-      : window.location.origin + this.router.url;
-      
-    //   console.log(document.referrer);
-    //  console.log(window.location.origin);
-    //  console.log(this.router.url);
-     
-    //  console.log(uriString);
-    //  console.log(uriString.length);
-    //  console.log(uriString.indexOf('?'));
+      // Fix for iframed apps
+      let uriString = (window.location != window.parent.location)
+        ? document.referrer
+        : window.location.origin + this.router.url;
+
+      //   console.log(document.referrer);
+      //  console.log(window.location.origin);
+      //  console.log(this.router.url);
+
+      //  console.log(uriString);
+      //  console.log(uriString.length);
+      //  console.log(uriString.indexOf('?'));
       // Clear url parameters present
-      uriString = uriString.substring(0,uriString.indexOf('?')===-1?uriString.length:uriString.indexOf('?'));
+      uriString = uriString.substring(0, uriString.indexOf('?') === -1 ? uriString.length : uriString.indexOf('?'));
       // Add redirection flag
-      uriString += "?uniqueLink=redirect";      
+      uriString += "?uniqueLink=redirect";
 
       // console.log(uriString);
-      
+
       if (this.sportimoService.UTMParams)
         uriString += "&utm_campaign=" + this.sportimoService.UTMParams.utm_campaign +
           "&utm_source=" + this.sportimoService.UTMParams.utm_source +
@@ -551,7 +569,7 @@ export class OnboardComponent implements OnInit {
           formatedRedirectURL = formatedRedirectURL.replace(pages, pagesObject.pages["default"]);
         // console.log(formatedRedirectURL);              
       }
-// console.log(formatedRedirectURL);
+      // console.log(formatedRedirectURL);
       window.top.location.href = formatedRedirectURL
     }
     else {
@@ -566,7 +584,7 @@ export class OnboardComponent implements OnInit {
       this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
-            
+
             this.subState = response.state;
             if (this.subState == "UNSUB" && response.user.wallet > 0)
               this.subState = "UNSUBWITHCOINS";
@@ -590,22 +608,22 @@ export class OnboardComponent implements OnInit {
 
   }
 
-  
+
 
   multiOnChange() {
-    if(!this.multiOperatorForm.controls.country.value)
-    return;
-    
+    if (!this.multiOperatorForm.controls.country.value)
+      return;
+
     let areaCode = this.multiOperatorForm.controls.country.value.area;
     let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
-    
+
     // Remove all spaces str.replace(/\s/g, '');
-    msisdnValue =  msisdnValue.replace(/\s/g, '');
+    msisdnValue = msisdnValue.replace(/\s/g, '');
     var res = msisdnValue.substring(0, areaCode.length);
     // console.log("msisdn Length:" +msisdnValue.length);
     // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
     // CHECK IF COUNTRY CODE IS INSERTED
-    if(areaCode == res){
+    if (areaCode == res) {
       this.msisdnError = true;
 
       // this.errorMsg = "Please remove country code!";
@@ -613,16 +631,16 @@ export class OnboardComponent implements OnInit {
       this.isSubmitOpen = false;
       return;
     }
-    if(msisdnValue.length == 0) {
+    if (msisdnValue.length == 0) {
       this.msisdnError = false;
       this.isSubmitOpen = false;
       return;
     }
     // CHECK IF ALL NUMBERS
     var numbers = /^[0-9]+$/;
-    if(msisdnValue.match(numbers)){
+    if (msisdnValue.match(numbers)) {
       // console.log("All Numbers!")
-    }else{
+    } else {
       // console.log("Not all numbers!")
       this.msisdnError = true;
       // this.errorMsg = "Please remove any letters or characters!";
@@ -651,12 +669,12 @@ export class OnboardComponent implements OnInit {
 
   onMSISDNSubmit() {
     this.isSubmitting = true;
-    
+
 
     let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
-    console.log("area code: "+ areaCode);
+    console.log("area code: " + areaCode);
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
-    console.log("msisdn Value: "+ msisdnValue);
+    console.log("msisdn Value: " + msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
     console.log(path);
 
@@ -668,7 +686,7 @@ export class OnboardComponent implements OnInit {
           this.subState = response.state;
           if (this.subState == "UNSUB" && response.user.wallet > 0)
             this.subState = "UNSUBWITHCOINS";
-            // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+          // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
           // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
           //   this.subState = "ACTIVEFREEPERIOD";
           if (this.subState == "FREE")
@@ -715,8 +733,8 @@ export class OnboardComponent implements OnInit {
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
-        response => {         
-          
+        response => {
+
           if (response && response.success) {
             // console.log(response);
             this.incorrectPin = false;
@@ -725,11 +743,11 @@ export class OnboardComponent implements OnInit {
             this.Authenticated = true;
             if (this.defaults.sequence[0] == "L")
               this.Onboarding = true;
-              else{
-                // Do The Daily Bonus Check
-                // console.log("Show Daily Bonus!");
-                // this.showDailyBonusModal();
-              }
+            else {
+              // Do The Daily Bonus Check
+              // console.log("Show Daily Bonus!");
+              // this.showDailyBonusModal();
+            }
 
             if (this.subState == "UNKNOWN") {
               // console.log(this.subState);
@@ -747,11 +765,11 @@ export class OnboardComponent implements OnInit {
               this.sportimoService.sendUTMParams(response.user.msisdn).subscribe();
             }
 
-            if(!response.user.firstLoginCompleted){
-              this.sendThankYouPageEvent();              
+            if (!response.user.firstLoginCompleted) {
+              this.sendThankYouPageEvent();
             }
 
-            
+
 
           } else {
             this.incorrectPin = true;
@@ -776,32 +794,32 @@ export class OnboardComponent implements OnInit {
     };
     this.gtmService.pushTag(gtmTag);
   }
-  
+
   showDailyBonusModal() {
-    console.log("Loyalty Bonus: "+ this.dailybonus);
+    console.log("Loyalty Bonus: " + this.dailybonus);
     this.loyaltyImg = this.sportimoService.getConfigurationFor('userLoyaltySponsorImageUrl');
     this.loyaltyText = this.sportimoService.getConfigurationFor('userLoyaltySponsorText');
     // console.log(this.loyaltyImg);
     // console.log(this.loyaltyText);
     this.dailybonus = this.user.loyaltyCoins;
-    
+
     // Testing
     // this.dailybonus = 1;
-    if(this.dailybonus > 0){
+    if (this.dailybonus > 0) {
       var dailymodal = UIkit.modal("#dailyModal", { escClose: false, bgClose: false });
       dailymodal.show();
-    
+
     }
   }
 
-  collectCoin(){
+  collectCoin() {
     // Collect Loyalty
     this.authenticationService.collectLoyalty().subscribe(user => {
       this.user = user;
     });
     //Close Modal
     let modal = UIkit.modal("#dailyModal", { escClose: false, bgClose: false });
-      modal.hide();
+    modal.hide();
   }
 
   openTerms() {

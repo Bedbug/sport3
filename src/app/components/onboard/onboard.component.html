@@ -126,12 +126,12 @@
                 
                
               </div>
-              <div *ngIf="i < defaults.slides.length-1" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" >
-                <button  [disabled]="loading" uk-slideshow-item="next" class="btn btn-slide" style="margin-bottom: 20px;">
+              <div *ngIf="i < defaults.slides.length-1 && !closeBtns" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" id="nextBtn">
+                <button  [disabled]="loading" uk-slideshow-item="next" class="btn btn-slide" (click)="hideBtn()" style="margin-bottom: 20px;">
                   <a><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
                 </div>
-              <div *ngIf="i == defaults.slides.length-1" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" >
+              <div *ngIf="i == defaults.slides.length-1 && !closeBtns" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" id="endBtn">
                 <button  [disabled]="loading" type="submit" class="btn btn-slide" style="margin-bottom: 20px;">
                   <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
                 </button>
