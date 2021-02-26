@@ -285,7 +285,7 @@
 }
 .centered {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -298,13 +298,19 @@
 
 .infotext{
   color: white;
-  text-align: center;
-  font-size: 16px;
-  // width: 80%;
+    /* text-align: center; */
+    font-size: 15px;
+    z-index: 1000;
+    position: absolute;
+    text-align: center;
+    margin-top: -18px;
+    padding-right: 20px;
+    text-shadow: 2px 2px #1c2e3f;
+    top: 20%;
 }
 .center-bottom{
   position: absolute;
-    bottom: 30px;
+    bottom: 15px;
     width: 85%;
     text-align: center;
     font-size: 18px;
@@ -318,3 +324,4 @@
 .sponsImg{
   height:35px;
 }
+

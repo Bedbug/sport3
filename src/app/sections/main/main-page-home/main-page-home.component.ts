@@ -15,6 +15,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import UIkit from 'uikit';
+import { GsapService } from "src/app/services/gsap.service";
 
 @Component({
   selector: 'app-page',
@@ -54,7 +55,8 @@ export class MainPageHomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private ViewModalOverlay: PrizeViewOverlayService,
-    private authenticationService:AuthenticationService
+    private authenticationService:AuthenticationService,
+    private _gsapService: GsapService
   ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -65,10 +67,12 @@ export class MainPageHomeComponent implements OnInit {
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isAuthenticated = user!=null;
-    
+      console.log("Check Bonus!");
+      user.loyaltyCoins = 2;
       if(this.isAuthenticated && user.loyaltyCoins > 0){
-        console.log("Check Bonus!");
+        
         this.showDailyBonusModal(user.loyaltyCoins);
+        this.animateShine();
       }
       
     })
@@ -226,6 +230,23 @@ export class MainPageHomeComponent implements OnInit {
     //Close Modal
     let modal = UIkit.modal("#dailyModal2", { escClose: false, bgClose: false });
       modal.hide();
+  }
+
+  animateShine(){
+    const anim = this._gsapService;
+
+    // Get Shine
+    const shine = ".shine";
+    const shineOuter = ".shineOuter";
+    const coin = ".coinBox";
+    
+     // Yoyo Scale
+    anim.YoyoScale(shineOuter, 0.5, 1.2 , 1.2, 0);
+    anim.alphaYoyo(shine, 3, 0.4, 0);
+    // anim.YoyoScale(coin, 1, 1.1, 1.1, 1);
+    // Rotate
+    anim.RotateInf(shine);
+   
   }
 
 }

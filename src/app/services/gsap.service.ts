@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { gsap, Power2, Elastic, Back } from "gsap/all";
+import { gsap, Power2, Elastic, Back, Linear } from "gsap/all";
 
 @Injectable({
   providedIn: "root",
@@ -30,6 +30,18 @@ export class GsapService {
       delay: dlay,
     });
   }
+
+  public RotateInf(element) {
+    // console.log("Running Gsap Tween!");
+    gsap.to(element, {
+      duration: 60,
+      rotation: "360",
+      ease: Linear.easeNone,
+      repeat: -1
+    });
+  }
+  
+
   public moveTo(element, tym, posY, posX, dlay) {
     // console.log("Running Gsap Tween!");
     gsap.to(element, {
@@ -65,6 +77,11 @@ export class GsapService {
     // console.log("Running Alpha Tween!");
     gsap.to(element, { duration: tym, alpha: op, ease: Power2, delay: dlay });
   }
+  public alphaYoyo(element, tym, op, dlay) {
+    // console.log("Running Alpha Tween!");
+    gsap.to(element, { duration: tym, alpha: op, ease: Power2, delay: dlay,repeat: -1,
+      yoyo: true, });
+  }
 
   public Click(element, tym, sclX, sclY, dlay) {
     // console.log("Running Click Tween!");
@@ -75,6 +92,19 @@ export class GsapService {
       ease: Power2,
       delay: dlay,
       repeat: 1,
+      yoyo: true,
+    });
+  }
+
+  public YoyoScale(element, tym, sclX, sclY, dlay) {
+    console.log("Running Yoyo Scale!");
+    gsap.to(element, {
+      duration: tym,
+      scaleX: sclX,
+      scaleY: sclY,
+      ease: Linear.easeNone,
+      delay: dlay,
+      repeat: 100,
       yoyo: true,
     });
   }
