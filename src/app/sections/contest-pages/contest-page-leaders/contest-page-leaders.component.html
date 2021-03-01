@@ -7,24 +7,38 @@
         <div class="leaders-cell text-right p-r-20" translate>Points</div>
       </div>
     </div>
-    <div class="leaders-scrollable-group" (scroll)="checkScroll()">
+    <!-- <div class="leaders-scrollable-group" (scroll)="checkScroll()"> -->
+      <!-- <div class="leaders-scrollable-group" >
       <div class="leaders-table">
         <div class="leaders-row" [class.leaders-user]="ind == userRank" *ngFor="let i of cellArray; let ind = index">
           <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{parseNumbers(ind+1)}}</div>
           <div class="leaders-cell cell-border">
-            <div class="leaders-player-cell">
-              <!-- Image -->
+            <div class="leaders-player-cell"> 
+              
               <img class="rounded-circle" [src]="i?.picture || '/assets/images/sportimo/default_avatar.svg'" alt="#">
-              <!-- Name -->
+              
               <div>{{i.name}}</div>
             </div>
           </div>
-          <!-- userRank -->
+         
           <div class="leaders-cell text-right p-r-20 cell-border">{{parseNumbers(i.score.toString())}}</div>
         </div>
       </div>
+    </div> -->
+
+    <div class="leaderboard_outer">
+      <div  [class.leaders-user]="ind == userRank" class="flex-table" *ngFor="let player of cellArray; let ind = index" id="{{ind}}">
+        <div class="index">{{parseNumbers(ind+1)}}</div>
+        <div class="flag" ><img class="" style="max-width: 30px;" [src]="player?.picture || '/assets/images/sportimo/default_avatar.svg'" alt="" /></div>
+        <div class="name" >{{player.name}}</div>
+        <div class="points">
+          
+          <div class="points-value">{{parseNumbers(player.score.toString())}}</div>
+        </div>
+      </div>
     </div>
-    <div class="leaders-table-user">
+
+    <!-- <div class="leaders-table-user">
       <div class="leaders-row leaders-user" *ngIf="show">
         <div class="leaders-cell p-l-20 p-r-20 cell-border" style="width: 100px">{{parseNumbers(userRank+1)}}</div>
         <div class="leaders-cell cell-border">
@@ -35,6 +49,6 @@
         </div>
         <div class="leaders-cell text-right p-r-20 cell-border">{{parseNumbers(cellArray[userRank].score)}}</div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

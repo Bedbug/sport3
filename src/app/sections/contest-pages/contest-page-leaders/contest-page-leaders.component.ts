@@ -35,8 +35,8 @@ export class ContestPageLeadersComponent implements OnInit {
             this.sportimoService.getContestLeaders(this.contestDetails._id).subscribe(leaders => {                 
                    
               this.cellArray = leaders.leaderboard;
-              
-              // console.table(this.athenticationService.currentUser);
+              console.table(this.cellArray);
+              console.table(this.authenticationService.currentUser);
               // console.log("User Id: "+this.athenticationService.currentUser.source._value.id);
               // if(this.athenticationService.currentUser != null) {
               //   this.userRank = this.cellArray.findIndex(x=>x._id == this.athenticationService.currentUser.source._value.id);

@@ -11,7 +11,7 @@
 }
 
 .leaders-row{
-    display: table-row;
+    // display: table-row;
     height: 42px;
     color: #ffffff;
 }
@@ -21,8 +21,21 @@
 }
 
 .leaders-user{
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #ffffff!important;
+    color: #000000!important;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    display:table;
+    .leaders-cell{
+        display: table-cell;
+    }
+    .index {
+        color: #000000;
+      }
+    .points-value {
+        color: #000000;
+      }
 }
 
 .leaders-cell{
@@ -49,20 +62,86 @@
     width: 100%;
 }
 
-.leaders-table-user{
-    display: none;
-    width: 100%;
-    position: absolute;
-    width: 100%;
+// .leaders-table-user{
+//     display: none;
+//     width: 100%;
+//     position: absolute;
+//     width: 100%;
     
-}
+// }
 
-.leaders-table-user-up{
-    top: 123px;
-    display: table;
-}
+// .leaders-table-user-up{
+//     top: 123px;
+//     display: table;
+// }
 
-.leaders-table-user-down{
-    bottom:0;
-    display: table;
-}
+// .leaders-table-user-down{
+//     bottom:0;
+//     display: table;
+// }
+
+// THEMIS LEADERBOARD STYLES
+.leaderboard_outer {
+    // height: calc((var(--vh, 1vh) * 100) - 65px - 210px);
+    height: calc(100vh - 218px);
+    overflow-y: auto;
+    width: 100%;
+  }
+  .flex-table {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    // background-color: #340a53c9;
+    background-color: #2a323d;
+    margin-bottom: 3px;
+    padding: 5px 0;
+    height: 42px;
+    color: #ffffff;
+  }
+  .prize-container {
+    min-width: 55px;
+    width: 55px;
+  }
+  
+  .prize-img {
+    min-width: 55px;
+    width: 55px;
+  }
+  
+  .index {
+    min-width: 70px;
+    /* width: 150px; */
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+  }
+  .flag {
+    min-width: 30px;
+    width: 30px;
+    padding-bottom: 2px;
+  }
+  .name {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 0 10px 0 15px;
+    min-width: 150px;
+  }
+  
+  .points {
+    padding: 0 15px 0 0;
+    text-align: right;
+    width: 145px;
+    font-size: 13px;
+  }
+  
+  .points-header {
+    font-weight: bold;
+  }
+  
+  .points-value {
+    color: #ffffff;
+    font-weight: bold;
+  }

@@ -68,7 +68,7 @@ export class MainPageHomeComponent implements OnInit {
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isAuthenticated = user!=null;
       console.log("Check Bonus!");
-      user.loyaltyCoins = 2;
+      // user.loyaltyCoins = 2;
       if(this.isAuthenticated && user.loyaltyCoins > 0){
         
         this.showDailyBonusModal(user.loyaltyCoins);
@@ -178,14 +178,14 @@ export class MainPageHomeComponent implements OnInit {
   }
 
   checkScroll() {
-    let a = $(".scorllable-area");
+    // let a = $(".scorllable-area");
 
-    let scroll = a.scrollTop();
+    // let scroll = a.scrollTop();
 
-    if (scroll > 100)
-      $(".grand-prize").addClass('mini');
-    else if (scroll <= 100 && scroll >= 0)
-      $(".grand-prize").removeClass('mini');
+    // if (scroll > 100)
+    //   $(".grand-prize").addClass('mini');
+    // else if (scroll <= 100 && scroll >= 0)
+    //   $(".grand-prize").removeClass('mini');
     // if(b.length == 0 || a.length ==0) return;
 
     // if (b.position().top < a.position().top) {
