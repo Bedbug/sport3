@@ -628,7 +628,7 @@ export class OnboardComponent implements OnInit {
 
       // this.errorMsg = "Please remove country code!";
       this.errorMsg = "msisdnChecks.100";
-      this.isSubmitOpen = false;
+      // this.isSubmitOpen = false;
       return;
     }
     if (msisdnValue.length == 0) {
