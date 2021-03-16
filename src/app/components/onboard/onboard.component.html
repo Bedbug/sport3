@@ -2,7 +2,8 @@
 <!-- <div class="modal-background" *ngIf="!UniqueLink"></div> -->
 <div *ngIf="UniqueLink" id="UniqueLink">
   <div class="modal-card2">
-    <div class="modal-card-body text-center" style="padding: 0;" *ngIf="UniqueLinkState == 1 || UniqueLinkState == 5 || UniqueLinkState == 6">
+    <div class="modal-card-body text-center" style="padding: 0;"
+      *ngIf="UniqueLinkState == 1 || UniqueLinkState == 5 || UniqueLinkState == 6">
       <!-- Verifying -->
       <div class="landing-card">
         <div class="landing-card-content text-center text-white" style="align-items: center; justify-content: center;">
@@ -105,43 +106,48 @@
   <div class="modal-card2">
     <div class="modal-card-body text-center" style="padding: 0;">
       <div class="slideshow-container" uk-animation-fast
-      data-uk-slideshow="animation: fade; duration:400; autoplay: false; autoplay-interval: 0; pause-on-hover: false; draggable: true; finite:true; "
+        data-uk-slideshow="animation: swipe; duration:400; autoplay: false; autoplay-interval: 0; pause-on-hover: false; draggable: true; finite:true; "
         style="height: 100%;  width: 100%; background-position: bottom; background-repeat: no-repeat; background-size: cover;"
         [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/default.bg.jpg)'}">
-        
-        <div class="uk-position-relative uk-visible-toggle uk-transition-toggle uk-light" style="height: inherit;" id="slideshow">
-          <ul class="uk-slideshow-items"  style="height: inherit;">
+
+        <div class="uk-position-relative uk-visible-toggle uk-transition-toggle uk-light" style="height: inherit;"
+          id="slideshow">
+          <ul class="uk-slideshow-items" style="height: inherit;">
             <li *ngFor="let slide of defaults.slides; let i = index">
               <div class="on-board-slide"
                 [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/' + slide?.image + '.png)'}">
               </div>
-              <div class="slideText " >
+              <div class="slideText ">
                 <div style="max-width: 90%; margin: 0 auto;">
                   <h3 style="font-weight: bold"> {{slide.title[translate.currentLang]}}</h3>
                   <h4>{{slide.text[translate.currentLang]}}</h4>
                 </div>
-                <!-- <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
-                  <a href="#" uk-slideshow-item="next" *ngIf="slideCount == 3"><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
-                </button> -->
-                
-               
+                <button *ngIf="i < defaults.slides.length-1" [disabled]="loading" type="submit" class="btn btn-slide">
+                  <a href="#" uk-slideshow-item="next" *ngIf="slideCount == 3"><img
+                      src="assets/images/sportimo/onboard/next.svg" alt=""></a>
+                </button>
+
+
               </div>
-              <div *ngIf="i < defaults.slides.length-1 && !closeBtns" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" id="nextBtn">
-                <button  [disabled]="loading" uk-slideshow-item="next" class="btn btn-slide" (click)="hideBtn()" style="margin-bottom: 20px;">
+              <div *ngIf="i < defaults.slides.length-1 && !closeBtns"
+                class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom"
+                id="nextBtn">
+                <button [disabled]="loading" uk-slideshow-item="next" class="btn btn-slide" (click)="hideBtn()"
+                  style="margin-bottom: 20px;">
                   <a><img src="assets/images/sportimo/onboard/next.svg" alt=""></a>
                 </button>
-                </div>
-              <div *ngIf="i == defaults.slides.length-1 && !closeBtns" class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom" id="endBtn">
-                <button  [disabled]="loading" type="submit" class="btn btn-slide" style="margin-bottom: 20px;">
+              </div>
+              <div *ngIf="i == defaults.slides.length-1 && !closeBtns"
+                class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom"
+                id="endBtn">
+                <button [disabled]="loading" type="submit" class="btn btn-slide" style="margin-bottom: 20px;">
                   <a (click)="closeOnBoarding()"><img src="assets/images/sportimo/onboard/close.svg" alt=""></a>
                 </button>
-                 <!-- <h3 class="uk-margin-remove"></h3> -->
-                <!-- <-- <p class="uk-margin-remove">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> --> 
-            </div>
+              </div>
             </li>
-            
+
           </ul>
-          
+
           <!-- <a class="uk-position-center-left uk-slidenav-large uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
           <a class="uk-position-center-right uk-slidenav-large uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a> -->
           <!-- NAVIGATION -->
@@ -157,12 +163,15 @@
             <a class="uk-position-center-right uk-position-large  uk-hidden-hover" href="#" uk-slidenav-next
             uk-slideshow-item="next" (show.uk.slideshow)="getSlideIndex()" (click)="getSlideIndex()"></a> 
           </div> -->
-          
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
@@ -233,7 +242,7 @@
             <input type="text" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
               autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
           </div>
-          <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors" type="submit"
+          <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors " type="submit"
             class="btn btn-sportimo login-form-button">
             <div class="loader-label" [class.btn-active]="isSubmitting">
               <span class="button-label" translate>Play</span>
@@ -253,13 +262,13 @@
             <!-- <span>Select your Country</span> -->
             <div class="input-box">
               <!-- Text -->
-              <div class="select-info"  [style.visibility]="!multiOperatorForm.controls.area.value?'visible':'hidden'">
+              <div class="select-info" [style.visibility]="!multiOperatorForm.controls.area.value?'visible':'hidden'">
                 <span translate>Select Country</span>
               </div>
-            
+
               <!-- <div *ngIf="availableCountries.length < 2" class="input-area2">{{nrSelect}}</div> -->
-              <select #countrySelect *ngIf="availableCountries.length > 0"
-                class="input-area2" formControlName="country" (change)='selectedCountry(countrySelect.value)'>
+              <select #countrySelect *ngIf="availableCountries.length > 0" class="input-area2" formControlName="country"
+                (change)='selectedCountry(countrySelect.value)'>
                 <!-- <option disabled>Select Country </option> -->
                 <option></option>
                 <option [ngValue]="available" *ngFor="let available of availableCountries">
@@ -277,10 +286,12 @@
             *ngIf="(filteredOperators.length>0 && !this.multiOperatorForm.controls.operator.value) || (this.multiOperatorForm.controls.operator.value && multiOperatorForm.controls.operator.value.redirectUrl)">
             <!-- <span>Select your Operator</span> -->
             <div class="input-box">
-              <div class="select-info"  [style.visibility]="!multiOperatorForm.controls.operator.value?'visible':'hidden'">
-               <span translate>Select Operator</span>
+              <div class="select-info"
+                [style.visibility]="!multiOperatorForm.controls.operator.value?'visible':'hidden'">
+                <span translate>Select Operator</span>
               </div>
-              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>0 && availableCountries.length != 1?'visible':'hidden'"
+              <div style="padding-top: 5px;"
+                [style.visibility]="filteredOperators.length>0 && availableCountries.length != 1?'visible':'hidden'"
                 class="isClickable" (click)="multiOperatorBack()">
                 <div class="sub-icon back-icon float-left icn-arrow-back ng-star-inserted"></div>
               </div>
@@ -304,12 +315,13 @@
           <div
             *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.validationProcess && !this.multiOperatorForm.controls.operator.value.redirectUrl">
             <!-- <span>Drop your MSISDN</span> -->
-            <div  *ngIf="this.msisdnError" class="problem-info2">
-              <div class="icn-info-white"></div> <span  translate>{{this.errorMsg}}</span>
+            <div *ngIf="this.msisdnError" class="problem-info2">
+              <div class="icn-info-white"></div> <span translate>{{this.errorMsg}}</span>
             </div>
-            
+
             <div class="input-box">
-              <div style="padding-top: 5px;" [style.visibility]="filteredOperators.length>1 || availableCountries.length != 1?'visible':'hidden'"
+              <div style="padding-top: 5px;"
+                [style.visibility]="filteredOperators.length>1 || availableCountries.length != 1?'visible':'hidden'"
                 class="isClickable" (click)="multiOperatorBack()">
                 <div class="sub-icon back-icon float-left icn-arrow-back ng-star-inserted"></div>
               </div>
@@ -319,21 +331,29 @@
               <!-- <select *ngIf="areaCodes.length > 1" class="input-area" formControlName="area" [(ngModel)]='nrSelect'>
               <option *ngFor="let areaCode of availableCountries">{{areaCode.area}}</option>
             </select> -->
-              <input type="text" (ngModelChange)="multiOnChange()" ng-model="msisdnInput" autofocus formControlName="msisdn" class="form-control-plaintext text-left"
-                autocorrect="off" autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
-                
+              <input type="text" (ngModelChange)="multiOnChange()" ng-model="msisdnInput" autofocus
+                formControlName="msisdn" class="form-control-plaintext text-left" autocorrect="off"
+                autocapitalize="none" placeholder="{{ 'enterMobilePhone' | translate }}" required>
+
             </div>
-            
-            <button [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value || !this.isSubmitOpen" type="submit"
-              class="btn btn-sportimo login-form-button">
+
+            <button [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value || !this.isSubmitOpen || (showCheckbox && !acceptedTerms)"
+              type="submit" class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
-                <span  class="button-label"  translate>Play</span>
-                
+                <span class="button-label" translate>Play</span>
+
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>
               </div>
             </button>
+
+            <div *ngIf="showCheckbox" class="form-check" style="margin-top: 10px;">
+              <label>
+                <input type="checkbox" [value]="" (change)="onCheckboxChange($event)" />
+                I agree to the below terms and services
+              </label>
+            </div>
             
           </div>
 
@@ -349,12 +369,14 @@
         </form>
         <!-- END: REGISTRATION FORM - MULTI OPERATORS -->
 
-        <div *ngIf="appOperators.length == 0" (click)="openTerms()" class="notice-msisdn isClickable" style="font-size: 10px"
-          [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
-          <div *ngIf="appOperators.length > 0 && currentOperator && currentOperator.termsText" (click)="openTermsLink(currentOperator.termsLink)" class="notice-msisdn isClickable" style="font-size: 10px"
-            [innerHTML]="currentOperator.termsText[translate.currentLang]"></div>
+
+        <div *ngIf="appOperators.length == 0" (click)="openTerms()" class="notice-msisdn isClickable"
+          style="font-size: 10px" [innerHTML]="defaults.landingPage.terms[translate.currentLang]"></div>
+        <div *ngIf="appOperators.length > 0 && currentOperator && currentOperator.termsText"
+          (click)="openTermsLink(currentOperator.termsLink)" class="notice-msisdn isClickable" style="font-size: 10px"
+          [innerHTML]="currentOperator.termsText[translate.currentLang]"></div>
       </div>
-      
+
     </div>
   </div>
 </div>
@@ -485,13 +507,14 @@
 </div>
 
 <!-- DAILY BONUS -->
-<div id="dailyModal" class="uk-flex-top" uk-modal >
+<div id="dailyModal" class="uk-flex-top" uk-modal>
   <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical animate__animated animate__bounceInDown">
-  
-    
-  
+
+
+
     <div class="sponsored">
-      <span *ngIf="loyaltyText" style="color: white;text-align: center;font-size: 14px;">{{loyaltyText[translate.currentLang]}}</span><br>
+      <span *ngIf="loyaltyText"
+        style="color: white;text-align: center;font-size: 14px;">{{loyaltyText[translate.currentLang]}}</span><br>
       <img class="sponsImg" src='{{ loyaltyImg }}' alt="">
     </div>
     <div class="center-top">
@@ -503,13 +526,13 @@
     <br>
     <div class="centered center-top">
       <img class="" style="width:80%" src="/assets/images/sportimo/dailybonus/coin_fixed_dimensions.png" alt="">
-      
+
     </div>
-    
+
     <div class="center-bottom" (click)="collectCoin()">
       <img class="svg-shadow" src="/assets/images/sportimo/dailybonus/dailybonus_claimbutton.svg" alt="">
       <div class="centered text-bottom" translate>Collect</div>
     </div>
-    
+
   </div>
 </div>

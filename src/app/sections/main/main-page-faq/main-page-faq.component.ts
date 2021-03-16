@@ -1,6 +1,6 @@
 import { trigger, transition, query, style, stagger, animate } from '@angular/animations';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { TranslateService, TranslationChangeEvent } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent, TranslationChangeEvent } from '@ngx-translate/core';
 import * as _ from 'lodash';
 import { ignoreElements } from 'rxjs/operators';
 import { SportimoService } from 'src/app/services/sportimo.service';
@@ -36,6 +36,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
   filteredData = [];
   selectedTag = null;
   selectedFaq = null;
+  alignAllLeft = true;
   data = [
     {
       category: "Cards",
@@ -159,6 +160,25 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
     public sportimoService: SportimoService) { }
 
   ngOnInit() {
+    console.log("language: "+this.translate.currentLang);
+    
+    if(this.translate.currentLang == "ar") {
+      this.alignAllLeft = false;
+    }else {
+      this.alignAllLeft = true;
+    }
+    // Subscribe to Translate Service
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      // do something
+      console.log(event.lang);
+      if(this.translate.currentLang == "ar") {
+        this.alignAllLeft = false;
+      }else{
+        this.alignAllLeft = true;
+      }
+
+    });
+
     // this.tags = [...new Set(this.data.map(item => {item.category,item.categoryTitle}))];  
     this.sportimoService.getFAQs().subscribe((data)=>{
       this.data = data;

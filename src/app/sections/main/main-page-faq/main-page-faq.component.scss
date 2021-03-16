@@ -133,6 +133,23 @@
     transform: rotateZ(180deg);
 }
 
+.direct_right{
+    direction: rtl;
+    text-align: right;
+  }
+  .direct_right::before {
+    float: left;
+  }
+  .direct_left{
+    direction: ltr;
+    text-align: left;
+    
+  }
+  
+  .direct_left::before {
+    float: right;
+  }
+
 @media (min-width: 768px) {
     .background {
       top: 50px;

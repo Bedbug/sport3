@@ -15,9 +15,9 @@
 
       </div>
       <div class="main-tags-scrollarea container" [@staggerAnimation]="animate">
-        <div (click)="selectedFaq = faq" class="question isClickable" *ngFor="let faq of filteredData">
+        <div (click)="selectedFaq = faq" [ngClass]="(alignAllLeft)?'direct_left':'direct_right'" class="question isClickable" *ngFor="let faq of filteredData">
           <div class="question-text">{{faq.question[translate.currentLang]}}</div>
-          <div class="icn-arrow icn-arrow-flipped"></div>
+          <div [ngClass]="(alignAllLeft)?'icn-arrow-flipped':'icn-arrow'" class="icn-arrow "></div>
         </div>
       </div>
     </div>
@@ -26,10 +26,10 @@
     <div id="Answer" *ngIf="selectedFaq" style="width: 100%;">
       <div (click)="selectedFaq = null" class="answer-header isClickable">
         <div class="icn-arrow"></div>
-        <div class="question-text-header">{{selectedFaq.question[translate.currentLang]}}</div>       
+        <div [ngClass]="(alignAllLeft)?'direct_left':'direct_right'" class="question-text-header">{{selectedFaq.question[translate.currentLang]}}</div>       
       </div>
       <div class="main-answer-scrollarea container" [@staggerAnimation]="animate">
-      <div [innerHTML]="selectedFaq.answer[translate.currentLang] | safeHTML " class="answer-text"></div>
+      <div [innerHTML]="selectedFaq.answer[translate.currentLang] | safeHTML" [ngClass]="(alignAllLeft)?'direct_left':'direct_right'" class="answer-text"></div>
       </div>
     </div>
   </div>

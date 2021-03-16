@@ -47,6 +47,8 @@ export class OnboardComponent implements OnInit {
   loyaltyImg: any;
   loyaltyText: any;
   loaderOpened: any;
+  showCheckbox: any = true;
+  acceptedTerms:boolean = false;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -153,7 +155,7 @@ export class OnboardComponent implements OnInit {
     // private _gsapService: GsapService
   ) {
 
-   }
+  }
 
 
   ngOnInit() {
@@ -173,7 +175,7 @@ export class OnboardComponent implements OnInit {
       console.log("fired!!!");
     });
 
-    
+
 
     //   if(parsedFirst == 1){
     this.isSubmitOpen = false;
@@ -428,7 +430,7 @@ export class OnboardComponent implements OnInit {
     // localStorage.setItem(key, 'New Value');
   }
 
-  hideBtn(){
+  hideBtn() {
     var nextBtn = document.getElementById("nextBtn");
     console.log(nextBtn);
     var endBtn = document.getElementById("nextBtn");
@@ -441,7 +443,7 @@ export class OnboardComponent implements OnInit {
     setTimeout(() => {
       slideshow.draggable = true;
       this.closeBtns = false;
-    }, 500);
+    }, 1000);
   }
 
   getSlideIndex() {
@@ -500,7 +502,7 @@ export class OnboardComponent implements OnInit {
     this.filteredOperators = this.appOperators.filter((operator) => {
       return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
     })
-    console.log(this.filteredOperators);
+    
 
     if (this.filteredOperators.length == 1) {
       this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
@@ -513,6 +515,13 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
+    console.log(this.currentOperator);
+    if(this.currentOperator.consentTermsConditions != null)
+      this.showCheckbox = this.currentOperator.consentTermsConditions;
+    else
+    this.showCheckbox = false;
+    console.log(this.currentOperator.consentTermsConditions);
+      
   }
 
   onMultiOperatorSelect() {
@@ -869,6 +878,22 @@ export class OnboardComponent implements OnInit {
 
           this.isSubmitting = false;
         });
+  }
+
+  onCheckboxChange(e) {
+
+    if (e.target.checked) {
+      this.acceptedTerms = e.target.checked
+      console.log(this.acceptedTerms);
+      console.log(this.showCheckbox);
+    } else {
+      this.acceptedTerms = e.target.checked
+      console.log(this.acceptedTerms);
+      console.log(this.showCheckbox);
+    }
+
+  console.log("Enable button: "+ (this.showCheckbox && this.acceptedTerms));
+  
   }
 
   ngOnDestroy() {
