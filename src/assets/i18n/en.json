@@ -46,6 +46,7 @@
 	"Drag slider to set the time that the card will be activated": "Drag slider to set the time that the card will be activated",
 	"Duration": "Duration",
 	"EG": "EGYPT",
+	"EXIT": "",
 	"Ends:": "Ends:",
 	"Enter PIN": "Enter PIN",
 	"Enter mobile phone": "Enter mobile phone",
@@ -279,7 +280,6 @@
 	"kazzach": "Қазақ тілі",
 	"matchFreePlay": "Free to Play",
 	"msisdnChecks": {
-		"default": "Enter your mobile number to recieve PIN",
 		"100": "Please remove country code!",
 		"101": "Please remove any letters or characters!",
 		"102": "The number seems to be too long!",
