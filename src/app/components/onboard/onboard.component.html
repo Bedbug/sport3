@@ -189,7 +189,12 @@
     margin-bottom: 25px;" class="slide-prize-header text-center"
           [innerHTML]="defaults.landingPage.singleSlideText[translate.currentLang]"></div>
 
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <!-- Check in Dashboard -->
+        <div *ngIf="showTopText" class="problem-info2">
+          <div class="icn-info-white"></div> <span>{{termsLineText}}</span>
+        </div>
+        <!-- Check in Dashboard -->
+        <div *ngIf="showCarousel" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
           <div class="carousel-inner">
             <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
@@ -318,7 +323,10 @@
             <div *ngIf="this.msisdnError" class="problem-info2">
               <div class="icn-info-white"></div> <span translate>{{this.errorMsg}}</span>
             </div>
-
+            <!-- Check in Dashboard -->
+            <div *ngIf="!this.msisdnError && showInputMsg" class="problem-info2">
+              <div class="icn-info-white"></div> <span>{{inputMsg}}</span>
+            </div>
             <div class="input-box">
               <div style="padding-top: 5px;"
                 [style.visibility]="filteredOperators.length>1 || availableCountries.length != 1?'visible':'hidden'"
@@ -337,7 +345,8 @@
 
             </div>
 
-            <button [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value || !this.isSubmitOpen || (showCheckbox && !acceptedTerms)"
+            <button
+              [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value || !this.isSubmitOpen || (showCheckbox && !acceptedTerms)"
               type="submit" class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
                 <span class="button-label" translate>Play</span>
@@ -347,14 +356,19 @@
                 </div>
               </div>
             </button>
-
+            <!-- Check in Dashboard -->
+            <div *ngIf="loginExit" (click)="multiOperatorBack()"
+              style="margin-top: 10px; text-decoration: underline; font-weight: bold;">
+              <span class="button-label" translate>ΕΧΙΤ</span>
+            </div>
+            <!-- Check in Dashboard -->
             <div *ngIf="showCheckbox" class="form-check" style="margin-top: 10px;">
               <label>
                 <input type="checkbox" [value]="" (change)="onCheckboxChange($event)" />
                 I agree to the below terms and services
               </label>
             </div>
-            
+
           </div>
 
           <button [disabled]="isSubmitting" type="submit" class="btn btn-sportimo login-form-button"

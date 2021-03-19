@@ -47,8 +47,14 @@ export class OnboardComponent implements OnInit {
   loyaltyImg: any;
   loyaltyText: any;
   loaderOpened: any;
+  showInputMsg: boolean = false;
+  inputMsg: string = "";
   showCheckbox: any = true;
-  acceptedTerms:boolean = false;
+  acceptedTerms: boolean = false;
+  loginExit: boolean = false;
+  showTopText: any = false;
+  termsLineText: string = "";
+  showCarousel: any = true;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -495,6 +501,13 @@ export class OnboardComponent implements OnInit {
     // this.multiOperatorForm.controls.operator = null;
     // else if(this.multiOperatorForm.controls.country)
     // this.multiOperatorForm.controls.country = null;
+
+    // RESET VALUES
+    this.showCarousel = true;
+    this.showInputMsg = false;
+    this.loginExit = false;
+    this.showTopText = false;
+    this.showCheckbox = false;
   }
 
   selectedCountry(data) {
@@ -502,7 +515,7 @@ export class OnboardComponent implements OnInit {
     this.filteredOperators = this.appOperators.filter((operator) => {
       return operator.countryCodes == this.multiOperatorForm.controls.country.value.key;
     })
-    
+
 
     if (this.filteredOperators.length == 1) {
       this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
@@ -516,13 +529,48 @@ export class OnboardComponent implements OnInit {
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
     console.log(this.currentOperator);
-    if(this.currentOperator.consentTermsConditions != null)
+    if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
     else
-    this.showCheckbox = false;
-    console.log(this.currentOperator.consentTermsConditions);
-      
+      this.showCheckbox = false;
+
+    // Input Message
+    if (this.currentOperator.enableLoginText != null) {
+      this.inputMsg = this.currentOperator.loginText[this.translate.currentLang];
+      this.showInputMsg = this.currentOperator.enableLoginText;
+    }
+    else {
+      this.showInputMsg = false;
+    }
+
+    // Exit Button
+    if (this.currentOperator.loginExit != null) {
+      this.loginExit = this.currentOperator.loginExit;
+    }
+    else {
+      this.loginExit = false;
+    }
+
+    // Top Text
+    if (this.currentOperator.termsLineText != null) {
+      this.showTopText = true;
+      this.termsLineText = this.currentOperator.termsLineText[this.translate.currentLang];
+    }
+    else {
+      this.showTopText = false;
+    }
+
+
+    //Carousel
+    if (this.currentOperator.disableLoginCarousel != null) {
+      this.showCarousel = false;
+    }
+    else {
+      this.showCarousel = true;
+    }
+    // this.showCarousel = true;
   }
+
 
   onMultiOperatorSelect() {
     this.isSubmitting = true;
@@ -892,8 +940,8 @@ export class OnboardComponent implements OnInit {
       console.log(this.showCheckbox);
     }
 
-  console.log("Enable button: "+ (this.showCheckbox && this.acceptedTerms));
-  
+    console.log("Enable button: " + (this.showCheckbox && this.acceptedTerms));
+
   }
 
   ngOnDestroy() {
