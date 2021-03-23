@@ -54,7 +54,7 @@ export class OnboardComponent implements OnInit {
   loginExit: boolean = false;
   showTopText: any = false;
   termsLineText: string = "";
-  showCarousel: any = true;
+  disableLoginCarousel: any = false;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -503,11 +503,13 @@ export class OnboardComponent implements OnInit {
     // this.multiOperatorForm.controls.country = null;
 
     // RESET VALUES
-    this.showCarousel = true;
+    this.disableLoginCarousel = false;
     this.showInputMsg = false;
     this.loginExit = false;
     this.showTopText = false;
     this.showCheckbox = false;
+    this.PinVerify = false;
+    this.LandingPage = true;
   }
 
   selectedCountry(data) {
@@ -563,12 +565,12 @@ export class OnboardComponent implements OnInit {
 
     //Carousel
     if (this.currentOperator.disableLoginCarousel != null) {
-      this.showCarousel = false;
+      this.disableLoginCarousel = this.currentOperator.disableLoginCarousel;
     }
     else {
-      this.showCarousel = true;
+      this.disableLoginCarousel = false;
     }
-    // this.showCarousel = true;
+    // this.disableLoginCarousel = true;
   }
 
 

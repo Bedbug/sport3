@@ -194,7 +194,7 @@
           <div class="icn-info-white"></div> <span>{{termsLineText}}</span>
         </div>
         <!-- Check in Dashboard -->
-        <div *ngIf="showCarousel" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div *ngIf="!disableLoginCarousel" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 
           <div class="carousel-inner">
             <div *ngFor="let slide of defaults.landingPage.slidesShow; let i = index" class="carousel-item active"
@@ -404,6 +404,10 @@
   <div class="pin-card-body text-center">
     <div class="login-form-body">
       <!-- <div class="debug" style="max-height: 50px;">{{subState}}</div> -->
+      <!-- Check in Dashboard -->
+      <div *ngIf="showTopText" class="problem-info2">
+        <div class="icn-info-white"></div> <span>{{termsLineText}}</span>
+      </div>
       <div class="pin-title">
         <h1 [innerHTML]="'susbcription_message_'+subState | translate:{value:appName[translate.currentLang]}"></h1>
         <!-- <h1 *ngIf = "subState == 'UNSUB'" translate>Subscribe to Play</h1>
@@ -452,6 +456,11 @@
         <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
         <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
       </form>
+      <!-- Check in Dashboard -->
+      <div *ngIf="loginExit" (click)="multiOperatorBack()"
+        style="margin-top: 10px; text-decoration: underline; font-weight: bold;">
+        <span class="button-label" translate>EXIT</span>
+      </div>
       <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
         [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
