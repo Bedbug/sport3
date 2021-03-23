@@ -66,7 +66,7 @@
             [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
           <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
           <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
-          xaxaxa
+        
         </form>
         <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
           [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
@@ -455,14 +455,18 @@
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
         <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
         <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
-      </form>
-      <!-- Check in Dashboard -->
-      <div *ngIf="loginExit" (click)="multiOperatorBack()"
+        <div *ngIf="loginExit" (click)="multiOperatorBack()"
         style="margin-top: 10px; text-decoration: underline; font-weight: bold;">
         <span class="button-label" translate>EXIT</span>
       </div>
-      <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
+      </form>
+      <!-- Check in Dashboard -->
+      
+      <div *ngIf="!getOpText" (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
         [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
+      </div>
+      <div *ngIf="getOpText" (click)="openTerms()" class="notice isClickable" style="font-size: 10px; margin-bottom: 50px; padding: 0 10px;">
+        <span>{{termsOpText}}</span>
       </div>
     </div>
   </div>

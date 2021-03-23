@@ -55,6 +55,8 @@ export class OnboardComponent implements OnInit {
   showTopText: any = false;
   termsLineText: string = "";
   disableLoginCarousel: any = false;
+  getOpText: boolean = false;
+  termsOpText:any;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -510,6 +512,7 @@ export class OnboardComponent implements OnInit {
     this.showCheckbox = false;
     this.PinVerify = false;
     this.LandingPage = true;
+    this.getOpText = false;
   }
 
   selectedCountry(data) {
@@ -551,6 +554,14 @@ export class OnboardComponent implements OnInit {
     }
     else {
       this.loginExit = false;
+    }
+    //Bottom text
+    if (this.currentOperator.termsText != null) {
+      this.termsOpText = this.currentOperator.termsText[this.translate.currentLang];
+      this.getOpText = true;
+    }
+    else {
+      this.getOpText = false;
     }
 
     // Top Text
