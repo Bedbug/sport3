@@ -191,8 +191,7 @@
 
         <!-- Check in Dashboard -->
         <div *ngIf="showTopText" class="problem-info2">
-          
-          <span>{{termsLineText}}</span>
+          <div class="icn-info-white"></div> <span>{{termsLineText}}</span>
         </div>
         <!-- Check in Dashboard -->
         <div *ngIf="!disableLoginCarousel" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -251,7 +250,7 @@
           <button [disabled]="isSubmitting || msisdnForm.controls.msisdn.errors " type="submit"
             class="btn btn-sportimo login-form-button">
             <div class="loader-label" [class.btn-active]="isSubmitting">
-              <span class="button-label" translate>Subscribe</span>
+              <span class="button-label" translate>Play</span>
               <div class="fadeInLoader">
                 <span class="rotate dotted button-loader"></span>
               </div>
@@ -321,14 +320,12 @@
           <div
             *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.validationProcess && !this.multiOperatorForm.controls.operator.value.redirectUrl">
             <!-- <span>Drop your MSISDN</span> -->
-            <div *ngIf="this.msisdnError" class="problem-info2" style="font-style: italic;">
-              <div class="icn-info-white"></div> 
-              <span translate>{{this.errorMsg}}</span>
+            <div *ngIf="this.msisdnError" class="problem-info2">
+              <div class="icn-info-white"></div> <span translate>{{this.errorMsg}}</span>
             </div>
             <!-- Check in Dashboard -->
-            <div *ngIf="!this.msisdnError && showInputMsg" class="problem-info2" style="font-style: italic;">
-              <div class="icn-info-white"></div> 
-              <span>{{inputMsg}}</span>
+            <div *ngIf="!this.msisdnError && showInputMsg" class="problem-info2">
+              <div class="icn-info-white"></div> <span>{{inputMsg}}</span>
             </div>
             <div class="input-box">
               <div style="padding-top: 5px;"
@@ -352,8 +349,8 @@
               [disabled]="isSubmitting || !multiOperatorForm.controls.operator.value || !this.isSubmitOpen || (showCheckbox && !acceptedTerms)"
               type="submit" class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
-                <span class="button-label" translate>Subscribe</span>
-                
+                <span class="button-label" translate>Play</span>
+
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>
@@ -409,7 +406,7 @@
       <!-- <div class="debug" style="max-height: 50px;">{{subState}}</div> -->
       <!-- Check in Dashboard -->
       <div *ngIf="showTopText" class="problem-info2">
-        <span>{{termsLineText}}</span>
+        <div class="icn-info-white"></div> <span>{{termsLineText}}</span>
       </div>
       <div class="pin-title">
         <h1 [innerHTML]="'susbcription_message_'+subState | translate:{value:appName[translate.currentLang]}"></h1>
@@ -418,13 +415,7 @@
       <h1 *ngIf = "subState == 'UnSubCoins'" translate>Subscribe to Play</h1> -->
       </div>
       <form [formGroup]="pinForm" (ngSubmit)="onPinSubmit(false)" class="sportimo-form">
-        <div  class="problem-info2" style="width: 270px;margin: auto;padding: 0 0 5px; font-style: italic;">
-          <div class="icn-info-white"></div> 
-          <span translate>Please insert the 4-digit PIN code sent to your mobile number</span>
-        </div>
-        
-        <!-- <div class="icn-info-white"></div> 
-        <div class="problem-info2 login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div> -->
+        <div class="login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div>
         <div class="login-form-content">
           <div class="form-group text-center">
             <!-- <label class="">Username/Email</label> -->
@@ -464,7 +455,6 @@
           [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
         <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
         <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
-
         <div *ngIf="loginExit" (click)="multiOperatorBack()"
         style="margin-top: 10px; text-decoration: underline; font-weight: bold;">
         <span class="button-label" translate>EXIT</span>
