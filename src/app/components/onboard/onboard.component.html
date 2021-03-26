@@ -192,7 +192,7 @@
         <!-- Check in Dashboard -->
         <div *ngIf="showTopText" class="problem-info2">
           
-          <span>{{termsLineText}}</span>
+          <span>{{termsLineText[translate.currentLang]}}</span>
         </div>
         <!-- Check in Dashboard -->
         <div *ngIf="!disableLoginCarousel" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -328,7 +328,7 @@
             <!-- Check in Dashboard -->
             <div *ngIf="!this.msisdnError && showInputMsg" class="problem-info2" style="font-style: italic;">
               <div class="icn-info-white"></div> 
-              <span>{{inputMsg}}</span>
+              <span>{{inputMsg[translate.currentLang]}}</span>
             </div>
             <div class="input-box">
               <div style="padding-top: 5px;"
@@ -409,7 +409,7 @@
       <!-- <div class="debug" style="max-height: 50px;">{{subState}}</div> -->
       <!-- Check in Dashboard -->
       <div *ngIf="showTopText" class="problem-info2">
-        <span>{{termsLineText}}</span>
+        <span>{{termsLineText[translate.currentLang]}}</span>
       </div>
       <div class="pin-title">
         <h1 [innerHTML]="'susbcription_message_'+subState | translate:{value:appName[translate.currentLang]}"></h1>
@@ -476,7 +476,7 @@
         [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
       <div *ngIf="getOpText" (click)="openTerms()" class="notice isClickable" style="font-size: 10px; margin-bottom: 50px; padding: 0 10px;">
-        <span>{{termsOpText}}</span>
+        <span>{{termsOpText[translate.currentLang]}}</span>
       </div>
     </div>
   </div>

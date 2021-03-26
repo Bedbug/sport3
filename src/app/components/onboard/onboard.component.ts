@@ -48,15 +48,16 @@ export class OnboardComponent implements OnInit {
   loyaltyText: any;
   loaderOpened: any;
   showInputMsg: boolean = false;
-  inputMsg: string = "";
   showCheckbox: any = true;
   acceptedTerms: boolean = false;
   loginExit: boolean = false;
   showTopText: any = false;
-  termsLineText: string = "";
   disableLoginCarousel: any = false;
   getOpText: boolean = false;
+  
   termsOpText:any;
+  inputMsg: any;
+  termsLineText: any;
 
   translateMappings() {
     _("susbcription_message_UNKNOWN");
@@ -541,7 +542,8 @@ export class OnboardComponent implements OnInit {
 
     // Input Message
     if (this.currentOperator.enableLoginText != null) {
-      this.inputMsg = this.currentOperator.loginText[this.translate.currentLang];
+      this.inputMsg = this.currentOperator.loginText;
+      console.log(this.currentOperator.enableLoginText);
       this.showInputMsg = this.currentOperator.enableLoginText;
     }
     else {
@@ -557,7 +559,7 @@ export class OnboardComponent implements OnInit {
     }
     //Bottom text
     if (this.currentOperator.termsText != null) {
-      this.termsOpText = this.currentOperator.termsText[this.translate.currentLang];
+      this.termsOpText = this.currentOperator.termsText;
       this.getOpText = true;
     }
     else {
@@ -567,7 +569,9 @@ export class OnboardComponent implements OnInit {
     // Top Text
     if (this.currentOperator.termsLineText != null) {
       this.showTopText = true;
-      this.termsLineText = this.currentOperator.termsLineText[this.translate.currentLang];
+      console.log(this.currentOperator.termsLineText);
+      
+      this.termsLineText = this.currentOperator.termsLineText;
     }
     else {
       this.showTopText = false;
