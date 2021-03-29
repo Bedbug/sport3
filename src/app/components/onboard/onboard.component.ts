@@ -567,10 +567,8 @@ export class OnboardComponent implements OnInit {
     }
 
     // Top Text
-    if (this.currentOperator.termsLineText != null) {
+    if (this.currentOperator.enableTermsLineText) {
       this.showTopText = true;
-      console.log(this.currentOperator.termsLineText);
-      
       this.termsLineText = this.currentOperator.termsLineText;
     }
     else {
