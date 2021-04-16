@@ -58,7 +58,7 @@ export class MainPageNewsComponent implements OnInit {
     this.sportimoService.getNews()
       .subscribe(data => {
         this.news = data.results;
-        console.table(this.news);
+        // console.table(this.news);
         this.hasMore = data.hasMorePages;
         this.lastArticleId = this.news[this.news.length - 1]._id;
         this.isLoading = false;
@@ -67,12 +67,12 @@ export class MainPageNewsComponent implements OnInit {
         // console.log(this.myDate.toDateString());
         // var isToday = (this.myDate.toDateString() == this.news[1].publishDate);
         
-        console.log("Today Date: "+ this.parseDate(this.myDate.toDateString()) );
+        // console.log("Today Date: "+ this.parseDate(this.myDate.toDateString()) );
 
-        console.log("Article Date: "+ this.parseDate(this.news[1].publishDate) );
+        // console.log("Article Date: "+ this.parseDate(this.news[1].publishDate) );
 
         var isToday = (this.parseDate(this.myDate.toDateString()) >  this.parseDate(this.news[1].publishDate));
-        console.log("Today > Article Date: "+isToday);
+        // console.log("Today > Article Date: "+isToday);
       })
 
 
@@ -85,7 +85,7 @@ export class MainPageNewsComponent implements OnInit {
 
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       // do something
-      console.log(event.lang);
+      // console.log(event.lang);
       if (this.translate.currentLang == "ar" || this.translate.currentLang == "fa") {
         this.alignAllLeft = false;
       } else {
@@ -93,7 +93,7 @@ export class MainPageNewsComponent implements OnInit {
       }
     });
 
-    console.log("Align Left: " + this.alignAllLeft);
+    // console.log("Align Left: " + this.alignAllLeft);
   }
 
   loadMore() {
@@ -103,7 +103,7 @@ export class MainPageNewsComponent implements OnInit {
         this.news.push(...data.results);
         this.hasMore = data.hasMorePages;
         this.lastArticleId = this.news[this.news.length - 1]._id;
-        console.log(this.lastArticleId);
+        // console.log(this.lastArticleId);
         this.isLoading = false;
       })
   }

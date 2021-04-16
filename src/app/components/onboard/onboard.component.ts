@@ -178,10 +178,10 @@ export class OnboardComponent implements OnInit {
     // this.slideshow = UIkit.getComponent(document.querySelector('[uk-slideshow]'));
 
     var slideshow = UIkit.slideshow(".uk-slideshow");
-    console.log(slideshow);
+    // console.log(slideshow);
 
     UIkit.util.on(slideshow, 'show', function () {
-      console.log("fired!!!");
+      // console.log("fired!!!");
     });
 
 
@@ -441,9 +441,9 @@ export class OnboardComponent implements OnInit {
 
   hideBtn() {
     var nextBtn = document.getElementById("nextBtn");
-    console.log(nextBtn);
+    // console.log(nextBtn);
     var endBtn = document.getElementById("nextBtn");
-    console.log("endBtn");
+    // console.log("endBtn");
     this.closeBtns = true;
 
     var slideshow = UIkit.slideshow(".uk-slideshow");
@@ -457,7 +457,7 @@ export class OnboardComponent implements OnInit {
 
   getSlideIndex() {
     this.slideCount = UIkit.getComponent(document.querySelector('[uk-slideshow]'), 'slideshow').index;
-    console.log(this.slideCount);
+    // console.log(this.slideCount);
     if (this.slideCount == 1)
       this.onBoardOpenBtn = true
   }
@@ -527,14 +527,14 @@ export class OnboardComponent implements OnInit {
       this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
       this.selectedOperator(this.filteredOperators[0]);
     }
-    console.log(this.filteredOperators);
+    // console.log(this.filteredOperators);
   };
 
   currentOperator: any;
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
-    console.log(this.currentOperator);
+    // console.log(this.currentOperator);
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
     else
@@ -543,7 +543,7 @@ export class OnboardComponent implements OnInit {
     // Input Message
     if (this.currentOperator.enableLoginText != null) {
       this.inputMsg = this.currentOperator.loginText;
-      console.log(this.currentOperator.enableLoginText);
+      // console.log(this.currentOperator.enableLoginText);
       this.showInputMsg = this.currentOperator.enableLoginText;
     }
     else {
@@ -650,14 +650,14 @@ export class OnboardComponent implements OnInit {
 
       let areaCode = this.multiOperatorForm.controls.country.value.area;
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
-      console.log(msisdnValue);
+      // console.log(msisdnValue);
       msisdnValue = this.RemoveSpaces(msisdnValue);
       msisdnValue = this.KeppNumbers(msisdnValue);
-      console.log(msisdnValue);
+      // console.log(msisdnValue);
 
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-      console.log(this.currentOperator);
+      // console.log(this.currentOperator);
       this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
@@ -749,16 +749,16 @@ export class OnboardComponent implements OnInit {
 
 
     let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
-    console.log("area code: " + areaCode);
+    // console.log("area code: " + areaCode);
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
-    console.log("msisdn Value: " + msisdnValue);
+    // console.log("msisdn Value: " + msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-    console.log(path);
+    // console.log(path);
 
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
-        console.log("Authenticate");
-        console.log(response);
+        // console.log("Authenticate");
+        // console.log(response);
         if (response && response.success) {
           this.subState = response.state;
           if (this.subState == "UNSUB" && response.user.wallet > 0)
@@ -807,7 +807,7 @@ export class OnboardComponent implements OnInit {
       this.isSubmitting = false;
       return;
     }
-    console.log(this.pinForm.controls.pin.value);
+    // console.log(this.pinForm.controls.pin.value);
 
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
@@ -875,7 +875,7 @@ export class OnboardComponent implements OnInit {
   }
 
   showDailyBonusModal() {
-    console.log("Loyalty Bonus: " + this.dailybonus);
+    // console.log("Loyalty Bonus: " + this.dailybonus);
     this.loyaltyImg = this.sportimoService.getConfigurationFor('userLoyaltySponsorImageUrl');
     this.loyaltyText = this.sportimoService.getConfigurationFor('userLoyaltySponsorText');
     // console.log(this.loyaltyImg);
@@ -904,7 +904,7 @@ export class OnboardComponent implements OnInit {
   openTerms() {
     // window.open("http://sportimo.com/en/terms-conditionsru/","_blank"); 
     this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
-    console.log("Openning terms!");
+    // console.log("Openning terms!");
     // this.ViewModalOverlay.open<DailyBonusComponent>(DailyBonusComponent, {});
   }
 
@@ -954,15 +954,15 @@ export class OnboardComponent implements OnInit {
 
     if (e.target.checked) {
       this.acceptedTerms = e.target.checked
-      console.log(this.acceptedTerms);
-      console.log(this.showCheckbox);
+      // console.log(this.acceptedTerms);
+      // console.log(this.showCheckbox);
     } else {
       this.acceptedTerms = e.target.checked
-      console.log(this.acceptedTerms);
-      console.log(this.showCheckbox);
+      // console.log(this.acceptedTerms);
+      // console.log(this.showCheckbox);
     }
 
-    console.log("Enable button: " + (this.showCheckbox && this.acceptedTerms));
+    // console.log("Enable button: " + (this.showCheckbox && this.acceptedTerms));
 
   }
 
