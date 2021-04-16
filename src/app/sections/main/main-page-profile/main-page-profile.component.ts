@@ -113,6 +113,7 @@ export class MainPageProfileComponent implements OnInit {
     });
 
     this.sportimoService.getAchievements().subscribe(x => {
+      console.table(x);
       this.stats = x;
       let count = 0;
       if (x.lastmatches)

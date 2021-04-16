@@ -77,7 +77,7 @@ export class MainPageNewsComponent implements OnInit {
 
 
 
-    if (this.translate.currentLang == "ar") {
+    if (this.translate.currentLang == "ar" || this.translate.currentLang == "fa") {
       this.alignAllLeft = false;
     } else {
       this.alignAllLeft = true;
@@ -86,7 +86,7 @@ export class MainPageNewsComponent implements OnInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       // do something
       console.log(event.lang);
-      if (this.translate.currentLang == "ar") {
+      if (this.translate.currentLang == "ar" || this.translate.currentLang == "fa") {
         this.alignAllLeft = false;
       } else {
         this.alignAllLeft = true;

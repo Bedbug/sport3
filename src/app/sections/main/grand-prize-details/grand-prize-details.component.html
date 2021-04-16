@@ -68,9 +68,9 @@
             <div translate>Minutes</div>
           </div>
           <div class="timer-body">
-            <div class="col p-0">{{countdown.days<10?"0"+countdown.days:countdown.days}}</div>
-            <div class="col p-0">{{countdown.hours<10?"0"+countdown.hours:countdown.hours}}</div>
-            <div class="col p-0">{{countdown.minutes<10?"0"+countdown.minutes:countdown.minutes}}</div>
+            <div class="col p-0">{{parseNumbers(countdown.days<10?"0"+countdown.days:countdown.days)}}</div>
+            <div class="col p-0">{{parseNumbers(countdown.hours<10?"0"+countdown.hours:countdown.hours)}}</div>
+            <div class="col p-0">{{parseNumbers(countdown.minutes<10?"0"+countdown.minutes:countdown.minutes)}}</div>
           </div>
 
           <div class="p-20 text-white formated-text">

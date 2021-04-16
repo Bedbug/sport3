@@ -54,8 +54,8 @@ export class OnboardComponent implements OnInit {
   showTopText: any = false;
   disableLoginCarousel: any = false;
   getOpText: boolean = false;
-  
-  termsOpText:any;
+
+  termsOpText: any;
   inputMsg: any;
   termsLineText: any;
 
@@ -650,6 +650,11 @@ export class OnboardComponent implements OnInit {
 
       let areaCode = this.multiOperatorForm.controls.country.value.area;
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
+      console.log(msisdnValue);
+      msisdnValue = this.RemoveSpaces(msisdnValue);
+      msisdnValue = this.KeppNumbers(msisdnValue);
+      console.log(msisdnValue);
+
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
       console.log(this.currentOperator);
@@ -802,6 +807,8 @@ export class OnboardComponent implements OnInit {
       this.isSubmitting = false;
       return;
     }
+    console.log(this.pinForm.controls.pin.value);
+
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
@@ -958,6 +965,15 @@ export class OnboardComponent implements OnInit {
     console.log("Enable button: " + (this.showCheckbox && this.acceptedTerms));
 
   }
+
+  RemoveSpaces(string) {
+    return string.split(' ').join('');
+  }
+
+  KeppNumbers(string) {
+    return string.replaceAll("[^0-9.]", "");
+  }
+
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();

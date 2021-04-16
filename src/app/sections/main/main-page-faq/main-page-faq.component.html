@@ -24,8 +24,8 @@
 
     <!-- ANSWER -->
     <div id="Answer" *ngIf="selectedFaq" style="width: 100%;">
-      <div (click)="selectedFaq = null" class="answer-header isClickable">
-        <div class="icn-arrow"></div>
+      <div (click)="selectedFaq = null" class="answer-header isClickable" [ngClass]="(alignAllLeft)?'direct_right':'direct_left'">
+        <div class="icn-arrow icn-arrow-down"></div>
         <div [ngClass]="(alignAllLeft)?'direct_left':'direct_right'" class="question-text-header">{{selectedFaq.question[translate.currentLang]}}</div>       
       </div>
       <div class="main-answer-scrollarea container" [@staggerAnimation]="animate">

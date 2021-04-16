@@ -162,7 +162,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     console.log("language: "+this.translate.currentLang);
     
-    if(this.translate.currentLang == "ar") {
+    if(this.translate.currentLang == "ar" || this.translate.currentLang == "fa") {
       this.alignAllLeft = false;
     }else {
       this.alignAllLeft = true;
@@ -171,7 +171,7 @@ export class MainPageFAQComponent implements OnInit, AfterViewInit {
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       // do something
       console.log(event.lang);
-      if(this.translate.currentLang == "ar") {
+      if(this.translate.currentLang == "ar" || this.translate.currentLang == "fa") {
         this.alignAllLeft = false;
       }else{
         this.alignAllLeft = true;
