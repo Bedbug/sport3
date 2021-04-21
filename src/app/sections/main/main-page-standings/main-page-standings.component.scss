@@ -17,6 +17,11 @@
   font-size: 16px;
   font-weight: 700;
 }
+.terms-footer {
+  height: 0px;
+  padding: 0;
+  background-color: RGBA(10, 28, 45, 1);
+}
 
 .league-item {
   display: flex;
@@ -59,7 +64,7 @@
 .leagues-scrollarea {
   width: 100%;
   height: calc(100vh - 140px);
-  height: calc((var(--vh, 1vh) * 100) - 140px);
+  height: calc((var(--vh, 1vh) * 100) - 200px);
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 0;
