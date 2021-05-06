@@ -200,7 +200,17 @@
     direction: rtl;
     text-align: right !important;
   }
-
+  .leaderboard_outer {
+    direction: rtl;
+    text-align: right !important;
+}
+  ._reverce{
+    text-align: left !important;
+    padding-left: 20px;
+  }
+  ._namereverce{
+    text-align: right !important;
+  }
   .leaders-cell {
     direction: ltr;
   }

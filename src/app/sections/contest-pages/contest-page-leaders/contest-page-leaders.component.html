@@ -4,7 +4,7 @@
       <div class="leaders-header">
         <div class="leaders-cell p-l-20 p-r-20" style="width: 100px" translate>Rank</div>
         <div class="leaders-cell" translate>Player</div>
-        <div class="leaders-cell text-right p-r-20" translate>Points</div>
+        <div class="leaders-cell text-right _reverce p-r-20" translate>Points</div>
       </div>
     </div>
     <!-- <div class="leaders-scrollable-group" (scroll)="checkScroll()"> -->
@@ -30,8 +30,8 @@
       <div  [class.leaders-user]="ind == userRank" class="flex-table" *ngFor="let player of cellArray; let ind = index" id="{{ind}}">
         <div class="index">{{parseNumbers(ind+1)}}</div>
         <div class="flag" ><img class="" style="max-width: 30px;" [src]="player?.picture || '/assets/images/sportimo/default_avatar.svg'" alt="" /></div>
-        <div class="name" >{{player.name}}</div>
-        <div class="points">
+        <div class="name _namereverce" >{{player.name}}</div>
+        <div class="points _reverce">
           
           <div class="points-value">{{parseNumbers(player.score.toString())}}</div>
         </div>
