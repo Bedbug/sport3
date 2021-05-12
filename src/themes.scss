@@ -52,10 +52,10 @@ $theme-gradient: linear-gradient(180deg, rgba(246,230,64,1) 0%, rgba(255,166,2,1
 
 
 .green {
-$green-color: #8dc63f;
-$green-color2: #62AF8A;
-  $theme-color: #326353;
-$theme-gradient: linear-gradient(180deg, #8dc63f 0%, #668a3f 100%);
+$green-color: #316400;
+$green-color2: #56b000;
+  $theme-color: #316400;
+$theme-gradient: linear-gradient(180deg, #316400 0%, #668a3f 100%);
 
   .active .footer-icon{
     filter: invert(70%) sepia(45%) saturate(477%) hue-rotate(43deg) brightness(91%) contrast(86%);
