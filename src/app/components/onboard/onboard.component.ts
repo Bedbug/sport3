@@ -390,6 +390,8 @@ export class OnboardComponent implements OnInit {
           releaseTimout = setTimeout(function () {
             $('.loader-wrapper').fadeOut('slow');
             $('.loader-wrapper').remove('slow');
+
+            console.log("Regular Close!");
             // Close Texts
             var myobj = document.getElementById("LoaderTexts");
             if (myobj)
@@ -402,10 +404,11 @@ export class OnboardComponent implements OnInit {
           $('.loader-wrapper').fadeOut('slow');
           $('.loader-wrapper').remove('slow');
           // Close Texts
+          console.log("Hard Close!");
           var myobj = document.getElementById("LoaderTexts");
           if (myobj)
             myobj.remove();
-        }, 7000);
+        }, 1000);
 
       } else {
         this.Authenticated = true;
