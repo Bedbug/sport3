@@ -114,7 +114,6 @@ export class SportimoService {
    Push Notifications
  ----------------------------------------------------------------------------------- */
   addPushSubscriber(sub: any) {
-    
     const postData = sub;
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/push`, postData)
       .pipe(map(result => {
