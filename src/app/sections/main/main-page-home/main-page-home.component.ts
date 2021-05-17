@@ -78,14 +78,17 @@ export class MainPageHomeComponent implements OnInit {
         this.showDailyBonusModal(user.loyaltyCoins);
         this.animateShine();
       }
+      if (this.isAuthenticated) {
+        // Check For Push
+        if (this.swPush.isEnabled) {
+          console.log("swPush is enabled!");
+          this.subscribeToNotifications();
+        } else {
+          console.log("swPush is Not enabled!");
+        }
+      }
 
-      // Check For Push
-      // if (this.swPush.isEnabled) {
-      //   console.log("swPush is enabled!");
-      //   this.subscribeToNotifications();
-      // } else {
-      //   console.log("swPush is Not enabled!");
-      // }
+
 
     })
 
