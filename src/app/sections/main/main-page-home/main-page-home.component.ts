@@ -16,6 +16,8 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import UIkit from 'uikit';
 import { GsapService } from "src/app/services/gsap.service";
+// import SwPush from 'push-notifications-swpush';
+import { SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-page',
@@ -42,9 +44,10 @@ export class MainPageHomeComponent implements OnInit {
   ngUnsubscribe = new Subject();
   isAuthenticated = false;
   Utils: SportimoUtils = new SportimoUtils();
-  loyaltyImg:any;
-  loyaltyText:any;
-  dailybonus:number = 10;
+  loyaltyImg: any;
+  loyaltyText: any;
+  dailybonus: number = 10;
+  readonly VAPID_PUBLIC_KEY = "BD1ww4k0GsBQIOdbBiap8h-cAE2kDedUo8nMndpfzcqrb_g3m774xEbZ25G25EihK5HH2zf67ApmjL4IQ9aKRb0";
 
   constructor(
     private routeParams: ActivatedRoute,
@@ -55,8 +58,9 @@ export class MainPageHomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private ViewModalOverlay: PrizeViewOverlayService,
-    private authenticationService:AuthenticationService,
-    private _gsapService: GsapService
+    private authenticationService: AuthenticationService,
+    private _gsapService: GsapService,
+    private swPush: SwPush,
   ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -66,16 +70,26 @@ export class MainPageHomeComponent implements OnInit {
     // setTimeout(()=>{this.matchesListVisible = true},1000);
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
-      this.isAuthenticated = user!=null;
+      this.isAuthenticated = user != null;
       console.log("Check Bonus!");
       // user.loyaltyCoins = 2;
-      if(this.isAuthenticated && user.loyaltyCoins > 0){
-        
+      if (this.isAuthenticated && user.loyaltyCoins > 0) {
+
         this.showDailyBonusModal(user.loyaltyCoins);
         this.animateShine();
       }
-      
+
+      // Check For Push
+      if (this.swPush.isEnabled) {
+        console.log("swPush is enabled!");
+        this.subscribeToNotifications();
+      } else {
+        console.log("swPush is Not enabled!");
+      }
+
     })
+
+
 
     this.sportimoService.getHomeMatches().subscribe(data => {
       // console.log(data);
@@ -87,6 +101,16 @@ export class MainPageHomeComponent implements OnInit {
       // console.table(this.upcomingMatches);
       this.matchesListVisible = true
     })
+  }
+
+  subscribeToNotifications() {
+    console.log('Open Subscribe!');
+
+    this.swPush.requestSubscription({
+      serverPublicKey: this.VAPID_PUBLIC_KEY
+    })
+      .then(sub => this.sportimoService.addPushSubscriber(sub).subscribe())
+      .catch(err => console.error("Could not subscribe to notifications", err));
   }
 
   ngOnDestroy() {
@@ -119,16 +143,16 @@ export class MainPageHomeComponent implements OnInit {
     if (upcomingMatch.tournament.isSubscribed) {
       console.log("Already subscribed");
       // Handle Match subscription      
-      if(upcomingMatch.match.isSubscribed)
-      this.router.navigate(['../contest', upcomingMatch.tournament._id, 'match', upcomingMatch._id, 'info'], { relativeTo: this.route.parent });
+      if (upcomingMatch.match.isSubscribed)
+        this.router.navigate(['../contest', upcomingMatch.tournament._id, 'match', upcomingMatch._id, 'info'], { relativeTo: this.route.parent });
       else
-      this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent, {
-        data: {
-          match: upcomingMatch,
-          route: this.route.parent,
-          routePath: ['../contest', upcomingMatch.tournament._id, 'match', upcomingMatch._id, 'info']
-        }
-      });
+        this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent, {
+          data: {
+            match: upcomingMatch,
+            route: this.route.parent,
+            routePath: ['../contest', upcomingMatch.tournament._id, 'match', upcomingMatch._id, 'info']
+          }
+        });
     } else {
       // Handle contest subscription first
       console.log("We need to subscribe to contest first");
@@ -201,52 +225,52 @@ export class MainPageHomeComponent implements OnInit {
     // }
   }
 
-  showDailyBonusModal(value:number) {
+  showDailyBonusModal(value: number) {
     // console.log("Loyalty Bonus from Auth: "+ this.authenticationService.hasDailyBonus);
     this.loyaltyImg = this.sportimoService.getConfigurationFor('userLoyaltySponsorImageUrl');
     this.loyaltyText = this.sportimoService.getConfigurationFor('userLoyaltySponsorText');
-    
-      this.dailybonus = value;
 
-      console.log("dailybonus property: "+ this.dailybonus);
-      
-      var dailymodal = UIkit.modal("#dailyModal2", { escClose: false, bgClose: false });
-      // dailymodal.show();
-      var that = this;
-      setTimeout(() => {
-        dailymodal.show();
-        console.log(that);
-        
-      }, 2000);
-    
-    
+    this.dailybonus = value;
+
+    console.log("dailybonus property: " + this.dailybonus);
+
+    var dailymodal = UIkit.modal("#dailyModal2", { escClose: false, bgClose: false });
+    // dailymodal.show();
+    var that = this;
+    setTimeout(() => {
+      dailymodal.show();
+      console.log(that);
+
+    }, 2000);
+
+
   }
 
-  collectCoin(){
+  collectCoin() {
     // Collect Loyalty
     this.authenticationService.collectLoyalty().subscribe(user => {
 
     });
     //Close Modal
     let modal = UIkit.modal("#dailyModal2", { escClose: false, bgClose: false });
-      modal.hide();
+    modal.hide();
   }
 
-  animateShine(){
+  animateShine() {
     const anim = this._gsapService;
 
     // Get Shine
     const shine = ".shine";
     const shineOuter = ".shineOuter";
     const coin = ".coinBox";
-    
-     // Yoyo Scale
-    anim.YoyoScale(shineOuter, 0.5, 1.2 , 1.2, 0);
+
+    // Yoyo Scale
+    anim.YoyoScale(shineOuter, 0.5, 1.2, 1.2, 0);
     anim.alphaYoyo(shine, 3, 0.4, 0);
     // anim.YoyoScale(coin, 1, 1.1, 1.1, 1);
     // Rotate
     anim.RotateInf(shine);
-   
+
   }
 
 }
