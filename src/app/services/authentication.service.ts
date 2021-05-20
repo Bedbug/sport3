@@ -225,6 +225,48 @@ export class AuthenticationService {
                 return response;
             }));
     }
+    // "username": "blackHeretic",
+    // "pushSettings": {
+    //     "all": true,
+    //     "new_message": true,
+    //     "match_reminder": true,
+    //     "kick_off": true,
+    //     "goals": true,
+    //     "won_cards": true,
+    //     "final_result": true
+    // },
+    // "languagePreference": "ar"
+    updateUserAll(username: string, PushSettings: any, lang:string) {
+        let putData = {
+            username: username,
+            pushSettings: PushSettings,
+            languagePreference: lang
+        };
+        return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
+            .pipe(map(response => {
+                // Save the signin data for future use
+                // console.log(response);
+                if (response != null && response.success) {
+                    this.currentUserSubject.value.username = username;
+                    this.currentUserSubject.next(this.currentUserSubject.value);
+                }
+                return response;
+            }));
+    }
+    updateUserLang(lang:string) {
+        let putData = {
+            languagePreference: lang
+        };
+        return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
+            .pipe(map(response => {
+                // Save the signin data for future use
+                // console.log(response);
+                if (response != null && response.success) {
+                    this.currentUserSubject.next(this.currentUserSubject.value);
+                }
+                return response;
+            }));
+    }
 
     registerMSISDN(msisdn: string) {
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/msisdn`, { msisdn: msisdn })

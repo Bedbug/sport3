@@ -19,12 +19,12 @@ import * as _ from 'lodash';
 export class MainPageProfileComponent implements OnInit {
 
   constructor(
-    private authenticationService: AuthenticationService, 
-    private sportimoService: SportimoService, 
+    private authenticationService: AuthenticationService,
+    private sportimoService: SportimoService,
     private router: Router,
-    private route:ActivatedRoute,
-    private translate:TranslateService
-    ) { }
+    private route: ActivatedRoute,
+    private translate: TranslateService
+  ) { }
 
   user: User;
   ngUnsubscribe = new Subject();
@@ -42,7 +42,15 @@ export class MainPageProfileComponent implements OnInit {
   xAxisLabel = 'Last 5 games';
   showYAxisLabel = false;
   yAxisLabel = 'Population';
-  oldValue = false;
+  oldValue = {
+    all: true,
+    new_message: true,
+    match_reminder: true,
+    kick_off: true,
+    goals: true,
+    won_cards: true,
+    final_result: true
+  };
   buttonDirty = false;
 
   conf = {
@@ -74,6 +82,16 @@ export class MainPageProfileComponent implements OnInit {
     }
   };
 
+  pushSettings = {
+    all: true,
+    new_message: true,
+    match_reminder: true,
+    kick_off: true,
+    goals: true,
+    won_cards: true,
+    final_result: true
+  };
+
   colorScheme = {
     domain: ['#ABEC78']
   };
@@ -83,7 +101,7 @@ export class MainPageProfileComponent implements OnInit {
   // Avatars
   avatarsShowing = false;
 
-  avatars: string[] =[
+  avatars: string[] = [
     './assets/images/sportimo/avatars/avatar1.png',
     './assets/images/sportimo/avatars/avatar2.png',
     './assets/images/sportimo/avatars/avatar3.png',
@@ -137,15 +155,15 @@ export class MainPageProfileComponent implements OnInit {
   ngOnInit() {
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.user = user;
-
-      if(this.user.picture == null)
-      this.user.picture = '/assets/images/sportimo/default_avatar.svg';
-      this.oldValue == user.pushEnabled;
-      // console.table(this.user);
+      console.log(user);
+      if (this.user.picture == null)
+        this.user.picture = '/assets/images/sportimo/default_avatar.svg';
+      this.oldValue == this.user.pushSettings;
+      // console.table(this.user.pushSettings);
     });
 
     this.sportimoService.getAchievements().subscribe(x => {
-      console.table(x);
+      // console.table(x);
       this.stats = x;
       let count = 0;
       if (x.lastmatches)
@@ -153,12 +171,12 @@ export class MainPageProfileComponent implements OnInit {
           count++;
           return { name: "Game " + count, value: each };
         })
-        
-        
-        // Find the most used card
-        if(x.cardStats)
-        this.stats.favoriteCard = _.maxBy(Object.keys(x.cardStats), o => x.cardStats[o]) || null;        
-        
+
+
+      // Find the most used card
+      if (x.cardStats)
+        this.stats.favoriteCard = _.maxBy(Object.keys(x.cardStats), o => x.cardStats[o]) || null;
+
 
       if (x && x.user && x.user.stats) {
         this.data.overall.you = (100 * (x.user.stats.overallCardsWon / x.user.stats.overallCardsPlayed)).toFixed(2);
@@ -178,12 +196,12 @@ export class MainPageProfileComponent implements OnInit {
     });
   }
 
-  openAvatarSelection() {  
+  openAvatarSelection() {
     this.avatarsShowing = true;
     // this.router.navigate(['avatars'],{relativeTo:this.route.parent});
   }
 
-  closeAvatarsSelection(){
+  closeAvatarsSelection() {
     this.avatarsShowing = false;
   }
 
@@ -193,36 +211,53 @@ export class MainPageProfileComponent implements OnInit {
   }
 
   onCh() {
-    console.log("logged "+ this.user.pushEnabled);
-    if(this.user.pushEnabled != this.oldValue){
+    console.log("logged " + this.user.pushSettings.all);
+    if (this.user.pushSettings.all != this.oldValue.all ||
+      this.user.pushSettings.new_message != this.oldValue.new_message ||
+      this.user.pushSettings.match_reminder != this.oldValue.match_reminder ||
+      this.user.pushSettings.kick_off != this.oldValue.kick_off ||
+      this.user.pushSettings.goals != this.oldValue.goals ||
+      this.user.pushSettings.won_cards != this.oldValue.won_cards ||
+      this.user.pushSettings.final_result != this.oldValue.final_result) {
       this.buttonDirty = true;
       console.log("Open Update");
-    }else{
+    } else {
       this.buttonDirty = false;
       console.log("Close Update");
     }
-      
-      
+
+
     // this.NotValue != this.NotValue;
   }
 
-  onUsernameUpdate(){
-       
+  onUsernameUpdate() {
+
     this.authenticationService.updateUsername(this.user.username)
-    .subscribe(
-      response => {
-        
-        if (response && response.success) {
-        };
-      });      
+      .subscribe(
+        response => {
+
+          if (response && response.success) {
+          };
+        });
+
+  }
+  onUserAllUpdate() {
+    
+    this.authenticationService.updateUserAll(this.user.username, this.user.pushSettings, this.translate.currentLang)
+      .subscribe(
+        response => {
+
+          if (response && response.success) {
+          };
+        });
 
   }
 
-  parseDateDay(date:string){
-    return this.Utils.parseDate(date,this.translate.currentLang=='fa','DD/MM/YY','jDD/jMM/jYY');
+  parseDateDay(date: string) {
+    return this.Utils.parseDate(date, this.translate.currentLang == 'fa', 'DD/MM/YY', 'jDD/jMM/jYY');
   }
 
-  selectAvatar(avatarUrl:string){
+  selectAvatar(avatarUrl: string) {
     this.authenticationService.updateAvatar(avatarUrl).subscribe();
   }
 

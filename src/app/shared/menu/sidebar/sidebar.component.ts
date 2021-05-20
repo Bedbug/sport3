@@ -26,13 +26,13 @@ export class SidebarComponent implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private authenticationService: AuthenticationService,
-    public translate:TranslateService,
+    public translate: TranslateService,
     private toppickService: ToppickService,
     private sportimoService: SportimoService,
-    private config:ConfigService,
+    private config: ConfigService,
     private ViewModalOverlay: PrizeViewOverlayService,
     private swPush: SwPush
-    ) {
+  ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);
@@ -41,55 +41,55 @@ export class SidebarComponent implements OnInit {
       this.isLoggedIn = false;
     }
 
-        // Localization Markers
-        _('My Account');
-        _('Profile');
-        _('Balance');
-        _('Messages');
-        _('Achievements');
-        _('My Teams');
-        _('Top Picks');
-        _('Contests');
-        _('Winners');
-        _('Standings');
-        _('Settings');
-        _('About Sportimo');
-        _('FAQ');
-        _('How to Play');
-        _('Support');
-        _('Terms & Conditions');
-        _('Privacy Policy'); 
-        _('Language'); 
-        _('english'); 
-        _('farsi');
-        _('french');
+    // Localization Markers
+    _('My Account');
+    _('Profile');
+    _('Balance');
+    _('Messages');
+    _('Achievements');
+    _('My Teams');
+    _('Top Picks');
+    _('Contests');
+    _('Winners');
+    _('Standings');
+    _('Settings');
+    _('About Sportimo');
+    _('FAQ');
+    _('How to Play');
+    _('Support');
+    _('Terms & Conditions');
+    _('Privacy Policy');
+    _('Language');
+    _('english');
+    _('farsi');
+    _('french');
   }
 
   ngOnInit() {
     $.getScript('./assets/js/sidebar-menu.js');
     this.menuItems = MENUITEMS.filter(menuItem => menuItem);
-    this.authenticationService.currentUser.subscribe(user=>{
-      this.isLoggedIn = user!=null;
-      if(user)
-        this.unread = this.authenticationService.currentUserValue.unread;                    
-        
+    this.authenticationService.currentUser.subscribe(user => {
+      this.isLoggedIn = user != null;
+      if (user)
+        this.unread = this.authenticationService.currentUserValue.unread;
+
     });
   }
 
-  hasLanguage( key: string){
-    let languages = this.sportimoService.getConfigurationFor("availableLanguages");    
-    if(languages){
+  hasLanguage(key: string) {
+    let languages = this.sportimoService.getConfigurationFor("availableLanguages");
+    if (languages) {
       return languages && languages.includes(key);
     }
 
     return false;
   }
 
-  toggleUserStatus(){
-    if(this.isLoggedIn){
-    this.logout();
-    this.closeSidebar()
-    }else{
+  toggleUserStatus() {
+    if (this.isLoggedIn) {
+      this.logout();
+      this.closeSidebar()
+    } else {
       $(".page-body-wrapper").addClass("sidebar-close");
       $('.sidebar-background').addClass('hidden');
       $('#app-login-modal').removeClass('hidden');
@@ -97,49 +97,63 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  SwPushUnsub(){
+  SwPushUnsub() {
     console.log("Unsubscribe from swPush!");
     this.swPush.unsubscribe();
   }
 
-  openTopPick(){
-    this.toppickService.Show();    
+  openTopPick() {
+    this.toppickService.Show();
   }
 
-  openTerms(){
-    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent,{});
+  openTerms() {
+    this.ViewModalOverlay.open<TermsPopupComponent>(TermsPopupComponent, {});
   }
 
-  showRoute(path:string){      
-    this.router.navigateByUrl("app/"+this.config.getClient()+path);
+  showRoute(path: string) {
+    this.router.navigateByUrl("app/" + this.config.getClient() + path);
   }
 
-  closeSidebar(){
+  closeSidebar() {
     $(".page-body-wrapper").addClass("sidebar-close");
-      $('.sidebar-background').addClass('hidden');
+    $('.sidebar-background').addClass('hidden');
   }
 
   logout() {
     this.authenticationService.logout();
     this.isLoggedIn = false;
     // this.router.routeReuseStrategy.shouldReuseRoute = 
-    if(window.location != window.parent.location)
-    {
+    if (window.location != window.parent.location) {
       // console.log("Post Message");
       // console.log(window.parent);
-      
+
       parent.postMessage('logout', "*");
-  }
-    else      
-    // this.router.onSameUrlNavigation = 'reload';
-    window.open("app/"+this.config.getClient(),"_self");
+    }
+    else
+      // this.router.onSameUrlNavigation = 'reload';
+      window.open("app/" + this.config.getClient(), "_self");
     // window.open(document.referrer+"app/"+this.config.getClient(),"_self")
     // this.router.navigate(["app/"+this.config.getClient()]);
-}
+  }
 
-switchLanguage(lang:string){
-  this.translate.use(lang);
-  this.closeSidebar();
-}
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
+    this.onUserLangUpdate(lang)
+    this.closeSidebar();
+  }
+
+  onUserLangUpdate( lang:string ) {
+
+    console.log(this.authenticationService.currentUserValue.languagePreference);
+
+    this.authenticationService.updateUserLang(lang)
+      .subscribe(
+        response => {
+
+          if (response && response.success) {
+          };
+        });
+
+  }
 
 }
