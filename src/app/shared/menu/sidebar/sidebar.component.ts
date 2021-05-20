@@ -97,7 +97,7 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  unsubSwPush(){
+  SwPushUnsub(){
     console.log("Unsubscribe from swPush!");
     this.swPush.unsubscribe();
   }

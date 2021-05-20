@@ -26,4 +26,5 @@ export class User {
     loyaltyCoins?:number;
     favTeams?: any;
     operatorId?: any;
+    pushEnabled:boolean = false;
 }

@@ -67,6 +67,7 @@
     "ngx-pipes": "^2.7.5",
     "ngx-socket-io": "^3.2.0",
     "ngx-toastr": "^13.2.0",
+    "ngx-toggle-button": "^0.5.2",
     "ngx-translate-extract": "^1.0.0",
     "node-sass": "^5.0.0",
     "path": "^0.12.7",

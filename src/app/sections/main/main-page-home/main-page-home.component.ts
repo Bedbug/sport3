@@ -204,6 +204,8 @@ export class MainPageHomeComponent implements OnInit {
     this.checkScroll();
   }
 
+  
+
   checkScroll() {
     // let a = $(".scorllable-area");
 

@@ -7,7 +7,8 @@
       <div class="desktop-nav-bar">
         <nav class="vertical-app-navbar">
           <div *ngIf="user" class="winner-card" style="height: 100%;">
-            <div class="winner-card-header" style="height: 100%; align-content: flex-start; box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.35);">
+            <div class="winner-card-header"
+              style="height: 100%; align-content: flex-start; box-shadow: 1px 0px 5px 0px rgba(0,0,0,0.35);">
               <div class="background-ring isClickable" (click)="openAvatarSelection()">
                 <img class="rounded-circle" [src]="user.picture" alt="">
                 <!-- <img  src="assets/images/sportimo/profile_name_edit.svg"> -->
@@ -20,14 +21,34 @@
               <div class="input-control">
                 <div style="padding-left: 33px;" translate>Username</div>
                 <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap; align-items: center;">
-                <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
-                  class="form-control-plaintext" placeholder="Username" style="margin-right: 12px;">
+                  <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
+                    class="form-control-plaintext" placeholder="Username" style="margin-right: 12px;">
                   <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
                 </div>
               </div>
+              <!-- // Create language drop down -->
 
-              <div>
-                <button [disabled]="isSubmitting || !username.dirty" style="height: 31px;margin-top: 20px;" (click)="onUsernameUpdate()"
+              <!-- // Create Sent Notifications checkbox -->
+              <div style="flex-grow: 1;">
+
+                <br>
+                <div>
+                  <div style="padding-left: 33px; text-align: left;" translate>Private Notifications</div>
+                  <div style="padding-left: 33px; text-align: left;">
+                    <ng-toggle [(ngModel)]="user.pushEnabled" #pushEnabled="ngModel" [width]="conf.width"
+                      [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels" [color]="conf.color"
+                      [switchColor]="conf.switchColor" [fontColor]="conf.fontColor" [fontSize]="conf.fontSize"
+                      (change)="onCh()" >
+                    </ng-toggle>
+                  </div>
+                </div>
+
+
+
+
+
+                <button [disabled]="isSubmitting || !buttonDirty"
+                  style="height: 31px; margin-top: 20px; margin-left: 33px;" (click)="onUsernameUpdate()"
                   class="btn btn-sportimo login-form-button">
                   <div class="loader-label" [class.btn-active]="isSubmitting">
                     <span class="button-label" translate>Update</span>
@@ -36,9 +57,12 @@
                     </div>
                   </div>
                 </button>
+                <!-- </div> -->
+
               </div>
 
             </div>
+
           </div>
         </nav>
       </div>
@@ -54,13 +78,13 @@
               <!-- <div class="input-icon">
                 <div class="icn-user"></div>
               </div> -->
-             
+
               <div class="input-control">
                 <div style="display: flex;  flex-direction: row;  flex-wrap: nowrap; align-items: center;">
                   <input [(ngModel)]="user.username" #username="ngModel" name="name" type="text"
                     class="form-control-plaintext" placeholder="Username" style="margin-right: 10px;">
-                    <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
-                  </div>
+                  <img style="height: 15px;" src="assets/images/sportimo/profile_name_edit.svg">
+                </div>
               </div>
               <div *ngIf="username.dirty">
                 <button [disabled]="isSubmitting" style="height: 31px; margin-top: 10px;" (click)="onUsernameUpdate()"
@@ -101,7 +125,8 @@
                 <div class="stat-data no-min-width stats-border-left" style="padding-left:30px;">
                   <div class="stat-header" translate>card-live</div>
                   <div class="stat-value">
-                    {{(stats.user.stats?.presetinstantCardsPlayed || 0) + (stats.user.stats?.instantCardsPlayed || 0)}}</div>
+                    {{(stats.user.stats?.presetinstantCardsPlayed || 0) + (stats.user.stats?.instantCardsPlayed || 0)}}
+                  </div>
                 </div>
                 <div class="stat-data no-min-width">
                   <div class="stat-header" translate>card-90</div>
@@ -114,25 +139,26 @@
                 <div>
                   <!-- <img class="stat-icon" [src]="Utils.getIconBySprite(availablePlaycard?.image.sprite" alt=""> -->
                   <div class="stat-icon">
-                    <div [ngClass]="Utils.getIconBySprite(stats?.user.favoriteCard?.image.sprite) || 'icn-stack'"  style="width: 60%; height: 100%;"></div>
+                    <div [ngClass]="Utils.getIconBySprite(stats?.user.favoriteCard?.image.sprite) || 'icn-stack'"
+                      style="width: 60%; height: 100%;"></div>
                   </div>
                 </div>
                 <div class="stat-data">
                   <div class="stat-header" translate>Favorite Card</div>
                   <div class="stat-value"> {{stats?.user.favoriteCard?.title[translate.currentLang] || "-"}}</div>
-                </div>               
+                </div>
               </div>
               <!-- Highest Score -->
               <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestScoreMatch">
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_highest_score.svg" alt="">
                 </div>
-                <div class="stat-data-highs" >
+                <div class="stat-data-highs">
                   <div class="stat-header" translate>Highest Score</div>
                   <div class="stat-value"> {{stats?.user.rankingStats.bestScore}} pts</div>
                 </div>
                 <div class="stat-data stats-border-left" style="flex-grow: 1;">
-                
+
                   <div class="stat-match">
                     <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestScoreMatch?.start)}}</div>
                     <div class="match-details">
@@ -144,7 +170,7 @@
                           {{stats?.user.rankingStats.bestScoreMatch?.home_team.name[translate.currentLang]}}
                         </div>
                       </div>
-                     
+
                       <div class="stat-team">
                         <div class="team-kit text-center"><img
                             src="{{stats?.user.rankingStats.bestScoreMatch?.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
@@ -155,24 +181,30 @@
                       </div>
                     </div>
                     <div class="score">
-                      {{stats?.user.rankingStats.bestScoreMatch?.home_score}} - {{stats?.user.rankingStats.bestScoreMatch.away_score}}
+                      {{stats?.user.rankingStats.bestScoreMatch?.home_score}} -
+                      {{stats?.user.rankingStats.bestScoreMatch.away_score}}
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Highest Rank -->           
+              <!-- Highest Rank -->
               <div class="stats-row stats-border-bottom" *ngIf="stats?.user.rankingStats.bestRank">
                 <div>
                   <img class="stat-icon" src="/assets/images/sportimo/profile_highest_rank.svg" alt="">
                 </div>
                 <div class="stat-data-highs">
                   <div class="stat-header" translate>Highest Rank</div>
-                  <div *ngIf="stats?.user.rankingStats?.bestRank && stats?.user.rankingStats?.bestRank>0 && stats?.user.rankingStats?.bestRank <9999" class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
-                  <div *ngIf="!stats?.user.rankingStats?.bestRank || stats?.user.rankingStats?.bestRank==0 || stats?.user.rankingStats?.bestRank  == 9999" class="stat-value">-</div>
+                  <div
+                    *ngIf="stats?.user.rankingStats?.bestRank && stats?.user.rankingStats?.bestRank>0 && stats?.user.rankingStats?.bestRank <9999"
+                    class="stat-value"># {{stats?.user.rankingStats?.bestRank}}</div>
+                  <div
+                    *ngIf="!stats?.user.rankingStats?.bestRank || stats?.user.rankingStats?.bestRank==0 || stats?.user.rankingStats?.bestRank  == 9999"
+                    class="stat-value">-</div>
                 </div>
-                <div class="stat-data stats-border-left" *ngIf="stats?.user.rankingStats.bestRankMatch" style="flex-grow: 1;">
-                 
+                <div class="stat-data stats-border-left" *ngIf="stats?.user.rankingStats.bestRankMatch"
+                  style="flex-grow: 1;">
+
                   <div class="stat-match">
                     <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestRankMatch?.start)}}</div>
                     <div class="match-details">
@@ -184,7 +216,7 @@
                           {{stats?.user.rankingStats.bestRankMatch?.home_team.name[translate.currentLang]}}
                         </div>
                       </div>
-                    
+
                       <div class="stat-team">
                         <div class="team-kit text-center"><img
                             src="{{stats?.user.rankingStats.bestRankMatch.away_team.logo || './assets/images/sportimo/default-kit.png'}}"
@@ -194,9 +226,10 @@
                         </div>
                       </div>
                     </div>
-                      <div class="score">
-                        {{stats?.user.rankingStats.bestRankMatch?.home_score}} - {{stats?.user.rankingStats.bestRankMatch?.away_score}}
-                      </div>
+                    <div class="score">
+                      {{stats?.user.rankingStats.bestRankMatch?.home_score}} -
+                      {{stats?.user.rankingStats.bestRankMatch?.away_score}}
+                    </div>
                     <!-- <div class="stat-match-date">{{parseDateDay(stats?.user.rankingStats.bestRankMatch?.start)}}</div> -->
                   </div>
                 </div>

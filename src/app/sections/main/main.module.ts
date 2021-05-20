@@ -18,7 +18,7 @@ import { MainPageAvatarsComponent } from './main-page-avatars/main-page-avatars.
 import { MainPageNewsComponent } from './main-page-news/main-page-news.component';
 import { SafeHTMLPipe } from 'src/app/pipes/safe-html.pipe';
 import { MainPageFAQComponent } from './main-page-faq/main-page-faq.component';
-
+import { NgToggleModule } from 'ngx-toggle-button';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,8 @@ import { MainPageFAQComponent } from './main-page-faq/main-page-faq.component';
     TranslateModule.forChild(),
     FormsModule,
     NgxChartsModule,
-    ChartsModule
+    ChartsModule,
+    NgToggleModule
   ]
 })
 export class MainModule { }

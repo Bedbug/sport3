@@ -31,6 +31,11 @@
   width: 100%;
 }
 
+.ng-toggle-switch-core {
+  background: linear-gradient(180deg, rgba(196,195,80,1) 0%, rgba(182,115,38,1) 100%)!important;
+  background-blend-mode: color-burn!important;
+}
+
 .background-ring {
   // background: url(profile-ring.png) no-repeat center center;
   background-size: contain;

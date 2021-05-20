@@ -42,6 +42,37 @@ export class MainPageProfileComponent implements OnInit {
   xAxisLabel = 'Last 5 games';
   showYAxisLabel = false;
   yAxisLabel = 'Population';
+  oldValue = false;
+  buttonDirty = false;
+
+  conf = {
+    value: false,
+    name: '',
+    disabled: false,
+    height: 25,
+    width: 60,
+    margin: 3,
+    fontSize: 14,
+    speed: 300,
+    color: {
+      checked: '#ffc531 ',
+      unchecked: '#000'
+    },
+    switchColor: {
+      checked: '#000',
+      unchecked: '#fff'
+    },
+    labels: {
+      unchecked: 'off',
+      checked: 'on'
+    },
+    checkedLabel: '',
+    uncheckedLabel: '',
+    fontColor: {
+      checked: '#000',
+      unchecked: '#ffffff'
+    }
+  };
 
   colorScheme = {
     domain: ['#ABEC78']
@@ -109,6 +140,7 @@ export class MainPageProfileComponent implements OnInit {
 
       if(this.user.picture == null)
       this.user.picture = '/assets/images/sportimo/default_avatar.svg';
+      this.oldValue == user.pushEnabled;
       // console.table(this.user);
     });
 
@@ -158,6 +190,20 @@ export class MainPageProfileComponent implements OnInit {
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  onCh() {
+    console.log("logged "+ this.user.pushEnabled);
+    if(this.user.pushEnabled != this.oldValue){
+      this.buttonDirty = true;
+      console.log("Open Update");
+    }else{
+      this.buttonDirty = false;
+      console.log("Close Update");
+    }
+      
+      
+    // this.NotValue != this.NotValue;
   }
 
   onUsernameUpdate(){
