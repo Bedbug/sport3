@@ -36,7 +36,7 @@
                   <div style="padding-left: 33px; text-align: left;" translate>Push Notifications</div>
                   <div class="Container" *ngIf="user.pushSettings">
                     <div class="ContainerChild">
-                      <div class="item_end">All</div>
+                      <div class="item_end" translate>All</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user.pushSettings.all " #pushSettings.all="ngModel" [width]="conf.width"
                           [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels" [color]="conf.color"
@@ -47,7 +47,7 @@
                       
                     </div>
                     <div class="ContainerChild">
-                      <div class="item_end">New Message</div>
+                      <div class="item_end" translate>New Message</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user?.pushSettings.new_message" #pushSettings.new_message="ngModel"
                           [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
@@ -58,7 +58,7 @@
                       
                     </div>
                     <div class="ContainerChild">
-                      <div class="item_end">Match Remind</div>
+                      <div class="item_end" translate>Match Remind</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user?.pushSettings.match_reminder" #pushSettings.match_reminder="ngModel"
                           [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
@@ -69,7 +69,7 @@
                       
                     </div>
                     <div class="ContainerChild">
-                      <div class="item_end">Match Kick-off</div>
+                      <div class="item_end" translate>Match Kick-off</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user?.pushSettings.kick_off" #pushSettings.kick_off="ngModel"
                           [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
@@ -80,7 +80,7 @@
                       
                     </div>
                     <div class="ContainerChild">
-                      <div class="item_end">Match Goal</div>
+                      <div class="item_end" translate>Match Goal</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user?.pushSettings.goals" #pushSettings.goals="ngModel"
                           [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
@@ -91,7 +91,7 @@
                       
                     </div>
                     <div class="ContainerChild">
-                      <div class="item_end">Won Card</div>
+                      <div class="item_end" translate>Won Card</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user?.pushSettings.won_cards" #pushSettings.won_cards="ngModel"
                           [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
@@ -102,7 +102,7 @@
                       
                     </div>
                     <div class="ContainerChild">
-                      <div class="item_end">Final Result</div>
+                      <div class="item_end" translate>Final Result</div>
                       <div class="item_start">
                         <ng-toggle [(ngModel)]="user?.pushSettings.final_result" #pushSettings.final_result="ngModel"
                           [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
