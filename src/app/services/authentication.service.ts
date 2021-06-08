@@ -256,7 +256,9 @@ export class AuthenticationService {
     updateUserLang(lang:string) {
         let putData = {
             languagePreference: lang
-        };
+        };        
+        
+        if(this.currentUserSubject.value)
         return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
             .pipe(map(response => {
                 // Save the signin data for future use
@@ -266,6 +268,8 @@ export class AuthenticationService {
                 }
                 return response;
             }));
+            
+            return this.currentUserSubject;
     }
 
     registerMSISDN(msisdn: string) {

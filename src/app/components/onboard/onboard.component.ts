@@ -419,7 +419,7 @@ export class OnboardComponent implements OnInit {
     this.multiOperatorForm = this.formBuilder.group({
       country: ['', Validators.required],
       operator: ['', Validators.required],
-      msisdn: '',
+      msisdn: ['',Validators.required],
       area: ['']
 
     });
@@ -655,7 +655,7 @@ export class OnboardComponent implements OnInit {
       let msisdnValue = this.multiOperatorForm.controls.msisdn.value;
       // console.log(msisdnValue);
       msisdnValue = this.RemoveSpaces(msisdnValue);
-      msisdnValue = this.KeppNumbers(msisdnValue);
+      // msisdnValue = this.KeppNumbers(msisdnValue);
       // console.log(msisdnValue);
 
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
@@ -750,13 +750,12 @@ export class OnboardComponent implements OnInit {
   onMSISDNSubmit() {
     this.isSubmitting = true;
 
-
     let areaCode = this.areaCodes.length > 0 ? (this.areaCodes.length > 1 ? this.msisdnForm.controls.area.value : this.areaCodes[0].area) : "";
-    // console.log("area code: " + areaCode);
+    console.log("area code: " + areaCode);
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
-    // console.log("msisdn Value: " + msisdnValue);
+    console.log("msisdn Value: " + msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-    // console.log(path);
+    console.log(path);
 
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {

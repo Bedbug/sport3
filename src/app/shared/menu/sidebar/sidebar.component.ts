@@ -143,17 +143,8 @@ export class SidebarComponent implements OnInit {
   }
 
   onUserLangUpdate( lang:string ) {
-
-    console.log(this.authenticationService.currentUserValue.languagePreference);
-
     this.authenticationService.updateUserLang(lang)
-      .subscribe(
-        response => {
-
-          if (response && response.success) {
-          };
-        });
-
+      .subscribe();
   }
 
 }
