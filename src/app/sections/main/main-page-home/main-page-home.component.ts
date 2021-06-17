@@ -72,8 +72,7 @@ export class MainPageHomeComponent implements OnInit {
     // setTimeout(()=>{this.matchesListVisible = true},1000);
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
-      this.isAuthenticated = user != null;
-      console.log("Check Bonus!");
+      this.isAuthenticated = user != null;      
       // user.loyaltyCoins = 2;
       if (this.isAuthenticated && user.loyaltyCoins > 0) {
 
@@ -90,9 +89,12 @@ export class MainPageHomeComponent implements OnInit {
         }
       }
 
-      var tpay_session_token:any = this.tpayService.getSessionToken();
-      console.log(tpay_session_token);
-      
+      // this.tpayService.sessionToken.subscribe((x)=>{
+      //   console.log(x);
+      // })
+
+      // this.tpayService.getSessionToken();
+           
     })
 
 
