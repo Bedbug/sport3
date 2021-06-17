@@ -15,6 +15,7 @@ import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 import UIkit from 'uikit';
+import { TpayService } from 'src/app/services/tpay.service';
 
 
 declare var Pace: any;
@@ -161,6 +162,7 @@ export class OnboardComponent implements OnInit {
     private router: Router,
     private ViewModalOverlay: PrizeViewOverlayService,
     private gtmService: GoogleTagManagerService,
+    private tpayService:TpayService,
     // private _gsapService: GsapService
   ) {
 
@@ -391,7 +393,6 @@ export class OnboardComponent implements OnInit {
             $('.loader-wrapper').fadeOut('slow');
             $('.loader-wrapper').remove('slow');
 
-            console.log("Regular Close!");
             // Close Texts
             var myobj = document.getElementById("LoaderTexts");
             if (myobj)
@@ -403,8 +404,7 @@ export class OnboardComponent implements OnInit {
         setTimeout(function () {
           $('.loader-wrapper').fadeOut('slow');
           $('.loader-wrapper').remove('slow');
-          // Close Texts
-          console.log("Hard Close!");
+          // Close Texts          
           var myobj = document.getElementById("LoaderTexts");
           if (myobj)
             myobj.remove();
@@ -419,7 +419,7 @@ export class OnboardComponent implements OnInit {
     this.multiOperatorForm = this.formBuilder.group({
       country: ['', Validators.required],
       operator: ['', Validators.required],
-      msisdn: ['',Validators.required],
+      msisdn: ['', Validators.required],
       area: ['']
 
     });
@@ -659,9 +659,37 @@ export class OnboardComponent implements OnInit {
       // console.log(msisdnValue);
 
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
-      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-      // console.log(this.currentOperator);
-      this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
+      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));      
+      if (this.currentOperator.sessionTPayEnabled  ) {
+        this.tpayService.sessionToken.subscribe((tpaySessionToken)=>{
+          this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path, tpaySessionToken)
+          .subscribe(response => {
+            if (response && response.success) {
+  
+              this.subState = response.state;
+              if (this.subState == "UNSUB" && response.user.wallet > 0)
+                this.subState = "UNSUBWITHCOINS";
+              // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+              //   this.subState = "ACTIVEFREEPERIOD";
+              if (this.subState == "FREE")
+                this.subState = "ACTIVEFREEPERIOD";
+              // if (this.subState == "INACTIVE")
+              //   this.subState = "UNKNOWN";
+              if (this.subState == "BLACKLISTED") {
+                this.subState = "UNKNOWN";
+                this.blacklisted = 1;
+              }
+  
+              this.closeLandingPage();
+            }
+            this.isSubmitting = false;
+          });
+        })
+
+        this.tpayService.getSessionToken();
+       
+      }else{
+        this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
         .subscribe(response => {
           if (response && response.success) {
 
@@ -683,6 +711,7 @@ export class OnboardComponent implements OnInit {
           }
           this.isSubmitting = false;
         });
+      }
 
     }
 
