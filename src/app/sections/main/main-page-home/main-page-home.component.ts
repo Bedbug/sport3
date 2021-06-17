@@ -18,6 +18,7 @@ import UIkit from 'uikit';
 import { GsapService } from "src/app/services/gsap.service";
 // import SwPush from 'push-notifications-swpush';
 import { SwPush } from '@angular/service-worker';
+import { TpayService } from 'src/app/services/tpay.service';
 
 @Component({
   selector: 'app-page',
@@ -54,6 +55,7 @@ export class MainPageHomeComponent implements OnInit {
     private config: ConfigService,
     private toastr: ToastrService,
     private sportimoService: SportimoService,
+    private tpayService:TpayService,
     public translate: TranslateService,
     private router: Router,
     private route: ActivatedRoute,
@@ -88,8 +90,9 @@ export class MainPageHomeComponent implements OnInit {
         }
       }
 
-
-
+      var tpay_session_token:any = this.tpayService.getSessionToken();
+      console.log(tpay_session_token);
+      
     })
 
 

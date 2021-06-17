@@ -46,8 +46,8 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
-                    console.log("SingleSign: "+user.loyaltyCoins);
-                    
+                    console.log("SingleSign: " + user.loyaltyCoins);
+
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ _id: user._id, token: user.token }));
                     this.currentUserSubject.next(user);
@@ -236,7 +236,7 @@ export class AuthenticationService {
     //     "final_result": true
     // },
     // "languagePreference": "ar"
-    updateUserAll(username: string, PushSettings: any, lang:string) {
+    updateUserAll(username: string, PushSettings: any, lang: string) {
         let putData = {
             username: username,
             pushSettings: PushSettings,
@@ -253,23 +253,23 @@ export class AuthenticationService {
                 return response;
             }));
     }
-    updateUserLang(lang:string) {
+    updateUserLang(lang: string) {
         let putData = {
             languagePreference: lang
-        };        
-        
-        if(this.currentUserSubject.value)
-        return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
-            .pipe(map(response => {
-                // Save the signin data for future use
-                // console.log(response);
-                if (response != null && response.success) {
-                    this.currentUserSubject.next(this.currentUserSubject.value);
-                }
-                return response;
-            }));
-            
-            return this.currentUserSubject;
+        };
+
+        if (this.currentUserSubject.value)
+            return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, putData)
+                .pipe(map(response => {
+                    // Save the signin data for future use
+                    // console.log(response);
+                    if (response != null && response.success) {
+                        this.currentUserSubject.next(this.currentUserSubject.value);
+                    }
+                    return response;
+                }));
+
+        return this.currentUserSubject;
     }
 
     registerMSISDN(msisdn: string) {
