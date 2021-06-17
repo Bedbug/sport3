@@ -27,6 +27,8 @@ export class ConfigService {
             this._http.get('assets/config/' + this._env + '.json')               
                 .subscribe((data) => {
                     // this._config = data.json();
+                    console.log(data);
+                    
                     this._config = data;                             
                     this.inited.next(true);
                     resolve(true);
@@ -42,8 +44,8 @@ export class ConfigService {
             this._client = clientid;  
     }
     // Is app in the development mode?
-    isDevmode() {
-        return this._env === 'development';
+    isDevmode() {                
+        return this._config["production"] === false;
     }
     getClient(): string {
         if(this._client)

@@ -20,8 +20,8 @@ if (_environment === 'production') {
 	
 	const options = {
 	  files: ['dist/sportimo/assets/config/production.json'],
-	  to: ['"ROOT":"https://clientserver-3.herokuapp-prod.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
-	  from: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
+	  to: ['"production": true','"ROOT":"https://clientserver-3.herokuapp-prod.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
+	  from: ['"production": falase','"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
 	  countMatches: true,
 	};
 
@@ -50,8 +50,8 @@ else {
 	
 	const options = {
 	  files: ['dist/sportimo/assets/config/production.json'],
-	  to: ['"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
-	  from: ['"ROOT":"https://clientserver-3-prod.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
+	  to: ['"production": false','"ROOT":"https://clientserver-3.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3.herokuapp.com/"'],
+	  from: ['"production": true','"ROOT":"https://clientserver-3-prod.herokuapp.com/client-api/v1"', '"SOCKET":"https://socketserver-3-prod.herokuapp.com/"'],
 	  countMatches: true,
 	};
 

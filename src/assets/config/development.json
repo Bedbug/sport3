@@ -1,5 +1,6 @@
 {
   "debugging": true,
+  "production": false,
   "language": "en",
   "CLIENT_ID": "5be2bfc7135a3e1e2d4a637f",
   "API_ENDPOINTS": {

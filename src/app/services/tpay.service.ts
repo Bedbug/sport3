@@ -6,6 +6,7 @@ import * as CryptoJS from 'crypto-js';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { ConfigService } from './config.service';
 
 declare var TPay;
 
@@ -15,7 +16,8 @@ declare var TPay;
 export class TpayService {
   private renderer: Renderer2;
   constructor(
-    rendererFactory: RendererFactory2
+    rendererFactory: RendererFactory2,
+    private configService: ConfigService
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
     // this.sessionToken = new BehaviorSubject<string>(null);
@@ -32,9 +34,10 @@ export class TpayService {
     var prk;
     var pbk;
 
-    console.log("Production: "+environment.production);
     
-    if (environment.production) {
+    console.log("Development: "+this.configService.isDevmode());
+    
+    if (!this.configService.isDevmode()) {
       //------- Production
       URL = "https://enrichment.tpay.me/idxml.ashx/js";
       prk = "Vd7ClaC8p06536TfF09I";
