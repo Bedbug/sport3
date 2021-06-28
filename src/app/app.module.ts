@@ -99,7 +99,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     //   id: 'GTM-W8FBCL4',
     // }),
     ModalModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('custom-service-worker.js', { enabled: environment.production }),
     ToastModule.forRoot(),
     
   ],

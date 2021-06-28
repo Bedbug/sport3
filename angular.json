@@ -27,6 +27,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/static/",
+              "src/custom-service-worker.js",
               "src/manifest.webmanifest",
               "src/consent.html"
             ],
