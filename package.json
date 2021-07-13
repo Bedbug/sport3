@@ -16,7 +16,7 @@
     "fix-empty-keys": "node src/app/helpers/loc-empty-keys.js",
     "switch-sportimo": "node Sportimo-theme-switch.js",
     "switch-pabetoop": "node Pabetoop-theme-switch.js",
-    "kooora":"node kooora_setup.js",
+    "kooora": "node kooora_setup.js",
     "heroku-postbuild": "ng build --prod"
   },
   "private": true,
