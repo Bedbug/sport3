@@ -318,8 +318,8 @@
 		"107": "العملة"
 	},
 	"something_wrong_retry": ".حدث خطأ ما .الرجاء معاودة المحاولة",
-	"susbcription_message_ACTIVE": "<b>!أهلا برجوعك</b><br>.أدخل رمز المرور لمواصلة اللعب",
-	"susbcription_message_ACTIVEFREEPERIOD": "<b>!أهلا برجوعك</b><br>.اشترك مجددا واستمر في اللعب مجانا",
+	"susbcription_message_ACTIVE": "<b>أنت مشترك بالفعل.</b><br>ادخل الرمز السري للاستمرار باللعب.",
+	"susbcription_message_ACTIVEFREEPERIOD": "<b>أنت مشترك بالفعل.</b><br>ادخل الرمز السري للاستمرار باللعب مجانا.",
 	"susbcription_message_ACTIVEFREEPERIOD_action": "اشترك مجددا",
 	"susbcription_message_ACTIVE_action": "اشترك",
 	"susbcription_message_ENTER": "{{value}} أدخل",

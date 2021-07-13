@@ -879,8 +879,6 @@ export class OnboardComponent implements OnInit {
               this.sendThankYouPageEvent();
             }
 
-
-
           } else {
             this.incorrectPin = true;
             this.isSubmitting = false;
