@@ -3,6 +3,8 @@ importScripts('./ngsw-worker.js');
 (function () {
     'use strict';
 
+    var that = this;
+
     self.addEventListener('notificationclick', (event) => {
         console.log("This is custom service worker notificationclick method.");
         console.log('Notification details: ', event.notification);
@@ -13,13 +15,13 @@ importScripts('./ngsw-worker.js');
             // clickAckUrl
             if (event.notification.data.clickAckUrl) {
                 const body = { title: 'Angular PUT Request Example' };
-                this.http.put < any > (event.notification.data.clickAckUrl, body).subscribe();
+                that.http.put < any > (event.notification.data.clickAckUrl, body).subscribe();
             }
         }
     });
     self.addEventListener('push', function (event) {
         console.log('[Service Worker] Push Received.');
-        
+        console.log(event);
         // const title = 'Push Codelab';
         // const options = {
         //   body: 'Yay it works.',
@@ -29,7 +31,7 @@ importScripts('./ngsw-worker.js');
 
         if (event.notification.data.openAckUrl){
             const body = { title: 'Angular PUT Request Example' };
-            this.http.put < any > (event.notification.data.openAckUrl, body).subscribe();
+            that.http.put < any > (event.notification.data.openAckUrl, body).subscribe();
         }
             // event.waitUntil(clients.openWindow(event.notification.data.openAckUrl));
     });
