@@ -39,11 +39,11 @@ importScripts('./ngsw-worker.js');
         //   badge: 'images/badge.png'
         // };
 
-        if (event.notification.data.openAckUrl){
+        // if (event.data.openAckUrl){
             // const body = { title: 'Angular PUT Request Example' };
             // that.http.put < any > (event.notification.data.openAckUrl, body).subscribe();
-            event.waitUntil( sendAck(event.notification.data.openAckUrl) );
-        }
+            event.waitUntil( sendAck(event.data.openAckUrl) );
+        // }
             // event.waitUntil(clients.openWindow(event.notification.data.openAckUrl));
     });
 
