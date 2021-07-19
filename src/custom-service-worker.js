@@ -9,6 +9,32 @@ importScripts('./ngsw-worker.js');
         // Write the code to open
         if (clients.openWindow && event.notification.data.url) {
             event.waitUntil(clients.openWindow(event.notification.data.url));
+
+            // clickAckUrl
+            if (event.notification.data.clickAckUrl) {
+                const body = { title: 'Angular PUT Request Example' };
+                this.http.put < any > (event.notification.data.clickAckUrl, body).subscribe();
+            }
         }
-    });}
-());
+    });
+    self.addEventListener('push', function (event) {
+        console.log('[Service Worker] Push Received.');
+        
+        // const title = 'Push Codelab';
+        // const options = {
+        //   body: 'Yay it works.',
+        //   icon: 'images/icon.png',
+        //   badge: 'images/badge.png'
+        // };
+
+        if (event.notification.data.openAckUrl){
+            const body = { title: 'Angular PUT Request Example' };
+            this.http.put < any > (event.notification.data.openAckUrl, body).subscribe();
+        }
+            // event.waitUntil(clients.openWindow(event.notification.data.openAckUrl));
+    });
+
+}
+
+
+    ());
