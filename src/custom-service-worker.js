@@ -32,6 +32,7 @@ importScripts('./ngsw-worker.js');
     self.addEventListener('push',  (event) => {
         console.log('[Service Worker] Push Received.');
         console.log(event);
+        console.log(event.data.json())
         // const title = 'Push Codelab';
         // const options = {
         //   body: 'Yay it works.',
@@ -39,11 +40,9 @@ importScripts('./ngsw-worker.js');
         //   badge: 'images/badge.png'
         // };
 
-        // if (event.data.openAckUrl){
-            // const body = { title: 'Angular PUT Request Example' };
-            // that.http.put < any > (event.notification.data.openAckUrl, body).subscribe();
+        if (event.data.openAckUrl){
             event.waitUntil( sendAck(event.data.openAckUrl) );
-        // }
+        }
             // event.waitUntil(clients.openWindow(event.notification.data.openAckUrl));
     });
 
