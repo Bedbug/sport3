@@ -33,6 +33,7 @@ importScripts('./ngsw-worker.js');
         console.log('[Service Worker] Push Received.');
         console.log(event);
         console.log(event.data.json())
+        console.log(event.data.json().notification)
         // const title = 'Push Codelab';
         // const options = {
         //   body: 'Yay it works.',
@@ -41,7 +42,7 @@ importScripts('./ngsw-worker.js');
         // };
 
         // if (event.data.json().data.openAckUrl){
-            event.waitUntil( sendAck(event.data.json().data.openAckUrl) );
+            event.waitUntil( sendAck(event.data.json().notification.data.openAckUrl) );
         // }
             // event.waitUntil(clients.openWindow(event.notification.data.openAckUrl));
     });
