@@ -42,9 +42,7 @@ importScripts('./ngsw-worker.js');
         if (event.notification.data.openAckUrl){
             // const body = { title: 'Angular PUT Request Example' };
             // that.http.put < any > (event.notification.data.openAckUrl, body).subscribe();
-            const Http = new XMLHttpRequest();
-                Http.open("PUT", event.notification.data.openAckUrl);
-                Http.send();
+            event.waitUntil( sendAck(event.notification.data.openAckUrl) );
         }
             // event.waitUntil(clients.openWindow(event.notification.data.openAckUrl));
     });
