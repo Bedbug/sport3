@@ -22,7 +22,7 @@ export class ContestPageMatchesComponent implements OnInit {
   hasShownModal = false;
   ngUnsubscribe = new Subject();
   dataReload;
-
+  selectedTab = 'live';
   presentMatches: ContestMatch[] = [
     // {id:"1",title:"Match 1", home_score:3, away_score: 1, live: true,  start: moment().toDate()},
     // {id:"2",title:"Match 2", home_score:0, away_score: 0, live: false, start: moment().add(1,'days').toDate()},
@@ -46,21 +46,25 @@ export class ContestPageMatchesComponent implements OnInit {
       this.contestId = params.get("contestId");
       this.sportimoService.getPresentMatches(this.contestId).subscribe(matches => {
         this.presentMatches = matches
-                .sort(function(a, b) {                      
-                return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
-            });
-      });
-      var that = this;
-      this.dataReload = setInterval(function(){that.reload();},20000);
+          .sort(function (a, b) {
+            return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
+          });
 
-      this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches  .sort(function(a, b) {               
-      return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
-  }));
+          if(this.presentMatches.filter(x => x.match.state > 0 && !x.match.completed).length == 0)
+            this.selectedTab = 'upcoming';
+      });
+
+      var that = this;
+      this.dataReload = setInterval(function () { that.reload(); }, 20000);
+
+      this.sportimoService.getPastMatches(this.contestId).subscribe(matches => this.pastMatches = matches.sort(function (a, b) {
+        return new Date(b.match.start).getTime() - new Date(a.match.start).getTime();
+      }));
     });
 
     this.sportimoService.cachedContests.pipe(takeUntil(this.ngUnsubscribe))
       .subscribe((allContests) => {
-        if (allContests && allContests.length > 0 && this.contestId) {        
+        if (allContests && allContests.length > 0 && this.contestId) {
           this.contestDetails = allContests.find(x => x._id == this.contestId);
           if (this.contestDetails)
             this.hasJoined = this.contestDetails.isSubscribed || false;
@@ -72,7 +76,7 @@ export class ContestPageMatchesComponent implements OnInit {
           // Set a timeout in order to avoid async calls and duplicates
           // setTimeout(()=>{
           if (!this.hasJoined && !this.hasShownModal && (this.contestDetails.isUserDetails || !this.authenticationService.currentUserValue)) {
-            this.hasShownModal = true;           
+            this.hasShownModal = true;
             this.prizeViewOverlay.open<ContestInfoComponent>(ContestInfoComponent, { data: this.contestDetails });
           }
           // },3000)
@@ -81,9 +85,9 @@ export class ContestPageMatchesComponent implements OnInit {
       });
   }
 
-  joinMatch(match){
+  joinMatch(match) {
     console.log(match);
-    
+
   }
 
   reload() {

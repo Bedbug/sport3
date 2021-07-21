@@ -3,25 +3,25 @@
     <div class="row" style="height:30px">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all"
-            aria-selected="true">
+          <a class="nav-link active" id="all-tab" [ngClass]="{'active' : selected == 'all'}" data-toggle="tab" href="#all" role="tab" aria-controls="all"
+            aria-selected="false">
             <div translate>All</div>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="live-tab" data-toggle="tab" href="#live" role="tab" aria-controls="live"
-            aria-selected="false">
+          <a class="nav-link" id="live-tab" [ngClass]="{'active' : selected == 'live'}" data-toggle="tab" href="#live" role="tab" aria-controls="live"
+            aria-selected="true">
             <div translate>LIVE</div>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab" aria-controls="upcoming"
+          <a class="nav-link" id="upcoming-tab" [ngClass]="{'active' : selected == 'upcoming'}" data-toggle="tab" href="#upcoming" role="tab" aria-controls="upcoming"
             aria-selected="false">
             <div translate>Upcoming</div>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="past-tab" data-toggle="tab" href="#past" role="tab" aria-controls="past"
+          <a class="nav-link" id="past-tab" [ngClass]="{'active' : selected == 'past'}" data-toggle="tab" href="#past" role="tab" aria-controls="past"
             aria-selected="false">
             <div translate>Past</div>
           </a>

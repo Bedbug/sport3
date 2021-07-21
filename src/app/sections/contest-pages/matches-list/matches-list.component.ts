@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { takeUntil } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { getLocaleFirstDayOfWeek } from '@angular/common';
+import $ from 'jquery';
 
 
 @Component({
@@ -39,10 +41,12 @@ export class MatchesListComponent implements OnInit {
   @Input() present: ContestMatch[];
   @Input() past: ContestMatch[];
 
+  @Input() selectedTab: string;
+
   contestId: string;
   @Input() hasJoined: boolean;
   // isSubscribed: boolean;
-
+  selected: string = "past";
   ngUnsubscribe = new Subject();
 
   constructor(public translate: TranslateService, private route: ActivatedRoute, private sportimoService: SportimoService,
@@ -64,7 +68,7 @@ export class MatchesListComponent implements OnInit {
     //     .subscribe((allContests) => {
     //       if (allContests) {
     //         console.log("Check for update");
-            
+
     //         this.sportimoService.getContestDetails(this.contestId)
     //           .pipe(takeUntil(this.ngUnsubscribe))
     //           .subscribe(result => {
@@ -84,8 +88,36 @@ export class MatchesListComponent implements OnInit {
     //     this.isSubscribed = this.authenticationService.isSubscribed;
     //   }
     // })
-
+   
+    // Select tab by name
+    this.selected = 'all';
+    // console.log("Selectedtab: " + this.selectedTab);
+    // console.log($('#myTab a[href="#live"]').trigger('show.bs.tab'));
+    // console.log(document.getElementById('live-tab'));
+    
+    // $('#myTab a[href="#live"]').tab('show')
+    // document.getElementById('live-tab').dispatchEvent(new MouseEvent('click'));
   }
+
+  isFirst:any = true;
+  changeTab() {
+    // setTimeout(() => {
+      // this.selected = 'live';
+      // $('#myTab a[href="#live"]').trigger('show.bs.tab');
+      console.log(this.selectedTab);
+      
+      if(this.selectedTab == 'live')
+        document.getElementById('live-tab').click();
+
+      if(this.selectedTab == 'upcoming')
+        document.getElementById('upcoming-tab').click();
+      // (<any>$('#myTab a[href="#live"]')).tab('show');
+      // $('#myTab a[href="#profile"]').tab('show')
+    // }, 2000);
+    
+    
+  }
+  
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
@@ -93,12 +125,18 @@ export class MatchesListComponent implements OnInit {
   }
 
   get liveMatches() {
+    // console.log(this.selectedTab);
+    if(this.isFirst && this.present.length > 0){
+      this.changeTab();
+      this.isFirst = false;
+    }
+      
+    // console.log(this.present.filter(x => x.match.state > 0 && !x.match.completed));
     return this.present.filter(x => x.match.state > 0 && !x.match.completed);
   }
 
   get upcomingMatches() {
     // const today = moment().utc().toDate();
-
     return this.present.filter(x => {
       return x.match.state == 0; //moment(x.match.start).utc().toDate() > today &&
     });
