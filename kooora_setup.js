@@ -5,8 +5,8 @@ const replace = require('replace-in-file');
 // Index -  Chagne Favicon
 const options = {
   files: 'src/index.html',  
-  from: ['./assets/icons/icon-512x512.png','./assets/icons/icon-192x192.png','./assets/icons/icon-72x72.png','Sportimo 3 - The way to watch football'],  
-  to: ['./assets/icons/kooora_logo.png','./assets/icons/kooora_logo.png','./assets/icons/kooora_logo.png','Kooora Football Legends'],
+  from: ['./assets/icons/icon-512x512.png', './assets/icons/icon-192x192.png', './assets/icons/icon-72x72.png', 'Sportimo 3 - The way to watch football', '<!-- <meta name="facebook-domain-verification" content="b6q9nsqsnafg0ypfuh9nca32600gzk" /> -->'],  
+  to: ['./assets/icons/kooora_logo.png', './assets/icons/kooora_logo.png', './assets/icons/kooora_logo.png', 'Kooora Football Legends', '<meta name="facebook-domain-verification" content="b6q9nsqsnafg0ypfuh9nca32600gzk" />'],
   countMatches: true,
 };
 
