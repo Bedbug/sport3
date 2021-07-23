@@ -50,8 +50,6 @@ export class MatchesListItemComponent implements OnInit {
       if (match.subscriptionPrice > 0) {
         this.ViewModalOverlay.open<MatchSubscribeComponent>(MatchSubscribeComponent, { data: { match: match, route: this.route.parent } });
       }
-
-
       else
         this.sportimoService.joinMatch(this.contestMatch.tournament, this.contestMatch._id).subscribe(x => {
           if (x.match) {
@@ -61,7 +59,7 @@ export class MatchesListItemComponent implements OnInit {
     } else
       if (match.isSubscribed) {
         console.log(this.contestMatch);
-        if (this.contestMatch.match.state = 4)
+        if (this.contestMatch.match.state < 4)
           this.router.navigate(['match', this.contestMatch._id, 'play'], { relativeTo: this.route.parent });
         else
           this.router.navigate(['match', this.contestMatch._id, 'info'], { relativeTo: this.route.parent });
