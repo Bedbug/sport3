@@ -16,15 +16,15 @@ import { ErrorDisplayService } from 'src/app/services/error-display.service';
   animations: [
     trigger(
       'enterAnimation', [
-        transition(':enter', [
-          style({ transform: 'translateY(100%)', opacity: 0 }),
-          animate('500ms 500ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
-        ]),
-        transition(':leave', [
-          style({ transform: 'translateY(0)', opacity: 1 }),
-          animate('500ms', style({ transform: 'translateY(100%)', opacity: 0 }))
-        ])
+      transition(':enter', [
+        style({ transform: 'translateY(100%)', opacity: 0 }),
+        animate('500ms 500ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
       ]),
+      transition(':leave', [
+        style({ transform: 'translateY(0)', opacity: 1 }),
+        animate('500ms', style({ transform: 'translateY(100%)', opacity: 0 }))
+      ])
+    ]),
 
     trigger('items', [
       transition('* => false', [
@@ -41,16 +41,16 @@ import { ErrorDisplayService } from 'src/app/services/error-display.service';
 
     trigger(
       'fadein', [
-        transition(':enter', [
-          style({ opacity: 0 }),
-          animate('300ms')
-        ]),
-        state('*', style({ opacity: 1 })),
-        // transition(':leave', [
-        //   style({ opacity: 1}),
-        //   animate('500ms', style({opacity: 0}))
-        // ])
-      ]
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms')
+      ]),
+      state('*', style({ opacity: 1 })),
+      // transition(':leave', [
+      //   style({ opacity: 1}),
+      //   animate('500ms', style({opacity: 0}))
+      // ])
+    ]
     )
   ]
 })
@@ -68,15 +68,20 @@ export class MatchPageInfoComponent implements OnInit {
 
   ngOnInit() {
     this.sportimoService.currentLiveMatch.pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {
-     
-      
+
+
       if (match) {
-        
+
         this.liveMatch = match;
-        // console.log("--- Here we update the live match");
-        
+        console.log("--- Here we update the live match");
+        console.log("State: " + this.liveMatch.matchData.state);
+
+        // if (this.liveMatch.matchData.state < 4)
+          // document.getElementById('play').click();
+        // else
+        //   document.getElementById('info').click();
         // console.log(this.liveMatch.matchData.timeline[1]);
-        
+
       }
     })
   }
@@ -86,19 +91,20 @@ export class MatchPageInfoComponent implements OnInit {
   }
   get timelineEvents() {
     // console.log("--- Here we update the order");
-        
+
+
     // console.log(this.liveMatch.matchData.timeline[1]);
     var xarray = this.liveMatch.matchData.timeline.map(x => x.events);
     let own_goal = 0;
     xarray.forEach(element => {
       element.forEach(event => {
-        if(own_goal==1 && event.type == 'Goal'){
+        if (own_goal == 1 && event.type == 'Goal') {
           own_goal = 0;
           event.own = true;
-        }        
-        if(event.type =="Own_Goal")
-        own_goal = 1;      
-      });          
+        }
+        if (event.type == "Own_Goal")
+          own_goal = 1;
+      });
     });
 
     var flattenReversed = [].concat(...xarray).reverse();
@@ -109,11 +115,11 @@ export class MatchPageInfoComponent implements OnInit {
 
   showEventTime = null;
 
-  showCardDetails(id:string){
+  showCardDetails(id: string) {
     this.showEventTime = id;
-    setTimeout(()=>{
+    setTimeout(() => {
       this.showEventTime = null;
-    },5000);
+    }, 5000);
   }
 
 
@@ -141,23 +147,23 @@ export class MatchPageInfoComponent implements OnInit {
 
   startingDemo: boolean = false;
   startedDemo: boolean = false;
-  confirm() {    
+  confirm() {
     this.initiated = true;
     this.modalRef.hide();
     this.startingDemo = true;
-    this.sportimoService.startDemo().subscribe(response => {  
+    this.sportimoService.startDemo().subscribe(response => {
       this.startingDemo = false;
       this.startedDemo = true;
     },
-    error=>{      
-      if(error.status == 403)
-      this.errorService.showError(103);
-      this.startingDemo = false;
-      this.startedDemo = false;
+      error => {
+        if (error.status == 403)
+          this.errorService.showError(103);
+        this.startingDemo = false;
+        this.startedDemo = false;
       })
   }
 
-  decline() {    
+  decline() {
     this.initiated = false;
     this.modalRef.hide();
   }

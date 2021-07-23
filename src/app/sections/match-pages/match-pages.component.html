@@ -93,12 +93,12 @@
       <div class="container">
         <div style="width: 100%;">
           <div class="row">
-            <a *ngIf="contestId" [routerLink]="['info']" routerLinkActive="active" href="#">
+            <a *ngIf="contestId"  id="info" [routerLink]="['info']" routerLinkActive="active" href="#">
               <div class=""><img src="assets/images/sportimo/icon-match.svg" class="footer-icon" /></div>
               <span translate>Match Info</span>
             </a>
 
-            <a *ngIf="contestId" [routerLink]="['play']" routerLinkActive="active" href="#"
+            <a *ngIf="contestId" id="play" [routerLink]="['play']" routerLinkActive="active" href="#"
               (click)="hasClickedPlay = true">
               <span [popover]="translate.instant('tip.1')" triggers="" [isOpen]="showPlayCardsPop && !hasClickedPlay"
                 containerClass="popover"></span>
