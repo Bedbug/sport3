@@ -16,7 +16,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "target": "es2015",
-    "typeRoots": [
+    "typeRoots": [      
+      "typings",      
       "node_modules/@types"
     ],
     "paths": {

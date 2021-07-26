@@ -429,7 +429,7 @@
         <div class="login-form-content">
           <div class="form-group text-center">
             <!-- <label class="">Username/Email</label> -->
-            <input id="pinInput" type="text" formControlName="pin" maxlength="4" minlength="4"
+            <input id="pinInput" type="text" autocomplete="one-time-code" formControlName="pin" maxlength="4" minlength="4"
               class="form-control-plaintext input-box" autocorrect="off" autocapitalize="none"
               [ngClass]="{ 'is-invalid': submitted && pinForm.controls.pin.errors }"
               placeholder="{{ 'Enter PIN' | translate }}" required>

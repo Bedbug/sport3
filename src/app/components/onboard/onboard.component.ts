@@ -472,11 +472,39 @@ export class OnboardComponent implements OnInit {
       this.LandingPage = true;
   }
 
+
   closeLandingPage() {
     this.LandingPage = false;
 
     this.PinVerify = true;
-    // console.log($('#pinInput'));
+
+    // if ('OTPCredential' in window) {
+    //   window.addEventListener('DOMContentLoaded', e => {
+    //     const input = document.querySelector('input[autocomplete="one-time-code"]');
+    //     if (!input) return;
+    //     const ac = new AbortController();
+    //     setTimeout(() => {
+    //       ac.abort();
+    //     }, 1 * 60 * 1000);
+
+    //     const form = input.closest('form');
+    //     if (form) {
+    //       form.addEventListener('submit', e => {
+    //         ac.abort();
+    //       });
+    //     }
+    //     navigator.credentials.get({
+    //       otp: { transport:['sms'] },
+    //       signal: ac.signal
+    //     }).then(otp => {
+    //       (<HTMLInputElement>input).value = otp.code;
+    //       if (form) form.submit();
+    //     }).catch(err => {
+    //       console.log(err);
+    //     });
+    //   });
+    // }
+    // // console.log($('#pinInput'));
     // setTimeout(() => {
     //   $('#pinInput').focus();
     // }, 0)
@@ -657,7 +685,7 @@ export class OnboardComponent implements OnInit {
       msisdnValue = this.RemoveSpaces(msisdnValue);
       // msisdnValue = this.KeppNumbers(msisdnValue);
       // console.log(msisdnValue);
-
+      this.otpRequest();
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));      
       if (this.currentOperator.sessionTPayEnabled  ) {
@@ -786,7 +814,8 @@ export class OnboardComponent implements OnInit {
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
     console.log("msisdn Value: " + msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-    console.log(path);
+    
+    console.log("Request OTP");        
 
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
@@ -827,6 +856,40 @@ export class OnboardComponent implements OnInit {
     return '';
   }
 
+  async otpRequest() {
+    console.log("OTP-REQUEST");
+    
+    if ('OTPCredential' in window) {
+      
+      console.log("Otp available");
+      
+      const abortController = new AbortController();
+      let timer = setTimeout(() => {
+        abortController.abort();
+      }, 10 * 1000);
+
+      let o = {
+        otp: { transport: ['sms'] },
+        signal: abortController.signal
+      };
+
+      const content = await window.navigator['credentials'].get(o);
+     
+      console.log("---- Content");
+      console.log(content);
+      
+      
+      var formated = JSON.parse(JSON.stringify(content));
+      alert(formated);
+      //do what ever you want to do with the received code, probably send it to server
+      if(formated.code){
+        const input = document.querySelector('input[autocomplete="one-time-code"]');
+        (<HTMLInputElement>input).value = formated.code;
+      }
+    }
+  }
+
+
   onPinSubmit(noSubscription: boolean) {
 
     if (this.pinForm.controls.pin.errors) {
@@ -841,7 +904,8 @@ export class OnboardComponent implements OnInit {
       return;
     }
     // console.log(this.pinForm.controls.pin.value);
-
+    
+   
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
