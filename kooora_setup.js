@@ -18,21 +18,21 @@ try {
     console.error('Error occurred:', error);
   }
 
-    // Index -  Default language
-// const options1 = {
-//   files: ['src/assets/config/development.json','src/assets/config/production.json'],
-//   to: ['"language": "fa"'],
-//   from: ['"language": "en"'],
-//   countMatches: true,
-// };
+// Index -  Default language
+const options1 = {
+  files: ['src/assets/config/development.json','src/assets/config/production.json'],
+  to: ['"CLIENT_ID": "5eb9a2a3b0a6860017aa5852"'],
+  from: ['"CLIENT_ID": "5be2bfc7135a3e1e2d4a637f"'],
+  countMatches: true,
+};
 
-// try {
-//     const results = replace.sync(options1);
-//     console.log('Replacement results:', results);
-//   }
-//   catch (error) {
-//     console.error('Error occurred:', error);
-//   }
+try {
+    const results = replace.sync(options1);
+    console.log('Replacement results:', results);
+  }
+  catch (error) {
+    console.error('Error occurred:', error);
+  }
 
   // Index -  Variables
 // const options2 = {

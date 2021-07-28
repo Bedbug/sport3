@@ -877,7 +877,7 @@ export class OnboardComponent implements OnInit {
      
       console.log("---- Content");
       console.log(content);
-      
+    
       
       var formated = JSON.parse(JSON.stringify(content));
       alert(formated);
