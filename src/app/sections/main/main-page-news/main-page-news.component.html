@@ -5,8 +5,7 @@
     <div class="main-pages-scrollarea container p-t-15">
       <div class="news-container" [@staggerAnimation]="news?.length">
         <div class="col-sm-12 p-0 news-list-item" *ngFor="let article of news; let i = index">
-          <div *ngIf="CheckDate(article.publishDate)" class="news-item-container" tab-index="0" (click)="selectedArticle = article">
-            
+          <div *ngIf="CheckDate(article.publishDate)" class="news-item-container" tab-index="0" (click)="selectedArticle = article">            
             <div class="news-body">
               <div class="news-image"
                 [ngStyle]="{background: 'url(' + (article.imageUrl || './assets/images/news-bg.png') + ')', 'background-size': 'cover'}">

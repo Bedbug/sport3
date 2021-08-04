@@ -113,9 +113,10 @@ export class MainPageNewsComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  CheckDate(date: string) {
-    // console.log(this.parseDate(this.myDate.toDateString()) >  this.parseDate(date)); 
-    return this.parseDate(this.myDate.toDateString()) >  this.parseDate(date);
+  CheckDate(date:string) {
+
+    // console.log( this.myDate > new Date(date)); 
+    return  this.myDate > new Date(date);
   }
 
   parseDate(date: string) {
