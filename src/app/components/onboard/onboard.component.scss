@@ -166,6 +166,14 @@
   width: 100%;
 }
 
+.slide-prize-shape{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 5px;
+    background: linear-gradient(180deg, #374047 0%, #171b1e 100%);
+    transform: skew(-20deg);
+}
+
 .carousel-indicators {
   bottom: 0;
   margin-bottom: 5px;

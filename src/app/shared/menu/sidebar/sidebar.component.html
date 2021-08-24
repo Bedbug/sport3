@@ -176,6 +176,11 @@
             <span translate>french</span>
         </a>
     </li>
+    <li *ngIf="hasLanguage('ku')">
+        <a href="javascript:void(0)" class="" [class.active]="translate.currentLang=='ku'" style="padding:7px 60px" (click)="switchLanguage('ku')">
+            <span translate>kurdish</span>
+        </a>
+    </li>
     <li *ngIf="isLoggedIn">
         <!-- Authenticate -->
         <a href="javascript:void(0)" class="sidebar-header" (click)="toggleUserStatus()">

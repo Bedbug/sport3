@@ -131,18 +131,6 @@
   $theme-color: #942c8a;
   $theme-gradient: linear-gradient(180deg, #942c8a 0%, #942c8a 100%);
 
-  // .active .footer-icon {
-  //   filter: invert(70%) sepia(45%) saturate(477%) hue-rotate(43deg) brightness(91%) contrast(86%);
-  // }
-
-  // .grand-prize-header {
-  //   color: #000 !important;
-  // }
-
-  // .grand-prize-user-details {
-  //   color: #000 !important;
-  // }
-
   .mobile-app-navbar,
   .universal-app-navbar {
     background-color: $green-color2;
@@ -155,31 +143,6 @@
   .navbar.fixed-bottom.terms-footer {
     background-color: $green-color2;
   }
-
-  // .app-navbar a.active {
-  //   border-bottom: solid 5px $green-color;
-  //   color: white;
-  //   background: $theme-gradient;
-  // }
-
-  // .mobile-app-navbar a.active,
-  // .universal-app-navbar a.active {
-  //   border-bottom: solid 3px $green-color;
-  //   color: white;
-  //   background: $theme-color;
-  // }
-
-  // .vertical-app-navbar a.active {
-  //   color: #90bc53;
-  // }
-
-  // .leaders-user {
-  //   background: $theme-gradient;
-  // }
-
-  // .card .card-header {
-  //   background-color: black !important;
-  // }
 
   .page-main-header {
     background: white !important;
@@ -197,6 +160,47 @@
 
   .btn-sportimo {
     background: $theme-gradient;
+    color: white;
+  }
+}
+
+.kcell{
+  $theme-color1: #63429a;
+  $theme-color2: #dd2977;
+  $theme-gradient1: linear-gradient(90deg,  #64429a 0%, #dd2977 100%);
+  $theme-gradient2: linear-gradient(90deg,  #64429ad2 0%, #dd2977d2 100%);
+
+  .app-navbar {
+    background: $theme-gradient2;
+  }
+
+  .mobile-app-navbar,
+  .universal-app-navbar {
+    background:  $theme-gradient2;
+  }
+
+
+  .navbar.fixed-bottom.terms-footer {
+    background:  $theme-gradient1;
+  }
+
+  .page-main-header {
+    background: $theme-gradient2 !important;
+    // color: $green-color;
+  }
+
+  .landing-card{
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .slide-prize-shape{
+    background:  $theme-gradient1 !important;
+  }
+
+  .btn-sportimo {
+    opacity: 1;
+    background: $theme-gradient1;
     color: white;
   }
 }
