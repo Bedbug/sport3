@@ -53,6 +53,7 @@
 	"FAQ": "",
 	"FW": "Шабуыл",
 	"Favorite Card": "Сүйікті карта",
+	"Final Result": "",
 	"First_Half_Ends": "Бірінші таймның соңы",
 	"First_Half_Starts": "Бірінші таймның басы",
 	"Forward": "Шабуылшы",
@@ -105,7 +106,10 @@
 	"Logout": "Шығу",
 	"Lost": "Ойналмағандар",
 	"MED": "ПЗ",
+	"Match Goal": "",
 	"Match Info": "Матч туралы",
+	"Match Kick-off": "",
+	"Match Remind": "",
 	"MatchEnded": "Мачт бітті",
 	"Matches": "Матчтар",
 	"Matches played": "Матчтар ойналды",
@@ -115,6 +119,7 @@
 	"My Account": "Менің аккаунтым",
 	"My Cards": "Карталарым",
 	"My Teams": "Менің Командаларым",
+	"New Message": "",
 	"News": "Жаңалықтар",
 	"Next Match": "Келесі матч",
 	"Now": "Қазір",
@@ -152,6 +157,7 @@
 	"Prizes": "Жүлделер",
 	"Profile": "Профиль",
 	"Pts": "Ұпай",
+	"Push Notifications": "",
 	"Rank": "Ранг",
 	"Red": "Қызыл",
 	"Red Cards": "Қызыл карточкалар",
@@ -205,6 +211,7 @@
 	"Winners": "Жеңімпаздар",
 	"Winning": "Winning",
 	"Won": "Жеңді",
+	"Won Card": "",
 	"Write down your username": "Сіздің қолданушыңыздың Атын ойлап табыңыз",
 	"Yellow": "Сары",
 	"Yellow cards": "Сары карталар",
@@ -213,9 +220,11 @@
 	"You can always edit your username at your Profile tab": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You can change your Username anytime from your Profile": "Сіз профильде əрқашан қолданушының атын өзгерте аласыз",
 	"You have insufficient coins to join": "Кіру үшін, сіздің тиындарыңыз жеткіліксіз",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "",
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
+	"_action": "",
 	"arabic": "",
 	"availableCards": "Қолжетімді карталар",
 	"availableCardsText": "Бұл осы матч бойы ойнатыла алатын сізде бар карталар (Негізгі жəне Live карталары)",
@@ -279,6 +288,7 @@
 	"joinMatchNoCoins": " Қатысу үшін, сіздің тиындарыңыз жеткіліксіз. Қосымша тиындар алғыңыз келе ме?",
 	"joinMatchNoCoinsNoInApp": "",
 	"kazzach": "Қазақ тілі",
+	"kurdish": "",
 	"matchFreePlay": "Тегін ойнау",
 	"msisdnChecks": {
 		"100": "",
@@ -339,5 +349,8 @@
 	"verifying_unique": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Осы VIP Матчқа арналған марапаттар:",
-	"x2": "x2"
+	"x2": "x2",
+	"{{this": {
+		"errorMsg}}": ""
+	}
 }

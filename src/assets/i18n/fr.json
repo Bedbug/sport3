@@ -53,6 +53,7 @@
 	"FAQ": "",
 	"FW": "AT",
 	"Favorite Card": "Cartes Favorites",
+	"Final Result": "",
 	"First_Half_Ends": "Premier Mi-temps termine",
 	"First_Half_Starts": "Premier Mi-temps commence",
 	"Forward": "Attaquant",
@@ -105,7 +106,10 @@
 	"Logout": "Déconnexion",
 	"Lost": "Perdu",
 	"MED": "MED",
+	"Match Goal": "",
 	"Match Info": "Info de Match",
+	"Match Kick-off": "",
+	"Match Remind": "",
 	"MatchEnded": "Match Terminé",
 	"Matches": "Matchs",
 	"Matches played": "Matchs joués",
@@ -115,6 +119,7 @@
 	"My Account": "Mon Compte",
 	"My Cards": "Mes Cartes",
 	"My Teams": "Mes Équipes",
+	"New Message": "",
 	"News": "Nouvelles",
 	"Next Match": "Match Suivant",
 	"Now": "Maintenant",
@@ -152,6 +157,7 @@
 	"Prizes": "Prix",
 	"Profile": "Profil",
 	"Pts": "Pts",
+	"Push Notifications": "",
 	"Rank": "Classement",
 	"Red": "Rouge",
 	"Red Cards": "Cartons Rouges",
@@ -205,6 +211,7 @@
 	"Winners": "Gagnants",
 	"Winning": "Victoire",
 	"Won": "Avoir gagné",
+	"Won Card": "",
 	"Write down your username": "Écrivez votre nom d'utilisateur",
 	"Yellow": "Jaune",
 	"Yellow cards": "Cartons jaunes",
@@ -213,9 +220,11 @@
 	"You can always edit your username at your Profile tab": "Vous pouvez toujours modifier votre nom d'utilisateur dans l'onglet Profil",
 	"You can change your Username anytime from your Profile": "Vous pouvez modifier votre nom d'utilisateur à tout moment à partir de votre Profil",
 	"You have insufficient coins to join": "Vous n'avez pas assez de pièces pour rejoindre",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "Vous devez avoir un abonnement actif pour pouvoir jouer aux cartes",
 	"Your chances:": "Vos chances: ",
 	"Your points:": "Vos points:",
+	"_action": "",
 	"arabic": "arabe",
 	"availableCards": "Cartes Disponibles",
 	"availableCardsText": "Voici les cartes disponibles restantes (Live et 90-minutes) pour jouer pendant ce match",
@@ -279,6 +288,7 @@
 	"joinMatchNoCoins": "Vous n'avez pas assez de pièces pour participer. Souhaitez-vous acheter les pièces supplémentaires maintenant",
 	"joinMatchNoCoinsNoInApp": "",
 	"kazzach": "Қазақ тілі",
+	"kurdish": "",
 	"matchFreePlay": "Libre de jouer",
 	"msisdnChecks": {
 		"100": "",
@@ -339,5 +349,8 @@
 	"verifying_unique": "",
 	"vipMatch": "Match VIP:",
 	"vipMatchAwards": "Ce match VIP récompense:",
-	"x2": "x2"
+	"x2": "x2",
+	"{{this": {
+		"errorMsg}}": ""
+	}
 }

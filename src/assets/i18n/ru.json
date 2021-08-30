@@ -53,6 +53,7 @@
 	"FAQ": "",
 	"FW": "НАП",
 	"Favorite Card": "Любимая карта",
+	"Final Result": "",
 	"First_Half_Ends": "Конец первого тайма",
 	"First_Half_Starts": "Начало первого тайма",
 	"Forward": "Нападающий",
@@ -105,7 +106,10 @@
 	"Logout": "Выйти",
 	"Lost": "Не сыгравшие",
 	"MED": "ПЗ",
+	"Match Goal": "",
 	"Match Info": "Инфо о матче",
+	"Match Kick-off": "",
+	"Match Remind": "",
 	"MatchEnded": "Матч окончен",
 	"Matches": "Матчи",
 	"Matches played": "Сыграно матчей",
@@ -115,6 +119,7 @@
 	"My Account": "Мой аккаунт",
 	"My Cards": "Мои Карты",
 	"My Teams": "Мои Команды",
+	"New Message": "",
 	"News": "Новости",
 	"Next Match": "Следующий матч",
 	"Now": "Сейчас",
@@ -152,6 +157,7 @@
 	"Prizes": "Призы",
 	"Profile": "Профиль",
 	"Pts": "Очк",
+	"Push Notifications": "",
 	"Rank": "Ранг",
 	"Red": "Красный",
 	"Red Cards": "Красные Карточки",
@@ -205,6 +211,7 @@
 	"Winners": "Победители",
 	"Winning": "Победные",
 	"Won": "Выиграно",
+	"Won Card": "",
 	"Write down your username": "Придумайте ваше Имя пользователя",
 	"Yellow": "Желтая",
 	"Yellow cards": "Желтые карточки",
@@ -213,9 +220,11 @@
 	"You can always edit your username at your Profile tab": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You can change your Username anytime from your Profile": "Вы всегда можете изменить Имя пользователя в Профиле",
 	"You have insufficient coins to join": "У вас не хватает монет, для участия",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "",
 	"Your chances:": "Ваш результат: ",
 	"Your points:": "Ваш результат: ",
+	"_action": "",
 	"arabic": "",
 	"availableCards": "Доступные карты",
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
@@ -279,6 +288,7 @@
 	"joinMatchNoCoins": "У вас не хватает монет, чтобы участвовать. Хотите пробрести дополнительные монеты?",
 	"joinMatchNoCoinsNoInApp": "",
 	"kazzach": "Қазақ тілі",
+	"kurdish": "",
 	"matchFreePlay": "Участвовать",
 	"msisdnChecks": {
 		"100": "",
@@ -339,5 +349,8 @@
 	"verifying_unique": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Награды за этот VIP Матч:",
-	"x2": "x2"
+	"x2": "x2",
+	"{{this": {
+		"errorMsg}}": ""
+	}
 }

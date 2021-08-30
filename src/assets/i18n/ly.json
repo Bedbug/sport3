@@ -53,6 +53,7 @@
 	"FAQ": "",
 	"FW": "",
 	"Favorite Card": "",
+	"Final Result": "",
 	"First_Half_Ends": "",
 	"First_Half_Starts": "",
 	"Forward": "",
@@ -105,7 +106,10 @@
 	"Logout": "",
 	"Lost": "",
 	"MED": "",
+	"Match Goal": "",
 	"Match Info": "",
+	"Match Kick-off": "",
+	"Match Remind": "",
 	"MatchEnded": "",
 	"Matches": "",
 	"Matches played": "",
@@ -115,6 +119,7 @@
 	"My Account": "",
 	"My Cards": "",
 	"My Teams": "",
+	"New Message": "",
 	"News": "",
 	"Next Match": "",
 	"Now": "",
@@ -152,6 +157,7 @@
 	"Prizes": "",
 	"Profile": "",
 	"Pts": "",
+	"Push Notifications": "",
 	"Rank": "",
 	"Red": "",
 	"Red Cards": "",
@@ -205,6 +211,7 @@
 	"Winners": "",
 	"Winning": "",
 	"Won": "",
+	"Won Card": "",
 	"Write down your username": "",
 	"Yellow": "",
 	"Yellow cards": "",
@@ -213,9 +220,11 @@
 	"You can always edit your username at your Profile tab": "",
 	"You can change your Username anytime from your Profile": "",
 	"You have insufficient coins to join": "",
+	"You need to have an active subscription in order to\r\n          play cards": "",
 	"You need to have an active subscription in order to play cards": "",
 	"Your chances:": "",
 	"Your points:": "",
+	"_action": "",
 	"arabic": "",
 	"availableCards": "",
 	"availableCardsText": "",
@@ -279,6 +288,7 @@
 	"joinMatchNoCoins": "",
 	"joinMatchNoCoinsNoInApp": "",
 	"kazzach": "",
+	"kurdish": "",
 	"matchFreePlay": "",
 	"msisdnChecks": {
 		"100": "",
@@ -339,5 +349,8 @@
 	"verifying_unique": "",
 	"vipMatch": "",
 	"vipMatchAwards": "",
-	"x2": ""
+	"x2": "",
+	"{{this": {
+		"errorMsg}}": ""
+	}
 }
