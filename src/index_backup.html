@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- <meta name="facebook-domain-verification" content="b6q9nsqsnafg0ypfuh9nca32600gzk" /> -->
+  <link rel="apple-touch-icon" href="./assets/icons/icon-512x512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-title" content="Sportimo">
+  <meta name="description" content="If you like Sports, you will love Sportimo!">
+  <meta name="keywords" content="sports, games">
+  <meta name="author" content="bedbug">
+  <link rel="icon" type="image/x-icon" href="./assets/icons/icon-72x72.png">
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/icons/icon-72x72.png">
+  <link rel="preconnect" href="https://sportimo-media.s3-eu-west-1.amazonaws.com" crossorigin>
+  <link rel="preconnect" href="https://s3-eu-west-1.amazonaws.com" crossorigin>
+  <!-- <link rel="preload" href="/IRANSans.ttf" as='font' type='font/ttf' crossorigin>
+  <link rel="preload" href="/IRANSans_Bold.ttf" as='font' type='font/ttf' crossorigin> -->
+
+  <title>Sportimo 3 - The way to watch football</title>
+  <base href="/">
+
+  <style>
+    .landscape-warning {
+      background-color:#212a34;
+      width: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      bottom: 0;
+    }
+
+    .landscape-warning img{
+      filter: invert();
+      transform: rotate(-90deg);
+      width: 200px;
+      height: auto;
+    }
+  </style>
+  <!-- <script src="./assets/js/lottie.js"></script> -->
+
+
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1976d2">
+</head>
+
+<body style="overflow: hidden;background-color: black;min-height: 568px;">
+  <div class="mobile-container">
+    <!-- Loader starts -->
+    <div class="loader-wrapper">
+      <!-- <div class="lottie-container">
+        <div id="lottie"></div>
+      </div> -->
+      <div class="loader">
+        <div id="lines">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <!-- <h4 style="color:white">Sportimo Loading...</h4> -->
+        </div>
+      </div>
+      <!-- <span class="animTextL1" style="opacity: 0; font-size: 20px; color: white; font-weight: bold; position: absolute;top: 55%;">{{textleft}}}</span>
+      <span class="animTextR1" style="opacity: 0; font-size: 20px; color: white; font-weight:lighter; position: absolute;top: 59%;">{{textRight}}}</span> -->
+      <!-- <span class="animTextL2" style="opacity: 0; font-size: 20px; color: white; font-weight: bold; position: absolute;top: 55%;">Preparing</span>
+      <span class="animTextR2" style="opacity: 0; font-size: 20px; color: white; font-weight:lighter; position: absolute;top: 59%;">the pitch!</span>
+      <span class="animTextL3" style="opacity: 0; font-size: 20px; color: white; font-weight: bold; position: absolute;top: 55%;">Players</span>
+      <span class="animTextR3" style="opacity: 0; font-size: 20px; color: white; font-weight:lighter; position: absolute;top: 59%;">warming up!</span> -->
+    </div>
+
+    <!-- Loader ends -->
+    <app-root></app-root>
+
+    <div id="landscape" class="landscape-warning">
+      <img src="./assets/images/sportimo/icon-horizontal.png" alt="">
+      <!-- <br>
+      Please rotate your device. -->
+    </div
+  </div>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+<script type="text/javascript">
+  // Detect whether device supports orientationchange event, otherwise fall back to
+  // the resize event.
+  var supportsOrientationChange = "onorientationchange" in window,
+    orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+
+
+  if (supportsOrientationChange) {
+    // console.log(window.orientation);
+    if (window.orientation == 0) {
+      document.getElementById('landscape').style.display = 'none';
+    }
+    else if (window.orientation == 90) {
+      document.getElementById('landscape').style.display = 'flex';
+    }
+  }
+
+
+  window.addEventListener(orientationEvent, function () {
+    // console.log(window.orientation);
+    if (window.orientation == 0) {
+      document.getElementById('landscape').style.display = 'none';
+    }
+    else if (window.orientation == 90) {
+      document.getElementById('landscape').style.display = 'flex';
+    }
+  }, false);
+</script>
+
+</html>
