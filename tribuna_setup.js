@@ -9,13 +9,15 @@ const options = {
     './assets/icons/icon-512x512.png', 
     './assets/icons/icon-192x192.png', 
     './assets/icons/icon-72x72.png', 
-    'Sportimo 3 - The way to watch football'
+    'Sportimo 3 - The way to watch football',
+    '<!-- <meta name="facebook-domain-verification" content="gpekx5qkpltvivs08zi839td3uk72p" /> -->'
   ],   
   to: [
     './assets/icons/tribuna_logo.png', 
     './assets/icons/tribuna_logo.png', 
     './assets/icons/tribuna_logo.png', 
-    'Tribuna'
+    'Tribuna',
+    '<meta name="facebook-domain-verification" content="gpekx5qkpltvivs08zi839td3uk72p" />'
   ],
   countMatches: true,
 };
