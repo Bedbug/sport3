@@ -64,14 +64,14 @@ try {
     to: [
       '"name": "Tribuna",', 
       '"short_name": "Tribuna",', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png', 
-      'assets/icons/tribuna_logo.png'
+      'assets/icons/tribuna/tribuna_logo-72x72.png', 
+      'assets/icons/tribuna/tribuna_logo-96x96.png', 
+      'assets/icons/tribuna/tribuna_logo-128x128.png', 
+      'assets/icons/tribuna/tribuna_logo-144x144.png', 
+      'assets/icons/tribuna/tribuna_logo-152x152.png', 
+      'assets/icons/tribuna/tribuna_logo-192x192.png', 
+      'assets/icons/tribuna/tribuna_logo-384x384.png', 
+      'assets/icons/tribuna/tribuna_logo-512x512.png'
     ],
     countMatches: true,
   };
