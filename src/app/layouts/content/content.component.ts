@@ -45,7 +45,7 @@ export class ContentComponent implements OnInit {
 
 
   public isRTL: boolean;
-  RTL_languages = ["fa", "ar"];
+  RTL_languages = ["fa", "ar", "ku"];
 
   constructor
     (
