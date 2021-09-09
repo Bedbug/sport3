@@ -548,9 +548,6 @@
 <!-- DAILY BONUS -->
 <div id="dailyModal" class="uk-flex-top" uk-modal>
   <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical animate__animated animate__bounceInDown">
-
-
-
     <div class="sponsored">
       <span *ngIf="loyaltyText"
         style="color: white;text-align: center;font-size: 14px;">{{loyaltyText[translate.currentLang]}}</span><br>
@@ -568,10 +565,9 @@
 
     </div>
 
-    <div class="center-bottom" (click)="collectCoin()">
-      <img class="svg-shadow" src="/assets/images/sportimo/dailybonus/dailybonus_claimbutton.svg" alt="">
+    <div class="center-bottom" (click)="collectCoin()" >
+      <img class="svg-shadow" style="max-width: 200px;" src="/assets/images/sportimo/dailybonus/dailybonus_claimbutton.svg" alt="">
       <div class="centered text-bottom" translate>Collect</div>
     </div>
-
   </div>
 </div>
