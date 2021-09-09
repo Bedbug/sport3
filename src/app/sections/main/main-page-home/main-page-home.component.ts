@@ -77,7 +77,7 @@ export class MainPageHomeComponent implements OnInit {
       if (this.isAuthenticated && user.loyaltyCoins > 0) {
 
         this.showDailyBonusModal(user.loyaltyCoins);
-        this.animateShine();
+        // this.animateShine();
       }
       if (this.isAuthenticated) {
         // Check For Push
