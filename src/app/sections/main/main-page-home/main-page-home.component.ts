@@ -73,7 +73,7 @@ export class MainPageHomeComponent implements OnInit {
 
     this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
       this.isAuthenticated = user != null;      
-      user.loyaltyCoins = 1;
+      // user.loyaltyCoins = 1;
       if (this.isAuthenticated && user.loyaltyCoins > 0) {
 
         this.showDailyBonusModal(user.loyaltyCoins);
