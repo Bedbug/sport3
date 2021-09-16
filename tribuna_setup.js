@@ -15,7 +15,7 @@ const options = {
   to: [
     './assets/icons/tribuna_logo.png', 
     './assets/icons/tribuna_logo.png', 
-    './assets/icons/tribuna_logo.png', 
+    './assets/icons/tribuna/tribuna_fav_logo.png', 
     'Tribuna',
     '<meta name="facebook-domain-verification" content="gpekx5qkpltvivs08zi839td3uk72p" />'
   ],
