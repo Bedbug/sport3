@@ -212,5 +212,66 @@
     color: white !important;
   }
 
-  
+}
+
+.korek{
+  $theme-color1: #043659;
+  $theme-color2: #0057b7;
+  $theme-color3: #122547;
+  $theme-gradient1: linear-gradient(90deg,  #64429a 0%, #dd2977 100%);
+  $theme-gradient2: linear-gradient(90deg,  #64429ad2 0%, #dd2977d2 100%);
+
+  .app-navbar {
+    background: $theme-color2;
+  }
+
+  .mobile-app-navbar,
+  .universal-app-navbar {
+    background:  $theme-color2;
+  }
+
+  .mobile-app-navbar a.active, .universal-app-navbar a.active{
+    background:   $theme-color3;
+  }
+
+  .navbar.fixed-bottom.terms-footer {
+    background:  $theme-color1;
+  }
+
+  .desktop-nav-bar{
+    background-color: $theme-color2 !important;
+  }
+
+  .contest-details p{
+    text-align: left;
+  }
+
+  .page-main-header {
+    background: $theme-color1 !important;
+    // color: $green-color;
+  }
+
+  .card-header{
+    background: black !important;
+  }
+
+  .landing-card{
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .slide-prize-shape{
+    background:  $theme-color1 !important;
+  }
+
+  .btn-sportimo {
+    opacity: 1;
+    background: #0057b7;
+    color: white;
+  }
+
+  .contest-name,  .grand-prize-user-details{
+    color: white !important;
+  }
+
 }

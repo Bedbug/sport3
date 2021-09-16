@@ -100,7 +100,7 @@ export class ContentComponent implements OnInit {
       this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
       this.loaderTextAnim();
       this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
-      // this.appTheme = "kcell";
+      // this.appTheme = "korek";
       // Change the app background
       if (this.sportimoService.getConfigurationFor("appBackgroundUrl"))
         $('Body').css("background-image", `url(${this.sportimoService.getConfigurationFor("appBackgroundUrl")})`);
