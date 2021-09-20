@@ -159,7 +159,7 @@
               <div class="background-ring isClickable" (click)="openAvatarSelection()">
                 <img class="rounded-circle" [src]="user.picture || '/assets/images/sportimo/default_avatar.svg'" alt="">
               </div>
-
+              
               <!-- <div class="input-icon">
                 <div class="icn-user"></div>
               </div> -->
@@ -182,9 +182,8 @@
                   </div>
                 </button>
               </div>
-
             </div>
-
+           
             <!-- STATS -->
             <div class="stats-container" *ngIf="!avatarsShowing && stats">
               <!-- Matches Played -->
@@ -320,6 +319,121 @@
                 </div>
 
               </div>
+
+              <div class="push-settings-mobile">
+               
+                    <div style="font-weight: 700; padding-left: 33px; text-align: left;" translate>Push Notifications</div>
+                    <div class="Container" *ngIf="user.pushSettings">
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>All</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user.pushSettings.all " #pushSettings.all="ngModel" [width]="conf.width"
+                            [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels" [color]="conf.color"
+                            [switchColor]="conf.switchColor" [fontColor]="conf.fontColor" [fontSize]="conf.fontSize"
+                            (change)="onCh()">
+                          </ng-toggle>
+                        </div>
+                        
+                      </div>
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>New Message</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user?.pushSettings.new_message" #pushSettings.new_message="ngModel"
+                            [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
+                            [color]="conf.color" [switchColor]="conf.switchColor" [fontColor]="conf.fontColor"
+                            [fontSize]="conf.fontSize" (change)="onCh()">
+                          </ng-toggle>
+                        </div>
+                        
+                      </div>
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>Match Remind</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user?.pushSettings.match_reminder" #pushSettings.match_reminder="ngModel"
+                            [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
+                            [color]="conf.color" [switchColor]="conf.switchColor" [fontColor]="conf.fontColor"
+                            [fontSize]="conf.fontSize" (change)="onCh()">
+                          </ng-toggle>
+                        </div>
+                        
+                      </div>
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>Match Kick-off</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user?.pushSettings.kick_off" #pushSettings.kick_off="ngModel"
+                            [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
+                            [color]="conf.color" [switchColor]="conf.switchColor" [fontColor]="conf.fontColor"
+                            [fontSize]="conf.fontSize" (change)="onCh()">
+                          </ng-toggle>
+                        </div>
+                        
+                      </div>
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>Match Goal</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user?.pushSettings.goals" #pushSettings.goals="ngModel"
+                            [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
+                            [color]="conf.color" [switchColor]="conf.switchColor" [fontColor]="conf.fontColor"
+                            [fontSize]="conf.fontSize" (change)="onCh()">
+                          </ng-toggle>
+                        </div>
+                        
+                      </div>
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>Won Card</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user?.pushSettings.won_cards" #pushSettings.won_cards="ngModel"
+                            [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
+                            [color]="conf.color" [switchColor]="conf.switchColor" [fontColor]="conf.fontColor"
+                            [fontSize]="conf.fontSize" (change)="onCh()">
+                          </ng-toggle>
+                        </div>
+                        
+                      </div>
+                      <div class="ContainerChild">
+                        <div class="item_end" translate>Final Result</div>
+                        <div class="item_start">
+                          <ng-toggle [(ngModel)]="user?.pushSettings.final_result" #pushSettings.final_result="ngModel"
+                            [width]="conf.width" [height]="conf.height" [margin]="conf.margin" [labels]="conf.labels"
+                            [color]="conf.color" [switchColor]="conf.switchColor" [fontColor]="conf.fontColor"
+                            [fontSize]="conf.fontSize" (change)="onCh()">
+                          </ng-toggle>
+                        </div>                                               
+                    
+                  </div>
+
+                  <div class="ContainerChild">
+                    <button [disabled]="isSubmitting || !buttonDirty"
+                    style="height: 31px;
+                    margin-top: 20px;
+                    /* margin-left: 33px; */
+                    width: 100%;" (click)="onUserAllUpdate()"
+                    class="btn btn-sportimo login-form-button">
+                    <div class="loader-label" [class.btn-active]="isSubmitting">
+                      <span class="button-label" translate>Update</span>
+                      <div class="fadeInLoader">
+                        <span class="rotate dotted button-loader"></span>
+                      </div>
+                    </div>
+                  </button>
+                  </div>
+  
+  
+                  <!-- <button [disabled]="isSubmitting || !buttonDirty"
+                    style="height: 31px; margin-top: 20px; margin-left: 33px;" (click)="onUsernameUpdate()"
+                    class="btn btn-sportimo login-form-button">
+                    <div class="loader-label" [class.btn-active]="isSubmitting">
+                      <span class="button-label" translate>Update</span>
+                      <div class="fadeInLoader">
+                        <span class="rotate dotted button-loader"></span>
+                      </div>
+                    </div>
+                  </button> -->
+                  <!-- </div> -->
+  
+                </div>
+              </div>
+              
             </div>
 
             <!-- AVATARS -->

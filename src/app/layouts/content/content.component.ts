@@ -111,6 +111,7 @@ export class ContentComponent implements OnInit {
 
       this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
 
+
         localStorage.setItem('language', this.translate.currentLang);
         this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
         // console.log(this.translate.currentLang);

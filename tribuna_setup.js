@@ -10,6 +10,7 @@ const options = {
     './assets/icons/icon-192x192.png', 
     './assets/icons/icon-72x72.png', 
     'Sportimo 3 - The way to watch football',
+    'If you like Sports, you will love Sportimo!',
     '<!-- <meta name="facebook-domain-verification" content="gpekx5qkpltvivs08zi839td3uk72p" /> -->'
   ],   
   to: [
@@ -17,6 +18,7 @@ const options = {
     './assets/icons/tribuna_logo.png', 
     './assets/icons/tribuna/tribuna_fav_logo.png', 
     'Tribuna',
+    'If you like Sports, you will love Tribuna!',
     '<meta name="facebook-domain-verification" content="gpekx5qkpltvivs08zi839td3uk72p" />'
   ],
   countMatches: true,
