@@ -788,7 +788,7 @@ export class OnboardComponent implements OnInit {
     console.log("Country Code: "+ areaCode +",  Digit Length: "+ areaCode.length);
     
     // Check length
-    if(msisdnValue.length + areaCode.length >12){
+    if(msisdnValue.length + areaCode.length >13){
       this.msisdnError = true;
       // this.errorMsg = "The number seems to be too long!";
       this.errorMsg = "msisdnChecks.102";
