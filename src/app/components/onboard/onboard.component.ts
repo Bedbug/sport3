@@ -42,6 +42,7 @@ export class OnboardComponent implements OnInit {
   filteredOperators: any[];
   msisdnError = false;
   errorMsg = "";
+  errorMsgId: number;
   slideCount: number = 0;
   onBoardOpenBtn = false;
   dailybonus: number = 0;
@@ -80,6 +81,7 @@ export class OnboardComponent implements OnInit {
     _("AE");
     _("KW");
     _("EG");
+    _("BH");
     _("LY");
     _("msisdnChecks.100");
     _("msisdnChecks.101");
@@ -764,7 +766,8 @@ export class OnboardComponent implements OnInit {
       this.msisdnError = true;
 
       // this.errorMsg = "Please remove country code!";
-      this.errorMsg = "msisdnChecks.100";
+      // this.errorMsg = "msisdnChecks.100";
+      this.errorMsgId = 100;
       // this.isSubmitOpen = false;
       return;
     }
@@ -781,7 +784,7 @@ export class OnboardComponent implements OnInit {
       // console.log("Not all numbers!")
       this.msisdnError = true;
       // this.errorMsg = "Please remove any letters or characters!";
-      this.errorMsg = "msisdnChecks.101";
+      this.errorMsgId = 101;
       this.isSubmitOpen = false;
       return;
     }
@@ -791,14 +794,16 @@ export class OnboardComponent implements OnInit {
     if(msisdnValue.length + areaCode.length >13){
       this.msisdnError = true;
       // this.errorMsg = "The number seems to be too long!";
-      this.errorMsg = "msisdnChecks.102";
+      // this.errorMsg = "msisdnChecks.102";
+      this.errorMsgId = 102;
       this.isSubmitOpen = false;
       return;
     }
     if(msisdnValue.length + areaCode.length < 12 && msisdnValue.length != 3 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
       this.msisdnError = true;
       // this.errorMsg = "The number seems to be too small!";
-      this.errorMsg = "msisdnChecks.103";
+      // this.errorMsg = "msisdnChecks.103";
+      this.errorMsgId = 103;
       this.isSubmitOpen = false;
       return;
     }
