@@ -62,6 +62,8 @@ export class OnboardComponent implements OnInit {
   termsLineText: any;
 
   translateMappings() {
+    _("Authentication failed")
+    _("Error sending pin")
     _("susbcription_message_UNKNOWN");
     _("susbcription_message_UNKNOWN_action");
     _("susbcription_message_UNSUB");
@@ -689,13 +691,14 @@ export class OnboardComponent implements OnInit {
       // console.log(msisdnValue);
       this.otpRequest();
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
+      this.errorMsg = "";
+
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));      
       if (this.currentOperator.sessionTPayEnabled  ) {
         this.tpayService.sessionToken.subscribe((tpaySessionToken)=>{
           this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path, tpaySessionToken)
           .subscribe(response => {
-            if (response && response.success) {
-  
+            if (response && response.success) {  
               this.subState = response.state;
               if (this.subState == "UNSUB" && response.user.wallet > 0)
                 this.subState = "UNSUBWITHCOINS";
@@ -712,6 +715,13 @@ export class OnboardComponent implements OnInit {
   
               this.closeLandingPage();
             }
+
+            if(!response.success)
+            {
+              console.log(response.message);
+              this.errorMsg = response.message.substring(0, response.message.length - 1);
+            }
+            
             this.isSubmitting = false;
           });
         })
@@ -739,6 +749,13 @@ export class OnboardComponent implements OnInit {
 
             this.closeLandingPage();
           }
+
+          if(!response.success)
+          {
+            console.log(response.message);
+            this.errorMsg = response.message;
+          }
+
           this.isSubmitting = false;
         });
       }

@@ -330,6 +330,14 @@
               <span *ngIf="errorMsgId == 102" translate>msisdnChecks.102</span>
               <span *ngIf="errorMsgId == 103" translate>msisdnChecks.103</span>
             </div>
+            <div *ngIf="this.errorMsg" class="problem-info2" style="font-style: italic;">
+              <div class="icn-info-white"></div> 
+              <span translate>{{this.errorMsg}}</span>
+              <!-- <span *ngIf="errorMsgId == 100" translate>msisdnChecks.100</span>
+              <span *ngIf="errorMsgId == 101" translate>msisdnChecks.101</span>
+              <span *ngIf="errorMsgId == 102" translate>msisdnChecks.102</span>
+              <span *ngIf="errorMsgId == 103" translate>msisdnChecks.103</span> -->
+            </div>
             <!-- Check in Dashboard -->
             <div *ngIf="!this.msisdnError && showInputMsg" class="problem-info2" style="font-style: italic;">
               <div class="icn-info-white"></div> 
