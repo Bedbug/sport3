@@ -322,7 +322,7 @@
           <div
             *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.validationProcess && !this.multiOperatorForm.controls.operator.value.redirectUrl">
             <!-- <span>Drop your MSISDN</span> -->
-            <div *ngIf="this.msisdnError" class="problem-info2" style="font-style: italic;">
+            <div *ngIf="this.msisdnError && !this.errorMsg" class="problem-info2" style="font-style: italic;">
               <div class="icn-info-white"></div> 
               <!-- <span translate>{{this.errorMsg}}</span> -->
               <span *ngIf="errorMsgId == 100" translate>msisdnChecks.100</span>

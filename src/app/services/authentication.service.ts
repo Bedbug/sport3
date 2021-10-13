@@ -46,7 +46,7 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
-                    console.log("SingleSign: " + user.loyaltyCoins);
+                    // console.log("SingleSign: " + user.loyaltyCoins);
 
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ _id: user._id, token: user.token }));
@@ -77,7 +77,7 @@ export class AuthenticationService {
     ----------------------------------------------------------------------------------- */
 
     blaiseSignin(msisdn: string, operatorCode: string, lang: string, path: string, tpaySession: string = null) {
-        console.log(tpaySession);
+        // console.log(tpaySession);
         
         let postData = {
             msisdn: msisdn.toString(),
@@ -306,7 +306,7 @@ export class AuthenticationService {
     updateFavorites(team: Team, competition: any, remove: boolean) {
         let newTeamFavorites: any[] = this.currentUserSubject.value.favTeams;
 
-        console.log("Remove:" + remove);
+        // console.log("Remove:" + remove);
         if (remove) {
             newTeamFavorites = newTeamFavorites.filter(favteam => {
                 return favteam.team._id != team._id;//&& favteam.competition._id != competition._id;
@@ -335,8 +335,8 @@ export class AuthenticationService {
 
         return this.http.put<any>(`${this.Config.getApi("ROOT")}/users/${this.currentUserSubject.value._id}`, postData)
             .pipe(map(response => {
-                console.log(response);
-                console.log("Updating avatar");
+                // console.log(response);
+                // console.log("Updating avatar");
                 localStorage.setItem('currentUser', JSON.stringify(this.currentUserSubject.value));
                 return response;
             }));

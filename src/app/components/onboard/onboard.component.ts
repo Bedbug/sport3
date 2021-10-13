@@ -719,6 +719,7 @@ export class OnboardComponent implements OnInit {
             if(!response.success)
             {
               console.log(response.message);
+              this.msisdnError = true;
               this.errorMsg = response.message.substring(0, response.message.length - 1);
             }
             
@@ -752,8 +753,13 @@ export class OnboardComponent implements OnInit {
 
           if(!response.success)
           {
-            console.log(response.message);
-            this.errorMsg = response.message;
+            
+            this.msisdnError = true;
+            this.errorMsg = response.error.substring(0, response.error.length - 1);
+            setTimeout(() => {
+              this.msisdnError = false;
+              this.errorMsg = null;
+            }, 4000);
           }
 
           this.isSubmitting = false;
@@ -805,7 +811,7 @@ export class OnboardComponent implements OnInit {
       this.isSubmitOpen = false;
       return;
     }
-    console.log("Country Code: "+ areaCode +",  Digit Length: "+ areaCode.length);
+    // console.log("Country Code: "+ areaCode +",  Digit Length: "+ areaCode.length);
     
     // Check length
     if(msisdnValue.length + areaCode.length >13){
@@ -837,7 +843,7 @@ export class OnboardComponent implements OnInit {
     console.log("msisdn Value: " + msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
     
-    console.log("Request OTP");        
+    // console.log("Request OTP");        
 
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
@@ -879,11 +885,11 @@ export class OnboardComponent implements OnInit {
   }
 
   async otpRequest() {
-    console.log("OTP-REQUEST");
+    // console.log("OTP-REQUEST");
     
     if ('OTPCredential' in window) {
       
-      console.log("Otp available");
+      // console.log("Otp available");
       
       const abortController = new AbortController();
       let timer = setTimeout(() => {
