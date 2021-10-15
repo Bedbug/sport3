@@ -12,7 +12,7 @@
 	"Already a member?": "هل أنت مشترك بالفعل؟ ",
 	"Assists": "مساعدة",
 	"Authentication failed": "",
-	"BH": "",
+	"BH": "البحرين‎",
 	"Balance": "رصيد: ",
 	"Born": "مولود",
 	"Both passwords required": "المطلوب كلا من كلمتين السر",
@@ -51,7 +51,8 @@
 	"EXIT": "خروج",
 	"Ends:": "تنتهي يوم",
 	"Enter PIN": "أدخل رمز المرور",
-	"Enter mobile phone": "أدخل رقم الهاتف",
+	"Enter mobile phone": "الرجاء التأكد من رقم الجوال والمحاولة مرة أخرى
+",
 	"Error sending pin": "",
 	"FAQ": "الأسئلة الشائعة",
 	"FW": "FW",
