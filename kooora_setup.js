@@ -61,7 +61,7 @@ try {
       'assets/icons/icon-512x512.png'
     ],   
     to: [
-      '"name": "Koora Legends",', 
+      '"name": "Kooora Legends",', 
       '"short_name": "Kooora",', 
       'assets/icons/korek/korek_logo-72x72.png', 
       'assets/icons/korek/korek_logo-96x96.png', 
