@@ -218,6 +218,7 @@ export class OnboardComponent implements OnInit {
           return { code: b[0], area: b[1], key: a };
         });
 
+console.log(this.availableCountries);
 
         // console.log(this.availableCountries);
         this.filteredOperators = [];
@@ -558,11 +559,11 @@ export class OnboardComponent implements OnInit {
     })
 
 
-    if (this.filteredOperators.length == 1) {
-      this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
-      this.selectedOperator(this.filteredOperators[0]);
-    }
-    // console.log(this.filteredOperators);
+    // if (this.filteredOperators.length == 1) {
+    //   this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
+    //   this.selectedOperator(this.filteredOperators[0]);
+    // }
+     console.log(this.filteredOperators);
   };
 
   currentOperator: any;
@@ -822,7 +823,8 @@ export class OnboardComponent implements OnInit {
       this.isSubmitOpen = false;
       return;
     }
-    if(msisdnValue.length + areaCode.length < 12 && msisdnValue.length != 3 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
+    // && msisdnValue.length != 3
+    if(msisdnValue.length + areaCode.length < 11  && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
       this.msisdnError = true;
       // this.errorMsg = "The number seems to be too small!";
       // this.errorMsg = "msisdnChecks.103";
