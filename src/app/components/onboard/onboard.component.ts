@@ -218,7 +218,7 @@ export class OnboardComponent implements OnInit {
           return { code: b[0], area: b[1], key: a };
         });
 
-console.log(this.availableCountries);
+// console.log(this.availableCountries);
 
         // console.log(this.availableCountries);
         this.filteredOperators = [];
@@ -563,7 +563,7 @@ console.log(this.availableCountries);
     //   this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
     //   this.selectedOperator(this.filteredOperators[0]);
     // }
-     console.log(this.filteredOperators);
+    //  console.log(this.filteredOperators);
   };
 
   currentOperator: any;
