@@ -131,6 +131,11 @@
   $theme-color: #942c8a;
   $theme-gradient: linear-gradient(180deg, #942c8a 0%, #942c8a 100%);
 
+  .match-details {
+    background-color:  #942c8ad4 !important;
+
+  }
+
   .mobile-app-navbar,
   .universal-app-navbar {
     background-color: $green-color2;
