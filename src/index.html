@@ -120,6 +120,16 @@
       document.getElementById('landscape').style.display = 'flex';
     }
   }, false);
+
+  let deferredPrompt;
+  console.log("Deferred prompt Set");
+  window.addEventListener('beforeinstallprompt', (e) => {
+    console.log(e);
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+});
 </script>
 
 </html>
