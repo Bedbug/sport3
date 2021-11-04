@@ -10,6 +10,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ConfigService } from 'src/app/services/config.service';
 
 declare var $: any;
+declare var defPrompt:any;
 
 @Component({
   selector: 'app-header',
@@ -51,15 +52,15 @@ export class HeaderComponent implements OnInit {
   deferredPrompt: any;
   showButton = false;
 
-  @HostListener('window:beforeinstallprompt', ['$event'])
-  onbeforeinstallprompt(e) {    
-    // console.log(e);
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    e.preventDefault();
-    // Stash the event so it can be triggered later.
-    this.deferredPrompt = e;
-    this.showButton = true;
-  }
+  // @HostListener('window:beforeinstallprompt', ['$event'])
+  // onbeforeinstallprompt(e) {    
+  //   // console.log(e);
+  //   // Prevent Chrome 67 and earlier from automatically showing the prompt
+  //   e.preventDefault();
+  //   // Stash the event so it can be triggered later.
+  //   this.deferredPrompt = e;
+  //   this.showButton = true;
+  // }
 
 
   addToHomeScreen() {
@@ -84,6 +85,15 @@ export class HeaderComponent implements OnInit {
   }
   
   ngOnInit() {
+
+    if(defPrompt)
+    {
+      this.deferredPrompt = defPrompt;
+      this.showButton = true;
+    }
+    
+
+
     $.getScript('assets/js/script.js');
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
