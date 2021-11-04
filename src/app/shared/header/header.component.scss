@@ -6,3 +6,17 @@ a {
 .app-name{
     margin-left: 10px;
 }
+
+.install-button{
+    background-color: black;
+    color: white;
+    border: 1px solid;
+    border-radius: 5px;
+    margin: 0 10px;
+    line-height: 22px;
+    padding-top: 3px;
+}
+
+.install-button.not-active{
+    opacity:0.1;
+}
