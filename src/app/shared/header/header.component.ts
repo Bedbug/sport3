@@ -52,9 +52,8 @@ export class HeaderComponent implements OnInit {
   showButton = false;
 
   @HostListener('window:beforeinstallprompt', ['$event'])
-  onbeforeinstallprompt(e) {
-    console.log("We ctached the before install prompts");
-    console.log(e);
+  onbeforeinstallprompt(e) {    
+    // console.log(e);
     // Prevent Chrome 67 and earlier from automatically showing the prompt
     e.preventDefault();
     // Stash the event so it can be triggered later.
