@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {    
     console.log("prompt with delay");
-    e.preventDefault();
+    // e.preventDefault();
     if(defPrompt)
     {
       this.deferredPrompt = defPrompt;
