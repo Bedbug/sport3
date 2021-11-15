@@ -36,12 +36,12 @@ function calculateHeight(){
 }
 
 // let defferedPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Stash the event so it can be triggered later.
-  // defferedPrompt = e;
-  console.log("beforeinstallprompt");
-  e.prompt();
-});
+// window.addEventListener('beforeinstallprompt', (e) => {
+//   // Stash the event so it can be triggered later.
+//   // defferedPrompt = e;
+//   console.log("beforeinstallprompt");
+//   e.prompt();
+// });
 
 /*----------------------------------------
      Mobile Sidebar Menu
