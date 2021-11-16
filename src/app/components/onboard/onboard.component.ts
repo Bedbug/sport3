@@ -61,6 +61,11 @@ export class OnboardComponent implements OnInit {
   inputMsg: any;
   termsLineText: any;
 
+  // GTM DATA
+  _currentCountry: string;
+  _currentClient: string;
+  _currentAppName: string;
+
   translateMappings() {
     _("Authentication failed")
     _("Error sending pin")
@@ -166,7 +171,7 @@ export class OnboardComponent implements OnInit {
     private router: Router,
     private ViewModalOverlay: PrizeViewOverlayService,
     private gtmService: GoogleTagManagerService,
-    private tpayService:TpayService,
+    private tpayService: TpayService,
     // private _gsapService: GsapService
   ) {
 
@@ -218,7 +223,7 @@ export class OnboardComponent implements OnInit {
           return { code: b[0], area: b[1], key: a };
         });
 
-// console.log(this.availableCountries);
+        // console.log(this.availableCountries);
 
         // console.log(this.availableCountries);
         this.filteredOperators = [];
@@ -559,6 +564,24 @@ export class OnboardComponent implements OnInit {
     })
 
 
+    // Send Select_Country Event
+    this._currentCountry = this.multiOperatorForm.controls.country.value.code;
+
+    if (!this._currentClient)
+      this._currentClient = this.config.getClient();
+    if (!this._currentAppName)
+      this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+
+    const gtmTag = {
+      event: 'Select_Country',
+      appName: this._currentAppName,
+      clientId: this._currentClient,
+      Category: `Sub_Flow_${this._currentCountry}`,
+      Action: `SelectCountry_${this._currentCountry}`,
+      Label: this._currentCountry
+    };
+    this.gtmService.pushTag(gtmTag);
+
     // if (this.filteredOperators.length == 1) {
     //   this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
     //   this.selectedOperator(this.filteredOperators[0]);
@@ -570,7 +593,7 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
-    // console.log(this.currentOperator);
+     console.log(this.currentOperator);
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
     else
@@ -610,6 +633,23 @@ export class OnboardComponent implements OnInit {
     else {
       this.showTopText = false;
     }
+
+    // Send Select_Country Event
+
+    if (!this._currentClient)
+      this._currentClient = this.config.getClient();
+    if (!this._currentAppName)
+      this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+
+    const gtmTag = {
+      event: 'Select_Operator',
+      appName: this._currentAppName,
+      clientId: this._currentClient,
+      Category: `Sub_Flow_${this._currentCountry}`,
+      Action: `SelectOperator_${this.currentOperator.operatorName.en}`,
+      Label: this.currentOperator.operatorName.en
+    };
+    this.gtmService.pushTag(gtmTag);
 
 
     //Carousel
@@ -694,12 +734,46 @@ export class OnboardComponent implements OnInit {
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       this.errorMsg = "";
 
-      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));      
-      if (this.currentOperator.sessionTPayEnabled  ) {
-        this.tpayService.sessionToken.subscribe((tpaySessionToken)=>{
+      let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
+      if (this.currentOperator.sessionTPayEnabled) {
+        this.tpayService.sessionToken.subscribe((tpaySessionToken) => {
           this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path, tpaySessionToken)
+            .subscribe(response => {
+              if (response && response.success) {
+                this.subState = response.state;
+                if (this.subState == "UNSUB" && response.user.wallet > 0)
+                  this.subState = "UNSUBWITHCOINS";
+                // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
+                //   this.subState = "ACTIVEFREEPERIOD";
+                if (this.subState == "FREE")
+                  this.subState = "ACTIVEFREEPERIOD";
+                // if (this.subState == "INACTIVE")
+                //   this.subState = "UNKNOWN";
+                if (this.subState == "BLACKLISTED") {
+                  this.subState = "UNKNOWN";
+                  this.blacklisted = 1;
+                }
+
+                this.closeLandingPage();
+              }
+
+              if (!response.success) {
+                console.log(response.message);
+                this.msisdnError = true;
+                this.errorMsg = response.message.substring(0, response.message.length - 1);
+              }
+
+              this.isSubmitting = false;
+            });
+        })
+
+        this.tpayService.getSessionToken();
+
+      } else {
+        this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
           .subscribe(response => {
-            if (response && response.success) {  
+            if (response && response.success) {
+
               this.subState = response.state;
               if (this.subState == "UNSUB" && response.user.wallet > 0)
                 this.subState = "UNSUBWITHCOINS";
@@ -713,58 +787,22 @@ export class OnboardComponent implements OnInit {
                 this.subState = "UNKNOWN";
                 this.blacklisted = 1;
               }
-  
+
               this.closeLandingPage();
             }
 
-            if(!response.success)
-            {
-              console.log(response.message);
+            if (!response.success) {
+
               this.msisdnError = true;
-              this.errorMsg = response.message.substring(0, response.message.length - 1);
+              this.errorMsg = response.error.substring(0, response.error.length - 1);
+              setTimeout(() => {
+                this.msisdnError = false;
+                this.errorMsg = null;
+              }, 4000);
             }
-            
+
             this.isSubmitting = false;
           });
-        })
-
-        this.tpayService.getSessionToken();
-       
-      }else{
-        this.authenticationService.blaiseSignin(areaCode + msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
-        .subscribe(response => {
-          if (response && response.success) {
-
-            this.subState = response.state;
-            if (this.subState == "UNSUB" && response.user.wallet > 0)
-              this.subState = "UNSUBWITHCOINS";
-            // if (this.subState == "ACTIVE" && response.user.inFreePeriod)
-            //   this.subState = "ACTIVEFREEPERIOD";
-            if (this.subState == "FREE")
-              this.subState = "ACTIVEFREEPERIOD";
-            // if (this.subState == "INACTIVE")
-            //   this.subState = "UNKNOWN";
-            if (this.subState == "BLACKLISTED") {
-              this.subState = "UNKNOWN";
-              this.blacklisted = 1;
-            }
-
-            this.closeLandingPage();
-          }
-
-          if(!response.success)
-          {
-            
-            this.msisdnError = true;
-            this.errorMsg = response.error.substring(0, response.error.length - 1);
-            setTimeout(() => {
-              this.msisdnError = false;
-              this.errorMsg = null;
-            }, 4000);
-          }
-
-          this.isSubmitting = false;
-        });
       }
 
     }
@@ -813,9 +851,9 @@ export class OnboardComponent implements OnInit {
       return;
     }
     // console.log("Country Code: "+ areaCode +",  Digit Length: "+ areaCode.length);
-    
+
     // Check length
-    if(msisdnValue.length + areaCode.length >13){
+    if (msisdnValue.length + areaCode.length > 13) {
       this.msisdnError = true;
       // this.errorMsg = "The number seems to be too long!";
       // this.errorMsg = "msisdnChecks.102";
@@ -824,7 +862,7 @@ export class OnboardComponent implements OnInit {
       return;
     }
     // && msisdnValue.length != 3
-    if(msisdnValue.length + areaCode.length < 11  && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05"){
+    if (msisdnValue.length + areaCode.length < 11 && msisdnValue != "01" && msisdnValue != "02" && msisdnValue != "03" && msisdnValue != "04" && msisdnValue != "05") {
       this.msisdnError = true;
       // this.errorMsg = "The number seems to be too small!";
       // this.errorMsg = "msisdnChecks.103";
@@ -844,7 +882,7 @@ export class OnboardComponent implements OnInit {
     let msisdnValue = (this.msisdnForm.controls.msisdn.value != '03' ? areaCode : '') + this.msisdnForm.controls.msisdn.value;
     console.log("msisdn Value: " + msisdnValue);
     let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
-    
+
     // console.log("Request OTP");        
 
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
@@ -888,11 +926,11 @@ export class OnboardComponent implements OnInit {
 
   async otpRequest() {
     // console.log("OTP-REQUEST");
-    
+
     if ('OTPCredential' in window) {
-      
+
       // console.log("Otp available");
-      
+
       const abortController = new AbortController();
       let timer = setTimeout(() => {
         abortController.abort();
@@ -904,15 +942,15 @@ export class OnboardComponent implements OnInit {
       };
 
       const content = await window.navigator['credentials'].get(o);
-     
+
       console.log("---- Content");
       console.log(content);
-    
-      
+
+
       var formated = JSON.parse(JSON.stringify(content));
       alert(formated);
       //do what ever you want to do with the received code, probably send it to server
-      if(formated.code){
+      if (formated.code) {
         const input = document.querySelector('input[autocomplete="one-time-code"]');
         (<HTMLInputElement>input).value = formated.code;
       }
@@ -934,8 +972,8 @@ export class OnboardComponent implements OnInit {
       return;
     }
     // console.log(this.pinForm.controls.pin.value);
-    
-   
+
+
 
     this.authenticationService.blaiseVerify(this.pinForm.controls.pin.value, noSubscription)
       .subscribe(
@@ -998,6 +1036,8 @@ export class OnboardComponent implements OnInit {
     };
     this.gtmService.pushTag(gtmTag);
   }
+
+
 
   showDailyBonusModal() {
     // console.log("Loyalty Bonus: " + this.dailybonus);
