@@ -1,0 +1,30 @@
+.modal-install-header{
+    display: flex;
+    height: 50px;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #1C242F;
+    font-size: 20px;
+}
+
+.modal-install-body{
+    display: flex;
+    height: 370px;
+    width: 100%;
+    background-color: #272728;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;   
+    padding: 20px; 
+    color: white;
+    font-size: 20px;
+}
+
+.close-button{
+    position: absolute;
+    right: 0;
+    margin-right: 16px;
+}

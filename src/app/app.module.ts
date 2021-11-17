@@ -45,6 +45,8 @@ import { CardInfoPopupComponent } from './components/card-info-popup/card-info-p
 import { TermsFooterComponent } from './components/terms-footer/terms-footer.component';
 import { GoogleTagManagerModule, GoogleTagManagerService } from 'angular-google-tag-manager';
 import { OfflineInterceptor } from './helpers/offline.interceptor';
+import { InstallPopupComponent } from './components/install-popup/install-popup.component';
+
 
 
 // AoT requires an exported function for factories
@@ -74,7 +76,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatchSubscribeComponent,
     TermsPopupComponent,
     CardInfoPopupComponent,
-    TermsFooterComponent
+    TermsFooterComponent,
+    InstallPopupComponent
     
   ],
   imports: [
@@ -107,7 +110,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [
     TranslateModule
   ],
-  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent, MatchSubscribeComponent, TermsPopupComponent, CardInfoPopupComponent],
+  entryComponents: [NotyfToastSuccess, NotyfToastError, GrandPrizeDetailsComponent, ContestInfoComponent, ModalPowersInfoComponent, MatchSubscribeComponent, TermsPopupComponent, CardInfoPopupComponent, InstallPopupComponent],
   providers: [
     ConfigService,
     ConfigModule.init(),

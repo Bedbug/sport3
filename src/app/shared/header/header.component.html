@@ -190,7 +190,7 @@
                     </ul>
                 </li>
             </ul> -->
-                    <button (click)="addToHomeScreen()" class="install-button" [class.not-active]="!showButton">INSTALL</button>
+                    <button (click)="addToHomeScreen()" class="install-button" [class.not-active]="!showButton"><div class="icn-install" style="height: 32px;width: 32px;"></div></button>
                     <div *ngIf="currentUser && useWallet" class="user-wallet">{{parseNumbers(currentUser.wallet)}}<i
                             class="coin"></i></div>
                     <div class="mobile-toggle isClickable">
@@ -203,7 +203,7 @@
                         background-color: #ff0000;
                         line-height: 5px;
                     " class="badge badge-danger ng-star-inserted">{{currentUser.unread}}</span>
-                        <!-- <i class="icon-menu"></i> -->
+                        <i class="icon-menu"></i>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { ConfigService } from 'src/app/services/config.service';
+import { InstallPopupComponent } from 'src/app/components/install-popup/install-popup.component';
+import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 
 declare var $: any;
 declare var defPrompt:any;
@@ -37,6 +39,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     public translate:TranslateService,
+    private ViewModalOverlay: PrizeViewOverlayService,
     private configService:ConfigService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -60,6 +63,7 @@ export class HeaderComponent implements OnInit {
     {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
+      this.showInstallPopup();
     }else{
       this.deferredPrompt = e;
       this.showButton = true;
@@ -95,9 +99,10 @@ export class HeaderComponent implements OnInit {
     {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
+      this.showInstallPopup();
     }
     
-
+    // this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
     this.loginForm = this.formBuilder.group({
@@ -115,9 +120,15 @@ export class HeaderComponent implements OnInit {
     this.sportimoService.configuration.subscribe(data=>{
       this.appname = data.appName;
       this.useWallet = !data.disableWallet;
+      console.log("Wallet:"+ this.useWallet);
+      
     })
 
     this.checkUserStatus();
+  }
+
+  showInstallPopup() {
+    this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
   }
 
   checkUserStatus() {

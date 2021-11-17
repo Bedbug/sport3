@@ -101,7 +101,7 @@ export class ContentComponent implements OnInit {
       this.loaderTextAnim();
       this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
       
-
+      $('body').addClass(this.appTheme);
       // this.appTheme = "tribute";
       
       // Change the app background

@@ -1,0 +1,14 @@
+<div class="modal-card">
+    <div class="modal-install-header">
+        <span translate>install-header</span>
+        <div (click)="close()" class="isClickable close-button">X</div>
+    </div>
+    <div class="modal-install-body">
+        <div class="icn-install" style="height: 140px;width: 140px;margin: auto;"></div>
+        <span class="text-center"  style="height: 140px;
+        display: flex;        
+        justify-content: center;
+        flex-direction: column;" translate  [translateParams]="{value:  (appName.en) }">install_info</span>
+        <button [disabled]="buttonDisabled" class="btn btn-sportimo" style="height: 50px; width: 170px;" translate>install_button</button>
+    </div>
+</div>
