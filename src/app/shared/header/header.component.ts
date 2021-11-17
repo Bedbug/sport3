@@ -12,7 +12,7 @@ import { InstallPopupComponent } from 'src/app/components/install-popup/install-
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 
 declare var $: any;
-declare var defPrompt:any;
+declare var defPrompt: any;
 
 @Component({
   selector: 'app-header',
@@ -34,13 +34,13 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private sportimoService:SportimoService,
+    private sportimoService: SportimoService,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    public translate:TranslateService,
+    public translate: TranslateService,
     private ViewModalOverlay: PrizeViewOverlayService,
-    private configService:ConfigService) {
+    private configService: ConfigService) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
       // this.router.navigate(['/user/contests']);
@@ -56,25 +56,24 @@ export class HeaderComponent implements OnInit {
   showButton = false;
 
   @HostListener('window:beforeinstallprompt', ['$event'])
-  onbeforeinstallprompt(e) {    
+  onbeforeinstallprompt(e) {
     console.log("prompt with delay");
     e.preventDefault();
-    if(defPrompt)
-    {
+    if (defPrompt) {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
       this.showInstallPopup();
-    }else{
+    } else {
       this.deferredPrompt = e;
       this.showButton = true;
     }
-    
+
   }
 
 
   addToHomeScreen() {
-    
-    if(!this.showButton)
+
+    if (!this.showButton)
       return;
 
     // hide our user interface that shows our A2HS button
@@ -92,16 +91,15 @@ export class HeaderComponent implements OnInit {
         this.deferredPrompt = null;
       });
   }
-  
+
   ngOnInit() {
 
-    if(defPrompt)
-    {
+    if (defPrompt) {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
       this.showInstallPopup();
     }
-    
+
     // this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
@@ -113,36 +111,49 @@ export class HeaderComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
 
-    this.authenticationService.currentUser.subscribe(x=>{
+    this.authenticationService.currentUser.subscribe(x => {
       this.currentUser = x;
     })
 
-    this.sportimoService.configuration.subscribe(data=>{
+    this.sportimoService.configuration.subscribe(data => {
       this.appname = data.appName;
       this.useWallet = !data.disableWallet;
-      console.log("Wallet:"+ this.useWallet);
-      
+      console.log("Wallet:" + this.useWallet);
+
     })
 
     this.checkUserStatus();
   }
 
   showInstallPopup() {
-    this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
+    var lastShown = localStorage.getItem("install_popup_shown");
+    var now = new Date()
+
+    if (lastShown) {
+      var lastShownDateThreshold = new Date(lastShown);
+      lastShownDateThreshold.setMinutes(lastShownDateThreshold.getMinutes() + 5);
+      if (lastShownDateThreshold < now) {
+        localStorage.setItem("install_popup_shown", new Date().toString());
+        this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
+      }
+    } else {
+      localStorage.setItem("install_popup_shown", new Date().toString());
+      this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
+    }
   }
 
   checkUserStatus() {
-    setTimeout(()=>{
-      if(this.authenticationService.currentUserValue && this.authenticationService.currentUserValue.token)
+    setTimeout(() => {
+      if (this.authenticationService.currentUserValue && this.authenticationService.currentUserValue.token)
         this.authenticationService.checkUserStatus();
       this.checkUserStatus();
-    },30000)
+    }, 30000)
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  
+
   onSubmit() {
     this.submitted = true;
 
@@ -169,15 +180,15 @@ export class HeaderComponent implements OnInit {
         });
   }
 
-  parseNumbers(text:string){
-    if(!text)
-    text = "0";
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  parseNumbers(text: string) {
+    if (!text)
+      text = "0";
+    return this.Utils.parseNumbers(text, this.translate.currentLang == 'fa');
   }
 
   logout() {
     this.authenticationService.logout();
     this.isLoggedIn = false;
-}
+  }
 
 }
