@@ -190,7 +190,7 @@
                     </ul>
                 </li>
             </ul> -->
-                    <button (click)="addToHomeScreen()" class="install-button" [class.not-active]="!showButton"><div class="icn-install" style="height: 32px;width: 32px;"></div></button>
+                    <button (click)="addToHomeScreen()" class="install-button" [class.not-active]="!showButton"><div class="icn-install-small" style="height: 29px;width: 32px;"></div></button>
                     <div *ngIf="currentUser && useWallet" class="user-wallet">{{parseNumbers(currentUser.wallet)}}<i
                             class="coin"></i></div>
                     <div class="mobile-toggle isClickable">

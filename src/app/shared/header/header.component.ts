@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
       this.showButton = true;
       this.showInstallPopup();
     }
-
+    // this.showButton = true;
     // this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
