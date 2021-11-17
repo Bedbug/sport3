@@ -20,7 +20,7 @@ export class MainPageWinnersComponent implements OnInit {
 
   ngOnInit() {
     this.sportimoService.getWinners().subscribe((winners)=>{
-      this.winners = winners;
+      this.winners = winners.sort((a,b)=> new Date(b.awardDate).getTime() - new Date(a.awardDate).getTime());
     });
   }
 

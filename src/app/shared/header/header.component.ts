@@ -10,6 +10,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { InstallPopupComponent } from 'src/app/components/install-popup/install-popup.component';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
+import { TimeoutError } from 'rxjs';
 
 declare var $: any;
 declare var defPrompt: any;
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
   currentUser: User;
   Utils: SportimoUtils = new SportimoUtils();
   useWallet: boolean = false;
+  installPopupTimeout: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -62,7 +64,10 @@ export class HeaderComponent implements OnInit {
     if (defPrompt) {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
-      this.showInstallPopup();
+      clearTimeout(this.installPopupTimeout)
+      this.installPopupTimeout = setTimeout(() => {
+        this.showInstallPopup();
+      }, 30);
     } else {
       this.deferredPrompt = e;
       this.showButton = true;
@@ -97,7 +102,9 @@ export class HeaderComponent implements OnInit {
     if (defPrompt) {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
-      this.showInstallPopup();
+      this.installPopupTimeout = setTimeout(() => {
+        this.showInstallPopup();
+      }, 30);
     }
     // this.showButton = true;
     // this.showInstallPopup();
