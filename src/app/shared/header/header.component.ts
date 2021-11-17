@@ -131,7 +131,7 @@ export class HeaderComponent implements OnInit {
 
     if (lastShown) {
       var lastShownDateThreshold = new Date(lastShown);
-      lastShownDateThreshold.setMinutes(lastShownDateThreshold.getMinutes() + 5);
+      lastShownDateThreshold.setMinutes(lastShownDateThreshold.getMinutes() + 1);
       if (lastShownDateThreshold < now) {
         localStorage.setItem("install_popup_shown", new Date().toString());
         this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
