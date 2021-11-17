@@ -593,7 +593,7 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
-     console.log(this.currentOperator);
+    console.log(this.currentOperator);
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
     else
@@ -686,6 +686,21 @@ export class OnboardComponent implements OnInit {
       // Add redirection flag
       uriString += "?uniqueLink=redirect";
 
+      // Analytics - Join Button
+      if (!this._currentClient)
+        this._currentClient = this.config.getClient();
+      if (!this._currentAppName)
+        this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+
+      const gtmTag = {
+        event: 'Join_Button',
+        appName: this._currentAppName,
+        clientId: this._currentClient,
+        Category: `Sub_Flow_${this._currentCountry}`,
+        Action: `JoinButton_${this.currentOperator.operatorName.en}`,
+        Label: this.currentOperator.operatorName.en
+      };
+      this.gtmService.pushTag(gtmTag);
       // console.log(uriString);
 
       if (this.sportimoService.UTMParams)
@@ -885,6 +900,21 @@ export class OnboardComponent implements OnInit {
 
     // console.log("Request OTP");        
 
+    // Analytics - User_Enter_MSISDN
+    if (!this._currentClient)
+      this._currentClient = this.config.getClient();
+    if (!this._currentAppName)
+      this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+    const gtmTag = {
+      event: 'User_Enter_MSISDN',
+      appName: this._currentAppName,
+      clientId: this._currentClient,
+      Category: `Sub_Flow_${this._currentCountry}`,
+      Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
+      Label: 'EnterMSISDN'
+    };
+    this.gtmService.pushTag(gtmTag);
+
     this.authenticationService.blaiseSignin(msisdnValue, this.currentOperator ? this.currentOperator.operatorCode : null, this.translate.currentLang, path)
       .subscribe(response => {
         // console.log("Authenticate");
@@ -964,6 +994,8 @@ export class OnboardComponent implements OnInit {
       return;
     }
 
+
+
     this.isSubmitting = true;
 
     if (this.blacklisted > 0) {
@@ -1013,26 +1045,90 @@ export class OnboardComponent implements OnInit {
               this.sendThankYouPageEvent();
             }
 
+            // Analytics - User_Attempt_PIN
+            if (!this._currentClient)
+              this._currentClient = this.config.getClient();
+            if (!this._currentAppName)
+              this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+            const gtmTag = {
+              event: 'User_Attempt_PIN',
+              appName: this._currentAppName,
+              clientId: this._currentClient,
+              Category: `Sub_Flow_${this._currentCountry}`,
+              Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
+              Label: 'pin_correct'
+            };
+            this.gtmService.pushTag(gtmTag);
+
           } else {
+
+            // Analytics - User_Attempt_PIN
+            if (!this._currentClient)
+              this._currentClient = this.config.getClient();
+            if (!this._currentAppName)
+              this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+            const gtmTag = {
+              event: 'User_Attempt_PIN',
+              appName: this._currentAppName,
+              clientId: this._currentClient,
+              Category: `Sub_Flow_${this._currentCountry}`,
+              Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
+              Label: 'pin_error'
+            };
+            this.gtmService.pushTag(gtmTag);
+
             this.incorrectPin = true;
             this.isSubmitting = false;
           }
         },
         error => {
+
+          // Analytics - User_Attempt_PIN
+          if (!this._currentClient)
+            this._currentClient = this.config.getClient();
+          if (!this._currentAppName)
+            this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+          const gtmTag = {
+            event: 'User_Attempt_PIN',
+            appName: this._currentAppName,
+            clientId: this._currentClient,
+            Category: `Sub_Flow_${this._currentCountry}`,
+            Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
+            Label: 'pin_error'
+          };
+          this.gtmService.pushTag(gtmTag);
+
+          this.incorrectPin = true;
+          this.isSubmitting = false;
           this.incorrectPin = true;
           this.isSubmitting = false;
         });
   }
 
   sendThankYouPageEvent() {
-    const client = this.config.getClient();
-    const appName = this.sportimoService.getConfigurationFor('appName').en;
+    // const client = this.config.getClient();
+    // const appName = this.sportimoService.getConfigurationFor('appName').en;
+    // const gtmTag = {
+    //   event: 'page',
+    //   appName: appName,
+    //   clientId: client,
+    //   pageRoute: "main/thankyou",
+    //   page: "main/thankyou"
+    // };
+    // this.gtmService.pushTag(gtmTag);
+
+    // Analytics - User_Subscribed
+    if (!this._currentClient)
+      this._currentClient = this.config.getClient();
+    if (!this._currentAppName)
+      this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
     const gtmTag = {
-      event: 'page',
-      appName: appName,
-      clientId: client,
-      pageRoute: "main/thankyou",
-      page: "main/thankyou"
+      event: 'User_Subscribed',
+      appName: this._currentAppName,
+      clientId: this._currentClient,
+      Category: `Sub_Flow_${this._currentCountry}`,
+      Action: `subscription_${this.currentOperator.operatorName.en}`,
+      Label: 'subscription'
     };
     this.gtmService.pushTag(gtmTag);
   }
