@@ -749,6 +749,8 @@ export class OnboardComponent implements OnInit {
       // (this.multiOperatorForm.controls.msisdn.value != '03' ? areaCode : '') +
       this.errorMsg = "";
 
+
+
       let path = window.location.origin + this.router.url.substr(0, this.router.url.indexOf("main"));
       if (this.currentOperator.sessionTPayEnabled) {
         this.tpayService.sessionToken.subscribe((tpaySessionToken) => {
@@ -770,10 +772,38 @@ export class OnboardComponent implements OnInit {
                 }
 
                 this.closeLandingPage();
+
+                // Analytics - User_Enter_MSISDN
+                if (!this._currentClient)
+                  this._currentClient = this.config.getClient();
+                if (!this._currentAppName)
+                  this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+                const gtmTag = {
+                  event: 'User_Enter_MSISDN',
+                  appName: this._currentAppName,
+                  clientId: this._currentClient,
+                  Category: `Sub_Flow_${this._currentCountry}`,
+                  Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
+                  Label: 'EnterMSISDN'
+                };
+                this.gtmService.pushTag(gtmTag);
               }
 
               if (!response.success) {
-                console.log(response.message);
+                // Analytics - User_Attempt_MSISDN
+                if (!this._currentClient)
+                  this._currentClient = this.config.getClient();
+                if (!this._currentAppName)
+                  this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+                const gtmTag = {
+                  event: 'User_Attempt_MSISDN',
+                  appName: this._currentAppName,
+                  clientId: this._currentClient,
+                  Category: `Sub_Flow_${this._currentCountry}`,
+                  Action: `AttemptMSISDN_${this.currentOperator.operatorName.en}`,
+                  Label: 'msisdn_error'
+                };
+                this.gtmService.pushTag(gtmTag);
                 this.msisdnError = true;
                 this.errorMsg = response.message.substring(0, response.message.length - 1);
               }
@@ -804,6 +834,22 @@ export class OnboardComponent implements OnInit {
               }
 
               this.closeLandingPage();
+
+              // Analytics - User_Enter_MSISDN
+              if (!this._currentClient)
+                this._currentClient = this.config.getClient();
+              if (!this._currentAppName)
+                this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+              const gtmTag = {
+                event: 'User_Enter_MSISDN',
+                appName: this._currentAppName,
+                clientId: this._currentClient,
+                Category: `Sub_Flow_${this._currentCountry}`,
+                Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
+                Label: 'EnterMSISDN'
+              };
+              this.gtmService.pushTag(gtmTag);
+
             }
 
             if (!response.success) {
@@ -814,6 +860,22 @@ export class OnboardComponent implements OnInit {
                 this.msisdnError = false;
                 this.errorMsg = null;
               }, 4000);
+
+              // Analytics - User_Attempt_MSISDN
+              if (!this._currentClient)
+                this._currentClient = this.config.getClient();
+              if (!this._currentAppName)
+                this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+              const gtmTag = {
+                event: 'User_Attempt_MSISDN',
+                appName: this._currentAppName,
+                clientId: this._currentClient,
+                Category: `Sub_Flow_${this._currentCountry}`,
+                Action: `AttemptMSISDN_${this.currentOperator.operatorName.en}`,
+                Label: 'msisdn_error'
+              };
+              this.gtmService.pushTag(gtmTag);
+
             }
 
             this.isSubmitting = false;
