@@ -106,7 +106,7 @@ export class HeaderComponent implements OnInit {
         this.showInstallPopup();
       }, 30);
     }
-    // this.showButton = true;
+    this.showButton = true;
     // this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
