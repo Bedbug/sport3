@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
       clearTimeout(this.installPopupTimeout)
       this.installPopupTimeout = setTimeout(() => {
         this.showInstallPopup();
-      }, 30);
+      }, 60);
     } else {
       this.deferredPrompt = e;
       this.showButton = true;
@@ -104,9 +104,9 @@ export class HeaderComponent implements OnInit {
       this.showButton = true;
       this.installPopupTimeout = setTimeout(() => {
         this.showInstallPopup();
-      }, 30);
+      }, 60);
     }
-    this.showButton = true;
+    // this.showButton = true;
     // this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
@@ -138,7 +138,7 @@ export class HeaderComponent implements OnInit {
 
     if (lastShown) {
       var lastShownDateThreshold = new Date(lastShown);
-      lastShownDateThreshold.setMinutes(lastShownDateThreshold.getMinutes() + 1);
+      lastShownDateThreshold.setDays(lastShownDateThreshold.getDays() + 7);
       if (lastShownDateThreshold < now) {
         localStorage.setItem("install_popup_shown", new Date().toString());
         this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});

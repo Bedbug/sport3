@@ -582,10 +582,10 @@ export class OnboardComponent implements OnInit {
     };
     this.gtmService.pushTag(gtmTag);
 
-    // if (this.filteredOperators.length == 1) {
-    //   this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
-    //   this.selectedOperator(this.filteredOperators[0]);
-    // }
+    if (this.filteredOperators.length == 1 && this.availableCountries.length == 1) {
+      this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
+      this.selectedOperator(this.filteredOperators[0]);
+    }
     //  console.log(this.filteredOperators);
   };
 
@@ -593,7 +593,7 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
-    console.log(this.currentOperator);
+   
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
     else
