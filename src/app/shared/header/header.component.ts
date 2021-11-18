@@ -67,7 +67,7 @@ export class HeaderComponent implements OnInit {
       clearTimeout(this.installPopupTimeout)
       this.installPopupTimeout = setTimeout(() => {
         this.showInstallPopup();
-      }, 60);
+      }, 6000);
     } else {
       this.deferredPrompt = e;
       this.showButton = true;
@@ -104,7 +104,7 @@ export class HeaderComponent implements OnInit {
       this.showButton = true;
       this.installPopupTimeout = setTimeout(() => {
         this.showInstallPopup();
-      }, 60);
+      }, 6000);
     }
     // this.showButton = true;
     // this.showInstallPopup();
