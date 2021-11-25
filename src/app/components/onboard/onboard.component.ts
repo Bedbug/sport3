@@ -784,7 +784,7 @@ export class OnboardComponent implements OnInit {
                   clientId: this._currentClient,
                   Category: `Sub_Flow_${this._currentCountry}`,
                   Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
-                  Label: 'EnterMSISDN'
+                  Label: 'EnterMSISDN_'+ this.currentOperator.operatorName.en
                 };
                 this.gtmService.pushTag(gtmTag);
               }
@@ -801,7 +801,7 @@ export class OnboardComponent implements OnInit {
                   clientId: this._currentClient,
                   Category: `Sub_Flow_${this._currentCountry}`,
                   Action: `AttemptMSISDN_${this.currentOperator.operatorName.en}`,
-                  Label: 'msisdn_error'
+                  Label: 'msisdn_error_'+ this.currentOperator.operatorName.en
                 };
                 this.gtmService.pushTag(gtmTag);
                 this.msisdnError = true;
@@ -846,7 +846,7 @@ export class OnboardComponent implements OnInit {
                 clientId: this._currentClient,
                 Category: `Sub_Flow_${this._currentCountry}`,
                 Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
-                Label: 'EnterMSISDN'
+                Label: 'EnterMSISDN_'+ this.currentOperator.operatorName.en
               };
               this.gtmService.pushTag(gtmTag);
 
@@ -872,7 +872,7 @@ export class OnboardComponent implements OnInit {
                 clientId: this._currentClient,
                 Category: `Sub_Flow_${this._currentCountry}`,
                 Action: `AttemptMSISDN_${this.currentOperator.operatorName.en}`,
-                Label: 'msisdn_error'
+                Label: 'msisdn_error_'+ this.currentOperator.operatorName.en
               };
               this.gtmService.pushTag(gtmTag);
 
@@ -973,7 +973,7 @@ export class OnboardComponent implements OnInit {
       clientId: this._currentClient,
       Category: `Sub_Flow_${this._currentCountry}`,
       Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
-      Label: 'EnterMSISDN'
+      Label: 'EnterMSISDN_'+ this.currentOperator.operatorName.en
     };
     this.gtmService.pushTag(gtmTag);
 
@@ -1118,7 +1118,7 @@ export class OnboardComponent implements OnInit {
               clientId: this._currentClient,
               Category: `Sub_Flow_${this._currentCountry}`,
               Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
-              Label: 'pin_correct'
+              Label: 'pin_correct_'+ this.currentOperator.operatorName.en
             };
             this.gtmService.pushTag(gtmTag);
 
@@ -1156,7 +1156,7 @@ export class OnboardComponent implements OnInit {
             clientId: this._currentClient,
             Category: `Sub_Flow_${this._currentCountry}`,
             Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
-            Label: 'pin_error'
+            Label: 'pin_error_'+ this.currentOperator.operatorName.en
           };
           this.gtmService.pushTag(gtmTag);
 
@@ -1190,7 +1190,7 @@ export class OnboardComponent implements OnInit {
       clientId: this._currentClient,
       Category: `Sub_Flow_${this._currentCountry}`,
       Action: `subscription_${this.currentOperator.operatorName.en}`,
-      Label: 'subscription'
+      Label: 'subscription_'+ this.currentOperator.operatorName.en
     };
     this.gtmService.pushTag(gtmTag);
   }
