@@ -51,26 +51,22 @@ try {
     from: [
       '"name": "Sportimo",', 
       '"short_name": "Sportimo",', 
+      'assets/icons/icon-48x48.png', 
       'assets/icons/icon-72x72.png', 
-      'assets/icons/icon-96x96.png',
-      'assets/icons/icon-128x128.png',
-      'assets/icons/icon-144x144.png',
-      'assets/icons/icon-152x152.png',
-      'assets/icons/icon-192x192.png',
-      'assets/icons/icon-384x384.png',
+      'assets/icons/icon-96x96.png',      
+      'assets/icons/icon-144x144.png',      
+      'assets/icons/icon-192x192.png',      
       'assets/icons/icon-512x512.png'
     ],   
     to: [
       '"name": "Kooora Legends",', 
       '"short_name": "Kooora",', 
-      'assets/icons/korek/korek_logo-72x72.png', 
-      'assets/icons/korek/korek_logo-96x96.png', 
-      'assets/icons/korek/korek_logo-128x128.png', 
-      'assets/icons/korek/korek_logo-144x144.png', 
-      'assets/icons/korek/korek_logo-152x152.png', 
-      'assets/icons/korek/korek_logo-192x192.png', 
-      'assets/icons/korek/korek_logo-384x384.png', 
-      'assets/icons/korek/korek_logo-512x512.png'
+      'assets/icons/kooora/icon-48.png', 
+      'assets/icons/kooora/icon-72.png', 
+      'assets/icons/kooora/icon-96.png',       
+      'assets/icons/kooora/icon-144.png',        
+      'assets/icons/kooora/icon-192.png',       
+      'assets/icons/kooora/icon-512.png'
     ],
     countMatches: true,
   };

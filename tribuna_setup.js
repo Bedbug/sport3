@@ -54,26 +54,22 @@ try {
     from: [
       '"name": "Sportimo",', 
       '"short_name": "Sportimo",', 
+      'assets/icons/icon-48x48.png', 
       'assets/icons/icon-72x72.png', 
-      'assets/icons/icon-96x96.png',
-      'assets/icons/icon-128x128.png',
-      'assets/icons/icon-144x144.png',
-      'assets/icons/icon-152x152.png',
-      'assets/icons/icon-192x192.png',
-      'assets/icons/icon-384x384.png',
+      'assets/icons/icon-96x96.png',      
+      'assets/icons/icon-144x144.png',      
+      'assets/icons/icon-192x192.png',      
       'assets/icons/icon-512x512.png'
     ],   
     to: [
       '"name": "Tribuna",', 
       '"short_name": "Tribuna",', 
-      'assets/icons/tribuna/tribuna_logo-72x72.png', 
-      'assets/icons/tribuna/tribuna_logo-96x96.png', 
-      'assets/icons/tribuna/tribuna_logo-128x128.png', 
-      'assets/icons/tribuna/tribuna_logo-144x144.png', 
-      'assets/icons/tribuna/tribuna_logo-152x152.png', 
-      'assets/icons/tribuna/tribuna_logo-192x192.png', 
-      'assets/icons/tribuna/tribuna_logo-384x384.png', 
-      'assets/icons/tribuna/tribuna_logo-512x512.png'
+      'assets/icons/tribuna/icon-48.png', 
+      'assets/icons/tribuna/icon-72.png', 
+      'assets/icons/tribuna/icon-96.png',       
+      'assets/icons/tribuna/icon-144.png',        
+      'assets/icons/tribuna/icon-192.png',       
+      'assets/icons/tribuna/icon-512.png'
     ],
     countMatches: true,
   };
