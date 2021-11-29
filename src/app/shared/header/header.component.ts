@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
       }, 60000);
     }
     // this.showButton = true;
-    // this.showInstallPopup();
+    this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
     this.loginForm = this.formBuilder.group({
@@ -147,6 +147,8 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem("install_popup_shown", new Date().toString());
       this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
     }
+
+    this.ViewModalOverlay.open<InstallPopupComponent>(InstallPopupComponent, {});
   }
 
   checkUserStatus() {
