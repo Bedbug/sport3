@@ -1135,7 +1135,7 @@ export class OnboardComponent implements OnInit {
               clientId: this._currentClient,
               Category: `Sub_Flow_${this._currentCountry}`,
               Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
-              Label: 'pin_error'+ this.currentOperator.operatorName.en
+              Label: 'pin_error_'+ this.currentOperator.operatorName.en
             };
             this.gtmService.pushTag(gtmTag);
 
