@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit {
       }, 60000);
     }
     // this.showButton = true;
-    this.showInstallPopup();
+    // this.showInstallPopup();
 
     $.getScript('assets/js/script.js');
     this.loginForm = this.formBuilder.group({

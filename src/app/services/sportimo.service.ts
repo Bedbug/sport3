@@ -104,6 +104,7 @@ export class SportimoService {
 
   getConfigurationFor(key: string | number) {
     // console.log(key); 
+    // console.log(this.configuration);
     if (!this.configuration.value)
       return null;
 

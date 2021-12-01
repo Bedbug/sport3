@@ -20,8 +20,9 @@ export class InstallPopupComponent implements OnInit {
     private sportimoService:SportimoService) { }
 
   ngOnInit(): void {
-
-    this.appName = this.sportimoService.getConfigurationFor('appName');
+    console.log();
+    
+    this.appName = this.sportimoService.getConfigurationFor('appName').en;
     // this.sportimoService.configuration.subscribe(data=>{
     //   this.appname = data.appName;
     //   this.useWallet = !data.disableWallet;
