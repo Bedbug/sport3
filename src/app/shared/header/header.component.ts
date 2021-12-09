@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
   Utils: SportimoUtils = new SportimoUtils();
   useWallet: boolean = false;
   installPopupTimeout: any;
+  useInstallButton: false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,9 +66,10 @@ export class HeaderComponent implements OnInit {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
       clearTimeout(this.installPopupTimeout)
-      this.installPopupTimeout = setTimeout(() => {
-        this.showInstallPopup();
-      }, 60000);
+      if (this.useInstallButton)
+        this.installPopupTimeout = setTimeout(() => {
+          this.showInstallPopup();
+        }, 300000);
     } else {
       this.deferredPrompt = e;
       this.showButton = true;
@@ -102,9 +104,10 @@ export class HeaderComponent implements OnInit {
     if (defPrompt) {
       this.deferredPrompt = defPrompt;
       this.showButton = true;
-      this.installPopupTimeout = setTimeout(() => {
-        this.showInstallPopup();
-      }, 60000);
+      if (this.useInstallButton)
+        this.installPopupTimeout = setTimeout(() => {
+          this.showInstallPopup();
+        }, 300000);
     }
     // this.showButton = true;
     // this.showInstallPopup();
@@ -125,8 +128,8 @@ export class HeaderComponent implements OnInit {
     this.sportimoService.configuration.subscribe(data => {
       this.appname = data.appName;
       this.useWallet = !data.disableWallet;
-      console.log("Wallet:" + this.useWallet);
-
+      // console.log("Wallet:" + this.useWallet);
+      this.useInstallButton = data.installButton;
     })
 
     this.checkUserStatus();

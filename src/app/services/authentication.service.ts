@@ -367,7 +367,15 @@ export class AuthenticationService {
         if (!this.currentUserSubject.value.subscriptionEnd)
             return false;
             
-        return moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate();
+        return moment().utc().toDate() <= moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate();
+    }
+
+    // https://clientserver-3.herokuapp.com/client-api/v1/users/blaise/validate-subscription
+    validateUserSubscription() {
+        return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/blaise/validate-subscription`)
+            .pipe(map(response => {
+                return response.success;
+            }));
     }
 
     /*-----------------------------------------------------------------------------------

@@ -16,7 +16,7 @@
            
                 <!-- <div class="nav-right col"> -->
                   
-                    <button (click)="addToHomeScreen()" class="install-button" [class.not-active]="!showButton">
+                    <button *ngIf="useInstallButton" (click)="addToHomeScreen()" class="install-button" [class.not-active]="!showButton">
                         <!-- <div class="icn-install-small" style="height: 29px;width: 32px;"></div> -->
                         <span translate>install_button</span>
                     </button>

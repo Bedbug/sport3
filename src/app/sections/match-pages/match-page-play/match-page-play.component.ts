@@ -102,13 +102,15 @@ export class MatchPagePlayComponent implements OnInit {
     this.authenticationService.currentUser
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(user => {
-
-       
-        
+     
         if (user != null) {
           // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
-          this.subscribed = this.authenticationService.isSubscribed;
-          console.log("user is:"+user);
+          // this.subscribed = this.authenticationService.isSubscribed;
+          this.authenticationService.validateUserSubscription().subscribe(x=>{
+            // console.log("Sub:"+x);
+            this.subscribed = x;
+          })
+          // console.log("user is:"+user);
         }
       })
 
