@@ -57,6 +57,7 @@ export class MatchPagePlayComponent implements OnInit {
   // sticky: boolean = false;
   // menuPosition: any;
   subscribed: boolean;
+  checkingSubscription: boolean = true;
   ngUnsubscribe = new Subject();
   hasClickedPlay: boolean = false;
   hasJoinedContest: string;
@@ -98,7 +99,8 @@ export class MatchPagePlayComponent implements OnInit {
 
     this.hasJoinedContest = localStorage.getItem("hasClickedCard");
     this.showPlayCardsPop = !this.hasJoinedContest;
-
+    this.checkingSubscription = true;
+    
     this.authenticationService.currentUser
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(user => {
@@ -109,6 +111,7 @@ export class MatchPagePlayComponent implements OnInit {
           this.authenticationService.validateUserSubscription().subscribe(x=>{
             // console.log("Sub:"+x);
             this.subscribed = x;
+            this.checkingSubscription = false;
           })
           // console.log("user is:"+user);
         }

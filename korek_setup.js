@@ -60,7 +60,7 @@ try {
     ],   
     to: [
       '"name": "Captain Korek",', 
-      '"short_name": "Korek",', 
+      '"short_name": "Captain Korek",', 
       'assets/icons/korek/korek_logo-72x72.png', 
       'assets/icons/korek/korek_logo-96x96.png',       
       'assets/icons/korek/korek_logo-144x144.png',       
