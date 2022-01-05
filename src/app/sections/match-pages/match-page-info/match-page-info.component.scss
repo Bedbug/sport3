@@ -6,6 +6,12 @@
     width: 100%;
 }
 
+.altered-events{
+    padding: 0 20px;
+    color: yellow;
+}
+
+
 
 .timeline {
   margin-top: 10px;
@@ -73,6 +79,10 @@
 
 .event.event-border{
     border: 1px solid;
+}
+
+.event.cancelled{
+    background-color: #ff00002e;
 }
 
 .time{

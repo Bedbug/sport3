@@ -527,3 +527,22 @@
 .irs-single {
   background: $theme-color !important;
 }
+
+.activation-info{
+  text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.activation-info .icn-info{
+  background: url(~src/assets/images/sportimo/icon-info.svg) no-repeat center center !important;
+  filter: invert(86%) sepia(100%) saturate(0%) hue-rotate(
+275deg
+) brightness(109%) contrast(102%);
+
+//   filter: invert(86%) sepia(100%) saturate(0%) hue-rotate(
+// 275deg
+// ) brightness(109%) contrast(102%) !important;
+}

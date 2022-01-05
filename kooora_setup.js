@@ -60,7 +60,7 @@ try {
     ],   
     to: [
       '"name": "Kooora Legends",', 
-      '"short_name": "Kooora",', 
+      '"short_name": "Kooora Legends",', 
       'assets/icons/kooora/icon-48.png', 
       'assets/icons/kooora/icon-72.png', 
       'assets/icons/kooora/icon-96.png',       

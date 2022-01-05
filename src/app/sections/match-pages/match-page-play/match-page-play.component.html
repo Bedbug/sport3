@@ -285,6 +285,9 @@
                     translate>Cancel</button>
                 </li>
               </ul>
+              <div  *ngIf="selectedCard?.cardType!='Overall'" class="activation-info">
+                <i class="icn-info pull-left" style="height: 20px; width: 20px; padding: 0 14px;"></i><span translate>activation-warning</span>
+              </div>
             </div>
           </div>
           <div class="top-drawer" [class.active]="optionSelected">

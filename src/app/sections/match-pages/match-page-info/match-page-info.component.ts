@@ -58,6 +58,8 @@ export class MatchPageInfoComponent implements OnInit {
   Utils: SportimoUtils = new SportimoUtils();
   liveMatch: LiveMatch;
   ngUnsubscribe = new Subject();
+  alteredEvents = false;
+  alteredEventsVar = false;
 
   constructor(
     private sportimoService: SportimoService,
@@ -98,6 +100,19 @@ export class MatchPageInfoComponent implements OnInit {
     let own_goal = 0;
     xarray.forEach(element => {
       element.forEach(event => {
+
+        // if(event.type =='Goal')
+        //   event.status = "cancelled";
+
+        //   if(event.type =='Offside')
+        //   event.status = "var";
+
+        if(event.status == 'var')
+          this.alteredEventsVar = true;
+
+          if(event.status == 'removed')
+          this.alteredEvents = true;
+
         if (own_goal == 1 && event.type == 'Goal') {
           own_goal = 0;
           event.own = true;

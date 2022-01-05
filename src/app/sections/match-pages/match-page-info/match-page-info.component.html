@@ -4,6 +4,8 @@
       <div class="scroll-area">
         <app-stats></app-stats>
         <div class="card timeline">
+          <div *ngIf="alteredEvents" class="altered-events" translate>warning-altered</div>
+          <div *ngIf="alteredEventsVar" class="altered-events" translate>warning-var</div>
           <div class="card-body">
             <div *ngIf="liveMatch.matchData.state == 0" class="text-white text-center">
               <span translate>The match hasn't started yet</span>
@@ -39,12 +41,12 @@
 
                   <!-- ALL CARDS -->
                   <li 
-                  [style.display]="(event.status == 'active' || event.status == 'var'|| !event.status ) && event.type!='Own_Goal'?'block':'none'"
+                  [style.display]="(event.status == 'active' || event.status == 'removed' || event.status == 'var'|| !event.status ) && event.type!='Own_Goal'?'block':'none'"
                   class="event col" [@items]="event.type=='Substitution'" *ngFor="let event of timelineEvents"
-                    [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)" >
+                    [class.substitution]="event.type=='Substitution'" [class.event-border]="isSegment(event.type)" [class.cancelled]="event.status=='var' || event.status=='removed'">
                   
                     <div *ngIf="event.type!='Substitution'" class="container" (click)="showCardDetails(event._id)">
-                      <div class="row" [style.opacity]="event.status=='var'?0.3:1">                     
+                      <div class="row" [style.opacity]="event.status=='var' || event.status=='removed'?0.3:1">                     
                         <div class="time" *ngIf="Utils.shouldShow(event.type,1)">
                           {{Utils.parseNumbers(event.time.toString(),this.translate.currentLang == 'fa')+"'"}}
                         </div>
@@ -65,7 +67,7 @@
                       </div>
                       <div *ngIf="Utils.shouldShow(event.type,1) && showEventTime==event._id" class="event-time"><span translate>Timestamp</span> {{event.created | date:"hh:mm:ss"}}
                       </div>
-                      <div *ngIf="event.status=='var'" class="var-tag" translate>VAR - Canceled</div>
+                      <div *ngIf="event.status=='var'" class="var-tag" translate>VAR - Cancelled</div>
                     </div>
 
 
