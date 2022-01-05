@@ -14,6 +14,7 @@ export class CardInfoPopupComponent implements OnInit {
 
   sportUtils: SportimoUtils = new SportimoUtils();
   cardData: any;
+  contactBox = false;
 
   constructor( 
     private sportimoService: SportimoService, 
@@ -37,6 +38,15 @@ export class CardInfoPopupComponent implements OnInit {
     if (text)
       return text.replace("[[home_team_name]]", home_team).replace('[[away_team_name]]', away_team);
     else return "__missing text";
+  }
+
+  openContactBox(){
+    this.contactBox = true;
+  }
+
+  openZendesk(){
+    console.log("zendeskTicket");
+    this.dialogRef.close();
   }
 
 

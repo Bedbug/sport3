@@ -1,7 +1,8 @@
 @import "src/variables.scss";
 
 .contest-info-container {
-  display: table;
+  display: none;
+  // display: table;
   width: 100%;
   padding-bottom: 5px;
 }

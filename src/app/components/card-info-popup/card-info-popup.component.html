@@ -37,6 +37,23 @@
     <div *ngIf="!cardData.wonTime" class="card-data">{{cardData.activationTime | date:"hh:mm:ss"}} - {{cardData.terminationTime | date:"hh:mm:ss"}}</div>
     <div *ngIf="cardData.wonTime" class="card-data-title" translate>Win event occured at:</div>
     <div *ngIf="cardData.wonTime" class="card-data">{{cardData.wonTime | date:"hh:mm:ss"}}</div>
+    
   </div>
-  <div class="popup-card-header" style="height:15px;"></div>
+  <div *ngIf="(cardData.status == 2 && !cardData.wonTime) && !contactBox" class="popup-card-header" style="height:50px;">
+    <div style="text-align: center;"><button (click)="openContactBox()" class="btn btn-sportimo">Why did I lose it?</button></div>    
+  </div>
+  <div *ngIf="contactBox" class="popup-card-header" style="height:200px; overflow-y: scroll;">
+    <div class="contact-box-info">
+      Why did I lose it?<br><br>
+      The event you played a card for must occur during <span class="highlight-text">active card time</span>
+      If there was a relevant event that occured around the time of your card, please do the following: <br><br>
+      <ul>
+        <li>&bull; Check the valid period of your card in your <span class="highlight-text">lost card tab</span></li>
+        <li>&bull; Tap the event you think is relevant to your card, in the <span class="highlight-text">Match info</span> tab to reveal the <span class="highlight-text">event timestamp</span></li>        
+      </ul><br>
+      The event timestamp must fall exactly during the active card Time<br>
+      If youstill have doubts about a lost card, please contact us
+    </div>
+    <div style="text-align: center;"><button (click)="openZendesk()" class="btn btn-sportimo">Contact us</button></div>    
+  </div>
 </div>
