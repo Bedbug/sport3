@@ -92,6 +92,26 @@
       Please rotate your device. -->
     </div>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
+    <!-- Start of gugroupsupport Zendesk Widget script -->
+    <div id="snip">
+      <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=559d1857-5f01-46ce-9397-c9e45792d3b5">
+
+      </script>
+    </div>
+
+
+    <script type="text/javascript">
+
+      setTimeout(() => {
+        console.log(zE);
+        // zE('messenger', 'open');
+        // zE('webWidget:on', 'open', function () {
+        //   console.log('The widget has been opened!');
+        // });
+      }, 3000);
+
+    </script>
+    <!-- End of gugroupsupport Zendesk Widget script -->
 </body>
 <script type="text/javascript">
   // Detect whether device supports orientationchange event, otherwise fall back to
@@ -122,15 +142,15 @@
   }, false);
 
   let defPrompt;
-  
+
   window.addEventListener('beforeinstallprompt', (e) => {
     console.log(e);
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  defPrompt = e;
-  
-});
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    defPrompt = e;
+
+  });
 </script>
 
 </html>

@@ -19,6 +19,7 @@ import { TpayService } from 'src/app/services/tpay.service';
 
 
 declare var Pace: any;
+declare var zE;
 
 @Component({
   selector: 'app-onboard',
@@ -180,6 +181,11 @@ export class OnboardComponent implements OnInit {
 
   ngOnInit() {
 
+    setTimeout(() => {
+      var el = document.querySelector('[role="presentation"]');
+      el.classList.add("zEHide");
+      // zE('messenger', 'open');
+    }, 100);
     // Get Value From local
     // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
     // if (parsedFirst != null){
