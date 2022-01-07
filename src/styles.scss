@@ -42,9 +42,14 @@ strong {
   -webkit-overflow-scrolling: touch;
   margin: 0;
 }
-.zEHide {
-  display: none !important;
+.zEShow {
+  display: block !important;
 }
+
+div[role="presentation"] {
+  display: none ;
+}
+
 .background {
   display: block;
   position: absolute;

@@ -4,6 +4,7 @@ import { FILE_PREVIEW_DIALOG_DATA } from 'src/app/sections/main/prize-view-overl
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
+declare var zE;
 
 @Component({
   selector: 'app-card-info-popup',
@@ -29,6 +30,7 @@ export class CardInfoPopupComponent implements OnInit {
   }
 
   close() {
+   
     this.dialogRef.close();
   }
 
@@ -45,8 +47,16 @@ export class CardInfoPopupComponent implements OnInit {
   }
 
   openZendesk(){
-    console.log("zendeskTicket");
-    this.dialogRef.close();
+    
+    var el = document.querySelector('[role="presentation"]');
+      el.classList.add("zEShow");      
+      zE('messenger', 'open');
+    // this.dialogRef.close();
+  }
+
+  ngOnDestroy(){
+    var el = document.querySelector('[role="presentation"]');
+    el.classList.remove("zEShow");
   }
 
 

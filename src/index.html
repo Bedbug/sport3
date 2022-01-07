@@ -92,6 +92,15 @@
       Please rotate your device. -->
     </div>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
+
+    <!-- <script>
+      function test(){
+        
+        var el = document.querySelector('[role="presentation"]');
+        console.log(el);
+      }
+    </script> -->
+
     <!-- Start of gugroupsupport Zendesk Widget script -->
     <div id="snip">
       <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=559d1857-5f01-46ce-9397-c9e45792d3b5">
@@ -99,8 +108,17 @@
       </script>
     </div>
 
+    <script>
+      var oB=document.getElementById('ze-snippet');
+      console.log(oB);
+      oB.onload=function(){
+        console.log("Now");
+        var el = document.querySelector('[role="presentation"]');
+        console.log(el);
+      }
+  </script>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
 
       setTimeout(() => {
         console.log(zE);
@@ -110,7 +128,7 @@
         // });
       }, 3000);
 
-    </script>
+    </script> -->
     <!-- End of gugroupsupport Zendesk Widget script -->
 </body>
 <script type="text/javascript">
