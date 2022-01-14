@@ -28,6 +28,8 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 export class GrandPrizeComponent implements OnInit {
 
   prize: GrandPrize;
+  prizeDetailImage: String;
+
   countdown: any = {
     days: 0,
     hours: 0,
@@ -55,7 +57,11 @@ export class GrandPrizeComponent implements OnInit {
     .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(data => {
         if (data != null && data.length > 0) {
-          this.prize = data.find(each=>each.isMajor==true) || data[0];        
+          this.prize = data.find(each=>each.isMajor==true) || data[0];   
+          // 5fca19d9b7eb6600172b4e73     
+          this.prizeDetailImage = this.prize?.promoDetailImage || './assets/images/contest-bg.png';
+          console.log("----------");
+          console.log(this.prizeDetailImage);
           
           this.startCountdownTimer();
 
@@ -69,6 +75,8 @@ export class GrandPrizeComponent implements OnInit {
               this.userChances = 0;
           })
 
+        }else{
+          this.prizeDetailImage = './assets/images/contest-bg.png';
         }
       })
   }
