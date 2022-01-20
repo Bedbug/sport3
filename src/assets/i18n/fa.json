@@ -226,6 +226,7 @@
 	"Your chances:": "شانس‌های شما: ",
 	"Your points:": "امتیازهای شما",
 	"_action": "",
+	"activation-warning": "",
 	"arabic": "عربی",
 	"availableCards": "کارتهای فعال",
 	"availableCardsText": " هر کارت فعال برای یک پیش بینی می باشد ",
@@ -236,6 +237,7 @@
 	"card-activating-preset": "فعال کردن کارت پیش فرض",
 	"card-live": "کارت زنده",
 	"card-paused": " کارت متوقف شد",
+	"card_activation_info": "",
 	"cards-locked_message": "به زودی می توانید دوباره بازی کنید",
 	"cards-locked_title": "مسابقه توسط داورمتوقف شده است",
 	"coinsToPlay": "سکه برای بازی",
@@ -353,6 +355,8 @@
 	"verifying_unique": "راستی آزمایی",
 	"vipMatch": "مسابقه خواص",
 	"vipMatchAwards": "جایزه مسابقه خواص",
+	"warning-altered": "",
+	"warning-var": "",
 	"x2": "دو برابر",
 	"{{this": {
 		"errorMsg}}": ""

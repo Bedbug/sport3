@@ -226,6 +226,7 @@
 	"Your chances:": "Vos chances: ",
 	"Your points:": "Vos points:",
 	"_action": "",
+	"activation-warning": "",
 	"arabic": "arabe",
 	"availableCards": "Cartes Disponibles",
 	"availableCardsText": "Voici les cartes disponibles restantes (Live et 90-minutes) pour jouer pendant ce match",
@@ -236,6 +237,7 @@
 	"card-activating-preset": "Activation dans: {{value}}'",
 	"card-live": "En Direct",
 	"card-paused": "En pause",
+	"card_activation_info": "",
 	"cards-locked_message": "",
 	"cards-locked_title": "",
 	"coinsToPlay": "{{value}} pièces à Jouer",
@@ -353,6 +355,8 @@
 	"verifying_unique": "",
 	"vipMatch": "Match VIP:",
 	"vipMatchAwards": "Ce match VIP récompense:",
+	"warning-altered": "",
+	"warning-var": "",
 	"x2": "x2",
 	"{{this": {
 		"errorMsg}}": ""

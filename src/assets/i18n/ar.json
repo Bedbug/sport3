@@ -226,6 +226,7 @@
 	"Your chances:": "فرصك: ",
 	"Your points:": "نقاطك: ",
 	"_action": "",
+	"activation-warning": "",
 	"arabic": "عربي",
 	"availableCards": "البطاقات المتاحة",
 	"availableCardsText": "هذه هي البطاقات المتاحة والمتبقية (مباشرة و لـ90 دقيقة) التي يمكنك لعبها خلال هذه المباراة",
@@ -236,6 +237,7 @@
 	"card-activating-preset": "{{value}}: تفعيل خلال",
 	"card-live": "مباشر",
 	"card-paused": "توقيف مؤقت",
+	"card_activation_info": "",
 	"cards-locked_message": "ستتمكن من اللعب مرة أخرى بعد فترة  قصيرة",
 	"cards-locked_title": "الحكم أوقف المباراة مؤقتا",
 	"coinsToPlay": "عملة لتلعب {{value}}",
@@ -353,6 +355,8 @@
 	"verifying_unique": "التحقق من الرابط المميز",
 	"vipMatch": ":VIP مباراة",
 	"vipMatchAwards": ":هذه VIP مكافآت مباراة الـ",
+	"warning-altered": "",
+	"warning-var": "",
 	"x2": "x2",
 	"{{this": {
 		"errorMsg}}": ""

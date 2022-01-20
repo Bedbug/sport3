@@ -226,6 +226,7 @@
 	"Your chances:": "Ваш результат: ",
 	"Your points:": "Ваш результат: ",
 	"_action": "",
+	"activation-warning": "",
 	"arabic": "",
 	"availableCards": "Доступные карты",
 	"availableCardsText": "Это имеющиеся у вас Карты (Live и Основного времени), которые вы можете разыграть в течение этого матча",
@@ -236,6 +237,7 @@
 	"card-activating-preset": "Минута активации: {{value}}'",
 	"card-live": "Сыграно карт LIVE",
 	"card-paused": "На паузе",
+	"card_activation_info": "",
 	"cards-locked_message": "",
 	"cards-locked_title": "",
 	"coinsToPlay": "Играть за {{value}} монет",
@@ -353,6 +355,8 @@
 	"verifying_unique": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Награды за этот VIP Матч:",
+	"warning-altered": "",
+	"warning-var": "",
 	"x2": "x2",
 	"{{this": {
 		"errorMsg}}": ""

@@ -226,6 +226,7 @@
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
 	"_action": "",
+	"activation-warning": "",
 	"arabic": "",
 	"availableCards": "Қолжетімді карталар",
 	"availableCardsText": "Бұл осы матч бойы ойнатыла алатын сізде бар карталар (Негізгі жəне Live карталары)",
@@ -236,6 +237,7 @@
 	"card-activating-preset": " Активация минутасы: {{value}}'",
 	"card-live": "Ойналған LIVE карталар",
 	"card-paused": "Тоқтап тұр",
+	"card_activation_info": "",
 	"cards-locked_message": "",
 	"cards-locked_title": "",
 	"coinsToPlay": "{{value}} тиынға ойнау",
@@ -353,6 +355,8 @@
 	"verifying_unique": "",
 	"vipMatch": "VIP Матч:",
 	"vipMatchAwards": "Осы VIP Матчқа арналған марапаттар:",
+	"warning-altered": "",
+	"warning-var": "",
 	"x2": "x2",
 	"{{this": {
 		"errorMsg}}": ""

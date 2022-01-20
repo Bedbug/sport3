@@ -59,9 +59,7 @@ export class GrandPrizeComponent implements OnInit {
         if (data != null && data.length > 0) {
           this.prize = data.find(each=>each.isMajor==true) || data[0];   
           // 5fca19d9b7eb6600172b4e73     
-          this.prizeDetailImage = this.prize?.promoDetailImage || './assets/images/contest-bg.png';
-          console.log("----------");
-          console.log(this.prizeDetailImage);
+          this.prizeDetailImage = this.prize?.promoDetailImage || './assets/images/contest-bg.png';          
           
           this.startCountdownTimer();
 

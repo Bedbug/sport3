@@ -5,7 +5,6 @@
 	"About Sportimo": "About",
 	"Account Suspended": "Account suspended. Contact Support.",
 	"Achievements": "Achievements",
-	"activation-warning":" Card will be activated after 20 seconds",
 	"Activate powerups:": "Activate powerups:",
 	"Activation timestamp:": "Activation time",
 	"Add to favorites": "Add to My Teams",
@@ -227,6 +226,7 @@
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
 	"_action": "",
+	"activation-warning": " Card will be activated after 20 seconds",
 	"arabic": "Arabic",
 	"availableCards": "Available Cards",
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
@@ -237,6 +237,7 @@
 	"card-activating-preset": "Activating in: {{value}}'",
 	"card-live": "Live",
 	"card-paused": "Paused",
+	"card_activation_info": "Card will be activated after 20 seconds",
 	"cards-locked_message": "You will be able to play again soon",
 	"cards-locked_title": "The match is paused by the referee",
 	"coinsToPlay": "{{value}} coins to Play",
@@ -350,12 +351,12 @@
 		"2": "Tap to play a 'Goal' card"
 	},
 	"upto": "Up to ",
-	"warning-altered":"Warning: Events in this match were changed or cancelled. Your final score might be affected.",
-	"warning-var":"Warning: One or more events in this match were cancelled or changed status because of a referee decision. Your final score might be affected.",
 	"verifying_process": "Verifying Subscription",
 	"verifying_unique": "Verifying Unique Link",
 	"vipMatch": "VIP Match:",
 	"vipMatchAwards": "This VIP match awards:",
+	"warning-altered": "Warning: Events in this match were changed or cancelled. Your final score might be affected.",
+	"warning-var": "Warning: One or more events in this match were cancelled or changed status because of a referee decision. Your final score might be affected.",
 	"x2": "x2",
 	"{{this": {
 		"errorMsg}}": ""

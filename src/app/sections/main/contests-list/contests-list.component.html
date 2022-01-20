@@ -109,7 +109,7 @@
       </div>
     </div>
   </div>
-
+  
   <div [@staggerAnimation]="contests?.length">
     <div class="col-sm-12 p-0 contest-list-item" *ngFor="let contest of contests; let i = index">
       <div class=" contest-item-container" tab-index="0" (click)="ContestClicked(contest?._id)">

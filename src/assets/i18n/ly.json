@@ -204,7 +204,7 @@
 	"Username is required": "",
 	"Username must be atleast 5 characters long": "",
 	"Username/Email": "",
-	"VAR - Canceled": "",
+	"VAR - Cancelled": "",
 	"W": "",
 	"Weight": "",
 	"Welcome to Sportimo!": "",
@@ -226,6 +226,7 @@
 	"Your chances:": "",
 	"Your points:": "",
 	"_action": "",
+	"activation-warning": "",
 	"arabic": "",
 	"availableCards": "",
 	"availableCardsText": "",
@@ -236,6 +237,7 @@
 	"card-activating-preset": "",
 	"card-live": "",
 	"card-paused": "",
+	"card_activation_info": "",
 	"cards-locked_message": "",
 	"cards-locked_title": "",
 	"coinsToPlay": "",
@@ -353,6 +355,8 @@
 	"verifying_unique": "",
 	"vipMatch": "",
 	"vipMatchAwards": "",
+	"warning-altered": "",
+	"warning-var": "",
 	"x2": "",
 	"{{this": {
 		"errorMsg}}": ""
