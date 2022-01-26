@@ -284,8 +284,8 @@
                   <button [disabled]="isSubmitingCard" (click)="cancelAll()" class="btn btn-default"
                     translate>Cancel</button>
                 </li>
-              </ul>
-              <div  *ngIf="selectedCard?.cardType!='Overall'" class="activation-info">
+              </ul>              
+              <div  *ngIf="selectedCard?.cardType!='Overall' && liveMatch.matchData.state > 0" class="activation-info">
                 <i class="icn-info pull-left" style="height: 20px; width: 20px; padding: 0 14px;"></i><span translate>activation-warning</span>
               </div>
             </div>

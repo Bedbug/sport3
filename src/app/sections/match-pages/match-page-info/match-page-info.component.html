@@ -56,7 +56,7 @@
                         <div class="col">
                           <p class="type">{{translate.instant(event.type)}} <span class="own-goal" *ngIf="event.own" translate>Own_Goal</span></p>
                           <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
-                            <div>
+                            <div *ngIf="event.players[0] && event.players[0].name">
                               {{Utils.shouldShow(event.type,event.players.length > 0?event.players[0].name[translate.currentLang]|| event.players[0].name['en']:'')}}
                             </div>
                           </div>
@@ -82,11 +82,11 @@
                         </div>
                         <div class="col">
                           <p class="type">{{translate.instant(event.type)}}</p>
-                          <div *ngIf="event.players && event.players.length>0" [@fadein] class="player">
+                          <div *ngIf="event.players && event.players.length>0 && event.players[0] && event.players[0].name" [@fadein] class="player">
                             <div class="sub-icon icn-arrow-out"></div>
                             {{event.players[0].name[translate.currentLang] || event.players[0].name['en']}}
                           </div>
-                          <div *ngIf="event.players && event.players.length>1" [@fadein] class="player">
+                          <div *ngIf="event.players && event.players.length>1 && event.players[1] && event.players[1].name" [@fadein] class="player">
                             <div class="sub-icon icn-arrow-in"></div>
                             {{event.players[1].name[translate.currentLang] || event.players[1].name['en']}}
                           </div>
