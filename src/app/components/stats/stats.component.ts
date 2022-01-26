@@ -9,17 +9,17 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss'],
-  animations:[
-    trigger('valueChange',[
+  animations: [
+    trigger('valueChange', [
       transition('* => *', [
-        style({ transform: 'scale(1)', color: 'white'}),  // initial
-        animate('200ms ease-out',  keyframes([
-          style({ transform: 'scale(1.4)',color: 'yellow' , offset:0.7}),  // final
-          style({ transform: 'scale(1)', color:'white', offset:1})  // final
+        style({ transform: 'scale(1)', color: 'white' }),  // initial
+        animate('200ms ease-out', keyframes([
+          style({ transform: 'scale(1.4)', color: 'yellow', offset: 0.7 }),  // final
+          style({ transform: 'scale(1)', color: 'white', offset: 1 })  // final
         ])
-      )
-    ])
-  ])]
+        )
+      ])
+    ])]
 })
 export class StatsComponent implements OnInit {
 
@@ -27,17 +27,21 @@ export class StatsComponent implements OnInit {
   awayKit: string;
   liveMatch: LiveMatch;
   Utils: SportimoUtils = new SportimoUtils();
+  home_id: string;
+  away_id: string;
 
-  constructor(private sportimoService: SportimoService,public translate: TranslateService,) { }
+  constructor(private sportimoService: SportimoService, public translate: TranslateService,) { }
 
   ngOnInit() {
     this.sportimoService.getCurrentLiveMatchData().subscribe(match => {
-     
+
       if (match) {
-        
+
         this.liveMatch = match;
         this.homeKit = match.matchData.home_team.logo;
         this.awayKit = match.matchData.away_team.logo;
+        this.home_id = match.matchData.home_team._id;
+        this.away_id = match.matchData.away_team._id;
       }
     })
   }
@@ -47,17 +51,24 @@ export class StatsComponent implements OnInit {
       return 0;
 
     let teamObject = this.liveMatch.matchData.stats.find(x => x.name == team);
+
+    if (!teamObject) {
+      if (team == "home_team")
+        teamObject = this.liveMatch.matchData.stats.find(x => x.id == this.home_id);
+      else
+        teamObject = this.liveMatch.matchData.stats.find(x => x.id == this.away_id);
+    }
     if (teamObject)
       return this.parseNumbers(teamObject[stat]) || this.parseNumbers("0");
     else
       return this.parseNumbers("0");
   }
 
-  parseNumbers(text:string){
+  parseNumbers(text: string) {
     // console.log(text);
-    if(!text)
-    text = "0";
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+    if (!text)
+      text = "0";
+    return this.Utils.parseNumbers(text, this.translate.currentLang == 'fa');
   }
 
 }
