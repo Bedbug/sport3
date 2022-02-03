@@ -2409,8 +2409,7 @@
         }
     };
    
-    $.fn.ionRangeSlider = function (options) {
-        console.log(options);
+    $.fn.ionRangeSlider = function (options) {        
         return this.each(function() {
             if (!$.data(this, "ionRangeSlider")) {
                 $.data(this, "ionRangeSlider", new IonRangeSlider(this, options, plugin_count++));
