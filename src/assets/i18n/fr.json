@@ -172,6 +172,7 @@
 	"Second_Half_Starts": "Le Deuxième mi-temps Commence",
 	"Select Avatar": "Sélectionner l’Avatar",
 	"Select Country": "Sélectionnez le pays",
+	"Select Language": "",
 	"Select Operator": "Sélectionnez l'Opérateur",
 	"Server Activation time:": "Temps d'Activation du Serveur",
 	"Settings": "Réglages",
@@ -225,8 +226,8 @@
 	"You need to have an active subscription in order to play cards": "Vous devez avoir un abonnement actif pour pouvoir jouer aux cartes",
 	"Your chances:": "Vos chances: ",
 	"Your points:": "Vos points:",
-	"_action": "",
 	"activation-warning": "",
+	"ar": "",
 	"arabic": "arabe",
 	"availableCards": "Cartes Disponibles",
 	"availableCardsText": "Voici les cartes disponibles restantes (Live et 90-minutes) pour jouer pendant ce match",
@@ -243,6 +244,7 @@
 	"coinsToPlay": "{{value}} pièces à Jouer",
 	"contest_loc_key": "Concours",
 	"dailybonus_text": "",
+	"en": "",
 	"english": "anglais",
 	"enterMobilePhone": "Entrez le numéro de téléphone mobile",
 	"errors": {
@@ -282,9 +284,11 @@
 		"10006": "",
 		"10007": "Pas de power ups disponibles"
 	},
+	"fa": "",
 	"faq_header": "",
 	"faq_title": "",
 	"farsi": "فارسی",
+	"fr": "",
 	"french": "",
 	"grandprize_loc_key": "Prix Mensuel",
 	"install-header": "",
@@ -293,7 +297,9 @@
 	"joinMatchInfo": "Vous avez besoin de {{value}} pièces pour participer au match.",
 	"joinMatchNoCoins": "Vous n'avez pas assez de pièces pour participer. Souhaitez-vous acheter les pièces supplémentaires maintenant",
 	"joinMatchNoCoinsNoInApp": "",
+	"ju": "",
 	"kazzach": "Қазақ тілі",
+	"ku": "",
 	"kurdish": "",
 	"matchFreePlay": "Libre de jouer",
 	"msisdnChecks": {
@@ -311,6 +317,7 @@
 	"onDemandResponseText": "Merci pour votre tentative d'achat. Vous serez bientôt informé sur le résultat de la transaction",
 	"pin_sent": "<fort>PIN envoyé!</fort> Veuillez allouer 2 minutes d'attente pour le recevoir",
 	"pts": " pts",
+	"ru": "",
 	"russian": "Русский",
 	"slidetextl": {
 		"100": "",
@@ -357,8 +364,5 @@
 	"vipMatchAwards": "Ce match VIP récompense:",
 	"warning-altered": "",
 	"warning-var": "",
-	"x2": "x2",
-	"{{this": {
-		"errorMsg}}": ""
-	}
+	"x2": "x2"
 }

@@ -172,6 +172,7 @@
 	"Second_Half_Starts": "الشوط الثاني يبدأ",
 	"Select Avatar": "اختر صورة رمزية خاصة بك",
 	"Select Country": "اختر البلد",
+	"Select Language": "",
 	"Select Operator": "اختر مزود الخدمة",
 	"Server Activation time:": ":وقت تنشيط الخادم",
 	"Settings": "الإعدادات",
@@ -225,8 +226,8 @@
 	"You need to have an active subscription in order to play cards": "يجب أن يكون اشتراكك فعال لتتمكن من لعب البطاقات",
 	"Your chances:": "فرصك: ",
 	"Your points:": "نقاطك: ",
-	"_action": "",
 	"activation-warning": "",
+	"ar": "",
 	"arabic": "عربي",
 	"availableCards": "البطاقات المتاحة",
 	"availableCardsText": "هذه هي البطاقات المتاحة والمتبقية (مباشرة و لـ90 دقيقة) التي يمكنك لعبها خلال هذه المباراة",
@@ -243,6 +244,7 @@
 	"coinsToPlay": "عملة لتلعب {{value}}",
 	"contest_loc_key": "مسابقة",
 	"dailybonus_text": "لقد ربحت {{value}} عملات إضافية كمكافأة!  لا تضيع فرصة جمع المزيد من العملات المكافأة غداً",
+	"en": "",
 	"english": "English",
 	"enterMobilePhone": "أدخل رقم الهاتف",
 	"errors": {
@@ -282,9 +284,11 @@
 		"10006": "",
 		"10007": "متاحة Power ups لا يوجد "
 	},
+	"fa": "",
 	"faq_header": "ماذا تود أن تعرف؟",
 	"faq_title": "الأسئلة الشائعة",
 	"farsi": "فارسی",
+	"fr": "",
 	"french": "French",
 	"grandprize_loc_key": "الجائزة الشهرية",
 	"install-header": "تثبيت التطبيق",
@@ -293,7 +297,9 @@
 	"joinMatchInfo": "تحتاج إلى {{value}} عملة لتشارك في هذه المباراة.",
 	"joinMatchNoCoins": "لا يوجد لديك نقاط كافية للاشتراك، هل تريد شراء عملات إضافية الآن؟",
 	"joinMatchNoCoinsNoInApp": "لا يوجد لديك عملات كافية لكي تشارك. شراء العملات غير متوفر حالياً عبر تطبيق المتصفح",
+	"ju": "",
 	"kazzach": "Қазақ тілі",
+	"ku": "",
 	"kurdish": "كردى ",
 	"matchFreePlay": "لعب مجاني",
 	"msisdnChecks": {
@@ -311,6 +317,7 @@
 	"onDemandResponseText": ".شكرا لك لمحاولة الشراء . سيتم إعلامك قريبا عن نتيجة عملية الشراء ",
 	"pin_sent": "<strong>!قد تم إرسال رمز المرور</strong> .الرجاء الانتظار حوالي دقيقتين لاستلامه",
 	"pts": "نقاط",
+	"ru": "",
 	"russian": "Русский",
 	"slidetextl": {
 		"100": "تحميل ",
@@ -357,8 +364,5 @@
 	"vipMatchAwards": ":هذه VIP مكافآت مباراة الـ",
 	"warning-altered": "",
 	"warning-var": "",
-	"x2": "x2",
-	"{{this": {
-		"errorMsg}}": ""
-	}
+	"x2": "x2"
 }

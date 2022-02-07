@@ -172,6 +172,7 @@
 	"Second_Half_Starts": "Екінші таймның басы",
 	"Select Avatar": "Аватар таңдаңыз",
 	"Select Country": "",
+	"Select Language": "",
 	"Select Operator": "",
 	"Server Activation time:": "",
 	"Settings": "Баптау",
@@ -225,8 +226,8 @@
 	"You need to have an active subscription in order to play cards": "",
 	"Your chances:": "Нәтижеңіз: ",
 	"Your points:": "Нәтижеңіз: ",
-	"_action": "",
 	"activation-warning": "",
+	"ar": "",
 	"arabic": "",
 	"availableCards": "Қолжетімді карталар",
 	"availableCardsText": "Бұл осы матч бойы ойнатыла алатын сізде бар карталар (Негізгі жəне Live карталары)",
@@ -243,6 +244,7 @@
 	"coinsToPlay": "{{value}} тиынға ойнау",
 	"contest_loc_key": "Турнир",
 	"dailybonus_text": "",
+	"en": "",
 	"english": "English",
 	"enterMobilePhone": "Ұялы телефон нөміріңізді еңгізіңіз",
 	"errors": {
@@ -282,9 +284,11 @@
 		"10006": "",
 		"10007": "Сізде басқа қолжетімді күшейткіштер жоқ."
 	},
+	"fa": "",
 	"faq_header": "",
 	"faq_title": "",
 	"farsi": "فارسی",
+	"fr": "",
 	"french": "",
 	"grandprize_loc_key": "Ай сайынғы ұтыс",
 	"install-header": "",
@@ -293,7 +297,9 @@
 	"joinMatchInfo": "Осы матчқа қатысу үшін, Сізге {{value}} тиын керек.",
 	"joinMatchNoCoins": " Қатысу үшін, сіздің тиындарыңыз жеткіліксіз. Қосымша тиындар алғыңыз келе ме?",
 	"joinMatchNoCoinsNoInApp": "",
+	"ju": "",
 	"kazzach": "Қазақ тілі",
+	"ku": "",
 	"kurdish": "",
 	"matchFreePlay": "Тегін ойнау",
 	"msisdnChecks": {
@@ -311,6 +317,7 @@
 	"onDemandResponseText": "",
 	"pin_sent": "Пароль сізге қайта жіберілді",
 	"pts": " ұпай",
+	"ru": "",
 	"russian": "Русский",
 	"slidetextl": {
 		"100": "",
@@ -357,8 +364,5 @@
 	"vipMatchAwards": "Осы VIP Матчқа арналған марапаттар:",
 	"warning-altered": "",
 	"warning-var": "",
-	"x2": "x2",
-	"{{this": {
-		"errorMsg}}": ""
-	}
+	"x2": "x2"
 }

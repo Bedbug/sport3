@@ -66,7 +66,7 @@
             [innerHTML]="'susbcription_message_ENTER' | translate:{value:appName[translate.currentLang]}"></div>
           <div *ngIf="!pinSent" class="resend-pin-button isClickable" (click)="ResendPin()" translate>Resend PIN</div>
           <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
-        
+
         </form>
         <div (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
           [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
@@ -102,7 +102,7 @@
 
 <!-- ON-BOARDING -->
 <div class="modal-background" *ngIf="!Authenticated"></div>
-<div *ngIf="Onboarding" id="OnBoarding">
+<div *ngIf="Onboarding " id="OnBoarding">
   <div class="modal-card2">
     <div class="modal-card-body text-center" style="padding: 0;">
       <div class="slideshow-container" uk-animation-fast
@@ -141,7 +141,8 @@
                 class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom"
                 id="endBtn">
                 <button [disabled]="loading" type="submit" class="btn btn-slide" style="margin-bottom: 20px;">
-                  <a (click)="closeOnBoarding()"><img style="width: 85px;" src="assets/images/sportimo/onboard/close.png" alt=""></a>
+                  <a (click)="closeOnBoarding()"><img style="width: 85px;"
+                      src="assets/images/sportimo/onboard/close.png" alt=""></a>
                 </button>
               </div>
             </li>
@@ -171,8 +172,6 @@
 </div>
 
 
-
-
 <div class="landing-background" [hidden]="!LandingPage && !PinVerify"></div>
 <!-- AUTHENTICATION -->
 <div [hidden]="!LandingPage" id="Authentication">
@@ -191,7 +190,7 @@
 
         <!-- Check in Dashboard -->
         <div *ngIf="showTopText" class="problem-info2">
-          
+
           <span>{{termsLineText[translate.currentLang]}}</span>
         </div>
         <!-- Check in Dashboard -->
@@ -323,7 +322,7 @@
             *ngIf="this.multiOperatorForm.controls.operator.value && this.multiOperatorForm.controls.operator.value.validationProcess && !this.multiOperatorForm.controls.operator.value.redirectUrl">
             <!-- <span>Drop your MSISDN</span> -->
             <div *ngIf="this.msisdnError && !this.errorMsg" class="problem-info2" style="font-style: italic;">
-              <div class="icn-info-white"></div> 
+              <div class="icn-info-white"></div>
               <!-- <span translate>{{this.errorMsg}}</span> -->
               <span *ngIf="errorMsgId == 100" translate>msisdnChecks.100</span>
               <span *ngIf="errorMsgId == 101" translate>msisdnChecks.101</span>
@@ -331,7 +330,7 @@
               <span *ngIf="errorMsgId == 103" translate>msisdnChecks.103</span>
             </div>
             <div *ngIf="this.errorMsg" class="problem-info2" style="font-style: italic;">
-              <div class="icn-info-white"></div> 
+              <div class="icn-info-white"></div>
               <span translate>{{this.errorMsg}}</span>
               <!-- <span *ngIf="errorMsgId == 100" translate>msisdnChecks.100</span>
               <span *ngIf="errorMsgId == 101" translate>msisdnChecks.101</span>
@@ -340,7 +339,7 @@
             </div>
             <!-- Check in Dashboard -->
             <div *ngIf="!this.msisdnError && showInputMsg" class="problem-info2" style="font-style: italic;">
-              <div class="icn-info-white"></div> 
+              <div class="icn-info-white"></div>
               <span>{{inputMsg[translate.currentLang]}}</span>
             </div>
             <div class="input-box">
@@ -366,7 +365,7 @@
               type="submit" class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
                 <span class="button-label" translate>Subscribe</span>
-                
+
                 <div class="fadeInLoader">
                   <span class="rotate dotted button-loader"></span>
                 </div>
@@ -382,7 +381,7 @@
               <label>
                 <input type="checkbox" [value]="" (change)="onCheckboxChange($event)" />
                 <span translate>I agree to the below terms and services</span>
-                
+
               </label>
             </div>
 
@@ -412,6 +411,23 @@
   </div>
 </div>
 
+<!-- LANGUAGE SELECTION -->
+<div class="modal-card2" *ngIf="languageSelection"
+  style="height: 100%;  width: 100%; background-position: bottom; background-repeat: no-repeat; background-size: cover;"
+  [ngStyle]="{'background-image': 'url(assets/images/'+(defaults.imageFolder || 'sportimo')+ '/onboard/default.bg.jpg)'}">
+  <div class="pin-card-body">
+    <div class="login-form-body">
+      <div class="language-selection-box">
+        <div class="icn-language" style="height: 40px;width: 40px;"></div>
+        <div class="select-language-label" translate>Select Language</div>
+        <div class="language-buttons">
+          <button class="btn btn-sportimo" *ngFor="let lSel of languages" [translate]="lSel" (click)="selectLanguage(lSel)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PIN VERIFICATION -->
 <div id="pinForm" *ngIf="PinVerify" class="modal-card2">
 
@@ -432,18 +448,18 @@
       <h1 *ngIf = "subState == 'UnSubCoins'" translate>Subscribe to Play</h1> -->
       </div>
       <form [formGroup]="pinForm" (ngSubmit)="onPinSubmit(false)" class="sportimo-form">
-        <div  class="problem-info2" style="width: 270px;margin: auto;padding: 0 0 5px; font-style: italic;">
-          <div class="icn-info-white"></div> 
+        <div class="problem-info2" style="width: 270px;margin: auto;padding: 0 0 5px; font-style: italic;">
+          <div class="icn-info-white"></div>
           <span translate>Please insert the 4-digit PIN code sent to your mobile number</span>
         </div>
-        
+
         <!-- <div class="icn-info-white"></div> 
         <div class="problem-info2 login-form-info" translate>Please insert the 4-digit PIN code sent to your mobile number</div> -->
         <div class="login-form-content">
           <div class="form-group text-center">
             <!-- <label class="">Username/Email</label> -->
-            <input id="pinInput" type="text" autocomplete="one-time-code" formControlName="pin" maxlength="4" minlength="4"
-              class="form-control-plaintext input-box" autocorrect="off" autocapitalize="none"
+            <input id="pinInput" type="text" autocomplete="one-time-code" formControlName="pin" maxlength="4"
+              minlength="4" class="form-control-plaintext input-box" autocorrect="off" autocapitalize="none"
               [ngClass]="{ 'is-invalid': submitted && pinForm.controls.pin.errors }"
               placeholder="{{ 'Enter PIN' | translate }}" required>
             <div *ngIf="submitted && pinForm.controls.pin.errors" class="invalid-feedback">
@@ -480,16 +496,17 @@
         <div *ngIf="pinSent" [innerHTML]="'pin_sent' | translate"></div>
 
         <div *ngIf="loginExit" (click)="multiOperatorBack()"
-        style="margin-top: 10px; text-decoration: underline; font-weight: bold;">
-        <span class="button-label" translate>EXIT</span>
-      </div>
+          style="margin-top: 10px; text-decoration: underline; font-weight: bold;">
+          <span class="button-label" translate>EXIT</span>
+        </div>
       </form>
       <!-- Check in Dashboard -->
-      
+
       <div *ngIf="!getOpText" (click)="openTerms()" class="notice isClickable" style="font-size: 10px"
         [innerHTML]="defaults.landingPage.terms[translate.currentLang]">
       </div>
-      <div *ngIf="getOpText" (click)="openTerms()" class="notice isClickable" style="font-size: 10px; margin-bottom: 50px; padding: 0 10px;">
+      <div *ngIf="getOpText" (click)="openTerms()" class="notice isClickable"
+        style="font-size: 10px; margin-bottom: 50px; padding: 0 10px;">
         <span>{{termsOpText[translate.currentLang]}}</span>
       </div>
     </div>
@@ -577,8 +594,9 @@
 
     </div>
 
-    <div class="center-bottom" (click)="collectCoin()" >
-      <img class="svg-shadow" style="max-width: 200px;" src="/assets/images/sportimo/dailybonus/dailybonus_claimbutton.svg" alt="">
+    <div class="center-bottom" (click)="collectCoin()">
+      <img class="svg-shadow" style="max-width: 200px;"
+        src="/assets/images/sportimo/dailybonus/dailybonus_claimbutton.svg" alt="">
       <div class="centered text-bottom" translate>Collect</div>
     </div>
   </div>

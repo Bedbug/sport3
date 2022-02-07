@@ -172,6 +172,7 @@
 	"Second_Half_Starts": "Second Half Starts",
 	"Select Avatar": "Select Avatar",
 	"Select Country": "Select Country",
+	"Select Language": "Select Language",
 	"Select Operator": "Select Operator",
 	"Server Activation time:": "Server Activation time:",
 	"Settings": "Settings",
@@ -225,8 +226,8 @@
 	"You need to have an active subscription in order to play cards": "You need to have an active subscription in order to play cards",
 	"Your chances:": "Your chances: ",
 	"Your points:": "Your points:",
-	"_action": "",
 	"activation-warning": " Card will be activated after 20 seconds",
+	"ar": "",
 	"arabic": "Arabic",
 	"availableCards": "Available Cards",
 	"availableCardsText": "These are the remaining available cards (Live and 90-minutes) you can play during this match",
@@ -243,6 +244,7 @@
 	"coinsToPlay": "{{value}} coins to Play",
 	"contest_loc_key": "Contest",
 	"dailybonus_text": "You have earned {{value}} bonus coins! Don't lose the chance of collecting more bonus coins tomorrow!",
+	"en": "English",
 	"english": "English",
 	"enterMobilePhone": "Enter mobile phone",
 	"errors": {
@@ -282,9 +284,11 @@
 		"10006": "",
 		"10007": "No more power ups available"
 	},
+	"fa": "",
 	"faq_header": "What would you like to know about?",
 	"faq_title": "Frequently Asked Questions",
 	"farsi": "فارسی",
+	"fr": "",
 	"french": "French",
 	"grandprize_loc_key": "Grand Prize",
 	"install-header": "Install app",
@@ -293,7 +297,9 @@
 	"joinMatchInfo": "You need {{value}} coins to join this match.",
 	"joinMatchNoCoins": "You do not have enough coins to participate. Would you like to purchase the extra coins now?",
 	"joinMatchNoCoinsNoInApp": "You do not have enough coins to participate. On-demand coins' purchase is currently not availabe through the web app.",
+	"ju": "",
 	"kazzach": "Қазақ тілі",
+	"ku": "",
 	"kurdish": "Kurdish",
 	"matchFreePlay": "Free to Play",
 	"msisdnChecks": {
@@ -311,6 +317,7 @@
 	"onDemandResponseText": "Thank you for your purchase attempt. You will be notified soon about the transaction result.",
 	"pin_sent": "<strong>PIN sent!</strong> Please allow 2 minutes waiting time to receive it",
 	"pts": " pts",
+	"ru": "",
 	"russian": "Русский",
 	"slidetextl": {
 		"100": "Setting up",
@@ -357,8 +364,5 @@
 	"vipMatchAwards": "This VIP match awards:",
 	"warning-altered": "Warning: Events in this match were changed or cancelled. Your final score might be affected.",
 	"warning-var": "Warning: One or more events in this match were cancelled or changed status because of a referee decision. Your final score might be affected.",
-	"x2": "x2",
-	"{{this": {
-		"errorMsg}}": ""
-	}
+	"x2": "x2"
 }

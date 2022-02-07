@@ -33,6 +33,8 @@ export class OnboardComponent implements OnInit {
   nrSelect = '';
   Onboarding = false;
   LandingPage = false;
+  languageSelection = false;
+  languages:any;
   PinVerify = false;
   Authenticated = false;
   UsernameUpdate = false;
@@ -95,6 +97,13 @@ export class OnboardComponent implements OnInit {
     _("msisdnChecks.101");
     _("msisdnChecks.102");
     _("msisdnChecks.103");
+    _("en");
+    _("ar");
+    _("fr");
+    _("fa");
+    _("ju");
+    _("ru");
+    _("ku");
   }
 
   // "msisdnChecks": {
@@ -381,11 +390,13 @@ export class OnboardComponent implements OnInit {
               return { code: b[0], area: b[1] };
             })
 
+            this.languages = this.sportimoService.getConfigurationFor("availableLanguages");            
 
             // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
             this.nrSelect = this.areaCodes.length > 0 ? this.areaCodes[0].area : '';
             // if (this.defaults.sequence[0] == "S")       
 
+            this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector") || false;
             this_m.Onboarding = this_m.defaults.sequence[0] == "S";
             this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
@@ -395,8 +406,8 @@ export class OnboardComponent implements OnInit {
           }
         });
 
-
-
+       
+        
 
         // Remove the loading screen
         // $('.loader-wrapper').fadeOut('slow');
@@ -666,6 +677,11 @@ export class OnboardComponent implements OnInit {
       this.disableLoginCarousel = false;
     }
     // this.disableLoginCarousel = true;
+  }
+
+  selectLanguage(code:string){    
+    this.translate.use(code);
+    this.languageSelection = false;
   }
 
 

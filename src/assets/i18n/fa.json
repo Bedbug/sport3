@@ -172,6 +172,7 @@
 	"Second_Half_Starts": "آغاز نیمه دوم",
 	"Select Avatar": "انتخاب عکس",
 	"Select Country": "انتخاب کشور",
+	"Select Language": "",
 	"Select Operator": "انتخاب اپراتور",
 	"Server Activation time:": "زمان فعال سازی سرور",
 	"Settings": "تنظیمات",
@@ -225,8 +226,8 @@
 	"You need to have an active subscription in order to play cards": "برای بازی کردن ، باید اشتراک فعال داشته باشید",
 	"Your chances:": "شانس‌های شما: ",
 	"Your points:": "امتیازهای شما",
-	"_action": "",
 	"activation-warning": "",
+	"ar": "",
 	"arabic": "عربی",
 	"availableCards": "کارتهای فعال",
 	"availableCardsText": " هر کارت فعال برای یک پیش بینی می باشد ",
@@ -243,6 +244,7 @@
 	"coinsToPlay": "سکه برای بازی",
 	"contest_loc_key": "",
 	"dailybonus_text": "شما می توانید از پاداش روزانه بهره مند شوید",
+	"en": "",
 	"english": "English",
 	"enterMobilePhone": "ورود شماره موبایل",
 	"errors": {
@@ -282,9 +284,11 @@
 		"10006": "",
 		"10007": "دیگر قدرت شارژ در دسترس نیست"
 	},
+	"fa": "",
 	"faq_header": "دوست دارید درمورد چه چیزی بدانید؟",
 	"faq_title": "پرسش های متداول",
 	"farsi": "فارسی",
+	"fr": "",
 	"french": "فرانسوی",
 	"grandprize_loc_key": "جایزه بزرگ",
 	"install-header": "",
@@ -293,7 +297,9 @@
 	"joinMatchInfo": "به داده های بازی ملحق شوید",
 	"joinMatchNoCoins": "به سکه های بازی ملحق شوید",
 	"joinMatchNoCoinsNoInApp": "بدون پرداخت درون برنامه ای و سکه به بازی ملحق شوید",
+	"ju": "",
 	"kazzach": "",
+	"ku": "",
 	"kurdish": "",
 	"matchFreePlay": "بازی رایگان",
 	"msisdnChecks": {
@@ -311,6 +317,7 @@
 	"onDemandResponseText": "",
 	"pin_sent": "پین ارسال شد",
 	"pts": "امتیاز",
+	"ru": "",
 	"russian": "روسی",
 	"slidetextl": {
 		"100": "راه اندازی",
@@ -357,8 +364,5 @@
 	"vipMatchAwards": "جایزه مسابقه خواص",
 	"warning-altered": "",
 	"warning-var": "",
-	"x2": "دو برابر",
-	"{{this": {
-		"errorMsg}}": ""
-	}
+	"x2": "دو برابر"
 }

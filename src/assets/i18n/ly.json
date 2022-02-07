@@ -172,6 +172,7 @@
 	"Second_Half_Starts": "",
 	"Select Avatar": "",
 	"Select Country": "",
+	"Select Language": "",
 	"Select Operator": "",
 	"Server Activation time:": "",
 	"Settings": "",
@@ -225,8 +226,8 @@
 	"You need to have an active subscription in order to play cards": "",
 	"Your chances:": "",
 	"Your points:": "",
-	"_action": "",
 	"activation-warning": "",
+	"ar": "",
 	"arabic": "",
 	"availableCards": "",
 	"availableCardsText": "",
@@ -243,6 +244,7 @@
 	"coinsToPlay": "",
 	"contest_loc_key": "",
 	"dailybonus_text": "",
+	"en": "",
 	"english": "",
 	"enterMobilePhone": "",
 	"errors": {
@@ -282,9 +284,11 @@
 		"10006": "",
 		"10007": ""
 	},
+	"fa": "",
 	"faq_header": "",
 	"faq_title": "",
 	"farsi": "",
+	"fr": "",
 	"french": "",
 	"grandprize_loc_key": "",
 	"install-header": "",
@@ -293,7 +297,9 @@
 	"joinMatchInfo": "",
 	"joinMatchNoCoins": "",
 	"joinMatchNoCoinsNoInApp": "",
+	"ju": "",
 	"kazzach": "",
+	"ku": "",
 	"kurdish": "",
 	"matchFreePlay": "",
 	"msisdnChecks": {
@@ -311,6 +317,7 @@
 	"onDemandResponseText": "",
 	"pin_sent": "",
 	"pts": "",
+	"ru": "",
 	"russian": "",
 	"slidetextl": {
 		"100": "",
@@ -357,8 +364,5 @@
 	"vipMatchAwards": "",
 	"warning-altered": "",
 	"warning-var": "",
-	"x2": "",
-	"{{this": {
-		"errorMsg}}": ""
-	}
+	"x2": ""
 }
