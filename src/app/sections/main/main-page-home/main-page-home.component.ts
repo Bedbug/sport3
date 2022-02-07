@@ -82,10 +82,10 @@ export class MainPageHomeComponent implements OnInit {
       if (this.isAuthenticated) {
         // Check For Push
         if (this.swPush.isEnabled) {
-          console.log("swPush is enabled!");
+          // console.log("swPush is enabled!");
           this.subscribeToNotifications();
         } else {
-          console.log("swPush is Not enabled!");
+          // console.log("swPush is Not enabled!");
         }
       }
 

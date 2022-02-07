@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { OnBoardService } from './onboard.service';
-import { TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
@@ -34,7 +34,8 @@ export class OnboardComponent implements OnInit {
   Onboarding = false;
   LandingPage = false;
   languageSelection = false;
-  languages:any;
+  languageObserver: any;
+  languages: any;
   PinVerify = false;
   Authenticated = false;
   UsernameUpdate = false;
@@ -390,7 +391,7 @@ export class OnboardComponent implements OnInit {
               return { code: b[0], area: b[1] };
             })
 
-            this.languages = this.sportimoService.getConfigurationFor("availableLanguages");            
+            this.languages = this.sportimoService.getConfigurationFor("availableLanguages");
 
             // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
             this.nrSelect = this.areaCodes.length > 0 ? this.areaCodes[0].area : '';
@@ -400,14 +401,22 @@ export class OnboardComponent implements OnInit {
             this_m.Onboarding = this_m.defaults.sequence[0] == "S";
             this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
+
+            if (this_m.languageSelection)
+              this_m.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {                
+                if (this_m.languageSelection)
+                  this_m.languageSelection = false;
+                  this_m.languageObserver.unusubscribe();
+              });
+              
             let bgElement = $('.landing-background');
             bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
             bgElement.css("background-size", `cover`)
           }
         });
 
-       
-        
+
+
 
         // Remove the loading screen
         // $('.loader-wrapper').fadeOut('slow');
@@ -590,7 +599,7 @@ export class OnboardComponent implements OnInit {
       this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
 
     const gtmTag = {
-      event: 'Select_Country_'+this._currentCountry,
+      event: 'Select_Country_' + this._currentCountry,
       appName: this._currentAppName,
       clientId: this._currentClient,
       Category: `Sub_Flow_${this._currentCountry}`,
@@ -610,7 +619,7 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
-   
+
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
     else
@@ -659,7 +668,7 @@ export class OnboardComponent implements OnInit {
       this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
 
     const gtmTag = {
-      event: 'Select_Operator_'+this._currentCountry,
+      event: 'Select_Operator_' + this._currentCountry,
       appName: this._currentAppName,
       clientId: this._currentClient,
       Category: `Sub_Flow_${this._currentCountry}`,
@@ -679,7 +688,7 @@ export class OnboardComponent implements OnInit {
     // this.disableLoginCarousel = true;
   }
 
-  selectLanguage(code:string){    
+  selectLanguage(code: string) {
     this.translate.use(code);
     this.languageSelection = false;
   }
@@ -715,7 +724,7 @@ export class OnboardComponent implements OnInit {
         this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
 
       const gtmTag = {
-        event: 'Join_Button_'+this._currentCountry,
+        event: 'Join_Button_' + this._currentCountry,
         appName: this._currentAppName,
         clientId: this._currentClient,
         Category: `Sub_Flow_${this._currentCountry}`,
@@ -801,12 +810,12 @@ export class OnboardComponent implements OnInit {
                 if (!this._currentAppName)
                   this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
                 const gtmTag = {
-                  event: 'User_Enter_MSISDN_'+this._currentCountry,
+                  event: 'User_Enter_MSISDN_' + this._currentCountry,
                   appName: this._currentAppName,
                   clientId: this._currentClient,
                   Category: `Sub_Flow_${this._currentCountry}`,
                   Action: `EnterMSISDN_${this.currentOperator.operatorName.en}`,
-                  Label: 'EnterMSISDN_'+ this.currentOperator.operatorName.en
+                  Label: 'EnterMSISDN_' + this.currentOperator.operatorName.en
                 };
                 this.gtmService.pushTag(gtmTag);
               }
@@ -818,12 +827,12 @@ export class OnboardComponent implements OnInit {
                 if (!this._currentAppName)
                   this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
                 const gtmTag = {
-                  event: 'User_Attempt_MSISDN_'+this._currentCountry,
+                  event: 'User_Attempt_MSISDN_' + this._currentCountry,
                   appName: this._currentAppName,
                   clientId: this._currentClient,
                   Category: `Sub_Flow_${this._currentCountry}`,
                   Action: `AttemptMSISDN_${this.currentOperator.operatorName.en}`,
-                  Label: 'msisdn_error_'+ this.currentOperator.operatorName.en
+                  Label: 'msisdn_error_' + this.currentOperator.operatorName.en
                 };
                 this.gtmService.pushTag(gtmTag);
                 this.msisdnError = true;
@@ -863,7 +872,7 @@ export class OnboardComponent implements OnInit {
               if (!this._currentAppName)
                 this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
               const gtmTag = {
-                event: 'User_Enter_MSISDN_'+this._currentCountry,
+                event: 'User_Enter_MSISDN_' + this._currentCountry,
                 appName: this._currentAppName,
                 clientId: this._currentClient,
                 Category: `Sub_Flow_${this._currentCountry}`,
@@ -889,12 +898,12 @@ export class OnboardComponent implements OnInit {
               if (!this._currentAppName)
                 this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
               const gtmTag = {
-                event: 'User_Attempt_MSISDN_'+this._currentCountry,
+                event: 'User_Attempt_MSISDN_' + this._currentCountry,
                 appName: this._currentAppName,
                 clientId: this._currentClient,
                 Category: `Sub_Flow_${this._currentCountry}`,
                 Action: `AttemptMSISDN_${this.currentOperator.operatorName.en}`,
-                Label: 'msisdn_error_'+ this.currentOperator.operatorName.en
+                Label: 'msisdn_error_' + this.currentOperator.operatorName.en
               };
               this.gtmService.pushTag(gtmTag);
 
@@ -990,7 +999,7 @@ export class OnboardComponent implements OnInit {
     if (!this._currentAppName)
       this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
     const gtmTag = {
-      event: 'User_Enter_MSISDN_'+this._currentCountry,
+      event: 'User_Enter_MSISDN_' + this._currentCountry,
       appName: this._currentAppName,
       clientId: this._currentClient,
       Category: `Sub_Flow_${this._currentCountry}`,
@@ -1135,12 +1144,12 @@ export class OnboardComponent implements OnInit {
             if (!this._currentAppName)
               this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
             const gtmTag = {
-              event: 'User_Attempt_PIN_'+this._currentCountry,
+              event: 'User_Attempt_PIN_' + this._currentCountry,
               appName: this._currentAppName,
               clientId: this._currentClient,
               Category: `Sub_Flow_${this._currentCountry}`,
               Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
-              Label: 'pin_correct_'+ this.currentOperator.operatorName.en
+              Label: 'pin_correct_' + this.currentOperator.operatorName.en
             };
             this.gtmService.pushTag(gtmTag);
 
@@ -1152,12 +1161,12 @@ export class OnboardComponent implements OnInit {
             if (!this._currentAppName)
               this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
             const gtmTag = {
-              event: 'User_Attempt_PIN_'+this._currentCountry,
+              event: 'User_Attempt_PIN_' + this._currentCountry,
               appName: this._currentAppName,
               clientId: this._currentClient,
               Category: `Sub_Flow_${this._currentCountry}`,
               Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
-              Label: 'pin_error_'+ this.currentOperator.operatorName.en
+              Label: 'pin_error_' + this.currentOperator.operatorName.en
             };
             this.gtmService.pushTag(gtmTag);
 
@@ -1173,12 +1182,12 @@ export class OnboardComponent implements OnInit {
           if (!this._currentAppName)
             this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
           const gtmTag = {
-            event: 'User_Attempt_PIN_'+this._currentCountry,
+            event: 'User_Attempt_PIN_' + this._currentCountry,
             appName: this._currentAppName,
             clientId: this._currentClient,
             Category: `Sub_Flow_${this._currentCountry}`,
             Action: `AttemptPIN_${this.currentOperator.operatorName.en}`,
-            Label: 'pin_error_'+ this.currentOperator.operatorName.en
+            Label: 'pin_error_' + this.currentOperator.operatorName.en
           };
           this.gtmService.pushTag(gtmTag);
 
@@ -1207,12 +1216,12 @@ export class OnboardComponent implements OnInit {
     if (!this._currentAppName)
       this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
     const gtmTag = {
-      event: 'User_Subscribed_'+this._currentCountry,
+      event: 'User_Subscribed_' + this._currentCountry,
       appName: this._currentAppName,
       clientId: this._currentClient,
       Category: `Sub_Flow_${this._currentCountry}`,
       Action: `subscription_${this.currentOperator.operatorName.en}`,
-      Label: 'subscription_'+ this.currentOperator.operatorName.en
+      Label: 'subscription_' + this.currentOperator.operatorName.en
     };
     this.gtmService.pushTag(gtmTag);
   }
@@ -1322,7 +1331,10 @@ export class OnboardComponent implements OnInit {
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
+    this.ngUnsubscribe.complete();    
+    
+    if(this.languageObserver)
+    this.languageObserver.unusubscribe();
   }
 
 }

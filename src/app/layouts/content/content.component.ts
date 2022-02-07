@@ -168,8 +168,7 @@ export class ContentComponent implements OnInit {
         this.onBoardService.Hide();
         $('.loader-wrapper').fadeOut('slow');
         $('.loader-wrapper').remove('slow');
-        // Close Texts
-        console.log("Closed Loader!");
+        // Close Texts        
         // this.loaderOpened = false;
         // Close Texts
         var myobj = document.getElementById("LoaderTexts");

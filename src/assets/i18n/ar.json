@@ -227,7 +227,7 @@
 	"Your chances:": "فرصك: ",
 	"Your points:": "نقاطك: ",
 	"activation-warning": "",
-	"ar": "",
+	"ar": "عربي",
 	"arabic": "عربي",
 	"availableCards": "البطاقات المتاحة",
 	"availableCardsText": "هذه هي البطاقات المتاحة والمتبقية (مباشرة و لـ90 دقيقة) التي يمكنك لعبها خلال هذه المباراة",
@@ -244,7 +244,7 @@
 	"coinsToPlay": "عملة لتلعب {{value}}",
 	"contest_loc_key": "مسابقة",
 	"dailybonus_text": "لقد ربحت {{value}} عملات إضافية كمكافأة!  لا تضيع فرصة جمع المزيد من العملات المكافأة غداً",
-	"en": "",
+	"en": "English",
 	"english": "English",
 	"enterMobilePhone": "أدخل رقم الهاتف",
 	"errors": {
@@ -299,7 +299,7 @@
 	"joinMatchNoCoinsNoInApp": "لا يوجد لديك عملات كافية لكي تشارك. شراء العملات غير متوفر حالياً عبر تطبيق المتصفح",
 	"ju": "",
 	"kazzach": "Қазақ тілі",
-	"ku": "",
+	"ku": "کوردی",
 	"kurdish": "كردى ",
 	"matchFreePlay": "لعب مجاني",
 	"msisdnChecks": {
