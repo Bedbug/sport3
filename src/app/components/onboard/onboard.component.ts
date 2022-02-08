@@ -33,7 +33,7 @@ export class OnboardComponent implements OnInit {
   nrSelect = '';
   Onboarding = false;
   LandingPage = false;
-  languageSelection = true;
+  languageSelection = false;
   languageObserver: any;
   languages: any;
   PinVerify = false;
@@ -1112,7 +1112,7 @@ export class OnboardComponent implements OnInit {
             this.isSubmitting = false;
             this.PinVerify = false;
             this.Authenticated = true;
-            if (this.defaults.sequence[0] == "L")
+            if (this.defaults.sequence[0] == "L" && this.defaults.sequence.length > 1)
               this.Onboarding = true;
             else {
               // Do The Daily Bonus Check

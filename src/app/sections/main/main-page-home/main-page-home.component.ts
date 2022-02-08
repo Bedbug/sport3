@@ -248,9 +248,7 @@ export class MainPageHomeComponent implements OnInit {
     // dailymodal.show();
     var that = this;
     setTimeout(() => {
-      dailymodal.show();
-      console.log(that);
-
+      dailymodal.show();      
     }, 2000);
 
 
