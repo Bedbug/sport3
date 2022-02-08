@@ -33,7 +33,7 @@ export class OnboardComponent implements OnInit {
   nrSelect = '';
   Onboarding = false;
   LandingPage = false;
-  languageSelection = false;
+  languageSelection = true;
   languageObserver: any;
   languages: any;
   PinVerify = false;
@@ -396,8 +396,10 @@ export class OnboardComponent implements OnInit {
             // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
             this.nrSelect = this.areaCodes.length > 0 ? this.areaCodes[0].area : '';
             // if (this.defaults.sequence[0] == "S")       
-
-            this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector") || false;
+            console.log("[Settings] Language Selection:" + this.sportimoService.getConfigurationFor("promoteLanguageSelector"));
+            this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector");
+            console.log("[Settings] Property Set To:" + this_m.languageSelection);
+            
             this_m.Onboarding = this_m.defaults.sequence[0] == "S";
             this_m.LandingPage = this_m.defaults.sequence[0] != "S";
 
