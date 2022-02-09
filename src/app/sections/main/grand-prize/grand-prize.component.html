@@ -3,8 +3,7 @@
   <div class="starter-main">
     <div class="col-sm-12 p-0">
       <div class="card-prize grand-prize" style="width: 100%">
-        <div class="card-body"
-          [ngStyle]="{background: 'url(' + (prizeDetailImage) + ') 50% 0% / cover'}">
+        <div class="card-body" [ngStyle]="prizeDetailImage && {background: 'url(' + (prizeDetailImage) + ') 50% 0% / cover'}">
           <div *ngIf="prize" class="prize-wrapper isClickable" (click)="showPrizeDetails(prize._id)">
             <!-- Title -->
             <div class="grand-prize-header">
