@@ -401,15 +401,7 @@ export class OnboardComponent implements OnInit {
             console.log("[Settings] Property Set To:" + this_m.languageSelection);
             
             this_m.Onboarding = this_m.defaults.sequence[0] == "S";
-            this_m.LandingPage = this_m.defaults.sequence[0] != "S";
-
-
-            if (this_m.languageSelection)
-              this_m.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {                
-                if (this_m.languageSelection)
-                  this_m.languageSelection = false;
-                  this_m.languageObserver.unusubscribe();
-              });
+            this_m.LandingPage = this_m.defaults.sequence[0] != "S";           
               
             let bgElement = $('.landing-background');
             bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
@@ -475,6 +467,18 @@ export class OnboardComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       username: ['', Validators.required]
     });
+
+    setTimeout(() => {
+      console.log("3s Limit");
+      
+      this.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {     
+        console.log("-");                             
+        if (this.languageSelection)
+        this.languageSelection = false;
+        
+      });
+    }, 3000);
+    
 
     // this.isFirstGame = true;
     // localStorage.setItem(key, 'New Value');
@@ -1336,7 +1340,7 @@ export class OnboardComponent implements OnInit {
     this.ngUnsubscribe.complete();    
     
     if(this.languageObserver)
-    this.languageObserver.unusubscribe();
+      this.languageObserver.unsubscribe();
   }
 
 }

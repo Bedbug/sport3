@@ -85,9 +85,10 @@ export class ContentComponent implements OnInit {
 
 
     this.translate.setDefaultLang('en');
-    let selected_language = localStorage.getItem('language');
-    this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
+    let selected_language = localStorage.getItem('language');    
     
+    // this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
+    // console.log(this.translate.currentLang);
     
 
     this.sportimoService.getClientConfiguration().subscribe(data => {
@@ -98,6 +99,7 @@ export class ContentComponent implements OnInit {
       // translate.getTranslation('en').subscribe(() => {});
       // the lang to use, if the lang isn't available, it will use the current loader to get them
       this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
+
       this.loaderTextAnim();
       this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
       
@@ -112,9 +114,7 @@ export class ContentComponent implements OnInit {
         $('.app-logo').css("background-image", `url(${this.sportimoService.getConfigurationFor("appLogo")})`)
 
 
-      this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-
-
+      this.translate.onLangChange.subscribe((event: LangChangeEvent) => {                    
         localStorage.setItem('language', this.translate.currentLang);
         this.isRTL = this.RTL_languages.find(lang => lang === this.translate.currentLang) != null;
         // console.log(this.translate.currentLang);
