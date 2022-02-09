@@ -36,6 +36,7 @@ export class OnboardComponent implements OnInit {
   languageSelection = false;
   languageObserver: any;
   languages: any;
+  langParam: string;
   PinVerify = false;
   Authenticated = false;
   UsernameUpdate = false;
@@ -393,11 +394,17 @@ export class OnboardComponent implements OnInit {
 
             this.languages = this.sportimoService.getConfigurationFor("availableLanguages");
 
+            this.langParam = queryParams.get("lang");
+
+           
             // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
             this.nrSelect = this.areaCodes.length > 0 ? this.areaCodes[0].area : '';
             // if (this.defaults.sequence[0] == "S")       
             console.log("[Settings] Language Selection:" + this.sportimoService.getConfigurationFor("promoteLanguageSelector"));
-            this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector");
+
+            if(!this.langParam)
+              this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector");
+
             console.log("[Settings] Property Set To:" + this_m.languageSelection);
             
             this_m.Onboarding = this_m.defaults.sequence[0] == "S";
@@ -475,7 +482,7 @@ export class OnboardComponent implements OnInit {
         console.log("-");                             
         if (this.languageSelection)
         this.languageSelection = false;
-        
+        this.languageObserver.unsubscribe();
       });
     }, 3000);
     

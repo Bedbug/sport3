@@ -87,18 +87,49 @@ export class ContentComponent implements OnInit {
     this.translate.setDefaultLang('en');
     let selected_language = localStorage.getItem('language');    
     
+    let langParam = null;
+
     // this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
     // console.log(this.translate.currentLang);
     
 
     this.sportimoService.getClientConfiguration().subscribe(data => {
 
-      
+       // Handle URL PARAMS
+       this.route.queryParamMap.subscribe(queryParams => {
+
+        langParam = queryParams.get("lang");
+
+        // Unique Link Reset
+        let unique = queryParams.get("uniqueLink");
+
+        if (unique)
+          localStorage.removeItem("signon");
+
+
+        // UTM Params
+        if (queryParams.get("utm_source")) {
+          this.sportimoService.setUTMParams(
+            queryParams.get("utm_campaign"),
+            queryParams.get("utm_source"),
+            queryParams.get("utm_medium"),
+            queryParams.get("utm_term"),
+            queryParams.get("utm_content"),
+            queryParams.get("utm_id")
+          );
+
+          console.log(this.sportimoService.UTMParams)
+        }
+
+
+      })
+
       // this language will be used as a fallback when a translation isn't found in the current language
-     
+      // console.log(langParam);
+      
       // translate.getTranslation('en').subscribe(() => {});
       // the lang to use, if the lang isn't available, it will use the current loader to get them
-      this.translate.use(selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
+      this.translate.use(langParam || selected_language || this.sportimoService.getConfigurationFor("defaultLanguage"));
 
       this.loaderTextAnim();
       this.appTheme = this.sportimoService.getConfigurationFor("theme") || "default";
@@ -129,32 +160,7 @@ export class ContentComponent implements OnInit {
       else
         $('body').removeClass('rtl');
 
-
-      // Handle URL PARAMS
-      this.route.queryParamMap.subscribe(queryParams => {
-        // Unique Link Reset
-        let unique = queryParams.get("uniqueLink");
-
-        if (unique)
-          localStorage.removeItem("signon");
-
-
-        // UTM Params
-        if (queryParams.get("utm_source")) {
-          this.sportimoService.setUTMParams(
-            queryParams.get("utm_campaign"),
-            queryParams.get("utm_source"),
-            queryParams.get("utm_medium"),
-            queryParams.get("utm_term"),
-            queryParams.get("utm_content"),
-            queryParams.get("utm_id")
-          );
-
-          console.log(this.sportimoService.UTMParams)
-        }
-
-
-      })
+     
       // let parsedFirst = parseInt(localStorage.getItem("isFirstGame"));
       // let signonData = JSON.parse(localStorage.getItem('signon'));
 
