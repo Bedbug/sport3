@@ -101,33 +101,64 @@
       }
     </script> -->
 
-<!-- End of sportimo Zendesk Widget script -->
+    <!-- End of sportimo Zendesk Widget script -->
     <!-- Start of gugroupsupport Zendesk Widget script -->
     <div id="snip">
+      <script type="text/javascript">
+        window.zESettings = {
+          webWidget: {
+            contactOptions: {
+              enabled: true,
+              contactButton: { '*': 'Get in touch' }
+            }
+          }
+        };
+      </script>
       <!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=559d1857-5f01-46ce-9397-c9e45792d3b5"> -->
-<!-- <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=fa34cdd6-6b3d-40bf-9d84-4b5362320682"> 
-      </script> -->
+      <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=fa34cdd6-6b3d-40bf-9d84-4b5362320682"></script>
     </div>
 
     <!-- <script>
-      var oB=document.getElementById('ze-snippet');     
-      oB.onload=function(){
+      var oB = document.getElementById('ze-snippet');
+      oB.onload = function () {
         // console.log("Now");
-        var el = document.querySelector('[role="presentation"]');        
+        var el = document.querySelector('[role="presentation"]');
       }
-  </script> -->
-
-    <!-- <script type="text/javascript">
-
-      setTimeout(() => {
-        console.log(zE);
-        // zE('messenger', 'open');
-        // zE('webWidget:on', 'open', function () {
-        //   console.log('The widget has been opened!');
-        // });
-      }, 3000);
-
     </script> -->
+    <script type="text/javascript">
+      window.zESettings = {
+        webWidget: {
+          color: { theme: '#0057b7' },
+          contactOptions: {
+        enabled: true,
+        contactButton: { '*': 'Get in touch' }
+      }
+        }
+      };
+    </script>
+    <script type="text/javascript">
+     
+      // window.zESettings = {
+      //   webWidget: {
+      //     contactOptions: {
+      //       enabled: true,
+      //       contactButton: { '*': 'Get in touch' }
+      //     }
+      //   }
+      // };
+      zE('webWidget', 'hide');
+      // setTimeout(() => {
+      //   zE('webWidget', 'show');
+      //   // zE('webWidget', 'open');
+      //   // console.log(zE);
+      //   zE('webWidget:get', 'display');
+      //   // zE('messenger', 'open');
+      //   // zE('webWidget:on', 'open', function () {
+      //   //   console.log('The widget has been opened!');
+      //   // });
+      // }, 3000);
+
+    </script>
     <!-- End of gugroupsupport Zendesk Widget script -->
 </body>
 <script type="text/javascript">

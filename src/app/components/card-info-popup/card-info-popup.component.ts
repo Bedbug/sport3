@@ -4,6 +4,7 @@ import { FILE_PREVIEW_DIALOG_DATA } from 'src/app/sections/main/prize-view-overl
 import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 declare var zE;
 
 @Component({
@@ -21,6 +22,7 @@ export class CardInfoPopupComponent implements OnInit {
     private sportimoService: SportimoService, 
     public translate: TranslateService,
     public dialogRef: FilePreviewOverlayRef,
+    public authentication: AuthenticationService,
     @Inject(FILE_PREVIEW_DIALOG_DATA) public data: any
     ) { }
 
@@ -47,16 +49,33 @@ export class CardInfoPopupComponent implements OnInit {
   }
 
   openZendesk(){
+    zE('webWidget', 'show');
+    const currentUser = this.authentication.currentUserValue;
+
+    zE('webWidget', 'prefill', {
+      name: {
+        value: currentUser._id,
+        readOnly: true // optional
+      },      
+      phone: {
+        value: currentUser.msisdn,
+        readOnly: true // optional
+      }    
+    });
+
+    zE('webWidget', 'open');
+  
     
-    var el = document.querySelector('[role="presentation"]');
-      el.classList.add("zEShow");      
-      zE('messenger', 'open');
+    // var el = document.querySelector('[role="presentation"]');
+    //   el.classList.add("zEShow");      
+    //   zE('messenger', 'open');
     // this.dialogRef.close();
   }
 
   ngOnDestroy(){
-    var el = document.querySelector('[role="presentation"]');
-    el.classList.remove("zEShow");
+    // var el = document.querySelector('[role="presentation"]');
+    // el.classList.remove("zEShow");
+    zE('webWidget', 'hide');
   }
 
 
