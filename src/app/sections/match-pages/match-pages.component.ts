@@ -92,6 +92,10 @@ export class MatchPagesComponent implements OnInit {
       this.sportimoService.currentLiveMatch.pipe(takeUntil(this.ngUnsubscribe)).subscribe(match => {           
         if (match) {          
           this.liveMatch = match;
+
+          if(match && match.matchData && match.matchData.completed)
+            this.state.navigate(['info'],{relativeTo:this.route});
+          
           // console.log(this.liveMatch.matchData.noBet);          
           // console.log("The current time of the segment is: "+ this.liveMatch.matchData.time);
           
