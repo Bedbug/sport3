@@ -507,7 +507,7 @@
 .finalize {
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding-top: 5px;
   align-items: center;
   height: 150px;
   justify-content: space-evenly;
@@ -533,7 +533,7 @@
     color: white;
     display: flex;
     justify-content: center;
-    padding-top: 5px;
+    // padding-top: 10px;
 }
 
 .activation-info .icn-info{
