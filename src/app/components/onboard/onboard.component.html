@@ -476,7 +476,7 @@ langauge Selection {{languageSelection}}
         <div class="login-form-buttons">
           <div class="form-group">
             <!-- <button [disabled]="isSubmitting || pinForm.controls.pin.errors" type="submit" class="btn btn-sportimo login-form-button"> -->
-            <button [disabled]="isSubmitting || pinForm.controls.pin.errors" type="submit"
+            <button id="pin-verify" [disabled]="isSubmitting || pinForm.controls.pin.errors" type="submit"
               class="btn btn-sportimo login-form-button">
               <div class="loader-label" [class.btn-active]="isSubmitting">
                 <span class="button-label"

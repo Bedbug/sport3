@@ -8,15 +8,16 @@ import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { ConfigService } from 'src/app/services/config.service';
 // import { GsapService } from "src/app/services/gsap.service";
 import { User } from 'src/app/models/user';
-import { first, takeUntil } from 'rxjs/operators';
+import { first, map, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { TermsPopupComponent } from '../terms-popup/terms-popup.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 import UIkit from 'uikit';
+import { HttpClient } from '@angular/common/http';
 import { TpayService } from 'src/app/services/tpay.service';
-
+import { EvinaService } from 'src/app/services/evina.service';
 
 declare var Pace: any;
 declare var zE;
@@ -184,6 +185,8 @@ export class OnboardComponent implements OnInit {
     private ViewModalOverlay: PrizeViewOverlayService,
     private gtmService: GoogleTagManagerService,
     private tpayService: TpayService,
+    private evinaService: EvinaService,
+    private http: HttpClient,
     // private _gsapService: GsapService
   ) {
 
@@ -191,6 +194,9 @@ export class OnboardComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this.evinaService.loadScript();
+      // }));
 
     // setTimeout(() => {
     //   var el = document.querySelector('[role="presentation"]');
@@ -396,20 +402,20 @@ export class OnboardComponent implements OnInit {
 
             this.langParam = queryParams.get("lang");
 
-           
+
             // this.areaCodes = this.sportimoService.getConfigurationFor("availableCountryCodes") || [];        
             this.nrSelect = this.areaCodes.length > 0 ? this.areaCodes[0].area : '';
             // if (this.defaults.sequence[0] == "S")       
             console.log("[Settings] Language Selection:" + this.sportimoService.getConfigurationFor("promoteLanguageSelector"));
 
-            if(!this.langParam)
+            if (!this.langParam)
               this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector");
 
             console.log("[Settings] Property Set To:" + this_m.languageSelection);
-            
+
             this_m.Onboarding = this_m.defaults.sequence[0] == "S";
-            this_m.LandingPage = this_m.defaults.sequence[0] != "S";           
-              
+            this_m.LandingPage = this_m.defaults.sequence[0] != "S";
+
             let bgElement = $('.landing-background');
             bgElement.css("background-image", `url(${this.defaults.landingPage.background})`);
             bgElement.css("background-size", `cover`)
@@ -476,16 +482,13 @@ export class OnboardComponent implements OnInit {
     });
 
     setTimeout(() => {
-      console.log("3s Limit");
-      
-      this.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {     
-        console.log("-");                             
+      this.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {        
         if (this.languageSelection)
-        this.languageSelection = false;
+          this.languageSelection = false;
         this.languageObserver.unsubscribe();
       });
     }, 3000);
-    
+
 
     // this.isFirstGame = true;
     // localStorage.setItem(key, 'New Value');
@@ -1344,9 +1347,9 @@ export class OnboardComponent implements OnInit {
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();    
-    
-    if(this.languageObserver)
+    this.ngUnsubscribe.complete();
+
+    if (this.languageObserver)
       this.languageObserver.unsubscribe();
   }
 

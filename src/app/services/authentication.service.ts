@@ -7,6 +7,7 @@ import { User } from '../models/user';
 import { ConfigService } from './config.service';
 import { Team } from '../models/team';
 import moment from 'moment-mini';
+import { EvinaService } from './evina.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -16,7 +17,7 @@ export class AuthenticationService {
     lo: any;
     curren: any;
 
-    constructor(private http: HttpClient, private Config: ConfigService) {
+    constructor(private http: HttpClient, private Config: ConfigService, private evinaService:EvinaService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
 
@@ -171,6 +172,10 @@ export class AuthenticationService {
         let postData = JSON.parse(localStorage.getItem('signon'));
         postData.pin = pin;
         postData.sSub = noSubscription;
+
+        if(this.evinaService.transactionID)
+        postData.transactionId = this.evinaService.transactionID;
+
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/verify`, postData)
             .pipe(map(response => {
                 // Save the signin data for future use
