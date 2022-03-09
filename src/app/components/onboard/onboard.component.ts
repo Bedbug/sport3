@@ -529,6 +529,9 @@ export class OnboardComponent implements OnInit {
     this.LandingPage = false;
 
     this.PinVerify = true;
+    console.log("PinVerfiy - Event");
+    var event = new Event('DCBProtectRun');
+    document.dispatchEvent(event);
 
     // if ('OTPCredential' in window) {
     //   window.addEventListener('DOMContentLoaded', e => {

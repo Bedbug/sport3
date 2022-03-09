@@ -25,7 +25,7 @@ export class EvinaService {
 
   loadScript() {
 
-    this.http.get<any>(`${this.configService.getApi("ROOT")}/data/client/${this.configService.getClient()}/protection?domTarget=verify-buton`, {})
+    this.http.get<any>(`${this.configService.getApi("ROOT")}/data/client/${this.configService.getClient()}/protection?domTarget=.pin-verify`, {})
       .pipe(map(response => {
 
         if (response.script) {
