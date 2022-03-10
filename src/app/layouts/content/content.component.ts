@@ -9,6 +9,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { from, fromEvent, Observable, Subscription } from 'rxjs';
 import { GsapService } from "src/app/services/gsap.service";
 import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
+import { EvinaService } from 'src/app/services/evina.service';
 
 @Component({
   selector: 'app-content',
@@ -55,7 +56,8 @@ export class ContentComponent implements OnInit {
       private onBoardService: OnBoardService,
       private configService: ConfigService,
       private _gsapService: GsapService,
-      private authService: AuthenticationService) {
+      private authService: AuthenticationService,
+      private evinaService: EvinaService,) {
     // Assign Client based on url
     let client = this.route.snapshot.paramMap.get("cid");
     if (client && client != "0")
@@ -121,7 +123,10 @@ export class ContentComponent implements OnInit {
           console.log(this.sportimoService.UTMParams)
         }
 
+        this.evinaService.loadScript();
 
+        var event = new Event('DCBProtectRun');
+        document.dispatchEvent(event);
       })
 
       // this language will be used as a fallback when a translation isn't found in the current language
