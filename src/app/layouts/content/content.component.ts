@@ -123,10 +123,9 @@ export class ContentComponent implements OnInit {
           console.log(this.sportimoService.UTMParams)
         }
 
-        this.evinaService.loadScript();
+        // this.evinaService.loadScript();
 
-        var event = new Event('DCBProtectRun');
-        document.dispatchEvent(event);
+        
       })
 
       // this language will be used as a fallback when a translation isn't found in the current language

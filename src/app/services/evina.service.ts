@@ -24,8 +24,6 @@ export class EvinaService {
   }
 
   loadScript() {
-console.log(this.configService.getClient());
-
     this.http.get<any>(`${this.configService.getApi("ROOT")}/data/client/${this.configService.getClient()}/protection?domTarget=.pin-verify`, {})
       .pipe(map(response => {
 
@@ -34,8 +32,6 @@ console.log(this.configService.getClient());
           this.renderExternalScript(response.script);
         }
       })).subscribe();
-
-
   }
 
   renderExternalScript(evinaScript: any) {
@@ -44,5 +40,10 @@ console.log(this.configService.getClient());
     script.type = 'text/javascript';
     script.text = evinaScript;
     this.renderer.appendChild(root[0], script);
+
+    console.log("Firing the event manualy");
+    
+    var event = new Event('DCBProtectRun');
+    document.dispatchEvent(event);
   }
 }

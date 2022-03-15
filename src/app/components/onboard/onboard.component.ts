@@ -197,7 +197,8 @@ export class OnboardComponent implements OnInit {
 
     // this.evinaService.loadScript();
       // }));
-
+     
+      
     // setTimeout(() => {
     //   var el = document.querySelector('[role="presentation"]');
     //   el.classList.add("zEHide");
@@ -530,6 +531,8 @@ export class OnboardComponent implements OnInit {
 
     this.PinVerify = true;       
     
+    // var event = new Event('DCBProtectRun');
+    // document.dispatchEvent(event);
     // var event = new Event('DCBProtectRun');
     // document.dispatchEvent(event);
 
