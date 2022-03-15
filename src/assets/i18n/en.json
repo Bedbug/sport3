@@ -256,6 +256,7 @@
 		"104": "No user found with these credentials.",
 		"1002": "A pin was sent in your mobile device",
 		"1007": "Wrong PIN. Please, try again.",
+		"1008": "The card powerup playing rate reached the limit. Please retry.",
 		"4000": "Body is lacking of the gamecardDefinitionId property",
 		"4001": "Body is lacking of the creationTime property or it is later than NOW in UTC",
 		"4002": "The references gamecardDefinitionId document contains options, but no optionId property for the selected option is included in the Body",

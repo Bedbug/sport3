@@ -256,6 +256,7 @@
 		"104": ".لا يوجد أي مستخدم بهذه البيانات",
 		"1002": "قد تم إرسال رمز المرور",
 		"1007": ".رمز مرور خاطئ، حاول مرة أخرى",
+		"1008": "The card powerup playing rate reached the limit. Please retry.",
 		"4000": "Body is lacking of the gamecardDefinitionId property",
 		"4001": "Body is lacking of the creationTime property or it is later than NOW in UTC",
 		"4002": "The references gamecardDefinitionId document contains options, but no optionId property for the selected option is included in the Body",

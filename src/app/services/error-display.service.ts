@@ -37,13 +37,14 @@ export class ErrorDisplayService {
 
     _('errors.1002');
     _('errors.1007');
-
+    _('errors.1008'); // "The card power up has reached limit"
+    
     _('errors.10002'); // "The card has already closed."
     _('errors.10001'); // "The card has already closed."
     _('errors.10005');
     _('errors.10006');
     _('errors.10007');
-
+   
     _('errors.4000');
     _('errors.4001');
     _('errors.4002');
