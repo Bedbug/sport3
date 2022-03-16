@@ -35,9 +35,7 @@ export class MatchesListItemComponent implements OnInit {
   }
 
   gotoMatch() {
-    if (this.isClickable && this.hasJoined) {
-      console.log(this.contestMatch);
-
+    if (this.isClickable && this.hasJoined) {      
       this.router.navigate(['match', this.contestMatch._id, 'info'], { relativeTo: this.route.parent });
     }
 
@@ -57,8 +55,7 @@ export class MatchesListItemComponent implements OnInit {
           }
         });
     } else
-      if (match.isSubscribed) {
-        console.log(this.contestMatch);
+      if (match.isSubscribed) {        
         if (this.contestMatch.match.state < 4)
           this.router.navigate(['match', this.contestMatch._id, 'play'], { relativeTo: this.route.parent });
         else

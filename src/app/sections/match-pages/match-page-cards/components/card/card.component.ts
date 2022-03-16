@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
   sportUtils: SportimoUtils = new SportimoUtils();
 
   // When user has init process to play a special
-  isPlayingSpecial: any;
+  isPlayingSpecial: any = false;
   playcardSubscription: Subscription;
 
   currentPoints = null;
@@ -259,30 +259,32 @@ export class CardComponent implements OnInit {
 
   playSpecial(specialName: string) {
 
+    if (this.isPlayingSpecial) return;    
 
-    if (this.isPlayingSpecial) return;
+    if (this.cardData.status == 0) {
+      console.log('card has not activated yet');
+      return;
+    }
 
-    if (this.cardData.status)
-
-      if (specialName === "doublePoints" && this.cardData.isDoublePoints)
-        return;
-      if (specialName === "doubleTime" && this.cardData.isDoubleTime)
-       return;
+    if (specialName === "doublePoints" && this.cardData.isDoublePoints)
+      return;
+    if (specialName === "doubleTime" && this.cardData.isDoubleTime)
+      return;
 
     const postData = {};
     postData[specialName] = true;
     this.isPlayingSpecial = true;
-    
+
     this.playcardSubscription = this.sportimoService.playSpecial(this.cardData.id, postData)
       .subscribe(response => {
-      
+
         if (response.userGameCard && response.userGameCard.specials) {
           this.cardData.specials = response.userGamecard.specials;
           if (this.cardData.specials.DoublePoints.status == 1) {
             this.setSpecialSPTimmer();
           }
         }
-
+        console.log(this.isPlayingSpecial)
         this.isPlayingSpecial = false;
       });
   }
