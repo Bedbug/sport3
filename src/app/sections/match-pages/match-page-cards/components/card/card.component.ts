@@ -41,7 +41,7 @@ export class CardComponent implements OnInit {
 
   pointsTimeOut: any;
 
-  pauseTimeout:any;
+  pauseTimeout: any;
 
   getFormatedOption(text: string) {
     const home_team = this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name[this.translate.currentLang] || this.sportimoService.getCurrentLiveMatchData().value.matchData.home_team.name['en'];
@@ -101,8 +101,8 @@ export class CardComponent implements OnInit {
     // setTimeout(() => {
     //   this.showEventTime = false;
     // }, 5000);
-          this.ViewModalOverlay.open<CardInfoPopupComponent>(CardInfoPopupComponent,{data:this.cardData});
-    
+    this.ViewModalOverlay.open<CardInfoPopupComponent>(CardInfoPopupComponent, { data: this.cardData });
+
   }
 
   calculatePointsAndTimers() {
@@ -139,7 +139,7 @@ export class CardComponent implements OnInit {
               if (x == this.activationCount + 1) {
                 this.activationTimer.unsubscribe();
                 this.cardData.status = 1;
-                this.activationScale = null;              
+                this.activationScale = null;
                 this.calculatePointsAndTimers();
               }
             })
@@ -158,9 +158,9 @@ export class CardComponent implements OnInit {
       }
 
       let realDuration = moment.duration(end.diff(start)).asSeconds();
-      
-      if(this.cardData.pauseTime && this.cardData.resumeTime)
-      realDuration = moment.duration(moment.utc(this.cardData.pauseTime).diff(start)).asSeconds() +  moment.duration(end.diff(moment.utc(this.cardData.resumeTime))).asSeconds();
+
+      if (this.cardData.pauseTime && this.cardData.resumeTime)
+        realDuration = moment.duration(moment.utc(this.cardData.pauseTime).diff(start)).asSeconds() + moment.duration(end.diff(moment.utc(this.cardData.resumeTime))).asSeconds();
 
       let remainingDuration = moment.duration(end.diff(now)).asSeconds();
 
@@ -175,9 +175,9 @@ export class CardComponent implements OnInit {
 
         this.currentPoints = Math.round((points_step * (this.terminationCount)) + this.cardData.endPoints);
         this.cardTimerScale = 100 - ((elapsedDuration / realDuration) * 100);
-      
+
         //Repeat every second in case  the card status changes
-       this.pauseTimeout = setTimeout(()=>this.calculatePointsAndTimers(), 1000);
+        this.pauseTimeout = setTimeout(() => this.calculatePointsAndTimers(), 1000);
       }
 
       if (this.cardData.status == 1)
@@ -199,7 +199,7 @@ export class CardComponent implements OnInit {
             }
 
             let timed = this.sportimoService.currentMatch.matchData.timeline[this.sportimoService.currentMatch.matchData.state].timed;
-           
+
             // If we are an a segment that time is not running ignore progress until we resume
             if (!timed) {
               console.log("We have a change in segment");
@@ -207,12 +207,12 @@ export class CardComponent implements OnInit {
               this.cardData.status = 3;
               this.cardData.pauseTime = moment().toDate();
               console.log("Pausing Card");
-              
+
               this.calculatePointsAndTimers();
               return;
             }
-    
-            
+
+
             const point_spread = this.cardData.startPoints - this.cardData.endPoints;
             const points_step = point_spread / (this.cardData.duration / 1000);
 
@@ -220,9 +220,9 @@ export class CardComponent implements OnInit {
             this.cardTimerScale = 100 - (((elapsedDuration + x) / realDuration) * 100); //100 - (100 * (x / this.terminationCount));
             // console.log(elapsedDuration);
             // console.log(realDuration);
-           
+
             if (this.cardTimerScale < 0.1) {
-              this.cardData.status = 2;       
+              this.cardData.status = 2;
               this.terminationTimer.unsubscribe();
             }
           });
@@ -266,20 +266,21 @@ export class CardComponent implements OnInit {
 
       if (specialName === "doublePoints" && this.cardData.isDoublePoints)
         return;
-    if (specialName === "doubleTime" && this.cardData.isDoubleTime)
-      return;
+      if (specialName === "doubleTime" && this.cardData.isDoubleTime)
+       return;
 
     const postData = {};
     postData[specialName] = true;
     this.isPlayingSpecial = true;
-    console.log(specialName);
+    
     this.playcardSubscription = this.sportimoService.playSpecial(this.cardData.id, postData)
       .subscribe(response => {
-        console.log(this.cardData);
-        console.log(response.userGameCard);
-        this.cardData.specials = response.userGamecard.specials;
-        if (this.cardData.specials.DoublePoints.status == 1) {
-          this.setSpecialSPTimmer();
+      
+        if (response.userGameCard && response.userGameCard.specials) {
+          this.cardData.specials = response.userGamecard.specials;
+          if (this.cardData.specials.DoublePoints.status == 1) {
+            this.setSpecialSPTimmer();
+          }
         }
 
         this.isPlayingSpecial = false;
@@ -308,7 +309,7 @@ export class CardComponent implements OnInit {
     if (this.specialDPTimer)
       this.specialDPTimer.unsubscribe();
 
-      if(this.pauseTimeout)
+    if (this.pauseTimeout)
       clearTimeout(this.pauseTimeout);
   }
 

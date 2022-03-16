@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { Contest } from '../models/contest';
-import { Observable, BehaviorSubject, timer, of, Subject } from 'rxjs';
+import { Observable, BehaviorSubject, timer, of, Subject, EMPTY } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { GrandPrize } from '../models/grand-prize';
 import { ContestMatch } from '../models/contest-match';
 import { LiveMatch } from '../models/live-match';
 import { AuthenticationService } from './authentication.service';
 // import { Socket } from 'ngx-socket-io';
-import {io} from 'socket.io-client';
+import { io } from 'socket.io-client';
+import { ErrorDisplayService } from './error-display.service';
 
 // import demo from 'src/assets/json/demo.json';
 
@@ -68,6 +69,7 @@ export class SportimoService {
     private http: HttpClient,
     private Config: ConfigService,
     private authenticationService: AuthenticationService,
+    private errorDisplay: ErrorDisplayService,
     // private devSocket: developmentSocket,
     // private socket: Socket
   ) {
@@ -111,9 +113,9 @@ export class SportimoService {
     return this.configuration.value[key];
   }
 
-/*-----------------------------------------------------------------------------------
-   Push Notifications
- ----------------------------------------------------------------------------------- */
+  /*-----------------------------------------------------------------------------------
+     Push Notifications
+   ----------------------------------------------------------------------------------- */
   addPushSubscriber(sub: any) {
     const postData = sub;
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/push`, postData)
@@ -357,7 +359,7 @@ export class SportimoService {
     cardSelections.contestId = this.currentContestId;
     cardSelections.segment = this.currentLiveMatch.value.matchData.state;
     console.log(this.currentLiveMatch.value.matchData.state);
-    
+
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecards`, cardSelections)
       .pipe(map(response => {
         if (!response.error) {
@@ -374,10 +376,24 @@ export class SportimoService {
     body:{"doublePoints", true} || {"doubleTime", true}
   */
   playSpecial(gamecardId: string, body: any) {
+
+    var doublePointsUsed = this.currentLiveMatch.value.playedCards.filter(x => x.isDoublePoints).length;
+    var doubleTimeUsed = this.currentLiveMatch.value.playedCards.filter(x => x.isDoubleTime).length;
+    var specialsUsed = doublePointsUsed + doubleTimeUsed;
+    var maxSpecials = this.currentLiveMatch.value.matchData.settings.gameCards.specials
+    console.log(maxSpecials - specialsUsed);
+
+    if (maxSpecials - specialsUsed <= 0) {
+      this.errorDisplay.showError("10007");
+      return EMPTY;
+    }
+
     const endpoint = `${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/tournament/${this.currentContestId}/match/${this.currentMatchId}/gamecard/${gamecardId}`;
     return this.http.put<any>(endpoint, body)
       .pipe(map(response => {
         if (!response.error) {
+          console.log(response);
+
           // Assign new data from the response to the LiveMatch Observable in order to let all listeners receive the new info
           Object.assign(this.currentLiveMatch.value.playedCards[
             this.currentLiveMatch.value.playedCards.findIndex(el => el.id === response.userGamecard._id)], response.userGamecard)
@@ -403,8 +419,8 @@ export class SportimoService {
   private correlatorId: string;
 
   onboardingMetricsStart(sequenceId: string) {
-    const postData = { client: this.Config.getClient(), sequence: sequenceId };    
-    
+    const postData = { client: this.Config.getClient(), sequence: sequenceId };
+
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/onboarding/start`, postData)
       .pipe(map(result => {
         this.correlatorId = result.correlator;
@@ -432,7 +448,7 @@ export class SportimoService {
   getStream() {
     let observable = new Observable(observer => {
       // console.log(this.Config.getApi('SOCKET'));
-      
+
       this.socket = io(this.Config.getApi('SOCKET'), { transports: ['websocket', 'polling'] });
       // this.socket = io("localhost:3031", { transports: ['websocket', 'polling'] });
 
@@ -508,15 +524,15 @@ export class SportimoService {
       this.updateCardStatus(data);
     } else if (data.type == "Match_full_time") {
       this.finalizeMatch(data);
-    } else if (data.type == "Bet_State"){
+    } else if (data.type == "Bet_State") {
       this.setBetState(data.data);
     }
   }
 
-  setBetState(data: any) {   
-    this.currentLiveMatch.value.matchData.noBet = data.noBet;    
+  setBetState(data: any) {
+    this.currentLiveMatch.value.matchData.noBet = data.noBet;
     this.currentLiveMatch.next(this.currentLiveMatch.value);
-    console.log("[SPORTIMO SERVICE]: Current match Bet State set to:" + !this.currentLiveMatch.value.matchData.noBet); 
+    console.log("[SPORTIMO SERVICE]: Current match Bet State set to:" + !this.currentLiveMatch.value.matchData.noBet);
   }
 
   finalizeMatch(data: any) {
@@ -730,7 +746,7 @@ export class SportimoService {
     }
   }
 
-  sendUTMParams(msisdn: string){
+  sendUTMParams(msisdn: string) {
     let postData = {
       msisdn: msisdn.toString(),
       client: this.Config.getClient(),
@@ -741,10 +757,10 @@ export class SportimoService {
       utm_content: this.UTMParams.utm_content,
       utm_id: this.UTMParams.utm_id,
 
-  }
-  return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/utm-notify`, postData)
+    }
+    return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/utm-notify`, postData)
       .pipe(map(response => {
-          return response;
+        return response;
       }));
   }
 
