@@ -195,8 +195,7 @@ export class OnboardComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.evinaService.loadScript();
-      // }));
+    // this.evinaService.loadScript();      
      
       
     // setTimeout(() => {

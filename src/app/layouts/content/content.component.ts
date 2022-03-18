@@ -123,7 +123,7 @@ export class ContentComponent implements OnInit {
           console.log(this.sportimoService.UTMParams)
         }
 
-        // this.evinaService.loadScript();
+        this.evinaService.loadScript();
 
         
       })
