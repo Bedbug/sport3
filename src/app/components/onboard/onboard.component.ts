@@ -429,19 +429,21 @@ export class OnboardComponent implements OnInit {
         // $('.loader-wrapper').fadeOut('slow');
         // $('.loader-wrapper').remove('slow');
         var releaseTimout;
-        Pace.on('done', function () {
-          // console.log("done");
-          clearTimeout(releaseTimout);
-          releaseTimout = setTimeout(function () {
-            $('.loader-wrapper').fadeOut('slow');
-            $('.loader-wrapper').remove('slow');
+        console.log("Pace");
+        
+        // Pace.on('done', function () {
+        //   // console.log("done");
+        //   clearTimeout(releaseTimout);
+        //   releaseTimout = setTimeout(function () {
+        //     $('.loader-wrapper').fadeOut('slow');
+        //     $('.loader-wrapper').remove('slow');
 
-            // Close Texts
-            var myobj = document.getElementById("LoaderTexts");
-            if (myobj)
-              myobj.remove();
-          }, 500);
-        });
+        //     // Close Texts
+        //     var myobj = document.getElementById("LoaderTexts");
+        //     if (myobj)
+        //       myobj.remove();
+        //   }, 500);
+        // });
 
         // Limit to 6 secs
         setTimeout(function () {

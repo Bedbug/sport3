@@ -1,5 +1,5 @@
 import  './polyfills';
-import './assets/pace/pace.min.js';
+// import './assets/pace/pace.min.js';
 import './assets/js/loader-scripts.js';
 
 import { enableProdMode } from '@angular/core';
