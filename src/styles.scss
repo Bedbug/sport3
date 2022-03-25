@@ -47,7 +47,7 @@ strong {
 }
 
 div[role="presentation"] {
-  display: none ;
+  display: none;
 }
 
 .background {
@@ -1116,6 +1116,13 @@ body .page-wrapper .page-main-header {
     height: 35px !important;
   }
 }
+
+@media (max-width: 360px) {
+  .page-wrapper .page-main-header .main-header-left .logo-wrapper .app-logo {
+    width: 140px;
+  }
+}
+
 @include media-breakpoint-up(lg) {
   .mobile-app-navbar {
     display: none;
