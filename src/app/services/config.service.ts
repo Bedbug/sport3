@@ -59,6 +59,9 @@ export class ConfigService {
     }
     // Gets a value of specified property in the configuration file
     get(key: any) {
+        console.log(this._config);
+        
+
         return this._config[key];
     }
 }

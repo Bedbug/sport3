@@ -39,7 +39,7 @@
     <div *ngIf="cardData.wonTime" class="card-data">{{cardData.wonTime | date:"hh:mm:ss"}}</div>
     
   </div>
-  <div *ngIf="(cardData.status == 2 && !cardData.wonTime) && !contactBox" class="popup-card-header" style="text-align:center; height:100px;">
+  <div *ngIf="(cardData.status == 2 && !cardData.wonTime) && !contactBox && zendeskIsEnabled" class="popup-card-header" style="text-align:center; height:100px;">
     <div style="padding-bottom: 5px;"><span translate>contact_us_info</span></div>
     <div style="text-align: center;"><button (click)="openZendesk()" class="btn btn-sportimo" translate>Contact us</button></div> 
     <!-- <div style="text-align: center;"><button (click)="openContactBox()" class="btn btn-sportimo">Why did I lose it?</button></div>     -->

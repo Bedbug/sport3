@@ -5,6 +5,7 @@ import { SportimoUtils } from 'src/app/helpers/sportimo-utils';
 import { SportimoService } from 'src/app/services/sportimo.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ConfigService } from 'src/app/services/config.service';
 declare var zE;
 
 @Component({
@@ -17,17 +18,19 @@ export class CardInfoPopupComponent implements OnInit {
   sportUtils: SportimoUtils = new SportimoUtils();
   cardData: any;
   contactBox = false;
+  zendeskIsEnabled = true;
 
   constructor( 
     private sportimoService: SportimoService, 
     public translate: TranslateService,
     public dialogRef: FilePreviewOverlayRef,
-    public authentication: AuthenticationService,
+    public authentication: AuthenticationService,    
     @Inject(FILE_PREVIEW_DIALOG_DATA) public data: any
     ) { }
 
   ngOnInit() {
-    console.log(this.data);
+    console.log(this.sportimoService.getConfigurationFor("zendeskIsEnabled"));
+    this.zendeskIsEnabled = this.sportimoService.getConfigurationFor("zendeskIsEnabled");
     this.cardData = this.data;
   }
 
