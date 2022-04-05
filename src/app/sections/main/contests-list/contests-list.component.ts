@@ -59,6 +59,10 @@ export class ContestsListComponent implements OnInit {
 
   ngOnInit() {
 
+    ($('.carousel') as any).carousel({
+      interval: 5000
+    })
+
     this.sportimoService.getContests()
       .subscribe(data => {
         this.contests = data;
