@@ -39,9 +39,7 @@ export class EvinaService {
     const script = document.createElement('script');
     script.type = 'text/javascript';
     script.text = evinaScript;
-    this.renderer.appendChild(root[0], script);
-
-    console.log("Firing the event manualy");
+    this.renderer.appendChild(root[0], script);    
     
     var event = new Event('DCBProtectRun');
     document.dispatchEvent(event);

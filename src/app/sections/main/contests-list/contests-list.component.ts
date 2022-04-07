@@ -20,19 +20,19 @@ import { ConfigService } from 'src/app/services/config.service';
   animations: [
     trigger(
       'staggerAnimation', [
-        transition('* => *', [
-          query(':enter', style({ opacity: 0 }), { optional: true }),
-          query(
-            ':enter',
-            stagger(
-              '200ms', [
-                animate('300ms', style({ opacity: 1 }))
-              ]), { optional: true }),
-          query(':leave', stagger('200ms', [
-            animate('300ms', style({ opacity: 0 }))
-          ]), { optional: true })
-        ]),
-      ]
+      transition('* => *', [
+        query(':enter', style({ opacity: 0 }), { optional: true }),
+        query(
+          ':enter',
+          stagger(
+            '200ms', [
+            animate('300ms', style({ opacity: 1 }))
+          ]), { optional: true }),
+        query(':leave', stagger('200ms', [
+          animate('300ms', style({ opacity: 0 }))
+        ]), { optional: true })
+      ]),
+    ]
     )
   ]
 })
@@ -41,67 +41,82 @@ export class ContestsListComponent implements OnInit {
   contests: Contest[];
   ngUnsubscribe = new Subject();
   prizes: GrandPrize[];
+  banners: any[];
   countdownTimers: any[];
 
   Utils: SportimoUtils = new SportimoUtils();
-  
-  
+
+
   constructor(
     private sportimoService: SportimoService,
-    private configService: ConfigService, 
+    private configService: ConfigService,
     private router: Router,
-    private route:ActivatedRoute,
+    private route: ActivatedRoute,
     public translate: TranslateService,
-    private authenticationService:AuthenticationService,
+    private authenticationService: AuthenticationService,
     private prizeViewOverlay: PrizeViewOverlayService
   ) { }
 
 
   ngOnInit() {
 
-    ($('.carousel') as any).carousel({
-      interval: 5000
-    })
+    
 
-    this.sportimoService.getContests()
-      .subscribe(data => {
-        this.contests = data;
-      })
 
-    this.sportimoService.getGrandPrizes()
-    .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe(data => {
-        if (data != null && data.length > 0) {
-          this.prizes = data.filter(each=> !each.isMajor);        
-                    
-          this.startCountdownTimers();
 
-          // If and when the user logs in we should update their chances.
-          this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
-            if (user)
-            this.prizes.forEach(eachPrize=>{
-              if(user)
-              this.sportimoService.getGrandPrizeUserChances(eachPrize._id)
+    this.sportimoService.getClientBanners()
+      .subscribe(data => {        
+        this.banners = data;
+
+        ($('.carousel') as any).carousel({
+          interval: 3000
+        })
+
+        this.sportimoService.getContests()
+          .subscribe(data => {            
+
+            this.contests = data;
+
+            this.sportimoService.getGrandPrizes()
+              .pipe(takeUntil(this.ngUnsubscribe))
               .subscribe(data => {
-                eachPrize.chances = data || 0;
+                if (data != null && data.length > 0) {
+                  this.prizes = data.filter(each => !each.isMajor);
+
+                  this.startCountdownTimers();
+
+                  // If and when the user logs in we should update their chances.
+                  this.authenticationService.currentUser.pipe(takeUntil(this.ngUnsubscribe)).subscribe(user => {
+                    if (user)
+                      this.prizes.forEach(eachPrize => {
+                        if (user)
+                          this.sportimoService.getGrandPrizeUserChances(eachPrize._id)
+                            .subscribe(data => {
+                              eachPrize.chances = data || 0;
+                            })
+                        else
+                          eachPrize.chances = 0
+                      })
+                  })
+                }
               })
-              else
-                eachPrize.chances = 0
-            })        
           })
-        }
       })
+
+
+
+
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
     if (this.prizes && this.prizes.length > 0)
-		this.prizes.forEach(prize=>{
-		  clearInterval(prize.timer);
-		});
+      this.prizes.forEach(prize => {
+        clearInterval(prize.timer);
+      });
   }
-  
+
   startCountdownTimers() {
     // / Set the date we're counting down to
     // console.log(this.prizes);
@@ -112,48 +127,48 @@ export class ContestsListComponent implements OnInit {
       // Update the count down every 1 second
       prize.timer = setInterval(function () {
 
-      // Get todays date and time
-      var now = new Date().getTime();
+        // Get todays date and time
+        var now = new Date().getTime();
 
-      // Find the distance between now and the count down date
-      var distance = that.countDownEndDate - now;
-      if(!that.countdown) that.countdown = {};
-      // Time calculations for days, hours, minutes and seconds
+        // Find the distance between now and the count down date
+        var distance = that.countDownEndDate - now;
+        if (!that.countdown) that.countdown = {};
+        // Time calculations for days, hours, minutes and seconds
 
-      that.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      that.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      that.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      that.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      // console.log(that.countdown);
-      // If the count down is finished, write some text 
-      if (distance < 0) {
-        clearInterval(this.CountDownInterval);
-        that.countdown.expired = true;
-      }
-    }, 1000);
+        that.countdown.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        that.countdown.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        that.countdown.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        that.countdown.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // console.log(that.countdown);
+        // If the count down is finished, write some text 
+        if (distance < 0) {
+          clearInterval(this.CountDownInterval);
+          that.countdown.expired = true;
+        }
+      }, 1000);
     });
-       
 
-    
+
+
   }
 
-  parseDate(date:string){    
-      return this.Utils.parseDate(date,this.translate.currentLang=='fa');
+  parseDate(date: string) {
+    return this.Utils.parseDate(date, this.translate.currentLang == 'fa');
   }
 
-  parseNumbers(text:string){
-    if(!text)
-    text = "0";
-    return this.Utils.parseNumbers(text,this.translate.currentLang == 'fa');
+  parseNumbers(text: string) {
+    if (!text)
+      text = "0";
+    return this.Utils.parseNumbers(text, this.translate.currentLang == 'fa');
   }
 
   showPrizeDetails(prizeid: string) {
-    
-    this.prizeViewOverlay.open<GrandPrizeDetailsComponent>(GrandPrizeDetailsComponent,{data:prizeid});
+
+    this.prizeViewOverlay.open<GrandPrizeDetailsComponent>(GrandPrizeDetailsComponent, { data: prizeid });
     // this.router.navigate(['main/grand-prize/', prizeid]);
   }
 
-  ContestClicked(contestId) {        
-    this.router.navigate(['../contest', contestId, 'matches'],{relativeTo:this.route.parent});
+  ContestClicked(contestId) {
+    this.router.navigate(['../contest', contestId, 'matches'], { relativeTo: this.route.parent });
   }
 }

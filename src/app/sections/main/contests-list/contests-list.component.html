@@ -1,34 +1,31 @@
 <div class="contest-list-scrollable-area">
 
   <!-- BANNERS -->
-  <div [@staggerAnimation]="prizes?.length">
+  <div  [@staggerAnimation]="prizes?.length">
     <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel">
-      
+
       <!-- Indicators List -->
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" *ngFor="let banner of banners; let i = index" [attr.data-slide-to]="i" [class.active]="i==0"></li>
+        <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> -->
         <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
       </ol>
 
       <!-- SLIDES -->
       <div class="carousel-inner">
-        <div class="carousel-item active">
-           <img class="d-block w-100" src="./assets/images/contest-bg.png" alt="First slide">
-         
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Title 1</h5>
-            <p>This is the banner test 1</p>
+        <div class="carousel-inner">
+          <div class="carousel-item " *ngFor="let banner of banners; let i = index" [class.active]="i==0">
+            <img class="d-block w-100" src="{{banner.promoDetailImage}}" [attr.alt]="i + ' slide'">
+            <!-- <img class="d-block w-100" src="{{ './assets/images/contest-bg.png'}}" alt="First slide"> -->
+
+            <div class="carousel-caption d-md-block">
+              <h5>{{banner.titleText[translate.currentLang]}}</h5>
+              {{baner}}
+              <p [innerHTML]="banner.infoText[translate.currentLang]"></p>
+            </div>
           </div>
+
         </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="./assets/images/contest-bg.png" alt="Second slide">
-        
-         <div class="carousel-caption d-none d-md-block">
-           <h5>Title 2</h5>
-           <p>This is the banner test 2</p>
-         </div>
-       </div>
       </div>
 
       <!-- END SLIDES -->

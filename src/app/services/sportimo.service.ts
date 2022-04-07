@@ -50,6 +50,7 @@ export class SportimoService {
   public currentLiveMatch: BehaviorSubject<LiveMatch>;
   public cachedContests: BehaviorSubject<Contest[]>;
   private grandPrizes: BehaviorSubject<GrandPrize[]>;
+  private banners: BehaviorSubject<any[]>;
   private currentMatchId;
   private currentContestId;
   public configuration: BehaviorSubject<any>;
@@ -76,6 +77,7 @@ export class SportimoService {
     this.cachedContests = new BehaviorSubject<Contest[]>([]);
     this.currentLiveMatch = new BehaviorSubject<LiveMatch>(null);
     this.grandPrizes = new BehaviorSubject<GrandPrize[]>(null);
+    this.banners = new BehaviorSubject<any[]>(null);
     this.configuration = new BehaviorSubject<any>(this.defaultConfiguration);
   }
 
@@ -171,6 +173,22 @@ export class SportimoService {
 
   getGrandPrizeUserChances(prizeId: string) {
     return this.http.get<any>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/grand-prize/${prizeId}/chances`);
+  }
+
+  /*-----------------------------------------------------------------------------------
+    Banners
+  ----------------------------------------------------------------------------------- */
+  getClientBanners() {
+    if (this.banners.value) {
+      return this.banners;
+    } else {
+      // In case we load a contest page directly
+      return this.http.get<GrandPrize[]>(`${this.Config.getApi("ROOT")}/data/client/${this.Config.getClient()}/banners`).pipe(map(data => {
+        this.banners.next(data);                
+        return data;
+      })
+      );
+    }
   }
 
   /*-----------------------------------------------------------------------------------
