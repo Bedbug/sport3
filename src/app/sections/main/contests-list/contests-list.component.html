@@ -14,7 +14,7 @@
       <!-- SLIDES -->
       <div class="carousel-inner">
         <div class="carousel-inner">
-          <div class="carousel-item " *ngFor="let banner of banners; let i = index" [class.active]="i==0">
+          <div class="carousel-item" [class.isClickable]="banner.url" *ngFor="let banner of banners; let i = index" [class.active]="i==0" (click)="gotoUrl(banner.url)">
             <img class="d-block w-100" src="{{banner.promoDetailImage}}" [attr.alt]="i + ' slide'">
             <!-- <img class="d-block w-100" src="{{ './assets/images/contest-bg.png'}}" alt="First slide"> -->
 

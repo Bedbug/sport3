@@ -152,6 +152,11 @@ export class ContestsListComponent implements OnInit {
 
   }
 
+  gotoUrl(url:string){
+    if(url && url != undefined)  
+      window.top.location.href = url;  
+  }
+
   parseDate(date: string) {
     return this.Utils.parseDate(date, this.translate.currentLang == 'fa');
   }
