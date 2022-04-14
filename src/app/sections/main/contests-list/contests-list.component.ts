@@ -66,10 +66,11 @@ export class ContestsListComponent implements OnInit {
 
     this.sportimoService.getClientBanners()
       .subscribe(data => {        
+        
         this.banners = data;
 
         ($('.carousel') as any).carousel({
-          interval: 3000
+          interval: 4000
         })
 
         this.sportimoService.getContests()
