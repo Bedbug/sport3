@@ -75,8 +75,8 @@ export class MatchPageInfoComponent implements OnInit {
       if (match) {
 
         this.liveMatch = match;
-        console.log("--- Here we update the live match");
-        console.log("State: " + this.liveMatch.matchData.state);
+        // console.log("--- Here we update the live match");
+        // console.log("State: " + this.liveMatch.matchData.state);
 
         // if (this.liveMatch.matchData.state < 4)
           // document.getElementById('play').click();
