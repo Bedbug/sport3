@@ -104,7 +104,7 @@ export class MatchesListComponent implements OnInit {
     // setTimeout(() => {
       // this.selected = 'live';
       // $('#myTab a[href="#live"]').trigger('show.bs.tab');
-      console.log(this.selectedTab);
+      // console.log(this.selectedTab);
       
       if(this.selectedTab == 'live')
         document.getElementById('live-tab').click();
