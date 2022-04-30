@@ -71,6 +71,8 @@ export class OnboardComponent implements OnInit {
   _currentCountry: string;
   _currentClient: string;
   _currentAppName: string;
+  urlMSI: string;
+  urlOperatorCode: string;
 
   translateMappings() {
     _("Authentication failed")
@@ -196,8 +198,8 @@ export class OnboardComponent implements OnInit {
   ngOnInit() {
 
     // this.evinaService.loadScript();      
-     
-      
+
+
     // setTimeout(() => {
     //   var el = document.querySelector('[role="presentation"]');
     //   el.classList.add("zEHide");
@@ -250,13 +252,8 @@ export class OnboardComponent implements OnInit {
 
         // console.log(this.availableCountries);
         this.filteredOperators = [];
+        console.log("now");
 
-        if (this.availableCountries.length == 1) {
-          console.log("Only one country available. Proceed to operators");
-          // this.multiOperatorForm.controls.country = this.availableCountries[0];
-          this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);
-          this.selectedCountry(this.multiOperatorForm.controls.country.value);
-        }
 
         this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
           // console.log(x);
@@ -264,6 +261,20 @@ export class OnboardComponent implements OnInit {
 
         let paramsSubscription = this.route.queryParamMap.pipe(first()).subscribe(queryParams => {
           this.UniqueLink = queryParams.get("uniqueLink");
+
+          // From Header Enrichement
+          this.urlMSI = queryParams.get("uId");
+          this.urlOperatorCode = queryParams.get("oc");
+
+          if (this.urlMSI)
+            this.urlMSI = shortNumberDecode(this.urlMSI).toString();
+
+          if (this.availableCountries.length == 1 || this.urlMSI) {
+            console.log("Only one country available. Proceed to operators");
+            // this.multiOperatorForm.controls.country = this.availableCountries[0];
+            this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);
+            this.selectedCountry(this.multiOperatorForm.controls.country.value);
+          }
 
           // if(paramsSubscription)
           // paramsSubscription.unsubscribe();
@@ -408,7 +419,7 @@ export class OnboardComponent implements OnInit {
             // if (this.defaults.sequence[0] == "S")       
             console.log("[Settings] Language Selection:" + this.sportimoService.getConfigurationFor("promoteLanguageSelector"));
 
-            if (!this.langParam)
+            if (!this.langParam && !(this.urlMSI && this.urlOperatorCode))
               this_m.languageSelection = this.sportimoService.getConfigurationFor("promoteLanguageSelector");
 
             console.log("[Settings] Property Set To:" + this_m.languageSelection);
@@ -429,8 +440,7 @@ export class OnboardComponent implements OnInit {
         // $('.loader-wrapper').fadeOut('slow');
         // $('.loader-wrapper').remove('slow');
         var releaseTimout;
-        console.log("Pace");
-        
+
         // Pace.on('done', function () {
         //   // console.log("done");
         //   clearTimeout(releaseTimout);
@@ -461,6 +471,23 @@ export class OnboardComponent implements OnInit {
 
     });
 
+    const shortLinkAlphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
+
+    const shortNumberDecode = function (shortNumber) {
+      var length = shortLinkAlphabet.length,
+        decode = 0,
+        multi = 1;
+
+      for (var i = shortNumber.length - 1; i >= 0; i--) {
+        decode += multi * shortLinkAlphabet.indexOf(shortNumber[i]);
+        multi = multi * length;
+      }
+
+      // decode = decode.toString();
+      return decode;
+      // return process.env.NODE_ENV !== 'production' ? decode : !msisdnValidation(decode) ? null : decode;
+    };
+
     this.multiOperatorForm = this.formBuilder.group({
       country: ['', Validators.required],
       operator: ['', Validators.required],
@@ -484,7 +511,7 @@ export class OnboardComponent implements OnInit {
     });
 
     setTimeout(() => {
-      this.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {        
+      this.languageObserver = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
         if (this.languageSelection)
           this.languageSelection = false;
         this.languageObserver.unsubscribe();
@@ -530,8 +557,8 @@ export class OnboardComponent implements OnInit {
   closeLandingPage() {
     this.LandingPage = false;
 
-    this.PinVerify = true;       
-    
+    this.PinVerify = true;
+
     // var event = new Event('DCBProtectRun');
     // document.dispatchEvent(event);
     // var event = new Event('DCBProtectRun');
@@ -582,8 +609,9 @@ export class OnboardComponent implements OnInit {
     // $('#countrySelect option:nth-child(1)').val();
 
     $('#countrySelect option').first().attr("selected", "selected");
+    console.log(this.availableCountries.length);
 
-    if (this.availableCountries.length == 1) {
+    if (this.availableCountries.length == 1 || this.urlMSI) {
       console.log("Only one country available. Proceed to operators");
       // this.multiOperatorForm.controls.country = this.availableCountries[0];
       this.multiOperatorForm.controls["country"].setValue(this.availableCountries[0]);
@@ -629,12 +657,22 @@ export class OnboardComponent implements OnInit {
       Action: `SelectCountry_${this._currentCountry}`,
       Label: this._currentCountry
     };
-    this.gtmService.pushTag(gtmTag);
+    this.gtmService.pushTag(gtmTag);  
 
-    if (this.filteredOperators.length == 1 && this.availableCountries.length == 1) {
-      this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
-      this.selectedOperator(this.filteredOperators[0]);
+    if (this.urlMSI && this.urlOperatorCode) {
+      var urlOperator = this.appOperators.find(x => x.operatorCode == this.urlOperatorCode)
+      this.multiOperatorForm.controls["operator"].setValue(urlOperator);
+      this.multiOperatorForm.controls.msisdn.setValue(this.urlMSI);
+      this.selectedOperator(urlOperator);
+      this.isSubmitOpen = true;
     }
+    else
+      if (this.filteredOperators.length == 1 && this.availableCountries.length == 1) {
+        this.multiOperatorForm.controls["operator"].setValue(this.filteredOperators[0]);
+        console.log(this.filteredOperators[0]);
+
+        this.selectedOperator(this.filteredOperators[0]);
+      }
     //  console.log(this.filteredOperators);
   };
 
@@ -642,6 +680,7 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
+    console.log(this.currentOperator);
 
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
