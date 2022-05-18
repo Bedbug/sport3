@@ -1198,6 +1198,14 @@ export class OnboardComponent implements OnInit {
 
             if (!response.user.firstLoginCompleted) {
               this.sendThankYouPageEvent();
+
+              if(this.sportimoService.UTMParams?.utm_source =="adstart"){
+                this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`);
+
+                  if(this.sportimoService.UTMParams?.utm_source =="trafficcompany")
+                this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`);
+
+              }
             }
 
             // Analytics - User_Attempt_PIN

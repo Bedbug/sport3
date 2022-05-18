@@ -117,7 +117,8 @@ export class ContentComponent implements OnInit {
             queryParams.get("utm_medium"),
             queryParams.get("utm_term"),
             queryParams.get("utm_content"),
-            queryParams.get("utm_id")
+            queryParams.get("utm_id"),
+            queryParams.get("clickId")
           );
 
           console.log(this.sportimoService.UTMParams)

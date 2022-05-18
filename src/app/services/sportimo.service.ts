@@ -753,7 +753,7 @@ export class SportimoService {
   /*-----------------------------------------------------------------------------------
      UTM Params
    ----------------------------------------------------------------------------------- */
-  setUTMParams(utm_campaign: string, utm_source: string, utm_medium: string, utm_term: string, utm_content: string, utm_id: string) {
+  setUTMParams(utm_campaign: string, utm_source: string, utm_medium: string, utm_term: string, utm_content: string, utm_id: string, clickId:string) {
     this.UTMParams = {
       utm_campaign: utm_campaign,
       utm_source: utm_source,
@@ -761,6 +761,7 @@ export class SportimoService {
       utm_term: utm_term,
       utm_content: utm_content,
       utm_id: utm_id,
+      clickId: clickId
     }
   }
 
@@ -781,5 +782,15 @@ export class SportimoService {
         return response;
       }));
   }
+
+  sendCallBack(url: string){
+
+    return this.http.get<any>(url)
+      .pipe(map(response => {
+        return response;
+      }));
+  }
+
+  
 
 }
