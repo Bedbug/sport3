@@ -1280,11 +1280,14 @@ export class OnboardComponent implements OnInit {
     //   page: "main/thankyou"
     // };
     // this.gtmService.pushTag(gtmTag);
+    console.log(this.sportimoService.UTMParams);
+    console.log(this.sportimoService.UTMParams?.utm_source);
+    console.log(this.sportimoService.UTMParams?.utm_source =="adstart");
     if(this.sportimoService.UTMParams?.utm_source =="adstart"){
-      this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`);
+      this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`).subscribe();
 
         if(this.sportimoService.UTMParams?.utm_source =="trafficcompany")
-      this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`);
+      this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`).subscribe();
     }
 
     // Analytics - User_Subscribed
