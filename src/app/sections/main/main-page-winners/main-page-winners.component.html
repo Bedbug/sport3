@@ -13,7 +13,7 @@
             <div class="winner-prize">{{winner.prizeName[translate.currentLang]}}</div>
             <div class="row">
               <div class="col-8 prize-info"><span translate>Rank</span> 
-                {{winner.prizeRank}}, {{winner.contestName[translate.currentLang]}} - {{translate.instant(winner.winnerPrizeSource)}}</div>
+                {{winner.prizeRank}}, <span [innerHTML]="winner.contestName[translate.currentLang]"></span> - <span [innerHTML]="translate.instant(winner.winnerPrizeSource)"></span></div>
               <div class="col-4 prize-date text-right">{{parseDate(winner.awardDate)}}</div>
             </div>
           </div>
