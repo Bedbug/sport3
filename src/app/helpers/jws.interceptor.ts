@@ -14,6 +14,12 @@ export class JwtInterceptor implements HttpInterceptor {
         // let currentUser = this.authenticationService.currentUserSubject.value;
         let currentUser = this.authenticationService.currentUserValue;
         if (currentUser && currentUser.token) {
+
+            if (request.headers.has('X-Skip-Interceptor')) {
+                const headers = request.headers.delete('X-Skip-Interceptor');
+                return next.handle(request.clone({ headers }));
+              }
+
             request = request.clone({
                 setHeaders: { 
                     // Authorization: `Bearer ${currentUser.token}`,

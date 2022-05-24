@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from './config.service';
 import { Contest } from '../models/contest';
 import { Observable, BehaviorSubject, timer, of, Subject, EMPTY } from 'rxjs';
@@ -784,8 +784,7 @@ export class SportimoService {
   }
 
   sendCallBack(url: string){
-
-    return this.http.get<any>(url)
+    return this.http.get<any>(url, { headers: new HttpHeaders().set('X-Skip-Interceptor', '') })
       .pipe(map(response => {
         return response;
       }));
