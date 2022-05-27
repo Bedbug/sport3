@@ -235,7 +235,7 @@
 	"availablePowerupsText": "ئەمانە Powerups بەردەستی ماوەن (دوو ئەوەندە و درێژکردنەوەی یاری) کە دەتوانیت لە ماوەی ئەم ڕووبەڕووبوونەوە یاریی پێ بکەیت",
 	"card-90": "90'",
 	"card-activating": "کاراکردن",
-	"card-activating-preset": "کاراکردن بە: {{value}} '"
+	"card-activating-preset": "کاراکردن بە: {{value}} '",
 	"card-live": "ڕاستەوخۆ",
 	"card-paused": "وەستاو",
 	"card_activation_info": "کارت دوای 20 چرکە کارا دەبێت",
