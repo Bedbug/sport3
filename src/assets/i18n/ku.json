@@ -292,7 +292,7 @@
 	"farsi": "فارسی",
 	"fr": "",
 	"french": "فەڕەنسی",
-	"grace-period-text": "",
+	"grace-period-text": "دەتوانیت بۆ {{value}} ڕۆژی تر یاری بکەیت. تکایە بەشداریکردنت نوێ بکەرەوە بۆ ئەوەی لە {{appName}} بەردەوام بیت!",
 	"grandprize_loc_key": "خەڵاتی مانگانە",
 	"install-header": "١.جێگیرکردنی بەرنامە",
 	"install_button": "جێگیرکردن",

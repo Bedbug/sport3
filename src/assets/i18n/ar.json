@@ -292,7 +292,7 @@
 	"farsi": "فارسی",
 	"fr": "",
 	"french": "French",
-	"grace-period-text": "",
+	"grace-period-text": "يمكنك متابعة اللعب لمدة {{value}} أيام إضافية.الرجاء تجديد اشتراكك لمتابعة اللعب في {{appName}}",
 	"grandprize_loc_key": "الجائزة الشهرية",
 	"install-header": "تثبيت التطبيق",
 	"install_button": "تثبيت",
