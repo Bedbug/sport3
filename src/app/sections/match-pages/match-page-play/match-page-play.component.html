@@ -2,7 +2,8 @@
   <div class="row">
     <div class="card">
       <div class="card-body user-info">
-        <div *ngIf="!subscribed && !checkingSubscription" class="subscription-info" translate>You need to have an active subscription in order to play cards</div>        
+        <div *ngIf="!subscribed && !checkingSubscription && _gracePeriod == 0" class="subscription-info" translate>You need to have an active subscription in order to play cards</div>   
+        <div *ngIf="subscribed && _gracePeriod > 0" class="subscription-info" translate [translateParams]="{value: _gracePeriod, appName:appName[translate.currentLang]}">grace-period-text</div>        
         <div class="container">
           <div class="row" style="flex-direction: row; flex-wrap: nowrap;">
             <div class="col-12">

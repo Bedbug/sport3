@@ -174,7 +174,7 @@ export class AuthenticationService {
         postData.sSub = noSubscription;
 
         if(this.evinaService.transactionID)
-        postData.transactionId = this.evinaService.transactionID;
+            postData.transactionId = this.evinaService.transactionID;
 
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/verify`, postData)
             .pipe(map(response => {
@@ -379,7 +379,7 @@ export class AuthenticationService {
     validateUserSubscription() {
         return this.http.get<any>(`${this.Config.getApi("ROOT")}/users/blaise/validate-subscription`)
             .pipe(map(response => {
-                return response.success;
+                return response;
             }));
     }
 

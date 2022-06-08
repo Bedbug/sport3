@@ -51,12 +51,18 @@ export class MatchPagePlayComponent implements OnInit {
   selectedCard: any;
 
   Utils: SportimoUtils = new SportimoUtils();
+  appName: any;
 
   // @ViewChild('stickyMenu') menuElement: ElementRef;
 
   // sticky: boolean = false;
   // menuPosition: any;
-  subscribed: boolean;
+  get subscribed(){
+    return (!this._subscribed && this._gracePeriod>0) || this._subscribed;
+  }
+
+  _gracePeriod:number = 0;
+  _subscribed:boolean = false;
   checkingSubscription: boolean = true;
   ngUnsubscribe = new Subject();
   hasClickedPlay: boolean = false;
@@ -97,6 +103,9 @@ export class MatchPagePlayComponent implements OnInit {
         }
       });
 
+
+    this.appName = this.sportimoService.getConfigurationFor('appName');
+    
     this.hasJoinedContest = localStorage.getItem("hasClickedCard");
     this.showPlayCardsPop = !this.hasJoinedContest;
     this.checkingSubscription = true;
@@ -108,9 +117,11 @@ export class MatchPagePlayComponent implements OnInit {
         if (user != null) {
           // this.isSubscribed = (user && user.subscriptionEnd && moment(user.subscriptionEnd).utc() > moment().utc())
           // this.subscribed = this.authenticationService.isSubscribed;
-          this.authenticationService.validateUserSubscription().subscribe(x=>{
-            // console.log("Sub:"+x);
-            this.subscribed = x;
+          this.authenticationService.validateUserSubscription().subscribe(x=>{  
+            console.log(x);
+                      
+            this._subscribed = x.success;
+            this._gracePeriod = x.gracePeriod;
             this.checkingSubscription = false;
           })
           // console.log("user is:"+user);

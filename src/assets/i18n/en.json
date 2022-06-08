@@ -292,6 +292,7 @@
 	"farsi": "فارسی",
 	"fr": "French",
 	"french": "French",
+	"grace-period-text": "You can continue playing for {{value}} more days. Please renew your subscription to continue playing {{appName}}!",
 	"grandprize_loc_key": "Grand Prize",
 	"install-header": "Install app",
 	"install_button": "Install",
