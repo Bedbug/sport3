@@ -775,6 +775,7 @@ export class SportimoService {
       utm_term: this.UTMParams.utm_term,
       utm_content: this.UTMParams.utm_content,
       utm_id: this.UTMParams.utm_id,
+      clickId: this.UTMParams.clickId
 
     }
     return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/utm-notify`, postData)
