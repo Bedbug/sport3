@@ -330,14 +330,20 @@ export class OnboardComponent implements OnInit {
 
                     this.UniqueLink = null;
 
-                    if (this.sportimoService.UTMParams)
+                    if (this.sportimoService.UTMParams) {
                       this.sportimoService.sendUTMParams(CGMSISDN).subscribe();
+
+                      if (this.sportimoService.UTMParams?.utm_source == "adstart")
+                        this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`).subscribe();
+
+                      if (this.sportimoService.UTMParams?.utm_source == "trafficcompany")
+                        this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`).subscribe();
+
+                    }
 
 
                     if (!response.user.firstLoginCompleted) {
                       this.sendThankYouPageEvent();
-                      console.log("Thank you");
-                      
                     }
                   }
                 });
@@ -381,9 +387,8 @@ export class OnboardComponent implements OnInit {
 
 
                   if (!response.user.firstLoginCompleted) {
-                    this.sendThankYouPageEvent();
-                    console.log("Thank you");
-                    
+                    this.sendThankYouPageEvent();                    
+
                   }
 
                   // this.closeLandingPage();
@@ -661,7 +666,7 @@ export class OnboardComponent implements OnInit {
       Action: `SelectCountry_${this._currentCountry}`,
       Label: this._currentCountry
     };
-    this.gtmService.pushTag(gtmTag);  
+    this.gtmService.pushTag(gtmTag);
 
     if (this.urlMSI && this.urlOperatorCode) {
       var urlOperator = this.appOperators.find(x => x.operatorCode == this.urlOperatorCode)
@@ -1188,8 +1193,6 @@ export class OnboardComponent implements OnInit {
               // console.log(this.subState);
               this.UsernameUpdate = true;
               this.Authenticated = false;
-              console.log();
-              
             }
 
             // User Registered - We can stop the metrics
@@ -1200,13 +1203,16 @@ export class OnboardComponent implements OnInit {
             // If we have UTM Params forward them to Blaise
             if (this.sportimoService.UTMParams) {
               this.sportimoService.sendUTMParams(response.user.msisdn).subscribe();
+
+              if (this.sportimoService.UTMParams?.utm_source == "adstart")
+                this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`).subscribe();
+
+              if (this.sportimoService.UTMParams?.utm_source == "trafficcompany")
+                this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`).subscribe();
             }
 
             if (!response.user.firstLoginCompleted) {
-              console.log("Thank you");
-              
               this.sendThankYouPageEvent();
-             
             }
 
             // Analytics - User_Attempt_PIN
@@ -1270,31 +1276,14 @@ export class OnboardComponent implements OnInit {
   }
 
   sendThankYouPageEvent() {
-    // const client = this.config.getClient();
-    // const appName = this.sportimoService.getConfigurationFor('appName').en;
-    // const gtmTag = {
-    //   event: 'page',
-    //   appName: appName,
-    //   clientId: client,
-    //   pageRoute: "main/thankyou",
-    //   page: "main/thankyou"
-    // };
-    // this.gtmService.pushTag(gtmTag);
-    console.log(this.sportimoService.UTMParams);
-    console.log(this.sportimoService.UTMParams?.utm_source);
-    console.log(this.sportimoService.UTMParams?.utm_source =="adstart");
-    if(this.sportimoService.UTMParams?.utm_source =="adstart"){
-      this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`).subscribe();
-
-        if(this.sportimoService.UTMParams?.utm_source =="trafficcompany")
-      this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`).subscribe();
-    }
-
-    // Analytics - User_Subscribed
+    
+    // GOOGLE TAG MANAGER EVENT
     if (!this._currentClient)
       this._currentClient = this.config.getClient();
+
     if (!this._currentAppName)
       this._currentAppName = this.sportimoService.getConfigurationFor('appName').en;
+
     const gtmTag = {
       event: 'User_Subscribed_' + this._currentCountry,
       appName: this._currentAppName,
@@ -1304,6 +1293,14 @@ export class OnboardComponent implements OnInit {
       Label: 'subscription_' + this.currentOperator.operatorName.en
     };
     this.gtmService.pushTag(gtmTag);
+
+    // UTM ADSTART POSTBACK
+    if (this.sportimoService.UTMParams?.utm_source == "adstart")
+      this.sportimoService.sendCallBack(`https://offers-adstartmedia.affise.com/postback?clickid=${this.sportimoService.UTMParams.clickId}&secure=0daaccd99d4cd282e4c37992eff8323d`).subscribe();
+
+    // UTM TRAFFICCOMPANY POSTBACK
+    if (this.sportimoService.UTMParams?.utm_source == "trafficcompany")
+      this.sportimoService.sendCallBack(`https://postback.level23.nl/?currency=USD&handler=10901&hash=1239325366b8d4a265603703c274ce14&tracker=${this.sportimoService.UTMParams.clickId}`).subscribe();
   }
 
 
