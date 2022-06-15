@@ -32,7 +32,6 @@ export class EvinaService {
           this.transactionID = response.transactionId;
           this.timestamp = response.timestamp;
           this.renderExternalScript(response.script);
-         
         }
       })).subscribe();
   }
