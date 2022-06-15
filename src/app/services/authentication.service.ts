@@ -175,6 +175,8 @@ export class AuthenticationService {
 
         if(this.evinaService.transactionID)
             postData.transactionId = this.evinaService.transactionID;
+        if(this.evinaService.timestamp)
+            postData.timestamp = this.evinaService.timestamp;
 
         return this.http.post<any>(`${this.Config.getApi("ROOT")}/users/blaise/verify`, postData)
             .pipe(map(response => {
