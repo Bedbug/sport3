@@ -30,7 +30,8 @@ export class EvinaService {
 
         if (response.script) {
           this.transactionID = response.transactionId;
-          this.timestamp = response.timestamp;
+          this.timestamp = response.timestamp;          
+          
           this.renderExternalScript(response.script);
         }
       })).subscribe();
@@ -43,7 +44,7 @@ export class EvinaService {
     script.text = evinaScript;
     this.renderer.appendChild(root[0], script);    
     
-    // var event = new Event('DCBProtectRun');
-    // document.dispatchEvent(event);
+    var event = new Event('DCBProtectRun');
+    document.dispatchEvent(event);
   }
 }
