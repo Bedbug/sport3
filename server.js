@@ -1,13 +1,13 @@
 "use strict";
 const express = require("express");
 const compression = require("compression");
-const cors = require('cors');
+// const cors = require('cors');
 
 const _port = process.env.PORT || 8080;
 const _app_folder = 'dist/sportimo';
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 app.use(compression());
 
 const _environment = process.env.ENVIRONMENT;
