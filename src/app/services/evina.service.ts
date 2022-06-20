@@ -3,6 +3,7 @@ import { ConfigService } from './config.service';
 import * as CryptoJS from 'crypto-js';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { inject } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,10 @@ export class EvinaService {
   }
 
   loadScript() {
+    console.log("-------- Loading script");
+  if(this.injecting)
+    return;
+    this.injecting = true;
     this.http.get<any>(`${this.configService.getApi("ROOT")}/data/client/${this.configService.getClient()}/protection?domTarget=.pin-verify`, {})
       .pipe(map(response => {
 
@@ -36,8 +41,10 @@ export class EvinaService {
         }
       })).subscribe();
   }
-
+injecting:boolean = false;
   renderExternalScript(evinaScript: any) {
+    console.log("---------- Injecting script");
+    
     var root = document.getElementsByTagName('head');
     const script = document.createElement('script');
     script.type = 'text/javascript';

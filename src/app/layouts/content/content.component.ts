@@ -124,8 +124,9 @@ export class ContentComponent implements OnInit {
           console.log(this.sportimoService.UTMParams)
         }
 
-        if(this.sportimoService.getConfigurationFor("transactionShieldIsEnabled"))
-              this.evinaService.loadScript();
+        console.log("Revert This");
+        // if(this.sportimoService.getConfigurationFor("transactionShieldIsEnabled"))
+        //       this.evinaService.loadScript();
 
         
       })

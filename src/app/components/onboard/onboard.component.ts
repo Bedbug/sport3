@@ -197,7 +197,7 @@ export class OnboardComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.evinaService.loadScript();      
+   
 
 
     // setTimeout(() => {
@@ -252,12 +252,12 @@ export class OnboardComponent implements OnInit {
 
         // console.log(this.availableCountries);
         this.filteredOperators = [];
-        console.log("now");
+       
 
-
-        this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
-          // console.log(x);
-        })
+        console.log("Revert This");
+        // this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
+        //   // console.log(x);
+        // })
 
         let paramsSubscription = this.route.queryParamMap.pipe(first()).subscribe(queryParams => {
           this.UniqueLink = queryParams.get("uniqueLink");
@@ -477,6 +477,9 @@ export class OnboardComponent implements OnInit {
       } else {
         this.Authenticated = true;
       }
+      
+      console.log("Remove This");
+      this.evinaService.loadScript();      
 
     });
 
