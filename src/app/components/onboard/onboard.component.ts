@@ -254,10 +254,8 @@ export class OnboardComponent implements OnInit {
         this.filteredOperators = [];
        
 
-        console.log("Revert This");
-        // this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {
-        //   // console.log(x);
-        // })
+        // console.log("Revert This");
+        this.sportimoService.onboardingMetricsStart(this.defaults.name).subscribe(x => {});
 
         let paramsSubscription = this.route.queryParamMap.pipe(first()).subscribe(queryParams => {
           this.UniqueLink = queryParams.get("uniqueLink");
@@ -478,8 +476,8 @@ export class OnboardComponent implements OnInit {
         this.Authenticated = true;
       }
       
-      console.log("Remove This");
-      this.evinaService.loadScript();      
+      // console.log("Remove This");
+      // this.evinaService.loadScript();      
 
     });
 

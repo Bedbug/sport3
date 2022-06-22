@@ -27,8 +27,8 @@ export class EvinaService {
 
   loadScript() {
     console.log("-------- Loading script");
-  if(this.injecting)
-    return;
+  // if(this.injecting)
+  //   return;
     this.injecting = true;
     this.http.get<any>(`${this.configService.getApi("ROOT")}/data/client/${this.configService.getClient()}/protection?domTarget=.pin-verify`, {})
       .pipe(map(response => {
