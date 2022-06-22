@@ -125,8 +125,8 @@ export class ContentComponent implements OnInit {
         }
 
         // console.log("Revert This");
-        // if(this.sportimoService.getConfigurationFor("transactionShieldIsEnabled"))
-        //       this.evinaService.loadScript();
+        if(this.sportimoService.getConfigurationFor("transactionShieldIsEnabled"))
+              this.evinaService.loadScript();
 
         
       })
