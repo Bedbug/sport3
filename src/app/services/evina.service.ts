@@ -1,4 +1,4 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2, NgZone } from '@angular/core';
 import { ConfigService } from './config.service';
 import * as CryptoJS from 'crypto-js';
 import { HttpClient } from '@angular/common/http';
@@ -19,7 +19,8 @@ export class EvinaService {
   constructor(
     private http: HttpClient,
     private rendererFactory: RendererFactory2,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private zone: NgZone
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
     // this.sessionToken = new BehaviorSubject<string>(null);
@@ -37,6 +38,8 @@ export class EvinaService {
           this.transactionID = response.transactionId;
           this.timestamp = response.timestamp;          
           
+          // console.log(response.script);
+          
           this.renderExternalScript(response.script);
         }
       })).subscribe();
@@ -44,14 +47,17 @@ export class EvinaService {
 injecting:boolean = false;
   renderExternalScript(evinaScript: any) {
     console.log("---------- Injecting script");
+    this.zone.runOutsideAngular(() => {
+       var root = document.getElementsByTagName('head');
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.text = evinaScript;
+      this.renderer.appendChild(root[0], script);  
+      var event = new Event('DCBProtectRun');
+      document.dispatchEvent(event);
+    })
+     
     
-    var root = document.getElementsByTagName('head');
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.text = evinaScript;
-    this.renderer.appendChild(root[0], script);    
     
-    var event = new Event('DCBProtectRun');
-    document.dispatchEvent(event);
   }
 }
