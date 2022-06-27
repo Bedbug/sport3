@@ -690,7 +690,6 @@ export class OnboardComponent implements OnInit {
 
   selectedOperator(data) {
     this.currentOperator = this.multiOperatorForm.controls.operator.value;
-    console.log(this.currentOperator);
 
     if (this.currentOperator.consentTermsConditions != null)
       this.showCheckbox = this.currentOperator.consentTermsConditions;
