@@ -17,7 +17,7 @@ import { Subject } from 'rxjs';
 import UIkit from 'uikit';
 import { GsapService } from "src/app/services/gsap.service";
 
-// import { SwPush } from '@angular/service-worker';
+import { SwPush } from '@angular/service-worker';
 import { TpayService } from 'src/app/services/tpay.service';
 
 @Component({
@@ -62,7 +62,7 @@ export class MainPageHomeComponent implements OnInit {
     private ViewModalOverlay: PrizeViewOverlayService,
     private authenticationService: AuthenticationService,
     private _gsapService: GsapService,
-    // private swPush: SwPush,
+    private swPush: SwPush,
   ) {
     this.contestID = routeParams.snapshot.params['contestID'];
   }
@@ -81,10 +81,9 @@ export class MainPageHomeComponent implements OnInit {
       }
       if (this.isAuthenticated) {
         // Check For Push
-        // if (this.swPush.isEnabled) {          
-        //   this.subscribeToNotifications();
-        // } else {          
-        // }
+        if (this.swPush.isEnabled) {          
+          this.subscribeToNotifications();
+        }
       }
 
       // this.tpayService.sessionToken.subscribe((x)=>{
@@ -112,11 +111,11 @@ export class MainPageHomeComponent implements OnInit {
   subscribeToNotifications() {
     console.log('Open Subscribe!');
 
-    // this.swPush.requestSubscription({
-    //   serverPublicKey: this.VAPID_PUBLIC_KEY
-    // })
-    //   .then(sub => this.sportimoService.addPushSubscriber(sub).subscribe())
-    //   .catch(err => console.error("Could not subscribe to notifications", err));
+    this.swPush.requestSubscription({
+      serverPublicKey: this.VAPID_PUBLIC_KEY
+    })
+      .then(sub => this.sportimoService.addPushSubscriber(sub).subscribe())
+      .catch(err => console.error("Could not subscribe to notifications", err));
   }
 
   ngOnDestroy() {

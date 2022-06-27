@@ -10,7 +10,7 @@ import { SportimoService } from 'src/app/services/sportimo.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { PrizeViewOverlayService } from 'src/app/sections/main/prize-view-overlay/prize-view-overlay.service';
 import { TermsPopupComponent } from 'src/app/components/terms-popup/terms-popup.component';
-// import { SwPush } from '@angular/service-worker';
+import { SwPush } from '@angular/service-worker';
 
 @Component({
   selector: 'app-sidebar',
@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
     private sportimoService: SportimoService,
     private config: ConfigService,
     private ViewModalOverlay: PrizeViewOverlayService,
-    // private swPush: SwPush
+    private swPush: SwPush
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -99,7 +99,7 @@ export class SidebarComponent implements OnInit {
 
   SwPushUnsub() {
     console.log("Unsubscribe from swPush!");
-    // this.swPush.unsubscribe();
+    this.swPush.unsubscribe();
   }
 
   openTopPick() {

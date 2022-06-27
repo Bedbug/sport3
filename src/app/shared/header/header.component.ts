@@ -58,24 +58,24 @@ export class HeaderComponent implements OnInit {
   deferredPrompt: any;
   showButton = false;
 
-  // @HostListener('window:beforeinstallprompt', ['$event'])
-  // onbeforeinstallprompt(e) {
-  //   console.log("prompt with delay");
-  //   e.preventDefault();
-  //   if (defPrompt) {
-  //     this.deferredPrompt = defPrompt;
-  //     this.showButton = true;
-  //     clearTimeout(this.installPopupTimeout)
-  //     if (this.useInstallButton)
-  //       this.installPopupTimeout = setTimeout(() => {
-  //         this.showInstallPopup();
-  //       }, 300000);
-  //   } else {
-  //     this.deferredPrompt = e;
-  //     this.showButton = true;
-  //   }
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onbeforeinstallprompt(e) {
+    console.log("prompt with delay");
+    e.preventDefault();
+    if (defPrompt) {
+      this.deferredPrompt = defPrompt;
+      this.showButton = true;
+      clearTimeout(this.installPopupTimeout)
+      if (this.useInstallButton)
+        this.installPopupTimeout = setTimeout(() => {
+          this.showInstallPopup();
+        }, 300000);
+    } else {
+      this.deferredPrompt = e;
+      this.showButton = true;
+    }
 
-  // }
+  }
 
 
   addToHomeScreen() {
