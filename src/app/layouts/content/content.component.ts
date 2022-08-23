@@ -96,7 +96,8 @@ export class ContentComponent implements OnInit {
     
 
     this.sportimoService.getClientConfiguration().subscribe(data => {
-
+      console.log("[Core] Received Configuration");
+      
        // Handle URL PARAMS
        this.route.queryParamMap.subscribe(queryParams => {
 
@@ -121,7 +122,7 @@ export class ContentComponent implements OnInit {
             queryParams.get("clickId")
           );
 
-          console.log(this.sportimoService.UTMParams)
+          // console.log(this.sportimoService.UTMParams)
         }
 
         // console.log("Revert This");

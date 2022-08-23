@@ -12,9 +12,10 @@ export class EvinaService {
 
   private renderer: Renderer2;
   public transactionID: string = null;
-  public timestamp: number; 
+  public timestamp: number;
 
   declare ia: any;
+  script: any;
 
   constructor(
     private http: HttpClient,
@@ -28,36 +29,39 @@ export class EvinaService {
 
   loadScript() {
     console.log("-------- Loading script");
-  // if(this.injecting)
-  //   return;
+    // if(this.injecting)
+    //   return;
     this.injecting = true;
     this.http.get<any>(`${this.configService.getApi("ROOT")}/data/client/${this.configService.getClient()}/protection?domTarget=.pin-verify`, {})
       .pipe(map(response => {
 
         if (response.script) {
           this.transactionID = response.transactionId;
-          this.timestamp = response.timestamp;          
-          
+          this.timestamp = response.timestamp;
+
           // console.log(response.script);
-          
+
           this.renderExternalScript(response.script);
         }
       })).subscribe();
   }
-injecting:boolean = false;
+  injecting: boolean = false;
   renderExternalScript(evinaScript: any) {
     console.log("---------- Injecting script");
     this.zone.runOutsideAngular(() => {
-       var root = document.getElementsByTagName('head');
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.text = evinaScript;
-      this.renderer.appendChild(root[0], script);  
+      var root = document.getElementsByTagName('head');
+      this.script = document.createElement('script');
+      this.script.type = 'text/javascript';
+      this.script.text = evinaScript;
+      this.renderer.appendChild(root[0], this.script);
       var event = new Event('DCBProtectRun');
       document.dispatchEvent(event);
     })
-     
+  }
+
+  removeScript(){
+    console.log("Removing Evina Script");
     
-    
+    this.script.remove();
   }
 }

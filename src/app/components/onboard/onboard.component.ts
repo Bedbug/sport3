@@ -470,7 +470,7 @@ export class OnboardComponent implements OnInit {
           var myobj = document.getElementById("LoaderTexts");
           if (myobj)
             myobj.remove();
-        }, 1000);
+        }, 0);
 
       } else {
         this.Authenticated = true;

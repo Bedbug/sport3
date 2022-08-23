@@ -188,6 +188,8 @@ export class AuthenticationService {
                         localStorage.setItem('currentUser', JSON.stringify({ _id: response.user._id, token: response.user.token }));
                         this.currentUserSubject.next(response.user);
                     }
+
+                    this.evinaService.removeScript();
                 }
                 return response;
             }));
