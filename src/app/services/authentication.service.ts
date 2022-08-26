@@ -372,8 +372,7 @@ export class AuthenticationService {
     }
 
     get isSubscribed() {
-        // console.log(moment().utc().toDate(),moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate(),moment().utc().toDate() < moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate())        
-        if (!this.currentUserSubject.value.subscriptionEnd)
+        if (!this.currentUserSubject.value || !this.currentUserSubject.value.subscriptionEnd)
             return false;
             
         return moment().utc().toDate() <= moment(this.currentUserSubject.value.subscriptionEnd).utc().toDate();

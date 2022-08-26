@@ -123,12 +123,11 @@ export class ContentComponent implements OnInit {
           );
 
           // console.log(this.sportimoService.UTMParams)
-        }
-
-        // console.log("Revert This");
-        if(this.sportimoService.getConfigurationFor("transactionShieldIsEnabled"))
+        }        
+        
+        if(this.sportimoService.getConfigurationFor("transactionShieldIsEnabled") && !localStorage.getItem('currentUser'))
               this.evinaService.loadScript();
-
+        
         
       })
 
@@ -246,5 +245,7 @@ export class ContentComponent implements OnInit {
     */
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
+
+ 
 
 }
