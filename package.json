@@ -92,7 +92,7 @@
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1102.18",
+    "@angular-devkit/build-angular": "^15.0.4",
     "@angular/language-service": "~11.1.0",
     "@biesbjerg/ngx-translate-extract": "^7.0.3",
     "@biesbjerg/ngx-translate-extract-marker": "^1.0.0",
